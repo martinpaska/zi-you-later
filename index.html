@@ -698,6 +698,9 @@ p,li,.hint{text-wrap:pretty}
   #welcome .wtop>.hint{display:none}
   #welcome .wcta{margin-top:8px}
 }
+/* the landing top bar stays with you while scrolling */
+#welcome .wnav{position:sticky;top:max(8px,env(safe-area-inset-top,0px));z-index:30}
+#welcome .wnav::before{content:"";position:absolute;left:-14px;right:-14px;bottom:100%;height:calc(max(8px,env(safe-area-inset-top,0px)) + 2px);background:var(--bg);pointer-events:none}
 /* phones: temple under the bar, then the offer, then what you can practise */
 .wtemple,.wlearn{display:none}
 @media (max-width:640px){
