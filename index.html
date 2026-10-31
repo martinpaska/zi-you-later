@@ -688,6 +688,21 @@ p,li,.hint{text-wrap:pretty}
 .wnr{flex-wrap:wrap;justify-content:flex-end}
 @media (pointer:coarse){.seg button{min-height:44px}.step>h3 .link,#chl{min-height:44px;display:inline-flex;align-items:center}.langbtn{min-height:40px}.langmenu button{min-height:44px}}
 .icon{width:1.15em;height:1.15em;display:block}
+/* ---- second audit: readable study content, announced feedback, touch size, settings hierarchy ---- */
+:root{--t0:#5c636c;--accent-text:#b51c1c}
+.link{color:var(--accent-text)}
+.hero .link,.top .link{color:var(--panel-ink)}
+.ex{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.relw.later{opacity:1;background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.relw.later .han{color:var(--muted)}
+.eyebrow{color:var(--accent-text)}
+.hero .eyebrow,.wnav .eyebrow{color:#fff}
+.cta span{opacity:1}
+::placeholder{color:#6b6262;opacity:1}
+.wsheet{outline:none}
+#mode .section>h3{font-size:1.15rem;font-weight:700}
+#mode>h2,#mode .shead h2{font-size:1.6rem}
+@media (pointer:coarse){.bar .back,.starbtn,.langbtn,.acct,.streak,.play:not(.huge),.btn{min-height:44px}.mini{min-width:44px;min-height:44px}.link{min-height:44px;display:inline-flex;align-items:center}}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <main class="wrap">
@@ -1155,12 +1170,18 @@ function backHtml(x){
     <span class="meaning">${esc(x.en)}</span>${x.t!==x.s?`<span class="alt">${state.script==='t'?'Simplified '+x.s:'Traditional '+x.t}</span>`:''}`;
 }
 
+/* dialogs: move focus inside once rendered, keep Tab within, focus is restored by the caller on close */
+const FOCUSABLE='button:not([disabled]),[href],input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
+function sheetFocus(sh){sh._back=document.activeElement;const list=()=>[...sh.querySelectorAll(FOCUSABLE)].filter(e=>e.offsetParent!==null);
+  setTimeout(()=>{if(sh.isConnected&&!sh.contains(document.activeElement)){const l=list();(l.find(e=>!e.matches('[aria-label*="Previous"],[disabled]'))||l[0]||sh).focus()}},0);
+  sh.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const l=list();if(!l.length){e.preventDefault();return}const a=l[0],z=l[l.length-1];
+    if(!sh.contains(document.activeElement)){e.preventDefault();a.focus()}else if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}})}
 /* details sheet for one item in a list, with ‹ › to step through it */
 function infoSheet(list,i){
   const saved=keyHandler;
   const sh=document.createElement('div');sh.className='wsheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-modal','true');sh.setAttribute('aria-label','Details');
-  document.body.appendChild(sh);document.body.style.overflow='hidden';
-  const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved};
+  document.body.appendChild(sh);document.body.style.overflow='hidden';sheetFocus(sh);
+  const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved;if(sh._back&&sh._back.isConnected)sh._back.focus()};
   sh.onclick=e=>{if(e.target===sh)close()};
   const go=d=>{const k=i+d;if(k<0||k>=list.length)return;i=k;draw();speak(list[i])};
   function draw(){
@@ -1286,8 +1307,8 @@ function tryWrite(x){
   const syl=x.kind==='c'?[x.p]:sylsOf(x.p),perSyl=syl.length===L,tn=x.kind==='c'?[x.tone]:syl.map(sylTone);
   const saved=keyHandler;keyHandler=e=>{if(e.key==='Escape')close()};let j=0,mem=true;
   const sh=document.createElement('div');sh.className='wsheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-modal','true');sh.setAttribute('aria-label','Try writing');
-  document.body.appendChild(sh);document.body.style.overflow='hidden';
-  const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved};
+  document.body.appendChild(sh);document.body.style.overflow='hidden';sheetFocus(sh);
+  const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved;if(sh._back&&sh._back.isConnected)sh._back.focus()};
   sh.onclick=e=>{if(e.target===sh)close()};
   const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   function draw(){
@@ -1387,14 +1408,14 @@ function learn(){
     const x=pick();if(!x)return roundDone();last=x;
     const st=stage.get(x),type=st===0?MC[Math.random()*3|0]:'pinyin';
     if(type==='pinyin'){
-      open(head()+`<div class="card top-align"><span class="tag">Step 2 of 2 · type it</span>${qHead(x,type)}${typeHtml('lin')}<div class="btns"><button class="btn ghost" id="idk">I don't know</button><button class="btn" id="chk">Check</button></div><div id="fb" style="width:100%"></div></div>`);
+      open(head()+`<div class="card top-align"><span class="tag">Step 2 of 2 · type it</span>${qHead(x,type)}${typeHtml('lin')}<div class="btns"><button class="btn ghost" id="idk">I don't know</button><button class="btn" id="chk">Check</button></div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
       const inp=$('lin');inp.focus();
       const check=give=>{if(inp.disabled)return;const ok=!give&&pyOk(inp.value,x);inp.disabled=true;inp.classList.add(ok?'is-ok':'is-bad');result(x,ok,true,inp.value)};
       $('chk').onclick=()=>check(false);$('idk').onclick=()=>check(true);
       inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();check(false)}};
     }else{
       const opts=mcOptions(x,type);
-      open(head()+`<div class="card top-align"><span class="tag">Step 1 of 2 · choose</span>${qHead(x,type)}${optsHtml(x,type,opts)}<div id="fb" style="width:100%"></div></div>`);
+      open(head()+`<div class="card top-align"><span class="tag">Step 1 of 2 · choose</span>${qHead(x,type)}${optsHtml(x,type,opts)}<div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
       const box=M().querySelector('.opts');
       if(type==='audio'){M().querySelector('[data-say]').onclick=()=>speak(x);setTimeout(()=>speak(x),200)}
       const choose=b=>{if(box.classList.contains('answered'))return;box.classList.add('answered');const y=opts[+b.dataset.i],ok=y===x;
@@ -1629,7 +1650,7 @@ function build(list,listen){
     open(bar(qi/qs.length*100,(qi+1)+' / '+qs.length)+`<div class="card top-align"><p class="eyebrow">${listen?'Listen and build':'Build the sentence'} · ${LNAME(s.l)}</p>
       ${listen?`<button class="play huge" id="sp">${PLAY}Play sentence</button>`:`<p class="meaning" style="font-size:1.25rem;font-weight:700">${esc(s.en)}</p><button class="play" id="sp">${PLAY}Hint: listen</button>`}
       <div class="ansrow" id="ar" aria-label="Your sentence"></div><div class="bank" id="bk">${bank.map((w,j)=>`<button class="chunk han" data-j="${j}">${esc(w.c)}</button>`).join('')}</div>
-      <div class="btns"><button class="btn ghost" id="clr">Clear</button><button class="btn" id="chk" disabled>Check</button></div><div id="fb" style="width:100%"></div></div>`);
+      <div class="btns"><button class="btn ghost" id="clr">Clear</button><button class="btn" id="chk" disabled>Check</button></div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
     $('sp').onclick=()=>speakSent(s);if(listen)setTimeout(()=>speakSent(s),250);
     let tries=0,locked=false,marks=null;
     const renderAns=()=>{$('ar').innerHTML=picked.map((j,n)=>`<button class="chunk han${marks?(marks[n]?' cok':' cbad'):''}" data-n="${n}">${esc(bank[j].c)}</button>`).join('');
@@ -1682,7 +1703,7 @@ function translate(list){
       <div class="typein"><input id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" lang="${how==='han'?'zh':'en'}" placeholder="${how==='han'?'Type in Chinese, e.g. 你好':'e.g. ni3 hao3'}" aria-label="Your translation"></div>
       <p class="hint">${how==='han'?'Use your Chinese keyboard. Punctuation and spaces do not matter.':'Type tones as numbers 1–4 and ü as v. Spaces and punctuation do not matter.'}</p>
       <div id="hintbox" class="bank" aria-live="polite"></div>
-      <div class="btns"><button class="btn ghost" id="th">Hint</button><button class="btn ghost" id="tidk">Show answer</button><button class="btn" id="tchk">Check</button></div><div id="fb" style="width:100%"></div></div>`);
+      <div class="btns"><button class="btn ghost" id="th">Hint</button><button class="btn ghost" id="tidk">Show answer</button><button class="btn" id="tchk">Check</button></div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
     const inp=$('tin');inp.focus();
     $('tsp').onclick=()=>{if(!inp.disabled)hint=Math.max(hint,1);speakSent(s)};
     M().querySelectorAll('[data-how]').forEach(b=>b.onclick=()=>{how=b.dataset.how;store.set('ic-tmode',how);draw()});
@@ -2080,7 +2101,7 @@ function write(){
       <p class="meaning">${esc(x.en)}</p>${boxes}
       <div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div>
       <p class="strokes" id="wst">${L>1?`Character ${j+1} of ${L} · `:''}${n?n+' strokes':''}</p>${note?`<p class="hint">${note}</p>`:''}
-      <div id="wfb" style="width:100%"></div>
+      <div id="wfb" role="status" aria-live="polite" style="width:100%"></div>
       <div class="btns"><button class="btn ghost" id="wre">${level==='show'?'Play again':'Start over'}</button><button class="btn" id="wnext">${nextLabel}</button></div></div>
       <p class="hint" style="text-align:center">${level==='show'?'Watch the stroke order, then switch to Trace.':level==='trace'?'Trace each stroke in order with your finger. A hint appears after two misses.':'Write it without the outline. A hint appears after three misses.'}${L>1?' Write the word one character at a time. Tap a box above to jump to that character.':''}</p>`);
     $('say').onclick=()=>speak(x);
@@ -2143,7 +2164,7 @@ function tones(level){
       <p class="eyebrow">${level==='two'?'Which two tones do you hear?':'Which tone do you hear?'}</p>
       <div style="display:flex;gap:10px;justify-content:center;align-items:center"><button class="play huge" id="tp">${PLAY}Play</button><button class="btn ghost" id="ts" style="flex:none">🐢 Slower</button></div>
       <div id="tq" style="width:100%;display:flex;flex-direction:column;gap:10px">${tt.map((_,r)=>`${level==='two'?`<p class="hint" style="margin:0">Syllable ${r+1}</p>`:''}<div class="tones four" data-row="${r}">${[1,2,3,4].map(t=>tb(t,r)).join('')}</div>`).join('')}</div>
-      <div id="fb" style="width:100%"></div></div>
+      <div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>
       <p class="hint" style="text-align:center">Listen without looking. Keys: ${level==='two'?'press two numbers 1 to 4':'1 to 4 pick a tone'}, R replays.</p>`);
     M().querySelectorAll('[data-tl]').forEach(b=>b.onclick=()=>tones(b.dataset.tl));
     const play=()=>speak(x);$('tp').onclick=play;$('ts').onclick=()=>sayText(han(x).join(''),.45);setTimeout(play,250);
@@ -2202,9 +2223,9 @@ function twinQuiz(qmode){
   function render(){
     const q=qs[qi],head=bar(qi/ROUND*100,(qi+1)+' / '+ROUND+' · ✓ '+score);
     if(qmode==='tone')open(head+`<div class="card top-align"><p class="eyebrow">Pick the tone</p><span data-nosay class="big han">${hz(q.x)}</span><span class="py" style="color:var(--muted)">${q.x.syl}</span><p class="hint">${esc(q.x.en)}</p>
-      <div class="tones" id="qo">${[1,2,3,4,0].map(t=>`<button class="tbtn t${t}" data-t="${t}">${contour(t)}${t||'neutral'}<small>${t?TONE[t]:'tone'}</small></button>`).join('')}</div><div id="fb" style="width:100%"></div></div>`);
+      <div class="tones" id="qo">${[1,2,3,4,0].map(t=>`<button class="tbtn t${t}" data-t="${t}">${contour(t)}${t||'neutral'}<small>${t?TONE[t]:'tone'}</small></button>`).join('')}</div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
     else{open(head+`<div class="card top-align"><p class="eyebrow">Listen and pick</p><p class="hint">The syllable <b>${q.x.syl}</b> in ${q.opts.length} tones. Which character did you hear?</p><button class="play huge" id="qp">${PLAY}Play syllable</button>
-      <div class="opts chars" id="qo">${q.opts.map((x,i)=>`<button class="opt" data-i="${i}"><span class="han">${hz(x)}</span><small></small></button>`).join('')}</div><div id="fb" style="width:100%"></div></div>`);
+      <div class="opts chars" id="qo">${q.opts.map((x,i)=>`<button class="opt" data-i="${i}"><span class="han">${hz(x)}</span><small></small></button>`).join('')}</div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
       $('qp').onclick=()=>speak(q.x);setTimeout(()=>speak(q.x),250)}
     const box=$('qo');
     box.onclick=e=>{const b=e.target.closest('button');if(!b||box.classList.contains('answered'))return;box.classList.add('answered');let ok,picked;
