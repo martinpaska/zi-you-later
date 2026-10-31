@@ -1,35 +1,25 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0}</style></head><body>
 <title>Zì You Later</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600;7..72,700&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&family=Noto+Serif+TC:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600;7..72,700&family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&family=Noto+Serif+TC:wght@500;700&family=Ma+Shan+Zheng&display=swap">
 <style>
 /* Layout: one narrow column like a phone app; lessons and modes on the home view, each practice mode replaces it full-width. */
 :root{
-  --bg:#f3f4f1; --surface:#fdfdfb; --sunk:#e8eae4; --ink:#1c2024; --muted:#5b6268; --line:#d3d7cf;
-  --accent:#0f6b66; --accent-ink:#ffffff; --accent-soft:#d7ebe8;
-  --panel:#1f2b2f; --panel-ink:#eef2ef; --panel-muted:#a9b7b5; --grid:#b9d8d3;
-  --ok:#1f7a45; --ok-bg:#e2f3e8; --bad:#b3261e; --bad-bg:#fbe5e3; --star:#b87d00;
-  --cb1:#0b84d8; --cb2:#c98500; --cb3:#16255c; --cb4:#8b4513; --cl1:#d0342c; --cl2:#c97400; --cl3:#2a8a43; --cl4:#2563c9; --t0:#7c8794;
+  /* Night market: ink-black night, lantern red, lamplit paper */
+  --bg:#110e0c; --surface:#1c1714; --sunk:#29221d; --ink:#f3e9d6; --muted:#b0a28c; --line:#3d3229;
+  --accent:#ef5a3c; --accent-ink:#1c0e08; --accent-soft:#3b1a13; --gold:#e9b44c; --seal:#b8322a; --seal-ink:#fbeee0;
+  --paper:#efe3cb; --paper-ink:#1e1712; --paper-muted:#6d5d48; --paper-line:#d5c4a4;
+  --panel:var(--paper); --panel-ink:var(--paper-ink); --panel-muted:var(--paper-muted); --grid:#4a3b2e;
+  --ok:#6fd492; --ok-bg:#16301f; --bad:#ff8f86; --bad-bg:#3a1a18; --star:#f2c14a;
+  --cb1:#89adfe; --cb2:#faba37; --cb3:#9a8cff; --cb4:#d08a4f; --cl1:#ff7a70; --cl2:#f2b14a; --cl3:#63d283; --cl4:#76a9ff; --t0:#a99f92;
   --t1:var(--cb1); --t2:var(--cb2); --t3:var(--cb3); --t4:var(--cb4);
   --f-display:"Literata", Georgia, "Times New Roman", serif;
   --f-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --f-han:"Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
   --f-hant:"Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
+  --f-brush:"Ma Shan Zheng","Noto Serif SC","STKaiti","KaiTi",serif;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#121516; --surface:#1b2022; --sunk:#262b2e; --ink:#e9ece8; --muted:#9ba4a1; --line:#353c3f;
-  --accent:#5ccfc0; --accent-ink:#04211d; --accent-soft:#1c3a37;
-  --panel:#24302f; --panel-ink:#eef2ef; --panel-muted:#a3b2af; --grid:#2e4b48;
-  --ok:#6fd492; --ok-bg:#16301f; --bad:#ff8f86; --bad-bg:#3a1a18; --star:#f2c14a;
-  --cb1:#89adfe; --cb2:#faba37; --cb3:#696aff; --cb4:#b9743c; --cl1:#ff7a70; --cl2:#f2b14a; --cl3:#63d283; --cl4:#76a9ff; --t0:#9ba7b3;
-  --t1:var(--cb1); --t2:var(--cb2); --t3:var(--cb3); --t4:var(--cb4); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#121516; --surface:#1b2022; --sunk:#262b2e; --ink:#e9ece8; --muted:#9ba4a1; --line:#353c3f;
-  --accent:#5ccfc0; --accent-ink:#04211d; --accent-soft:#1c3a37;
-  --panel:#24302f; --panel-ink:#eef2ef; --panel-muted:#a3b2af; --grid:#2e4b48;
-  --ok:#6fd492; --ok-bg:#16301f; --bad:#ff8f86; --bad-bg:#3a1a18; --star:#f2c14a;
-  --cb1:#89adfe; --cb2:#faba37; --cb3:#696aff; --cb4:#b9743c; --cl1:#ff7a70; --cl2:#f2b14a; --cl3:#63d283; --cl4:#76a9ff; --t0:#9ba7b3;
-  --t1:var(--cb1); --t2:var(--cb2); --t3:var(--cb3); --t4:var(--cb4); color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{height:100%}
@@ -504,10 +494,42 @@ footer{border-top:1px solid var(--line);padding-top:14px}
 .wmaker p{margin:0}
 .wmaker a{color:var(--accent);font-weight:600}
 #welcome.anim>*{animation:rise .38s cubic-bezier(.2,.8,.3,1) backwards}
+
+/* ---- Night market × ink and paper ---- */
+body{background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(70% 45% at 10% -8%,rgb(239 90 60/.22),transparent 70%),radial-gradient(55% 40% at 95% -5%,rgb(233 180 76/.14),transparent 70%),radial-gradient(80% 50% at 50% 110%,rgb(184 50 42/.12),transparent 70%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .8 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E")}
+h1{letter-spacing:.01em}
+.eyebrow{color:var(--gold)}
+.section>h2::before,.section>.row>h2::before{content:"";flex:none;align-self:center;width:9px;height:11px;border-radius:45%;background:var(--accent);box-shadow:0 0 12px 3px rgb(239 90 60/.45)}
+.btn{box-shadow:0 8px 22px -12px rgb(239 90 60/.9)}
+.btn.ghost{background:var(--sunk);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.okb,.btn.badb{box-shadow:none}
+.mode,.lesson,.card,.stat,.acct,.streak,.wfeat li,.wmaker{background-image:linear-gradient(180deg,rgb(243 233 214/.035),transparent 60%)}
+.mode:hover:not(:disabled){border-color:var(--gold);box-shadow:0 10px 26px -14px rgb(233 180 76/.7)}
+.mode .ic,.wfeat .ic{background:var(--seal);color:var(--seal-ink);border:0;border-radius:5px;font-family:var(--f-brush);font-weight:400;box-shadow:inset 0 0 0 2px rgb(251 238 224/.28);transform:rotate(-3deg)}
+/* the daily-review panel and the welcome intro are lamplit paper signs */
+.hero{background:linear-gradient(180deg,rgb(255 255 255/.25),transparent 40%),var(--paper);border-radius:6px;box-shadow:0 0 0 1px var(--paper-line),0 18px 40px -18px rgb(239 90 60/.55),0 0 60px -20px rgb(233 180 76/.35)}
+.hero .stat{border-left-color:rgb(30 23 18/.15)}
+.hero .link{color:#a3271a}
+.hero .cta:disabled{background:rgb(30 23 18/.08)}
+.hero .cta{background:var(--seal);color:var(--seal-ink)}
+.cta .go{background:rgb(251 238 224/.16)}
+.wsample{color:#9b8a70;font-family:var(--f-brush)}
+.wsample span:nth-child(2){color:var(--seal)}
+.wmaker .seal{background:var(--seal);color:var(--seal-ink);border-radius:5px;transform:rotate(-3deg);box-shadow:inset 0 0 0 2px rgb(251 238 224/.28);font-family:var(--f-display)}
+.wmaker a{color:var(--gold)}
+.lanterns{display:block;width:min(100%,520px);height:auto;margin:-20px auto -26px;overflow:visible;filter:drop-shadow(0 0 14px rgb(239 90 60/.45))}
+.lan{transform-box:fill-box;transform-origin:50% 0;animation:sway 4.5s ease-in-out var(--d) infinite alternate}
+@keyframes sway{from{rotate:-3deg}to{rotate:3deg}}
+.lan ellipse{animation:glow 3s ease-in-out var(--d) infinite alternate}
+@keyframes glow{to{opacity:.82}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <div class="wrap">
   <section id="welcome" class="view" hidden>
+    <svg class="lanterns" viewBox="0 0 360 96" preserveAspectRatio="xMidYMin meet" aria-hidden="true"><defs><radialGradient id="lg" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#ffb35c"/><stop offset=".55" stop-color="#e2452c"/><stop offset="1" stop-color="#8e1f15"/></radialGradient></defs><path d="M-10 6Q90 40 180 22T370 8" stroke="#5a4636" stroke-width="1.2" fill="none"/><g class="lan" style="--d:0s" transform="translate(40 22)"><line y1="-22" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-8.3" y="-3" width="16.6" height="4" rx="1" fill="#e9b44c"/><ellipse cy="16.1" rx="15.1" ry="16.1" fill="url(#lg)"/><path d="M0 1V32.2M-7.8 3.9Q-16.1 16.1-7.8 28.6M7.8 3.9Q16.1 16.1 7.8 28.6" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-8.3" y="31.7" width="16.6" height="4" rx="1" fill="#e9b44c"/><path d="M0 36.2v11.7" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:0.6s" transform="translate(112 32)"><line y1="-32" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-10.2" y="-3" width="20.5" height="4" rx="1" fill="#e9b44c"/><ellipse cy="19.8" rx="18.6" ry="19.8" fill="url(#lg)"/><path d="M0 1V39.7M-9.6 4.8Q-19.8 19.8-9.6 35.2M9.6 4.8Q19.8 19.8 9.6 35.2" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-10.2" y="39.0" width="20.5" height="4" rx="1" fill="#e9b44c"/><path d="M0 43.7v14.4" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:1.2s" transform="translate(180 22)"><line y1="-22" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-12.2" y="-3" width="24.3" height="4" rx="1" fill="#e9b44c"/><ellipse cy="23.6" rx="22.0" ry="23.6" fill="url(#lg)"/><path d="M0 1V47.1M-11.4 5.7Q-23.6 23.6-11.4 41.8M11.4 5.7Q23.6 23.6 11.4 41.8" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-12.2" y="46.4" width="24.3" height="4" rx="1" fill="#e9b44c"/><path d="M0 51.1v17.1" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:0.3s" transform="translate(248 30)"><line y1="-30" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-10.2" y="-3" width="20.5" height="4" rx="1" fill="#e9b44c"/><ellipse cy="19.8" rx="18.6" ry="19.8" fill="url(#lg)"/><path d="M0 1V39.7M-9.6 4.8Q-19.8 19.8-9.6 35.2M9.6 4.8Q19.8 19.8 9.6 35.2" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-10.2" y="39.0" width="20.5" height="4" rx="1" fill="#e9b44c"/><path d="M0 43.7v14.4" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:0.9s" transform="translate(318 17)"><line y1="-17" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-8.3" y="-3" width="16.6" height="4" rx="1" fill="#e9b44c"/><ellipse cy="16.1" rx="15.1" ry="16.1" fill="url(#lg)"/><path d="M0 1V32.2M-7.8 3.9Q-16.1 16.1-7.8 28.6M7.8 3.9Q16.1 16.1 7.8 28.6" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-8.3" y="31.7" width="16.6" height="4" rx="1" fill="#e9b44c"/><path d="M0 36.2v11.7" stroke="#e9b44c" stroke-width="2"/></g></svg>
     <div class="wtop"><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1>
       <p class="lede">A practice companion for the first semester of Chinese. Learn the characters, words and sentences of the Intro and Lessons 1 to 10, a few minutes a day.</p></div>
     <div class="hero"><p class="wsample han" aria-hidden="true" data-nosay><span>你</span><span>好</span><span>字</span></p>
@@ -529,7 +551,7 @@ footer{border-top:1px solid var(--line);padding-top:14px}
   </section>
   <section id="home" class="view">
     <div class="top">
-      <div class="mast"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"> <rect x="2" y="2" width="60" height="60" rx="14" fill="#0f6b66"/> <g stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2.5 2.5" fill="none"><line x1="32" y1="8" x2="32" y2="56"/><line x1="8" y1="32" x2="56" y2="32"/><line x1="10" y1="10" x2="54" y2="54"/><line x1="54" y1="10" x2="10" y2="54"/></g> <g fill="#fff" transform="translate(6.4,51.4) scale(0.05,-0.05)"><path d="M 467 799 Q 497 777 529 750 Q 545 737 564 739 Q 576 740 580 756 Q 584 774 571 807 Q 556 841 457 853 Q 438 854 432 852 Q 426 846 429 832 Q 435 819 467 799 Z"/><path d="M 277 656 Q 277 677 254 696 Q 236 712 233 686 Q 237 656 194 602 Q 149 554 165 507 Q 166 498 171 491 Q 184 464 206 491 Q 221 512 268 623 L 277 656 Z"/><path d="M 268 623 Q 289 611 326 619 Q 476 665 705 681 Q 730 684 741 681 Q 759 668 756 661 Q 756 657 725 583 Q 718 570 725 565 Q 732 561 749 573 Q 804 613 850 627 Q 887 640 887 649 Q 886 659 812 712 Q 788 730 707 714 Q 503 690 373 668 Q 324 661 277 656 C 247 653 239 632 268 623 Z"/><path d="M 518 399 Q 642 495 669 501 Q 688 508 683 524 Q 680 540 614 578 Q 595 588 572 580 Q 511 558 418 532 Q 393 525 335 527 Q 311 528 319 508 Q 326 495 346 483 Q 377 467 411 486 Q 433 493 546 534 Q 559 538 571 532 Q 584 525 578 511 Q 545 465 508 409 C 491 384 494 381 518 399 Z"/><path d="M 551 333 Q 536 381 518 399 L 508 409 Q 498 419 487 424 Q 477 431 471 423 Q 467 419 474 405 Q 490 371 500 328 L 507 289 Q 525 120 490 66 Q 489 65 487 62 Q 478 58 377 89 Q 367 92 360 88 Q 354 87 370 74 Q 437 19 475 -30 Q 493 -49 511 -40 Q 535 -27 553 27 Q 578 120 558 293 L 551 333 Z"/><path d="M 558 293 Q 718 311 889 296 Q 911 293 918 301 Q 925 314 914 325 Q 886 352 844 371 Q 831 377 806 369 Q 737 356 667 346 Q 600 340 551 333 L 500 328 Q 491 331 308 309 Q 241 299 139 298 Q 126 299 124 288 Q 123 276 141 262 Q 157 250 187 238 Q 197 234 214 242 Q 230 246 303 259 Q 393 280 507 289 L 558 293 Z"/></g> </svg><div><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1><p class="hint" style="margin:0">One character at a time</p></div></div>
+      <div class="mast"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"> <rect x="2" y="2" width="60" height="60" rx="14" fill="#b8322a"/> <g stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2.5 2.5" fill="none"><line x1="32" y1="8" x2="32" y2="56"/><line x1="8" y1="32" x2="56" y2="32"/><line x1="10" y1="10" x2="54" y2="54"/><line x1="54" y1="10" x2="10" y2="54"/></g> <g fill="#fff" transform="translate(6.4,51.4) scale(0.05,-0.05)"><path d="M 467 799 Q 497 777 529 750 Q 545 737 564 739 Q 576 740 580 756 Q 584 774 571 807 Q 556 841 457 853 Q 438 854 432 852 Q 426 846 429 832 Q 435 819 467 799 Z"/><path d="M 277 656 Q 277 677 254 696 Q 236 712 233 686 Q 237 656 194 602 Q 149 554 165 507 Q 166 498 171 491 Q 184 464 206 491 Q 221 512 268 623 L 277 656 Z"/><path d="M 268 623 Q 289 611 326 619 Q 476 665 705 681 Q 730 684 741 681 Q 759 668 756 661 Q 756 657 725 583 Q 718 570 725 565 Q 732 561 749 573 Q 804 613 850 627 Q 887 640 887 649 Q 886 659 812 712 Q 788 730 707 714 Q 503 690 373 668 Q 324 661 277 656 C 247 653 239 632 268 623 Z"/><path d="M 518 399 Q 642 495 669 501 Q 688 508 683 524 Q 680 540 614 578 Q 595 588 572 580 Q 511 558 418 532 Q 393 525 335 527 Q 311 528 319 508 Q 326 495 346 483 Q 377 467 411 486 Q 433 493 546 534 Q 559 538 571 532 Q 584 525 578 511 Q 545 465 508 409 C 491 384 494 381 518 399 Z"/><path d="M 551 333 Q 536 381 518 399 L 508 409 Q 498 419 487 424 Q 477 431 471 423 Q 467 419 474 405 Q 490 371 500 328 L 507 289 Q 525 120 490 66 Q 489 65 487 62 Q 478 58 377 89 Q 367 92 360 88 Q 354 87 370 74 Q 437 19 475 -30 Q 493 -49 511 -40 Q 535 -27 553 27 Q 578 120 558 293 L 551 333 Z"/><path d="M 558 293 Q 718 311 889 296 Q 911 293 918 301 Q 925 314 914 325 Q 886 352 844 371 Q 831 377 806 369 Q 737 356 667 346 Q 600 340 551 333 L 500 328 Q 491 331 308 309 Q 241 299 139 298 Q 126 299 124 288 Q 123 276 141 262 Q 157 250 187 238 Q 197 234 214 242 Q 230 246 303 259 Q 393 280 507 289 L 558 293 Z"/></g> </svg><div><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1><p class="hint" style="margin:0">One character at a time</p></div></div>
       <div class="topr"><span class="streak" id="streak"></span><button class="acct" id="acct" data-go="account">Create account</button><button class="acct" id="lb" data-go="board"><span class="han av" aria-hidden="true">榜</span>Leaderboard</button><button class="acct" id="gear" data-go="progress" aria-label="Settings">⚙</button></div>
     </div>
     <div class="section">
