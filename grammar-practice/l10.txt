@@ -1,0 +1,126 @@
+# 10-0
+p|这个电影我看了。/我看了这个电影了的。/这个电影看了我。|I've seen this movie.
+p|中国菜我很喜欢吃。/中国菜很喜欢吃我。/我中国菜吃很喜欢了。|Chinese food — I really like eating it.
+p|功课你写了吗？/功课写了你吗？/你功课了写吗？|Have you done your homework?
+p|地铁我不常坐。/地铁不常坐我。/我地铁坐不常。|The subway — I don't often take it.
+p|这件衬衫我很喜欢。/这件衬衫很喜欢我。/我很喜欢了这件衬衫的。|This shirt — I really like it.
+c|＿我已经写了。|功课/功课的/的功课|The homework — I've already done it.
+c|这个电影我＿。|看了/了看/看的了|This movie — I've seen it.
+c|飞机票你买＿吗？|了/的/得|The plane ticket — have you bought it?
+c|中文我会说一点儿，＿我不会说。|英文/英文的/的英文|Chinese I can speak a little; English I can't.
+c|这个城市我很＿。|喜欢/喜欢的/喜欢了的|I really like this city.
+c|手机我＿了。|买/买的/的买|The cell phone — I've bought it.
+c|电子邮件你发了＿？|吗/的/了|The email — did you send it?
+c|这条路我不＿走。|常/常常的/的常|This road — I don't often take it.
+c|那个人我＿认识。|不/没/没有了|That person — I don't know him.
+c|飞机场怎么＿？|走/去走/走去|How do I get to the airport?
+o|功课 我 已经 写 了|I've already done the homework.
+o|这 件 衬衫 我 很 喜欢|I really like this shirt.
+o|中国菜 你 喜欢 吃 吗|Do you like Chinese food?
+o|飞机票 你 买 了 吗|Have you bought the plane ticket?
+o|地铁 我 不 常 坐|I don't often take the subway.
+# 10-1
+c|你想坐公共汽车＿坐地铁？|还是/或者/和|Do you want to take the bus or the subway?
+c|你可以坐公共汽车＿坐地铁。|或者/还是/和|You can take the bus or the subway.
+c|我们周末去看电影＿去跳舞，都行。|或者/还是/和|This weekend we'll go to a movie or go dancing — either is fine.
+c|你喝茶＿喝咖啡？|还是/或者/和|Do you want tea or coffee?
+c|你可以打电话＿发短信给我。|或者/还是/和|You can call or text me.
+c|你寒假回家＿不回家？|还是/或者/和|Are you going home for winter break or not?
+c|我想买红的＿黄的。|或者/还是/和|I want to buy a red one or a yellow one.
+c|你开车去＿打车去？|还是/或者/和|Are you driving or taking a taxi?
+c|星期六＿星期天我们去机场。|或者/还是/和|We'll go to the airport on Saturday or Sunday.
+c|你们坐飞机去＿开车去？|还是/或者/和|Are you flying or driving?
+p|你喝茶还是喝咖啡？/你喝茶或者喝咖啡？/你喝茶和喝咖啡？|Do you want tea or coffee?
+p|你可以坐地铁或者坐公共汽车。/你可以坐地铁还是坐公共汽车。/你可以坐地铁和坐公共汽车还是。|You can take the subway or the bus.
+p|你坐地铁还是打车？/你坐地铁或者打车？/你坐地铁打车还是？|Are you taking the subway or a taxi?
+p|我星期六或者星期天去。/我星期六还是星期天去。/我或者星期六星期天去。|I'll go on Saturday or Sunday.
+p|你打电话或者发短信都行。/你打电话还是发短信都行。/你打电话发短信还是都行。|You can call or text — either is fine.
+o|你 喝 茶 还是 喝 咖啡|Do you want tea or coffee?
+o|你 可以 坐 地铁 或者 坐 公共汽车|You can take the subway or the bus.
+o|你 开车 去 还是 打车 去|Are you driving or taking a taxi?
+o|我 星期六 或者 星期天 去|I'll go on Saturday or Sunday.
+o|你 打 电话 或者 发 短信 都 行|You can call or text — either is fine.
+# 10-2
+c|你先坐地铁，＿换公共汽车。|再/就/才|First take the subway, then change to the bus.
+c|我们＿吃饭，再去看电影。|先/再/就|First we'll eat, then go see a movie.
+c|你先写功课，再＿电视。|看/看了/在看|Do your homework first, then watch TV.
+c|先坐红线，＿换绿线。|再/就/先|Take the Red Line first, then change to the Green Line.
+c|你先下车，＿走一下。|再/就/先|Get off first, then walk a bit.
+c|我想先回家，再去＿。|飞机场/飞机场的/的飞机场|I want to go home first, then go to the airport.
+c|先买票，＿上车。|再/就/先|Buy a ticket first, then get on.
+c|你先给我打电话，我再＿你。|找/找了/在找|Call me first, then I'll come find you.
+c|先洗澡，＿睡觉。|再/就/先|Shower first, then sleep.
+c|我们先＿出租汽车，再坐飞机。|坐/开/骑|We'll take a taxi first, then fly.
+p|你先坐地铁，再换公共汽车。/你再坐地铁，先换公共汽车。/你先坐地铁，换再公共汽车。|First take the subway, then change to the bus.
+p|我们先吃饭，再去看电影。/我们再吃饭，先去看电影。/先我们吃饭，去再看电影。|First we'll eat, then go see a movie.
+p|先买票，再上车。/再买票，先上车。/买票先，上车再。|Buy a ticket first, then get on.
+p|你先写功课，再看电视。/你先写功课，看电视再。/你写功课先，再看电视。|Do your homework first, then watch TV.
+p|先坐红线，再换绿线。/先坐红线，换绿线再。/坐先红线，再换绿线。|Take the Red Line first, then change to the Green Line.
+o|你 先 坐 地铁 ， 再 换 公共汽车|First take the subway, then change to the bus.
+o|我们 先 吃饭 ， 再 去 看 电影|First we'll eat, then go see a movie.
+o|先 买 票 ， 再 上 车|Buy a ticket first, then get on.
+o|你 先 写 功课 ， 再 看 电视|Do your homework first, then watch TV.
+o|我 想 先 回家 ， 再 去 飞机场|I want to go home first, then go to the airport.
+# 10-3
+c|太晚了，你＿打车吧。|还是/或者/还|It's too late; you'd better take a taxi.
+c|地铁太慢了，我们还是开车＿。|吧/吗/呢|The subway's too slow; we'd better drive.
+c|明天要考试，你＿别去跳舞了。|还是/或者/还|There's an exam tomorrow; you'd better not go dancing.
+c|坐公共汽车太麻烦，还是＿地铁吧。|坐/开/骑|Taking the bus is too much trouble; better take the subway.
+c|这件太贵了，我还是买＿件吧。|那/这/哪|This one is too expensive; I'd better buy that one.
+c|你累了，还是＿睡觉吧。|早点儿/点儿早/早的点儿|You're tired; you'd better go to bed early.
+c|开车太麻烦，我们还是坐＿吧。|地铁/高速公路/电子邮件|Driving is a hassle; let's take the subway instead.
+c|他不在家，你还是给他发＿吧。|短信/短信的/的短信|He's not home; you'd better send him a text.
+c|还是你去吧，我＿去了。|不/没/别|You'd better go; I won't go.
+c|太远了，我们还是＿出租汽车吧。|坐/开/骑|It's too far; we'd better take a taxi.
+p|太晚了，你还是打车吧。/太晚了，你或者打车吧。/太晚了，还是你打车吗。|It's late; you'd better take a taxi.
+p|我们还是坐地铁吧。/我们或者坐地铁吧。/我们坐地铁还是吧。|We'd better take the subway.
+p|你还是别去了。/你或者别去了。/你别还是去了。|You'd better not go.
+p|还是你去吧。/或者你去吧。/你去还是吧。|You'd better go.
+p|你还是给他发短信吧。/你或者给他发短信吧。/你给他还是发短信吧吗。|You'd better send him a text.
+o|太 晚 了 ， 你 还是 打车 吧|It's late; you'd better take a taxi.
+o|我们 还是 坐 地铁 吧|We'd better take the subway.
+o|你 还是 别 去 了|You'd better not go.
+o|你 还是 给 他 发 短信 吧|You'd better send him a text.
+o|这 件 太 贵 了 ， 我 还是 买 那 件 吧|This one's too expensive; I'd better buy that one.
+# 10-4
+c|他＿天都坐地铁。|每/都/各|He takes the subway every day.
+c|每个学生＿有手机。|都/也/还|Every student has a cell phone.
+c|我每天＿给妈妈打电话。|都/也/还|I call my mom every day.
+c|每＿考试都很难。|次/个次/的|Every exam is hard.
+c|她每个周末都＿家。|回/回了/回的|She goes home every weekend.
+c|每个城市＿有地铁吗？|都/也/还|Does every city have a subway?
+c|我们每＿星期一都有中文课。|个/张/口|We have Chinese class every Monday.
+c|每天早上我都＿骑自行车去学校。|∅/在/很|Every morning I ride my bike to school.
+c|这些衣服每件都很＿。|便宜/便宜的/的便宜|Each of these clothes is cheap.
+c|他每天＿很早就起床了。|都/也/还|He gets up early every day.
+p|他每天都坐地铁。/他每天坐都地铁。/他都每天坐地铁。|He takes the subway every day.
+p|每个学生都有手机。/每个学生有都手机。/都每个学生有手机。|Every student has a cell phone.
+p|我每个周末都回家。/我每个周末回家都。/我都每个周末回家。|I go home every weekend.
+p|每次考试都很难。/每次考试很难都。/都每次考试很难。|Every exam is hard.
+p|每个城市都有地铁吗？/每个城市有都地铁吗？/都每个城市有地铁吗？|Does every city have a subway?
+o|他 每天 都 坐 地铁|He takes the subway every day.
+o|每 个 学生 都 有 手机|Every student has a cell phone.
+o|我 每 个 周末 都 回家|I go home every weekend.
+o|我们 每 个 星期一 都 有 中文 课|We have Chinese class every Monday.
+o|每 次 考试 都 很 难|Every exam is hard.
+# 10-5
+c|寒假＿到了。|快要/快/要快|Winter break is almost here.
+c|我们要下车＿。|了/的/吧|We're about to get off.
+c|新年快要＿了。|到/到了/来到了|New Year is almost here.
+c|快要考试了，你＿准备好了吗？|∅/在/很|The exam is coming up — are you ready?
+c|电影要开始＿，快进来！|了/的/吧|The movie is about to start — come in, quick!
+c|我们快到飞机场＿。|了/的/吧|We're almost at the airport.
+c|天快要黑＿。|了/的/吧|It's about to get dark.
+c|他要回家了，＿给他打电话吧。|快/快要了/就快了|He's about to go home — call him quickly.
+c|下个星期就要考试＿。|了/的/吧|The exam is next week.
+c|快十二点了，我们＿睡觉了。|要/会/在|It's almost twelve; we're about to go to bed.
+p|寒假快要到了。/寒假要快到了。/寒假快要了到。|Winter break is almost here.
+p|我们要下车了。/我们下车要了。/我们了要下车。|We're about to get off.
+p|电影快要开始了。/电影要快开始了。/电影快开始要了。|The movie is about to start.
+p|新年快到了。/新年到快了。/快新年到了。|New Year is almost here.
+p|下个星期就要考试了。/下个星期要就考试了。/下个星期就要了考试。|The exam is next week.
+o|寒假 快要 到 了|Winter break is almost here.
+o|我们 要 下 车 了|We're about to get off.
+o|电影 快要 开始 了|The movie is about to start.
+o|新年 快 到 了|New Year is almost here.
+o|下 个 星期 就 要 考试 了|The exam is next week.

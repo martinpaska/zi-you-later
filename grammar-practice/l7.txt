@@ -1,0 +1,189 @@
+# 7-0
+c|你写字写＿很好。|得/的/地|You write characters very well.
+c|他说中文说得很＿。|快/快的/得快|He speaks Chinese very fast.
+c|王朋汉字写得＿漂亮。|很/得/的|Wang Peng writes characters beautifully.
+c|老师说话说得太＿了。|快/得快/快得|The teacher speaks too fast.
+c|你预习得怎么＿？|样/么/得|How did your preview go?
+c|她今天来得很＿。|早/早的/得早|She came early today.
+c|你说得很好，＿得也很快。|写/得写/写字得|You speak well, and you write fast too.
+c|他昨天睡得很＿。|晚/晚的/得晚|He went to bed late yesterday.
+c|李友念课文念＿很好。|得/的/地|Li You reads the text aloud very well.
+c|你中文说得怎么样？——说得不＿。|好/好得/得好|How is your spoken Chinese? — Not good.
+p|你写字写得很好。/你写字得很好。/你写得字很好。|You write characters very well.
+p|他说中文说得很快。/他说中文得很快。/他说得中文很快。|He speaks Chinese fast.
+p|老师说话说得太快了。/老师说话太快得了。/老师说得话太快了。|The teacher speaks too fast.
+p|她汉字写得很漂亮。/她写汉字得很漂亮。/她汉字写很漂亮得。|She writes characters beautifully.
+p|你今天来得很早。/你今天来很早得。/你今天得来很早。|You came early today.
+o|你 写 字 写 得 很 好|You write characters very well.
+o|他 说 中文 说 得 很 快|He speaks Chinese very fast.
+o|她 汉字 写 得 很 漂亮|She writes characters beautifully.
+o|你 今天 来 得 很 早|You came early today.
+o|我 昨天 睡 得 很 晚|I went to bed late yesterday.
+# 7-1
+c|今天的功课＿难了！|太/真/很|Today's homework is way too hard!
+c|你写字写得＿快！|真/太了/得|You really write fast!
+c|这个电影太有意思＿！|了/的/吧|This movie is so interesting!
+c|你＿酷了！|太/真/很是|You're so cool!
+c|第七课的语法＿容易。|真/太/太是|The grammar in Lesson 7 is really easy.
+c|你妹妹真＿！|漂亮/漂亮了/是漂亮|Your younger sister is really pretty!
+c|老师说话说得太快＿。|了/的/吧|The teacher speaks too fast.
+c|他汉字写得＿好。|真/太/太是|He writes characters really well.
+c|今天的生词太多＿。|了/的/真|There are too many new words today.
+c|王朋真＿！|帅/帅了/是帅了|Wang Peng is really handsome!
+p|今天的功课太难了。/今天的功课太难。了/今天的功课真难了了。|Today's homework is way too hard.
+p|你真酷！/你真是酷了！/你酷真！|You're really cool!
+p|这个语法太容易了。/这个语法容易太了。/这个语法太了容易。|This grammar is too easy.
+p|她写字写得真快。/她写字写得真快了了。/她真写字写得快。|She really writes fast.
+p|你的录音真好！/你的录音好真！/你的真录音好！|Your recording is really good!
+o|今天 的 功课 太 难 了|Today's homework is way too hard.
+o|你 写 字 写 得 真 好|You really write characters well.
+o|第七课 的 语法 真 容易|The grammar in Lesson 7 is really easy.
+o|老师 说 话 说 得 太 快 了|The teacher speaks too fast.
+o|你 妹妹 真 漂亮|Your younger sister is really pretty.
+# 7-2
+c|他＿是王朋。|就/才/都|He is Wang Peng (and nobody else).
+c|这＿是我的笔。|就/才/也就是|This is precisely my pen.
+c|她就＿我们的中文老师。|是/在/有|She is exactly our Chinese teacher.
+c|你找李友？我＿是李友。|就/才/都|You're looking for Li You? I'm Li You.
+c|这就是第七课的＿。|生词/生词的/的生词的|These are exactly the new words of Lesson 7.
+c|那个很帅的人就是我＿。|哥哥/哥哥的的/的哥哥|That handsome guy is my older brother.
+c|你说的那个学生＿是他。|就/才/都|The student you mentioned is exactly him.
+c|这就是我们的＿。|学校/学校的/的学校|This is our school.
+c|白英爱？她就＿我的同学。|是/在/有|Bai Ying'ai? She's my classmate.
+c|王老师就是＿老师。|教我们中文的/教中文我们的/我们教中文的|Teacher Wang is the one who teaches us Chinese.
+p|他就是王朋。/他是就王朋。/就他是王朋。|He is Wang Peng.
+p|这就是我的学校。/这是就我的学校。/这我的学校就是。|This is my school.
+p|我就是李友。/我是就李友。/就是我李友。|I am Li You.
+p|那就是我们的老师。/那是就我们的老师。/那我们的就是老师。|That is our teacher.
+p|这就是第七课的语法。/这是就第七课的语法。/这第七课就是的语法。|This is the grammar of Lesson 7.
+o|他 就 是 王朋|He is Wang Peng.
+o|这 就 是 我 的 笔|This is my pen.
+o|我 就 是 李友|I'm Li You.
+o|那 就 是 我们 的 中文 老师|That is our Chinese teacher.
+o|这 就 是 我 家|This is my home.
+# 7-3
+c|王老师教我们＿。|中文/中文我们/的中文|Teacher Wang teaches us Chinese.
+c|请你给我＿笔。|一枝/一个/一张|Please give me a pen.
+c|我想问你＿问题。|一个/一枝/一张|I'd like to ask you a question.
+c|她给我一＿纸。|张/枝/个|She gave me a piece of paper.
+c|谁教你们＿？|语法/语法你们/你们的语法的|Who teaches you grammar?
+c|老师给＿一个考试。|我们/我们的/的我们|The teacher gave us an exam.
+c|我教你＿汉字，好吗？|写/写的/得写|I'll teach you to write characters, OK?
+c|你给我一＿笔，好吗？|枝/张/口|Give me a pen, OK?
+c|他问我一个＿。|问题/问题我/我问题|He asked me a question.
+c|常老师教＿中文。|我们/的我们/我们的的|Teacher Chang teaches us Chinese.
+p|王老师教我们中文。/王老师教中文我们。/王老师我们教中文。|Teacher Wang teaches us Chinese.
+p|请你给我一张纸。/请你给一张纸我。/请你一张纸给我。|Please give me a piece of paper.
+p|我想问你一个问题。/我想问一个问题你。/我想你问一个问题。|I'd like to ask you a question.
+p|她给我们一枝笔。/她给一枝笔我们。/她我们给一枝笔。|She gave us a pen.
+p|谁教你们语法？/谁教语法你们？/谁你们教语法？|Who teaches you grammar?
+o|王老师 教 我们 中文|Teacher Wang teaches us Chinese.
+o|请 你 给 我 一 张 纸|Please give me a piece of paper.
+o|我 想 问 你 一 个 问题|I'd like to ask you a question.
+o|她 给 我 一 枝 笔|She gave me a pen.
+o|谁 教 你们 语法|Who teaches you grammar?
+# 7-4
+c|今天我们学＿七课。|第/第一/个|Today we're studying Lesson 7.
+c|他是我的＿一个中国朋友。|第/个/一|He is my first Chinese friend.
+c|第＿课的生词很多。|七/七个/七号|There are many new words in Lesson 7.
+c|这是第几＿？|课/个课/课个|Which lesson is this?
+c|我是＿个来的。|第一/一/第一的|I was the first one to come.
+c|他是我们班第二个＿的学生。|来/来了/来得|He's the second student in our class to arrive.
+c|你们学到第几课了？——第＿课。|八/八个/八号|Which lesson have you got to? — Lesson 8.
+c|这是我的第二＿笔。|枝/张/个|This is my second pen.
+c|第一课＿容易。|很/得/第|Lesson 1 is easy.
+c|我上第一＿课。|节/个/课|I have first period. (L6: 节)
+p|今天我们学第七课。/今天我们学七第课。/今天我们学第课七。|Today we're studying Lesson 7.
+p|她是第一个来的。/她是一第个来的。/她是第一来个的。|She was the first to arrive.
+p|第二课的语法很难。/二第课的语法很难。/第课二的语法很难。|The grammar in Lesson 2 is hard.
+p|这是第几课？/这是几第课？/这是第课几？|Which lesson is this?
+p|我们上第三节课。/我们上三第节课。/我们上第节三课。|We have third period.
+o|今天 我们 学 第 七 课|Today we're studying Lesson 7.
+o|他 是 第一 个 来 的|He was the first to arrive.
+o|第 二 课 的 生词 很 多|There are many new words in Lesson 2.
+o|这 是 第 几 课|Which lesson is this?
+o|我 是 第 三 个 来 的|I was the third to arrive.
+# 7-5
+c|今天的功课有＿难。|一点儿/一下/点儿的|Today's homework is a bit hard.
+c|我今天有点儿＿。|累/累了的/很累|I'm a bit tired today.
+c|这个字有点儿＿写。|难/难的/难得|This character is a bit hard to write.
+c|老师说话说得有点儿＿。|快/快的/快得|The teacher speaks a bit fast.
+c|我有点儿不＿。|懂/懂的/懂得了|I don't quite understand.
+c|今天的生词有一点儿＿。|多/多的/得多|There are a few too many new words today.
+c|他今天来得有点儿＿。|晚/晚的/得晚|He came a bit late today.
+c|第七课的语法＿难。|有点儿/一点儿/一下|The grammar in Lesson 7 is a bit hard.
+c|你说得有点儿快，请说慢＿。|一点儿/有点儿/一下儿|You speak a bit fast; please speak a bit slower.
+c|我有点儿＿，我们回家吧。|忙/忙的/很忙了|I'm a bit busy; let's go home.
+p|今天的功课有点儿难。/今天的功课一点儿难。/今天的功课难有点儿。|Today's homework is a bit hard.
+p|老师说得有点儿快。/老师说得快有点儿。/老师说得一点儿快。|The teacher speaks a bit fast.
+p|请说慢一点儿。/请说一点儿慢。/请说有点儿慢。|Please speak a bit slower.
+p|这个字有点儿难写。/这个字难写有点儿。/这个字一点儿难写。|This character is a bit hard to write.
+p|我有点儿不懂。/我不有点儿懂。/我有点儿懂不。|I don't quite understand.
+o|今天 的 功课 有 一点儿 难|Today's homework is a bit hard.
+o|老师 说 得 有点儿 快|The teacher speaks a bit fast.
+o|请 你 说 慢 一点儿|Please speak a bit slower.
+o|这 个 字 有点儿 难 写|This character is a bit hard to write.
+o|我 今天 有点儿 忙|I'm a bit busy today.
+# 7-6
+c|你＿这么早就来了？|怎么/什么/为什么吗|How come you came so early?
+c|他怎么＿来？|还不/还没/不还|How come he hasn't come yet?
+c|你怎么不＿？|说话/说话吗/说话呢吗|How come you're not saying anything?
+c|你怎么＿懂？|不/没/没有了|How come you don't understand?
+c|她怎么这么＿？|漂亮/漂亮吗/漂亮的|How come she's so pretty?
+c|你昨天怎么＿去上课？|没/不/不是|How come you didn't go to class yesterday?
+c|你怎么现在＿来？|才/就/都|How come you're only coming now?
+c|今天的功课怎么＿多？|这么/什么/怎么样|How come there's so much homework today?
+c|你写字怎么写得这么＿？|快/快的/得快|How come you write so fast?
+c|王朋怎么＿在家？|不/没/不是|How come Wang Peng isn't at home?
+p|你怎么这么早就来了？/你什么这么早就来了？/你怎么这么早来就了？|How come you came so early?
+p|他怎么还没来？/他怎么还不来了？/他怎么没还来？|How come he's not here yet?
+p|你昨天怎么没来上课？/你昨天怎么不来上课了？/你昨天怎么没上课来？|How come you didn't come to class yesterday?
+p|你怎么现在才来？/你怎么现在就来才？/你现在怎么来才？|How come you're only coming now?
+p|今天的生词怎么这么多？/今天的生词什么这么多？/今天的生词这么怎么多？|How come there are so many new words today?
+o|你 怎么 这么 早 就 来 了|How come you came so early?
+o|他 怎么 还 没 来|How come he hasn't come yet?
+o|你 昨天 怎么 没 来 上课|How come you didn't come to class yesterday?
+o|你 怎么 现在 才 来|How come you're only coming now?
+o|今天 的 功课 怎么 这么 多|How come there's so much homework today?
+# 7-7
+c|这枝笔是我＿。|的/了/得|This pen is mine.
+c|这张纸是老师＿。|的/是/了|This piece of paper is the teacher's.
+c|大的是我的，小＿是你的。|的/了/得|The big one is mine; the small one is yours.
+c|那枝笔是谁＿？|的/了/呢|Whose pen is that?
+c|这个是王朋的，那个是李友＿。|的/了/得|This one is Wang Peng's; that one is Li You's.
+c|我的笔很好，你＿呢？|的/了/得|My pen is good. And yours?
+c|这些照片都是我＿。|的/了/得|These photos are all mine.
+c|这张纸是你的＿？|吗/的/了|Is this piece of paper yours?
+c|这枝笔不是我的，是我朋友＿。|的/了/得|This pen isn't mine; it's my friend's.
+c|哪枝笔是你的？——这枝是＿。|我的/我/的我|Which pen is yours? — This one is mine.
+p|这枝笔是我的。/这枝笔是的我。/这枝笔我的是。|This pen is mine.
+p|这张纸不是我的。/这张纸是不我的。/这张纸我的不是。|This piece of paper isn't mine.
+p|大的是你的，小的是我的。/大是你的，小是我的。/的大是你的，的小是我的。|The big one is yours; the small one is mine.
+p|那枝笔是谁的？/那枝笔是的谁？/那枝笔谁是的？|Whose pen is that?
+p|这个是老师的。/这个是的老师。/这个老师是的。|This one is the teacher's.
+o|这 枝 笔 是 我 的|This pen is mine.
+o|那 张 纸 是 谁 的|Whose paper is that?
+o|大 的 是 你 的|The big one is yours.
+o|这 个 不 是 我 的|This one isn't mine.
+o|这 枝 笔 是 我 朋友 的|This pen is my friend's.
+# 7-8
+p|李友八点起床，九点上课。/李友八点起床，李友九点上课。/李友八点起床，她李友九点上课。|Li You gets up at eight and has class at nine.
+p|王朋很忙，昨天晚上一点才睡觉。/王朋很忙，王朋昨天晚上一点才睡觉。/王朋很忙，他王朋昨天晚上一点才睡觉。|Wang Peng is busy; he didn't go to bed until one last night.
+p|我早上复习生词，晚上写汉字。/我早上复习生词，我晚上我写汉字。/我早上我复习生词，我晚上写汉字。|I review new words in the morning and write characters in the evening.
+p|她汉字写得很好，也写得很快。/她汉字写得很好，她也她写得很快。/她汉字写得很好，她汉字也她写得很快。|She writes characters well and fast too.
+p|这是我的笔，那是你的。/这是我的笔，那是你的笔的笔。/这是我的笔，那是你笔的。|This is my pen; that one is yours.
+c|王朋很帅，＿也很酷。|∅/王朋他/他王朋|Wang Peng is handsome, and cool too.
+c|我早上七点起床，＿八点吃早饭。|∅/我我/我他|I get up at seven and have breakfast at eight.
+c|李友很喜欢中文，＿每天都练习。|∅/李友她/她李友|Li You loves Chinese and practises every day.
+c|这枝笔是我的，那枝＿是你的。|∅/笔笔/的笔|This pen is mine; that one is yours.
+c|老师说得很慢，所以＿都懂了。|我们/我们我们/我们他们|The teacher spoke slowly, so we all understood.
+c|我昨天很忙，＿没去上课。|∅/我我/她我|I was busy yesterday and didn't go to class.
+c|他今天来得很早，＿七点就来了。|∅/他他/他他们|He came early today; he was here at seven.
+c|这是我的照片，那张＿是我姐姐的。|∅/照片照片/的照片|This is my photo; that one is my older sister's.
+c|我学中文，＿也学英文。|∅/我我/他我|I study Chinese, and English too.
+c|你的字写得很好，＿也写得很快。|∅/你你/你他|You write well and fast too.
+o|我 早上 复习 生词 ， 晚上 写 汉字|I review new words in the morning and write characters in the evening.
+o|这 是 我 的 笔 ， 那 是 你 的|This is my pen; that one is yours.
+o|王朋 很 帅 ， 也 很 酷|Wang Peng is handsome, and cool too.
+o|她 很 忙 ， 晚上 一 点 才 睡觉|She's busy; she didn't go to bed until one.
+o|我 昨天 很 忙 ， 没 去 上课|I was busy yesterday and didn't go to class.

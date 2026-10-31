@@ -1,0 +1,147 @@
+# 2-0
+c|这是我＿照片。|的/是/个|This is my photo.
+c|那是王朋＿妈妈。|的/是/也|That is Wang Peng's mother.
+c|这是谁＿弟弟？|的/是/呢|Whose younger brother is this?
+c|她是我＿姐姐。|的/个/是|She is my older sister.
+c|李友是我＿学生。|的/是/吗|Li You is my student.
+c|这是老师＿照片吗？|的/是/个|Is this the teacher's photo?
+c|王朋的哥哥是＿。|医生/的医生/医生的|Wang Peng's older brother is a doctor.
+c|那个女孩子是谁＿女儿？|的/是/个|Whose daughter is that girl?
+c|这是我爸爸＿照片。|的/个/和|This is my father's photo.
+c|他是你＿儿子吗？|的/是/个|Is he your son?
+p|这是我的照片。/这是的我照片。/这是我照片的。|This is my photo.
+p|她是王朋的妹妹。/她是的王朋妹妹。/她是王朋妹妹的。|She is Wang Peng's younger sister.
+p|那是谁的照片？/那是的谁照片？/那是谁照片的？|Whose photo is that?
+p|他是老师的儿子。/他是老师儿子的。/他的是老师儿子。|He is the teacher's son.
+p|这是李友的弟弟吗？/这是李友弟弟的吗？/这的是李友弟弟吗？|Is this Li You's younger brother?
+o|这 是 我 的 照片|This is my photo.
+o|她 是 谁 的 女儿|Whose daughter is she?
+o|那 是 王朋 的 爸爸|That is Wang Peng's father.
+o|这 是 我 姐姐 的 儿子|This is my older sister's son.
+o|他 是 李友 的 弟弟 吗|Is he Li You's younger brother?
+# 2-1
+c|这＿女孩子是谁？|个/口/的|Who is this girl?
+c|你家有几＿人？|口/个/的|How many people are there in your family?
+c|我有两＿姐姐。|个/口/的|I have two older sisters.
+c|那＿人是我的老师。|个/口/是|That person is my teacher.
+c|他有一＿儿子。|个/口/有|He has one son.
+c|我家有五＿人。|口/个/有|There are five people in my family.
+c|这＿男孩子是我弟弟。|个/口/的|This boy is my younger brother.
+c|你有几＿哥哥？|个/口/的|How many older brothers do you have?
+c|我有一＿妹妹。|个/口/是|I have one younger sister.
+c|那＿大学生是谁？|个/口/的|Who is that college student?
+p|我有两个弟弟。/我有两弟弟。/我有两口弟弟。|I have two younger brothers.
+p|你家有几口人？/你家有几人口？/你家有口几人？|How many people are there in your family?
+p|这个人是谁？/这人个是谁？/个这人是谁？|Who is this person?
+p|他有三个孩子。/他有三孩子。/他有孩子三个。|He has three children.
+p|那个女孩子是我妹妹。/那女孩子个是我妹妹。/那口女孩子是我妹妹。|That girl is my younger sister.
+o|我 家 有 六 口 人|There are six people in my family.
+o|这 个 人 是 我 哥哥|This person is my older brother.
+o|我 有 两 个 妹妹|I have two younger sisters.
+o|那 个 男孩子 是 谁|Who is that boy?
+o|你 有 几 个 孩子|How many children do you have?
+# 2-2
+c|这个人是＿？|谁/什么/几|Who is this person?
+c|你家有＿口人？|几/谁/什么|How many people are in your family?
+c|你爸爸做＿工作？|什么/谁/几|What does your father do?
+c|那是＿的照片？|谁/什么/几|Whose photo is that?
+c|你有＿个弟弟？|几/谁/什么|How many younger brothers do you have?
+c|你叫＿名字？|什么/谁/几|What is your name?
+c|＿是王朋？|谁/什么/几|Who is Wang Peng?
+c|你妈妈是＿？——她是律师。|做什么的/谁的/几个|What does your mother do? — She is a lawyer.
+c|你有几个＿？|姐姐/姐姐吗/姐姐的|How many older sisters do you have?
+c|这个女孩子是＿的妹妹？|谁/什么/几|Whose younger sister is this girl?
+p|这个男孩子是谁？/这个男孩子是谁吗？/谁是这个男孩子吗？|Who is this boy?
+p|你家有几口人？/你家有几口人吗？/你家有什么口人？|How many people are in your family?
+p|你妈妈做什么工作？/你妈妈做什么工作吗？/你妈妈什么做工作？|What does your mother do?
+p|那是谁的照片？/那是谁照片的？/那是谁的照片吗？|Whose photo is that?
+p|你有几个哥哥？/你有几哥哥？/你有几个哥哥吗？|How many older brothers do you have?
+o|这 个 女孩子 是 谁|Who is this girl?
+o|你 爸爸 做 什么 工作|What does your father do?
+o|你 家 有 几 口 人|How many people are in your family?
+o|这 是 谁 的 照片|Whose photo is this?
+o|你 有 几 个 弟弟|How many younger brothers do you have?
+# 2-3
+c|我＿两个哥哥。|有/是/在|I have two older brothers.
+c|我＿有妹妹。|没/不/也|I don't have a younger sister.
+c|你＿姐姐吗？|有/是/没|Do you have older sisters?
+c|她有＿个孩子？|几/什么/谁|How many children does she have?
+c|王朋没有＿。|弟弟/个弟弟/弟弟吗|Wang Peng has no younger brother.
+c|你有没有＿？|哥哥/哥哥吗/哥哥呢|Do you have an older brother?
+c|我有一个弟弟，＿有姐姐。|没/不/也不|I have a younger brother but no older sister.
+c|他＿有孩子，他有一个女儿。|也/不/没|He has children too: one daughter.
+c|你有英文名字吗？——我＿有。|没/不/也|Do you have an English name? — I don't.
+c|李友＿有哥哥吗？|也/不/都|Does Li You also have an older brother?
+p|我没有姐姐。/我不有姐姐。/我有没姐姐。|I don't have an older sister.
+p|你有没有弟弟？/你没有有弟弟？/你有不有弟弟？|Do you have a younger brother?
+p|他有两个女儿。/他有二个女儿。/他是两个女儿。|He has two daughters.
+p|我也没有哥哥。/我没也有哥哥。/我也不有哥哥。|I don't have an older brother either.
+p|你有孩子吗？/你有吗孩子？/你是孩子吗？|Do you have children?
+o|我 没 有 妹妹|I don't have a younger sister.
+o|你 有 没 有 哥哥|Do you have an older brother?
+o|他 有 一 个 儿子|He has one son.
+o|我 有 两 个 姐姐|I have two older sisters.
+o|你 有 英文 名字 吗|Do you have an English name?
+# 2-4
+c|我家＿五口人。|有/是/在|There are five people in my family.
+c|我家＿一个律师。|有/是/在|There is a lawyer in my family.
+c|你家有＿口人？|几/什么/谁|How many people are there in your family?
+c|我家＿有医生。|没/不/也不|There is no doctor in my family.
+c|他家有四口人：爸爸、妈妈、哥哥＿他。|和/也/都|There are four people in his family: dad, mom, his older brother and him.
+c|你家有＿有律师？|没/不/也|Is there a lawyer in your family?
+c|王朋家有三口人，＿有弟弟。|没/不/也|There are three people in Wang Peng's family; there is no younger brother.
+c|照片上＿两个人。|有/是/在|There are two people in the photo.
+c|她家有大学生＿？|吗/呢/什么|Are there college students in her family?
+c|我家有两＿医生。|个/口/的|There are two doctors in my family.
+p|我家有四口人。/我家是四口人。/我家有四个口人。|There are four people in my family.
+p|你家有没有律师？/你家有不有律师？/你家没有有律师？|Is there a lawyer in your family?
+p|她家没有医生。/她家不有医生。/她家有没医生。|There are no doctors in her family.
+p|他家有几口人？/他家有几人？/他家是几口人？|How many people are in his family?
+p|我家有一个大学生。/我家有一大学生。/我家一个有大学生。|There is one college student in my family.
+o|你 家 有 几 口 人|How many people are in your family?
+o|我 家 有 六 口 人|There are six people in my family.
+o|我 家 没 有 律师|There is no lawyer in my family.
+o|他 家 有 两 个 医生|There are two doctors in his family.
+o|你 家 有 大学生 吗|Are there college students in your family?
+# 2-5
+c|我有＿个妹妹。|两/二/二个|I have two younger sisters.
+c|他家有＿口人。|两/二/第二|There are two people in his family.
+c|我的＿姐是律师。|二/两/两个|My second older sister is a lawyer.
+c|十＿|二/两/两个|twelve
+c|＿十|二/两/两个|twenty
+c|她有＿个女儿。|两/二/二个|She has two daughters.
+c|一、＿、三|二/两/两个|one, two, three
+c|我们有＿个老师。|两/二/第二|We have two teachers.
+c|我家有＿个医生。|两/二/二个|There are two doctors in my family.
+c|这是我＿哥，他是医生。|二/两/两个|This is my second older brother; he is a doctor.
+p|我有两个哥哥。/我有二个哥哥。/我有两哥哥。|I have two older brothers.
+p|他家有两口人。/他家有二口人。/他家两有口人。|There are two people in his family.
+p|我二姐叫王红。/我两姐叫王红。/我二个姐叫王红。|My second older sister is called Wang Hong.
+p|她有十二个学生。/她有十两个学生。/她有十二学生。|She has twelve students.
+p|我们有两个英文老师。/我们有二个英文老师。/我们两有个英文老师。|We have two English teachers.
+o|我 有 两 个 姐姐|I have two older sisters.
+o|他 家 有 两 口 人|There are two people in his family.
+o|我 二 姐 是 律师|My second older sister is a lawyer.
+o|她 有 两 个 孩子|She has two children.
+o|你 有 两 个 弟弟 吗|Do you have two younger brothers?
+# 2-6
+c|我爸爸和我妈妈＿是老师。|都/也/很|My father and my mother are both teachers.
+c|我们＿是学生。|都/也都/不|We are all students.
+c|他们＿不是美国人。|都/也/很|None of them is American.
+c|我的哥哥和姐姐都＿医生。|是/有/都|My older brother and sister are both doctors.
+c|王朋和李友＿是学生。|都/也/和|Wang Peng and Li You are both students.
+c|他们＿有孩子。|都/也/和|They all have children.
+c|她的姐姐和妹妹＿没有工作。|都/和/也都|Her older and younger sisters both have no job.
+c|我们都＿是中国人。|不/没/也|None of us is Chinese.
+c|他们是律师，我们＿是律师。|也都/都也/和|They are lawyers, and we are all lawyers too.
+c|你们＿是大学生吗？|都/和/有|Are you all college students?
+p|我们都是学生。/都我们是学生。/我们是都学生。|We are all students.
+p|他们都不是老师。/他们不都是老师。/都他们不是老师。|None of them is a teacher.
+p|我爸爸妈妈都是律师。/都我爸爸妈妈是律师。/我爸爸妈妈是都律师。|My father and mother are both lawyers.
+p|我们也都没有弟弟。/我们都也没有弟弟。/我们也没都有弟弟。|None of us has a younger brother either.
+p|她们都有孩子吗？/她们有都孩子吗？/都她们有孩子吗？|Do they all have children?
+o|我们 都 是 学生|We are all students.
+o|他们 都 不 是 医生|None of them is a doctor.
+o|我 爸爸 妈妈 都 是 老师|My father and mother are both teachers.
+o|我们 都 没 有 姐姐|None of us has an older sister.
+o|你们 都 是 美国人 吗|Are you all American?

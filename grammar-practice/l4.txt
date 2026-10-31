@@ -1,0 +1,147 @@
+# 4-0
+p|我周末常常看电影。/我看电影周末常常。/我常常看电影周末。|I often watch movies on weekends.
+p|他昨天晚上看电视。/他看电视昨天晚上。/看电视他昨天晚上。|He watched TV last night.
+p|我们明天去打球。/我们去打球明天。/去打球我们明天。|We are going to play ball tomorrow.
+p|你周末喜欢做什么？/你喜欢做什么周末？/周末你喜欢什么做？|What do you like to do on weekends?
+p|王朋晚上常常听音乐。/王朋常常听音乐晚上。/王朋听音乐常常晚上。|Wang Peng often listens to music in the evening.
+p|我今天晚上请你吃饭。/我请你吃饭今天晚上。/我请今天晚上你吃饭。|I'll treat you to dinner tonight.
+p|李友有的时候去跳舞。/李友去跳舞有的时候。/李友去有的时候跳舞。|Li You sometimes goes dancing.
+c|他＿看电视。（周末）|周末/看周末/电视周末|He watches TV on weekends.
+c|我们＿去看电影吧。（明天）|明天/看明天/电影明天|Let's go see a movie tomorrow.
+c|我常常＿听音乐。|晚上/晚上的/在晚上的|I often listen to music in the evening.
+o|我 周末 常常 打球|I often play ball on weekends.
+o|他 昨天 晚上 看 电影|He watched a movie last night.
+o|我们 明天 去 唱歌|We're going to sing tomorrow.
+o|你 周末 喜欢 做 什么|What do you like to do on weekends?
+o|她 晚上 常常 听 音乐|She often listens to music in the evening.
+o|王朋 明天 请 我 吃饭|Wang Peng is treating me to a meal tomorrow.
+o|我 今天 晚上 想 看 电视|I want to watch TV tonight.
+o|李友 有的时候 去 跳舞|Li You sometimes goes dancing.
+o|我们 周末 去 看 外国 电影|We're going to see a foreign movie this weekend.
+o|你 昨天 晚上 做 什么|What did you do last night?
+# 4-1
+c|你想＿想看电影？|不/没/也|Do you want to watch a movie?
+c|你周末去＿去打球？|不/没/也|Are you going to play ball this weekend?
+c|你觉得这个电影有＿有意思？|没/不/也|Do you think this movie is interesting?
+c|你常常＿常常听音乐？|不/没/也|Do you often listen to music?
+c|你喜欢不喜欢＿？|跳舞/跳舞吗/跳舞呢|Do you like dancing?
+c|你明天想不想去＿？|唱歌/唱歌吗/唱不唱|Do you want to go singing tomorrow?
+c|你觉得＿？|好不好/好吗不/不好好|What do you think — is it good?
+c|你今天晚上看不看＿？|电视/电视吗/电视呢|Are you watching TV tonight?
+c|你想去不想去＿？|跳舞/跳舞吗/去跳舞吗|Do you want to go dancing?
+c|你认识不认识＿？|那个人/那个人吗/那个人呢|Do you know that person?
+p|你想不想看电影？/你想不想看电影吗？/你想看电影不想吗？|Do you want to watch a movie?
+p|你周末去不去打球？/你周末去不去打球吗？/你周末不去去打球？|Are you going to play ball this weekend?
+p|这个电影有没有意思？/这个电影有不有意思？/这个电影有没有意思吗？|Is this movie interesting?
+p|你喜欢不喜欢听音乐？/你喜欢不喜欢听音乐吗？/你喜不欢喜听音乐？|Do you like listening to music?
+p|你明天来不来？/你明天来不来吗？/你明天不来来？|Are you coming tomorrow?
+o|你 想 不 想 去 跳舞|Do you want to go dancing?
+o|你 周末 去 不 去 看 电影|Are you going to the movies this weekend?
+o|你 喜欢 不 喜欢 唱歌|Do you like singing?
+o|这 个 电影 有 没 有 意思|Is this movie interesting?
+o|你 今天 晚上 看 不 看 电视|Are you watching TV tonight?
+# 4-2
+c|你不喜欢看电影？＿我们去跳舞吧。|那/所以/因为|You don't like movies? Then let's go dancing.
+c|你明天很忙？＿我们周末去吧。|那么/所以/还是|You're busy tomorrow? Then let's go on the weekend.
+c|A：我不想看电视。B：＿你想做什么？|那/因为/还|A: I don't want to watch TV. B: Then what do you want to do?
+c|你不喜欢吃美国菜？＿我们吃中国菜吧。|那/还是/所以|You don't like American food? Then let's eat Chinese food.
+c|你周末不去打球？＿你去做什么？|那/所以/也|You're not playing ball this weekend? Then what are you doing?
+c|A：今天我请客。B：＿明天我请你。|那/还是/也|A: Today it's my treat. B: Then tomorrow I'll treat you.
+c|你觉得这个电影没有意思？＿我们看别的吧。|那么/所以/因为|You think this movie is boring? Then let's watch another one.
+c|他今天没有时间。——＿我们找别人吧。|那/还/都|He has no time today. — Then let's find someone else.
+c|A：我想听音乐。B：＿我们去听音乐吧。|那/因为/还是|A: I want to listen to music. B: Then let's go listen to some.
+c|你不想去？＿算了。|那/所以/还|You don't want to go? Then forget it.
+p|你不想看电视？那我们去打球吧。/你不想看电视？我们那去打球吧。/你那不想看电视？我们去打球吧。|You don't want to watch TV? Then let's go play ball.
+p|你明天忙？那么我们周末去吧。/你明天忙？我们那么周末去吧。/那么你明天忙？我们周末去吧。|You're busy tomorrow? Then let's go on the weekend.
+p|那你想做什么？/你那想做什么什么？/想那你做什么？|Then what do you want to do?
+p|你不喜欢跳舞？那算了。/你不喜欢跳舞？算了那。/那你不喜欢跳舞？算了。|You don't like dancing? Then forget it.
+p|那我们找别人吧。/我们那找别人吧。/我们找那别人吧。|Then let's find someone else.
+o|那 我们 去 看 电影 吧|Then let's go see a movie.
+o|那 你 想 做 什么|Then what do you want to do?
+o|那么 我们 周末 去 吧|Then let's go on the weekend.
+o|那 我们 找 别人 吧|Then let's find someone else.
+o|那 明天 我 请 你|Then I'll treat you tomorrow.
+# 4-3
+c|我们＿看电影吧。|去/在/想去去|Let's go see a movie.
+c|你周末想去＿？|打球/打球去去/去打球去|Do you want to go play ball this weekend?
+c|他明天去＿。|跳舞/舞跳/跳舞去去|He's going dancing tomorrow.
+c|我们去＿中国菜吧。|吃/吃饭/去吃|Let's go eat Chinese food.
+c|你想＿唱歌吗？|去/在/有|Do you want to go singing?
+c|周末我们去＿音乐，怎么样？|听/看/唱|How about we go listen to music this weekend?
+c|王朋去打球，李友去＿。|看电影/电影看/看去电影|Wang Peng is going to play ball; Li You is going to see a movie.
+c|我不想去＿，我想睡觉。|跳舞/跳舞去/去跳舞|I don't want to go dancing; I want to sleep.
+c|你们去＿什么？|做/去/在|What are you going to do?
+c|明天晚上我们去＿歌吧。|唱/听/看|Let's go singing tomorrow evening.
+p|我们去看电影吧。/我们看电影去去吧。/我们去电影看吧。|Let's go see a movie.
+p|你明天去打球吗？/你明天打球去吗去？/你去明天打球吗？|Are you going to play ball tomorrow?
+p|他周末常常去跳舞。/他常常周末跳舞去去。/他去周末常常跳舞。|He often goes dancing on weekends.
+p|我想去听音乐。/我去想听音乐。/我想听去音乐。|I want to go listen to music.
+p|你们去做什么？/你们做什么去去？/你们去什么做？|What are you going to do?
+o|我们 去 看 电影 吧|Let's go see a movie.
+o|你 想 去 打球 吗|Do you want to go play ball?
+o|他 周末 去 唱歌|He's going singing this weekend.
+o|我们 去 吃 中国菜 吧|Let's go eat Chinese food.
+o|明天 你 去 做 什么|What are you going to do tomorrow?
+# 4-4
+c|我们去看电影，＿？|好吗/好/吗好|Let's go see a movie, OK?
+c|明天我请你吃饭，好＿？|吗/呢/吧|I'll treat you tomorrow, OK?
+c|我们周末去打球，＿？|好吗/好不/什么|Let's play ball this weekend, OK?
+c|你请我看电影，好吗？——＿！|好/好吗/不好吗|Treat me to a movie, OK? — Sure!
+c|我们听音乐，＿？|好吗/好呢/吗好|Let's listen to music, OK?
+c|我们去跳舞，好吗？——不好，我想＿。|睡觉/睡觉吗/好吗|Let's go dancing, OK? — No, I want to sleep.
+c|你找别人，＿？|好吗/好呢/好吧吗|Find someone else, OK?
+c|今天晚上我们看电视，好＿？|吗/了/的|Let's watch TV tonight, OK?
+c|我们明天去唱歌，好吗？——＿，我明天很忙。|算了/好/对|Let's go singing tomorrow, OK? — Forget it, I'm busy tomorrow.
+c|你周末来我家，＿？|好吗/好吗吗/吗|Come to my place this weekend, OK?
+p|我们去看电影，好吗？/我们去看电影，吗好？/好吗我们去看电影？|Let's go see a movie, OK?
+p|明天我请你吃饭，好吗？/明天我请你吃饭，好吗吗？/明天好吗我请你吃饭？|I'll treat you to a meal tomorrow, OK?
+p|我们周末去打球，好吗？/我们周末去打球，好？吗/我们好吗周末去打球？|Let's play ball this weekend, OK?
+p|你找别人，好吗？/你好吗找别人？/你找别人好，吗？|Find someone else, OK?
+p|我们听音乐，好吗？/我们听好吗音乐？/好我们听音乐吗？|Let's listen to music, OK?
+o|我们 去 看 电影 ， 好吗|Let's go see a movie, OK?
+o|明天 我 请 你 吃饭 ， 好吗|I'll treat you to a meal tomorrow, OK?
+o|我们 周末 去 跳舞 ， 好吗|Let's go dancing this weekend, OK?
+o|你 找 别人 ， 好吗|Find someone else, OK?
+o|今天 晚上 我们 看 电视 ， 好吗|Let's watch TV tonight, OK?
+# 4-5
+c|我＿看电影。|想/去想/想去去|I want to watch a movie.
+c|你＿做什么？|想/想想/去去|What do you want to do?
+c|我不＿去跳舞。|想/不想/没|I don't want to go dancing.
+c|你想＿想去打球？|不/没/也|Do you want to go play ball?
+c|今天晚上我想＿。|睡觉/觉睡/睡觉去去|I want to sleep tonight.
+c|他周末想去＿。|唱歌/歌唱/唱歌去去|He wants to go singing this weekend.
+c|我很想＿中国菜。|吃/吃饭/去去|I really want to eat Chinese food.
+c|你想听＿？|什么音乐/音乐什么/什么的音乐的|What music do you want to listen to?
+c|我＿想看电视，我想听音乐。|不/没/也|I don't want to watch TV; I want to listen to music.
+c|他也＿去。|想/想想/去想|He wants to go too.
+p|我想去看电影。/我去想看电影。/我想看去电影。|I want to go see a movie.
+p|你想做什么？/你做想什么？/想你做什么？|What do you want to do?
+p|我不想去跳舞。/我想不去跳舞。/不我想去跳舞。|I don't want to go dancing.
+p|你想不想去打球？/你想去不想打球？/你不想想去打球？|Do you want to go play ball?
+p|我们都想听音乐。/我们想都听音乐。/都我们想听音乐。|We all want to listen to music.
+o|我 想 去 看 电影|I want to go see a movie.
+o|你 想 做 什么|What do you want to do?
+o|我 不 想 去 跳舞|I don't want to go dancing.
+o|他 很 想 吃 中国菜|He really wants to eat Chinese food.
+o|你 想 不 想 去 打球|Do you want to go play ball?
+# 4-6
+c|我喜欢唱＿。|歌/歌儿唱/唱歌|I like singing.
+c|他常常跳＿。|舞/跳舞/舞跳|He often dances.
+c|我昨天晚上没睡＿。|觉/睡觉/觉睡|I didn't sleep last night.
+c|我们去打＿吧。|球/打球/球打|Let's go play ball.
+c|你想唱什么＿？|歌/唱歌/歌唱|What song do you want to sing?
+c|我们吃＿吧。|饭/吃饭/饭吃|Let's eat.
+c|他请我吃＿。|饭/吃饭/饭吃|He treated me to a meal.
+c|你喜欢跳什么＿？|舞/跳舞/舞跳|What dances do you like?
+c|我很想睡＿。|觉/睡觉/觉睡|I really want to sleep.
+c|他们打什么＿？|球/打球/球打|What ball game are they playing?
+p|我喜欢唱中国歌。/我喜欢唱歌中国。/我喜欢中国唱歌。|I like singing Chinese songs.
+p|他们常常打球。/他们常常球打。/他们打常常球。|They often play ball.
+p|我想睡觉。/我想觉睡。/我睡想觉。|I want to sleep.
+p|你请我吃饭吧。/你请我饭吃吧。/你吃饭请我吧。|Treat me to a meal.
+p|我们去跳舞吧。/我们去舞跳吧。/我们跳去舞吧。|Let's go dancing.
+o|我 喜欢 唱 中国 歌|I like singing Chinese songs.
+o|他们 常常 去 打球|They often go play ball.
+o|你 想 唱 什么 歌|What song do you want to sing?
+o|我 昨天 晚上 没 睡觉|I didn't sleep last night.
+o|我们 周末 去 跳舞 吧|Let's go dancing this weekend.

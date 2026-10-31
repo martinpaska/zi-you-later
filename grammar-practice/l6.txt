@@ -1,0 +1,126 @@
+# 6-0
+c|我明天＿你打电话。|给/在/跟|I'll call you tomorrow.
+c|请你＿我打电话。|给/在/到|Please call me.
+c|王朋给李友＿电话。|打/给/说|Wang Peng calls Li You.
+c|你晚上＿我打个电话，好吗？|给/在/去|Give me a call tonight, OK?
+c|我常常给我妈妈＿电话。|打/说/给|I often call my mom.
+c|老师＿我们准备考试。|帮/给/在|The teacher helps us prepare for the exam.
+c|你给谁＿电话？|打/给/说|Who are you calling?
+c|下午我＿常老师打电话。|给/跟/到|I'll call Teacher Chang this afternoon.
+c|他昨天没＿我打电话。|给/在/到|He didn't call me yesterday.
+c|你＿他打电话了吗？|给/在/去|Did you call him?
+p|我明天给你打电话。/我明天打你电话给。/我给明天你打电话。|I'll call you tomorrow.
+p|请你给我打电话。/请你打我电话给。/请给你我打电话。|Please call me.
+p|他常常给妈妈打电话。/他常常打电话妈妈给。/他给常常妈妈打电话。|He often calls his mom.
+p|你给谁打电话？/你打电话给谁吗？/你谁给打电话？|Who are you calling?
+p|我昨天没给他打电话。/我昨天给他没打电话。/我没昨天给他打电话。|I didn't call him yesterday.
+o|我 明天 给 你 打 电话|I'll call you tomorrow.
+o|请 你 给 我 打 电话|Please call me.
+o|你 给 谁 打 电话|Who are you calling?
+o|他 晚上 给 妈妈 打 电话|He calls his mom in the evening.
+o|我 昨天 没 给 他 打 电话|I didn't call him yesterday.
+# 6-1
+c|我下午＿开会。|要/想要/会要|I have a meeting this afternoon. (I will have…)
+c|明天我们＿考试。|要/在/给|We have an exam tomorrow.
+c|你下个星期＿做什么？|要/在/给|What are you going to do next week?
+c|我明天不＿去学校。|∅/要不/没|I'm not going to school tomorrow. (不要 means "don't")
+c|下午两点我＿去开会。|要/在/给|At two this afternoon I'm going to a meeting.
+c|他下个星期＿考中文。|要/在/给|He has a Chinese exam next week.
+c|你明天＿来吗？|要/在/得|Are you coming tomorrow?
+c|我们下午＿练习说中文。|要/在/给|We are going to practise speaking Chinese this afternoon.
+c|明天上午我＿去办公室。|要/在/给|Tomorrow morning I'm going to the office.
+c|老师下个星期要＿会。|开/打/说|The teacher has a meeting next week.
+p|我下午要开会。/我要下午开会。/要我下午开会。|I have a meeting this afternoon.
+p|明天我们要考试。/明天要我们考试。/我们考试要明天。|We have an exam tomorrow.
+p|你下个星期要做什么？/你要做什么下个星期？/下个星期要你做什么？|What are you going to do next week?
+p|他下午要去办公室。/他要去办公室下午。/他下午去要办公室。|He's going to the office this afternoon.
+p|我们明天上午要练习中文。/我们要练习中文明天上午。/我们明天要上午练习中文。|We're practising Chinese tomorrow morning.
+o|我 下午 要 开会|I have a meeting this afternoon.
+o|明天 我们 要 考试|We have an exam tomorrow.
+o|你 下 个 星期 要 做 什么|What are you going to do next week?
+o|老师 下午 要 去 办公室|The teacher is going to the office this afternoon.
+o|我 明天 要 给 他 打 电话|I'm going to call him tomorrow.
+# 6-2
+c|＿客气。|别/没/不是|You're welcome. / Don't be so polite.
+c|你＿给他打电话。|别/没/不是|Don't call him.
+c|＿等我，你先去吧。|别/没/不有|Don't wait for me; go ahead.
+c|你＿说英文，说中文吧。|别/没/不是|Don't speak English; speak Chinese.
+c|明天要考试，你今天晚上＿去跳舞了。|别/没/不有|There's an exam tomorrow; don't go dancing tonight.
+c|你＿喝太多咖啡。|别/没/不有|Don't drink too much coffee.
+c|＿看电视了，我们准备考试吧。|别/没/不有|Stop watching TV; let's prepare for the exam.
+c|你＿忙了，坐一下吧。|别/没/不是|Stop being busy; sit down for a bit.
+c|你别＿我的照片。|看/没看/不看|Don't look at my photo.
+c|别＿，我帮你。|客气/客气吗/客气的|Don't mention it; I'll help you.
+p|别客气。/没客气。/客气别。|Don't be so polite.
+p|你别给他打电话。/你给他别打电话。/别你给他打电话吗。|Don't call him.
+p|别等我了。/等别我了。/别我等了。|Don't wait for me anymore.
+p|你别说英文。/你说别英文。/你没说英文别。|Don't speak English.
+p|别看电视了。/看电视别了。/别了看电视。|Stop watching TV.
+o|别 客气|Don't mention it.
+o|你 别 给 他 打 电话|Don't call him.
+o|别 等 我 了|Don't wait for me.
+o|你 别 说 英文|Don't speak English.
+o|别 看 电视 了|Stop watching TV.
+# 6-3
+p|我下午三点有课。/我有课下午三点。/下午我有课三点。|I have class at three in the afternoon.
+p|我们明天上午十点见面。/我们见面明天上午十点。/我们十点明天上午见面。|We'll meet at ten tomorrow morning.
+p|他下个星期二考试。/他考试下个星期二。/他星期二下个考试。|He has an exam next Tuesday.
+p|今天下午四点我去办公室。/今天四点下午我去办公室。/我去办公室今天下午四点。|At four this afternoon I'm going to the office.
+p|你明天下午有空儿吗？/你有空儿明天下午吗？/你下午明天有空儿吗？|Are you free tomorrow afternoon?
+c|我们＿见面吧。|明天下午两点/两点下午明天/下午明天两点|Let's meet at two tomorrow afternoon.
+c|他＿有中文课。|星期一上午/上午星期一/星期上午一|He has Chinese class on Monday morning.
+c|你＿有空儿吗？|今天下午/下午今天/今天的下午的|Are you free this afternoon?
+c|我下个星期＿考试。|三/第三/星期三三|I have an exam next Wednesday. (星期三)
+c|我们＿八点见。|晚上/晚上的/在晚上的|See you at eight in the evening.
+c|下午＿点我去开会。|四/四号/四月|At four in the afternoon I'm going to a meeting.
+c|你几点＿课？|有/是/在|What time do you have class?
+c|他每天上午＿点上课。|九/九号/九个|He has class at nine every morning.
+c|我们明天＿两点见面吧。|下午/下午的/在下午|Let's meet at two tomorrow afternoon.
+c|你＿几点考试？|明天/明天的/在明天|What time is your exam tomorrow?
+o|我 明天 下午 三 点 有 课|I have class at three tomorrow afternoon.
+o|我们 下 个 星期一 见面 吧|Let's meet next Monday.
+o|你 今天 下午 有 空儿 吗|Are you free this afternoon?
+o|他 上午 十 点 去 办公室|He goes to the office at ten in the morning.
+o|你们 几 点 考试|What time is your exam?
+# 6-4
+c|我明天要考试，今天晚上＿准备。|得/要得/会|I have an exam tomorrow; I have to prepare tonight.
+c|你＿给老师打电话。|得/不得/的|You have to call the teacher.
+c|我下午＿去开会。|得/的/地|I have to go to a meeting this afternoon.
+c|明天你不＿来。|用/得/要|You don't have to come tomorrow.
+c|我们＿练习说中文。|得/的/了|We have to practise speaking Chinese.
+c|太晚了，我＿回家了。|得/的/在|It's late; I have to go home.
+c|你得＿他打电话。|给/在/跟|You have to call him.
+c|我今天晚上得＿考试。|准备/准备得/得准备|I have to prepare tonight.
+c|他＿去办公室找老师。|得/的/了|He has to go to the office to see the teacher.
+c|你明天得＿学校吗？|去/得去/去得|Do you have to go to school tomorrow?
+p|我今天晚上得准备考试。/我今天晚上准备得考试。/我得今天晚上准备考试得。|I have to prepare for the exam tonight.
+p|你得给他打电话。/你给他打电话得。/得你给他打电话了的。|You have to call him.
+p|明天你不用来。/明天你不得来。/明天你得不来。|You don't have to come tomorrow.
+p|我下午得去开会。/我下午去开会得。/我得下午去开会得。|I have to go to a meeting this afternoon.
+p|我们得练习说中文。/我们练习得说中文。/我们说中文得练习。|We have to practise speaking Chinese.
+o|我 今天 晚上 得 准备 考试|I have to prepare for the exam tonight.
+o|你 得 给 老师 打 电话|You have to call the teacher.
+o|我 下午 得 去 开会|I have to go to a meeting this afternoon.
+o|明天 你 不 用 来|You don't have to come tomorrow.
+o|太 晚 了 ， 我 得 回家 了|It's late; I have to go home.
+# 6-5
+c|你＿吧，老师在办公室。|进来/来进/进去来|Come in; the teacher is in the office.
+c|他三点＿。|回来/来回/回去来|He'll be back at three.
+c|我在家，你回＿吧。（我在家）|来/去/进|I'm at home; come back.
+c|老师在办公室？我进＿找她。（我在外边）|去/来/回|The teacher is in the office? I'll go in to find her.
+c|王朋，快进＿！|来/去/回|Wang Peng, come in quick!
+c|他不在，他回家＿了。|去/来/进|He's not here; he went home.
+c|你什么时候回＿？（我在家）|来/去/进|When are you coming back?
+c|请进＿，请坐。|来/去/回|Please come in and sit down.
+c|你在哪儿？快回＿吧！（我在家）|来/去/进|Where are you? Come back quickly!
+c|他下午不在办公室，四点才回＿。|来/去/进|He's not in the office this afternoon; he won't be back until four.
+p|请进来。/请来进。/请进去来。|Please come in.
+p|他四点回来。/他四点来回。/他回四点来。|He'll be back at four.
+p|你什么时候回来？/你什么时候来回？/你回什么时候来？|When are you coming back?
+p|他回家去了。/他去回家了。/他回去家了。|He went home.
+p|快进来吧。/快来进吧。/进快来吧。|Come in, quick.
+o|请 进来|Please come in.
+o|他 三 点 回来|He'll be back at three.
+o|你 什么 时候 回来|When are you coming back?
+o|老师 不 在 ， 他 回家 去 了|The teacher isn't here; he went home.
+o|快 进来 吧|Come in, quick.
