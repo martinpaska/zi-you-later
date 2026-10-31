@@ -2199,6 +2199,50 @@ function progress(){
     $('r2').onclick=()=>{srs={};stats={day:'',rev:0,nw:0,streak:0,last:'',total:0,u:Date.now()};rollDay();saveSrs();progress()};$('r3').onclick=progress};
 }
 
+/* ---------- Supabase: accounts, synced progress and the leaderboard ----------
+   Fill in both values to turn accounts on (Supabase → Project Settings → API).
+   The anon key is meant to be public: what it may do is limited by the row level
+   security rules in supabase/schema.sql. Never put the service_role key here. */
+const SUPABASE_URL='';
+const SUPABASE_ANON_KEY='';
+const SUPA_ON=!!(SUPABASE_URL&&SUPABASE_ANON_KEY);
+const SITE_URL=location.origin+location.pathname;
+const FIRST_HASH=location.hash;
+let sb=null,sbLoad=null,sbHooked=false,boardTimer=null,cloudBusy=false;
+function loadSupabase(){
+  if(!SUPA_ON)return Promise.resolve(null);if(sbLoad)return sbLoad;
+  sbLoad=new Promise(res=>{const el=document.createElement('script');el.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+    el.onload=()=>{try{sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit'}})}catch(e){sb=null}res(sb)};
+    el.onerror=()=>res(null);document.head.appendChild(el)});
+  return sbLoad;
+}
+const profRow=r=>({name:r.name,avatar:r.avatar,known:r.known,learning:r.learning,streak:r.streak,week:r.week,total:r.total,updated:Number(r.updated)||0});
+const supaErr=e=>{const x=new Error(e&&e.message||'error');x.code=e&&e.code==='23505'?'taken':e&&e.code==='23514'?'invalid':e&&e.code;return x};
+/* the leaderboard is public: anyone can read nicknames and counts, even when signed out */
+function startBoard(){
+  if(!sb||boardTimer)return;
+  const pull=async()=>{const {data,error}=await sb.from('profiles').select('id,name,avatar,known,learning,streak,week,total,updated').order('known',{ascending:false}).limit(200);
+    if(!error){board=data.map(r=>({id:r.id,...profRow(r)}));if($('board'))renderBoard()}};
+  pull();boardTimer=setInterval(pull,60000);
+}
+/* same small interface as the db the app was first written for: doc(path).get/set/delete, collection().onSnapshot */
+function supaCaps(user){
+  const me_=user.id;
+  const userCap={id:async()=>me_,can:async()=>true};
+  const doc=path=>{
+    if(path.startsWith('data/users/'))return {
+      get:async()=>{const {data,error}=await sb.from('progress').select('data').eq('user_id',me_).maybeSingle();if(error)throw supaErr(error);return {exists:!!data,data:()=>data.data}},
+      set:async v=>{const {error}=await sb.from('progress').upsert({user_id:me_,data:v,updated_at:new Date().toISOString()});if(error)throw supaErr(error)}};
+    return {
+      get:async()=>{const {data,error}=await sb.from('profiles').select('*').eq('id',me_).maybeSingle();if(error)throw supaErr(error);return {exists:!!data,data:()=>profRow(data)}},
+      set:async v=>{const {error}=await sb.from('profiles').upsert({id:me_,name:v.name,avatar:v.avatar,known:v.known|0,learning:v.learning|0,streak:v.streak|0,week:v.week|0,total:v.total|0,updated:Math.round(v.updated||Date.now())});if(error)throw supaErr(error);
+        const row={id:me_,...profRow({...v,updated:Math.round(v.updated||Date.now())})},i=board.findIndex(r=>r.id===me_);if(i>=0)board[i]=row;else board.push(row);if($('board'))renderBoard()},
+      delete:async()=>{const {error}=await sb.rpc('delete_me');if(error)throw supaErr(error);board=board.filter(r=>r.id!==me_);await sb.auth.signOut()}};
+  };
+  return [userCap,{doc,collection:()=>({onSnapshot:()=>{startBoard()}})}];
+}
+function resetCloud(){clearTimeout(cloudTimer);cloud=null;uid=null;userCap=null;dbCap=null;me=null;boardWritable=null;renderAcct();if($('board'))renderBoard()}
+
 /* ---------- Accounts and leaderboard ---------- */
 let signupFlow=false,cloud=null,uid=null,userCap=null,dbCap=null,board=[],boardWritable=null,cloudTimer=null,me=null,cloudReady=false,boardSort='known';
 const AVATARS=['🐼','🐉','🐯','🦊','🐱','🐶','🐵','🐰','🦄','🐧','🐸','🌸','⭐','🍜','🥟','🏮'];
@@ -2214,9 +2258,23 @@ function cloudSave(){
 }
 function mergeSrs(other){let n=0;for(const k in other){const a=srs[k],b=other[k];if(!a||(b.u||0)>(a.u||0)){srs[k]=b;n++}}return n}
 async function initCloud(){
-  const done=()=>{cloudReady=true;renderAcct();if(!M().hidden&&$('board'))renderBoard()};
-  if(!window.claude||!window.claude.use)return done();
-  try{[userCap,dbCap]=await Promise.all([window.claude.use('user'),window.claude.use('db')])}catch(e){return done()}
+  const done=()=>{cloudReady=true;cloudBusy=false;renderAcct();if(!M().hidden&&$('board'))renderBoard()};
+  if(cloudBusy)return;cloudBusy=true;
+  if(SUPA_ON){
+    const c=await loadSupabase();if(!c)return done();
+    if(!sbHooked){sbHooked=true;c.auth.onAuthStateChange((ev,session)=>{
+      if(ev==='SIGNED_IN'&&session&&session.user.id!==uid)setTimeout(initCloud,0);
+      else if(ev==='SIGNED_OUT')resetCloud();
+      else if(ev==='PASSWORD_RECOVERY')setTimeout(newPassword,0)})}
+    startBoard();
+    let session=null;try{({data:{session}}=await c.auth.getSession())}catch(e){}
+    if(!session)return done();
+    if(uid&&session.user.id===uid)return done();
+    [userCap,dbCap]=supaCaps(session.user);
+  }else{
+    if(!window.claude||!window.claude.use)return done();
+    try{[userCap,dbCap]=await Promise.all([window.claude.use('user'),window.claude.use('db')])}catch(e){return done()}
+  }
   if(!userCap||!dbCap)return done();
   try{uid=await userCap.id()}catch(e){uid=null}
   if(!uid)return done();
@@ -2228,15 +2286,17 @@ async function initCloud(){
   dbCap.collection('accounts').onSnapshot(s=>{board=s.docs.map(d=>({id:d.id,...d.data()}));if($('board'))renderBoard()},()=>{});
   cloudSave();done();
   if(!$('home').hidden)renderHome();
+  /* just confirmed the email from the link: go straight to picking a nickname */
+  if(SUPA_ON&&!me&&/type=(signup|magiclink)|access_token/.test(FIRST_HASH)&&M().hidden){signupFlow=true;account()}
 }
 function renderAcct(){const b=$('acct');if(!b)return;b.textContent='';
   if(me){const a=document.createElement('span');a.className='av';a.textContent=me.avatar;b.append(a,document.createTextNode(me.name))}
-  else b.textContent='Create account'}
+  else b.textContent=uid?'Pick a nickname':'Create account'}
 const ago=t=>{const m=(Date.now()-t)/6e4;return m<60?'just now':m<1440?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago'};
 function renderBoard(){
   const el=$('board');if(!el)return;
   if(!cloudReady){el.innerHTML='<p class="hint">Loading…</p>';return}
-  if(!dbCap){el.innerHTML='<p class="hint">The leaderboard is coming soon, together with accounts.</p>';return}
+  if(!dbCap&&!SUPA_ON){el.innerHTML='<p class="hint">The leaderboard is coming soon, together with accounts.</p>';return}
   const k=boardSort,rows=board.filter(r=>typeof r.known==='number'&&r.name).sort((a,b)=>(b[k]||0)-(a[k]||0)||b.known-a.known);
   if(!rows.length){el.innerHTML='<p class="hint">No accounts yet. Create the first one.</p>';return}
   const lab={known:'known',week:'this week',streak:'day streak'};
@@ -2255,6 +2315,7 @@ function leaderboard(){
 }
 function account(){
   if(!cloudReady){open(bar(0,'','‹ Back')+'<h2>Account</h2><p class="hint">Loading…</p>');setTimeout(()=>{if(!M().hidden)account()},600);return}
+  if(!uid&&SUPA_ON)return authForm();
   if(!uid){open(bar(0,'','‹ Back')+`<h2>Account</h2><p class="notice">Accounts are coming soon. Until then everything works and your progress is saved in this browser.</p><div class="btns"><button class="btn" data-home>Continue without an account ›</button></div>`);return}
   let pick=me?me.avatar:AVATARS[Math.random()*AVATARS.length|0];
   open(bar(0,'','‹ Back')+`<h2>${me?'My account':'Create account'}</h2>
@@ -2263,7 +2324,10 @@ function account(){
     <h3>Avatar</h3><div class="avs" id="avs">${AVATARS.map(a=>`<button data-av="${a}" aria-pressed="${a===pick}">${a}</button>`).join('')}</div>
     <p class="hint" id="am">Others see your nickname, avatar, how many items you know, your streak and how many cards you reviewed this week. Your progress syncs to every device where you are signed in.</p>
     <div class="btns"><button class="btn" id="asave">${me?'Save':'Create account'}</button></div></div>
-    ${me?'<div class="section"><h3>Delete account</h3><p class="hint">Removes you from the leaderboard. Your progress stays.</p><div class="confirm" id="dc"><button class="btn ghost" id="d1">Delete account…</button></div></div>':''}`);
+    ${SUPA_ON?`<div class="section"><h3>Signed in</h3><p class="hint" id="aemail"></p><div class="btns"><button class="btn ghost" id="alogout">Log out</button></div></div>`:''}
+    ${me||SUPA_ON?`<div class="section"><h3>Delete account</h3><p class="hint">${SUPA_ON?'Deletes your account, your leaderboard entry and the progress saved in it. Progress in this browser stays.':'Removes you from the leaderboard. Your progress stays.'}</p><div class="confirm" id="dc"><button class="btn ghost" id="d1">Delete account…</button></div></div>`:''}`);
+  if(SUPA_ON){sb.auth.getUser().then(({data})=>{if($('aemail')&&data&&data.user)$('aemail').textContent=data.user.email||''});
+    $('alogout').onclick=async()=>{$('alogout').disabled=true;try{await sb.auth.signOut()}catch(e){}resetCloud();goHome()}}
   $('nick').value=me?me.name:'';
   if(boardWritable===false){$('nick').disabled=true;$('asave').disabled=true}
   M().querySelectorAll('[data-av]').forEach(b=>b.onclick=()=>{pick=b.dataset.av;M().querySelectorAll('[data-av]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.av===pick))});
@@ -2273,10 +2337,10 @@ function account(){
     if(board.some(r=>r.id!==uid&&String(r.name).toLowerCase()===n.toLowerCase())){$('am').textContent='That nickname is taken. Try another one.';return}
     $('asave').disabled=true;
     try{await dbCap.doc('accounts/'+uid).set({name:n,avatar:pick,...summary()});me={name:n,avatar:pick};renderAcct();if(signupFlow){signupFlow=false;goHome()}else leaderboard()}
-    catch(e){$('asave').disabled=false;$('am').textContent=e&&e.code==='not_granted'?'Saving was not allowed. You may need Contributor access to this page.':'Could not save. Try again.'}
+    catch(e){$('asave').disabled=false;$('am').textContent=e&&e.code==='not_granted'?'Saving was not allowed. You may need Contributor access to this page.':e&&e.code==='taken'?'That nickname is taken. Try another one.':e&&e.code==='invalid'?'Use 2 to 20 characters for the nickname.':'Could not save. Try again.'}
   };
-  if(me)$('d1').onclick=()=>{$('dc').innerHTML='<span>Delete your account?</span><button class="btn badb" id="d2">Yes, delete</button><button class="btn ghost" id="d3">No</button>';
-    $('d2').onclick=async()=>{try{await dbCap.doc('accounts/'+uid).delete();me=null;renderAcct();goHome()}catch(e){$('dc').textContent='Could not delete. Try again.'}};$('d3').onclick=account};
+  if($('d1'))$('d1').onclick=()=>{$('dc').innerHTML='<span>Delete your account?</span><button class="btn badb" id="d2">Yes, delete</button><button class="btn ghost" id="d3">No</button>';
+    $('d2').onclick=async()=>{try{await dbCap.doc('accounts/'+uid).delete();me=null;if(SUPA_ON)resetCloud();renderAcct();goHome()}catch(e){$('dc').textContent='Could not delete. Try again.'}};$('d3').onclick=account};
 }
 
 /* ---------- Welcome screen: shown on the first visit, reopened from "About this app" ---------- */
@@ -2287,6 +2351,45 @@ $('wsign').onclick=$('wsign2').onclick=()=>{store.set('ic-welcomed',true);signup
 {const lg=document.querySelector('#home .logo');if(lg)$('welcome').querySelector('.wlogo').replaceWith(lg.cloneNode(true))}
 $('welcome').querySelector('.wlink').onclick=e=>{e.preventDefault();$('wabout').scrollIntoView({behavior:MOTION?'smooth':'auto'})};
 $('about').onclick=welcome;
+
+/* sign up / log in with email and password (Supabase Auth) */
+function authForm(mode='up'){
+  const up=mode==='up';
+  open(bar(0,'','‹ Back')+`<h2>${up?'Create account':'Log in'}</h2>
+    <p class="hint">${up?'Save your progress to an account, continue on any device and join the leaderboard.':'Welcome back. Your progress syncs as soon as you are in.'}</p>
+    <div class="seg" role="group" aria-label="Account"><button data-am="up" aria-pressed="${up}">Create account</button><button data-am="in" aria-pressed="${!up}">Log in</button></div>
+    <form class="section" id="af" novalidate>
+      <div class="typein"><input id="aem" type="email" autocomplete="email" inputmode="email" placeholder="Email" aria-label="Email" required></div>
+      <div class="typein"><input id="apw" type="password" autocomplete="${up?'new-password':'current-password'}" placeholder="${up?'Password, at least 8 characters':'Password'}" aria-label="Password" required minlength="8"></div>
+      <p class="hint" id="am" aria-live="polite"></p>
+      <div class="btns"><button class="btn" id="ago" type="submit">${up?'Create account':'Log in'}</button></div>
+      ${up?'':'<button class="link" type="button" id="aforgot" style="align-self:flex-start">Forgot your password?</button>'}
+    </form>
+    <p class="hint">No account? Everything still works and your progress stays in this browser. <button class="link" data-home>Continue without an account ›</button></p>`);
+  M().querySelectorAll('[data-am]').forEach(b=>b.onclick=()=>authForm(b.dataset.am));
+  const msg=t=>{$('am').textContent=t};
+  $('af').onsubmit=async e=>{e.preventDefault();
+    const email=$('aem').value.trim(),password=$('apw').value;
+    if(!/^\S+@\S+\.\S+$/.test(email))return msg('Enter a valid email address.');
+    if(password.length<8)return msg('Use a password with at least 8 characters.');
+    $('ago').disabled=true;msg(up?'Creating your account…':'Logging in…');
+    try{
+      if(up){const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:SITE_URL}});if(error)throw error;
+        if(data.session){signupFlow=true;await initCloud();account()}
+        else{$('af').innerHTML='<p class="notice"><b>Check your inbox.</b> We sent a link to <span id="aem2"></span>. Open it on this device to confirm your email and finish your account.</p>';$('aem2').textContent=email}}
+      else{const {error}=await sb.auth.signInWithPassword({email,password});if(error)throw error;await initCloud();if(me)goHome();else{signupFlow=true;account()}}
+    }catch(err){$('ago').disabled=false;const m=String(err&&err.message||'');
+      msg(/invalid login/i.test(m)?'Wrong email or password.':/not confirmed/i.test(m)?'Confirm your email first: open the link we sent you.':/already registered/i.test(m)?'There is already an account with this email. Log in instead.':/rate limit|too many/i.test(m)?'Too many attempts. Wait a minute and try again.':'Something went wrong. Check your connection and try again.')}
+  };
+  if($('aforgot'))$('aforgot').onclick=async()=>{const email=$('aem').value.trim();if(!/^\S+@\S+\.\S+$/.test(email))return msg('Type your email above first.');
+    try{const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:SITE_URL});if(error)throw error;msg('If there is an account for this email, a link to set a new password is on its way.')}catch(e){msg('Could not send the email. Try again in a minute.')}};
+}
+/* opened from the "reset password" email */
+function newPassword(){
+  open(bar(0,'','‹ Back')+`<h2>Set a new password</h2><form class="section" id="npf" novalidate><div class="typein"><input id="npw" type="password" autocomplete="new-password" placeholder="New password, at least 8 characters" aria-label="New password"></div><p class="hint" id="npm" aria-live="polite"></p><div class="btns"><button class="btn" type="submit" id="npgo">Save password</button></div></form>`);
+  $('npf').onsubmit=async e=>{e.preventDefault();const pw=$('npw').value;if(pw.length<8){$('npm').textContent='Use at least 8 characters.';return}
+    $('npgo').disabled=true;try{const {error}=await sb.auth.updateUser({password:pw});if(error)throw error;$('npm').textContent='Saved. You are signed in.';setTimeout(account,900)}catch(err){$('npgo').disabled=false;$('npm').textContent='Could not save the password. Open the link from the email again.'}};
+}
 
 const MODES={grammar:()=>grammar(),cards:()=>cards(),learn,sentences,write,test,match:()=>match(),twins,tones:()=>tones(),board:leaderboard,account,progress};
 if(store.get('ic-welcomed',false))renderHome();else welcome();
