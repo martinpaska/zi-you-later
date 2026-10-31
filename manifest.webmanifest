@@ -1,0 +1,32 @@
+{
+  "name": "Zì You Later",
+  "short_name": "Zì You Later",
+  "description": "Chinese 1 at FF MUNI, lesson by lesson: flashcards, writing, tones, sentences and tests for Integrated Chinese 1/1.",
+  "lang": "cs",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8f8f8",
+  "theme_color": "#d72323",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
