@@ -748,6 +748,9 @@ p,li,.hint{text-wrap:pretty}
 #card .cinfo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0;flex:0 1 240px}
 /* grammar drills */
 .gdbtn{align-self:flex-start;margin-top:6px}
+#wst{min-height:1.7em;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0 4px;line-height:1.3}#wst .link{padding:0;min-height:0}
+@media (max-width:640px){.whint{display:none}}
+#wst.wok{color:var(--ok)}#wst.wbad{color:var(--bad)}#wst .link{font-weight:700;margin-left:4px}
 .gdcard{gap:12px}
 .gq{font-size:clamp(1.5rem,6.5vw,2rem);line-height:1.5;margin:0;text-align:center}
 .gblank{display:inline-block;min-width:2.2em;border-bottom:3px solid var(--accent);color:transparent}
@@ -807,6 +810,10 @@ details.more>summary::-webkit-details-marker{display:none}
 details.more>summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
 details.more[open]>summary::after{transform:rotate(-135deg)}
 details.more>.infox{padding-bottom:14px}
+details.gegd{margin:4px 0}
+details.gegd>summary{color:var(--ink)}
+details.gegd .gcnt{display:inline-grid;place-items:center;min-width:1.5em;height:1.5em;margin-left:6px;padding:0 5px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.8rem}
+details.gegd>.geg{padding-bottom:12px}
 .stickyact{position:sticky;bottom:0;z-index:5;padding:12px 0 calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,rgb(255 255 255/0),var(--surface) 30%);margin-bottom:-6px}
 #mode .pad{width:min(300px,80vw,max(190px,calc(100svh - 430px)))}
 @media (max-width:640px){#mode .card.top-align:has(#pad){padding:14px 12px;gap:8px}#mode .card.top-align:has(#pad) .wprompt .han{font-size:2rem!important}#mode .card.top-align:has(#pad)+.hint{font-size:.82rem}}
@@ -2258,7 +2265,7 @@ function grammar(l0){
     <div class="glist">${GRAMMAR[l].map((g,i,_,D=(GDETAIL[l]||[])[i]||{})=>`<article class="gp"><header><span class="gn">${i+1}</span><h3>${esc(g.t)}</h3><span class="gpage">Textbook p. ${g.p}</span></header>
       <p>${esc(g.ex)}</p><p class="gpat">${esc(g.pat)}</p>
       ${D.d?`<div class="ghow"><h4>How it works</h4><ul>${D.d.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:''}
-      <h4 class="gegh">Examples</h4><div class="geg">${[...g.eg,...(D.eg||[])].map(([z,p,e])=>`<div class="ge"><div><span class="han">${esc(zh(z))}</span><span class="pyl">${pyHtml(p)}</span><span class="en">${esc(e)}</span></div><button class="play" data-gsay="${esc(z)}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>
+      <details class="more gegd"><summary><span>Examples <span class="gcnt">${[...g.eg,...(D.eg||[])].length}</span></span></summary><div class="geg">${[...g.eg,...(D.eg||[])].map(([z,p,e])=>`<div class="ge"><div><span class="han">${esc(zh(z))}</span><span class="pyl">${pyHtml(p)}</span><span class="en">${esc(e)}</span></div><button class="play" data-gsay="${esc(z)}" aria-label="Play">${PLAY}</button></div>`).join('')}</div></details>
       ${g.tip?`<p class="gtip"><b>Watch out:</b> ${esc(g.tip)}</p>`:''}<button class="btn gdbtn" data-gd="${i}">✎ Practise this point</button></article>`).join('')}</div>
     ${list.length?`<div class="btns"><button class="btn" id="gpr">Practise Lesson ${l} sentences</button></div>`:''}
     <p class="hint">The grammar points follow the textbook. The explanations and examples were written for this app.</p>`);
@@ -2351,10 +2358,9 @@ function write(){
       <div class="wprompt">${level==='memory'||L>1?'':`<span class="han" style="font-size:2.4rem">${c}</span>`}<span class="py" style="font-size:1.6rem">${x.kind==='c'?contour(x.tone):''}${pyHtml(x.p)}</span><button class="play" id="say" aria-label="Play">${PLAY}</button></div>
       <p class="meaning">${esc(x.en)}</p>${boxes}
       <div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div>
-      <p class="strokes" id="wst">${L>1?`Character ${j+1} of ${L} · `:''}${n?n+' strokes':''}</p>${note?`<p class="hint">${note}</p>`:''}
-      <div id="wfb" role="status" aria-live="polite" style="width:100%"></div>
-      <div class="btns"><button class="btn ghost" id="wre">${level==='show'?'Play again':'Start over'}</button><button class="btn" id="wnext">${nextLabel}</button></div></div>
-      <p class="hint" style="text-align:center">${level==='show'?'Watch the stroke order, then switch to Trace.':level==='trace'?'Trace each stroke in order with your finger. A hint appears after two misses.':'Write it without the outline. A hint appears after three misses.'}${L>1?' Write the word one character at a time. Tap a box above to jump to that character.':''}</p>`);
+      <p class="strokes" id="wst" role="status" aria-live="polite">${L>1?`Character ${j+1} of ${L} · `:''}${n?n+' strokes':''}</p>${note?`<p class="hint">${note}</p>`:''}
+      <div class="btns" id="wbtns"><button class="btn ghost" id="wre">${level==='show'?'Play again':'Start over'}</button><button class="btn" id="wnext">${nextLabel}</button></div></div>
+      <p class="hint whint" style="text-align:center">${level==='show'?'Watch the stroke order, then switch to Trace.':level==='trace'?'Trace each stroke in order with your finger. A hint appears after two misses.':'Write it without the outline. A hint appears after three misses.'}${L>1?' Write the word one character at a time. Tap a box above to jump to that character.':''}</p>`);
     $('say').onclick=()=>speak(x);
     M().querySelectorAll('[data-lv]').forEach(b=>b.onclick=()=>{level=b.dataset.lv;store.set('ic-wlevel',level);draw()});
 
@@ -2369,21 +2375,22 @@ function write(){
       charDataLoader:(ch,onLoad,onErr)=>STROKES[ch]?onLoad(STROKES[ch]):onErr()});
     const pre=L>1?`Character ${j+1} of ${L} · `:'';
     const start=()=>{
-      $('wfb').innerHTML='';
+      $('wst').classList.remove('wok','wbad');
       if(level==='show'){writer.hideCharacter();writer.animateCharacter();return}
       let mis=0,done=0;
       writer.quiz({leniency:wlen(),acceptBackwardsStrokes:true,showHintAfterMisses:level==='memory'?3:2,highlightOnComplete:true,
         onMistake:()=>{mis++;$('wst').textContent=`${pre}Stroke ${done+1} of ${n} · mistakes ${mis}`},
         onCorrectStroke:()=>{done++;$('wst').textContent=`${pre}Stroke ${Math.min(done+1,n)} of ${n} · mistakes ${mis}`},
-        onComplete:({totalMistakes})=>{
+        onComplete:M()._wdone=({totalMistakes})=>{
           const ok=totalMistakes<=Math.max(store.get('ic-wstrict',false)?1:2,n/(store.get('ic-wstrict',false)?5:3)|0);wordMis+=ok?0:1;
           $('wst').textContent=`${pre}${n} strokes · mistakes ${totalMistakes}`;
           const b=M().querySelector('.wbox.now');if(b){b.classList.add('done');const h=b.querySelector('.han');h.textContent=shown[j];if(perSyl)h.classList.add('t'+tn[j])}
           if(lastChar)speak(x);else if(x.kind==='c')speak(x);
-          const msg=totalMistakes===0?'No mistakes!':ok?'Done, nearly perfect.':'Done, with some mistakes. Try it once more.';
-          $('wfb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><h3>${lastChar&&L>1?(wordMis===0?'Word complete!':'Word complete, with some mistakes.'):msg}</h3>${lastChar&&level==='trace'&&wordMis===0?'<button class="btn ghost" id="tomem">Now from memory ›</button>':''}
-            ${lastChar?`<p class="hint" style="margin:8px 0 4px">Do you have it?</p><div class="wgrade"><button class="btn badb" id="wag">↻ Again later</button><button class="btn okb" id="wok">✓ Got it</button></div>`:''}</div>`;
-          if(lastChar){$('wnext').hidden=true;
+          const msg=lastChar&&L>1?(wordMis===0?'Word complete!':'Word complete, with some mistakes.'):totalMistakes===0?'No mistakes!':ok?'Done, nearly perfect.':'Done, with some mistakes.';
+          /* the result replaces the stroke counter and the buttons swap in place, so nothing on the screen moves */
+          const ws=$('wst');ws.classList.add(ok&&wordMis===0?'wok':'wbad');
+          ws.innerHTML=`<b>${msg}</b>${lastChar&&level==='trace'&&wordMis===0?' <button class="link" id="tomem">Now from memory ›</button>':''}`;
+          if(lastChar){$('wbtns').innerHTML='<button class="btn badb" id="wag">↻ Again later</button><button class="btn okb" id="wok">✓ Got it</button>';
             $('wag').onclick=()=>{grade(x,false);again++;deck.splice(Math.min(deck.length,i+4),0,x);i++;j=0;wordMis=0;draw()};
             $('wok').onclick=()=>{grade(x,level==='memory'?wordMis===0:true);got++;advance()};
             keyHandler=e=>{if(e.key==='ArrowLeft')$('wag').click();else if(e.key==='ArrowRight'||e.key==='Enter')$('wok').click()}}
