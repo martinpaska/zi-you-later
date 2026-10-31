@@ -712,8 +712,8 @@ p,li,.hint{text-wrap:pretty}
 @media (max-width:520px){#home #lb .lbl{display:none}#home #lb{padding:0 10px}}
 @media (max-width:360px){#home .top{gap:6px;padding:7px 7px 7px 8px}#home .mast .logo{width:36px;height:36px}#home .topr{gap:4px}#home .topr .streak{padding:0 8px}#home #lb,#home #gear{padding:0 8px}#home #acct{padding:0 10px}#home #acct .av{margin-right:4px}}
 /* flashcard back: character box on the left (tap to hear it), details on the right */
-#card .cflip{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;width:100%}
-#card .cflip.stack{grid-template-columns:1fr;justify-items:center}
+#card .cflip{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 28px;width:100%}
+#card .cflip.stack{flex-direction:column}
 #card .cbox{position:relative;width:min(44vw,190px);aspect-ratio:1;display:grid;place-items:center;cursor:pointer}
 #card .cbox.wordbig{width:auto;min-width:min(44vw,190px);aspect-ratio:auto;padding:16px 18px}
 #card .cbox .han{font-size:clamp(4.2rem,24vw,7.2rem);line-height:1}
@@ -726,7 +726,7 @@ p,li,.hint{text-wrap:pretty}
 #card .cstk>span.han{border:0;background:none}
 #card .cbox:has(.cstk){width:auto;min-width:0;aspect-ratio:auto;padding:0}
 #card .cplay.ping{animation:pop .35s ease}
-#card .cinfo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0}
+#card .cinfo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0;flex:0 1 240px}
 #card .cinfo .py{font-size:clamp(1.8rem,8vw,2.4rem)}
 #card .cinfo .meaning{overflow-wrap:anywhere}
 #card.flipped{justify-content:center;gap:14px}
@@ -1360,11 +1360,11 @@ function review(){
 }
 
 /* ---------- Flashcards ---------- */
-/* back of a flashcard: the character draws itself stroke by stroke, one character after another */
+/* back of a flashcard: each character in its own grid box, like in Learn (shown complete, no stroke animation) */
 function strokeCard(x){
   const box=M().querySelector('#card .cbox'),st=box&&box.querySelector('.cst');if(!box||!st)return;
   const go=()=>{if(!STROKES||typeof HanziWriter==='undefined'||!box.isConnected)return;
-    const chars=[...hz(x)],fs=parseFloat(getComputedStyle(st).fontSize),nh=chars.filter(isHan).length,base=Math.min(innerWidth*.44,190),sz=Math.round(nh<2?base:nh===2?base*.5:Math.min(84,(M().clientWidth-70)/nh-8)),tn=tonesOf(x),hanIdx=[];
+    const chars=[...hz(x)],fs=parseFloat(getComputedStyle(st).fontSize),nh=chars.filter(isHan).length,cw=$('card').clientWidth,base=Math.min(cw*.42,200),sz=Math.round(nh<2?base:nh===2?base*.5:Math.min(84,(cw-40)/nh-8)),tn=tonesOf(x),hanIdx=[];
     const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
     const wrap=document.createElement('span');wrap.className='cstk';wrap.setAttribute('aria-hidden','true');
     const ws=[];let h=0;
@@ -1374,9 +1374,8 @@ function strokeCard(x){
       if(isHan(c))h++;wrap.appendChild(cell)});
     if(!ws.length)return;
     st.classList.add('sr-only');box.insertBefore(wrap,st);
-    const wr=ws.map(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,outlineColor:css('--line'),strokeColor:css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,strokeAnimationSpeed:1.5,delayBetweenStrokes:120,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
-    if(!MOTION)return;wr.forEach(w=>w.hideCharacter());
-    const run=(i=0)=>{if(i>=wr.length||!wrap.isConnected)return;wr[i].animateCharacter({onComplete:()=>run(i+1)})};run()};
+    ws.forEach(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,showOutline:false,strokeColor:css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
+    };
   STROKES?go():loadStrokes().then(go).catch(()=>{})}
 
 function cards(deck0){
