@@ -1374,7 +1374,7 @@ function strokeCard(x){
       if(isHan(c))h++;wrap.appendChild(cell)});
     if(!ws.length)return;
     st.classList.add('sr-only');box.insertBefore(wrap,st);
-    const wr=ws.map(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,showOutline:false,strokeColor:css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,strokeAnimationSpeed:1.5,delayBetweenStrokes:120,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
+    const wr=ws.map(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,outlineColor:css('--line'),strokeColor:css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,strokeAnimationSpeed:1.5,delayBetweenStrokes:120,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
     if(!MOTION)return;wr.forEach(w=>w.hideCharacter());
     const run=(i=0)=>{if(i>=wr.length||!wrap.isConnected)return;wr[i].animateCharacter({onComplete:()=>run(i+1)})};run()};
   STROKES?go():loadStrokes().then(go).catch(()=>{})}
