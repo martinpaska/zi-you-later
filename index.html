@@ -711,6 +711,23 @@ p,li,.hint{text-wrap:pretty}
 #home #acct .av{margin-right:6px}
 @media (max-width:520px){#home #lb .lbl{display:none}#home #lb{padding:0 10px}}
 @media (max-width:360px){#home .top{gap:6px;padding:7px 7px 7px 8px}#home .mast .logo{width:36px;height:36px}#home .topr{gap:4px}#home .topr .streak{padding:0 8px}#home #lb,#home #gear{padding:0 8px}#home #acct{padding:0 10px}#home #acct .av{margin-right:4px}}
+/* flashcard back: character box on the left (tap to hear it), details on the right */
+#card .cflip{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;width:100%}
+#card .cflip.stack{grid-template-columns:1fr;justify-items:center}
+#card .cbox{position:relative;width:min(44vw,190px);aspect-ratio:1;display:grid;place-items:center;border:1.5px dashed var(--line);border-radius:16px;cursor:pointer;
+  background:linear-gradient(var(--grid),var(--grid)) center/1.5px 100% no-repeat,linear-gradient(var(--grid),var(--grid)) center/100% 1.5px no-repeat,var(--surface)}
+#card .cbox.wordbig{width:auto;min-width:min(44vw,190px);aspect-ratio:auto;padding:16px 18px}
+#card .cbox .han{font-size:clamp(4.2rem,24vw,7.2rem);line-height:1}
+#card .cbox.wordbig .han{font-size:clamp(2.4rem,12vw,3.8rem)}
+#card .cplay{position:absolute;right:2px;bottom:2px;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;cursor:pointer}
+#card .cplay .cspk{width:22px;height:22px;color:var(--ink);opacity:.75}
+@media (hover:hover){#card .cplay:hover .cspk{opacity:1;color:var(--accent)}}
+#card .cbox{cursor:inherit}
+#card .cplay.ping{animation:pop .35s ease}#card .cplay.ping .cspk{color:var(--accent);opacity:1}
+#card .cinfo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0}
+#card .cinfo .py{font-size:clamp(1.8rem,8vw,2.4rem)}
+#card .cinfo .meaning{overflow-wrap:anywhere}
+#card.flipped{justify-content:center;gap:14px}
 /* ---- round 3: app-like phone, textbook lesson names, Learn intro, writing fits the screen ---- */
 html{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 input,select,textarea{font-size:max(16px,1em)}
@@ -1181,7 +1198,7 @@ function setup(g){
     const nc=basePool('c').length,nw=basePool('w').length;
     $('s1').innerHTML=`<div class="choices two"><button class="choice" data-set="c" aria-pressed="${state.set==='c'}"><b class="han">字</b><b>Characters</b><span>${nc} in these lessons</span></button><button class="choice" data-set="w" aria-pressed="${state.set==='w'}"><b class="han">词</b><b>Words</b><span>${nw} in these lessons</span></button></div>
       ${g==='learn'?`<div style="margin-bottom:8px"><span class="hint" style="display:block;margin:0 0 4px">Before the questions</span><div class="seg" role="group" aria-label="Introductions"><button data-li="1" aria-pressed="${state.lintro!==false}">Introduce each new item</button><button data-li="0" aria-pressed="${state.lintro===false}">Questions only</button></div></div>`:''}
-      ${g==='cards'?`<div style="margin-bottom:8px"><span class="hint" style="display:block;margin:0 0 4px">Card front</span><div class="seg" role="group" aria-label="Card front">${[['zh','Chinese → English'],['en','English → Chinese'],['mix','Mixed']].map(([k,n])=>`<button data-cd="${k}" aria-pressed="${(state.cdir||'zh')===k}">${n}</button>`).join('')}</div></div>`:''}
+      ${g==='cards'?`<div style="margin-bottom:8px"><span class="hint" style="display:block;margin:0 0 4px">Card front</span><div class="seg" role="group" aria-label="Card front">${[['zh','中 → EN'],['en','EN → 中'],['mix','Mixed']].map(([k,n])=>`<button data-cd="${k}" aria-pressed="${(state.cdir||'zh')===k}">${n}</button>`).join('')}</div></div>`:''}
       ${I.filter?`<div class="seg" role="group" aria-label="Filter">${[['all','All'],['weak','Not known yet'],['star','★ Starred']].map(([k,n])=>`<button data-f="${k}" aria-pressed="${state.filter===k}">${n}</button>`).join('')}</div>`:''}`;
     $('s1').querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{state.set=b.dataset.set;saveState();step1();rest()});
     $('s1').querySelectorAll('[data-li]').forEach(b=>b.onclick=()=>{state.lintro=b.dataset.li==='1';saveState();step1()});
@@ -1350,15 +1367,14 @@ function cards(deck0){
     open(bar(i/deck.length*100,(i+1)+' / '+deck.length)+
       `<div class="piles"><span class="no">✗ Still learning: ${no.length}</span><button class="starbtn" id="star" aria-pressed="${starred(x)}" aria-label="Star this card">★ star</button><span class="yes">✓ Know: ${yes.length}</span></div>
       <div class="seg cdirseg" role="group" aria-label="Card front">${[['zh','中 → EN'],['en','EN → 中'],['mix','Mixed']].map(([k,n])=>`<button data-cd2="${k}" aria-pressed="${dir===k}">${n}</button>`).join('')}</div>
-      <button class="card" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}><span class="tag">${kindLabel(x)} · ${LNAME(x.l)}${en?' · English → Chinese':''}</span>${en&&!flipped?`<p class="meaning" style="font-size:1.45rem;font-weight:700">${esc(x.en)}</p>`:`<span class="${bigClass(x)} han">${flipped?hzHtml(x):hz(x)}</span>`}
-        ${flipped?backHtml(x)+`<span class="play">${PLAY}Play again</span><span class="flip-hint">Tap the card to flip it back</span>`:`<span class="flip-hint">${en?'Picture the Chinese and say it, then tap to check':'Tap to see pinyin, tone and meaning'}</span>`}</button>
+      <button class="card${flipped?' flipped':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${bigClass(x)}"><span class="han">${hzHtml(x)}</span><span class="cplay" data-play role="button" aria-label="Play" title="Play"><svg class="cspk" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></span></span><div class="cinfo">${backHtml(x)}</div></div>`:`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)}${en?' · English → Chinese':''}</span>${en?`<p class="meaning" style="font-size:1.45rem;font-weight:700">${esc(x.en)}</p>`:`<span class="${bigClass(x)} han">${hz(x)}</span>`}<span class="flip-hint">${en?'Picture the Chinese and say it, then tap to check':'Tap to see pinyin, tone and meaning'}</span>`}</button>
       <button class="btn ghost" id="tw" style="align-self:center">✍ Try writing ${x.kind==='w'&&[...x.s].filter(isHan).length>1?'this word':'this character'}</button>
       ${flipped?exampleHtml(x)+relatedHtml(x)+hookHtml(x):''}
       <div class="btns"><button class="btn badb" id="no">✗ Still learning</button><button class="btn okb" id="yes">✓ Know</button></div>
       <div class="btns"><button class="btn ghost" id="prev" ${i?'':'disabled'}>‹ Back</button><button class="btn ghost" id="shuf">Shuffle the rest</button></div>
       <p class="hint" style="text-align:center">Swipe the card left or right. Keys: space flips, ← still learning, → know.</p>`);
     const card=$('card');
-    card.onclick=e=>{if(flipped&&e.target.closest('.play')){speak(x);return}flipped=!flipped;draw();$('card').classList.add('flipin');if(flipped)speak(x)};
+    card.onclick=e=>{if(flipped&&e.target.closest('[data-play]')){speak(x);const b=e.target.closest('[data-play]');b.classList.remove('ping');void b.offsetWidth;b.classList.add('ping');return}flipped=!flipped;draw();$('card').classList.add('flipin');if(flipped)speak(x)};
     $('star').onclick=()=>$('star').setAttribute('aria-pressed',toggleStar(x));
     $('tw').onclick=()=>tryWrite(x);
     M().querySelectorAll('[data-cd2]').forEach(b=>b.onclick=()=>{dir=state.cdir=b.dataset.cd2;saveState();fromEn.clear();flipped=false;draw()});
