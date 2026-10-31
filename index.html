@@ -5,8 +5,9 @@
 <style>
 /* Layout: one narrow column like a phone app; lessons and modes on the home view, each practice mode replaces it full-width. */
 :root{
-  /* Palette: black #000000, charcoal #3E3636, red #D72323, blush white #F5EDED (other values are tints of these) */
-  --bg:#f5eded; --surface:#fffafa; --sunk:#ebe0e0; --ink:#000000; --muted:#3e3636; --line:#dccfcf;
+  /* Palette: black #000000, charcoal #3E3636, red #D72323, background #F8F8F8, blush #F5EDED (other values are tints of these) */
+  --bg:#f8f8f8; --surface:#ffffff; --sunk:#efecec; --ink:#000000; --muted:#3e3636; --line:#e4dede;
+  --sh1:0 1px 2px rgb(62 54 54/.06),0 4px 14px -4px rgb(62 54 54/.12); --sh2:0 2px 4px rgb(62 54 54/.06),0 16px 32px -10px rgb(62 54 54/.22);
   --accent:#d72323; --accent-ink:#ffffff; --accent-soft:#f7d3d3; --seal:#d72323; --seal-ink:#ffffff;
   --panel:#3e3636; --panel-ink:#f5eded; --panel-muted:#cbbdbd; --grid:#f0b5b5;
   --ok:#2f6b3a; --ok-bg:#e1ead5; --bad:#b3261e; --bad-bg:#f7d6d3; --star:#a87400;
@@ -544,6 +545,22 @@ h1{letter-spacing:.01em}
 .wart{display:block;height:auto}
 #wabout{scroll-margin-top:16px}
 @media (max-width:420px){.wnav .brand{font-size:1.05rem}.wnr{gap:8px}.wnav .btn{padding:9px 12px}}
+/* floating cards: no hard borders, soft layered shadows, lift on hover */
+body::before{background:var(--bg)}
+.mode,.lesson,.card,.tq,.mt,.sci,.gp,.choice,.preview,.wfeat li,.wmaker,.acct,.streak,.sitem,.brow,.relw,.rv,.gi,.stat,.cell,.lg,.chunk,.pad,.part .pc,.pict,.twin,#vsel{border-color:transparent;box-shadow:var(--sh1)}
+.mode,.lesson,.card,.tq,.sci,.gp,.choice,.preview,.wfeat li,.wmaker{border-radius:16px}
+.hero .stat{box-shadow:none;background:none}
+.mode,.lesson,.choice,.acct,.mt{transition:transform .15s ease,box-shadow .15s ease,border-color .15s}
+@media (hover:hover){.mode:hover:not(:disabled),.lesson:hover:not(:disabled),.choice:hover,.acct:hover,.wfeat li:hover{border-color:transparent;box-shadow:var(--sh2);transform:translateY(-2px)}}
+.choice[aria-pressed="true"]{box-shadow:0 0 0 3px var(--accent-soft),var(--sh1)}
+.lesson[aria-pressed="true"]{box-shadow:0 8px 20px -8px rgb(0 0 0/.35)}
+.btn.ghost{background:var(--surface);box-shadow:var(--sh1)}
+.btn.ghost:hover{box-shadow:var(--sh2)}
+.btn:not(.ghost):not(.okb):not(.badb){box-shadow:0 6px 16px -6px rgb(215 35 35/.55)}
+.hero{border-radius:18px;box-shadow:var(--sh2)}
+.seg{background:var(--sunk)}
+.wnav{box-shadow:0 10px 26px -12px rgb(215 35 35/.6)}
+footer{border-top-color:var(--line)}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <div class="wrap">
