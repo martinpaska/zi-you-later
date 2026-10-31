@@ -4,4 +4,4 @@ Aplikace na procvičování čínských znaků. Běží jako statická stránka 
 
 - `index.html` – celá aplikace
 - `strokes.json` – data pro tahy znaků
-- Pokrok se zatím ukládá v prohlížeči (localStorage). Účty a žebříček přijdou s napojením na Supabase.
+- Pokrok se ukládá v prohlížeči (localStorage). Účty, synchronizace pokroku a žebříček běží přes Supabase, jakmile jsou v `index.html` vyplněné klíče. Návod: [`supabase/README.md`](supabase/README.md).
