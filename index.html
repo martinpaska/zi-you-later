@@ -611,6 +611,52 @@ footer{border-top-color:var(--line)}
 .mart .o{transform-box:view-box;transform-origin:50% 50%;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
 @media (hover:hover){.mode:hover:not(:disabled) .mart .o{transform:scale(1.07) rotate(-2deg)}}
 @media (min-width:600px){.modes{grid-template-columns:repeat(3,1fr)}}
+/* ---- motion layer: gentle feedback on every button, nicer setup and flashcards ---- */
+.btn,.play,.bar .back,.starbtn,.seg button,.choice,.lesson,.opt,.tbtn,.chunk,.mt,.mini,.mode,.acct,.cta,.link{transition:transform .2s cubic-bezier(.3,1.6,.5,1),box-shadow .2s ease,background-color .15s,color .15s,border-color .15s,opacity .2s}
+@media (hover:hover){
+  .btn:not(:disabled):hover,.cta:not(:disabled):hover{transform:translateY(-2px)}
+  .btn:not(.ghost):not(.okb):not(.badb):not(:disabled):hover{box-shadow:0 12px 22px -8px rgb(215 35 35/.6)}
+  .btn.okb:not(:disabled):hover{box-shadow:0 12px 22px -8px rgb(47 107 58/.6)}
+  .btn.badb:not(:disabled):hover{box-shadow:0 12px 22px -8px rgb(179 38 30/.6)}
+  .opt:not(:disabled):hover,.tbtn:not(:disabled):hover,.chunk:not(.used):hover,.mt:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+  .play:hover,.mini:hover,.starbtn:hover{transform:scale(1.06)}
+  .seg button:not([aria-pressed="true"]):hover{color:var(--ink);background:rgb(255 255 255/.6)}
+  .bar .back:hover{transform:translateX(-3px)}
+  .cta:not(:disabled):hover .go{transform:translateX(3px)}
+}
+.cta .go{transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.btn:not(:disabled):active,.cta:not(:disabled):active,.play:active,.opt:not(:disabled):active,.tbtn:not(:disabled):active,.mini:active,.starbtn:active,.seg button:active,.mode:not(:disabled):active,.bar .back:active{transform:scale(.95)}
+.seg button[aria-pressed="true"]{box-shadow:var(--sh1)}
+/* top bar of every practice screen */
+.bar .back{background:var(--surface);box-shadow:var(--sh1);border-radius:999px;padding:7px 14px;color:var(--ink)}
+.progress{height:9px;border-radius:9px;box-shadow:inset 0 1px 2px rgb(0 0 0/.08)}
+.progress span{border-radius:9px;background:linear-gradient(90deg,var(--accent),#ef4a3a);transition:width .45s cubic-bezier(.3,1.3,.5,1)}
+/* setup screens */
+.sn{background:var(--accent);color:#fff;box-shadow:0 4px 10px -4px rgb(215 35 35/.6)}
+.step>h3{font-family:var(--f-display);font-weight:700}
+.choice,.lesson{position:relative}
+.choice .han{font-family:var(--f-brush);font-weight:400;font-size:2.3rem}
+.choice[aria-pressed="true"]{border-color:var(--accent)!important;background:#fff8f8}
+.choice[aria-pressed="true"]::after,.lesson[aria-pressed="true"]::after{content:"✓";position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font:800 .78rem/22px var(--f-body);text-align:center;box-shadow:0 3px 8px -2px rgb(215 35 35/.6)}
+.lesson[aria-pressed="true"]{background:var(--ink);box-shadow:0 10px 22px -10px rgb(0 0 0/.55)}
+.bigbtn:not(:disabled){position:relative;overflow:hidden;isolation:isolate}
+.bigbtn:not(:disabled)::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgb(255 255 255/.4) 50%,transparent 70%);transform:translateX(-130%);animation:shine 4.5s ease-in-out 1.5s infinite}
+/* flashcards: a deck you can drag, with a gentle 3D flip */
+#card{box-shadow:var(--sh1),7px 9px 0 -3px #fff,7px 9px 0 -2px rgb(0 0 0/.07),14px 18px 0 -6px #fff,14px 18px 0 -5px rgb(0 0 0/.06);margin-bottom:14px;touch-action:pan-y;will-change:transform}
+#card.dragging{transition:none!important}
+#card.flipin{animation:flip3d .45s cubic-bezier(.3,1.3,.5,1) backwards}
+@keyframes flip3d{from{transform:perspective(1000px) rotateY(-100deg) scale(.96);opacity:.4}}
+#card .han{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+@media (hover:hover){#card:hover .han{transform:scale(1.04)}}
+#card .flip-hint{display:inline-flex;align-items:center;gap:6px}
+#card .flip-hint::before{content:"↻";display:inline-block;color:var(--accent);font-weight:800;animation:spinhint 2.8s ease-in-out infinite}
+@keyframes spinhint{0%,60%,100%{transform:rotate(0)}80%{transform:rotate(-200deg)}}
+.piles .no,.piles .yes{border-radius:999px;padding:4px 12px}
+.piles .no{background:var(--bad-bg)}.piles .yes{background:var(--ok-bg)}
+#card .tag{border-radius:999px;padding:3px 10px}
+.drag-l{box-shadow:var(--sh2),0 0 0 3px var(--bad)!important}
+.drag-r{box-shadow:var(--sh2),0 0 0 3px var(--ok)!important}
+.lesson:hover:not([aria-pressed="true"]){border-color:transparent}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <div class="wrap">
@@ -1153,8 +1199,10 @@ function cards(deck0){
     $('yes').onclick=()=>sort(true);$('no').onclick=()=>sort(false);
     $('prev').onclick=()=>{i--;const y=deck[i];yes=yes.filter(z=>z!==y);no=no.filter(z=>z!==y);flipped=false;draw()};
     $('shuf').onclick=()=>{deck=deck.slice(0,i).concat(shuffle(deck.slice(i)));flipped=false;draw()};
-    let sx=null;card.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
-    card.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60){e.preventDefault();sort(dx>0)}});
+    let sx=null;card.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;card.classList.remove('flipin','cardin')},{passive:true});
+    card.addEventListener('touchmove',e=>{if(sx===null)return;const dx=e.touches[0].clientX-sx;if(Math.abs(dx)<8)return;card.classList.add('dragging');card.style.transform=`translateX(${dx}px) rotate(${dx/22}deg)`;card.classList.toggle('drag-r',dx>60);card.classList.toggle('drag-l',dx<-60)},{passive:true});
+    card.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;card.classList.remove('dragging','drag-l','drag-r');
+      if(Math.abs(dx)>60){e.preventDefault();card.style.transform='';sort(dx>0)}else{card.style.transition='transform .3s cubic-bezier(.3,1.6,.5,1)';card.style.transform='';setTimeout(()=>{card.style.transition=''},300)}});
     keyHandler=e=>{if(e.key===' '){e.preventDefault();card.click()}else if(e.key==='ArrowRight')sort(true);else if(e.key==='ArrowLeft')sort(false)};
   }
   function done(){
