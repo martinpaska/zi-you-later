@@ -1,0 +1,147 @@
+# 3-0
+c|18 = ＿|十八/八十/一八|18
+c|45 = ＿|四十五/五十四/四五十|45
+c|20 = ＿|二十/两十/十二|20
+c|99 = ＿|九十九/九九/九百九|99
+c|12 = ＿|十二/二十/十两|12
+c|100 = ＿|一百/十十/百一|100
+c|她今年＿岁。（19）|十九/九十/一九|She is nineteen this year.
+c|我们班有＿个学生。（32）|三十二/二十三/三二|There are 32 students in our class.
+c|60 = ＿|六十/十六/六零|60
+c|11 = ＿|十一/一十一/一一|11
+p|我今年二十岁。/我今年两十岁。/我今年十二十岁。|I am twenty this year.
+p|他今年五十八岁。/他今年八十五岁。/他今年五八岁。|He is fifty-eight this year.
+p|我有十二个同学。/我有二十个同学。/我有十两个同学。|I have twelve classmates.
+p|老师今年四十岁。/老师今年十四岁。/老师今年四十个岁。|The teacher is forty this year.
+p|她妈妈七十岁。/她妈妈十七岁。/她妈妈七个十岁。|Her mother is seventy.
+o|我 今年 十八 岁|I am eighteen this year.
+o|他 爸爸 今年 五十 岁|His father is fifty this year.
+o|我们 有 二十 个 学生|We have twenty students.
+o|她 今年 二十一 岁|She is twenty-one this year.
+o|王老师 今年 三十六 岁|Teacher Wang is thirty-six this year.
+# 3-1
+c|今天九月十二＿。|号/点/岁|Today is September 12th.
+c|今天星期＿？|几/什么/哪|What day of the week is it today?
+c|现在几＿？|点/号/岁|What time is it now?
+c|现在三点＿。|半/号/月|It is half past three now.
+c|我的生日是十月三＿。|号/点/星期|My birthday is October 3rd.
+c|明天星期＿。|四/四号/四点|Tomorrow is Thursday.
+c|现在八点一＿。|刻/半/号|It is a quarter past eight.
+c|你的生日是几月几＿？|号/点/岁|When is your birthday?
+c|晚上七＿半我请你吃饭。|点/号/月|I'll treat you to dinner at seven-thirty in the evening.
+c|今天几月几＿？|号/点/岁|What's the date today?
+p|今天九月十二号。/今天十二号九月。/今天九号十二月。|Today is September 12th.
+p|现在三点半。/现在半三点。/现在三半点。|It is half past three.
+p|明天是星期四。/明天是四星期。/明天是星期第四。|Tomorrow is Thursday.
+p|我的生日是十月三号。/我的生日是三号十月。/我的生日是十号三月。|My birthday is October 3rd.
+p|现在七点三刻。/现在三刻七点。/现在七三刻点。|It is 7:45 now.
+o|今天 九月 十二 号|Today is September 12th.
+o|现在 几 点|What time is it now?
+o|明天 星期 几|What day of the week is tomorrow?
+o|我 的 生日 是 十月 三 号|My birthday is October 3rd.
+o|现在 五 点 一 刻|It is a quarter past five.
+# 3-2
+c|＿妈妈是老师。|我/我们的的/的我|My mom is a teacher.
+c|这是＿的照片。|我/我们们/的我|This is my photo.
+c|＿哥哥是医生。|他/的他/他们的的|His older brother is a doctor.
+c|我们＿老师是中国人。|∅/的的/是|Our teacher is Chinese. (no 的 needed)
+c|他是我＿同学。|∅/个/是|He is my classmate. (no 的 needed)
+c|这是＿的生日。|我爸爸/我爸爸的的/的我爸爸|This is my father's birthday.
+c|你＿朋友是美国人吗？|∅/是/个|Is your friend American? (no 的 needed)
+c|那是我们学生＿照片。|的/是/个|That is our students' photo.
+c|她是我＿好朋友。|的/是/个|She is my good friend.
+c|王朋是李友＿同学。|的/是/个|Wang Peng is Li You's classmate.
+p|我妈妈是律师。/我的的妈妈是律师。/的我妈妈是律师。|My mother is a lawyer.
+p|这是我们老师。/这是老师我们。/这是的我们老师。|This is our teacher.
+p|他是我的好朋友。/他是我好的朋友的。/他是好我的朋友。|He is my good friend.
+p|这是王朋的照片。/这是的王朋照片。/这是王朋照片的。|This is Wang Peng's photo.
+p|你哥哥是医生吗？/你的的哥哥是医生吗？/哥哥你是医生吗？|Is your older brother a doctor?
+o|我 妈妈 是 律师|My mother is a lawyer.
+o|这 是 我们 老师|This is our teacher.
+o|他 是 我 的 好 朋友|He is my good friend.
+o|你 姐姐 是 大学生 吗|Is your older sister a college student?
+o|这 是 我 爸爸 的 照片|This is my father's photo.
+# 3-3
+c|我＿你吃饭。|请/有/是|I'll treat you to a meal.
+c|明天我请你＿晚饭。|吃/喝/做|Tomorrow I'll treat you to dinner.
+c|今天你请我，明天我＿你。|请/有/认识|Today you treat me; tomorrow I'll treat you.
+c|王朋请李友＿中国菜。|吃/请/是|Wang Peng treats Li You to Chinese food.
+c|我请你吃饭，＿？|怎么样/什么/谁|I'll treat you to a meal. How about it?
+c|谁请＿吃饭？|你/的你/你们的|Who is treating you to a meal?
+c|我们请老师吃＿。|晚饭/晚上/星期|We treat the teacher to dinner.
+c|我请你吃饭，因为今天是你的＿。|生日/星期/号|I'll treat you, because today is your birthday.
+c|他＿我吃美国菜。|请/有/是|He treats me to American food.
+c|星期四晚上我请你＿。|吃饭/饭吃/饭|I'll treat you to a meal on Thursday evening.
+p|我请你吃饭。/我吃饭请你。/我请吃饭你。|I'll treat you to a meal.
+p|他请我们吃中国菜。/他吃中国菜请我们。/他请吃中国菜我们。|He treats us to Chinese food.
+p|明天晚上我请你吃晚饭。/明天晚上我请吃晚饭你。/我请你明天晚上吃晚饭吃。|I'll treat you to dinner tomorrow evening.
+p|谁请你吃饭？/你请谁吃饭吗？/谁吃饭请你？|Who is treating you to a meal?
+p|我们请老师吃饭，怎么样？/我们请吃饭老师，怎么样？/我们老师请吃饭，怎么样？|Let's treat the teacher to a meal. How about it?
+o|我 请 你 吃饭|I'll treat you to a meal.
+o|明天 我 请 你 吃 晚饭|Tomorrow I'll treat you to dinner.
+o|他 请 我 吃 中国菜|He treats me to Chinese food.
+o|谁 请 你 吃饭|Who is treating you to a meal?
+o|我们 请 王老师 吃饭 ， 怎么样|Let's treat Teacher Wang to a meal. How about it?
+# 3-4
+c|你喜欢吃中国菜＿美国菜？|还是/和/也|Do you like Chinese food or American food?
+p|你是老师还是学生？/你是老师还是学生吗？/你是老师吗还是学生？|Are you a teacher or a student?
+c|你是中国人＿美国人？|还是/和/都|Are you Chinese or American?
+c|今天是星期三还是星期四？——今天＿。|星期四/还是星期四/星期四吗|Is today Wednesday or Thursday? — Today is Thursday.
+c|你哥哥是医生＿律师？|还是/和/也是|Is your older brother a doctor or a lawyer?
+c|你喜欢今天＿明天？|还是/和/都|Do you prefer today or tomorrow?
+c|你请我＿我请你？|还是/和/也|Are you treating me, or am I treating you?
+c|你的生日是九月还是十月？——是＿。|十月/还是十月/十月吗|Is your birthday in September or October? — October.
+c|他是王朋＿李友？|还是/和/都|Is he Wang Peng or Li You?
+c|你们三点去＿四点去？|还是/和/都|Are you going at three or at four?
+p|你喜欢中国菜还是美国菜？/你喜欢中国菜还是美国菜吗？/你喜欢中国菜和美国菜吗还是？|Do you like Chinese food or American food?
+p|她是学生还是老师？/她是学生还是老师吗？/她是学生和老师吗？|Is she a student or a teacher?
+p|你今天忙还是明天忙？/你今天忙还是明天忙吗？/你今天还是忙明天？|Are you busy today or tomorrow?
+p|你是北京人还是纽约人？/你是北京人还是纽约人吗？/还是你是北京人纽约人？|Are you from Beijing or New York?
+p|他请你还是你请他？/他请你还是你请他吗？/他还是请你你请他？|Is he treating you, or are you treating him?
+o|你 喜欢 中国菜 还是 美国菜|Do you like Chinese food or American food?
+o|你 是 老师 还是 学生|Are you a teacher or a student?
+o|今天 是 星期四 还是 星期五|Is today Thursday or Friday?
+o|你 哥哥 是 医生 还是 律师|Is your older brother a doctor or a lawyer?
+o|你 请 我 还是 我 请 你|Are you treating me, or am I treating you?
+# 3-5
+c|你忙＿忙？|不/没/也|Are you busy?
+c|你是不＿学生？|是/不/吗|Are you a student?
+c|你喜欢不喜欢＿？|吃中国菜/吃中国菜吗/中国菜吗|Do you like Chinese food?
+c|明天你忙＿忙？|不/没/也|Are you busy tomorrow?
+c|他是＿是中国人？|不/没/也|Is he Chinese?
+c|你认识＿认识李友？|不/没/也|Do you know Li You?
+c|你喜＿喜欢美国菜？|不/没/也|Do you like American food?
+c|你有＿有弟弟？|没/不/也|Do you have a younger brother?
+c|今天是不是你的＿？|生日/生日吗/生日呢|Is today your birthday?
+c|你认识不认识他？——＿。|认识/认不认识/认识吗|Do you know him? — Yes, I do.
+p|你忙不忙？/你忙不忙吗？/你不忙忙？|Are you busy?
+p|你是不是老师？/你是不是老师吗？/你不是是老师？|Are you a teacher?
+p|你喜欢不喜欢吃中国菜？/你喜欢不喜欢吃中国菜吗？/你喜欢吃中国菜不喜欢吗？|Do you like Chinese food?
+p|你认识不认识王朋？/你认识不认识王朋吗？/你不认识认识王朋？|Do you know Wang Peng?
+p|你有没有姐姐？/你有不有姐姐？/你有没有姐姐吗？|Do you have an older sister?
+o|你 明天 忙 不 忙|Are you busy tomorrow?
+o|你 是 不 是 美国人|Are you American?
+o|你 喜欢 不 喜欢 吃 中国菜|Do you like Chinese food?
+o|你 认识 不 认识 李友|Do you know Li You?
+o|今天 是 不 是 你 的 生日|Is today your birthday?
+# 3-6
+c|我喜欢吃中国菜，＿喜欢吃美国菜。|还/还是/都|I like Chinese food, and I also like American food.
+c|我有一个哥哥，＿有一个妹妹。|还/还是/和|I have an older brother, and also a younger sister.
+c|今天我很忙，明天＿很忙。|还/和/吗|I'm busy today, and still busy tomorrow.
+c|他是老师，＿是律师。|还/还是/和|He is a teacher and also a lawyer.
+c|我请你吃饭，＿请王朋。|还/还是/也还|I'm treating you to a meal, and also Wang Peng.
+c|我们认识王朋，还认识＿。|李友/还是李友/和李友|We know Wang Peng, and Li You too.
+c|你喜欢吃中国菜＿美国菜？|还是/还/都|Do you like Chinese food or American food?
+c|她有两个姐姐，＿有一个弟弟。|还/还是/和|She has two older sisters and also a younger brother.
+c|我们吃中国菜，＿吃美国菜吗？|还/还是/和|We're having Chinese food; are we having American food too?
+c|今天我请你，明天＿请你。|还/和/吗|I'm treating you today, and again tomorrow.
+p|我喜欢吃中国菜，还喜欢吃美国菜。/我喜欢吃中国菜，还是喜欢吃美国菜。/我喜欢吃中国菜，喜欢还吃美国菜。|I like Chinese food and American food too.
+p|他有一个哥哥，还有一个弟弟。/他有一个哥哥，有还一个弟弟。/他有一个哥哥，还是有一个弟弟。|He has an older brother and a younger brother too.
+p|我认识王朋，还认识李友。/我认识王朋，认识还李友。/我认识王朋，还是认识李友。|I know Wang Peng and Li You too.
+p|明天我还很忙。/明天我很还忙。/明天还我很忙。|I'm still busy tomorrow.
+p|我们请老师，还请谁？/我们请老师，请还谁？/我们请老师，还是请谁？|We're inviting the teacher. Who else are we inviting?
+o|我 还 有 一 个 妹妹|I also have a younger sister.
+o|他 还 喜欢 吃 美国菜|He also likes American food.
+o|我 还 认识 李友|I also know Li You.
+o|明天 我 还 很 忙|I'm still busy tomorrow.
+o|你 还 请 谁|Who else are you inviting?

@@ -1,0 +1,147 @@
+# 1-0
+c|我＿王，叫王朋。|姓/叫/是|My surname is Wang; my name is Wang Peng.
+c|您贵＿？|姓/叫/名字|What is your surname? (polite)
+c|你姓＿？|什么/吗/呢|What is your surname?
+c|我＿姓李。|不/没/吗|My surname is not Li.
+c|老师，您＿姓？|贵/好/请|Teacher, what is your surname?
+c|她姓＿，叫李友。|李/友/李友|Her surname is Li; she is called Li You.
+c|请问，您＿姓？|贵/叫/是|Excuse me, what is your surname?
+c|我姓王，你＿？|呢/吗/什么|My surname is Wang. And you?
+c|王先生姓＿。|王/王先生/先生|Mr. Wang's surname is Wang.
+c|你＿姓王吗？|也/是/呢|Is your surname also Wang?
+p|我姓王。/我姓王朋。/我是姓王。|My surname is Wang.
+p|您贵姓？/你贵姓我？/我贵姓？|What is your surname?
+p|我不姓李。/我姓不李。/我不李姓。|My surname is not Li.
+p|她姓什么？/她什么姓？/她姓吗什么？|What is her surname?
+p|我姓李，叫李友。/我叫李，姓李友。/我李姓，叫李友。|My surname is Li; my name is Li You.
+o|您 贵 姓|What is your surname?
+o|我 姓 王|My surname is Wang.
+o|你 姓 什么|What is your surname?
+o|我 不 姓 李|My surname is not Li.
+o|老师 姓 什么|What is the teacher's surname?
+# 1-1
+c|我叫王朋，你＿？|呢/吗/什么|My name is Wang Peng. And you?
+c|我是中国人，你＿？|呢/也/是|I am Chinese. And you?
+c|我姓李，你＿？|呢/吗/不|My surname is Li. What about you?
+c|我是学生，王朋＿？|呢/吗/什么|I am a student. What about Wang Peng?
+c|我是北京人，李小姐＿？|呢/也/不|I am from Beijing. What about Miss Li?
+c|我不是老师，你＿？|呢/叫/姓|I am not a teacher. And you?
+c|我是美国人，你＿？|呢/人/吗|I am American. And you?
+c|李友是学生，王朋＿？|呢/是/也|Li You is a student. What about Wang Peng?
+c|我叫李友，＿呢？|你/吗/什么|My name is Li You. And you?
+c|我是纽约人，你呢？——我＿是纽约人。|也/呢/吗|I am from New York. And you? — I am from New York too.
+p|我是学生，你呢？/我是学生，你吗呢？/我是学生，呢你？|I am a student. And you?
+p|我姓王，你呢？/我姓王，呢你？/我姓王，你呢吗？|My surname is Wang. And you?
+p|我叫李友，你呢？/我叫李友，你什么呢？/我叫李友，呢？你|My name is Li You. And you?
+p|我是中国人，你呢？/我是中国人，呢你是？/我中国人是，你呢？|I am Chinese. And you?
+p|老师是北京人，学生呢？/老师是北京人，呢学生？/老师是北京人，学生呢吗？|The teacher is from Beijing. And the students?
+o|我 是 老师 ， 你 呢|I am a teacher. And you?
+o|我 叫 王朋 ， 你 呢|My name is Wang Peng. And you?
+o|我 是 美国人 ， 你 呢|I am American. And you?
+o|我 姓 李 ， 你 呢|My surname is Li. And you?
+o|我 不 是 学生 ， 你 呢|I am not a student. And you?
+# 1-2
+c|我＿李友。|叫/姓/贵|My name is Li You.
+c|你＿什么名字？|叫/姓/是|What is your name?
+c|她姓王，＿王红。|叫/姓/是|Her surname is Wang; her name is Wang Hong.
+c|我姓李，叫＿。|李友/李/友李|My surname is Li; my name is Li You.
+c|请问，你叫＿名字？|什么/吗/呢|Excuse me, what is your name?
+c|老师叫＿名字？|什么/吗/呢|What is the teacher's name?
+c|我叫王朋，你叫＿？|什么/呢/吗|My name is Wang Peng. What is your name?
+c|他＿叫李友，他叫王朋。|不/没/吗|He is not called Li You; he is called Wang Peng.
+c|你叫王朋＿？|吗/呢/什么|Are you called Wang Peng?
+c|李小姐叫＿？|什么名字/什么姓/贵姓|What is Miss Li's name?
+p|我叫王朋。/我姓王朋。/我是叫王朋。|My name is Wang Peng.
+p|你叫什么名字？/你名字叫什么吗？/你叫名字什么？|What is your name?
+p|我姓王，叫王朋。/我叫王，姓王朋。/我姓王朋，叫王。|My surname is Wang; my name is Wang Peng.
+p|你叫李友吗？/你叫李友呢？/你李友叫吗？|Are you called Li You?
+p|我不叫李友。/我叫不李友。/我不李友叫。|I am not called Li You.
+o|你 叫 什么 名字|What is your name?
+o|我 叫 李友|My name is Li You.
+o|我 姓 王 ， 叫 王朋|My surname is Wang; my name is Wang Peng.
+o|老师 叫 什么 名字|What is the teacher's name?
+o|你 叫 王朋 吗|Are you called Wang Peng?
+# 1-3
+c|我＿学生。|是/叫/姓|I am a student.
+c|王朋＿中国人。|是/叫/姓|Wang Peng is Chinese.
+c|你是老师＿？|吗/呢/什么|Are you a teacher?
+c|我不＿美国人。|是/叫/姓|I am not American.
+c|李友＿美国人。|是/叫/姓|Li You is American.
+c|她是北京＿。|人/学生们/吗|She is from Beijing.
+c|我＿是学生，我是老师。|不/没/吗|I am not a student; I am a teacher.
+c|你是不是中国人？——我＿中国人。|是/叫/姓|Are you Chinese? — I am Chinese.
+c|王先生是老师，李小姐＿是老师。|也/呢/吗|Mr. Wang is a teacher; Miss Li is also a teacher.
+c|你是纽约人＿？|吗/呢/也|Are you from New York?
+p|我是学生。/我是学生是。/我学生。|I am a student.
+p|我不是老师。/我是不老师。/我不老师是。|I am not a teacher.
+p|她是美国人。/她美国人是。/她是人美国。|She is American.
+p|你是北京人吗？/你北京人是吗？/你是吗北京人？|Are you from Beijing?
+p|王朋是中国学生。/王朋是学生中国。/王朋中国是学生。|Wang Peng is a Chinese student.
+o|我 是 中国人|I am Chinese.
+o|李友 是 美国 学生|Li You is an American student.
+o|她 不 是 老师|She is not a teacher.
+o|你 是 北京人 吗|Are you from Beijing?
+o|王先生 也 是 老师|Mr. Wang is also a teacher.
+# 1-4
+c|你是学生＿？|吗/呢/什么|Are you a student?
+c|你叫王朋＿？|吗/呢/也|Are you called Wang Peng?
+c|她是美国人＿？|吗/呢/不|Is she American?
+c|你姓李＿？|吗/什么/呢|Is your surname Li?
+c|王老师是北京人＿？|吗/呢/人|Is Teacher Wang from Beijing?
+c|你是中国人吗？——＿，我是美国人。|不/也/吗|Are you Chinese? — No, I am American.
+c|你是老师吗？——＿，我是老师。|是/吗/呢|Are you a teacher? — Yes, I am a teacher.
+c|李小姐也是学生＿？|吗/呢/什么|Is Miss Li also a student?
+c|你叫什么＿？|名字/吗/姓|What is your name?
+c|她不是纽约人＿？|吗/什么/也|Isn't she from New York?
+p|你是学生吗？/你是学生吗吗？/你吗是学生？|Are you a student?
+p|你叫什么名字？/你叫什么名字吗？/你吗叫什么名字？|What is your name?
+p|他是老师吗？/他是吗老师？/他吗是老师？|Is he a teacher?
+p|你姓王吗？/你姓吗王？/吗你姓王？|Is your surname Wang?
+p|你是北京人吗？/你是北京人什么吗？/你是吗北京人？|Are you from Beijing?
+o|你 是 学生 吗|Are you a student?
+o|你 姓 王 吗|Is your surname Wang?
+o|你 是 美国人 吗|Are you American?
+o|她 叫 李友 吗|Is she called Li You?
+o|老师 是 中国人 吗|Is the teacher Chinese?
+# 1-5
+c|我＿是老师。|不/没/吗|I am not a teacher.
+c|她＿姓王，她姓李。|不/没/吗|Her surname is not Wang; it is Li.
+c|我＿叫李友。|不/是/吗|I am not called Li You.
+c|王朋不＿美国人。|是/叫/不|Wang Peng is not American.
+c|你是老师吗？——我不是，我是＿。|学生/不是/老师吗|Are you a teacher? — No, I am a student.
+c|李先生＿是北京人。|不/吗/呢|Mr. Li is not from Beijing.
+c|我也＿是中国人。|不/吗/呢|I am not Chinese either.
+c|她不叫王红，她＿李友。|叫/不/姓|She is not called Wang Hong; she is called Li You.
+c|我＿是纽约人，我是北京人。|不/没/吗|I am not from New York; I am from Beijing.
+c|你不是学生＿？|吗/呢/不|Aren't you a student?
+p|我不是学生。/我是不学生。/我不学生是。|I am not a student.
+p|我也不是老师。/我不也是老师。/我也是不老师。|I am not a teacher either.
+p|她不姓王。/她姓不王。/她王不姓。|Her surname is not Wang.
+p|他不叫王朋。/他叫不王朋。/不他叫王朋。|He is not called Wang Peng.
+p|李友不是中国人。/李友是不中国人。/李友中国人不是。|Li You is not Chinese.
+o|我 不 是 老师|I am not a teacher.
+o|她 不 姓 李|Her surname is not Li.
+o|我 不 叫 王朋|I am not called Wang Peng.
+o|王先生 不 是 美国人|Mr. Wang is not American.
+o|我 也 不 是 学生|I am not a student either.
+# 1-6
+c|我是学生，她＿是学生。|也/呢/吗|I am a student; she is a student too.
+c|王朋是中国人，我＿是中国人。|也/呢/吗|Wang Peng is Chinese, and I am Chinese too.
+c|我也＿是老师。|不/也/吗|I am not a teacher either.
+c|你是北京人，我＿是北京人。|也/吗/呢|You are from Beijing, and so am I.
+c|李友是学生，王朋＿是学生。|也/呢/吗|Li You is a student, and Wang Peng is too.
+c|你也是学生＿？|吗/呢/也|Are you a student too?
+c|老师姓王，我＿姓王。|也/是/不也|The teacher's surname is Wang; mine is Wang too.
+c|她不是老师，我也＿老师。|不是/是不/也是|She is not a teacher, and I am not a teacher either.
+c|我＿是纽约人。|也/也不是/呢|I am from New York too.
+c|你是中国人，她＿是中国人吗？|也/呢/吗|You are Chinese; is she Chinese too?
+p|我也是学生。/也我是学生。/我是也学生。|I am a student too.
+p|我也不是老师。/我不也是老师。/也我不是老师。|I am not a teacher either.
+p|她也姓王。/她姓也王。/也她姓王。|Her surname is Wang too.
+p|你也是美国人吗？/你是也美国人吗？/也你是美国人吗？|Are you American too?
+p|王朋也叫我老师。/王朋叫也我老师。/也王朋叫我老师。|Wang Peng also calls me teacher.
+o|我 也 是 学生|I am a student too.
+o|她 也 是 北京人|She is from Beijing too.
+o|我 也 不 是 老师|I am not a teacher either.
+o|你 也 姓 李 吗|Is your surname Li too?
+o|王朋 也 是 中国 学生|Wang Peng is a Chinese student too.

@@ -1,0 +1,126 @@
+# 5-0
+c|我介绍＿，这是我朋友李友。|一下/一点儿/一个|Let me introduce: this is my friend Li You.
+c|你喝＿水吧。|点儿/很/的|Have some water.
+c|请你看＿。|一下/一点儿/个|Please take a look.
+c|我想喝＿茶。|一点儿/很/的|I'd like a little tea.
+c|你坐＿吧。|一下/一点儿/个|Have a seat for a moment.
+c|我们聊＿天吧。|一下/一点儿/很|Let's chat for a bit.
+c|你要喝＿什么？|点儿/很/的|What would you like to drink?
+c|请进来＿。|一下/一点儿/个|Please come in for a moment.
+c|给我＿可乐，好吗？|一点儿/一下/很|Give me a little cola, OK?
+c|你来＿，好吗？|一下/一点儿/一个|Come here for a moment, OK?
+p|我介绍一下。/我介绍一点儿。/我一下介绍。|Let me introduce (people).
+p|我想喝一点儿茶。/我想喝很茶。/我想一点儿喝茶。|I'd like to drink a little tea.
+p|你坐一下吧。/你一下坐吧。/你坐一点儿吧。|Have a seat.
+p|你喝点儿什么？/你喝一下什么？/你点儿喝什么？|What will you have to drink?
+p|我们聊一下天吧。/我们聊天一下吧。/我们一下聊天吧。|Let's chat for a bit.
+o|我 介绍 一下|Let me introduce (people).
+o|你 喝 点儿 什么|What would you like to drink?
+o|我 想 喝 一点儿 水|I'd like a little water.
+o|你 进来 坐 一下 吧|Come in and sit for a bit.
+o|我们 聊 一下 天 吧|Let's chat for a bit.
+# 5-1
+c|她＿漂亮。|很/是/是很|She is pretty.
+c|我今天很＿。|忙/是忙/忙的|I am busy today.
+c|你妹妹＿漂亮。|真/吗/的|Your younger sister is really pretty.
+c|认识你我很＿。|高兴/是高兴/高兴的|I'm very happy to meet you.
+c|这个电影＿有意思。|很/是/的|This movie is very interesting.
+c|中国菜很＿。|好吃/是好吃/好吃是|Chinese food is delicious.
+c|他不＿。|忙/是忙/很是忙|He is not busy.
+c|你们学校大＿大？|不/没/也|Is your school big?
+c|我爸爸妈妈都＿忙。|很/是/的|My father and mother are both busy.
+c|你的学校＿？|大不大/大吗不/大大|Is your school big?
+p|她很漂亮。/她是漂亮。/她是很漂亮。|She is pretty.
+p|我今天很忙。/我今天是忙。/我今天是很忙的的。|I am busy today.
+p|你的学校大不大？/你的学校是大不大？/你的学校大不大吗？|Is your school big?
+p|我很高兴。/我是高兴。/我高兴是。|I am very happy.
+p|他们都不忙。/他们都是不忙。/他们不都是忙。|None of them is busy.
+o|她 很 漂亮|She is pretty.
+o|认识 你 我 很 高兴|I'm very happy to meet you.
+o|我 今天 很 忙|I'm busy today.
+o|你 的 学校 大 不 大|Is your school big?
+o|这 个 电影 很 有意思|This movie is very interesting.
+# 5-2
+c|你＿哪儿工作？|在/有/是|Where do you work?
+c|我们＿学校聊天吧。|在/是/有|Let's chat at school.
+c|他在＿喝咖啡。|家/家在/家里在|He is drinking coffee at home.
+c|我姐姐在学校＿工作。|∅/在/去|My older sister works at a school.
+c|你们在哪儿＿？|玩儿/在玩儿/玩儿在|Where are you having fun?
+c|她在图书馆＿书。|看/在看/去看在|She reads in the library.
+c|我们在学校＿饭。|吃/在/去|We eat at school.
+c|王朋＿李友家喝茶。|在/是/给|Wang Peng is drinking tea at Li You's place.
+c|你常常在＿听音乐？|哪儿/什么/谁|Where do you often listen to music?
+c|我＿学校工作，他在家工作。|在/有/是|I work at the school; he works at home.
+p|我在学校工作。/我工作在学校。/在学校我工作在。|I work at the school.
+p|你在哪儿吃饭？/你吃饭在哪儿？/你哪儿在吃饭？|Where do you eat?
+p|他们在图书馆聊天。/他们聊天在图书馆。/他们图书馆在聊天。|They are chatting in the library.
+p|我们在家看电视。/我们看电视在家。/我们家在看电视。|We watch TV at home.
+p|她在学校喝咖啡。/她喝咖啡在学校。/她学校在喝咖啡。|She drinks coffee at school.
+o|你 在 哪儿 工作|Where do you work?
+o|我 在 学校 工作|I work at the school.
+o|他们 在 图书馆 聊天|They are chatting in the library.
+o|我们 在 家 看 电视|We watch TV at home.
+o|她 在 李友 家 喝 茶|She is drinking tea at Li You's place.
+# 5-3
+c|我们去喝咖啡＿。|吧/吗/呢|Let's go have coffee.
+c|你是王朋的妹妹＿？|吧/了/呢|You must be Wang Peng's younger sister, right?
+c|你喝茶＿。|吧/也/都|Have some tea.
+c|我们一起去图书馆＿。|吧/吗/呢|Let's go to the library together.
+c|你明天很忙＿？|吧/了/的|You're busy tomorrow, I suppose?
+c|快进来＿。|吧/吗/的|Come in, quick.
+c|我们回家＿。|吧/吗/呢|Let's go home.
+c|他是美国人＿？|吧/了/呢|He's American, isn't he?
+c|你坐＿。|吧/吗/呢|Sit down, please.
+c|好＿，我们去吧。|吧/吗/呢|All right, let's go.
+p|我们去看电影吧。/我们去看电影吧吗。/吧我们去看电影。|Let's go see a movie.
+p|你是李友吧？/你是李友吧吗？/你吧是李友？|You must be Li You, right?
+p|你喝点儿水吧。/你喝吧点儿水。/吧你喝点儿水。|Have some water.
+p|我们一起回家吧。/我们一起吧回家。/我们吧一起回家。|Let's go home together.
+p|你很忙吧？/你吧很忙？/你很吧忙？|You're busy, I suppose?
+o|我们 去 喝 咖啡 吧|Let's go have coffee.
+o|你 是 王朋 的 妹妹 吧|You must be Wang Peng's younger sister.
+o|快 进来 吧|Come in, quick.
+o|我们 一起 回家 吧|Let's go home together.
+o|你 坐 吧|Sit down, please.
+# 5-4
+c|我喝＿两杯茶。|了/的/吧|I drank two cups of tea.
+c|他昨天喝＿一瓶可乐。|了/的/吧|He drank a bottle of cola yesterday.
+c|你昨天去图书馆＿吗？|了/吧/的|Did you go to the library yesterday?
+c|我昨天晚上＿去跳舞。|没/不/没有了|I didn't go dancing last night.
+c|他们聊＿一下天。|了/的/吧|They chatted for a while.
+c|我们看＿一个电影。|了/的/过了|We watched a movie.
+c|你吃饭了＿？|吗/的/了|Have you eaten?
+c|你喝了几＿咖啡？|杯/个/口|How many cups of coffee did you drink?
+c|我昨天＿喝咖啡。|没/不/没了|I didn't drink coffee yesterday.
+c|他回家＿没有？|了/吗/的|Has he gone home?
+p|我喝了两杯咖啡。/我喝两杯咖啡了了。/我了喝两杯咖啡。|I drank two cups of coffee.
+p|我昨天没去学校。/我昨天没去学校了。/我昨天不去学校了。|I didn't go to school yesterday.
+p|你昨天去图书馆了吗？/你昨天去了图书馆吗了？/你昨天了去图书馆吗？|Did you go to the library yesterday?
+p|他喝了一瓶水。/他喝一瓶了水。/他了喝一瓶水。|He drank a bottle of water.
+p|你吃饭了没有？/你吃饭没有了？/你没有吃饭了？|Have you eaten or not?
+o|我 喝 了 两 杯 茶|I drank two cups of tea.
+o|他 昨天 没 去 学校|He didn't go to school yesterday.
+o|你 昨天 去 图书馆 了 吗|Did you go to the library yesterday?
+o|我们 看 了 一 个 电影|We watched a movie.
+o|你 吃饭 了 没有|Have you eaten?
+# 5-5
+c|他十二点＿回家。|才/了/都|He didn't get home until twelve.
+c|我们聊到很晚＿回家。|才/都/了|We chatted till late and only then went home.
+c|她九点＿来。|才/了/的|She didn't come until nine.
+c|你怎么现在＿来？|才/都/了|Why are you only coming now?
+c|我晚上十一点＿吃晚饭。|才/了/就了|I didn't eat dinner until eleven.
+c|他昨天晚上一点＿睡觉。|才/了/都|He didn't go to bed until one o'clock last night.
+c|李友今天十点＿来学校。|才/了/都|Li You didn't come to school until ten today.
+c|我们看电影看到十二点＿回家。|才/了/都|We watched movies until twelve before going home.
+c|他三点才来，我们三点＿去打球。|才/了/都|He didn't come until three, so we didn't go play ball until three.
+c|她十二点才回家＿？|吗/了/才|She didn't get home until twelve?
+p|他十二点才回家。/他才十二点回家了。/他十二点回家才。|He didn't get home until twelve.
+p|我们十点才吃饭。/我们十点吃饭才。/我们才吃饭十点了。|We didn't eat until ten.
+p|你怎么现在才来？/你怎么现在来才？/你才怎么现在来了？|Why are you only coming now?
+p|她晚上很晚才睡觉。/她晚上很晚睡觉才。/她才晚上很晚睡觉了。|She goes to bed very late.
+p|王朋九点才来学校。/王朋九点来学校才。/王朋才九点来学校了。|Wang Peng didn't come to school until nine.
+o|他 十二 点 才 回家|He didn't get home until twelve.
+o|你 怎么 现在 才 来|Why are you only coming now?
+o|我们 很 晚 才 吃 晚饭|We had dinner very late.
+o|她 十 点 才 来 学校|She didn't come to school until ten.
+o|他 晚上 一 点 才 睡觉|He didn't go to bed until one at night.

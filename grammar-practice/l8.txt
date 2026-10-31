@@ -1,0 +1,210 @@
+# 8-0
+p|我昨天晚上写日记了。/我写日记昨天晚上了。/我写日记了昨天晚上。|I wrote in my diary last night.
+p|她每天早上七点起床。/她起床每天早上七点。/她每天起床早上七点。|She gets up at seven every morning.
+p|我们中午在餐厅吃午饭。/我们在餐厅吃午饭中午。/我们吃午饭中午在餐厅。|We have lunch in the cafeteria at noon.
+p|今天上午我去图书馆了。/我去图书馆了今天上午。/我去图书馆今天上午了。|I went to the library this morning.
+p|他最近很忙。/他很忙最近。/很忙他最近。|He's been busy recently.
+c|我＿上网。|晚上常常/常常晚上上网/上网晚上|I often go online in the evening.
+c|她＿在宿舍洗澡。|早上/早上的/在早上的|She showers in the dorm in the morning.
+c|我们＿去听音乐会吧。|明天晚上/晚上明天的/的明天晚上|Let's go to the concert tomorrow night.
+c|他＿开始学中文。|上个学期/学期上个/的上个学期|He started learning Chinese last semester.
+c|你＿几点起床？|今天早上/早上的今天/今天的早上的|What time did you get up this morning?
+c|＿我们有中文考试。|下个星期三/星期三下个/下个的星期三|We have a Chinese exam next Wednesday.
+c|我＿给我妈妈写了一封信。|昨天/昨天的/在昨天的|I wrote my mom a letter yesterday.
+c|你们＿在哪儿吃饭？|中午/中午的/在中午的|Where do you eat at noon?
+c|我＿常常用电脑。|最近/最近的/最近了|I use the computer a lot recently.
+c|他＿就去教室了。|七点半/七点半的/在七点半的|He went to the classroom at 7:30.
+o|我 昨天 晚上 写 日记 了|I wrote in my diary last night.
+o|她 每天 早上 七 点 起床|She gets up at seven every morning.
+o|我们 中午 在 餐厅 吃 午饭|We have lunch in the cafeteria at noon.
+o|他 最近 很 忙|He's been busy recently.
+o|你 明天 几 点 上课|What time is your class tomorrow?
+# 8-1
+c|她八点上课，七点＿来了。|就/才/在|Her class is at eight, but she came at seven.
+c|我昨天晚上九点＿睡觉了。|就/才/在|I went to bed at nine last night (early).
+c|他十二点才睡觉，我十点＿睡觉了。|就/才/在|He didn't sleep until twelve; I went to bed at ten.
+c|我们三点上课，他两点＿到了。|就/才/在|Class is at three; he arrived at two.
+c|这个字很容易，我一看＿懂了。|就/才/在|This character is easy; I understood it at first glance.
+c|老师说得很慢，所以我＿懂了。|就/才/在|The teacher spoke slowly, so I understood.
+c|王朋早上六点＿开始学习了。|就/才/在|Wang Peng started studying at six in the morning (early).
+c|李友十点才来，王朋八点＿来了。|就/才/在|Li You didn't come until ten; Wang Peng came at eight.
+c|我昨天晚上一点＿睡觉。|才/在/了|I didn't go to bed until one last night (late).
+c|她七点＿起来了。|就/才/在|She got up at seven (early).
+p|他七点就来了。/他七点才来了。/他就七点来。|He came at seven (early).
+p|我九点就睡觉了。/我九点就睡觉。了/我就九点睡觉了了。|I went to bed at nine (early).
+p|这个字我一看就懂了。/这个字我一看才懂了。/这个字我就一看懂了。|I understood this character at a glance.
+p|她六点就开始学习了。/她六点开始就学习了。/她就六点开始学习了了。|She started studying at six (early).
+p|他十二点才回家。/他十二点就回家了才。/他才十二点回家了。|He didn't get home until twelve.
+o|他 七 点 就 来 了|He came at seven (early).
+o|我 九 点 就 睡觉 了|I went to bed at nine.
+o|她 六 点 就 开始 学习 了|She started studying at six.
+o|这 个 字 我 一 看 就 懂 了|I understood this character at a glance.
+o|王朋 十 点 就 到 了|Wang Peng arrived at ten (early).
+# 8-2
+c|我＿吃早饭，一边听音乐。|一边/一起/一下|I listen to music while eating breakfast.
+c|他一边上网，＿写日记。|一边/一起/还|He writes his diary while surfing the internet.
+c|我们一边喝咖啡，一边＿。|聊天/聊天了/一边聊天|We chat while drinking coffee.
+c|她一边洗澡，一边＿歌。|唱/唱歌/唱的|She sings while showering.
+c|别一边吃饭，一边＿电视。|看/看了/在看|Don't watch TV while eating.
+c|王朋一边听录音，一边＿课文。|念/念的/在念了|Wang Peng reads the text aloud while listening to the recording.
+c|我常常一边＿，一边听音乐。|写功课/写功课的/写了功课|I often do homework while listening to music.
+c|他们一边吃午饭，一边＿这个学期的考试。|聊/聊天/说话|They chat about the semester's exams over lunch.
+c|你别一边上课，＿打电话。|一边/一起/还|Don't make phone calls during class.
+c|她一边笑，一边＿。|说/说话了/在说了|She talks while laughing.
+p|我一边吃饭，一边看电视。/我一边吃饭，一起看电视。/我吃饭一边，看电视一边。|I watch TV while eating.
+p|他一边听音乐，一边写日记。/他听音乐一边，写日记一边。/他一边听音乐，写日记一边。|He writes his diary while listening to music.
+p|我们一边喝茶，一边聊天。/我们一起喝茶，一起聊天。/我们一边喝茶聊天一边。|We chat while drinking tea.
+p|别一边吃饭一边说话。/别一起吃饭一起说话。/一边别吃饭一边说话。|Don't talk while eating.
+p|她一边唱歌，一边跳舞。/她一边唱歌，一下跳舞。/她唱歌一边，跳舞一边。|She sings while dancing.
+o|我 一边 吃 早饭 ， 一边 听 音乐|I listen to music while eating breakfast.
+o|他 一边 上网 ， 一边 写 日记|He writes his diary while surfing the internet.
+o|我们 一边 喝 咖啡 ， 一边 聊天|We chat while drinking coffee.
+o|别 一边 吃饭 ， 一边 看 电视|Don't watch TV while eating.
+o|她 一边 听 录音 ， 一边 念 课文|She reads the text aloud while listening to the recording.
+# 8-3
+c|我去图书馆＿书。|看/看看了/在看的|I'm going to the library to read.
+c|他用电脑＿信。|写/写的/写了的|He writes letters on the computer.
+c|我们去餐厅＿饭吧。|吃/吃的/吃了的|Let's go to the cafeteria to eat.
+c|她回宿舍＿澡。|洗/洗了的/洗的|She goes back to the dorm to shower.
+c|王朋来我家＿我。|找/找了的/找的|Wang Peng comes to my place to find me.
+c|我＿电脑上网。|用/在/给|I use the computer to go online.
+c|他去学校＿上课。|∅/在/给|He goes to school for class.
+c|我们去音乐会＿音乐。|听/看/唱|We go to the concert to listen to music.
+c|你来＿做什么？|这儿/这儿的/的这儿|What did you come here for?
+c|她去朋友家＿天。|聊/聊天/说|She goes to a friend's place to chat.
+p|我去图书馆看书。/我看书去图书馆。/我去看书图书馆。|I go to the library to read.
+p|他用电脑写日记。/他写日记用电脑。/他电脑用写日记。|He writes his diary on the computer.
+p|我们去餐厅吃饭。/我们吃饭去餐厅。/我们去吃饭餐厅。|We go to the cafeteria to eat.
+p|她回宿舍睡觉。/她睡觉回宿舍。/她回睡觉宿舍。|She goes back to the dorm to sleep.
+p|王朋来学校找我。/王朋找我来学校。/王朋来找学校我。|Wang Peng comes to school to find me.
+o|我 去 图书馆 看 书|I go to the library to read.
+o|他 用 电脑 写 信|He writes letters on the computer.
+o|我们 去 餐厅 吃 午饭|We go to the cafeteria for lunch.
+o|她 回 宿舍 洗澡|She goes back to the dorm to shower.
+o|王朋 来 我 家 找 我|Wang Peng comes to my place to find me.
+# 8-4
+c|我会说一点儿中文＿。|了/着/过|I can speak a little Chinese now.
+c|他现在不忙＿。|了/着/过|He's not busy anymore.
+c|天晚了，我得回宿舍＿。|了/着/过|It's late; I have to go back to the dorm now.
+c|我有男朋友＿。|了/着/过|I have a boyfriend now.
+c|我已经懂＿。|了/着/得|I understand now.
+c|他是大学生＿。|了/着/过|He's a college student now.
+c|我不想去＿。|了/着/得|I don't want to go anymore.
+c|现在十二点＿，我们睡觉吧。|了/着/过|It's twelve already; let's go to bed.
+c|这个字我会写＿。|了/着/得|I can write this character now.
+c|他最近很忙，不常上网＿。|了/着/过|He's busy lately and doesn't go online much anymore.
+p|我会说中文了。/我了会说中文。/我会了说中文了。|I can speak Chinese now.
+p|他不忙了。/他了不忙。/他不了忙。|He isn't busy anymore.
+p|现在十点了。/现在了十点。/了现在十点。|It's ten o'clock now.
+p|我已经懂了。/我已经了懂。/我了已经懂。|I understand now.
+p|我不想去了。/我不想了去。/我了不想去。|I don't want to go anymore.
+o|我 会 说 一点儿 中文 了|I can speak a little Chinese now.
+o|他 现在 不 忙 了|He's not busy anymore.
+o|现在 十二 点 了|It's twelve o'clock now.
+o|我 已经 懂 了|I understand now.
+o|天 晚 了 ， 我 得 回 宿舍 了|It's late; I have to go back to the dorm.
+# 8-5
+c|这是我昨天写＿日记。|的/了/得|This is the diary entry I wrote yesterday.
+c|你看的那个电影＿意思吗？|有/是/的|Is the movie you watched interesting?
+c|教我们中文的老师＿王。|姓/叫/是的|The teacher who teaches us Chinese is surnamed Wang.
+c|我喜欢你＿的歌。|唱/唱了/唱得|I like the songs you sing.
+c|这是谁写＿信？|的/了/得|Who wrote this letter?
+c|我认识＿的那个人。|跟你说话/你跟说话/说话跟你|I know the person who was talking to you.
+c|她是我们学校＿的老师。|教中文/中文教/教的中文|She's the teacher at our school who teaches Chinese.
+c|昨天来＿那个人是我哥哥。|的/了/得|The person who came yesterday is my older brother.
+c|你用＿电脑很新。|的/了/得|The computer you use is new.
+c|我写的汉字＿？|好看吗/好看的吗/吗好看|Do the characters I wrote look nice?
+p|这是我昨天写的信。/这是我昨天写信的。/这是的我昨天写信。|This is the letter I wrote yesterday.
+p|你看的电影有意思吗？/你看电影的有意思吗？/电影你看的有意思吗？|Is the movie you watched interesting?
+p|教我们的老师姓王。/我们教的老师姓王。/老师教我们的姓王。|The teacher who teaches us is surnamed Wang.
+p|昨天来的人是我哥哥。/昨天人来的是我哥哥。/来的昨天人是我哥哥。|The person who came yesterday is my older brother.
+p|我喜欢她唱的歌。/我喜欢她歌唱的。/我喜欢唱的她歌。|I like the songs she sings.
+o|这 是 我 昨天 写 的 日记|This is the diary entry I wrote yesterday.
+o|你 看 的 电影 有意思 吗|Is the movie you watched interesting?
+o|教 我们 中文 的 老师 姓 王|The teacher who teaches us Chinese is surnamed Wang.
+o|昨天 来 的 人 是 我 哥哥|The person who came yesterday is my older brother.
+o|我 喜欢 你 唱 的 歌|I like the songs you sing.
+# 8-6
+c|我＿上网呢。|正在/在正/正了|I'm online right now.
+c|他正在洗澡＿。|呢/吗/了|He's taking a shower right now.
+c|你给我打电话的时候，我正在＿。|上课/上课了/上了课|When you called me, I was in class.
+c|她正在＿日记呢。|写/写了/写得|She's writing in her diary right now.
+c|老师正在＿开会。|办公室/办公室的/在办公室|The teacher is in a meeting at the office right now.
+c|你正在做＿？|什么/什么呢吗/吗|What are you doing right now?
+c|我们正在吃午饭，你＿吧。|来/来了/来呢|We're having lunch right now; come along.
+c|王朋＿听音乐呢。|正在/正在了/在正|Wang Peng is listening to music right now.
+c|他们正在＿考试。|准备/准备了/准备得|They're preparing for the exam right now.
+c|我正在上网，＿打电话。|别/不是/不有|I'm online right now; don't call.
+p|我正在上网呢。/我在正上网呢。/我正在上网了呢。|I'm online right now.
+p|他正在洗澡。/他洗澡正在。/正在他洗澡了。|He's taking a shower.
+p|你正在做什么？/你做什么正在？/你正在做什么了？|What are you doing right now?
+p|她正在写日记呢。/她写日记正在呢。/她正在写了日记呢。|She's writing her diary right now.
+p|老师正在开会。/老师开会正在。/正在老师开会。|The teacher is in a meeting.
+o|我 正在 上网 呢|I'm online right now.
+o|他 正在 洗澡|He's taking a shower.
+o|你 正在 做 什么|What are you doing right now?
+o|她 正在 写 日记 呢|She's writing in her diary right now.
+o|我们 正在 吃 午饭|We're having lunch right now.
+# 8-7
+c|＿中文以外，我还学英文。|除了/以外/除|Besides Chinese, I'm also learning English.
+c|除了上网以外，他＿喜欢看电影。|还/也还是/都|Besides surfing the net, he also likes watching movies.
+c|除了王朋＿，我们都去了。|以外/除了/还|Everyone went except Wang Peng.
+c|除了咖啡以外，我＿喝茶。|还/一起/都|Besides coffee, I also drink tea.
+c|除了星期六以外，我们＿有课。|都/是/也还|We have class every day except Saturday.
+c|除了写日记以外，你还＿什么？|写/写的/写了的|Besides your diary, what else do you write?
+c|除了李友以外，王朋还认识＿？|谁/什么/哪|Besides Li You, who else does Wang Peng know?
+c|除了中国菜以外，她还喜欢吃＿。|美国菜/美国菜吗/的美国菜|Besides Chinese food, she also likes American food.
+c|除了我以外，大家＿懂了。|都/是/也还|Everyone understood except me.
+c|除了上课以外，我＿得去图书馆。|还/是/在|Besides going to class, I also have to go to the library.
+p|除了中文以外，我还学英文。/除了中文以外，我学还英文。/中文除了以外，我还学英文。|Besides Chinese, I'm also learning English.
+p|除了王朋以外，我们都去了。/除了王朋以外，我们还去了都。/王朋以外除了，我们都去了。|Everyone went except Wang Peng.
+p|除了咖啡以外，他还喜欢喝茶。/除了咖啡以外，他喜欢还喝茶。/除了以外咖啡，他还喜欢喝茶。|Besides coffee, he also likes tea.
+p|除了我以外，大家都懂了。/除了我以外，大家懂都了。/除了以外我，大家都懂了。|Everyone understood except me.
+p|除了上网以外，你还做什么？/除了上网以外，你做还什么？/除了上网，以外你还做什么？|Besides going online, what else do you do?
+o|除了 中文 以外 ， 我 还 学 英文|Besides Chinese, I'm also learning English.
+o|除了 王朋 以外 ， 我们 都 去 了|Everyone went except Wang Peng.
+o|除了 咖啡 以外 ， 他 还 喜欢 喝 茶|Besides coffee, he also likes tea.
+o|除了 我 以外 ， 大家 都 懂 了|Everyone understood except me.
+o|除了 上课 以外 ， 我 还 得 去 图书馆|Besides class, I also have to go to the library.
+# 8-8
+c|我＿说中文。|会/要会/可以了|I can speak Chinese. (learned skill)
+c|我今天很忙，不＿去看电影。|能/得/想会|I'm busy today; I can't go to the movie.
+c|你＿不会唱中国歌？|会/能/要|Can you sing Chinese songs?
+c|他今天要开会，不＿来上课。|能/得/想会|He has a meeting today and can't come to class.
+c|我不＿写这个字。|会/得/在|I can't write this character. (never learned it)
+c|明天你＿来吗？|能/得会/会能|Can you come tomorrow?
+c|她＿跳舞，跳得很好。|会/得会/会能|She can dance, and dances well.
+c|我中午没空儿，不＿跟你吃饭。|能/得/想会|I'm not free at noon, so I can't have lunch with you.
+c|你＿用电脑吗？|会/得会/会能|Do you know how to use a computer?
+c|太晚了，我不＿上网了，得睡觉了。|能/得/想会|It's too late; I can't go online anymore — I have to sleep.
+p|我会说一点儿中文。/我能说一点儿中文会。/我说会一点儿中文。|I can speak a little Chinese.
+p|我今天不能去。/我今天不会去能。/我今天能不去了的。|I can't go today.
+p|你会不会唱歌？/你会唱不唱歌？/你不会会唱歌？|Can you sing?
+p|明天你能来吗？/明天你来能吗？/明天能你来吗吗？|Can you come tomorrow?
+p|她会用电脑。/她用会电脑。/她电脑会用。|She knows how to use a computer.
+o|我 会 说 中文|I can speak Chinese.
+o|我 今天 不 能 去|I can't go today.
+o|你 会 不 会 写 这 个 字|Can you write this character?
+o|明天 你 能 来 吗|Can you come tomorrow?
+o|她 会 跳舞|She can dance.
+# 8-9
+c|你明天有空儿，我们＿去看电影吧。|就/才/在|If you're free tomorrow, then let's go see a movie.
+c|你不懂，＿问老师吧。|就/才/也就是|If you don't understand, then ask the teacher.
+c|要是你想去，我＿跟你去。|就/在/都|If you want to go, then I'll go with you.
+c|你累了，＿回宿舍睡觉吧。|就/才/在|You're tired, so go back to the dorm and sleep.
+c|你喜欢这个电脑，＿用吧。|就/才/还|You like this computer — then use it.
+c|要是明天有空儿，我们＿去打球。|就/在/都会|If we're free tomorrow, then we'll go play ball.
+c|你给我打电话，我＿来。|就/在/都|Call me, and I'll come.
+c|你不想吃，＿别吃了。|就/才/还|If you don't want to eat, then don't.
+c|他不去，我＿不去了。|也/就也/在|If he isn't going, I'm not going either.
+c|要是你忙，我＿找别人。|就/在/都|If you're busy, then I'll find someone else.
+p|你有空儿，我们就去吧。/你有空儿，就我们去吧。/你就有空儿，我们去吧。|If you're free, then let's go.
+p|你不懂就问老师。/你不懂问就老师。/就你不懂问老师。|If you don't understand, ask the teacher.
+p|要是你想去，我就跟你去。/要是你想去，就我跟你去。/要是你就想去，我跟你去。|If you want to go, I'll go with you.
+p|你累了就睡觉吧。/你累了睡觉就吧。/你就累了睡觉吧。|If you're tired, go to sleep.
+p|你给我打电话，我就来。/你给我打电话，就我来。/你就给我打电话，我来。|Call me and I'll come.
+o|你 有 空儿 ， 我们 就 去 吧|If you're free, then let's go.
+o|你 不 懂 就 问 老师|If you don't understand, ask the teacher.
+o|要是 你 想 去 ， 我 就 跟 你 去|If you want to go, I'll go with you.
+o|你 累 了 就 睡觉 吧|If you're tired, go to sleep.
+o|你 给 我 打 电话 ， 我 就 来|Call me and I'll come.
