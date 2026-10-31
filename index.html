@@ -810,6 +810,10 @@ details.more>summary::-webkit-details-marker{display:none}
 details.more>summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
 details.more[open]>summary::after{transform:rotate(-135deg)}
 details.more>.infox{padding-bottom:14px}
+details.gegd{margin:4px 0}
+details.gegd>summary{color:var(--ink)}
+details.gegd .gcnt{display:inline-grid;place-items:center;min-width:1.5em;height:1.5em;margin-left:6px;padding:0 5px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.8rem}
+details.gegd>.geg{padding-bottom:12px}
 .stickyact{position:sticky;bottom:0;z-index:5;padding:12px 0 calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,rgb(255 255 255/0),var(--surface) 30%);margin-bottom:-6px}
 #mode .pad{width:min(300px,80vw,max(190px,calc(100svh - 430px)))}
 @media (max-width:640px){#mode .card.top-align:has(#pad){padding:14px 12px;gap:8px}#mode .card.top-align:has(#pad) .wprompt .han{font-size:2rem!important}#mode .card.top-align:has(#pad)+.hint{font-size:.82rem}}
@@ -2261,7 +2265,7 @@ function grammar(l0){
     <div class="glist">${GRAMMAR[l].map((g,i,_,D=(GDETAIL[l]||[])[i]||{})=>`<article class="gp"><header><span class="gn">${i+1}</span><h3>${esc(g.t)}</h3><span class="gpage">Textbook p. ${g.p}</span></header>
       <p>${esc(g.ex)}</p><p class="gpat">${esc(g.pat)}</p>
       ${D.d?`<div class="ghow"><h4>How it works</h4><ul>${D.d.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:''}
-      <h4 class="gegh">Examples</h4><div class="geg">${[...g.eg,...(D.eg||[])].map(([z,p,e])=>`<div class="ge"><div><span class="han">${esc(zh(z))}</span><span class="pyl">${pyHtml(p)}</span><span class="en">${esc(e)}</span></div><button class="play" data-gsay="${esc(z)}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>
+      <details class="more gegd"><summary><span>Examples <span class="gcnt">${[...g.eg,...(D.eg||[])].length}</span></span></summary><div class="geg">${[...g.eg,...(D.eg||[])].map(([z,p,e])=>`<div class="ge"><div><span class="han">${esc(zh(z))}</span><span class="pyl">${pyHtml(p)}</span><span class="en">${esc(e)}</span></div><button class="play" data-gsay="${esc(z)}" aria-label="Play">${PLAY}</button></div>`).join('')}</div></details>
       ${g.tip?`<p class="gtip"><b>Watch out:</b> ${esc(g.tip)}</p>`:''}<button class="btn gdbtn" data-gd="${i}">✎ Practise this point</button></article>`).join('')}</div>
     ${list.length?`<div class="btns"><button class="btn" id="gpr">Practise Lesson ${l} sentences</button></div>`:''}
     <p class="hint">The grammar points follow the textbook. The explanations and examples were written for this app.</p>`);
