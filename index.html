@@ -5,20 +5,19 @@
 <style>
 /* Layout: one narrow column like a phone app; lessons and modes on the home view, each practice mode replaces it full-width. */
 :root{
-  /* Night market: ink-black night, lantern red, lamplit paper */
-  --bg:#110e0c; --surface:#1c1714; --sunk:#29221d; --ink:#f3e9d6; --muted:#b0a28c; --line:#3d3229;
-  --accent:#ef5a3c; --accent-ink:#1c0e08; --accent-soft:#3b1a13; --gold:#e9b44c; --seal:#b8322a; --seal-ink:#fbeee0;
-  --paper:#efe3cb; --paper-ink:#1e1712; --paper-muted:#6d5d48; --paper-line:#d5c4a4;
-  --panel:var(--paper); --panel-ink:var(--paper-ink); --panel-muted:var(--paper-muted); --grid:#4a3b2e;
-  --ok:#6fd492; --ok-bg:#16301f; --bad:#ff8f86; --bad-bg:#3a1a18; --star:#f2c14a;
-  --cb1:#89adfe; --cb2:#faba37; --cb3:#9a8cff; --cb4:#d08a4f; --cl1:#ff7a70; --cl2:#f2b14a; --cl3:#63d283; --cl4:#76a9ff; --t0:#a99f92;
+  /* Forbidden City palette: cinnabar 朱砂, palace wall 宫墙红, rice paper 宣纸, ivory 象牙, ink 墨 */
+  --bg:#f3ead8; --surface:#fbf6ec; --sunk:#e9dec7; --ink:#1f1a17; --muted:#6b5f55; --line:#dccbb0;
+  --accent:#a8322a; --accent-ink:#fbf3e4; --accent-soft:#f3dcd2; --seal:#a8322a; --seal-ink:#fbf3e4;
+  --panel:#8f2b20; --panel-ink:#fbf3e4; --panel-muted:#e8c9b6; --grid:#e3b4a6;
+  --ok:#2f6b3a; --ok-bg:#e1ead5; --bad:#b3261e; --bad-bg:#f6dcd6; --star:#a87400;
+  --cb1:#0b6fb8; --cb2:#b87800; --cb3:#1c2a6b; --cb4:#7a4a1c; --cl1:#c4302a; --cl2:#b86a00; --cl3:#2a7a3f; --cl4:#2458b8; --t0:#7c8794;
   --t1:var(--cb1); --t2:var(--cb2); --t3:var(--cb3); --t4:var(--cb4);
   --f-display:"Literata", Georgia, "Times New Roman", serif;
   --f-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --f-han:"Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
   --f-hant:"Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
   --f-brush:"Ma Shan Zheng","Noto Serif SC","STKaiti","KaiTi",serif;
-  color-scheme:dark;
+  color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -495,48 +494,48 @@ footer{border-top:1px solid var(--line);padding-top:14px}
 .wmaker a{color:var(--accent);font-weight:600}
 #welcome.anim>*{animation:rise .38s cubic-bezier(.2,.8,.3,1) backwards}
 
-/* ---- Night market × ink and paper ---- */
-body{background:var(--bg)}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(70% 45% at 10% -8%,rgb(239 90 60/.22),transparent 70%),radial-gradient(55% 40% at 95% -5%,rgb(233 180 76/.14),transparent 70%),radial-gradient(80% 50% at 50% 110%,rgb(184 50 42/.12),transparent 70%),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .9 0 0 0 0 .8 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E")}
+/* ---- Forbidden City: rice paper, cinnabar and ink ---- */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(120% 80% at 50% 0%,transparent 55%,rgb(120 80 40/.10)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"),var(--bg)}
 h1{letter-spacing:.01em}
-.eyebrow{color:var(--gold)}
-.section>h2::before,.section>.row>h2::before{content:"";flex:none;align-self:center;width:9px;height:11px;border-radius:45%;background:var(--accent);box-shadow:0 0 12px 3px rgb(239 90 60/.45)}
-.btn{box-shadow:0 8px 22px -12px rgb(239 90 60/.9)}
+.eyebrow{color:var(--accent)}
+.section>h2::before,.section>.row>h2::before{content:"";flex:none;align-self:center;width:8px;height:8px;background:var(--accent);transform:rotate(45deg)}
+.btn{border-radius:6px}
 .btn.ghost{background:var(--sunk);box-shadow:inset 0 0 0 1px var(--line)}
-.btn.okb,.btn.badb{box-shadow:none}
-.mode,.lesson,.card,.stat,.acct,.streak,.wfeat li,.wmaker{background-image:linear-gradient(180deg,rgb(243 233 214/.035),transparent 60%)}
-.mode:hover:not(:disabled){border-color:var(--gold);box-shadow:0 10px 26px -14px rgb(233 180 76/.7)}
-.mode .ic,.wfeat .ic{background:var(--seal);color:var(--seal-ink);border:0;border-radius:5px;font-family:var(--f-brush);font-weight:400;box-shadow:inset 0 0 0 2px rgb(251 238 224/.28);transform:rotate(-3deg)}
-/* the daily-review panel and the welcome intro are lamplit paper signs */
-.hero{background:linear-gradient(180deg,rgb(255 255 255/.25),transparent 40%),var(--paper);border-radius:6px;box-shadow:0 0 0 1px var(--paper-line),0 18px 40px -18px rgb(239 90 60/.55),0 0 60px -20px rgb(233 180 76/.35)}
-.hero .stat{border-left-color:rgb(30 23 18/.15)}
-.hero .link{color:#a3271a}
-.hero .cta:disabled{background:rgb(30 23 18/.08)}
-.hero .cta{background:var(--seal);color:var(--seal-ink)}
-.cta .go{background:rgb(251 238 224/.16)}
-.wsample{color:#9b8a70;font-family:var(--f-brush)}
-.wsample span:nth-child(2){color:var(--seal)}
-.wmaker .seal{background:var(--seal);color:var(--seal-ink);border-radius:5px;transform:rotate(-3deg);box-shadow:inset 0 0 0 2px rgb(251 238 224/.28);font-family:var(--f-display)}
-.wmaker a{color:var(--gold)}
-.lanterns{display:block;width:min(100%,520px);height:auto;margin:-20px auto -26px;overflow:visible;filter:drop-shadow(0 0 14px rgb(239 90 60/.45))}
-.lan{transform-box:fill-box;transform-origin:50% 0;animation:sway 4.5s ease-in-out var(--d) infinite alternate}
-@keyframes sway{from{rotate:-3deg}to{rotate:3deg}}
-.lan ellipse{animation:glow 3s ease-in-out var(--d) infinite alternate}
-@keyframes glow{to{opacity:.82}}
+.mode,.lesson,.card,.stat,.wfeat li,.wmaker{border-radius:6px}
+.mode:hover:not(:disabled){border-color:var(--accent);box-shadow:0 8px 20px -14px rgb(143 43 32/.6)}
+/* mode icons are 田字格 practice squares with an ink character */
+.mode .ic,.wfeat .ic{color:var(--ink);font-family:var(--f-brush);font-weight:400;border:1.5px solid var(--accent);border-radius:2px;
+  background:repeating-linear-gradient(90deg,var(--grid) 0 3px,transparent 3px 6px) center/100% 1px no-repeat,repeating-linear-gradient(0deg,var(--grid) 0 3px,transparent 3px 6px) center/1px 100% no-repeat,var(--surface)}
+.wfeat .ic{font-size:1.25rem}
+/* the daily-review panel and the welcome intro are palace-red walls */
+.hero{border-radius:4px;box-shadow:inset 0 0 0 4px var(--panel),inset 0 0 0 5px rgb(251 243 228/.35),0 14px 30px -18px rgb(80 20 12/.6)}
+.hero .cta{background:var(--surface);color:var(--accent)}
+.hero .cta .go{background:var(--accent);color:var(--accent-ink)}
+.hero .cta:disabled{background:rgb(255 255 255/.1);color:var(--panel-ink)}
+.hero .link{color:var(--panel-ink);text-decoration:underline}
+.wsample{color:var(--panel-muted);font-family:var(--f-brush)}
+.wsample span:nth-child(2){color:var(--ink)}
+.wmaker .seal{background:var(--seal);color:var(--seal-ink);border-radius:3px;transform:rotate(-3deg);box-shadow:inset 0 0 0 2px rgb(251 243 228/.35);font-family:var(--f-display)}
+.wmaker a{color:var(--accent)}
+/* 回纹 fret band, used as a border under the masthead and the welcome drawing */
+.fret{height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M1 15V1H15V12H5V5H11V9H8' fill='none' stroke='%23a8322a' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x center/12px 12px;opacity:.85}
+.top::after{content:"";flex-basis:100%;height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M1 15V1H15V12H5V5H11V9H8' fill='none' stroke='%23a8322a' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x center/12px 12px;opacity:.85}
+.scroll{margin:0;padding:10px;background:var(--surface);border:1px solid var(--line);box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--accent),0 16px 30px -20px rgb(80 20 12/.6)}
+.palace{display:block;width:100%;height:auto}
+#welcome .wtop{padding-top:0}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <div class="wrap">
   <section id="welcome" class="view" hidden>
-    <svg class="lanterns" viewBox="0 0 360 96" preserveAspectRatio="xMidYMin meet" aria-hidden="true"><defs><radialGradient id="lg" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#ffb35c"/><stop offset=".55" stop-color="#e2452c"/><stop offset="1" stop-color="#8e1f15"/></radialGradient></defs><path d="M-10 6Q90 40 180 22T370 8" stroke="#5a4636" stroke-width="1.2" fill="none"/><g class="lan" style="--d:0s" transform="translate(40 22)"><line y1="-22" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-8.3" y="-3" width="16.6" height="4" rx="1" fill="#e9b44c"/><ellipse cy="16.1" rx="15.1" ry="16.1" fill="url(#lg)"/><path d="M0 1V32.2M-7.8 3.9Q-16.1 16.1-7.8 28.6M7.8 3.9Q16.1 16.1 7.8 28.6" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-8.3" y="31.7" width="16.6" height="4" rx="1" fill="#e9b44c"/><path d="M0 36.2v11.7" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:0.6s" transform="translate(112 32)"><line y1="-32" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-10.2" y="-3" width="20.5" height="4" rx="1" fill="#e9b44c"/><ellipse cy="19.8" rx="18.6" ry="19.8" fill="url(#lg)"/><path d="M0 1V39.7M-9.6 4.8Q-19.8 19.8-9.6 35.2M9.6 4.8Q19.8 19.8 9.6 35.2" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-10.2" y="39.0" width="20.5" height="4" rx="1" fill="#e9b44c"/><path d="M0 43.7v14.4" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:1.2s" transform="translate(180 22)"><line y1="-22" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-12.2" y="-3" width="24.3" height="4" rx="1" fill="#e9b44c"/><ellipse cy="23.6" rx="22.0" ry="23.6" fill="url(#lg)"/><path d="M0 1V47.1M-11.4 5.7Q-23.6 23.6-11.4 41.8M11.4 5.7Q23.6 23.6 11.4 41.8" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-12.2" y="46.4" width="24.3" height="4" rx="1" fill="#e9b44c"/><path d="M0 51.1v17.1" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:0.3s" transform="translate(248 30)"><line y1="-30" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-10.2" y="-3" width="20.5" height="4" rx="1" fill="#e9b44c"/><ellipse cy="19.8" rx="18.6" ry="19.8" fill="url(#lg)"/><path d="M0 1V39.7M-9.6 4.8Q-19.8 19.8-9.6 35.2M9.6 4.8Q19.8 19.8 9.6 35.2" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-10.2" y="39.0" width="20.5" height="4" rx="1" fill="#e9b44c"/><path d="M0 43.7v14.4" stroke="#e9b44c" stroke-width="2"/></g><g class="lan" style="--d:0.9s" transform="translate(318 17)"><line y1="-17" y2="0" stroke="#5a4636" stroke-width="1.2"/><rect x="-8.3" y="-3" width="16.6" height="4" rx="1" fill="#e9b44c"/><ellipse cy="16.1" rx="15.1" ry="16.1" fill="url(#lg)"/><path d="M0 1V32.2M-7.8 3.9Q-16.1 16.1-7.8 28.6M7.8 3.9Q16.1 16.1 7.8 28.6" stroke="#7a1d14" stroke-opacity=".55" fill="none"/><rect x="-8.3" y="31.7" width="16.6" height="4" rx="1" fill="#e9b44c"/><path d="M0 36.2v11.7" stroke="#e9b44c" stroke-width="2"/></g></svg>
+    <figure class="scroll"><svg class="palace" viewBox="0 0 400 250" role="img" aria-label="Ink drawing of a Forbidden City hall on its marble terrace, with a red sun, clouds and a pine"><defs><pattern id="lat" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 0L5 5M5 0L0 5" stroke="#5a1a13" stroke-width=".6" opacity=".55"/></pattern><g id="cl" fill="#f3ead8" stroke="#1f1a17" stroke-width="1.3" stroke-linecap="round"><path d="M0 14q2-12 16-10q6-12 20-6q14-4 16 8q10 0 8 8z"/><path d="M14 10q4-6 9-2M34 6q5-4 9 1" fill="none"/><path d="M60 12q8 0 10-6" fill="none"/></g></defs><circle cx="318" cy="64" r="34" fill="#a8322a" opacity=".92"/><path d="M0 205Q50 150 110 182Q160 140 225 176Q290 130 400 186V250H0Z" fill="#e4d6bb" opacity=".8"/><use href="#cl" transform="translate(26 40) scale(1.15)"/><use href="#cl" transform="translate(268 92) scale(.9)"/><use href="#cl" transform="translate(150 30) scale(.7)"/><path d="M64 44q5-4 10 0q5-4 10 0M92 30q4-3 8 0q4-3 8 0M238 50q4-3 8 0q4-3 8 0" stroke="#1f1a17" stroke-width="1.2" fill="none"/><rect x="40" y="222" width="320" height="18" fill="#efe5d0" stroke="#1f1a17" stroke-width="1.2"/><path d="M42 217H358" stroke="#1f1a17" stroke-width="1"/><path d="M44 222v-7M53 222v-7M62 222v-7M71 222v-7M80 222v-7M89 222v-7M98 222v-7M107 222v-7M116 222v-7M125 222v-7M134 222v-7M143 222v-7M152 222v-7M161 222v-7M170 222v-7M224 222v-7M233 222v-7M242 222v-7M251 222v-7M260 222v-7M269 222v-7M278 222v-7M287 222v-7M296 222v-7M305 222v-7M314 222v-7M323 222v-7M332 222v-7M341 222v-7M350 222v-7" stroke="#1f1a17" stroke-width="1.2"/><rect x="62" y="206" width="276" height="16" fill="#efe5d0" stroke="#1f1a17" stroke-width="1.2"/><path d="M64 201H336" stroke="#1f1a17" stroke-width="1"/><path d="M66 206v-7M75 206v-7M84 206v-7M93 206v-7M102 206v-7M111 206v-7M120 206v-7M129 206v-7M138 206v-7M147 206v-7M156 206v-7M165 206v-7M174 206v-7M228 206v-7M237 206v-7M246 206v-7M255 206v-7M264 206v-7M273 206v-7M282 206v-7M291 206v-7M300 206v-7M309 206v-7M318 206v-7M327 206v-7M336 206v-7" stroke="#1f1a17" stroke-width="1.2"/><rect x="84" y="190" width="232" height="16" fill="#efe5d0" stroke="#1f1a17" stroke-width="1.2"/><path d="M86 185H314" stroke="#1f1a17" stroke-width="1"/><path d="M88 190v-7M97 190v-7M106 190v-7M115 190v-7M124 190v-7M133 190v-7M142 190v-7M151 190v-7M160 190v-7M169 190v-7M232 190v-7M241 190v-7M250 190v-7M259 190v-7M268 190v-7M277 190v-7M286 190v-7M295 190v-7M304 190v-7M313 190v-7" stroke="#1f1a17" stroke-width="1.2"/><path d="M180 190H220L228 240H172Z" fill="#e6d8bd" stroke="#1f1a17" stroke-width="1"/><path d="M179.2 195H220.8M178.4 200H221.6M177.6 205H222.4M176.8 210H223.2M176.0 215H224.0M175.2 220H224.8M174.4 225H225.6M173.6 230H226.4M172.8 235H227.2" stroke="#1f1a17" stroke-width=".6" opacity=".6"/><rect x="104" y="154" width="192" height="36" fill="#8f2b20"/><rect x="120" y="160" width="160" height="30" fill="url(#lat)"/><path d="M108 154V190M124 154V190M140 154V190M156 154V190M172 154V190M188 154V190M204 154V190M220 154V190M236 154V190M252 154V190M268 154V190M284 154V190" stroke="#a8322a" stroke-width="4"/><path d="M108 154V190M124 154V190M140 154V190M156 154V190M172 154V190M188 154V190M204 154V190M220 154V190M236 154V190M252 154V190M268 154V190M284 154V190" stroke="#5a1a13" stroke-width=".8" transform="translate(2 0)"/><rect x="96" y="152" width="208" height="5" fill="#5a1a13"/><path d="M120 128L280 128Q300 140 318 146Q328 148 336 136Q334 151 322 156L78 156Q66 151 64 136Q72 148 82 146Q100 140 120 128Z" fill="#1f1a17"/><path d="M124 131L110.3 154M130 131L117.4 154M136 131L124.5 154M142 131L131.6 154M148 131L138.6 154M154 131L145.7 154M160 131L152.8 154M166 131L159.9 154M172 131L167.0 154M178 131L174.0 154M184 131L181.1 154M190 131L188.2 154M196 131L195.3 154M202 131L202.4 154M208 131L209.4 154M214 131L216.5 154M220 131L223.6 154M226 131L230.7 154M232 131L237.8 154M238 131L244.8 154M244 131L251.9 154M250 131L259.0 154M256 131L266.1 154M262 131L273.2 154M268 131L280.2 154M274 131L287.3 154" stroke="#f3ead8" stroke-width=".6" opacity=".35"/><rect x="132" y="108" width="136" height="22" fill="#8f2b20"/><rect x="140" y="112" width="120" height="16" fill="url(#lat)"/><path d="M136 108V130M152 108V130M168 108V130M184 108V130M200 108V130M216 108V130M232 108V130M248 108V130M264 108V130" stroke="#a8322a" stroke-width="3.5"/><rect x="188" y="113" width="24" height="12" fill="#1f1a17" stroke="#c99a2e" stroke-width="1"/><rect x="126" y="106" width="148" height="4" fill="#5a1a13"/><path d="M150 76L250 76Q262 92 280 100Q290 102 298 90Q297 106 284 110L116 110Q103 106 102 90Q110 102 120 100Q138 92 150 76Z" fill="#1f1a17"/><path d="M154 79L141.1 108M160 79L148.8 108M166 79L156.5 108M172 79L164.2 108M178 79L171.8 108M184 79L179.5 108M190 79L187.2 108M196 79L194.9 108M202 79L202.6 108M208 79L210.2 108M214 79L217.9 108M220 79L225.6 108M226 79L233.3 108M232 79L241.0 108M238 79L248.6 108M244 79L256.3 108" stroke="#f3ead8" stroke-width=".6" opacity=".35"/><rect x="144" y="70" width="112" height="6" rx="1" fill="#1f1a17"/><path d="M146 71q-9-6-4-15q5 3 1 8M254 71q9-6 4-15q-5 3-1 8" fill="none" stroke="#1f1a17" stroke-width="2.4" stroke-linecap="round"/><path d="M30 246C35 214 24 196 40 172C50 156 44 142 58 128" stroke="#1f1a17" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M40 172q14-2 22 4M44 146q-12-4-20 0" stroke="#1f1a17" stroke-width="2.4" fill="none"/><g fill="#1f1a17"><ellipse cx="60" cy="124" rx="22" ry="6"/><ellipse cx="66" cy="177" rx="17" ry="5"/><ellipse cx="22" cy="145" rx="15" ry="5"/><ellipse cx="30" cy="190" rx="12" ry="4"/></g><path d="M0 244Q100 238 200 243T400 241" stroke="#1f1a17" stroke-width="1.2" fill="none" opacity=".5"/></svg></figure>
+    <div class="fret" aria-hidden="true"></div>
     <div class="wtop"><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1>
       <p class="lede">A practice companion for the first semester of Chinese. Learn the characters, words and sentences of the Intro and Lessons 1 to 10, a few minutes a day.</p></div>
-    <div class="hero"><p class="wsample han" aria-hidden="true" data-nosay><span>你</span><span>好</span><span>字</span></p>
-      <p style="margin:0">Every card is spoken aloud, every character can be written stroke by stroke, and a daily review brings each one back just before you would forget it.</p></div>
     <div class="section">
       <div class="wcta"><button class="btn" id="wsign">Sign up</button><button class="btn ghost" id="wtry">Try without registration ›</button></div>
       <p class="hint" style="margin:0">With an account your progress syncs between devices and you appear on the leaderboard. Without one, everything still works and your progress is saved in this browser.</p></div>
+    <div class="hero"><p class="wsample han" aria-hidden="true" data-nosay><span>你</span><span>好</span><span>字</span></p>
+      <p style="margin:0">Every card is spoken aloud, every character can be written stroke by stroke, and a daily review brings each one back just before you would forget it.</p></div>
     <div class="section"><h2>What you can practise</h2>
       <ul class="wfeat">
         <li><span class="ic">卡</span><span><b>Flashcards &amp; review</b><span>Spaced daily review of characters and words</span></span></li>
@@ -551,7 +550,7 @@ h1{letter-spacing:.01em}
   </section>
   <section id="home" class="view">
     <div class="top">
-      <div class="mast"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"> <rect x="2" y="2" width="60" height="60" rx="14" fill="#b8322a"/> <g stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2.5 2.5" fill="none"><line x1="32" y1="8" x2="32" y2="56"/><line x1="8" y1="32" x2="56" y2="32"/><line x1="10" y1="10" x2="54" y2="54"/><line x1="54" y1="10" x2="10" y2="54"/></g> <g fill="#fff" transform="translate(6.4,51.4) scale(0.05,-0.05)"><path d="M 467 799 Q 497 777 529 750 Q 545 737 564 739 Q 576 740 580 756 Q 584 774 571 807 Q 556 841 457 853 Q 438 854 432 852 Q 426 846 429 832 Q 435 819 467 799 Z"/><path d="M 277 656 Q 277 677 254 696 Q 236 712 233 686 Q 237 656 194 602 Q 149 554 165 507 Q 166 498 171 491 Q 184 464 206 491 Q 221 512 268 623 L 277 656 Z"/><path d="M 268 623 Q 289 611 326 619 Q 476 665 705 681 Q 730 684 741 681 Q 759 668 756 661 Q 756 657 725 583 Q 718 570 725 565 Q 732 561 749 573 Q 804 613 850 627 Q 887 640 887 649 Q 886 659 812 712 Q 788 730 707 714 Q 503 690 373 668 Q 324 661 277 656 C 247 653 239 632 268 623 Z"/><path d="M 518 399 Q 642 495 669 501 Q 688 508 683 524 Q 680 540 614 578 Q 595 588 572 580 Q 511 558 418 532 Q 393 525 335 527 Q 311 528 319 508 Q 326 495 346 483 Q 377 467 411 486 Q 433 493 546 534 Q 559 538 571 532 Q 584 525 578 511 Q 545 465 508 409 C 491 384 494 381 518 399 Z"/><path d="M 551 333 Q 536 381 518 399 L 508 409 Q 498 419 487 424 Q 477 431 471 423 Q 467 419 474 405 Q 490 371 500 328 L 507 289 Q 525 120 490 66 Q 489 65 487 62 Q 478 58 377 89 Q 367 92 360 88 Q 354 87 370 74 Q 437 19 475 -30 Q 493 -49 511 -40 Q 535 -27 553 27 Q 578 120 558 293 L 551 333 Z"/><path d="M 558 293 Q 718 311 889 296 Q 911 293 918 301 Q 925 314 914 325 Q 886 352 844 371 Q 831 377 806 369 Q 737 356 667 346 Q 600 340 551 333 L 500 328 Q 491 331 308 309 Q 241 299 139 298 Q 126 299 124 288 Q 123 276 141 262 Q 157 250 187 238 Q 197 234 214 242 Q 230 246 303 259 Q 393 280 507 289 L 558 293 Z"/></g> </svg><div><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1><p class="hint" style="margin:0">One character at a time</p></div></div>
+      <div class="mast"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"> <rect x="2" y="2" width="60" height="60" rx="14" fill="#a8322a"/> <g stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2.5 2.5" fill="none"><line x1="32" y1="8" x2="32" y2="56"/><line x1="8" y1="32" x2="56" y2="32"/><line x1="10" y1="10" x2="54" y2="54"/><line x1="54" y1="10" x2="10" y2="54"/></g> <g fill="#fff" transform="translate(6.4,51.4) scale(0.05,-0.05)"><path d="M 467 799 Q 497 777 529 750 Q 545 737 564 739 Q 576 740 580 756 Q 584 774 571 807 Q 556 841 457 853 Q 438 854 432 852 Q 426 846 429 832 Q 435 819 467 799 Z"/><path d="M 277 656 Q 277 677 254 696 Q 236 712 233 686 Q 237 656 194 602 Q 149 554 165 507 Q 166 498 171 491 Q 184 464 206 491 Q 221 512 268 623 L 277 656 Z"/><path d="M 268 623 Q 289 611 326 619 Q 476 665 705 681 Q 730 684 741 681 Q 759 668 756 661 Q 756 657 725 583 Q 718 570 725 565 Q 732 561 749 573 Q 804 613 850 627 Q 887 640 887 649 Q 886 659 812 712 Q 788 730 707 714 Q 503 690 373 668 Q 324 661 277 656 C 247 653 239 632 268 623 Z"/><path d="M 518 399 Q 642 495 669 501 Q 688 508 683 524 Q 680 540 614 578 Q 595 588 572 580 Q 511 558 418 532 Q 393 525 335 527 Q 311 528 319 508 Q 326 495 346 483 Q 377 467 411 486 Q 433 493 546 534 Q 559 538 571 532 Q 584 525 578 511 Q 545 465 508 409 C 491 384 494 381 518 399 Z"/><path d="M 551 333 Q 536 381 518 399 L 508 409 Q 498 419 487 424 Q 477 431 471 423 Q 467 419 474 405 Q 490 371 500 328 L 507 289 Q 525 120 490 66 Q 489 65 487 62 Q 478 58 377 89 Q 367 92 360 88 Q 354 87 370 74 Q 437 19 475 -30 Q 493 -49 511 -40 Q 535 -27 553 27 Q 578 120 558 293 L 551 333 Z"/><path d="M 558 293 Q 718 311 889 296 Q 911 293 918 301 Q 925 314 914 325 Q 886 352 844 371 Q 831 377 806 369 Q 737 356 667 346 Q 600 340 551 333 L 500 328 Q 491 331 308 309 Q 241 299 139 298 Q 126 299 124 288 Q 123 276 141 262 Q 157 250 187 238 Q 197 234 214 242 Q 230 246 303 259 Q 393 280 507 289 L 558 293 Z"/></g> </svg><div><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1><p class="hint" style="margin:0">One character at a time</p></div></div>
       <div class="topr"><span class="streak" id="streak"></span><button class="acct" id="acct" data-go="account">Create account</button><button class="acct" id="lb" data-go="board"><span class="han av" aria-hidden="true">榜</span>Leaderboard</button><button class="acct" id="gear" data-go="progress" aria-label="Settings">⚙</button></div>
     </div>
     <div class="section">
@@ -2155,7 +2154,6 @@ function account(){
 /* ---------- Welcome screen: shown on the first visit, reopened from "About this app" ---------- */
 function welcome(){keyHandler=null;stopAudio();M().hidden=true;M().innerHTML='';$('home').hidden=true;const w=$('welcome');w.hidden=false;window.scrollTo(0,0);
   if(MOTION){w.classList.remove('anim');void w.offsetWidth;w.classList.add('anim')}}
-{const lg=document.querySelector('#home .logo');if(lg)$('welcome').querySelector('.wtop').prepend(lg.cloneNode(true))}
 $('wtry').onclick=()=>{store.set('ic-welcomed',true);signupFlow=false;goHome()};
 $('wsign').onclick=()=>{store.set('ic-welcomed',true);signupFlow=true;account()};
 $('about').onclick=welcome;
