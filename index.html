@@ -723,7 +723,7 @@ p,li,.hint{text-wrap:pretty}
 #card .cstk{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
 #card .cstk>span{display:grid;place-items:center;line-height:1;border:1px dashed var(--line);border-radius:12px;
   background:linear-gradient(var(--grid),var(--grid)) center/1px 100% no-repeat,linear-gradient(var(--grid),var(--grid)) center/100% 1px no-repeat}
-#card .cstk>span.han{border:0;background:none}
+#card .cstk>span.han,#card .cstk.plain>span{border:0;background:none}
 #card .cbox:has(.cstk){width:auto;min-width:0;aspect-ratio:auto;padding:0}
 #card .cplay.ping{animation:pop .35s ease}
 #card .cinfo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0;flex:0 1 240px}
@@ -1365,12 +1365,12 @@ function review(){
 function cardBack(x){
   return `<span class="py">${pyHtml(x.p)}</span>${x.pos?`<span class="tag">${esc(x.pos)}</span>`:''}<span class="meaning">${esc(x.en)}</span>`;
 }
-function strokeCard(x){
-  const box=M().querySelector('#card .cbox'),st=box&&box.querySelector('.cst');if(!box||!st)return;
+function strokeCard(x,front){
+  const st=M().querySelector(front?'#card .cfront':'#card .cbox .cst'),box=st&&st.parentNode;if(!st)return;
   const go=()=>{if(!STROKES||typeof HanziWriter==='undefined'||!box.isConnected)return;
-    const chars=[...hz(x)],fs=parseFloat(getComputedStyle(st).fontSize),nh=chars.filter(isHan).length,cw=$('card').clientWidth,base=Math.min(cw*.42,200),sz=Math.round(nh<2?base:nh===2?base*.5:Math.min(84,(cw-40)/nh-8)),tn=tonesOf(x),hanIdx=[];
+    const chars=[...hz(x)],fs=parseFloat(getComputedStyle(st).fontSize),nh=chars.filter(isHan).length,cw=$('card').clientWidth,base=Math.min(cw*.42,200),sz=Math.round(front?(nh<2?Math.min(cw*.5,220):Math.min(cw*.4,(cw-40)/nh-8)):nh<2?base:nh===2?base*.5:Math.min(84,(cw-40)/nh-8)),tn=tonesOf(x),hanIdx=[];
     const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-    const wrap=document.createElement('span');wrap.className='cstk';wrap.setAttribute('aria-hidden','true');
+    const wrap=document.createElement('span');wrap.className=front?'cstk plain':'cstk';wrap.setAttribute('aria-hidden','true');
     const ws=[];let h=0;
     chars.forEach((c,i)=>{const cell=document.createElement('span');
       if(isHan(c)&&STROKES[c]){cell.style.width=cell.style.height=sz+'px';cell.id='cstk'+i;cell.dataset.t=tn&&tn.length===[...x.s].filter(isHan).length?tn[h]:(x.tone||0);ws.push(cell)}
@@ -1378,7 +1378,7 @@ function strokeCard(x){
       if(isHan(c))h++;wrap.appendChild(cell)});
     if(!ws.length)return;
     st.classList.add('sr-only');box.insertBefore(wrap,st);
-    ws.forEach(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,showOutline:false,strokeColor:css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
+    ws.forEach(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,showOutline:false,strokeColor:front?css('--ink'):css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
     };
   STROKES?go():loadStrokes().then(go).catch(()=>{})}
 
@@ -1400,7 +1400,7 @@ function cards(deck0){
     $('star').onclick=()=>$('star').setAttribute('aria-pressed',toggleStar(x));
     $('tw').onclick=()=>tryWrite(x);
     M().querySelectorAll('[data-cd2]').forEach(b=>b.onclick=()=>{dir=state.cdir=b.dataset.cd2;saveState();fromEn.clear();flipped=false;draw()});
-    if(flipped)strokeCard(x);
+    strokeCard(x,!flipped);
     const sort=ok=>{card.classList.remove('flipin');card.classList.add(ok?'swipe-r':'swipe-l');grade(x,ok);(ok?yes:no).push(x);setTimeout(()=>{i++;flipped=false;draw();if($('card'))$('card').classList.add('cardin')},MOTION?200:0)};
     $('yes').onclick=()=>sort(true);$('no').onclick=()=>sort(false);
     $('prev').onclick=()=>{i--;const y=deck[i];yes=yes.filter(z=>z!==y);no=no.filter(z=>z!==y);flipped=false;draw()};
