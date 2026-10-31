@@ -714,8 +714,7 @@ p,li,.hint{text-wrap:pretty}
 /* flashcard back: character box on the left (tap to hear it), details on the right */
 #card .cflip{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;width:100%}
 #card .cflip.stack{grid-template-columns:1fr;justify-items:center}
-#card .cbox{position:relative;width:min(44vw,190px);aspect-ratio:1;display:grid;place-items:center;border:1.5px dashed var(--line);border-radius:16px;cursor:pointer;
-  background:linear-gradient(var(--grid),var(--grid)) center/1.5px 100% no-repeat,linear-gradient(var(--grid),var(--grid)) center/100% 1.5px no-repeat,var(--surface)}
+#card .cbox{position:relative;width:min(44vw,190px);aspect-ratio:1;display:grid;place-items:center;cursor:pointer}
 #card .cbox.wordbig{width:auto;min-width:min(44vw,190px);aspect-ratio:auto;padding:16px 18px}
 #card .cbox .han{font-size:clamp(4.2rem,24vw,7.2rem);line-height:1}
 #card .cbox.wordbig .han{font-size:clamp(2.4rem,12vw,3.8rem)}
@@ -723,6 +722,8 @@ p,li,.hint{text-wrap:pretty}
 #card .cplay .cspk{width:22px;height:22px;color:var(--ink);opacity:.75}
 @media (hover:hover){#card .cplay:hover .cspk{opacity:1;color:var(--accent)}}
 #card .cbox{cursor:inherit}
+#card .cstk{display:flex;gap:0;justify-content:center;align-items:center;flex-wrap:wrap}
+#card .cstk>span{display:grid;place-items:center;line-height:1}
 #card .cplay.ping{animation:pop .35s ease}#card .cplay.ping .cspk{color:var(--accent);opacity:1}
 #card .cinfo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0}
 #card .cinfo .py{font-size:clamp(1.8rem,8vw,2.4rem)}
@@ -1358,6 +1359,25 @@ function review(){
 }
 
 /* ---------- Flashcards ---------- */
+/* back of a flashcard: the character draws itself stroke by stroke, one character after another */
+function strokeCard(x){
+  const box=M().querySelector('#card .cbox'),st=box&&box.querySelector('.cst');if(!box||!st||!MOTION)return;
+  const go=()=>{if(!STROKES||typeof HanziWriter==='undefined'||!box.isConnected)return;
+    const chars=[...hz(x)],fs=parseFloat(getComputedStyle(st).fontSize),sz=Math.round(fs*1.12),tn=tonesOf(x),hanIdx=[];
+    const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    const wrap=document.createElement('span');wrap.className='cstk';wrap.setAttribute('aria-hidden','true');
+    const ws=[];let h=0;
+    chars.forEach((c,i)=>{const cell=document.createElement('span');
+      if(isHan(c)&&STROKES[c]){cell.style.width=cell.style.height=sz+'px';cell.id='cstk'+i;cell.dataset.t=tn&&tn.length===[...x.s].filter(isHan).length?tn[h]:(x.tone||0);ws.push(cell)}
+      else{cell.className='han';cell.textContent=c;cell.style.fontSize=fs+'px'}
+      if(isHan(c))h++;wrap.appendChild(cell)});
+    if(!ws.length)return;
+    st.classList.add('sr-only');box.insertBefore(wrap,st);
+    const wr=ws.map(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.04,showOutline:false,strokeColor:css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,strokeAnimationSpeed:1.5,delayBetweenStrokes:120,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
+    wr.forEach(w=>w.hideCharacter());
+    const run=(i=0)=>{if(i>=wr.length||!wrap.isConnected)return;wr[i].animateCharacter({onComplete:()=>run(i+1)})};run()};
+  STROKES?go():loadStrokes().then(go).catch(()=>{})}
+
 function cards(deck0){
   let deck=deck0||shuffle(pool()),i=0,flipped=false,yes=[],no=[];
   let dir=state.cdir||'zh';const fromEn=new Map(),isEn=x=>{if(!fromEn.has(x))fromEn.set(x,dir==='en'||(dir==='mix'&&Math.random()<.5));return fromEn.get(x)};
@@ -1367,7 +1387,7 @@ function cards(deck0){
     open(bar(i/deck.length*100,(i+1)+' / '+deck.length)+
       `<div class="piles"><span class="no">✗ Still learning: ${no.length}</span><button class="starbtn" id="star" aria-pressed="${starred(x)}" aria-label="Star this card">★ star</button><span class="yes">✓ Know: ${yes.length}</span></div>
       <div class="seg cdirseg" role="group" aria-label="Card front">${[['zh','中 → EN'],['en','EN → 中'],['mix','Mixed']].map(([k,n])=>`<button data-cd2="${k}" aria-pressed="${dir===k}">${n}</button>`).join('')}</div>
-      <button class="card${flipped?' flipped':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${bigClass(x)}"><span class="han">${hzHtml(x)}</span><span class="cplay" data-play role="button" aria-label="Play" title="Play"><svg class="cspk" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></span></span><div class="cinfo">${backHtml(x)}</div></div>`:`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)}${en?' · EN → 中':''}</span>${en?`<p class="meaning" style="font-size:1.45rem;font-weight:700">${esc(x.en)}</p>`:`<span class="${bigClass(x)} han">${hz(x)}</span>`}<span class="flip-hint">${en?'Picture the Chinese and say it, then tap to check':'Tap to see pinyin, tone and meaning'}</span>`}</button>
+      <button class="card${flipped?' flipped':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${x.kind==='c'?'one':'wordbig'}"><span class="han cst">${hzHtml(x)}</span><span class="cplay" data-play role="button" aria-label="Play" title="Play"><svg class="cspk" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></span></span><div class="cinfo">${backHtml(x)}</div></div>`:`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)}${en?' · EN → 中':''}</span>${en?`<p class="meaning" style="font-size:1.45rem;font-weight:700">${esc(x.en)}</p>`:`<span class="${bigClass(x)} han">${hz(x)}</span>`}<span class="flip-hint">${en?'Picture the Chinese and say it, then tap to check':'Tap to see pinyin, tone and meaning'}</span>`}</button>
       <button class="btn ghost" id="tw" style="align-self:center">✍ Try writing ${x.kind==='w'&&[...x.s].filter(isHan).length>1?'this word':'this character'}</button>
       ${flipped?exampleHtml(x)+relatedHtml(x)+hookHtml(x):''}
       <div class="btns"><button class="btn badb" id="no">✗ Still learning</button><button class="btn okb" id="yes">✓ Know</button></div>
@@ -1378,7 +1398,7 @@ function cards(deck0){
     $('star').onclick=()=>$('star').setAttribute('aria-pressed',toggleStar(x));
     $('tw').onclick=()=>tryWrite(x);
     M().querySelectorAll('[data-cd2]').forEach(b=>b.onclick=()=>{dir=state.cdir=b.dataset.cd2;saveState();fromEn.clear();flipped=false;draw()});
-    if(flipped)bindHook(x);
+    if(flipped){bindHook(x);strokeCard(x)}
     const sort=ok=>{card.classList.remove('flipin');card.classList.add(ok?'swipe-r':'swipe-l');grade(x,ok);(ok?yes:no).push(x);setTimeout(()=>{i++;flipped=false;draw();if($('card'))$('card').classList.add('cardin')},MOTION?200:0)};
     $('yes').onclick=()=>sort(true);$('no').onclick=()=>sort(false);
     $('prev').onclick=()=>{i--;const y=deck[i];yes=yes.filter(z=>z!==y);no=no.filter(z=>z!==y);flipped=false;draw()};
