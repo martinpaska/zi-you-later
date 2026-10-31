@@ -746,7 +746,7 @@ p,li,.hint{text-wrap:pretty}
 /* flashcards: one fixed card size (front = back), everything on one phone screen */
 #mode:has(#card){gap:12px}
 #mode:has(#card) .cdirseg button{padding-top:6px;padding-bottom:6px}
-#card{height:clamp(300px,calc(100svh - 326px),480px);min-height:0;overflow:hidden;margin-bottom:10px}
+#card{width:100%;box-sizing:border-box;height:clamp(300px,calc(100vh - 326px),480px);height:clamp(300px,calc(100svh - 326px),480px);min-height:0;overflow:hidden;margin-bottom:10px}
 #card .cinfo .meaning{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .cardnav .btn{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px;white-space:nowrap}
 #card .cfront{font-size:clamp(5rem,26vw,8rem);line-height:1}
@@ -1410,7 +1410,7 @@ function strokeCard(x,front){
   STROKES?go():loadStrokes().then(go).catch(()=>{})}
 
 function cards(deck0){
-  let deck=deck0||shuffle(pool()),i=0,flipped=false,yes=[],no=[];
+  let deck=deck0||shuffle(pool()),i=0,flipped=false,yes=[],no=[],cardH=0;
   let dir=state.cdir||'zh';const fromEn=new Map(),isEn=x=>{if(!fromEn.has(x))fromEn.set(x,dir==='en'||(dir==='mix'&&Math.random()<.5));return fromEn.get(x)};
   function draw(){
     if(i>=deck.length)return done();
@@ -1422,6 +1422,8 @@ function cards(deck0){
       <div class="btns"><button class="btn badb" id="no">✗ Still learning</button><button class="btn okb" id="yes">✓ Know</button></div>
       <div class="btns cardnav"><button class="btn ghost" id="prev" ${i?'':'disabled'}>‹ Back</button><button class="btn ghost" id="tw" aria-label="Try writing ${x.kind==='w'&&[...x.s].filter(isHan).length>1?'this word':'this character'}">✍ Write</button><button class="btn ghost" id="shuf" aria-label="Shuffle the rest">Shuffle</button></div>`);
     const card=$('card');
+    /* lock the card size for the whole deck: front and back, every card, the same (also on phones whose browser resizes the viewport) */
+    if(!cardH)cardH=card.offsetHeight;card.style.height=cardH+'px';card.style.width='100%';
     card.onclick=e=>{if(flipped&&e.target.closest('[data-play]')){speak(x);const b=e.target.closest('[data-play]');b.classList.remove('ping');void b.offsetWidth;b.classList.add('ping');return}flipped=!flipped;if(flipped&&(state.cflips||0)<5){state.cflips=(state.cflips||0)+1;saveState()}draw();$('card').classList.add('flipin');if(flipped)speak(x)};
     $('star').onclick=()=>$('star').setAttribute('aria-pressed',toggleStar(x));
     $('tw').onclick=()=>tryWrite(x);
