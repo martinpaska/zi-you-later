@@ -29,7 +29,7 @@ c|明天星期＿。|四/四号/四点|Tomorrow is Thursday.
 c|现在八点一＿。|刻/半/号|It is a quarter past eight.
 c|你的生日是几月几＿？|号/点/岁|When is your birthday?
 c|晚上七＿半我请你吃饭。|点/号/月|I'll treat you to dinner at seven-thirty in the evening.
-c|今天是＿。|九月十二号星期四/星期四九月十二号/十二号九月星期四|Today is Thursday, September 12th.
+c|今天几月几＿？|号/点/岁|What's the date today?
 p|今天九月十二号。/今天十二号九月。/今天九号十二月。|Today is September 12th.
 p|现在三点半。/现在半三点。/现在三半点。|It is half past three.
 p|明天是星期四。/明天是四星期。/明天是星期第四。|Tomorrow is Thursday.
@@ -62,16 +62,16 @@ o|他 是 我 的 好 朋友|He is my good friend.
 o|你 姐姐 是 大学生 吗|Is your older sister a college student?
 o|这 是 我 爸爸 的 照片|This is my father's photo.
 # 3-3
-c|我＿你吃饭。|请/叫/是|I'll treat you to a meal.
+c|我＿你吃饭。|请/有/是|I'll treat you to a meal.
 c|明天我请你＿晚饭。|吃/喝/做|Tomorrow I'll treat you to dinner.
-c|今天你请我，明天我＿你。|请/叫/认识|Today you treat me; tomorrow I'll treat you.
+c|今天你请我，明天我＿你。|请/有/认识|Today you treat me; tomorrow I'll treat you.
 c|王朋请李友＿中国菜。|吃/请/是|Wang Peng treats Li You to Chinese food.
 c|我请你吃饭，＿？|怎么样/什么/谁|I'll treat you to a meal. How about it?
 c|谁请＿吃饭？|你/的你/你们的|Who is treating you to a meal?
 c|我们请老师吃＿。|晚饭/晚上/星期|We treat the teacher to dinner.
 c|我请你吃饭，因为今天是你的＿。|生日/星期/号|I'll treat you, because today is your birthday.
-c|他＿我吃美国菜。|请/叫/喜欢|He treats me to American food.
-c|星期四晚上我请你＿。|吃饭/饭吃/吃|I'll treat you to a meal on Thursday evening.
+c|他＿我吃美国菜。|请/有/是|He treats me to American food.
+c|星期四晚上我请你＿。|吃饭/饭吃/饭|I'll treat you to a meal on Thursday evening.
 p|我请你吃饭。/我吃饭请你。/我请吃饭你。|I'll treat you to a meal.
 p|他请我们吃中国菜。/他吃中国菜请我们。/他请吃中国菜我们。|He treats us to Chinese food.
 p|明天晚上我请你吃晚饭。/明天晚上我请吃晚饭你。/我请你明天晚上吃晚饭吃。|I'll treat you to dinner tomorrow evening.
@@ -127,14 +127,14 @@ o|今天 是 不 是 你 的 生日|Is today your birthday?
 # 3-6
 c|我喜欢吃中国菜，＿喜欢吃美国菜。|还/还是/都|I like Chinese food, and I also like American food.
 c|我有一个哥哥，＿有一个妹妹。|还/还是/和|I have an older brother, and also a younger sister.
-c|今天我很忙，明天＿很忙。|还/还是/都|I'm busy today, and still busy tomorrow.
+c|今天我很忙，明天＿很忙。|还/和/吗|I'm busy today, and still busy tomorrow.
 c|他是老师，＿是律师。|还/还是/和|He is a teacher and also a lawyer.
 c|我请你吃饭，＿请王朋。|还/还是/也还|I'm treating you to a meal, and also Wang Peng.
 c|我们认识王朋，还认识＿。|李友/还是李友/和李友|We know Wang Peng, and Li You too.
 c|你喜欢吃中国菜＿美国菜？|还是/还/都|Do you like Chinese food or American food?
 c|她有两个姐姐，＿有一个弟弟。|还/还是/和|She has two older sisters and also a younger brother.
 c|我们吃中国菜，＿吃美国菜吗？|还/还是/和|We're having Chinese food; are we having American food too?
-c|今天我请你，明天＿请你。|还/还是/都|I'm treating you today, and again tomorrow.
+c|今天我请你，明天＿请你。|还/和/吗|I'm treating you today, and again tomorrow.
 p|我喜欢吃中国菜，还喜欢吃美国菜。/我喜欢吃中国菜，还是喜欢吃美国菜。/我喜欢吃中国菜，喜欢还吃美国菜。|I like Chinese food and American food too.
 p|他有一个哥哥，还有一个弟弟。/他有一个哥哥，有还一个弟弟。/他有一个哥哥，还是有一个弟弟。|He has an older brother and a younger brother too.
 p|我认识王朋，还认识李友。/我认识王朋，认识还李友。/我认识王朋，还是认识李友。|I know Wang Peng and Li You too.

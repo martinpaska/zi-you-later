@@ -20,18 +20,18 @@ o|她 汉字 写 得 很 漂亮|She writes characters beautifully.
 o|你 今天 来 得 很 早|You came early today.
 o|我 昨天 睡 得 很 晚|I went to bed late yesterday.
 # 7-1
-c|今天的功课＿难了！|太/真/很|Today's homework is way too hard!
+c|今天的功课＿难了！|太/是/的|Today's homework is way too hard!
 c|你写字写得＿快！|真/太了/得|You really write fast!
 c|这个电影太有意思＿！|了/的/吧|This movie is so interesting!
-c|你＿酷了！|太/真/很是|You're so cool!
-c|第七课的语法＿容易。|真/太/太是|The grammar in Lesson 7 is really easy.
-c|你妹妹真＿！|漂亮/漂亮了/是漂亮|Your younger sister is really pretty!
+c|你＿酷了！|太/是/很是|You're so cool!
+c|第七课的语法＿容易。|真/是/太是|The grammar in Lesson 7 is really easy.
+c|你妹妹真＿！|漂亮/漂亮了/漂亮的了|Your younger sister is really pretty!
 c|老师说话说得太快＿。|了/的/吧|The teacher speaks too fast.
-c|他汉字写得＿好。|真/太/太是|He writes characters really well.
+c|他汉字写得＿好。|真/是/太是|He writes characters really well.
 c|今天的生词太多＿。|了/的/真|There are too many new words today.
 c|王朋真＿！|帅/帅了/是帅了|Wang Peng is really handsome!
 p|今天的功课太难了。/今天的功课太难。了/今天的功课真难了了。|Today's homework is way too hard.
-p|你真酷！/你真是酷了！/你酷真！|You're really cool!
+p|你真酷！/你酷真了！/你酷真！|You're really cool!
 p|这个语法太容易了。/这个语法容易太了。/这个语法太了容易。|This grammar is too easy.
 p|她写字写得真快。/她写字写得真快了了。/她真写字写得快。|She really writes fast.
 p|你的录音真好！/你的录音好真！/你的真录音好！|Your recording is really good!
@@ -41,13 +41,13 @@ o|第七课 的 语法 真 容易|The grammar in Lesson 7 is really easy.
 o|老师 说 话 说 得 太 快 了|The teacher speaks too fast.
 o|你 妹妹 真 漂亮|Your younger sister is really pretty.
 # 7-2
-c|他＿是王朋。|就/才/都|He is Wang Peng (and nobody else).
-c|这＿是我的笔。|就/才/也就是|This is precisely my pen.
+c|他＿是王朋。|就/在/都|He is Wang Peng (and nobody else).
+c|这＿是我的笔。|就/在/也就是|This is precisely my pen.
 c|她就＿我们的中文老师。|是/在/有|She is exactly our Chinese teacher.
-c|你找李友？我＿是李友。|就/才/都|You're looking for Li You? I'm Li You.
+c|你找李友？我＿是李友。|就/在/都|You're looking for Li You? I'm Li You.
 c|这就是第七课的＿。|生词/生词的/的生词的|These are exactly the new words of Lesson 7.
-c|那个很帅的人就是我＿。|哥哥/哥哥的的/的哥哥|That handsome guy is my older brother.
-c|你说的那个学生＿是他。|就/才/都|The student you mentioned is exactly him.
+c|那个很帅的人就是我＿。|哥哥/哥哥的的/哥哥了的|That handsome guy is my older brother.
+c|你说的那个学生＿是他。|就/有/都|The student you mentioned is exactly him.
 c|这就是我们的＿。|学校/学校的/的学校|This is our school.
 c|白英爱？她就＿我的同学。|是/在/有|Bai Ying'ai? She's my classmate.
 c|王老师就是＿老师。|教我们中文的/教中文我们的/我们教中文的|Teacher Wang is the one who teaches us Chinese.
@@ -63,7 +63,7 @@ o|那 就 是 我们 的 中文 老师|That is our Chinese teacher.
 o|这 就 是 我 家|This is my home.
 # 7-3
 c|王老师教我们＿。|中文/中文我们/的中文|Teacher Wang teaches us Chinese.
-c|请你给我＿笔。|一枝/一个/一张|Please give me a pen.
+c|请你给我＿笔。|一枝/一口/一张|Please give me a pen.
 c|我想问你＿问题。|一个/一枝/一张|I'd like to ask you a question.
 c|她给我一＿纸。|张/枝/个|She gave me a piece of paper.
 c|谁教你们＿？|语法/语法你们/你们的语法的|Who teaches you grammar?
@@ -92,7 +92,7 @@ c|他是我们班第二个＿的学生。|来/来了/来得|He's the second stud
 c|你们学到第几课了？——第＿课。|八/八个/八号|Which lesson have you got to? — Lesson 8.
 c|这是我的第二＿笔。|枝/张/个|This is my second pen.
 c|第一课＿容易。|很/得/第|Lesson 1 is easy.
-c|我上第一＿课。|节/个/课|I have first period. (L6: 节)
+c|我上第一＿课。|节/张/课|I have first period. (L6: 节)
 p|今天我们学第七课。/今天我们学七第课。/今天我们学第课七。|Today we're studying Lesson 7.
 p|她是第一个来的。/她是一第个来的。/她是第一来个的。|She was the first to arrive.
 p|第二课的语法很难。/二第课的语法很难。/第课二的语法很难。|The grammar in Lesson 2 is hard.
@@ -126,18 +126,18 @@ o|这 个 字 有点儿 难 写|This character is a bit hard to write.
 o|我 今天 有点儿 忙|I'm a bit busy today.
 # 7-6
 c|你＿这么早就来了？|怎么/什么/为什么吗|How come you came so early?
-c|他怎么＿来？|还不/还没/不还|How come he hasn't come yet?
+c|他怎么＿来？|还不/没还/不还|How come he hasn't come yet?
 c|你怎么不＿？|说话/说话吗/说话呢吗|How come you're not saying anything?
-c|你怎么＿懂？|不/没/没有了|How come you don't understand?
+c|你怎么＿懂？|不/不是/没有了|How come you don't understand?
 c|她怎么这么＿？|漂亮/漂亮吗/漂亮的|How come she's so pretty?
-c|你昨天怎么＿去上课？|没/不/不是|How come you didn't go to class yesterday?
-c|你怎么现在＿来？|才/就/都|How come you're only coming now?
+c|你昨天怎么＿去上课？|没/不有/不是|How come you didn't go to class yesterday?
+c|你怎么现在＿来？|才/了/都|How come you're only coming now?
 c|今天的功课怎么＿多？|这么/什么/怎么样|How come there's so much homework today?
 c|你写字怎么写得这么＿？|快/快的/得快|How come you write so fast?
-c|王朋怎么＿在家？|不/没/不是|How come Wang Peng isn't at home?
+c|王朋怎么＿在家？|不/也/不是|How come Wang Peng isn't at home?
 p|你怎么这么早就来了？/你什么这么早就来了？/你怎么这么早来就了？|How come you came so early?
-p|他怎么还没来？/他怎么还不来了？/他怎么没还来？|How come he's not here yet?
-p|你昨天怎么没来上课？/你昨天怎么不来上课了？/你昨天怎么没上课来？|How come you didn't come to class yesterday?
+p|他怎么还没来？/他怎么来还没？/他怎么没还来？|How come he's not here yet?
+p|你昨天怎么没来上课？/你昨天怎么来没上课？/你昨天怎么没上课来？|How come you didn't come to class yesterday?
 p|你怎么现在才来？/你怎么现在就来才？/你现在怎么来才？|How come you're only coming now?
 p|今天的生词怎么这么多？/今天的生词什么这么多？/今天的生词这么怎么多？|How come there are so many new words today?
 o|你 怎么 这么 早 就 来 了|How come you came so early?

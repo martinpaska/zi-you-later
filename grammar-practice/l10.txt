@@ -21,14 +21,14 @@ o|飞机票 你 买 了 吗|Have you bought the plane ticket?
 o|地铁 我 不 常 坐|I don't often take the subway.
 # 10-1
 c|你想坐公共汽车＿坐地铁？|还是/或者/和|Do you want to take the bus or the subway?
-c|你可以坐公共汽车＿坐地铁。|或者/还是/和|You can take the bus or the subway.
-c|我们周末去看电影＿去跳舞，都行。|或者/还是/和|This weekend we'll go to a movie or go dancing — either is fine.
+c|你可以坐公共汽车＿坐地铁。|或者/还是/都|You can take the bus or the subway.
+c|我们周末去看电影＿去跳舞，都行。|或者/还是/都|This weekend we'll go to a movie or go dancing — either is fine.
 c|你喝茶＿喝咖啡？|还是/或者/和|Do you want tea or coffee?
-c|你可以打电话＿发短信给我。|或者/还是/和|You can call or text me.
+c|你可以打电话＿发短信给我。|或者/还是/都|You can call or text me.
 c|你寒假回家＿不回家？|还是/或者/和|Are you going home for winter break or not?
-c|我想买红的＿黄的。|或者/还是/和|I want to buy a red one or a yellow one.
+c|我想买红的＿黄的。|或者/还是/都|I want to buy a red one or a yellow one.
 c|你开车去＿打车去？|还是/或者/和|Are you driving or taking a taxi?
-c|星期六＿星期天我们去机场。|或者/还是/和|We'll go to the airport on Saturday or Sunday.
+c|星期六＿星期天我们去机场。|或者/还是/都|We'll go to the airport on Saturday or Sunday.
 c|你们坐飞机去＿开车去？|还是/或者/和|Are you flying or driving?
 p|你喝茶还是喝咖啡？/你喝茶或者喝咖啡？/你喝茶和喝咖啡？|Do you want tea or coffee?
 p|你可以坐地铁或者坐公共汽车。/你可以坐地铁还是坐公共汽车。/你可以坐地铁和坐公共汽车还是。|You can take the subway or the bus.
@@ -84,15 +84,15 @@ o|你 还是 给 他 发 短信 吧|You'd better send him a text.
 o|这 件 太 贵 了 ， 我 还是 买 那 件 吧|This one's too expensive; I'd better buy that one.
 # 10-4
 c|他＿天都坐地铁。|每/都/各|He takes the subway every day.
-c|每个学生＿有手机。|都/也/还|Every student has a cell phone.
-c|我每天＿给妈妈打电话。|都/也/还|I call my mom every day.
+c|每个学生＿有手机。|都/是/很|Every student has a cell phone.
+c|我每天＿给妈妈打电话。|都/是/很|I call my mom every day.
 c|每＿考试都很难。|次/个次/的|Every exam is hard.
 c|她每个周末都＿家。|回/回了/回的|She goes home every weekend.
-c|每个城市＿有地铁吗？|都/也/还|Does every city have a subway?
+c|每个城市＿有地铁吗？|都/是/很|Does every city have a subway?
 c|我们每＿星期一都有中文课。|个/张/口|We have Chinese class every Monday.
 c|每天早上我都＿骑自行车去学校。|∅/在/很|Every morning I ride my bike to school.
 c|这些衣服每件都很＿。|便宜/便宜的/的便宜|Each of these clothes is cheap.
-c|他每天＿很早就起床了。|都/也/还|He gets up early every day.
+c|他每天＿很早就起床了。|都/是/很|He gets up early every day.
 p|他每天都坐地铁。/他每天坐都地铁。/他都每天坐地铁。|He takes the subway every day.
 p|每个学生都有手机。/每个学生有都手机。/都每个学生有手机。|Every student has a cell phone.
 p|我每个周末都回家。/我每个周末回家都。/我都每个周末回家。|I go home every weekend.
@@ -104,15 +104,15 @@ o|我 每 个 周末 都 回家|I go home every weekend.
 o|我们 每 个 星期一 都 有 中文 课|We have Chinese class every Monday.
 o|每 次 考试 都 很 难|Every exam is hard.
 # 10-5
-c|寒假＿到了。|快要/快/要快|Winter break is almost here.
-c|我们要下车＿。|了/的/吧|We're about to get off.
+c|寒假＿到了。|快要/快要要/要快|Winter break is almost here.
+c|我们要下车＿。|了/的/过|We're about to get off.
 c|新年快要＿了。|到/到了/来到了|New Year is almost here.
 c|快要考试了，你＿准备好了吗？|∅/在/很|The exam is coming up — are you ready?
-c|电影要开始＿，快进来！|了/的/吧|The movie is about to start — come in, quick!
-c|我们快到飞机场＿。|了/的/吧|We're almost at the airport.
-c|天快要黑＿。|了/的/吧|It's about to get dark.
+c|电影要开始＿，快进来！|了/的/过|The movie is about to start — come in, quick!
+c|我们快到飞机场＿。|了/的/过|We're almost at the airport.
+c|天快要黑＿。|了/的/过|It's about to get dark.
 c|他要回家了，＿给他打电话吧。|快/快要了/就快了|He's about to go home — call him quickly.
-c|下个星期就要考试＿。|了/的/吧|The exam is next week.
+c|下个星期就要考试＿。|了/的/过|The exam is next week.
 c|快十二点了，我们＿睡觉了。|要/会/在|It's almost twelve; we're about to go to bed.
 p|寒假快要到了。/寒假要快到了。/寒假快要了到。|Winter break is almost here.
 p|我们要下车了。/我们下车要了。/我们了要下车。|We're about to get off.

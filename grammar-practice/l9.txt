@@ -1,8 +1,8 @@
 # 9-0
-c|我＿买一件衬衫。|要/会/在|I want to buy a shirt.
-c|你＿买什么颜色的？|要/在/会|What color do you want to buy?
-c|我不＿这条裤子。|要/会/在|I don't want these pants.
-c|你要＿号的？|几/什么/多|What size do you want?
+c|我＿买一件衬衫。|要/是/给|I want to buy a shirt.
+c|你＿买什么颜色的？|要/是/给|What color do you want to buy?
+c|我不＿这条裤子。|要/是/在|I don't want these pants.
+c|你要＿号的？|几/谁/多|What size do you want?
 c|我要买＿鞋。|一双/一件/一条|I want to buy a pair of shoes.
 c|她要换一＿裤子。|条/件/双|She wants to exchange a pair of pants.
 c|你要不要＿？|试试/试试吗/吗试试|Do you want to try it on?
@@ -10,9 +10,9 @@ c|我们要＿东西。|买/卖了/买的|We want to buy some things.
 c|你要喝什么？——我要＿一杯茶。|∅/在/会|What do you want to drink? — I want a cup of tea.
 c|他要＿信用卡付钱。|用/在/给|He wants to pay by credit card.
 p|我要买一件衬衫。/我买要一件衬衫。/我要一件买衬衫。|I want to buy a shirt.
-p|你要什么颜色的？/你什么颜色要的？/你要的什么颜色？|What color do you want?
+p|你要什么颜色的？/你什么颜色要的？/你颜色要什么的？|What color do you want?
 p|我不要这双鞋。/我要不这双鞋。/我不这双鞋要。|I don't want these shoes.
-p|你要不要试试？/你要试不要试？/你不要要试试？|Do you want to try it on?
+p|你要不要试试？/你要不试试要？/你不要要试试？|Do you want to try it on?
 p|她要换一条裤子。/她换要一条裤子。/她要一条换裤子。|She wants to exchange a pair of pants.
 o|我 要 买 一 件 衬衫|I want to buy a shirt.
 o|你 要 什么 颜色 的|What color do you want?
@@ -43,10 +43,10 @@ o|我 要 换 一 双 黑 鞋|I want to exchange for a pair of black shoes.
 # 9-2
 c|我不要红的，我要黄＿。|的/了/得|I don't want the red one; I want the yellow one.
 c|大的太贵了，＿的便宜。|小/小小/的小|The big one is too expensive; the small one is cheap.
-c|你要黑的还是＿？|咖啡色的/咖啡色/的咖啡色|Do you want the black one or the brown one?
+c|你要黑的还是＿？|咖啡色的/咖啡色了/的咖啡色|Do you want the black one or the brown one?
 c|这件太大了，有没有小＿？|的/了/得|This one is too big; do you have a smaller one?
 c|便宜＿不好，贵的好。|的/了/得|The cheap one isn't good; the expensive one is.
-c|我喜欢长的，不喜欢＿。|短的/短/的短|I like the long one, not the short one.
+c|我喜欢长的，不喜欢＿。|短的/短了/的短|I like the long one, not the short one.
 c|这条裤子是新＿。|的/了/得|These pants are new.
 c|你穿中号的还是大号＿？|的/了/得|Do you wear medium or large?
 c|红的、黄的、黑的，你要＿？|哪件/什么件/几件的|Red, yellow, black — which one do you want?
@@ -63,15 +63,15 @@ o|有 没 有 小 一点儿 的|Do you have a slightly smaller one?
 o|便宜 的 不 好|The cheap one isn't good.
 # 9-3
 c|这件衬衫＿钱？|多少/几/多|How much is this shirt?
-c|你穿＿号的鞋？|几/多少/多|What size shoes do you wear?
+c|你穿＿号的鞋？|几/谁/多|What size shoes do you wear?
 c|你今年＿大？|多/几/多少|How old are you this year?
 c|你们学校有＿学生？|多少/几/多|How many students are there at your school?
 c|这条裤子＿长？|多/多少/几|How long are these pants?
 c|一共＿钱？|多少/几/多|How much altogether?
-c|你家有＿口人？|几/多少/多|How many people are in your family?
+c|你家有＿口人？|几/谁/多|How many people are in your family?
 c|你哥哥今年多＿？|大/少/几|How old is your older brother?
 c|一双鞋＿钱？|多少/几/多|How much is a pair of shoes?
-c|你的电脑＿新？|多/几/多少|How new is your computer?
+c|你的宿舍＿大？|多/几/多少|How big is your dorm?
 p|这件衬衫多少钱？/这件衬衫几钱？/这件衬衫多钱？|How much is this shirt?
 p|你今年多大？/你今年几大？/你今年多少大？|How old are you this year?
 p|一共多少钱？/一共几钱？/一共钱多少？|How much altogether?
@@ -106,16 +106,16 @@ o|这 双 鞋 六十八 块|These shoes are sixty-eight yuan.
 # 9-5
 c|这件衬衫＿那件一样大。|跟/给/在|This shirt is the same size as that one.
 c|我的鞋跟你的鞋＿。|一样/一个样/同样的|My shoes are the same as yours.
-c|这两条裤子的颜色＿一样。|不/没/没有|These two pairs of pants are not the same color.
+c|这两条裤子的颜色＿一样。|不/没/很|These two pairs of pants are not the same color.
 c|你跟你哥哥一样＿。|高/高的/很高|You're as tall as your older brother.
 c|这件衣服跟那件＿贵。|一样/一起/一下|This piece of clothing is as expensive as that one.
 c|我的电脑跟他的＿一样。|不/没/很|My computer is different from his.
 c|中文的语法跟英文的语法一样＿？|吗/呢/了|Is Chinese grammar the same as English grammar?
 c|她的衬衫＿我的一样，都是红的。|和/给/在|Her shirt is like mine — both are red.
 c|这双鞋跟那双＿一样。|不/没/也不是|These shoes are different from those.
-c|我跟我妹妹一样＿喜欢唱歌。|∅/很/都很|My younger sister and I both like singing.
+c|我跟我妹妹＿喜欢唱歌。|一样/一起/一下|My younger sister and I both like singing.
 p|这件衬衫跟那件一样。/这件衬衫一样跟那件。/跟这件衬衫那件一样。|This shirt is the same as that one.
-p|我的鞋跟你的不一样。/我的鞋不跟你的一样。/我的鞋跟你的一样不。|My shoes are different from yours.
+p|我的鞋跟你的不一样。/我的鞋跟不你的一样。/我的鞋跟你的一样不。|My shoes are different from yours.
 p|这件跟那件一样贵。/这件跟那件贵一样。/这件一样跟那件贵。|This one is as expensive as that one.
 p|你跟你哥哥一样高。/你跟你哥哥高一样。/你一样跟你哥哥高。|You're as tall as your older brother.
 p|中文跟英文一样吗？/中文一样跟英文吗？/中文跟英文吗一样？|Is Chinese the same as English?
@@ -127,7 +127,7 @@ o|中文 跟 英文 一样 吗|Is Chinese the same as English?
 # 9-6
 c|＿这件衬衫很漂亮，可是太贵了。|虽然/因为/要是|Although this shirt is pretty, it's too expensive.
 c|虽然这条裤子很便宜，＿颜色不好。|可是/所以/因为|Although these pants are cheap, the color isn't good.
-c|虽然我很忙，但是我＿去。|还是/就是/还是要的|Although I'm busy, I'm still going.
+c|虽然我很忙，但是我＿去。|还是/才是/还是要的|Although I'm busy, I'm still going.
 c|虽然中文很难，可是很＿。|有意思/有意思的/意思有|Although Chinese is hard, it's interesting.
 c|他虽然很累，＿还在学习。|可是/所以/因为|Although he's tired, he's still studying.
 c|虽然这双鞋很合适，可是我不喜欢它的＿。|颜色/颜色的/的颜色|Although these shoes fit, I don't like their color.
