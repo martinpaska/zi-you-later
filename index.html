@@ -1,9 +1,12 @@
 <!DOCTYPE html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#d72323"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Zì You Later"><meta name="apple-mobile-web-app-status-bar-style" content="default"><style>body{margin:0}</style></head><body>
 <title>Zì You Later</title>
 <script>try{var t=(JSON.parse(localStorage.getItem("ic-state"))||{}).theme||"auto";document.documentElement.dataset.theme=t==="dark"||(t==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light"}catch(e){}try{var l=JSON.parse(localStorage.getItem("ic-lang"));if(l!=="cs"&&l!=="en")l="cs";document.documentElement.lang=l}catch(e){}</script>
+<link rel="preload" href="fonts/ziyoukai.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&family=Noto+Serif+TC:wght@500;700&family=Ma+Shan+Zheng&family=Outfit:wght@600;700;800&display=swap">
 <style>
+/* Chinese characters everywhere use the same glyphs as the stroke-order data (Make Me a Hanzi, Arphic PL): fonts/ziyoukai.woff2 is built from it */
+@font-face{font-family:"ZiYou Kai";src:url(fonts/ziyoukai.woff2) format("woff2");font-display:swap;unicode-range:U+3400-4DBF,U+4E00-9FFF}
 /* Layout: one narrow column like a phone app; lessons and modes on the home view, each practice mode replaces it full-width. */
 :root{
   /* Palette: black #000000, charcoal #3E3636, red #D72323, background #F8F8F8, blush #F5EDED (other values are tints of these) */
@@ -14,10 +17,10 @@
   --ok:#2f6b3a; --ok-bg:#e1ead5; --bad:#b3261e; --bad-bg:#f7d6d3; --star:#a87400;
   --cb1:#0b6fb8; --cb2:#946000; --cb3:#1c2a6b; --cb4:#7a4a1c; --cl1:#c4302a; --cl2:#9c5800; --cl3:#2a7a3f; --cl4:#2458b8; --t0:#6f7680;
   --t1:var(--cb1); --t2:var(--cb2); --t3:var(--cb3); --t4:var(--cb4);
-  --f-display:"Outfit","Source Sans 3",system-ui,sans-serif;
-  --f-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --f-han:"Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
-  --f-hant:"Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
+  --f-display:"Outfit","ZiYou Kai","Source Sans 3",system-ui,sans-serif;
+  --f-body:"ZiYou Kai","Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --f-han:"ZiYou Kai","Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
+  --f-hant:"ZiYou Kai","Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
   --f-brush:"Ma Shan Zheng","Noto Serif SC","STKaiti","KaiTi",serif;
   color-scheme:light;
 }
