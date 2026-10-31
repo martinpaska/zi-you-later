@@ -485,9 +485,48 @@ h3{font-weight:600}
 .btn.bigbtn{width:100%;padding:16px;font-size:1.05rem}
 .tonekey b{font-weight:700}
 footer{border-top:1px solid var(--line);padding-top:14px}
+/* welcome: the first screen, says what the app is and who made it, then sign up or try as a guest */
+.wtop{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding-top:12px}
+.wtop .logo{width:76px;height:76px}
+.wtop h1{font-size:clamp(2rem,8vw,2.6rem)}
+.wtop .lede{font-size:1.08rem;max-width:30em;margin:0}
+.wsample{display:flex;justify-content:center;gap:clamp(10px,4vw,22px);font-family:var(--f-han);font-size:clamp(2rem,10vw,2.8rem);color:var(--grid);margin:4px 0 0}
+.wsample span:nth-child(2){color:var(--panel-ink)}
+.wfeat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.wfeat li{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px;display:flex;gap:10px;align-items:flex-start;font-size:.9rem;line-height:1.35}
+.wfeat .ic{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--f-han);font-size:1.1rem;font-weight:700}
+.wfeat b{display:block;font-family:var(--f-display)}
+.wfeat span span{color:var(--muted)}
+.wcta{display:flex;flex-direction:column;gap:10px}
+.wcta .btn{padding:14px 16px;font-size:1.02rem}
+.wmaker{display:flex;gap:14px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px}
+.wmaker .seal{flex:none;width:48px;height:48px;border-radius:12px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:1.15rem}
+.wmaker p{margin:0}
+.wmaker a{color:var(--accent);font-weight:600}
+#welcome.anim>*{animation:rise .38s cubic-bezier(.2,.8,.3,1) backwards}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <div class="wrap">
+  <section id="welcome" class="view" hidden>
+    <div class="wtop"><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1>
+      <p class="lede">A practice companion for the first semester of Chinese. Learn the characters, words and sentences of the Intro and Lessons 1 to 10, a few minutes a day.</p></div>
+    <div class="hero"><p class="wsample han" aria-hidden="true" data-nosay><span>你</span><span>好</span><span>字</span></p>
+      <p style="margin:0">Every card is spoken aloud, every character can be written stroke by stroke, and a daily review brings each one back just before you would forget it.</p></div>
+    <div class="section">
+      <div class="wcta"><button class="btn" id="wsign">Sign up</button><button class="btn ghost" id="wtry">Try without registration ›</button></div>
+      <p class="hint" style="margin:0">With an account your progress syncs between devices and you appear on the leaderboard. Without one, everything still works and your progress is saved in this browser.</p></div>
+    <div class="section"><h2>What you can practise</h2>
+      <ul class="wfeat">
+        <li><span class="ic">卡</span><span><b>Flashcards &amp; review</b><span>Spaced daily review of characters and words</span></span></li>
+        <li><span class="ic">写</span><span><b>Writing</b><span>Stroke order, tracing and writing from memory</span></span></li>
+        <li><span class="ic">调</span><span><b>Tones</b><span>Hear a syllable, pick the tone</span></span></li>
+        <li><span class="ic">句</span><span><b>Sentences &amp; grammar</b><span>Build, translate and listen</span></span></li>
+        <li><span class="ic">考</span><span><b>Tests</b><span>Chapter tests to check yourself</span></span></li>
+        <li><span class="ic">榜</span><span><b>Leaderboard</b><span>With an account, see how others are doing</span></span></li>
+      </ul></div>
+    <div class="section"><h2>Who made it</h2>
+      <div class="wmaker"><span class="seal" aria-hidden="true">MP</span><p>Made by <b>Martin Paska</b>. The code is open on <a href="https://github.com/martinpaska/zi-you-later" target="_blank" rel="noopener">GitHub</a>.</p></div></div>
+  </section>
   <section id="home" class="view">
     <div class="top">
       <div class="mast"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"> <rect x="2" y="2" width="60" height="60" rx="14" fill="#0f6b66"/> <g stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2.5 2.5" fill="none"><line x1="32" y1="8" x2="32" y2="56"/><line x1="8" y1="32" x2="56" y2="32"/><line x1="10" y1="10" x2="54" y2="54"/><line x1="54" y1="10" x2="10" y2="54"/></g> <g fill="#fff" transform="translate(6.4,51.4) scale(0.05,-0.05)"><path d="M 467 799 Q 497 777 529 750 Q 545 737 564 739 Q 576 740 580 756 Q 584 774 571 807 Q 556 841 457 853 Q 438 854 432 852 Q 426 846 429 832 Q 435 819 467 799 Z"/><path d="M 277 656 Q 277 677 254 696 Q 236 712 233 686 Q 237 656 194 602 Q 149 554 165 507 Q 166 498 171 491 Q 184 464 206 491 Q 221 512 268 623 L 277 656 Z"/><path d="M 268 623 Q 289 611 326 619 Q 476 665 705 681 Q 730 684 741 681 Q 759 668 756 661 Q 756 657 725 583 Q 718 570 725 565 Q 732 561 749 573 Q 804 613 850 627 Q 887 640 887 649 Q 886 659 812 712 Q 788 730 707 714 Q 503 690 373 668 Q 324 661 277 656 C 247 653 239 632 268 623 Z"/><path d="M 518 399 Q 642 495 669 501 Q 688 508 683 524 Q 680 540 614 578 Q 595 588 572 580 Q 511 558 418 532 Q 393 525 335 527 Q 311 528 319 508 Q 326 495 346 483 Q 377 467 411 486 Q 433 493 546 534 Q 559 538 571 532 Q 584 525 578 511 Q 545 465 508 409 C 491 384 494 381 518 399 Z"/><path d="M 551 333 Q 536 381 518 399 L 508 409 Q 498 419 487 424 Q 477 431 471 423 Q 467 419 474 405 Q 490 371 500 328 L 507 289 Q 525 120 490 66 Q 489 65 487 62 Q 478 58 377 89 Q 367 92 360 88 Q 354 87 370 74 Q 437 19 475 -30 Q 493 -49 511 -40 Q 535 -27 553 27 Q 578 120 558 293 L 551 333 Z"/><path d="M 558 293 Q 718 311 889 296 Q 911 293 918 301 Q 925 314 914 325 Q 886 352 844 371 Q 831 377 806 369 Q 737 356 667 346 Q 600 340 551 333 L 500 328 Q 491 331 308 309 Q 241 299 139 298 Q 126 299 124 288 Q 123 276 141 262 Q 157 250 187 238 Q 197 234 214 242 Q 230 246 303 259 Q 393 280 507 289 L 558 293 Z"/></g> </svg><div><p class="eyebrow">Integrated Chinese · Level 1 Part 1</p><h1>Zì You Later</h1><p class="hint" style="margin:0">One character at a time</p></div></div>
@@ -530,7 +569,7 @@ footer{border-top:1px solid var(--line);padding-top:14px}
         <li><b>A little every day, then sleep.</b> 15 to 20 minutes daily works better than one long weekly session, and sleep after studying helps lock it in. Keep new cards at 10 a day if reviews start piling up.<cite>Cepeda et al. 2006; Diekelmann &amp; Born 2010</cite></li>
       </ul>
     </details>
-    <footer>Vocabulary from the textbook's vocabulary index (Integrated Chinese, Level 1 Part 1, 3rd edition). The example sentences were written for this app using each lesson's vocabulary. Stroke data: Make Me a Hanzi (Arphic Public License).</footer>
+    <footer><button class="link" id="about" style="font-size:inherit;padding:0">About this app</button> · Vocabulary from the textbook's vocabulary index (Integrated Chinese, Level 1 Part 1, 3rd edition). The example sentences were written for this app using each lesson's vocabulary. Stroke data: Make Me a Hanzi (Arphic Public License).</footer>
   </section>
   <section id="mode" class="view" hidden></section>
 </div>
@@ -880,7 +919,7 @@ let keyHandler=null,TIMER=null;
 const MOTION=!matchMedia('(prefers-reduced-motion: reduce)').matches;
 function open(html){keyHandler=null;clearInterval(TIMER);stopAudio();
   const was=M().hidden?null:M().querySelector('.progress span'),from=was?was.style.width:null,same=!!html.match(/class="card[^"]*" id="card"/)&&!!M().querySelector('#card');
-  $('home').hidden=true;M().hidden=false;M().innerHTML=html;window.scrollTo(0,0);
+  $('home').hidden=true;$('welcome').hidden=true;M().hidden=false;M().innerHTML=html;window.scrollTo(0,0);
   if(!MOTION)return;
   M().classList.remove('anim');void M().offsetWidth;if(!same)M().classList.add('anim');
   const pb=M().querySelector('.progress span');if(pb&&from!==null){const to=pb.style.width;pb.style.transition='none';pb.style.width=from;void pb.offsetWidth;pb.style.transition='';pb.style.width=to}
@@ -897,7 +936,7 @@ function confetti(){
   (function f(t){const k=(t-t0)/1600;g.clearRect(0,0,W,H);for(const p of P){p.vy+=H*.0007;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;g.save();g.globalAlpha=Math.max(0,1-k);g.translate(p.x,p.y);g.rotate(p.a);g.fillStyle=p.c;g.fillRect(-p.r,-p.r/2,p.r*2,p.r);g.restore()}
     if(k<1)requestAnimationFrame(f);else cv.remove()})(t0);
 }
-function goHome(){keyHandler=null;clearInterval(TIMER);stopAudio();M().hidden=true;M().innerHTML='';$('home').hidden=false;renderHome();window.scrollTo(0,0);if(MOTION){$('home').classList.remove('anim');void $('home').offsetWidth;$('home').classList.add('anim')}}
+function goHome(){keyHandler=null;clearInterval(TIMER);stopAudio();M().hidden=true;M().innerHTML='';$('welcome').hidden=true;$('home').hidden=false;renderHome();window.scrollTo(0,0);if(MOTION){$('home').classList.remove('anim');void $('home').offsetWidth;$('home').classList.add('anim')}}
 document.addEventListener('click',e=>{const h=e.target.closest('[data-home]');if(h){goHome();return}const g=e.target.closest('[data-go]');if(g&&!g.disabled)MODES[g.dataset.go]()});
 document.addEventListener('keydown',e=>{if(keyHandler&&!(e.target.tagName==='INPUT'&&e.key!=='Enter')&&e.target.tagName!=='TEXTAREA')keyHandler(e)});
 const bar=(pct,count,label='‹ Home')=>`<div class="bar"><button class="back" data-home>${label}</button><div class="progress"><span style="width:${pct}%"></span></div><span class="count">${count}</span></div>`;
@@ -2012,7 +2051,7 @@ function progress(){
 }
 
 /* ---------- Accounts and leaderboard ---------- */
-let cloud=null,uid=null,userCap=null,dbCap=null,board=[],boardWritable=null,cloudTimer=null,me=null,cloudReady=false,boardSort='known';
+let signupFlow=false,cloud=null,uid=null,userCap=null,dbCap=null,board=[],boardWritable=null,cloudTimer=null,me=null,cloudReady=false,boardSort='known';
 const AVATARS=['🐼','🐉','🐯','🦊','🐱','🐶','🐵','🐰','🦄','🐧','🐸','🌸','⭐','🍜','🥟','🏮'];
 const weekCount=()=>{const h=stats.hist||{};let n=0;for(let i=0;i<7;i++)n+=h[todayStr(new Date(Date.now()-i*DAY))]||0;return n};
 const curStreak=()=>stats.last===todayStr()||stats.last===todayStr(new Date(Date.now()-DAY))?stats.streak:0;
@@ -2067,7 +2106,7 @@ function leaderboard(){
 }
 function account(){
   if(!cloudReady){open(bar(0,'','‹ Back')+'<h2>Account</h2><p class="hint">Loading…</p>');setTimeout(()=>{if(!M().hidden)account()},600);return}
-  if(!uid){open(bar(0,'','‹ Back')+`<h2>Account</h2><p class="notice">Accounts are coming soon. Until then everything works and your progress is saved in this browser.</p>`);return}
+  if(!uid){open(bar(0,'','‹ Back')+`<h2>Account</h2><p class="notice">Accounts are coming soon. Until then everything works and your progress is saved in this browser.</p><div class="btns"><button class="btn" data-home>Continue without an account ›</button></div>`);return}
   let pick=me?me.avatar:AVATARS[Math.random()*AVATARS.length|0];
   open(bar(0,'','‹ Back')+`<h2>${me?'My account':'Create account'}</h2>
     ${boardWritable===false?'<p class="notice">Your access to this page is view-only, so you cannot create an account. Ask whoever shared the page to give you Contributor access.</p>':''}
@@ -2084,15 +2123,23 @@ function account(){
     if(n.length<2){$('am').textContent='Pick a nickname with at least 2 characters.';return}
     if(board.some(r=>r.id!==uid&&String(r.name).toLowerCase()===n.toLowerCase())){$('am').textContent='That nickname is taken. Try another one.';return}
     $('asave').disabled=true;
-    try{await dbCap.doc('accounts/'+uid).set({name:n,avatar:pick,...summary()});me={name:n,avatar:pick};renderAcct();leaderboard()}
+    try{await dbCap.doc('accounts/'+uid).set({name:n,avatar:pick,...summary()});me={name:n,avatar:pick};renderAcct();if(signupFlow){signupFlow=false;goHome()}else leaderboard()}
     catch(e){$('asave').disabled=false;$('am').textContent=e&&e.code==='not_granted'?'Saving was not allowed. You may need Contributor access to this page.':'Could not save. Try again.'}
   };
   if(me)$('d1').onclick=()=>{$('dc').innerHTML='<span>Delete your account?</span><button class="btn badb" id="d2">Yes, delete</button><button class="btn ghost" id="d3">No</button>';
     $('d2').onclick=async()=>{try{await dbCap.doc('accounts/'+uid).delete();me=null;renderAcct();goHome()}catch(e){$('dc').textContent='Could not delete. Try again.'}};$('d3').onclick=account};
 }
 
+/* ---------- Welcome screen: shown on the first visit, reopened from "About this app" ---------- */
+function welcome(){keyHandler=null;stopAudio();M().hidden=true;M().innerHTML='';$('home').hidden=true;const w=$('welcome');w.hidden=false;window.scrollTo(0,0);
+  if(MOTION){w.classList.remove('anim');void w.offsetWidth;w.classList.add('anim')}}
+{const lg=document.querySelector('#home .logo');if(lg)$('welcome').querySelector('.wtop').prepend(lg.cloneNode(true))}
+$('wtry').onclick=()=>{store.set('ic-welcomed',true);signupFlow=false;goHome()};
+$('wsign').onclick=()=>{store.set('ic-welcomed',true);signupFlow=true;account()};
+$('about').onclick=welcome;
+
 const MODES={grammar:()=>grammar(),cards:()=>cards(),learn,sentences,write,test,match:()=>match(),twins,tones:()=>tones(),board:leaderboard,account,progress};
-renderHome();
+if(store.get('ic-welcomed',false))renderHome();else welcome();
 setTimeout(initCloud,0);
 </script>
 </body></html>
