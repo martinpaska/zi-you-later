@@ -670,12 +670,15 @@ html[lang="cs"] [data-lang="en"],html:not([lang="cs"]) [data-lang="cs"]{display:
 .wabout h2::before{content:"";flex:none;align-self:center;width:9px;height:9px;background:var(--accent);transform:rotate(45deg)}
 .wabout .wlead{font-size:1.1rem;line-height:1.45}
 .wabout p{color:var(--muted)}.wabout .wlead{color:var(--ink)}
-.wfacts{list-style:none;margin:4px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
-.wfacts li{background:var(--bg);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.wfacts{list-style:none;margin:4px 0;padding:0;display:flex;flex-direction:column;background:var(--bg);border-radius:14px;overflow:hidden}
+.wfacts li{padding:11px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.wfacts li+li{border-top:1px solid var(--line)}
+.wfacts b{text-align:right}
 .wfacts span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
 .wfacts b{font-family:"Outfit",var(--f-body);font-size:1rem}
 .wcredit{display:flex;gap:14px;align-items:center;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
-.wcredit p{margin:0;font-size:.92rem}.wcredit a{color:var(--accent);font-weight:600}
+.wcredit p{margin:0;font-size:.92rem}
+.wquote{display:block;font-family:"Outfit",var(--f-body);font-weight:600;font-size:1.05rem;color:var(--ink);margin-bottom:4px}.wcredit a{color:var(--accent);font-weight:600}
 .wseal{flex:none;writing-mode:vertical-rl;background:var(--accent);color:#fff;font-family:var(--f-brush);font-size:1.25rem;letter-spacing:.08em;padding:8px 6px;border-radius:5px;transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgb(255 255 255/.35),0 6px 14px -6px rgb(215 35 35/.6)}
 #welcome .wnr{gap:10px}
 @media (max-width:480px){#welcome .wnav .brand{font-size:.98rem}#welcome .wnav .logo{width:32px;height:32px}#wsign2{display:none}}
@@ -707,15 +710,15 @@ html[lang="cs"] [data-lang="en"],html:not([lang="cs"]) [data-lang="cs"]{display:
         <h2>About</h2>
         <p class="wlead">Zì You Later is a study companion for <b>Chinese 1 (Čínština 1)</b> in Chinese Studies at the Faculty of Arts, Masaryk University (FF MUNI) in Brno.</p>
         <p>It follows the textbook <i>Integrated Chinese, Level 1 Part 1</i> (3rd edition): the Intro and Lessons 1 to 10, with every character, word, grammar point and example sentence. Use it to prepare for class, vocabulary quizzes and the chapter tests, a few minutes a day.</p>
-        <ul class="wfacts"><li><span>Course</span><b>Chinese 1 · FF MUNI</b></li><li><span>Textbook</span><b>Integrated Chinese 1/1</b></li><li><span>Covers</span><b>Intro + Lessons 1–10</b></li><li><span>Price</span><b>Free</b></li></ul>
-        <div class="wcredit"><span class="wseal" aria-hidden="true">帕马庭</span><p>Made by <b>Martin Paška</b> (帕马庭). An unofficial project, not an official app of Masaryk University. The code is open on <a href="https://github.com/martinpaska/zi-you-later" target="_blank" rel="noopener">GitHub</a>.</p></div>
+        <ul class="wfacts"><li><span>Course</span><b>Chinese 1 · FF MUNI</b></li><li><span>Textbook</span><b>Integrated Chinese 1/1</b></li><li><span>Covers</span><b>Intro + Lessons 1–10</b></li></ul>
+        <div class="wcredit"><span class="wseal" aria-hidden="true">帕马庭</span><p><span class="wquote">“I made it because I couldn’t find any app that suited me.”</span> <b>Martin Paška</b> (帕马庭)<br>An unofficial project, not an official app of Masaryk University. The code is open on <a href="https://github.com/martinpaska/zi-you-later" target="_blank" rel="noopener">GitHub</a>.</p></div>
       </div>
       <div data-lang="cs">
         <h2>O aplikaci</h2>
         <p class="wlead">Zì You Later je pomocník pro předmět <b>Čínština 1</b> v oboru Čínská studia na Filozofické fakultě Masarykovy univerzity (FF MUNI) v Brně.</p>
         <p>Drží se učebnice <i>Integrated Chinese, Level 1 Part 1</i> (3. vydání): úvodní lekce a lekce 1–10 se všemi znaky, slovíčky, gramatikou a ukázkovými větami. Pomůže s přípravou na hodiny, testy ze slovíček i testy z kapitol, stačí pár minut denně.</p>
-        <ul class="wfacts"><li><span>Předmět</span><b>Čínština 1 · FF MUNI</b></li><li><span>Učebnice</span><b>Integrated Chinese 1/1</b></li><li><span>Obsah</span><b>Úvod + lekce 1–10</b></li><li><span>Cena</span><b>Zdarma</b></li></ul>
-        <div class="wcredit"><span class="wseal" aria-hidden="true">帕马庭</span><p>Vytvořil <b>Martin Paška</b> (帕马庭). Neoficiální projekt, nejde o oficiální aplikaci Masarykovy univerzity. Kód je veřejně na <a href="https://github.com/martinpaska/zi-you-later" target="_blank" rel="noopener">GitHubu</a>.</p></div>
+        <ul class="wfacts"><li><span>Předmět</span><b>Čínština 1 · FF MUNI</b></li><li><span>Učebnice</span><b>Integrated Chinese 1/1</b></li><li><span>Obsah</span><b>Úvod + lekce 1–10</b></li></ul>
+        <div class="wcredit"><span class="wseal" aria-hidden="true">帕马庭</span><p><span class="wquote">„Vytvořil jsem ji, protože jsem nemohl najít žádnou aplikaci, která by mi vyhovovala.“</span> <b>Martin Paška</b> (帕马庭)<br>Neoficiální projekt, nejde o oficiální aplikaci Masarykovy univerzity. Kód je veřejně na <a href="https://github.com/martinpaska/zi-you-later" target="_blank" rel="noopener">GitHubu</a>.</p></div>
       </div>
     </section>
     <div class="sr-only"><h2>What you can practise</h2><ul><li>Flashcards and daily review</li><li>Writing, stroke by stroke</li><li>Tones</li><li>Sentences</li><li>Grammar</li><li>Tests</li></ul></div>
