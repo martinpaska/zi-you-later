@@ -1383,7 +1383,7 @@ function infoSheet(list,i){
       <span class="${bigClass(x)} han">${hzHtml(x)}</span>${backHtml(x)}
       <p class="hint">${m===2?'✓ Known':m===1?'Learning':'New'}</p>
       <div class="btns"><button class="btn ghost" id="ifplay">${PLAY} Play</button><button class="btn ghost" id="iftw">${PEN}Try writing</button><button class="starbtn" id="ifstar" aria-pressed="${starred(x)}">★ star</button></div>
-      <div class="infox">${exampleHtml(x)+relatedHtml(x)+hookHtml(x)}</div>
+      <div class="infox">${hookHtml(x)+exampleHtml(x,4)+relatedHtml(x)}</div>
       <button class="btn" id="ifx" style="align-self:stretch">Close</button></div>`;
     $('ifx').onclick=close;$('ifp').onclick=()=>go(-1);$('ifn').onclick=()=>go(1);
     $('ifplay').onclick=()=>speak(x);$('iftw').onclick=()=>tryWrite(x);
