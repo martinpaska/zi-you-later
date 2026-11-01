@@ -1383,7 +1383,7 @@ function infoSheet(list,i){
       <span class="${bigClass(x)} han">${hzHtml(x)}</span>${backHtml(x)}
       <p class="hint">${m===2?'✓ Known':m===1?'Learning':'New'}</p>
       <div class="btns"><button class="btn ghost" id="ifplay">${PLAY} Play</button><button class="btn ghost" id="iftw">${PEN}Try writing</button><button class="starbtn" id="ifstar" aria-pressed="${starred(x)}">★ star</button></div>
-      <div class="infox">${exampleHtml(x)+relatedHtml(x)+hookHtml(x)}</div>
+      <div class="infox">${hookHtml(x)+relatedHtml(x)+exampleHtml(x,4)}</div>
       <button class="btn" id="ifx" style="align-self:stretch">Close</button></div>`;
     $('ifx').onclick=close;$('ifp').onclick=()=>go(-1);$('ifn').onclick=()=>go(1);
     $('ifplay').onclick=()=>speak(x);$('iftw').onclick=()=>tryWrite(x);
@@ -1412,7 +1412,7 @@ function review(){
       open(tallyBar(counts.again,counts.hard+counts.good+counts.easy,counts.again+counts.hard+counts.good+counts.easy+(q.length-i),`${q.length-i} left`,'Again','Remembered')+
         `<div class="card" id="rc"><span class="tag">${kindLabel(x)} · ${LNAME(x.l)} · New: study it</span><span class="${bigClass(x)} han">${hzHtml(x)}</span>
         ${backHtml(x)}<button class="play" id="say">${PLAY}Play</button><p class="hint" style="text-align:center;margin:0">Say it out loud a couple of times. It comes back in a few cards to check you remember.</p>
-        <details class="more"><summary>Examples and more</summary><div class="infox">${exampleHtml(x)}${relatedHtml(x)}${hookHtml(x)}</div></details></div>
+        <details class="more"><summary>Examples and more</summary><div class="infox">${relatedHtml(x)}${exampleHtml(x)}${hookHtml(x)}</div></details></div>
         <div class="btns stickyact"><button class="btn" id="got">Got it, test me in a moment ›</button></div>`);
       $('say').onclick=()=>speak(x);speak(x);bindHook(x);
       const go=()=>{studied.add(x.k);q.splice(Math.min(q.length,i+4),0,x);i++;draw()};
@@ -1425,7 +1425,7 @@ function review(){
       :`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)} · ${isNew?'New':'Review'}</span><span class="${bigClass(x)} han">${hz(x)}</span>`;
     open(tallyBar(counts.again,counts.hard+counts.good+counts.easy,counts.again+counts.hard+counts.good+counts.easy+(q.length-i),`${q.length-i} left`,'Again','Remembered')+
       `<div class="card" id="rc">${shown?`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)}${flip?' · EN → 中':''}</span><span class="${bigClass(x)} han">${hzHtml(x)}</span>`:front}
-      ${shown?backHtml(x)+`<button class="play" id="say">${PLAY}Play</button>`+exampleHtml(x)+relatedHtml(x)
+      ${shown?backHtml(x)+`<button class="play" id="say">${PLAY}Play</button>`+relatedHtml(x)+exampleHtml(x)
         :flip?'<p class="hint">Picture the character, or write it, then reveal the answer.</p><button class="btn ghost" id="rw">${PEN}Write it</button>':'<p class="hint">Say the pinyin and the meaning out loud, then reveal the answer.</p>'}</div>
       ${shown?hookHtml(x)+`<div class="srsbtns">${['again','hard','good','easy'].map((k,j)=>`<button class="${k}" data-q="${k}"><span>${k[0].toUpperCase()+k.slice(1)}</span><small>${ivlLabel(nextIvl(isNew?null:r,k))}</small></button>`).join('')}</div><p class="hint" style="text-align:center">Keys 1–4. Again shows the card again in this session.</p>`
         :`<button class="btn" id="show">Show answer</button><p class="hint" style="text-align:center">Space shows the answer.</p>`}`);
@@ -1601,7 +1601,7 @@ function intro(x,k,n,next,skip){
     <div class="introinfo">${backHtml(x)}<button class="play iconplay" id="isay" aria-label="Play">${PLAY}</button></div></div>
     <p class="hint" style="text-align:center;margin:0">Tap the character to see the stroke order again.</p>
     <div class="infox">${x.kind==='c'?partsHtml(x):wcs.length===1?partsHtml(x):wordPartsHtml(x)}${hookHtml(x)}</div>
-    <details class="more"><summary>Examples and more</summary><div class="infox">${exampleHtml(x,4)}${relatedHtml(x)}</div></details>
+    <details class="more"><summary>Examples and more</summary><div class="infox">${relatedHtml(x)}${exampleHtml(x,4)}</div></details>
     <div class="btns stickyact"><button class="btn ghost" id="iskip">Skip intros</button><button class="btn" id="inext">${k<n?'Next ›':'Start the quiz ›'}</button></div></div>`);
   bindHook(x);setTimeout(()=>speak(x),250);
   const pv=M().querySelector('.pict');if(pv){const run=()=>{const ks=[...pv.children];ks.forEach((k,i)=>{k.style.animation='none';void k.getBBox();k.style.animation='';k.style.animationDelay=(i*.28)+'s'});
