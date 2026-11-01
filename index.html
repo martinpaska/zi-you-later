@@ -1776,7 +1776,8 @@ function exam(qs,tlMin){
     if(q.type==='order'){let picked=Array.isArray(a)?a.slice():[];const z=sentHz(s);
       const r=()=>{$('ar').innerHTML=picked.map((k,n)=>`<button class="chunk han" data-n="${n}">${esc(z[q.bank[k]])}</button>`).join('');$('bk').querySelectorAll('.chunk').forEach(b=>b.classList.toggle('used',picked.includes(+b.dataset.j)));set(picked.length?picked.slice():null)};
       $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!picked.includes(+b.dataset.j)){picked.push(+b.dataset.j);r()}};
-      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(b){picked.splice(+b.dataset.n,1);r()}};$('oc').onclick=()=>{picked=[];r()};r()}
+      const dr=dragReorder($('ar'),picked,r);
+      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!dr.dragged()){picked.splice(+b.dataset.n,1);r()}};$('oc').onclick=()=>{picked.length=0;r()};r()}
     if(q.type==='draw'){
       const fail=m=>{$('wst').textContent=m};
       if(typeof HanziWriter==='undefined')return fail('The writing tool could not load, so this question is skipped.');
@@ -1870,6 +1871,21 @@ function sentences(){
   $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);$('sr').onclick=()=>readList(list);
 }
 const isPunct=c=>/^[，。？！、,.?!]$/.test(c);
+/* drag a piece of your sentence to another place (tap still sends it back); picked is mutated, then render() redraws */
+function dragReorder(ar,picked,render,locked){
+  let drag=null,just=false;
+  const slotAt=(x,y)=>{const cs=[...ar.querySelectorAll('.chunk')].filter(c=>c!==drag.b);let k=0;for(const c of cs){const r=c.getBoundingClientRect();if(y>r.bottom||(y>=r.top&&x>r.left+r.width/2))k++}return k};
+  const off=()=>{window.removeEventListener('pointermove',onMove);window.removeEventListener('pointerup',onUp);window.removeEventListener('pointercancel',onUp)};
+  const onMove=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+    if(!drag.on){if(Math.hypot(dx,dy)<8)return;drag.on=true;drag.b.classList.add('dragging');try{drag.b.setPointerCapture(e.pointerId)}catch(_){}}
+    e.preventDefault();drag.b.style.transform=`translate(${dx}px,${dy}px)`;const k=slotAt(e.clientX,e.clientY);
+    ar.querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));const cs=[...ar.querySelectorAll('.chunk')].filter(c=>c!==drag.b);if(cs[k])cs[k].classList.add('dropl');drag.k=k};
+  const onUp=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;if(!d.on)return;just=true;setTimeout(()=>just=false,0);
+    const v=picked.splice(d.n,1)[0];picked.splice(d.k??d.n,0,v);render()};
+  ar.addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||(locked&&locked()))return;drag={b,n:+b.dataset.n,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
+  window.addEventListener('pointermove',onMove,{passive:false});window.addEventListener('pointerup',onUp);window.addEventListener('pointercancel',onUp);
+  return {dragged:()=>just};
+}
 /* the end mark of a sentence (？ for questions), shown fixed at the end of the row where you build it */
 const endMark=(zh,en)=>{const l=zh&&zh.length?zh[zh.length-1]:'';if(isPunct(l))return {'?':'？','!':'！','.':'。',',':'，'}[l]||l;return /\?\s*$/.test(en||'')?'？':/!\s*$/.test(en||'')?'！':'。'};
 function rubyHtml(s){const z=sentHz(s);
@@ -2351,7 +2367,8 @@ function gdrill(l,gi,only){
       const render=()=>{$('ar').innerHTML=pk.map((j,n)=>`<button class="chunk han" data-n="${n}">${esc(zh(q._b[j].c))}</button>`).join('');
         M().querySelectorAll('#bk .chunk').forEach(b=>b.classList.toggle('used',pk.includes(+b.dataset.j)));$('chk').disabled=locked||pk.length!==q._b.length};
       $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||pk.includes(+b.dataset.j))return;pk.push(+b.dataset.j);render()};
-      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked)return;pk.splice(+b.dataset.n,1);render()};
+      const dr=dragReorder($('ar'),pk,render,()=>locked);
+      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged())return;pk.splice(+b.dataset.n,1);render()};
       $('clr').onclick=()=>{if(!locked){pk.length=0;render()}};
       $('chk').onclick=()=>{if(locked)return;locked=true;const got=pk.map(j=>q._b[j].c).join(''),r=got===q[1].join('')||(q[3]||[]).includes(got);
         $('ar').querySelectorAll('.chunk').forEach(c=>c.classList.add(r?'cok':'cbad'));$('chk').disabled=true;done(r)};
