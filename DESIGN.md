@@ -29,6 +29,12 @@ colors:
   night-hairline: "#3b3232"
   night-red: "#dd2c2c"
   night-red-text: "#ff7b7b"
+  chosen-blush: "#fff8f8"
+  icon-off: "#8d8282"
+  night-placeholder: "#9a8e8e"
+  progress-red-light: "#ef4a3a"
+  neutral-veil: "rgb(127 127 127/.35)"
+  scrim: "rgb(10 14 16/.55)"
 typography:
   display:
     fontFamily: "Outfit, ZiYou Kai, Source Sans 3, system-ui, sans-serif"
@@ -145,13 +151,13 @@ A three-colour notebook palette (ink black, charcoal, seal red) on paper neutral
 
 ### Primary
 - **Seal Red** (#d72323): primary buttons, the Today's review CTA, the home header bar, the seal, selected-choice outline and check badge, the red part of progress bars. Text-red on light surfaces uses **Seal Red Deep** (#b51c1c) for links and eyebrows.
-- **Seal Red Soft** (#f7d3d3) and **Grid Pink** (#f0b5b5): selection halos and the 米字格 guide lines.
+- **Seal Red Soft** (#f7d3d3) and **Grid Pink** (#f0b5b5): selection halos and the 米字格 guide lines. **Chosen Blush** (#fff8f8) fills a selected choice tile; the progress bar runs from Seal Red to **#ef4a3a**.
 
 ### Neutral
 - **Ink Black** (#000000): body text and Chinese characters.
 - **Charcoal** (#3e3636): secondary text, the dark Today's review panel, inactive segmented buttons.
 - **Blush** (#f5eded): text on the charcoal panel; the palest paper.
-- **Paper** (#f8f8f8): page background. **Card White** (#ffffff): cards and buttons. **Sunk Grey** (#efecec): tags, segmented-control trays, inputs. **Hairline** (#e4dede): borders and the stroke-tracing outline.
+- **Paper** (#f8f8f8): page background. **Card White** (#ffffff): cards and buttons. **Sunk Grey** (#efecec): tags, segmented-control trays, inputs. **Hairline** (#e4dede): borders and the stroke-tracing outline. **Icon Off** (#8d8282): inactive toggle icons such as the unstarred star (3:1 on white). **Scrim** (rgb(10 14 16/.55)) behind dialogs and sheets; **Neutral Veil** (rgb(127 127 127/.35)) for tracks on inverted lesson tiles.
 
 ### Feedback
 - **Know Green** (#2f6b3a) on **#e1ead5**, **Miss Red** (#b3261e) on **#f7d6d3**: answer feedback, the Know / Still learning buttons, the green and red parts of the split progress bar. **Star Gold** (#a87400) for the starred state.
@@ -160,7 +166,7 @@ A three-colour notebook palette (ink black, charcoal, seal red) on paper neutral
 - Tone 1 **#0a68ad**, tone 2 **#946000**, tone 3 **#1c2a6b**, tone 4 **#7a4a1c**, neutral **#6f7680**. A "Classic" set (red, orange, green, blue) and "Off" are user options.
 
 ### Dark mode
-The same notebook at night: **#141111** desk, **#1f1a1a** cards, **#2b2424** sunk, **#3b3232** hairline, blush text, a slightly brighter **#dd2c2c** red for fills and **#ff7b7b** for red text. Tone colours are lifted (#5cb0f0, #e5a63a, #a7b4ff, #dba477). Know / Still learning stay solid #2f6b3a / #b3261e with white text.
+The same notebook at night: **#141111** desk, **#1f1a1a** cards, **#2b2424** sunk, **#3b3232** hairline, blush text, a slightly brighter **#dd2c2c** red for fills and **#ff7b7b** for red text. Tone colours are lifted (#5cb0f0, #e5a63a, #a7b4ff, #dba477). Know / Still learning stay solid #2f6b3a / #b3261e with white text. Placeholders use #9a8e8e; the stroke-tracing outline #5c5050; inactive icons #8a7d7d.
 
 ### Named Rules
 **The One Seal Rule.** Seal Red marks the single next action on a screen (or identity: header, seal). Skip, secondary and alternative actions are ghost buttons. A selected option is outlined and checked, never filled red.
