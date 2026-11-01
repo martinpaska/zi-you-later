@@ -7,6 +7,8 @@
 <style>
 /* Chinese characters everywhere use the same glyphs as the stroke-order data (Make Me a Hanzi, Arphic PL): fonts/ziyoukai.woff2 is built from it */
 @font-face{font-family:"ZiYou Kai";src:url(fonts/ziyoukai.woff2) format("woff2");font-display:swap;unicode-range:U+3400-4DBF,U+4E00-9FFF}
+/* the same file without a range: Chinese-only elements (.han) take their line metrics from it, so a character sits exactly in the middle of its square */
+@font-face{font-family:"ZiYou Han";src:url(fonts/ziyoukai.woff2) format("woff2");font-display:swap}
 /* Layout: one narrow column like a phone app; lessons and modes on the home view, each practice mode replaces it full-width. */
 :root{
   /* Palette: black #000000, charcoal #3E3636, red #D72323, background #F8F8F8, blush #F5EDED (other values are tints of these) */
@@ -19,8 +21,8 @@
   --t1:var(--cb1); --t2:var(--cb2); --t3:var(--cb3); --t4:var(--cb4);
   --f-display:"Outfit","ZiYou Kai","Source Sans 3",system-ui,sans-serif;
   --f-body:"ZiYou Kai","Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --f-han:"ZiYou Kai","Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
-  --f-hant:"ZiYou Kai","Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
+  --f-han:"ZiYou Han","Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
+  --f-hant:"ZiYou Han","Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
   --f-brush:"Ma Shan Zheng","Noto Serif SC","STKaiti","KaiTi",serif;
   color-scheme:light;
 }
@@ -1457,7 +1459,7 @@ function strokeCard(x,front){
       if(isHan(c))h++;wrap.appendChild(cell)});
     if(!ws.length)return;
     st.classList.add('sr-only');box.insertBefore(wrap,st);
-    ws.forEach(cell=>HanziWriter.create(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,showOutline:false,strokeColor:front?css('--ink'):css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
+    ws.forEach(cell=>hwCreate(cell.id,[...hz(x)][+cell.id.slice(4)],{width:sz,height:sz,padding:sz*.08,showOutline:false,strokeColor:front?css('--ink'):css('--t'+cell.dataset.t)||css('--ink'),radicalColor:null,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()}));
     };
   STROKES?go():loadStrokes().then(go).catch(()=>{})}
 
@@ -1536,7 +1538,7 @@ function tryWrite(x){
     if(!STROKES){loadStrokes().then(()=>{if(sh.isConnected)draw()}).catch(()=>{$('twst').textContent='The stroke data could not load. Check your connection.'});return}
     if(!has||typeof HanziWriter==='undefined'){if(typeof HanziWriter==='undefined')$('twst').textContent='The writing tool could not load. Check your connection.';return}
     const size=$('twpad').clientWidth,n=STROKES[c].strokes.length;
-    const w=HanziWriter.create('twhw',c,{width:size,height:size,padding:size*.06,showCharacter:false,showOutline:!mem,
+    const w=hwCreate('twhw',c,{width:size,height:size,padding:size*.06,showCharacter:false,showOutline:!mem,
       strokeColor:css('--ink'),outlineColor:css('--outline')||css('--line'),drawingColor:css('--accent'),highlightColor:css('--accent'),drawingWidth:Math.max(14,size/16),
       charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()});
     const start=()=>{let mis=0,done=0;$('twst').textContent=`Stroke 1 of ${n}`;
@@ -1602,14 +1604,14 @@ function intro(x,k,n,next,skip){
     const go=()=>{const el=$('anim');if(!el)return;if(!STROKES||typeof HanziWriter==='undefined')return flat();
       let c=hz(x);if(!STROKES[c])c=x.s;if(!STROKES[c]){el.innerHTML=`<span class="big han">${hzHtml(x)}</span>`;return}
       const sz=el.clientWidth,css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-      const w=HanziWriter.create('anim',c,{width:sz,height:sz,padding:sz*.06,strokeColor:css('--t'+x.tone)||css('--ink'),outlineColor:css('--outline')||css('--line'),radicalColor:null,strokeAnimationSpeed:1.3,delayBetweenStrokes:180,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()});
+      const w=hwCreate('anim',c,{width:sz,height:sz,padding:sz*.06,strokeColor:css('--t'+x.tone)||css('--ink'),outlineColor:css('--outline')||css('--line'),radicalColor:null,strokeAnimationSpeed:1.3,delayBetweenStrokes:180,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()});
       w.animateCharacter();el.onclick=()=>w.animateCharacter()};
     STROKES?go():loadStrokes().then(go).catch(flat)}
   else{const boxes=[...M().querySelectorAll('.awc')],tn=tonesOf(x);
     const flat=()=>boxes.forEach(b=>{b.innerHTML=`<span class="han awch">${b.dataset.c}</span>`});
     const go=()=>{if(!STROKES||typeof HanziWriter==='undefined')return flat();const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
       const ws=boxes.map((b,i)=>{const c=STROKES[b.dataset.c]?b.dataset.c:null;if(!c){b.innerHTML=`<span class="han awch">${b.dataset.c}</span>`;return null}
-        b.id='awc'+i;const sz=b.clientWidth;return HanziWriter.create(b.id,c,{width:sz,height:sz,padding:sz*.06,strokeColor:css('--t'+(tn&&tn.length===boxes.length?tn[i]:0))||css('--ink'),outlineColor:css('--outline')||css('--line'),radicalColor:null,strokeAnimationSpeed:1.4,delayBetweenStrokes:150,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()})});
+        b.id='awc'+i;const sz=b.clientWidth;return hwCreate(b.id,c,{width:sz,height:sz,padding:sz*.06,strokeColor:css('--t'+(tn&&tn.length===boxes.length?tn[i]:0))||css('--ink'),outlineColor:css('--outline')||css('--line'),radicalColor:null,strokeAnimationSpeed:1.4,delayBetweenStrokes:150,charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()})});
       const run=(i=0)=>{if(i>=ws.length||!M().contains(boxes[0]))return;const w=ws[i];if(!w)return run(i+1);w.hideCharacter();w.animateCharacter({onComplete:()=>run(i+1)})};
       ws.forEach(w=>w&&w.hideCharacter());run();M().querySelector('#animw').onclick=()=>run()};
     STROKES?go():loadStrokes().then(go).catch(flat)}
@@ -1767,7 +1769,7 @@ function exam(qs,tlMin){
       if(typeof HanziWriter==='undefined')return fail('The writing tool could not load, so this question is skipped.');
       loadStrokes().then(()=>{if(!$('hw'))return;let c=hz(x);if(!STROKES[c])c=x.s;if(!STROKES[c])return fail('No stroke data for this character, so it is skipped.');
         const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim(),size=$('pad').clientWidth,n=STROKES[c].strokes.length;
-        writer=HanziWriter.create('hw',c,{width:size,height:size,padding:size*.06,showCharacter:false,showOutline:false,strokeColor:css('--ink'),outlineColor:css('--outline')||css('--line'),drawingColor:css('--accent'),highlightColor:css('--accent'),drawingWidth:Math.max(14,size/16),charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()});
+        writer=hwCreate('hw',c,{width:size,height:size,padding:size*.06,showCharacter:false,showOutline:false,strokeColor:css('--ink'),outlineColor:css('--outline')||css('--line'),drawingColor:css('--accent'),highlightColor:css('--accent'),drawingWidth:Math.max(14,size/16),charDataLoader:(ch,ok,err)=>STROKES[ch]?ok(STROKES[ch]):err()});
         const start=()=>{let mis=0;fail(`${n} strokes`);writer.quiz({leniency:wlen(),acceptBackwardsStrokes:true,showHintAfterMisses:4,highlightOnComplete:false,onMistake:()=>{mis++;fail(`${n} strokes · mistakes ${mis}`)},
           onComplete:({totalMistakes})=>{set({m:totalMistakes,n});fail(`Done · ${totalMistakes} mistakes. You can start over if you want.`)}})};
         if(a&&a.n){writer.showCharacter();fail(`Done · ${a.m} mistakes. Start over to write it again.`)}else start();$('wre').onclick=()=>{writer.hideCharacter();start()}}).catch(()=>fail('The stroke data could not load, so this question is skipped.'))}
@@ -2350,6 +2352,11 @@ function gdrill(l,gi,only){
 
 /* ---------- Writing ---------- */
 let STROKES=null;
+/* stroke-drawn characters: shift the drawing so the character's own bounding box sits in the middle of its square
+   (the stroke data puts some characters, e.g. 不, noticeably low or to one side) */
+function hwCreate(id,ch,o){const w=HanziWriter.create(id,ch,o);try{const el=typeof id==='string'?document.getElementById(id):id,d=STROKES&&STROKES[ch],svg=el&&el.querySelector('svg');
+  if(d&&svg){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const st of d.strokes){const n=st.match(/-?\d+(?:\.\d+)?/g).map(Number);for(let i=0;i+1<n.length;i+=2){const x=n[i],y=n[i+1];if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}}
+    const k=((o.width||el.clientWidth)-2*(o.padding||0))/1024;svg.style.transform=`translate(${((512-(x0+x1)/2)*k).toFixed(1)}px,${(((y0+y1)/2-388)*k).toFixed(1)}px)`}}catch(e){}return w}
 async function loadStrokes(){if(STROKES)return STROKES;const r=await fetch('strokes.json');STROKES=await r.json();return STROKES}
 /* how forgiving stroke recognition is: Relaxed (default) or Strict */
 const wlen=()=>1.7;
@@ -2387,7 +2394,7 @@ function write(rest0){
     $('wnext').onclick=advance;
     if(!n)return;
     const size=$('pad').clientWidth;
-    writer=HanziWriter.create('hw',c,{width:size,height:size,padding:size*.06,showCharacter:false,showOutline:level!=='memory',
+    writer=hwCreate('hw',c,{width:size,height:size,padding:size*.06,showCharacter:false,showOutline:level!=='memory',
       strokeColor:css('--ink'),outlineColor:css('--outline')||css('--line'),drawingColor:css('--accent'),highlightColor:css('--accent'),
       drawingWidth:Math.max(14,size/16),strokeAnimationSpeed:1.1,delayBetweenStrokes:220,
       charDataLoader:(ch,onLoad,onErr)=>STROKES[ch]?onLoad(STROKES[ch]):onErr()});
