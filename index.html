@@ -236,6 +236,7 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .exi{display:flex;flex-direction:column;gap:2px;padding:8px 0}.exi+.exi{border-top:1px solid var(--line)}.exi:last-child{padding-bottom:0}
 .exl{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.72rem;font-weight:600;line-height:1.6;vertical-align:1px;white-space:nowrap}
 .wordbig{font-size:clamp(3rem,14vw,5rem);line-height:1.1;overflow-wrap:anywhere}
+.ansrow[data-end]::after{content:attr(data-end);order:99;align-self:flex-end;font-family:var(--f-han);font-size:1.5rem;line-height:1.6;color:var(--muted);padding:0 2px 6px}
 .ansrow{min-height:62px;width:100%;border-bottom:2px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:6px 0;align-items:flex-end}
 .bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
 .chunk{background:var(--surface);border:1.5px solid var(--line);border-bottom-width:3px;border-radius:10px;padding:6px 12px;font-size:1.5rem}
@@ -1755,7 +1756,7 @@ function exam(qs,tlMin){
     else if(q.type==='blank'){const z=sentHz(s);body=`<p class="han examzh" data-nosay>${z.map((c,k)=>k===q.bi?'<span class="gap">　　</span>':esc(c)).join('')}</p><p class="hint">${esc(s.en)}</p><div class="opts chars">${q.opts.map((o,k)=>`<button class="opt" data-i="${k}"><span class="han" style="font-size:1.6rem">${esc(state.script==='t'?toTrad(o):o)}</span></button>`).join('')}</div>`}
     else if(q.type==='pinyin')body=big+`<p class="hint">${esc(x.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. ni3 hao3" aria-label="Pinyin"></div><p class="hint">Tones as numbers 1–4, ü as v.</p>`;
     else if(q.type==='tone')body=big+`<div class="tones">${[1,2,3,4,0].map(t=>`<button class="tbtn t${t}" data-t="${t}">${contour(t)}${t||'neutral'}<small>${t?TONE[t]:'tone'}</small></button>`).join('')}</div>`;
-    else if(q.type==='order'){const z=sentHz(s);body=`<p class="meaning" style="font-weight:700">${esc(s.en)}</p><div class="ansrow" id="ar"></div><div class="bank" id="bk">${q.bank.map((ix,k)=>`<button class="chunk han" data-j="${k}">${esc(z[ix])}</button>`).join('')}</div><button class="btn ghost" id="oc">Clear</button>`}
+    else if(q.type==='order'){const z=sentHz(s);body=`<p class="meaning" style="font-weight:700">${esc(s.en)}</p><div class="ansrow" id="ar" data-end="${endMark(z,s.en)}"></div><div class="bank" id="bk">${q.bank.map((ix,k)=>`<button class="chunk han" data-j="${k}">${esc(z[ix])}</button>`).join('')}</div><button class="btn ghost" id="oc">Clear</button>`}
     else if(q.type==='trans')body=`<p class="meaning" style="font-size:1.3rem;font-weight:700">${esc(s.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="你好 or ni3 hao3" aria-label="Your translation"></div><p class="hint">Characters or pinyin with tone numbers. Punctuation does not matter.</p>`;
     else if(q.type==='draw')body=`<span class="py" style="font-size:1.6rem">${pyHtml(x.p)}</span><p class="meaning">${esc(x.en)}</p><div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div><p class="strokes" id="wst"></p><button class="btn ghost" id="wre">Start over</button>`;
     $('qbox').innerHTML=`<div class="card top-align"><div class="qhead"><span class="eyebrow"><span class="han">${sec[2]}</span> ${sec[1]}</span><button class="flagbtn" id="fl" aria-pressed="${flag[i]}">⚑ ${flag[i]?'Flagged':'Flag'}</button></div>
@@ -1869,6 +1870,8 @@ function sentences(){
   $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);$('sr').onclick=()=>readList(list);
 }
 const isPunct=c=>/^[，。？！、,.?!]$/.test(c);
+/* the end mark of a sentence (？ for questions), shown fixed at the end of the row where you build it */
+const endMark=(zh,en)=>{const l=zh&&zh.length?zh[zh.length-1]:'';if(isPunct(l))return {'?':'？','!':'！','.':'。',',':'，'}[l]||l;return /\?\s*$/.test(en||'')?'？':/!\s*$/.test(en||'')?'！':'。'};
 function rubyHtml(s){const z=sentHz(s);
   // one pinyin syllable above each character, so every chunk sits on the same line
   const cell=(p,c)=>`<span class="rb"><small>${p}</small><span class="han">${esc(c)}</span></span>`;
@@ -1884,7 +1887,7 @@ function build(list,listen){
     const s=qs[qi],z=sentHz(s),words=z.map((c,i)=>({c,i})).filter(w=>!isPunct(w.c)),bank=shuffle(words);let picked=[];
     open(tallyBar(qi-score,score,qs.length,(qi+1)+' / '+qs.length)+(listen&&!$('noVoice').hidden?`<p class="notice">This browser has no Chinese voice, so you may not hear the sentence. Try Build sentences instead.</p>`:'')+`<div class="card top-align"><p class="eyebrow">${listen?'Listen and build':'Build the sentence'} · ${LNAME(s.l)}</p>
       ${listen?`<button class="play huge" id="sp">${PLAY}Play sentence</button>`:`<p class="meaning" style="font-size:1.25rem;font-weight:700">${esc(s.en)}</p><button class="play" id="sp">${PLAY}Hint: listen</button>`}
-      <div class="ansrow" id="ar" aria-label="Your sentence"></div><div class="bank" id="bk">${bank.map((w,j)=>`<button class="chunk han" data-j="${j}">${esc(w.c)}</button>`).join('')}</div>
+      <div class="ansrow" id="ar" aria-label="Your sentence" data-end="${endMark(z,s.en)}"></div><div class="bank" id="bk">${bank.map((w,j)=>`<button class="chunk han" data-j="${j}">${esc(w.c)}</button>`).join('')}</div>
       <div class="btns"><button class="btn ghost" id="clr">Clear</button><button class="btn" id="chk" disabled>Check</button></div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
     $('sp').onclick=()=>speakSent(s);if(listen)setTimeout(()=>speakSent(s),250);
     let tries=0,locked=false,marks=null;
@@ -2316,7 +2319,7 @@ function gdrill(l,gi,only){
     loadGdrill().then(()=>gdrill(l,gi,only)).catch(()=>open(bar(0,'')+`<div class="card"><p>The exercises could not be loaded. Check your connection and try again.</p><button class="btn" id="gdb">‹ Back to grammar</button></div>`)||($('gdb').onclick=()=>grammar(l)));return}
   const all=GDRILL[l+'-'+gi]||[];const qs=shuffle(only||all);let qi=0,ok=0,bad=0;const missed=[];
   const back=()=>{const b=M().querySelector('.bar .back');if(b){b.removeAttribute('data-home');b.textContent='‹ Grammar';b.onclick=()=>grammar(l)}};
-  const full=q=>q[0]==='c'?q[1].replace('＿',q[2][0]===NONE?'':q[2][0]):q[0]==='p'?q[1][0]:q[1].join('').replace(/\s+/g,'');
+  const full=q=>q[0]==='c'?q[1].replace('＿',q[2][0]===NONE?'':q[2][0]):q[0]==='p'?q[1][0]:q[1].join('').replace(/\s+/g,'')+endMark(null,q[2]);
   function draw(){
     if(qi>=qs.length)return finish();
     const q=qs[qi],head=tallyBar(bad,ok,qs.length,(qi+1)+' / '+qs.length);
@@ -2330,7 +2333,7 @@ function gdrill(l,gi,only){
         <div class="opts one gopts" id="qo">${os.map((o,k)=>`<button class="opt" data-k="${k}"><span class="han">${esc(zh(o))}</span></button>`).join('')}</div>`}
     else{let bank=shuffle(q[1].map((c,k)=>({c,k})));if(q[1].length>2)for(let t=0;t<5&&bank.every((b,k)=>b.c===q[1][k]);t++)bank=shuffle(bank);q._b=bank;q._p=[];
       body=`<p class="hint">Put the words in the right order.</p><p class="muted gen">${esc(q[2])}</p>
-        <div class="ansrow" id="ar" aria-label="Your sentence"></div><div class="bank" id="bk">${bank.map((b,k)=>`<button class="chunk han" data-j="${k}">${esc(zh(b.c))}</button>`).join('')}</div>
+        <div class="ansrow" id="ar" aria-label="Your sentence" data-end="${endMark(null,q[2])}"></div><div class="bank" id="bk">${bank.map((b,k)=>`<button class="chunk han" data-j="${k}">${esc(zh(b.c))}</button>`).join('')}</div>
         <div class="btns"><button class="btn ghost" id="clr">Clear answer</button><button class="btn" id="chk" disabled>Check</button></div>`}
     open(head+`<div class="card top-align gdcard">${top}${body}<div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);back();
     const done=(right,picked)=>{if(right)ok++;else{bad++;missed.push(q)}
