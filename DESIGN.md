@@ -49,7 +49,7 @@ typography:
     lineHeight: 1.15
   title:
     fontFamily: "Outfit, ZiYou Kai, Source Sans 3, system-ui, sans-serif"
-    fontSize: "1.05rem"
+    fontSize: "1.1rem"
     fontWeight: 600
     lineHeight: 1.15
   body:
@@ -62,14 +62,48 @@ typography:
     fontSize: "0.8rem"
     fontWeight: 700
     letterSpacing: "0.06em"
+  caption:
+    fontFamily: "ZiYou Kai, Source Sans 3, Segoe UI, system-ui, sans-serif"
+    fontSize: "0.72rem"
+    fontWeight: 600
+  body-sm:
+    fontFamily: "ZiYou Kai, Source Sans 3, Segoe UI, system-ui, sans-serif"
+    fontSize: "0.9rem"
+    fontWeight: 400
+    lineHeight: 1.45
+  headline-lg:
+    fontFamily: "Outfit, ZiYou Kai, Source Sans 3, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+  numeral:
+    fontFamily: "Outfit, Source Sans 3, system-ui, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 700
+  hero:
+    fontFamily: "Outfit, ZiYou Kai, Source Sans 3, system-ui, sans-serif"
+    fontSize: "clamp(2.2rem, 10.5vw, 2.75rem)"
+    fontWeight: 800
   hanzi:
-    fontFamily: "ZiYou Kai, Noto Serif SC, Noto Serif TC, serif"
+    fontFamily: "ZiYou Han, ZiYou Kai, Noto Serif SC, Noto Serif TC, serif"
+    fontSize: "2.5rem"
+    fontWeight: 500
+  hanzi-display:
+    fontFamily: "ZiYou Han, ZiYou Kai, Noto Serif SC, Noto Serif TC, serif"
+    fontSize: "3.5rem"
+    fontWeight: 500
+  hanzi-lg:
+    fontFamily: "ZiYou Han, ZiYou Kai, Noto Serif SC, serif"
+    fontSize: "clamp(3rem, 14vw, 5rem)"
+    fontWeight: 500
+  hanzi-xl:
+    fontFamily: "ZiYou Han, ZiYou Kai, Noto Serif SC, serif"
+    fontSize: "clamp(5rem, 26vw, 8rem)"
     fontWeight: 500
   seal:
     fontFamily: "Ma Shan Zheng, Noto Serif SC, KaiTi, serif"
 rounded:
   xs: "4px"
-  sm: "9px"
+  sm: "8px"
   md: "12px"
   lg: "16px"
   xl: "22px"
@@ -180,6 +214,9 @@ The same notebook at night: **#141111** desk, **#1f1a1a** cards, **#2b2424** sun
 
 **Character:** a geometric, friendly display face for headings and numbers, a plain humanist body, and hand-written Chinese that matches what the student writes.
 
+### Type scale
+Every font size in the app is one of ten steps: **.72 · .8 · .9 · 1 · 1.1 · 1.25 · 1.5 · 2 · 2.5 · 3.5rem**, plus three fluid steps on `:root`: `--fs-hero` (landing headline), `--fs-han-lg` (words on cards and in grids) and `--fs-han-xl` (a single big character). Pick the nearest step instead of inventing a new size.
+
 ### Hierarchy
 - **Display** (700, clamp(1.7rem, 6vw, 2.2rem), 1.15, -0.01em): page titles, the landing headline.
 - **Headline** (700, 1.25rem, 1.15): section headings (Today's review, What do you want to do?).
@@ -207,7 +244,7 @@ Layered, soft and ambient: paper resting on a desk. Cards and tiles carry a low 
 
 ## Shapes
 
-Soft rectangles, never sharp and never blobs: 22px flashcards and practice cards, 16px mode tiles and panels, 12px buttons and segmented trays, 9–10px inner segments and inputs, pill for tags, the streak and the header buttons. The seal is a slightly rotated 5px-radius rectangle. Practice grids are dashed 米字格 lines inside a 12px rounded cell.
+Six radii only: **4 · 8 · 12 · 16 · 22px and pill (999px)**, plus 50% for circles. Soft rectangles, never sharp and never blobs: 22px flashcards and practice cards, 16px mode tiles and panels, 12px buttons, segmented trays and inputs, 8px inner segments, pill for tags, the streak and the header buttons. The seal is a slightly rotated 5px-radius rectangle. Practice grids are dashed 米字格 lines inside a 12px rounded cell.
 
 ## Components
 

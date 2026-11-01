@@ -23,6 +23,8 @@
   --f-body:"ZiYou Kai","Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --f-han:"ZiYou Han","Noto Serif SC","Noto Serif TC","Songti SC","SimSun",serif;
   --f-hant:"ZiYou Han","Noto Serif TC","Noto Serif SC","Songti TC","PMingLiU",serif;
+  /* type scale: .72 .8 .9 1 1.1 1.25 1.5 2 2.5 3.5rem; big Chinese characters and the hero use three fluid steps */
+  --fs-han-xl:clamp(5rem,26vw,8rem); --fs-han-lg:clamp(3rem,14vw,5rem); --fs-hero:clamp(2.2rem,10.5vw,2.75rem);
   --f-brush:"Ma Shan Zheng","Noto Serif SC","STKaiti","KaiTi",serif;
   color-scheme:light;
 }
@@ -49,10 +51,10 @@ body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--f-body);
 .wrap{max-width:680px;margin:0 auto;padding-block:20px 48px}
 .view{display:flex;flex-direction:column;gap:22px}
 h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;line-height:1.15}
-h1{font-size:1.75rem} h2{font-size:1.2rem} h3{font-size:1.05rem}
+h1{font-size:1.5rem} h2{font-size:1.25rem} h3{font-size:1rem}
 p{margin:0}
 .muted{color:var(--muted)}
-.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none}
 button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
@@ -64,12 +66,12 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .section{display:flex;flex-direction:column;gap:12px}
 .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.seg{display:inline-flex;background:var(--sunk);border-radius:10px;padding:3px;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--sunk);border-radius:12px;padding:3px;flex-wrap:wrap}
 .seg button{padding:6px 12px;border-radius:8px;font-weight:600;font-size:.9rem;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0/.12)}
-.link{color:var(--accent-fg,var(--accent));font-weight:600;font-size:.92rem;padding:4px 2px}
+.link{color:var(--accent-fg,var(--accent));font-weight:600;font-size:.9rem;padding:4px 2px}
 .hint{color:var(--muted);font-size:.9rem}
-.notice{background:var(--sunk);border-radius:10px;padding:10px 12px;font-size:.9rem}
+.notice{background:var(--sunk);border-radius:12px;padding:10px 12px;font-size:.9rem}
 .count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem;white-space:nowrap}
 /* today strip */
 .today{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -81,9 +83,9 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .barsp{flex:1}
 #upd span{white-space:nowrap}
 #upd{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:10px;
-  background:var(--panel);color:var(--panel-ink);border-radius:999px;padding:8px 8px 8px 16px;box-shadow:var(--sh2);font-weight:600;font-size:.92rem;max-width:calc(100vw - 24px);animation:rise .3s ease-out}
+  background:var(--panel);color:var(--panel-ink);border-radius:999px;padding:8px 8px 8px 16px;box-shadow:var(--sh2);font-weight:600;font-size:.9rem;max-width:calc(100vw - 24px);animation:rise .3s ease-out}
 #upd #updgo{background:var(--accent);color:#fff;border-radius:999px;padding:7px 14px;font-weight:700;min-height:36px}
-#upd #updx{color:var(--panel-muted);font-size:1.2rem;width:32px;height:32px;border-radius:50%}
+#upd #updx{color:var(--panel-muted);font-size:1.25rem;width:32px;height:32px;border-radius:50%}
 .statlink{text-align:left;color:inherit;font:inherit;cursor:pointer;border:0}
 .hero .statlink span{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .streak{cursor:pointer}
@@ -93,12 +95,12 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 /* lessons */
 .lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}
 .lesson{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 10px 8px;text-align:left;display:flex;flex-direction:column;gap:3px}
-.lesson b{font-family:var(--f-display);font-size:1.05rem}
+.lesson b{font-family:var(--f-display);font-size:1rem}
 .lesson small{color:var(--muted);font-size:.8rem}
-.lesson .peek{font-size:1.05rem;letter-spacing:.05em;color:var(--muted);white-space:nowrap;overflow:hidden}
+.lesson .peek{font-size:1rem;letter-spacing:.05em;color:var(--muted);white-space:nowrap;overflow:hidden}
 .lesson[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
 .lesson[aria-pressed="true"] small,.lesson[aria-pressed="true"] .peek{color:var(--bg);opacity:.75}
-.mbar{display:flex;height:5px;border-radius:5px;overflow:hidden;background:var(--sunk)}
+.mbar{display:flex;height:5px;border-radius:4px;overflow:hidden;background:var(--sunk)}
 .mbar i{display:block;height:100%}
 .mbar .m2{background:var(--accent)} .mbar .m1{background:var(--accent);opacity:.4}
 .lesson[aria-pressed="true"] .mbar{background:rgb(127 127 127/.35)}
@@ -107,13 +109,13 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 /* modes */
 .modes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 @media (max-width:600px){.modes{grid-template-columns:1fr 1fr}}
-.mode{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px;text-align:left;min-width:0}
+.mode{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px;text-align:left;min-width:0}
 .mode:hover{border-color:var(--accent)}
-.mode .ic{width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent-fg,var(--accent));display:grid;place-items:center;font-family:var(--f-han);font-size:1.1rem;font-weight:700}
+.mode .ic{width:34px;height:34px;border-radius:8px;background:var(--accent-soft);color:var(--accent-fg,var(--accent));display:grid;place-items:center;font-family:var(--f-han);font-size:1.1rem;font-weight:700}
 .mode b{font-family:var(--f-display);font-size:1rem}
-.mode span{font-size:.82rem;color:var(--muted);line-height:1.3}
+.mode span{font-size:.8rem;color:var(--muted);line-height:1.3}
 .mode:disabled{opacity:.45;cursor:not-allowed}
-.btn{background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:10px;padding:11px 16px;text-align:center}
+.btn{background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:12px;padding:11px 16px;text-align:center}
 .btn.ghost{background:var(--sunk);color:var(--ink)}
 .btn.okb{background:var(--ok);color:var(--surface)}
 .btn.badb{background:var(--bad);color:var(--surface)}
@@ -121,37 +123,37 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .btns{display:flex;gap:8px;flex-wrap:wrap;width:100%}
 .btns .btn{flex:1 1 120px}
 .legend{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.lg{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--surface);border-radius:10px;padding:8px 4px;font-size:.78rem;text-align:center;line-height:1.2}
+.lg{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--surface);border-radius:12px;padding:8px 4px;font-size:.8rem;text-align:center;line-height:1.2}
 .lg svg{width:30px;height:30px}
 .twinlist{display:flex;flex-wrap:wrap;gap:6px}
-.twin{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 8px;display:inline-flex;gap:6px;align-items:baseline;font-size:.88rem}
-.twin .han{font-size:1.15rem}
+.twin{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 8px;display:inline-flex;gap:6px;align-items:baseline;font-size:.9rem}
+.twin .han{font-size:1.1rem}
 .twin i{font-style:normal;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px}
-.cell{position:relative;background:var(--surface);border-radius:10px;padding:6px 2px 7px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
-.cell .han{font-size:1.7rem;line-height:1.2}
-.cell small{font-size:.78rem;font-weight:700}
+.cell{position:relative;background:var(--surface);border-radius:12px;padding:6px 2px 7px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.cell .han{font-size:1.5rem;line-height:1.2}
+.cell small{font-size:.8rem;font-weight:700}
 .cell::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:transparent}
 .cell.m1::after{background:var(--accent);opacity:.4}.cell.m2::after{background:var(--accent)}
-.cell .st{position:absolute;top:2px;right:5px;color:var(--star);font-size:.75rem}
+.cell .st{position:absolute;top:2px;right:5px;color:var(--star);font-size:.72rem}
 /* practice chrome */
 .bar{display:flex;align-items:center;gap:10px}
 .bar .back{font-weight:600;color:var(--muted);padding:6px 0;white-space:nowrap}
-.progress{flex:1;height:6px;background:var(--sunk);border-radius:6px;overflow:hidden}
+.progress{flex:1;height:6px;background:var(--sunk);border-radius:4px;overflow:hidden}
 .progress span{display:block;height:100%;background:var(--accent);transition:width .25s}
-.card{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;min-height:300px;justify-content:center;width:100%;position:relative}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;min-height:300px;justify-content:center;width:100%;position:relative}
 .card.top-align{justify-content:flex-start}
-.big{font-size:clamp(5.5rem,28vw,8.5rem);line-height:1}
-.alt{font-size:.95rem;color:var(--muted)}
+.big{font-size:var(--fs-han-xl);line-height:1}
+.alt{font-size:.9rem;color:var(--muted)}
 .py{font-size:2rem;font-weight:700;display:inline-flex;align-items:center;gap:8px}
 .py svg{width:34px;height:34px}
-.meaning{font-size:1.15rem;max-width:30ch}
-.tag{font-size:.8rem;color:var(--muted);background:var(--sunk);border-radius:6px;padding:2px 8px}
+.meaning{font-size:1.1rem;max-width:30ch}
+.tag{font-size:.8rem;color:var(--muted);background:var(--sunk);border-radius:4px;padding:2px 8px}
 .starbtn{font-size:.9rem;font-weight:600;color:var(--muted);padding:4px 6px;line-height:1}
 .starbtn[aria-pressed="true"]{color:var(--star)}
 .play{display:inline-flex;align-items:center;gap:8px;background:var(--sunk);border-radius:999px;padding:8px 16px;font-weight:600}
 .play svg{width:18px;height:18px}
-.play.huge{padding:16px 24px;font-size:1.05rem}
+.play.huge{padding:16px 24px;font-size:1rem}
 .play.huge svg{width:24px;height:24px}
 .piles{display:flex;justify-content:space-between;font-size:.9rem;font-weight:600}
 .piles .no{color:var(--bad)} .piles .yes{color:var(--ok)}
@@ -160,91 +162,91 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .card.swipe-r{transform:translateX(30px) rotate(3deg);opacity:.4;transition:.18s}
 /* questions */
 .qprompt{font-size:1.1rem;font-weight:600}
-.qask{margin:2px 0 0;font-size:1.05rem;font-weight:700;color:var(--muted);text-align:center;width:100%}
+.qask{margin:2px 0 0;font-size:1rem;font-weight:700;color:var(--muted);text-align:center;width:100%}
 .opts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;width:100%}
 .opt{background:var(--sunk);border:2px solid transparent;border-radius:12px;padding:12px 10px;text-align:left;font-weight:600;min-height:56px;min-width:0;overflow-wrap:anywhere;display:flex;align-items:center;gap:8px}
-.opt .han{font-size:2.2rem;line-height:1.1;font-weight:500}
+.opt .han{font-size:2rem;line-height:1.1;font-weight:500}
 .opt.c{justify-content:center}
-.opt kbd{font:600 .75rem var(--f-body);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 5px;flex:none}
+.opt kbd{font:600 .72rem var(--f-body);color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 5px;flex:none}
 .opts.chars .opt{justify-content:center;flex-direction:column;gap:2px}
 .opts.chars .opt small{font-size:.9rem;min-height:1.3em}
 .tones{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:100%}
-.tbtn{background:var(--sunk);border:2px solid transparent;border-radius:12px;padding:10px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:.85rem;line-height:1.15}
+.tbtn{background:var(--sunk);border:2px solid transparent;border-radius:12px;padding:10px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:.8rem;line-height:1.15}
 .tbtn svg{width:34px;height:34px}
 .tbtn small{font-weight:400;font-size:.72rem;color:var(--muted)}
 .is-ok{border-color:var(--ok)!important;background:var(--ok-bg)!important}
 .is-bad{border-color:var(--bad)!important;background:var(--bad-bg)!important}
 .answered .opt:not(.is-ok):not(.is-bad),.answered .tbtn:not(.is-ok):not(.is-bad){opacity:.5}
 .typein{display:flex;gap:8px;width:100%}
-.typein input{flex:1;min-width:0;background:var(--sunk);border:2px solid var(--line);border-radius:10px;padding:10px 12px;font-size:1.2rem}
+.typein input{flex:1;min-width:0;background:var(--sunk);border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-size:1.25rem}
 .typein input.is-ok{border-color:var(--ok)} .typein input.is-bad{border-color:var(--bad)}
-.fb{border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%}
+.fb{border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%}
 .fb.ok{background:var(--ok-bg)}.fb.bad{background:var(--bad-bg)}
 .fb.ok h3{color:var(--ok)}.fb.bad h3{color:var(--bad)}
 .why{display:flex;align-items:center;gap:10px}
 .why svg{width:40px;height:40px;flex:none}
 .grp{display:flex;flex-direction:column;gap:6px;width:100%;text-align:left}
-.gi{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:10px;background:var(--surface);border-radius:10px;padding:6px 10px}
-.gi .han{font-size:1.8rem;line-height:1.1}
+.gi{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:6px 10px}
+.gi .han{font-size:2rem;line-height:1.1}
 .gi .p{font-weight:700;font-size:1.1rem;white-space:nowrap}
 .gi .m{font-size:.9rem;color:var(--muted);min-width:0}
 .gi .mini{background:var(--sunk);border-radius:999px;width:34px;height:34px;display:grid;place-items:center}
 .gi .mini svg{width:14px;height:14px}
 .gi.target{outline:2px solid currentColor}
 .score{font-family:var(--f-display);font-size:3.5rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-.learnstats{display:flex;gap:14px;justify-content:center;font-size:.85rem;color:var(--muted);flex-wrap:wrap}
+.learnstats{display:flex;gap:14px;justify-content:center;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
 .learnstats b{color:var(--ink);font-variant-numeric:tabular-nums}
 /* test */
-.tq{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.tq{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .tq.ok{border-color:var(--ok)} .tq.bad{border-color:var(--bad)}
 .tq .n{font-size:.8rem;color:var(--muted);font-weight:600}
 .tq .opt[aria-pressed="true"]{border-color:var(--ink)}
-.tq .ans{font-size:.92rem}
+.tq .ans{font-size:.9rem}
 /* match */
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.mgrid.cols{grid-template-columns:1fr 1fr;column-gap:18px}.mgrid.cols .mt{min-height:66px}.mgrid.cols .mt .han{font-size:1.9rem}
-.mhead{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center}
-.mt{background:var(--surface);border:2px solid var(--line);border-radius:12px;min-height:84px;padding:8px;display:grid;place-items:center;text-align:center;font-weight:600;font-size:.92rem;line-height:1.25;transition:opacity .25s,transform .15s}
-.mt .han{font-size:2.3rem;font-weight:500}
+.mgrid.cols{grid-template-columns:1fr 1fr;column-gap:18px}.mgrid.cols .mt{min-height:66px}.mgrid.cols .mt .han{font-size:2rem}
+.mhead{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center}
+.mt{background:var(--surface);border:2px solid var(--line);border-radius:12px;min-height:84px;padding:8px;display:grid;place-items:center;text-align:center;font-weight:600;font-size:.9rem;line-height:1.25;transition:opacity .25s,transform .15s}
+.mt .han{font-size:2.5rem;font-weight:500}
 .mt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .mt.gone{opacity:0;pointer-events:none;transform:scale(.9)}
 .mt.shake{border-color:var(--bad);animation:shake .3s}
 @keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-.timer{font-family:var(--f-display);font-size:1.6rem;font-variant-numeric:tabular-nums;font-weight:700}
+.timer{font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums;font-weight:700}
 /* write */
 .pad{position:relative;width:min(300px,80vw);aspect-ratio:1;max-width:100%;background:var(--surface);border:2px solid var(--line);border-radius:12px;touch-action:none}
 .pad svg.guide{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .pad .hw{position:absolute;inset:0}
 .wprompt{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
-.strokes{font-size:.85rem;color:var(--muted)}
+.strokes{font-size:.8rem;color:var(--muted)}
 /* progress view */
-.prow{display:grid;grid-template-columns:76px 1fr auto;gap:10px;align-items:center;font-size:.92rem}
+.prow{display:grid;grid-template-columns:76px 1fr auto;gap:10px;align-items:center;font-size:.9rem}
 .prow .mbar{height:10px}
-.keys{display:flex;gap:14px;font-size:.82rem;color:var(--muted);flex-wrap:wrap}
-.keys i{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+.keys{display:flex;gap:14px;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
+.keys i{display:inline-block;width:10px;height:10px;border-radius:4px;vertical-align:-1px;margin-right:4px}
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 
-.cta{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:14px 16px;text-align:left;width:100%}
-.cta b{font-family:var(--f-display);font-size:1.15rem;display:block}
-.cta span{font-size:.88rem;opacity:.85}
-.cta .go{font-family:var(--f-display);font-size:1.6rem}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:14px 16px;text-align:left;width:100%}
+.cta b{font-family:var(--f-display);font-size:1.1rem;display:block}
+.cta span{font-size:.9rem;opacity:.85}
+.cta .go{font-family:var(--f-display);font-size:1.5rem}
 .cta:disabled{opacity:.55;cursor:default}
 .srsbtns{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%}
-.srsbtns button{border-radius:10px;padding:9px 4px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:1px;background:var(--sunk);border:2px solid transparent}
-.srsbtns button small{font-weight:400;font-size:.76rem;color:var(--muted)}
+.srsbtns button{border-radius:12px;padding:9px 4px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:1px;background:var(--sunk);border:2px solid transparent}
+.srsbtns button small{font-weight:400;font-size:.72rem;color:var(--muted)}
 .srsbtns .again{border-color:var(--bad)} .srsbtns .good{border-color:var(--ok)}
 .ex{background:var(--sunk);border-radius:12px;padding:10px 12px;text-align:left;width:100%;display:flex;flex-direction:column;gap:2px}
-.ex .zh{font-size:1.25rem} .ex mark{background:var(--accent-soft);color:inherit;border-radius:3px;padding:0 1px}
-.ex .pyl{font-size:.9rem;color:var(--muted)} .ex .en{font-size:.92rem}
+.ex .zh{font-size:1.25rem} .ex mark{background:var(--accent-soft);color:inherit;border-radius:4px;padding:0 1px}
+.ex .pyl{font-size:.9rem;color:var(--muted)} .ex .en{font-size:.9rem}
 .ex .row{flex-wrap:nowrap}
 .exs{gap:0}.exs>.eyebrow{margin-bottom:2px}
 .exi{display:flex;flex-direction:column;gap:2px;padding:8px 0}.exi+.exi{border-top:1px solid var(--line)}.exi:last-child{padding-bottom:0}
 .exl{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.72rem;font-weight:600;line-height:1.6;vertical-align:1px;white-space:nowrap}
-.wordbig{font-size:clamp(3rem,14vw,5rem);line-height:1.1;overflow-wrap:anywhere}
-.ansrow[data-end]::after{content:attr(data-end);order:99;align-self:flex-end;font-family:var(--f-han);font-size:1.5rem;line-height:1.6;color:var(--muted);padding:0 2px 6px}
+.wordbig{font-size:var(--fs-han-lg);line-height:1.1;overflow-wrap:anywhere}
+.tcands{height:52px;flex-wrap:nowrap;align-items:center;overflow-x:auto;scrollbar-width:none}.tcands::-webkit-scrollbar,.tdr::-webkit-scrollbar{display:none}.tcands .chunk{cursor:pointer;padding:2px 10px;font-size:1.5rem;flex:none}.tcands .hint{white-space:nowrap}.ansrow.tdr{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-height:58px;height:58px}.tdr .chunk{flex:none;cursor:pointer;padding:2px 8px;font-size:1.25rem}.tdraw{display:flex;gap:10px;align-items:flex-end;justify-content:center;width:100%}.tpad{width:min(240px,58vw,max(150px,calc(100svh - 520px)));color:var(--ink)}.tpad canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.ttools{display:flex;flex-direction:column;gap:8px}.ttools .btn{min-width:48px;padding:8px 12px;font-size:1.25rem}.ansrow[data-end]::after{content:attr(data-end);order:99;align-self:flex-end;margin-left:auto;font-family:var(--f-han);font-size:1.5rem;line-height:1.6;color:var(--muted);padding:0 2px 6px}
 .ansrow{min-height:62px;width:100%;border-bottom:2px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:6px 0;align-items:flex-end}
 .bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
-.chunk{background:var(--surface);border:1.5px solid var(--line);border-bottom-width:3px;border-radius:10px;padding:6px 12px;font-size:1.5rem}
+.chunk{background:var(--surface);border:1.5px solid var(--line);border-bottom-width:3px;border-radius:12px;padding:6px 12px;font-size:1.5rem}
 .chunk.used{visibility:hidden}
 #ar .chunk{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 #ar .chunk.dragging{position:relative;z-index:5;cursor:grabbing;box-shadow:0 10px 22px -10px rgb(0 0 0/.45);opacity:.92}
@@ -257,15 +259,15 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .ruby .rw{display:flex;gap:1px}
 .ruby .rb{display:flex;flex-direction:column;align-items:center}
 .ruby small{font-size:.8rem;color:var(--muted);white-space:nowrap;line-height:1.3}
-.ruby .han{font-size:1.6rem}
-.slist{display:flex;flex-direction:column;gap:8px}
-.sitem{background:var(--surface);border-radius:12px;padding:12px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
-.sitem .zh{font-size:1.35rem;min-width:0}
-.sitem .pyl,.sitem .en{grid-column:1;font-size:.92rem;min-width:0}
-.sitem .pyl{color:var(--muted)}
-.sitem .play{grid-row:1/span 3;grid-column:2}
+.ruby .han{font-size:1.5rem}
+
+
+
+
+
+
 .board{display:flex;flex-direction:column;gap:6px}
-.brow{display:grid;grid-template-columns:28px 1fr auto auto;gap:10px;align-items:center;background:var(--surface);border-radius:10px;padding:8px 12px;font-size:.95rem}
+.brow{display:grid;grid-template-columns:28px 1fr auto auto;gap:10px;align-items:center;background:var(--surface);border-radius:12px;padding:8px 12px;font-size:.9rem}
 .brow.me{outline:2px solid var(--accent)}
 .brow .rk{font-family:var(--f-display);font-weight:700;color:var(--muted)}
 .brow .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -275,26 +277,26 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .bme{background:var(--panel);color:var(--panel-ink);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
 .bme .hint{color:var(--panel-muted)}
 .bmetop{display:flex;align-items:center;gap:10px}.bmetop>div{min-width:0;flex:1}
-.bav{font-size:2rem;line-height:1}.bnm{display:block;font-family:var(--f-display);font-size:1.1rem}.bsub{font-size:.85rem;color:var(--panel-muted)}
+.bav{font-size:2rem;line-height:1}.bnm{display:block;font-family:var(--f-display);font-size:1.1rem}.bsub{font-size:.8rem;color:var(--panel-muted)}
 .bgoal{margin:0;font-weight:700}
 .bscore{margin-left:auto;font-family:var(--f-display);font-size:1.5rem;text-align:right;font-variant-numeric:tabular-nums}.bscore small{display:block;font:600 .72rem var(--f-body);color:var(--panel-muted)}
 .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-items:end;margin:6px 0 4px}
 .pcol{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;min-width:0}
-.pav{font-size:1.9rem;line-height:1}.p1 .pav{font-size:2.4rem}
-.pnm{font-weight:700;font-size:.88rem;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pval{font-family:var(--f-display);font-size:1.15rem;font-variant-numeric:tabular-nums}.pval small{display:block;font:600 .7rem var(--f-body);color:var(--muted)}
-.pstep{width:100%;border-radius:12px 12px 4px 4px;background:var(--surface);box-shadow:var(--sh1);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.4rem;color:var(--muted)}
+.pav{font-size:2rem;line-height:1}.p1 .pav{font-size:2.5rem}
+.pnm{font-weight:700;font-size:.9rem;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pval{font-family:var(--f-display);font-size:1.1rem;font-variant-numeric:tabular-nums}.pval small{display:block;font:600 .72rem var(--f-body);color:var(--muted)}
+.pstep{width:100%;border-radius:12px 12px 4px 4px;background:var(--surface);box-shadow:var(--sh1);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:1.5rem;color:var(--muted)}
 .p1 .pstep{height:86px;background:var(--accent);color:#fff}.p2 .pstep{height:62px}.p3 .pstep{height:46px}
 .pcol.me .pnm{color:var(--accent-fg,var(--accent))}
-textarea{font:inherit;width:100%;min-height:90px;background:var(--sunk);color:var(--ink);border:2px solid var(--line);border-radius:10px;padding:8px;font-size:.8rem}
+textarea{font:inherit;width:100%;min-height:90px;background:var(--sunk);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:8px;font-size:.8rem}
 .toggle{display:flex;align-items:center;gap:10px;font-weight:600}
 .toggle input{width:20px;height:20px;accent-color:var(--accent)}
 .rel{display:flex;flex-wrap:wrap;gap:6px}
-.relw{background:var(--surface);border-radius:10px;padding:5px 10px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;max-width:100%}
+.relw{background:var(--surface);border-radius:12px;padding:5px 10px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;max-width:100%}
 .relw .han{font-size:1.25rem;line-height:1.2}
-.relw small{font-size:.75rem;color:var(--muted)}
+.relw small{font-size:.72rem;color:var(--muted)}
 .relw.later{opacity:.6}
-footer{font-size:.78rem;color:var(--muted);margin-top:28px}
+footer{font-size:.8rem;color:var(--muted);margin-top:28px}
 /* motion */
 @keyframes rise{from{opacity:0;transform:translateY(12px)}}
 @keyframes pop{40%{transform:scale(1.05)}}
@@ -320,7 +322,7 @@ footer{font-size:.78rem;color:var(--muted);margin-top:28px}
 @keyframes fadein{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-property:opacity,color,background-color,border-color,box-shadow!important;transition-duration:.15s!important;scroll-behavior:auto!important}
   #card.flipin,#card.cardin,.fb,.view.anim>*{animation:fadein .18s ease-out!important}}
-#vsel{flex:1;min-width:0;max-width:100%;font:inherit;padding:.5rem .6rem;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:inherit}
+#vsel{flex:1;min-width:0;max-width:100%;font:inherit;padding:.5rem .6rem;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:inherit}
 .topr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .acct{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:700;max-width:180px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .av{font-size:1.15em;line-height:1}
@@ -328,7 +330,7 @@ footer{font-size:.78rem;color:var(--muted);margin-top:28px}
 .brow{grid-template-columns:30px minmax(0,1fr) auto auto}
 @media (max-width:420px){.brow .nm small{display:none}}
 .avs{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:6px 0}
-.avs button{font-size:1.4rem;padding:6px 0;border-radius:10px;background:var(--sunk);border:2px solid transparent}
+.avs button{font-size:1.5rem;padding:6px 0;border-radius:12px;background:var(--sunk);border:2px solid transparent}
 .avs button[aria-pressed=true]{border-color:var(--accent);background:var(--surface)}
 
 /* ---- Exercise-book look: 田字格 practice squares, ink panel for today, jade accent ---- */
@@ -338,35 +340,35 @@ h2{font-size:1.25rem;font-weight:700}
 h3{font-weight:600}
 .mast{display:flex;align-items:center;gap:14px;min-width:0}
 .logo{flex:none;width:60px;height:60px;display:block}
-.seal{flex:none;width:58px;height:58px;display:grid;place-items:center;font-family:var(--f-han);font-weight:700;font-size:2.2rem;color:var(--accent-fg,var(--accent));border:2px solid var(--accent);border-radius:6px;
+.seal{flex:none;width:58px;height:58px;display:grid;place-items:center;font-family:var(--f-han);font-weight:700;font-size:2rem;color:var(--accent-fg,var(--accent));border:2px solid var(--accent);border-radius:4px;
   background:linear-gradient(var(--grid),var(--grid)) center/1px 100% no-repeat,linear-gradient(var(--grid),var(--grid)) center/100% 1px no-repeat,var(--surface)}
 .mast .eyebrow{letter-spacing:.1em}
 .top{align-items:center}
-.hero{background:var(--panel);color:var(--panel-ink);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:16px}
+.hero{background:var(--panel);color:var(--panel-ink);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:16px}
 .hero .today{gap:0;grid-template-columns:repeat(3,1fr)}
 .hero .stat{background:none;border-radius:0;padding:2px 12px;border-left:1px solid rgb(255 255 255/.14)}
 .hero .stat:first-child{border-left:0;padding-left:0}
 .hero .stat b{font-size:2rem;font-weight:700}
 .hero .stat span{color:var(--panel-muted)}
-@media (max-width:480px){.hero .stat b{font-size:1.6rem}.hero .stat{padding:2px 8px}}
-.streak{display:inline-flex;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-family:var(--f-display);font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
-.streak .fl{font-size:1.05rem;line-height:1}
+@media (max-width:480px){.hero .stat b{font-size:1.5rem}.hero .stat{padding:2px 8px}}
+.streak{display:inline-flex;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-family:var(--f-display);font-weight:700;font-size:1rem;font-variant-numeric:tabular-nums}
+.streak .fl{font-size:1rem;line-height:1}
 .streak.off{color:var(--muted)}.streak.off .fl{filter:grayscale(1);opacity:.5}
-.hero .cta{background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:14px 16px}
+.hero .cta{background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:14px 16px}
 .hero .cta:disabled{background:rgb(255 255 255/.1);color:var(--panel-ink);opacity:1}
 .cta .go{width:38px;height:38px;border-radius:50%;background:rgb(255 255 255/.16);display:grid;place-items:center;flex:none;line-height:1}
 .section{gap:14px}
 .section>h2,.section>.row>h2{display:flex;align-items:baseline;gap:8px}
-.lesson{border-radius:14px;border-width:1.5px;padding:11px 11px 9px;gap:4px;transition:transform .12s,border-color .12s}
+.lesson{border-radius:16px;border-width:1.5px;padding:11px 11px 9px;gap:4px;transition:transform .12s,border-color .12s}
 .lesson:hover{border-color:var(--ink)}
 .lesson:active{transform:scale(.97)}
 .lesson b{font-size:1rem}
-.lesson .peek{font-size:1.15rem}
+.lesson .peek{font-size:1.1rem}
 .mode{border-radius:16px;padding:14px;gap:8px;transition:transform .12s,border-color .12s,box-shadow .12s}
 .mode:hover:not(:disabled){border-color:var(--accent);box-shadow:0 6px 18px -10px var(--accent);transform:translateY(-1px)}
-.mode .ic{width:44px;height:44px;border-radius:4px;font-size:1.55rem;font-weight:700;color:var(--accent-fg,var(--accent));border:1.5px solid var(--grid);
+.mode .ic{width:44px;height:44px;border-radius:4px;font-size:1.5rem;font-weight:700;color:var(--accent-fg,var(--accent));border:1.5px solid var(--grid);
   background:repeating-linear-gradient(90deg,var(--grid) 0 3px,transparent 3px 6px) center/100% 1px no-repeat,repeating-linear-gradient(0deg,var(--grid) 0 3px,transparent 3px 6px) center/1px 100% no-repeat,var(--surface)}
-.mode b{font-size:1.02rem}
+.mode b{font-size:1rem}
 /* 田字格 behind big single characters */
 .big{display:inline-grid;place-items:center;width:1.3em;height:1.3em;max-width:100%;border:2px solid var(--grid);border-radius:4px;
   background:
@@ -378,21 +380,21 @@ h3{font-weight:600}
 .btn{border-radius:12px}
 .btn:not(.ghost):not(.okb):not(.badb){box-shadow:0 1px 0 rgb(0 0 0/.15)}
 .seg{border-radius:12px}
-.seg button{border-radius:9px}
+.seg button{border-radius:8px}
 .cell{border-radius:8px;border:1px solid transparent;transition:border-color .12s}
 .cell:hover{border-color:var(--line)}
 .lg{border-radius:12px;padding:10px 4px}
 .acct{border-radius:12px;background:var(--surface)}
 .brow{border-radius:12px;padding:10px 12px}
-.brow:nth-child(-n+3) .rk{font-size:1.2rem}
+.brow:nth-child(-n+3) .rk{font-size:1.25rem}
 .wword{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
 .wbox{display:flex;flex-direction:column;align-items:center;gap:2px}
-.wbox .han{width:2.6rem;height:2.6rem;display:grid;place-items:center;font-size:1.8rem;border:1.5px dashed var(--grid);border-radius:4px;color:var(--muted)}
+.wbox .han{width:2.6rem;height:2.6rem;display:grid;place-items:center;font-size:2rem;border:1.5px dashed var(--grid);border-radius:4px;color:var(--muted)}
 .wbox.now .han{border:2px solid var(--accent);color:var(--muted)}
 .wbox.done .han{border-style:solid;border-color:var(--line);color:var(--ink)}
 .wbox small{font-size:.8rem;min-height:1.2em}
-.hchunk{display:inline-flex;flex-direction:column;align-items:center}.hchunk small{font:600 .75rem var(--f-body)}
-.tdiff{font-size:1.6rem;letter-spacing:.04em}
+.hchunk{display:inline-flex;flex-direction:column;align-items:center}.hchunk small{font:600 .72rem var(--f-body)}
+.tdiff{font-size:1.5rem;letter-spacing:.04em}
 .tdiff .dok{color:var(--ok)}.tdiff .dbad{color:var(--bad);text-decoration:line-through}.tdiff .dmiss{color:var(--muted);border-bottom:2px dashed var(--bad)}
 .wsheet{position:fixed;inset:0;z-index:50;background:rgb(10 14 16/.55);display:flex;align-items:flex-end;justify-content:center;
   padding:env(safe-area-inset-top,0px) max(0px,env(safe-area-inset-right,0px)) 0 max(0px,env(safe-area-inset-left,0px))}
@@ -407,32 +409,32 @@ h3{font-weight:600}
 .intro .infox{width:100%;display:flex;flex-direction:column;gap:10px;text-align:left}
 .parts{display:flex;flex-direction:column;gap:8px;margin-top:6px}
 .part{display:flex;gap:12px;align-items:center}
-.part .pc{flex:none;width:46px;height:46px;display:grid;place-items:center;font-size:1.8rem;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.part .pc{flex:none;width:46px;height:46px;display:grid;place-items:center;font-size:2rem;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .part small{display:block}
 .role{font-size:.72rem;font-weight:700;padding:1px 7px;border-radius:99px;background:var(--sunk);white-space:nowrap}
 .evo{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 2px}
-.pict{width:96px;height:96px;cursor:pointer;fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px}
+.pict{width:96px;height:96px;cursor:pointer;fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px}
 .pict>*{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .5s ease-out forwards}
 .pict .dot{fill:var(--ink);stroke:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:0;animation:fadein2 .3s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}@keyframes fadein2{to{opacity:1}}
-.evo .arr{font-size:1.4rem;color:var(--muted);opacity:0}.evo .evoc{font-size:3.4rem;line-height:1;opacity:0}
+.evo .arr{font-size:1.5rem;color:var(--muted);opacity:0}.evo .evoc{font-size:3.5rem;line-height:1;opacity:0}
 .evo.go .arr{animation:fadein2 .3s var(--d,1s) forwards}.evo.go .evoc{animation:fadein2 .5s calc(var(--d,1s) + .2s) forwards}
 .mini{flex:none;width:30px;height:30px;fill:none;stroke:var(--muted);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.mini .dot{fill:var(--muted);stroke:none}
-.story{margin:8px 0 0;padding:10px 12px;border-radius:10px;background:var(--accent-soft);line-height:1.45}
+.story{margin:8px 0 0;padding:10px 12px;border-radius:12px;background:var(--accent-soft);line-height:1.45}
 @media (prefers-reduced-motion:reduce){.pict>*{stroke-dashoffset:0}.pict .dot,.evo .arr,.evo .evoc{opacity:1}}
 .role.sound{background:var(--accent);color:var(--surface)}
 .infop>.row{align-items:center}.infop>.row .btn{min-width:48px}
 .infop .infox{width:100%;display:flex;flex-direction:column;gap:10px;text-align:left}
 .infop .btns{width:100%;align-items:center}.infop .btns .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px}.infop .btns svg{width:18px;height:18px;flex:none}
-.infop .meaning{font-size:1.15rem;text-align:center}
+.infop .meaning{font-size:1.1rem;text-align:center}
 .wpanel .pad{width:min(280px,72vw)}
 @media (min-width:640px){.wsheet{align-items:center}.wpanel{border-radius:22px}}
 .han:not([data-nosay]){cursor:pointer}
 .hook{width:100%;display:flex;flex-direction:column;gap:4px;text-align:left}
-.hook label{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.hsug{display:flex;gap:8px;align-items:baseline;justify-content:space-between;background:var(--sunk);border-radius:10px;padding:8px 10px;font-size:.92rem;line-height:1.4}
+.hook label{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hsug{display:flex;gap:8px;align-items:baseline;justify-content:space-between;background:var(--sunk);border-radius:12px;padding:8px 10px;font-size:.9rem;line-height:1.4}
 .hsug .link{flex:none}
-.hook textarea{min-height:0;font-size:.95rem;border-width:1.5px;resize:vertical}
+.hook textarea{min-height:0;font-size:.9rem;border-width:1.5px;resize:vertical}
 .sci{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px}
 .sci summary{cursor:pointer;display:flex;flex-direction:column;gap:2px;list-style:none}
 .sci summary::-webkit-details-marker{display:none}
@@ -443,37 +445,37 @@ h3{font-weight:600}
 .scilist cite{display:block;font-style:normal;font-size:.8rem;color:var(--muted);margin-top:2px}
 .exam-intro{gap:14px}
 .secrow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%}
-.secrow button{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--sunk);border:2px solid transparent;border-radius:10px;padding:8px 4px;font-size:.78rem;color:var(--muted);text-align:center;opacity:.55}
+.secrow button{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--sunk);border:2px solid transparent;border-radius:12px;padding:8px 4px;font-size:.8rem;color:var(--muted);text-align:center;opacity:.55}
 .secrow button[aria-pressed="true"]{opacity:1;border-color:var(--accent);background:var(--surface);color:var(--ink)}
 .secrow .han{font-size:1.25rem;color:var(--accent-fg,var(--accent))}
 .qnav{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.qsec{font-size:.85rem;color:var(--accent-fg,var(--accent));font-weight:700;margin-left:4px}
+.qsec{font-size:.8rem;color:var(--accent-fg,var(--accent));font-weight:700;margin-left:4px}
 .qn{width:30px;height:30px;border-radius:8px;background:var(--sunk);font-size:.8rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;position:relative}
 .qn.done{background:var(--accent-soft);color:var(--ink)}
 .qn.cur{outline:2px solid var(--accent);outline-offset:1px;color:var(--ink)}
 .qn.flag::after{content:"";position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;background:var(--star)}
 .qhead{display:flex;justify-content:space-between;align-items:center;width:100%}
 .qhead .han{color:var(--accent-fg,var(--accent))}
-.flagbtn{font-size:.85rem;font-weight:600;color:var(--muted);padding:4px 8px;border-radius:8px}
+.flagbtn{font-size:.8rem;font-weight:600;color:var(--muted);padding:4px 8px;border-radius:8px}
 .flagbtn[aria-pressed="true"]{color:var(--star);background:var(--sunk)}
 .qnum{font-family:var(--f-display);color:var(--accent-fg,var(--accent))}
 .qprompt{text-align:left;width:100%}
-.examzh{font-size:1.7rem;line-height:1.5}
+.examzh{font-size:1.5rem;line-height:1.5}
 .gap{display:inline-block;border-bottom:3px solid var(--accent);margin:0 4px}
 .opts.one{grid-template-columns:minmax(0,1fr)}
 .opt[aria-pressed="true"]{border-color:var(--ink)}
 .stickybar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin:-8px 0 0}
-.slist.nopy .pyl,.slist.noen .en{display:none}
+
 .cdirseg{align-self:center}
 .wgrade{display:flex;gap:8px;width:100%}.wgrade .btn{flex:1}
 .tones.four{grid-template-columns:repeat(4,1fr)}
-.tpair{display:flex;gap:18px;justify-content:center;margin-top:6px}.tpair>span{display:flex;flex-direction:column;align-items:center;gap:2px}.tpair .han{font-size:2.4rem;line-height:1.1}.tpair svg{width:30px;height:30px}.tpair small{color:var(--muted)}
+.tpair{display:flex;gap:18px;justify-content:center;margin-top:6px}.tpair>span{display:flex;flex-direction:column;align-items:center;gap:2px}.tpair .han{font-size:2.5rem;line-height:1.1}.tpair svg{width:30px;height:30px}.tpair small{color:var(--muted)}
 .tacc{display:flex;flex-direction:column;gap:6px;width:100%;max-width:340px}.tacc>div{display:grid;grid-template-columns:28px 54px 1fr 40px;align-items:center;gap:8px;font-weight:700;font-size:.9rem}.tacc svg{width:26px;height:26px}
 .tacc i{height:10px;border-radius:99px;background:var(--sunk);overflow:hidden}.tacc i b{display:block;height:100%;background:currentColor;border-radius:99px;transition:width .6s}.tacc small{text-align:right;color:var(--muted)}
 .tbtn.picked{border-color:var(--ink);background:var(--surface)}
 #clock.late{color:var(--bad);font-weight:700}
 .gradebox{display:flex;align-items:center;gap:16px}
-.grade{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:2.6rem;font-weight:700;color:var(--accent-ink);background:var(--accent)}
+.grade{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:2.5rem;font-weight:700;color:var(--accent-ink);background:var(--accent)}
 .grade.gA,.grade.gB{background:var(--ok)}.grade.gD,.grade.gF{background:var(--bad)}
 .gradebox>span:last-child{display:flex;flex-direction:column;align-items:flex-start}
 .secres{width:100%;display:flex;flex-direction:column;gap:8px}
@@ -485,28 +487,28 @@ h3{font-weight:600}
 .rv.ok .rvn{color:var(--ok)}.rv.bad .rvn{color:var(--bad)}
 .rv p{margin:0;overflow-wrap:anywhere}
 .lpick{display:flex;flex-wrap:wrap;gap:6px}
-.lpick button{min-width:44px;padding:7px 10px;border-radius:10px;background:var(--sunk);font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.lpick button{min-width:44px;padding:7px 10px;border-radius:12px;background:var(--sunk);font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 .lpick button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .glist{display:flex;flex-direction:column;gap:12px}
 .gp{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .gp header{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:baseline}
 .gn{font-family:var(--f-display);font-weight:700;color:var(--accent-fg,var(--accent));font-size:1.1rem}
-.gpage{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.gpage{font-size:.8rem;color:var(--muted);white-space:nowrap}
 .gp>p{max-width:65ch}
-.gpat{font-weight:700;background:var(--accent-soft);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:.95rem}
+.gpat{font-weight:700;background:var(--accent-soft);color:var(--ink);border-radius:12px;padding:8px 12px;font-size:.9rem}
 .geg{display:flex;flex-direction:column;gap:6px}
 .ge{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--sunk);border-radius:12px;padding:8px 12px}
 .ge>div{display:flex;flex-direction:column;min-width:0}
-.ge .han{font-size:1.3rem}.ge .pyl{font-size:.9rem;color:var(--muted)}.ge .en{font-size:.92rem}
-.ghow h4,.gegh{margin:0;font:600 .78rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ge .han{font-size:1.25rem}.ge .pyl{font-size:.9rem;color:var(--muted)}.ge .en{font-size:.9rem}
+.ghow h4,.gegh{margin:0;font:600 .8rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .ghow{display:flex;flex-direction:column;gap:6px}
 .ghow ul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:6px;max-width:65ch}
 .ghow li{line-height:1.5}
-.gtip{font-size:.92rem;border-left:3px solid var(--star);padding-left:10px}
-.herolx{font-size:.85rem;color:var(--panel-muted);display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.gtip{font-size:.9rem;border-left:3px solid var(--star);padding-left:10px}
+.herolx{font-size:.8rem;color:var(--panel-muted);display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .herolx .link{color:var(--panel-ink);text-decoration:underline;text-underline-offset:3px;padding:0}
 .mgroup{display:flex;flex-direction:column;gap:8px}
-.mgroup>h3{font:600 .78rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mgroup>h3{font:600 .8rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .mgroup .modes{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 .shead{display:flex;gap:14px;align-items:center}
 .shead .ic{flex:none;width:56px;height:56px;border-radius:4px;display:grid;place-items:center;font-family:var(--f-han);font-size:2rem;font-weight:700;color:var(--accent-fg,var(--accent));border:1.5px solid var(--grid);
@@ -522,26 +524,26 @@ h3{font-weight:600}
 .choices.two{grid-template-columns:1fr 1fr}
 .choice{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:3px;text-align:left;transition:border-color .12s}
 .choice .han{font-size:2rem;line-height:1.1;color:var(--accent-fg,var(--accent));font-weight:700}
-.choice span{font-size:.85rem;color:var(--muted)}
+.choice span{font-size:.8rem;color:var(--muted)}
 .choice[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .lesson:disabled{opacity:.4;cursor:not-allowed}
-.preview{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;gap:10px}
+.preview{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;display:flex;flex-direction:column;gap:10px}
 .preview summary{cursor:pointer;font-weight:600}
 .preview[open]{gap:10px}
 .preview[open] summary{margin-bottom:8px}
 .startbar{position:sticky;bottom:0;padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 35%);margin-top:-8px}
-.btn.bigbtn{width:100%;padding:16px;font-size:1.05rem}
+.btn.bigbtn{width:100%;padding:16px;font-size:1rem}
 .tonekey b{font-weight:700}
 footer{border-top:1px solid var(--line);padding-top:14px}
 /* welcome: the first screen, says what the app is and who made it, then sign up or try as a guest */
 .wtop{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding-top:12px}
 .wtop .logo{width:76px;height:76px}
-.wtop h1{font-size:clamp(2rem,8vw,2.6rem)}
-.wtop .lede{font-size:1.08rem;max-width:30em;margin:0}
-.wsample{display:flex;justify-content:center;gap:clamp(10px,4vw,22px);font-family:var(--f-han);font-size:clamp(2rem,10vw,2.8rem);color:var(--grid);margin:4px 0 0}
+.wtop h1{font-size:clamp(2rem,8vw,2.5rem)}
+.wtop .lede{font-size:1.1rem;max-width:30em;margin:0}
+.wsample{display:flex;justify-content:center;gap:clamp(10px,4vw,22px);font-family:var(--f-han);font-size:clamp(2rem,10vw,2.5rem);color:var(--grid);margin:4px 0 0}
 .wsample span:nth-child(2){color:var(--panel-ink)}
 .wcta{display:flex;flex-direction:column;gap:10px}
-.wcta .btn{padding:14px 16px;font-size:1.02rem}
+.wcta .btn{padding:14px 16px;font-size:1rem}
 #welcome.anim>*{animation:rise .38s cubic-bezier(.2,.8,.3,1) backwards}
 
 /* ---- Forbidden City: rice paper, cinnabar and ink ---- */
@@ -549,12 +551,12 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 h1{letter-spacing:.01em}
 .eyebrow{color:var(--accent-fg,var(--accent))}
 .section>h2::before,.section>.row>h2::before{content:"";flex:none;align-self:center;width:8px;height:8px;background:var(--accent);transform:rotate(45deg)}
-.btn{border-radius:6px}
+.btn{border-radius:4px}
 .btn.ghost{background:var(--sunk);box-shadow:inset 0 0 0 1px var(--line)}
-.mode,.lesson,.card,.stat{border-radius:6px}
+.mode,.lesson,.card,.stat{border-radius:4px}
 .mode:hover:not(:disabled){border-color:var(--accent);box-shadow:0 8px 20px -14px rgb(62 54 54/.45)}
 /* mode icons are 田字格 practice squares with an ink character */
-.mode .ic{color:var(--ink);font-family:var(--f-brush);font-weight:400;border:1.5px solid var(--accent);border-radius:2px;
+.mode .ic{color:var(--ink);font-family:var(--f-brush);font-weight:400;border:1.5px solid var(--accent);border-radius:4px;
   background:repeating-linear-gradient(90deg,var(--grid) 0 3px,transparent 3px 6px) center/100% 1px no-repeat,repeating-linear-gradient(0deg,var(--grid) 0 3px,transparent 3px 6px) center/1px 100% no-repeat,var(--surface)}
 /* the daily-review panel and the welcome intro are palace-red walls */
 .hero{border-radius:4px;box-shadow:inset 0 0 0 4px var(--panel),inset 0 0 0 5px rgb(255 255 255/.35),0 14px 30px -18px rgb(62 54 54/.5)}
@@ -571,24 +573,24 @@ h1{letter-spacing:.01em}
 #welcome{gap:28px}
 #welcome .wnav,.wartbox{width:min(100vw - 40px,1200px);margin-left:calc(50% - min(50vw - 20px,600px))}
 .wartbox{overflow:hidden;margin-block:-6px -48px}
-.wnav{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--accent);color:var(--accent-ink);border-radius:18px;padding:10px 10px 10px 14px}
-.wnav .brand{display:flex;align-items:center;gap:10px;font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;white-space:nowrap}
-.wnav .logo{width:38px;height:38px;border-radius:9px;box-shadow:0 0 0 2px var(--accent-ink)}
+.wnav{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:10px 10px 10px 14px}
+.wnav .brand{display:flex;align-items:center;gap:10px;font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;white-space:nowrap}
+.wnav .logo{width:38px;height:38px;border-radius:8px;box-shadow:0 0 0 2px var(--accent-ink)}
 .wnr{display:flex;align-items:center;gap:14px}
 .wlink{color:var(--accent-ink);font-weight:700;text-decoration:none}
 .wnav .btn{background:var(--ink);color:var(--bg);box-shadow:none;padding:10px 18px;border-radius:12px}
-#welcome .whead{font-family:"Outfit",var(--f-body);font-weight:800;font-size:clamp(2.7rem,12vw,5.6rem);line-height:.95;letter-spacing:-.04em;margin:4px 0 6px}
+#welcome .whead{font-family:"Outfit",var(--f-body);font-weight:800;font-size:var(--fs-han-lg);line-height:.95;letter-spacing:-.04em;margin:4px 0 6px}
 #welcome .whead .hl{color:var(--accent-fg,var(--accent))}
 #welcome .wtop{gap:14px}
-#welcome .lede{color:var(--muted);font-size:1.06rem}
+#welcome .lede{color:var(--muted);font-size:1.1rem}
 #welcome .wcta{flex-direction:row;flex-wrap:wrap;justify-content:center;width:100%;margin-top:6px}
-#welcome .wcta .btn{flex:1 1 220px;max-width:300px;border-radius:12px;font-family:"Outfit",var(--f-body);font-size:1.08rem;font-weight:600}
+#welcome .wcta .btn{flex:1 1 220px;max-width:300px;border-radius:12px;font-family:"Outfit",var(--f-body);font-size:1.1rem;font-weight:600}
 .wart{display:block;height:auto}
 #wabout{scroll-margin-top:16px}
-@media (max-width:420px){.wnav .brand{font-size:1.05rem}.wnr{gap:8px}.wnav .btn{padding:9px 12px}}
+@media (max-width:420px){.wnav .brand{font-size:1rem}.wnr{gap:8px}.wnav .btn{padding:9px 12px}}
 /* floating cards: no hard borders, soft layered shadows, lift on hover */
 body::before{background:var(--bg)}
-.mode,.lesson,.card,.tq,.mt,.sci,.gp,.choice,.preview,.acct,.streak,.sitem,.brow,.relw,.rv,.gi,.stat,.cell,.lg,.chunk,.pad,.part .pc,.pict,.twin,#vsel{border-color:transparent;box-shadow:var(--sh1)}
+.mode,.lesson,.card,.tq,.mt,.sci,.gp,.choice,.preview,.acct,.streak,.brow,.relw,.rv,.gi,.stat,.cell,.lg,.chunk,.pad,.part .pc,.pict,.twin,#vsel{border-color:transparent;box-shadow:var(--sh1)}
 .mode,.lesson,.card,.tq,.sci,.gp,.choice,.preview{border-radius:16px}
 .hero .stat{box-shadow:none;background:none}
 .mode,.lesson,.choice,.acct,.mt{transition:transform .15s ease,box-shadow .15s ease,border-color .15s}
@@ -598,7 +600,7 @@ body::before{background:var(--bg)}
 .btn.ghost{background:var(--surface);box-shadow:var(--sh1)}
 .btn.ghost:hover{box-shadow:var(--sh2)}
 .btn:not(.ghost):not(.okb):not(.badb){box-shadow:0 6px 16px -6px rgb(215 35 35/.55)}
-.hero{border-radius:18px;box-shadow:var(--sh2)}
+.hero{border-radius:16px;box-shadow:var(--sh2)}
 .seg{background:var(--sunk)}
 .wnav{box-shadow:0 10px 26px -12px rgb(215 35 35/.6)}
 footer{border-top-color:var(--line)}
@@ -629,8 +631,8 @@ footer{border-top-color:var(--line)}
 #welcome.anim .wcta .btn+.btn{animation-delay:.12s}
 @keyframes pop-in{from{opacity:0;transform:translateY(10px) scale(.92)}}
 /* inner app: red top bar, illustrated mode tiles, calendar on today's review */
-#home .top{background:var(--accent);color:#fff;border-radius:18px;padding:12px 12px 12px 14px;box-shadow:0 10px 26px -12px rgb(215 35 35/.6)}
-#home .mast h1{color:#fff;font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.55rem;letter-spacing:-.02em}
+#home .top{background:var(--accent);color:#fff;border-radius:16px;padding:12px 12px 12px 14px;box-shadow:0 10px 26px -12px rgb(215 35 35/.6)}
+#home .mast h1{color:#fff;font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
 #home .mast .logo{width:50px;height:50px;border-radius:12px;box-shadow:0 0 0 2px #fff}
 #home .topr .acct,#home .topr .streak{box-shadow:none}
 #home .topr .acct,#home .topr .streak{color:var(--ink)}
@@ -641,7 +643,7 @@ footer{border-top-color:var(--line)}
 .cal{width:92px;height:auto;flex:none;filter:drop-shadow(0 8px 10px rgb(0 0 0/.18))}
 #home .hero{padding-top:26px}
 .mode{padding:8px 8px 14px;gap:6px;overflow:hidden}
-.mode .mart{display:block;border-radius:11px;overflow:hidden;margin-bottom:4px}
+.mode .mart{display:block;border-radius:12px;overflow:hidden;margin-bottom:4px}
 .mode .mart svg{display:block;width:100%;height:auto}
 .shead .sart{flex:none;width:120px;border-radius:12px;overflow:hidden;box-shadow:var(--sh1)}
 .shead .sart svg{display:block;width:100%;height:auto}
@@ -669,15 +671,15 @@ footer{border-top-color:var(--line)}
 .seg button[aria-pressed="true"]{box-shadow:var(--sh1)}
 /* top bar of every practice screen */
 .bar .back{background:var(--surface);box-shadow:var(--sh1);border-radius:999px;padding:7px 14px;color:var(--ink)}
-.progress{height:9px;border-radius:9px;box-shadow:inset 0 1px 2px rgb(0 0 0/.08)}
-.progress span{border-radius:9px;background:linear-gradient(90deg,var(--accent),#ef4a3a);transition:width .45s cubic-bezier(.16,1,.3,1)}
+.progress{height:9px;border-radius:8px;box-shadow:inset 0 1px 2px rgb(0 0 0/.08)}
+.progress span{border-radius:8px;background:linear-gradient(90deg,var(--accent),#ef4a3a);transition:width .45s cubic-bezier(.16,1,.3,1)}
 /* setup screens */
 .sn{background:var(--accent);color:#fff;box-shadow:0 4px 10px -4px rgb(215 35 35/.6)}
 .step>h3{font-family:var(--f-display);font-weight:700}
 .choice,.lesson{position:relative}
-.choice .han{font-family:var(--f-brush);font-weight:400;font-size:2.3rem}
+.choice .han{font-family:var(--f-brush);font-weight:400;font-size:2.5rem}
 .choice[aria-pressed="true"]{border-color:var(--accent)!important;background:var(--chosen,#fff8f8)}
-.choice[aria-pressed="true"]::after,.lesson[aria-pressed="true"]::after{content:"✓";position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font:800 .78rem/22px var(--f-body);text-align:center;box-shadow:0 3px 8px -2px rgb(215 35 35/.6)}
+.choice[aria-pressed="true"]::after,.lesson[aria-pressed="true"]::after{content:"✓";position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font:800 .8rem/22px var(--f-body);text-align:center;box-shadow:0 3px 8px -2px rgb(215 35 35/.6)}
 .lesson[aria-pressed="true"]{background:var(--ink);box-shadow:0 10px 22px -10px rgb(0 0 0/.55)}
 .bigbtn:not(:disabled){position:relative;overflow:hidden;isolation:isolate}
 .bigbtn:not(:disabled)::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgb(255 255 255/.4) 50%,transparent 70%);transform:translateX(-130%);animation:shine 2.2s cubic-bezier(.16,1,.3,1) 1s 2}
@@ -699,38 +701,38 @@ footer{border-top-color:var(--line)}
 .lesson:hover:not([aria-pressed="true"]){border-color:transparent}
 /* language switch and the About section */
 html[lang="cs"] [data-lang="en"],html:not([lang="cs"]) [data-lang="cs"]{display:none!important}
-.wabout{background:var(--surface);border-radius:20px;box-shadow:var(--sh1);padding:22px 20px;scroll-margin-top:16px;position:relative;z-index:1}
+.wabout{background:var(--surface);border-radius:22px;box-shadow:var(--sh1);padding:22px 20px;scroll-margin-top:16px;position:relative;z-index:1}
 .wabout>div{display:flex;flex-direction:column;gap:12px}
-.wabout h2{font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.7rem;letter-spacing:-.02em;display:flex;align-items:baseline;gap:8px}
+.wabout h2{font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.5rem;letter-spacing:-.02em;display:flex;align-items:baseline;gap:8px}
 .wabout h2::before{content:"";flex:none;align-self:center;width:9px;height:9px;background:var(--accent);transform:rotate(45deg)}
 .wabout .wlead{font-size:1.1rem;line-height:1.45}
 .wabout p{color:var(--muted)}.wabout .wlead{color:var(--ink)}
-.wfacts{list-style:none;margin:4px 0;padding:0;display:flex;flex-direction:column;background:var(--bg);border-radius:14px;overflow:hidden}
+.wfacts{list-style:none;margin:4px 0;padding:0;display:flex;flex-direction:column;background:var(--bg);border-radius:16px;overflow:hidden}
 .wfacts li{padding:11px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .wfacts li+li{border-top:1px solid var(--line)}
 .wfacts b{text-align:right}
 .wfacts span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-fg,var(--accent));font-weight:700}
 .wfacts b{font-family:"Outfit",var(--f-body);font-size:1rem}
 .wcredit{display:flex;gap:14px;align-items:center;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
-.wcredit p{margin:0;font-size:.92rem}
-.wabout .worigin{font-family:"Outfit",var(--f-body);font-weight:800;font-size:clamp(1.35rem,5.5vw,1.8rem);line-height:1.15;letter-spacing:-.02em;color:var(--accent-fg,var(--accent));margin:-2px 0 4px}.wcredit a{color:var(--accent-fg,var(--accent));font-weight:600}
-.wseal{flex:none;writing-mode:vertical-rl;background:var(--accent);color:#fff;font-family:var(--f-brush);font-size:1.25rem;letter-spacing:.08em;padding:8px 6px;border-radius:5px;transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgb(255 255 255/.35),0 6px 14px -6px rgb(215 35 35/.6)}
+.wcredit p{margin:0;font-size:.9rem}
+.wabout .worigin{font-family:"Outfit",var(--f-body);font-weight:800;font-size:clamp(1.5rem,5.5vw,2rem);line-height:1.15;letter-spacing:-.02em;color:var(--accent-fg,var(--accent));margin:-2px 0 4px}.wcredit a{color:var(--accent-fg,var(--accent));font-weight:600}
+.wseal{flex:none;writing-mode:vertical-rl;background:var(--accent);color:#fff;font-family:var(--f-brush);font-size:1.25rem;letter-spacing:.08em;padding:8px 6px;border-radius:4px;transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgb(255 255 255/.35),0 6px 14px -6px rgb(215 35 35/.6)}
 #welcome .wnr{gap:10px}
-@media (max-width:480px){#welcome .wnav .brand{font-size:.98rem}#welcome .wnav .logo{width:32px;height:32px}#wsign2{display:none}}
+@media (max-width:480px){#welcome .wnav .brand{font-size:1rem}#welcome .wnav .logo{width:32px;height:32px}#wsign2{display:none}}
 .langdd{position:relative;flex:none}
-.langbtn{display:inline-flex;align-items:center;gap:6px;background:rgb(255 255 255/.2);color:#fff;border-radius:999px;padding:6px 11px;font:800 .82rem/1 "Outfit",var(--f-body);letter-spacing:.04em}
-.langbtn .globe{font-family:var(--f-han);font-weight:700;font-size:.95rem}
-.langbtn .car{font-size:.7rem;transition:transform .2s}
+.langbtn{display:inline-flex;align-items:center;gap:6px;background:rgb(255 255 255/.2);color:#fff;border-radius:999px;padding:6px 11px;font:800 .8rem/1 "Outfit",var(--f-body);letter-spacing:.04em}
+.langbtn .globe{font-family:var(--f-han);font-weight:700;font-size:.9rem}
+.langbtn .car{font-size:.72rem;transition:transform .2s}
 .langbtn[aria-expanded="true"] .car{transform:rotate(180deg)}
 @media (hover:hover){.langbtn:hover{background:rgb(255 255 255/.32)}}
-.langmenu{position:absolute;right:0;top:calc(100% + 10px);background:var(--surface);color:var(--ink);border-radius:14px;box-shadow:var(--sh2),0 0 0 1px rgb(0 0 0/.04);padding:6px;display:flex;flex-direction:column;gap:2px;min-width:160px;z-index:30;animation:pop-in .18s cubic-bezier(.16,1,.3,1)}
+.langmenu{position:absolute;right:0;top:calc(100% + 10px);background:var(--surface);color:var(--ink);border-radius:16px;box-shadow:var(--sh2),0 0 0 1px rgb(0 0 0/.04);padding:6px;display:flex;flex-direction:column;gap:2px;min-width:160px;z-index:30;animation:pop-in .18s cubic-bezier(.16,1,.3,1)}
 .langmenu[hidden]{display:none}
-.langmenu button{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:10px 12px;border-radius:10px;font-weight:600}
+.langmenu button{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:10px 12px;border-radius:12px;font-weight:600}
 .langmenu button:hover{background:var(--sunk)}
 .langmenu button[aria-pressed="true"]{color:var(--accent-fg,var(--accent))}
 .langmenu button[aria-pressed="true"]::after{content:"✓";font-weight:800}
 /* ---- audit fixes: focus, contrast on red bars, browser surfaces, touch, reflow ---- */
-a:focus-visible,.link:focus-visible,summary:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+a:focus-visible,.link:focus-visible,summary:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
 .wnav :focus-visible,#home .top :focus-visible{outline-color:#fff}
 #home .mast .hint{color:#fff}
 .langbtn{background:rgb(0 0 0/.2)}
@@ -750,7 +752,7 @@ p,li,.hint{text-wrap:pretty}
   #welcome{gap:28px}
   #welcome .wtop{gap:18px;padding-top:12px}
   #welcome .whead{margin:0}
-  #welcome .lede-short{font-size:1.05rem;max-width:34ch;margin-inline:auto}
+  #welcome .lede-short{font-size:1rem;max-width:34ch;margin-inline:auto}
   #welcome .wtop>.hint{display:none}
   #welcome .wcta{margin-top:8px}
 }
@@ -758,7 +760,7 @@ p,li,.hint{text-wrap:pretty}
 #home .top{flex-wrap:nowrap;align-items:center;gap:8px;padding:8px 8px 8px 10px;position:sticky;top:max(8px,env(safe-area-inset-top,0px));z-index:30}
 #home .top::before{content:"";position:absolute;left:-14px;right:-14px;bottom:100%;height:calc(max(8px,env(safe-area-inset-top,0px)) + 2px);background:var(--bg);pointer-events:none}
 #home .mast{flex:none;gap:0}
-#home .mast .logo{width:40px;height:40px;border-radius:10px}
+#home .mast .logo{width:40px;height:40px;border-radius:12px}
 #home .mast>div{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #home .topr{flex-wrap:nowrap;gap:6px;margin-left:auto;min-width:0;justify-content:flex-end}
 #home .topr .acct,#home .topr .streak{height:40px;min-height:40px;padding:0 12px;flex:none}
@@ -773,8 +775,8 @@ p,li,.hint{text-wrap:pretty}
 #card .cflip.stack{flex-direction:column;flex-wrap:nowrap}#card .cflip.stack .cinfo{flex:none}
 #card .cbox{position:relative;width:min(44vw,190px);aspect-ratio:1;display:grid;place-items:center;cursor:pointer}
 #card .cbox.wordbig{width:auto;min-width:min(44vw,190px);aspect-ratio:auto;padding:16px 18px}
-#card .cbox .han{font-size:clamp(4.2rem,24vw,7.2rem);line-height:1}
-#card .cbox.wordbig .han{font-size:clamp(2.4rem,12vw,3.8rem)}
+#card .cbox .han{font-size:var(--fs-han-xl);line-height:1}
+#card .cbox.wordbig .han{font-size:clamp(2.5rem,12vw,3.5rem)}
 #card .cplay{cursor:pointer;flex:none}
 #card .cbox{cursor:inherit}
 #card .cstk{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:nowrap}
@@ -794,16 +796,16 @@ p,li,.hint{text-wrap:pretty}
 .gblank{display:inline-block;min-width:2.2em;border-bottom:3px solid var(--accent);color:transparent}
 .gen{margin:0;text-align:center}
 .opts.one{grid-template-columns:1fr}
-.gopts .opt .han{font-size:1.35rem;line-height:1.4}
+.gopts .opt .han{font-size:1.25rem;line-height:1.4}
 .gopts .opt.right{border-color:var(--ok);background:var(--ok-bg)}
 .gopts .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
-.gans{font-size:1.4rem;margin:0}
+.gans{font-size:1.5rem;margin:0}
 .gfbrow{display:flex;gap:10px;align-items:center;justify-content:space-between;width:100%}.gfbrow .btn{flex:1}
 /* split progress + tally (variant B) */
 .progress.split{display:flex}
 .progress.split span{border-radius:0;transition:width .45s cubic-bezier(.16,1,.3,1)}
 .progress.split .r{background:var(--bad)}.progress.split .g{background:var(--ok)}
-.tally{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;font-weight:600;color:var(--muted);margin-top:-4px}
+.tally{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;font-weight:600;color:var(--muted);margin-top:-4px}
 .tally b{font-variant-numeric:tabular-nums;font-weight:800}
 .tally i{display:inline-block;width:9px;height:9px;border-radius:50%;margin:0 6px 1px 0;vertical-align:middle}
 .tally .yes i{margin:0 0 1px 6px}
@@ -820,29 +822,29 @@ p,li,.hint{text-wrap:pretty}
 #card{width:100%;box-sizing:border-box;height:clamp(300px,calc(100vh - 326px),480px);height:clamp(300px,calc(100svh - 326px),480px);min-height:0;overflow:hidden;margin-bottom:10px}
 #card .cinfo .meaning{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .cardnav .btn{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px;white-space:nowrap}
-#card .cfront{font-size:clamp(5rem,26vw,8rem);line-height:1}
-#card .cinfo .py{font-size:clamp(1.8rem,8vw,2.4rem)}
+#card .cfront{font-size:var(--fs-han-xl);line-height:1}
+#card .cinfo .py{font-size:clamp(1.5rem,8vw,2.5rem)}
 #card .cinfo .meaning{overflow-wrap:anywhere}
 #card.flipped{justify-content:center;gap:14px}
 /* ---- round 3: app-like phone, textbook lesson names, Learn intro, writing fits the screen ---- */
 html{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 input,select,textarea{font-size:max(16px,1em)}
 .logobtn{padding:0;border:0;background:none;border-radius:12px;display:block;cursor:pointer}
-.ltitle{font-size:.76rem;line-height:1.2;color:var(--muted);font-weight:600}
+.ltitle{font-size:.72rem;line-height:1.2;color:var(--muted);font-weight:600}
 .lesson[aria-pressed="true"] .ltitle{color:var(--bg);opacity:.8}
 .wlearn .mode{cursor:default}
 @media (hover:hover){.wlearn .mode:hover{transform:none;box-shadow:var(--sh1)}.wlearn .mode:hover .mart .o{transform:none}}
 #welcome .sci{margin-top:8px}
 .wfoot{display:flex;gap:14px;align-items:center;justify-content:center;padding:14px 0 6px;border-top:1px solid var(--line);margin-top:6px}
-.wfoot p{margin:0;font-size:.92rem;line-height:1.45}.wfoot .han{color:var(--accent-fg,var(--accent));margin-left:2px}
+.wfoot p{margin:0;font-size:.9rem;line-height:1.45}.wfoot .han{color:var(--accent-fg,var(--accent));margin-left:2px}
 @media (min-width:641px){.wfoot{display:none}}
 .intro .animw{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .intro .awc{width:min(130px,38vw);height:auto;aspect-ratio:1}
-.intro .awch{font-size:clamp(3.6rem,20vw,5.4rem);line-height:1}
+.intro .awch{font-size:var(--fs-han-lg);line-height:1}
 .intro .iconplay,#card .iconplay{width:48px;height:48px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--sunk)}
 .intro .iconplay svg,#card .iconplay svg{width:20px;height:20px}
 .radl{display:block;margin-top:2px}
-details.more{width:100%;background:var(--surface);border-radius:14px;box-shadow:inset 0 0 0 1px var(--line);padding:0 14px}
+details.more{width:100%;background:var(--surface);border-radius:16px;box-shadow:inset 0 0 0 1px var(--line);padding:0 14px}
 details.more>summary{cursor:pointer;padding:13px 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
 details.more>summary::-webkit-details-marker{display:none}
 details.more>summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
@@ -854,7 +856,7 @@ details.gegd .gcnt{display:inline-grid;place-items:center;min-width:1.5em;height
 details.gegd>.geg{padding-bottom:12px}
 .stickyact{position:sticky;bottom:0;z-index:5;padding:12px 0 calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,rgb(255 255 255/0),var(--surface) 30%);margin-bottom:-6px}
 #mode .pad{width:min(300px,80vw,max(190px,calc(100svh - 430px)))}
-@media (max-width:640px){#mode .card.top-align:has(#pad){padding:14px 12px;gap:8px}#mode .card.top-align:has(#pad) .wprompt .han{font-size:2rem!important}#mode .card.top-align:has(#pad)+.hint{font-size:.82rem}}
+@media (max-width:640px){#mode .card.top-align:has(#pad){padding:14px 12px;gap:8px}#mode .card.top-align:has(#pad) .wprompt .han{font-size:2rem!important}#mode .card.top-align:has(#pad)+.hint{font-size:.8rem}}
 /* the landing top bar stays with you while scrolling */
 #welcome .wnav{position:sticky;top:max(8px,env(safe-area-inset-top,0px));z-index:30}
 #welcome .wnav::before{content:"";position:absolute;left:-14px;right:-14px;bottom:100%;height:calc(max(8px,env(safe-area-inset-top,0px)) + 2px);background:var(--bg);pointer-events:none}
@@ -866,22 +868,22 @@ details.gegd>.geg{padding-bottom:12px}
   #welcome .wtop{position:relative;z-index:1}
   .wartbox,#welcome .sr-only{display:none}
   .wlearn{display:block;margin-top:8px;padding-bottom:8px}
-  .wlearn h2{font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.35rem;letter-spacing:-.02em;margin-bottom:12px}
+  .wlearn h2{font-family:"Outfit",var(--f-body);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;margin-bottom:12px}
   .wlearn ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .wlearn li{display:flex}
   .wlearn .mode{width:100%;height:100%}
   .wlearn .mode b{font-size:1rem}
-  .wlearn .mode span:not(.mart){font-size:.82rem;line-height:1.3}
+  .wlearn .mode span:not(.mart){font-size:.8rem;line-height:1.3}
 }
 /* phones: a calmer first screen */
 @media (max-width:640px){
   #welcome{gap:20px}
   #welcome .wtop{gap:12px}
-  #welcome .whead{font-size:clamp(2.2rem,10.5vw,2.75rem);line-height:1;letter-spacing:-.03em;margin:6px 0 2px}
+  #welcome .whead{font-size:var(--fs-hero);line-height:1;letter-spacing:-.03em;margin:6px 0 2px}
   #welcome .lede{font-size:1rem;line-height:1.5}
   #welcome .wcta{gap:10px;margin-top:4px}
   #welcome .wcta .btn{flex-basis:100%;max-width:none}
-  #welcome .wtop>.hint{font-size:.85rem}
+  #welcome .wtop>.hint{font-size:.8rem}
   .wartbox{margin-block:0 -48px}
 }
 /* ---- second audit: readable study content, announced feedback, touch size, settings hierarchy ---- */
@@ -896,8 +898,8 @@ details.gegd>.geg{padding-bottom:12px}
 .cta span{opacity:1}
 ::placeholder{color:#6b6262;opacity:1}
 .wsheet{outline:none}
-#mode .section>h3{font-size:1.15rem;font-weight:700}
-#mode>h2,#mode .shead h2{font-size:1.6rem}
+#mode .section>h3{font-size:1.1rem;font-weight:700}
+#mode>h2,#mode .shead h2{font-size:1.5rem}
 @media (pointer:coarse){.bar .back,.starbtn,.langbtn,.acct,.streak,.play:not(.huge),.btn{min-height:44px}.mini{min-width:44px;min-height:44px}.link{min-height:44px;display:inline-flex;align-items:center}}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
@@ -1298,7 +1300,7 @@ const MODEINFO={
   twins:{ic:'声',n:'Tone twins',d:'Characters with the same syllable but a different tone.'},
   test:{ic:'考',n:'Test',d:'A chapter test with listening, reading, pinyin and writing sections.'}
 };
-const STASKS=[['build','Build sentences','Put the pieces in order'],['listen','Build from listening','Hear it, then build it'],['translate','Translate into Chinese','Type it in characters or pinyin'],['read','Read and listen','All sentences with pinyin and audio']];
+const STASKS=[['build','Build sentences','Put the pieces in order'],['listen','Build from listening','Hear it, then build it'],['translate','Translate into Chinese','Type it in characters or pinyin']];
 /* the mode's illustration from its home tile, with its own pattern ids */
 function modeArt(g){const sv=document.querySelector(`#home [data-mode="${g}"] .mart svg`);return sv?sv.outerHTML.replaceAll('t'+g+'hk','s'+g+'hk').replaceAll('t'+g+'dt','s'+g+'dt'):''}
 function setup(g){
@@ -1309,7 +1311,7 @@ function setup(g){
     <section class="step"><h3><span class="sn">${I.set||I.sent?2:1}</span>Which lessons?<span class="sp"></span><button class="link" id="allL">Select all</button><button class="link" id="noneL">Clear</button></h3><div class="lessons" id="lessons"></div></section>
     <details class="preview" id="pv"><summary id="pvs"></summary><div class="keys tonekey"><span>Colour = tone:</span><b class="t1">1st</b><b class="t2">2nd</b><b class="t3">3rd</b><b class="t4">4th</b><b class="t0">neutral</b></div><div class="keys"><span>Line under each:</span><span><i style="background:var(--accent)"></i>Known</span><span><i style="background:var(--accent);opacity:.4"></i>Learning</span><span>none = New</span><span>· Tap for details</span></div><div class="grid" id="grid"></div></details>
     <div class="startbar"><button class="btn bigbtn" id="sgo"></button></div>`);
-  if(!state.stask)state.stask='build';
+  if(!state.stask||state.stask==='read')state.stask='build';
   const items=()=>g==='twins'?basePool('c'):g==='tones'?basePool('c'):g==='test'?[...basePool('c'),...basePool('w')]:g==='review'?basePool():pool();
   function step1(){if(!$('s1'))return;
     if(I.sent){$('s1').innerHTML=`<div class="choices">${STASKS.map(([k,n,d])=>`<button class="choice" data-st="${k}" aria-pressed="${state.stask===k}"><b>${n}</b><span>${d}</span></button>`).join('')}</div>`;
@@ -1344,7 +1346,7 @@ function setup(g){
     const pv=g==='sentences'?[]:p;$('pv').hidden=!pv.length;
     $('pvs').textContent=`See the ${pv.length} ${noun}`;
     $('grid').style.gridTemplateColumns=pv.some(x=>x.kind==='w')?'repeat(auto-fill,minmax(110px,1fr))':'';
-    $('grid').innerHTML=$('pv').open?pv.map((x,i)=>`<button class="cell m${mastery(x)}" data-i="${i}" title="${esc(x.p+' · '+short(x.en))}" aria-label="${esc(hz(x)+' '+x.p+', '+x.en)}">${starred(x)?'<span class="st">★</span>':''}<span class="han" ${x.kind==='w'?'style="font-size:1.35rem"':''}>${hzHtml(x)}</span><small>${pyHtml(x.p)}</small></button>`).join(''):'';
+    $('grid').innerHTML=$('pv').open?pv.map((x,i)=>`<button class="cell m${mastery(x)}" data-i="${i}" title="${esc(x.p+' · '+short(x.en))}" aria-label="${esc(hz(x)+' '+x.p+', '+x.en)}">${starred(x)?'<span class="st">★</span>':''}<span class="han" ${x.kind==='w'?'style="font-size:1.25rem"':''}>${hzHtml(x)}</span><small>${pyHtml(x.p)}</small></button>`).join(''):'';
     $('grid').onclick=e=>{const c=e.target.closest('.cell');if(c)infoSheet(pv,+c.dataset.i)};
   }
   $('pv').addEventListener('toggle',rest);
@@ -1353,7 +1355,7 @@ function setup(g){
   $('noneL').onclick=()=>{state.sel=new Set();saveState();step1();rest()};
   $('sgo').onclick=()=>{
     if(g==='sentences'){const list=ST.filter(s=>state.sel.has(s.l));
-      return state.stask==='listen'?build(list,true):state.stask==='translate'?translate(list):state.stask==='read'?readList(list):build(list,false)}
+      return state.stask==='listen'?build(list,true):state.stask==='translate'?translate(list):build(list,false)}
     if(g==='review')return review();
     MODES[g]();
   };
@@ -1391,7 +1393,7 @@ const bar=(pct,count,label='‹ Home')=>`<div class="bar"><button class="back" d
 const tallyBar=(bad,good,total,count,badL='Mistakes',goodL='Correct',label='‹ Home',barBad=true)=>{const T=Math.max(total,1),b=Math.max(0,Math.round(bad)),g=Math.max(0,Math.round(good)),left=Math.max(0,total-(barBad?b:0)-g);
   return `<div class="bar"><button class="back" data-home>${label}</button><div class="progress split" aria-hidden="true"><span class="r" style="width:${barBad?b/T*100:0}%"></span><span class="g" style="width:${g/T*100}%"></span></div><span class="count">${count}</span></div>
   <div class="tally"><span class="no"><i aria-hidden="true"></i><b>${b}</b> ${badL}</span><span class="left"><b>${left}</b> To go</span><span class="yes"><b>${g}</b> ${goodL}<i aria-hidden="true"></i></span></div>`};
-const answerLine=x=>`<div class="why">${x.kind==='c'?`<span class="t${x.tone}">${contour(x.tone)}</span>`:''}<span><b class="han" style="font-size:1.4rem">${hzHtml(x)}</b> <b>${pyHtml(x.p)}</b>${x.kind==='c'?' · '+TLABEL(x.tone):''} · ${esc(x.en)}</span></div>`;
+const answerLine=x=>`<div class="why">${x.kind==='c'?`<span class="t${x.tone}">${contour(x.tone)}</span>`:''}<span><b class="han" style="font-size:1.5rem">${hzHtml(x)}</b> <b>${pyHtml(x.p)}</b>${x.kind==='c'?' · '+TLABEL(x.tone):''} · ${esc(x.en)}</span></div>`;
 function backHtml(x){
   return `<span class="py">${x.kind==='c'?`<span class="t${x.tone}">${contour(x.tone)}</span>`:''}${pyHtml(x.p)}</span>
     ${x.kind==='c'?`<span class="t${x.tone}" style="font-weight:600">${TLABEL(x.tone)}, ${TONE[x.tone]}</span>`:x.pos?`<span class="tag">${esc(x.pos)}</span>`:''}
@@ -1456,7 +1458,7 @@ function review(){
     }
     // Cards you already know sometimes flip to English → Chinese: producing the character is harder and sticks better.
     const flip=!isNew&&r.i>=1&&r.n%2===1;
-    const front=flip?`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)} · EN → 中</span><p class="meaning" style="font-size:1.45rem;font-weight:700">${esc(x.en)}</p><span class="py">${pyHtml(x.p)}</span>`
+    const front=flip?`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)} · EN → 中</span><p class="meaning" style="font-size:1.5rem;font-weight:700">${esc(x.en)}</p><span class="py">${pyHtml(x.p)}</span>`
       :`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)} · ${isNew?'New':'Review'}</span><span class="${bigClass(x)} han">${hz(x)}</span>`;
     open(tallyBar(counts.again,counts.hard+counts.good+counts.easy,counts.again+counts.hard+counts.good+counts.easy+(q.length-i),`${q.length-i} left`,'Again','Remembered')+
       `<div class="card" id="rc">${shown?`<span class="tag">${kindLabel(x)} · ${LNAME(x.l)}${flip?' · EN → 中':''}</span><span class="${bigClass(x)} han">${hzHtml(x)}</span>`:front}
@@ -1517,7 +1519,7 @@ function cards(deck0,rest0){
     open(tallyBar(no.length,yes.length,deck.length,(i+1)+' / '+deck.length,'Still learning','Know')+
       `
       <div class="seg cdirseg" role="group" aria-label="Card front">${[['zh','中 → EN'],['en','EN → 中'],['mix','Mixed']].map(([k,n])=>`<button data-cd2="${k}" aria-pressed="${dir===k}">${n}</button>`).join('')}</div>
-      <div class="cardwrap"><button class="cstar" id="star" aria-pressed="${starred(x)}" aria-label="Star this card" title="Star this card">★</button><button class="card${flipped?' flipped':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${x.kind==='c'?'one':'wordbig'}"><span class="han cst">${hzHtml(x)}</span></span><div class="cinfo">${cardBack(x)}<span class="play iconplay cplay" data-play role="button" aria-label="Play">${PLAY}</span></div></div>`:`${en?`<p class="meaning" style="font-size:1.45rem;font-weight:700">${esc(x.en)}</p>`:`<span class="cfront han">${hz(x)}</span>`}${(state.cflips||0)<5?`<span class="flip-hint">Tap to flip</span>`:''}`}</button></div>
+      <div class="cardwrap"><button class="cstar" id="star" aria-pressed="${starred(x)}" aria-label="Star this card" title="Star this card">★</button><button class="card${flipped?' flipped':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${x.kind==='c'?'one':'wordbig'}"><span class="han cst">${hzHtml(x)}</span></span><div class="cinfo">${cardBack(x)}<span class="play iconplay cplay" data-play role="button" aria-label="Play">${PLAY}</span></div></div>`:`${en?`<p class="meaning" style="font-size:1.5rem;font-weight:700">${esc(x.en)}</p>`:`<span class="cfront han">${hz(x)}</span>`}${(state.cflips||0)<5?`<span class="flip-hint">Tap to flip</span>`:''}`}</button></div>
       <div class="btns"><button class="btn badb" id="no">✗ Still learning</button><button class="btn okb" id="yes">✓ Know</button></div>
       <div class="btns cardnav"><button class="btn ghost" id="prev" ${i?'':'disabled'}>‹ Back</button><button class="btn ghost" id="tw" aria-label="Try writing ${x.kind==='w'&&[...x.s].filter(isHan).length>1?'this word':'this character'}">${PEN}Write</button><button class="btn ghost" id="shuf" aria-label="Shuffle the rest">Shuffle</button></div>`);
     const card=$('card');
@@ -1567,7 +1569,7 @@ function tryWrite(x){
     let c=shown[j];if(STROKES&&!STROKES[c]&&STROKES[simp[j]])c=simp[j];
     const has=STROKES&&STROKES[c],last=j===L-1;
     sh.innerHTML=`<div class="wpanel"><div class="row"><h2>Try writing</h2><button class="btn ghost" id="twx">Close</button></div>
-      <div class="wprompt"><span class="py" style="font-size:1.4rem">${pyHtml(x.p)}</span><span class="hint">${esc(short(x.en))}</span></div>
+      <div class="wprompt"><span class="py" style="font-size:1.5rem">${pyHtml(x.p)}</span><span class="hint">${esc(short(x.en))}</span></div>
       ${L>1?`<div class="wword">${shown.map((h,k)=>`<span class="wbox${k<j?' done':k===j?' now':''}" data-k="${k}" role="button" tabindex="0" aria-label="Character ${k+1}" style="cursor:pointer"><span class="han${perSyl&&k<j?' t'+tn[k]:''}">${k<j||!mem?h:''}</span><small>${perSyl?pyHtml(syl[k]):''}</small></span>`).join('')}</div>`:''}
       <p class="hint">${mem?'Write it from memory. Stuck? Show the outline and trace it.':'Trace the outline, then try it from memory again.'}</p>
       <div class="pad" id="twpad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="twhw"></div></div>
@@ -1599,13 +1601,13 @@ function mcOptions(x,type){return shuffle([x,...distract(x,3,type==='mean'?y=>sh
 function qHead(x,type){
   // the question reads top to bottom: what you look at, then the question, then the answers
   if(type==='mean')return `<span class="${bigClass(x)} han">${hz(x)}</span><p class="qask">What does this mean?</p>`;
-  if(type==='char')return `<p class="qask">Which one means:</p><p class="meaning" style="font-size:1.4rem;font-weight:700">${esc(x.en)}</p>`;
+  if(type==='char')return `<p class="qask">Which one means:</p><p class="meaning" style="font-size:1.5rem;font-weight:700">${esc(x.en)}</p>`;
   if(type==='audio')return `<p class="qask">Which one do you hear?</p><button class="play huge" data-say>${PLAY}Play</button>`;
   if(type==='pinyin')return `<span data-nosay class="${bigClass(x)} han">${hz(x)}</span><p class="hint" style="margin:0">${esc(x.en)}</p><p class="qask">Type the pinyin with tones</p>`;
 }
 function optsHtml(x,type,opts,numbered=true){
   if(type==='mean')return `<div class="opts">${opts.map((y,i)=>`<button class="opt" data-i="${i}">${numbered?`<kbd>${i+1}</kbd>`:''}${esc(short(y.en))}</button>`).join('')}</div>`;
-  return `<div class="opts chars">${opts.map((y,i)=>`<button class="opt" data-i="${i}"><span class="han" ${y.kind==='w'?'style="font-size:1.6rem"':''}>${hz(y)}</span><small></small></button>`).join('')}</div>`;
+  return `<div class="opts chars">${opts.map((y,i)=>`<button class="opt" data-i="${i}"><span class="han" ${y.kind==='w'?'style="font-size:1.5rem"':''}>${hz(y)}</span><small></small></button>`).join('')}</div>`;
 }
 const typeHtml=id=>`<div class="typein"><input id="${id}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. mei3 or měi" aria-label="Pinyin"></div><p class="hint">Type tones as numbers 1–4 (leave neutral tones without a number), and ü as v.</p>`;
 function revealChars(box,opts){box.querySelectorAll('.opt small').forEach((s,i)=>s.innerHTML=pyHtml(opts[i].p))}
@@ -1783,12 +1785,12 @@ function exam(qs,tlMin){
     else if(q.type==='mean')body=big+optsHtml(x,'mean',q.opts,false);
     else if(q.type==='hearMean'||q.type==='sentMean')body=(q.type==='hearMean'?`<button class="play huge" id="qp">${PLAY}Play sentence</button>`:`<p class="han examzh" data-nosay>${esc(sentHz(s).join(''))}</p>`)+`<div class="opts one">${q.opts.map((o,k)=>`<button class="opt" data-i="${k}">${esc(o)}</button>`).join('')}</div>`;
     else if(q.type==='hearTF')body=`<button class="play huge" id="qp">${PLAY}Play sentence</button><p class="meaning" style="font-weight:700">“${esc(q.shown)}”</p><div class="opts"><button class="opt c" data-v="1">True</button><button class="opt c" data-v="0">False</button></div>`;
-    else if(q.type==='blank'){const z=sentHz(s);body=`<p class="han examzh" data-nosay>${z.map((c,k)=>k===q.bi?'<span class="gap">　　</span>':esc(c)).join('')}</p><p class="hint">${esc(s.en)}</p><div class="opts chars">${q.opts.map((o,k)=>`<button class="opt" data-i="${k}"><span class="han" style="font-size:1.6rem">${esc(state.script==='t'?toTrad(o):o)}</span></button>`).join('')}</div>`}
+    else if(q.type==='blank'){const z=sentHz(s);body=`<p class="han examzh" data-nosay>${z.map((c,k)=>k===q.bi?'<span class="gap">　　</span>':esc(c)).join('')}</p><p class="hint">${esc(s.en)}</p><div class="opts chars">${q.opts.map((o,k)=>`<button class="opt" data-i="${k}"><span class="han" style="font-size:1.5rem">${esc(state.script==='t'?toTrad(o):o)}</span></button>`).join('')}</div>`}
     else if(q.type==='pinyin')body=big+`<p class="hint">${esc(x.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. ni3 hao3" aria-label="Pinyin"></div><p class="hint">Tones as numbers 1–4, ü as v.</p>`;
     else if(q.type==='tone')body=big+`<div class="tones">${[1,2,3,4,0].map(t=>`<button class="tbtn t${t}" data-t="${t}">${contour(t)}${t||'neutral'}<small>${t?TONE[t]:'tone'}</small></button>`).join('')}</div>`;
     else if(q.type==='order'){const z=sentHz(s);body=`<p class="meaning" style="font-weight:700">${esc(s.en)}</p><div class="ansrow" id="ar" data-end="${endMark(z,s.en)}"></div><div class="bank" id="bk">${q.bank.map((ix,k)=>`<button class="chunk han" data-j="${k}">${esc(z[ix])}</button>`).join('')}</div><button class="btn ghost" id="oc">Clear</button>`}
-    else if(q.type==='trans')body=`<p class="meaning" style="font-size:1.3rem;font-weight:700">${esc(s.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="你好 or ni3 hao3" aria-label="Your translation"></div><p class="hint">Characters or pinyin with tone numbers. Punctuation does not matter.</p>`;
-    else if(q.type==='draw')body=`<span class="py" style="font-size:1.6rem">${pyHtml(x.p)}</span><p class="meaning">${esc(x.en)}</p><div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div><p class="strokes" id="wst"></p><button class="btn ghost" id="wre">Start over</button>`;
+    else if(q.type==='trans')body=`<p class="meaning" style="font-size:1.25rem;font-weight:700">${esc(s.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="你好 or ni3 hao3" aria-label="Your translation"></div><p class="hint">Characters or pinyin with tone numbers. Punctuation does not matter.</p>`;
+    else if(q.type==='draw')body=`<span class="py" style="font-size:1.5rem">${pyHtml(x.p)}</span><p class="meaning">${esc(x.en)}</p><div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div><p class="strokes" id="wst"></p><button class="btn ghost" id="wre">Start over</button>`;
     $('qbox').innerHTML=`<div class="card top-align"><div class="qhead"><span class="eyebrow"><span class="han">${sec[2]}</span> ${sec[1]}</span><button class="flagbtn" id="fl" aria-pressed="${flag[i]}">⚑ ${flag[i]?'Flagged':'Flag'}</button></div>
       <p class="qprompt"><span class="qnum">${i+1}.</span> ${QTITLE[q.type]}</p>${body}</div>
       <div class="btns"><button class="btn ghost" id="pv" ${i?'':'disabled'}>‹ Previous</button>${i<N-1?'<button class="btn" id="nx">Next ›</button>':'<button class="btn" id="hand">Hand in the test</button>'}</div>
@@ -1873,7 +1875,7 @@ function match(kind){
   open(tallyBar(0,0,items.length,'0 / '+items.length,'Mistakes','Matched','‹ Home',false)+`<div class="row"><div class="seg" role="group" aria-label="Match"><button data-k="en" aria-pressed="${kind==='en'}">中 ↔ EN</button><button data-k="py" aria-pressed="${kind==='py'}">中 ↔ pinyin</button></div><span class="timer" id="tm">0.0 s</span></div>
     <div class="seg" role="group" aria-label="Layout"><button data-ml="cols" aria-pressed="${cols}">Two columns</button><button data-ml="mix" aria-pressed="${!cols}">Mixed</button></div>
     <p class="hint">${cols?`Tap a ${kind==='en'?'meaning':'pinyin'} on the left, then the Chinese on the right (or the other way round).`:`Tap a Chinese tile, then its ${kind==='en'?'meaning':'pinyin'}.`} Each mistake adds 1 second.${best?` Your best: ${fmt(best)}.`:''}</p>
-    <div class="mgrid${cols?' cols':''}" id="mg">${cols?`<span class="mhead">${kind==='en'?'Meaning':'Pinyin'}</span><span class="mhead">Chinese</span>`:''}${tiles.map((t,j)=>{const x=items[t.i];return `<button class="mt" data-j="${j}">${t.c?`<span class="han" ${x.kind==='w'?'style="font-size:1.5rem"':''}>${hz(x)}</span>`:kind==='en'?esc(short(x.en)):`<span style="font-size:1.15rem">${pyHtml(x.p)}</span>`}</button>`}).join('')}</div><div id="mres"></div>`);
+    <div class="mgrid${cols?' cols':''}" id="mg">${cols?`<span class="mhead">${kind==='en'?'Meaning':'Pinyin'}</span><span class="mhead">Chinese</span>`:''}${tiles.map((t,j)=>{const x=items[t.i];return `<button class="mt" data-j="${j}">${t.c?`<span class="han" ${x.kind==='w'?'style="font-size:1.5rem"':''}>${hz(x)}</span>`:kind==='en'?esc(short(x.en)):`<span style="font-size:1.1rem">${pyHtml(x.p)}</span>`}</button>`}).join('')}</div><div id="mres"></div>`);
   M().querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>match(b.dataset.k));
   M().querySelectorAll('[data-ml]').forEach(b=>b.onclick=()=>{store.set('ic-mlay',b.dataset.ml);match(kind)});
   const show=()=>{const s=(Date.now()-t0)/1000+pen;if($('tm'))$('tm').textContent=s.toFixed(1)+' s';return s};
@@ -1897,8 +1899,8 @@ function match(kind){
 function sentences(){
   const list=ST.filter(s=>state.sel.has(s.l));
   open(bar(0,list.length+' sentences')+`<div class="card"><h2>Sentences from the selected lessons</h2><p class="muted">Each sentence uses only vocabulary the textbook has introduced by that lesson.</p>
-    <div class="btns"><button class="btn ghost" id="sb">Build sentences</button><button class="btn ghost" id="st">Translate into Chinese</button><button class="btn ghost" id="sl">Build from listening</button><button class="btn ghost" id="sr">Read and listen</button></div></div>`);
-  $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);$('sr').onclick=()=>readList(list);
+    <div class="btns"><button class="btn ghost" id="sb">Build sentences</button><button class="btn ghost" id="st">Translate into Chinese</button><button class="btn ghost" id="sl">Build from listening</button></div></div>`);
+  $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);
 }
 const isPunct=c=>/^[，。？！、,.?!]$/.test(c);
 /* sentence building: drag a piece of your answer to another place, or drag a piece from the bank straight to a place
@@ -1977,32 +1979,59 @@ function translate(list){
     for(let i=A.length-1;i>=0;i--)for(let j=B.length-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
     let i=0,j=0,out='';while(i<A.length&&j<B.length){if(A[i]===B[j]){out+=`<span class="dok">${esc(A[i])}</span>`;i++;j++}else if(L[i+1][j]>=L[i][j+1]){out+=`<span class="dbad">${esc(A[i])}</span>`;i++}else{out+=`<span class="dmiss">${esc(B[j])}</span>`;j++}}
     while(i<A.length)out+=`<span class="dbad">${esc(A[i++])}</span>`;while(j<B.length)out+=`<span class="dmiss">${esc(B[j++])}</span>`;return out}
+  // Draw mode: draw a character on the pad, tap the right one among the suggestions, and it joins the sentence
+  async function drawPad(inp){
+    const cv=$('tcv'),pad=$('tpad'),ar=$('ar'),cd=$('tcands');let strokes=[],cur=null,chars=[];
+    const fit=()=>{const r=pad.getBoundingClientRect(),k=devicePixelRatio||1;cv.width=r.width*k;cv.height=r.height*k;paint()};
+    const paint=()=>{const g=cv.getContext('2d'),k=cv.width/(pad.clientWidth||1);g.setTransform(k,0,0,k,0,0);g.clearRect(0,0,cv.width,cv.height);
+      g.strokeStyle=getComputedStyle(pad).color;g.lineWidth=Math.max(4,pad.clientWidth/40);g.lineCap=g.lineJoin='round';
+      for(const st of strokes.concat(cur?[cur]:[])){g.beginPath();st.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));if(st.length===1)g.lineTo(st[0][0]+.1,st[0][1]);g.stroke()}};
+    const row=()=>{inp.value=chars.join('');ar.innerHTML=chars.map((c,i)=>`<button class="chunk han" data-i="${i}" aria-label="Remove ${esc(c)}">${esc(c)}</button>`).join('');
+      ar.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{if(inp.disabled)return;chars.splice(+b.dataset.i,1);row()});ar.scrollLeft=ar.scrollWidth};
+    const suggest=()=>{if(!strokes.length){cd.innerHTML='<span class="hint">Draw one character, then tap it here.</span>';return}
+      const r=recognise(strokes,recCands(),STROKES,6).map(c=>state.script==='t'?T2[c]||c:c).filter((c,i,a)=>a.indexOf(c)===i);
+      cd.innerHTML=r.map(c=>`<button class="chunk han" data-c="${esc(c)}">${esc(c)}</button>`).join('');
+      cd.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{if(inp.disabled)return;chars.push(b.dataset.c);strokes=[];paint();suggest();row()})};
+    const at=e=>{const r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]};
+    cv.onpointerdown=e=>{if(inp.disabled)return;e.preventDefault();cv.setPointerCapture(e.pointerId);cur=[at(e)];paint()};
+    cv.onpointermove=e=>{if(!cur)return;const p=at(e),q=cur[cur.length-1];if(Math.hypot(p[0]-q[0],p[1]-q[1])>1.5){cur.push(p);paint()}};
+    cv.onpointerup=cv.onpointercancel=()=>{if(!cur)return;strokes.push(cur);cur=null;paint();suggest()};
+    $('tundo').onclick=()=>{if(inp.disabled)return;strokes.pop();paint();suggest()};
+    $('tclr').onclick=()=>{if(inp.disabled)return;strokes=[];paint();suggest()};
+    $('tdel').onclick=()=>{if(inp.disabled)return;chars.pop();row()};
+    fit();await loadStrokes();
+  }
   function draw(){
     if(qi>=qs.length)return finish();
     const s=qs[qi],z=sentHz(s),chunks=shuffle(z.map((c,i)=>({c,p:s.py[i]})).filter(w=>!isPunct(w.c)));let hint=0;
     open(tallyBar(qi-score,score,qs.length,(qi+1)+' / '+qs.length)+`<div class="card top-align"><p class="eyebrow">Translate into Chinese · ${LNAME(s.l)}</p>
-      <p class="meaning" style="font-size:1.3rem;font-weight:700">${esc(s.en)}</p>
+      <p class="meaning" style="font-size:1.25rem;font-weight:700">${esc(s.en)}</p>
       <button class="play" id="tsp">${PLAY}Hint: listen</button>
-      <div class="seg" role="group" aria-label="Answer with"><button data-how="han" aria-pressed="${how==='han'}">Characters</button><button data-how="py" aria-pressed="${how==='py'}">Pinyin</button></div>
-      <div class="typein"><input id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" lang="${how==='han'?'zh':'en'}" placeholder="${how==='han'?'Type in Chinese, e.g. 你好':'e.g. ni3 hao3'}" aria-label="Your translation"></div>
-      <p class="hint">${how==='han'?'Use your Chinese keyboard. Punctuation and spaces do not matter.':'Type tones as numbers 1–4 and ü as v. Spaces and punctuation do not matter.'}</p>
+      <div class="seg" role="group" aria-label="Answer with"><button data-how="han" aria-pressed="${how==='han'}">Characters</button><button data-how="py" aria-pressed="${how==='py'}">Pinyin</button><button data-how="draw" aria-pressed="${how==='draw'}">Draw</button></div>
+      ${how==='draw'?`<input id="tin" type="hidden"><div class="ansrow tdr" id="ar" aria-label="Your sentence" data-end="${endMark(z,s.en)}"></div>
+      <div class="bank tcands" id="tcands" aria-label="Suggestions" aria-live="polite"><span class="hint">Draw one character, then tap it here.</span></div>
+      <div class="tdraw"><div class="pad tpad" id="tpad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><canvas id="tcv" aria-label="Drawing pad"></canvas></div>
+      <div class="ttools"><button class="btn ghost" id="tundo" aria-label="Undo stroke">↶</button><button class="btn ghost" id="tclr" aria-label="Clear drawing">✕</button><button class="btn ghost" id="tdel" aria-label="Delete last character">⌫</button></div></div>`
+      :`<div class="typein"><input id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" lang="${how==='han'?'zh':'en'}" placeholder="${how==='han'?'Type in Chinese, e.g. 你好':'e.g. ni3 hao3'}" aria-label="Your translation"></div>
+      <p class="hint">${how==='han'?'Use your Chinese keyboard. Punctuation and spaces do not matter.':'Type tones as numbers 1–4 and ü as v. Spaces and punctuation do not matter.'}</p>`}
       <div id="hintbox" class="bank" aria-live="polite"></div>
       <div class="btns"><button class="btn ghost" id="th">Hint</button><button class="btn ghost" id="tidk">Show answer</button><button class="btn" id="tchk">Check</button></div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
-    const inp=$('tin');inp.focus();
+    const inp=$('tin');if(how==='draw')drawPad(inp);else inp.focus();
     $('tsp').onclick=()=>{if(!inp.disabled)hint=Math.max(hint,1);speakSent(s)};
     M().querySelectorAll('[data-how]').forEach(b=>b.onclick=()=>{how=b.dataset.how;store.set('ic-tmode',how);draw()});
     $('th').onclick=()=>{hint++;
-      if(hint===1){$('hintbox').innerHTML=`<p class="hint" style="width:100%;text-align:center">Words to use, in mixed order:</p>`+chunks.map(w=>`<span class="chunk han hchunk" style="font-size:1.2rem">${esc(w.c)}${how==='py'?`<small>${pyHtml(w.p)}</small>`:''}</span>`).join('');if(how==='py')$('th').disabled=true}
+      if(hint===1){$('hintbox').innerHTML=`<p class="hint" style="width:100%;text-align:center">Words to use, in mixed order:</p>`+chunks.map(w=>`<span class="chunk han hchunk" style="font-size:1.25rem">${esc(w.c)}${how==='py'?`<small>${pyHtml(w.p)}</small>`:''}</span>`).join('');if(how==='py')$('th').disabled=true}
       else{$('hintbox').insertAdjacentHTML('beforeend',`<p class="hint" style="width:100%;text-align:center">${pyHtml(s.py.join(' ').replace(/ ([,.?!])/g,'$1'))}</p>`);$('th').disabled=true}
       };
     const check=give=>{if(inp.disabled)return;const v=inp.value;let ok=false;
-      if(!give){if(how==='han')ok=toSimp(strip(v))===strip(s.zh.join(''))&&strip(v).length>0;
+      if(!give){if(how!=='py')ok=toSimp(strip(v))===strip(s.zh.join(''))&&strip(v).length>0;
         else ok=pyKey(v.replace(/[^\p{L}\p{N}]/gu,''))===pyKey(s.py.join(''))}
       inp.disabled=true;inp.classList.add(ok?'is-ok':'is-bad');if(ok&&!hint)score++;else if(ok)score+=.5;
       speakSent(s);
-      const yours=!give&&!ok&&v.trim()?(how==='han'?`<p class="hint">Your answer, compared:</p><p class="han tdiff">${diff(strip(v),strip(z.join('')))}</p>`:`<p class="hint">You typed “${esc(v)}”.</p>`):'';
+      const yours=!give&&!ok&&v.trim()?(how!=='py'?`<p class="hint">Your answer, compared:</p><p class="han tdiff">${diff(strip(v),strip(z.join('')))}</p>`:`<p class="hint">You typed “${esc(v)}”.</p>`):'';
       $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><h3>${ok?(hint?'Correct, with a hint.':'Correct!'):give?'The answer is:':'Not quite. One correct translation is:'}</h3>${rubyHtml(s)}<button class="play" data-ss="${s.id}" style="align-self:center">${PLAY}Play sentence</button>${yours}
         <div class="btns">${!ok&&!give&&v.trim()?'<button class="btn ghost" id="tovr">Mine is also right</button>':''}<button class="btn" id="nx">${qi<qs.length-1?'Next ›':'See result'}</button></div></div>`;
+      $('fb').scrollIntoView({block:'nearest',behavior:'smooth'});
       if($('tovr'))$('tovr').onclick=()=>{score++;qi++;draw()};
       $('nx').onclick=()=>{qi++;draw()};keyHandler=e=>{if(e.key==='Enter'&&document.activeElement!==inp){e.preventDefault();$('nx').click()}}};
     $('tchk').onclick=()=>check(false);$('tidk').onclick=()=>check(true);
@@ -2011,15 +2040,6 @@ function translate(list){
   function finish(){open(bar(100,qs.length+' / '+qs.length)+`<div class="card"><p class="eyebrow">Translation done</p><span class="score">${+score.toFixed(1)} / ${qs.length}</span><p>${score===qs.length?'Every sentence right without hints.':'A hint counts as half a point. Try again to beat your score.'}</p><div class="btns"><button class="btn ghost" data-home>‹ Home</button><button class="btn" id="ag">Again</button></div></div>`);$('ag').onclick=()=>translate(list)}
   draw();
 }
-function readList(list){
-  let showPy=true,showEn=true;
-  const draw=()=>{open(bar(0,list.length+' sentences')+`<div class="row stickybar"><h2>Read and listen</h2><div class="seg" role="group" aria-label="Show"><button id="tpy" aria-pressed="${showPy}">Pinyin</button><button id="ten" aria-pressed="${showEn}">English</button></div></div>
-    <div class="slist">${list.map(s=>`<div class="sitem"><span class="zh han">${esc(sentHz(s).join(''))}</span><span class="pyl">${pyHtml(s.py.join(' ').replace(/ ([,.?!])/g,'$1'))}</span><span class="en">${esc(s.en)}</span><button class="play" data-ss="${s.id}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>`);
-    const tog=(id,cls,v)=>{$(id).setAttribute('aria-pressed',v);M().querySelector('.slist').classList.toggle(cls,!v)};
-    $('tpy').onclick=()=>{showPy=!showPy;tog('tpy','nopy',showPy)};$('ten').onclick=()=>{showEn=!showEn;tog('ten','noen',showEn)}};
-  draw();
-}
-
 // Grammar points follow the textbook's contents; explanations and examples are written for this app.
 const GRAMMAR={
 '1':[
@@ -2420,6 +2440,37 @@ function hwCreate(id,ch,o){const w=HanziWriter.create(id,ch,o);try{const el=type
   if(d&&svg){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const st of d.strokes){const n=st.match(/-?\d+(?:\.\d+)?/g).map(Number);for(let i=0;i+1<n.length;i+=2){const x=n[i],y=n[i+1];if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}}
     const k=((o.width||el.clientWidth)-2*(o.padding||0))/1024;svg.style.transform=`translate(${((512-(x0+x1)/2)*k).toFixed(1)}px,${(((y0+y1)/2-388)*k).toFixed(1)}px)`}}catch(e){}return w}
 async function loadStrokes(){if(STROKES)return STROKES;const r=await fetch('strokes.json');STROKES=await r.json();return STROKES}
+/* handwriting recognition for "Translate · Draw": the drawn strokes are compared with the stroke medians in strokes.json
+   (in order, with skipped or joined strokes allowed, and in any order as a fallback). Candidates are the characters of the
+   textbook's words and sentences, so nothing outside the course is suggested. Works offline. */
+let REC_CANDS=null;
+function recCands(){if(REC_CANDS)return REC_CANDS;const s=new Set(),add=t=>{for(const c of t)if(isHan(c)&&STROKES[c])s.add(c)};
+  for(const x of DATA.ch)if(x[0]!=='I')add(x[1]+x[2]);for(const x of DATA.wd)add(x[1]);for(const x of DATA.st)add(x[1].join(''));
+  for(const x of ST)add(x.zh.join('')+x.zht.join(''));for(const k in DATA.t2)if(s.has(k))add(DATA.t2[k]);
+  return REC_CANDS=[...s]}
+function recPrep(strokes,flip){ // strokes: [[ [x,y],... ], ...] -> normalised, resampled
+  const N=10;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const s of strokes)for(const [x,y0_] of s){const y=flip?-y0_:y0_;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}
+  const cx=(x0+x1)/2,cy=(y0+y1)/2,k=Math.max(x1-x0,y1-y0,1);
+  return strokes.map(s=>{const p=s.map(([x,y])=>[(x-cx)/k,((flip?-y:y)-cy)/k]);
+    let L=0;const d=[0];for(let i=1;i<p.length;i++){L+=Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]);d.push(L)}
+    const out=[];for(let t=0;t<N;t++){const at=L*t/(N-1);let i=1;while(i<p.length-1&&d[i]<at)i++;
+      if(p.length<2){out.push(p[0]);continue}const a=p[i-1],b=p[i],f=d[i]>d[i-1]?(at-d[i-1])/(d[i]-d[i-1]):0;out.push([a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f])}
+    return out})}
+function recStrokeDist(a,b){let s=0;for(let i=0;i<a.length;i++)s+=Math.hypot(a[i][0]-b[i][0],a[i][1]-b[i][1]);return s/a.length}
+function recScore(u,t){ // lower is better
+  const G=.45,n=u.length,m=t.length,C=u.map(a=>t.map(b=>recStrokeDist(a,b)));
+  const D=Array.from({length:n+1},(_,i)=>new Float64Array(m+1));
+  for(let i=0;i<=n;i++)for(let j=0;j<=m;j++){if(!i&&!j)continue;let v=1e9;
+    if(i&&j)v=D[i-1][j-1]+C[i-1][j-1];if(i)v=Math.min(v,D[i-1][j]+G);if(j)v=Math.min(v,D[i][j-1]+G);D[i][j]=v}
+  // stroke order is not always right: also a greedy best match in any order
+  const used=new Set(),pairs=[];for(let i=0;i<n;i++)for(let j=0;j<m;j++)pairs.push([C[i][j],i,j]);pairs.sort((a,b)=>a[0]-b[0]);
+  const ui=new Set();let g=0,k=0;for(const [c,i,j] of pairs){if(ui.has(i)||used.has(j)||c>G)continue;ui.add(i);used.add(j);g+=c;k++}
+  g+=(n-k+m-k)*G;
+  return Math.min(D[n][m],g+.15)/Math.max(n,m)}
+function recognise(strokes,cands,data,top=8){const u=recPrep(strokes,false);const r=[];
+  for(const c of cands){const d=data[c];if(!d)continue;if(!d._p)d._p=recPrep(d.medians,true);r.push([recScore(u,d._p),c])}
+  return r.sort((a,b)=>a[0]-b[0]).slice(0,top).map(x=>x[1])}
 /* how forgiving stroke recognition is: Relaxed (default) or Strict */
 const wlen=()=>1.7;
 function write(rest0){
@@ -2442,7 +2493,7 @@ function write(rest0){
     const nextLabel=!lastChar?'Next character ›':i<deck.length-1?'Skip ›':'Finish';
     open(tallyBar(i-got,got,deck.length,(i+1)+' / '+deck.length)+`<div class="card top-align">
       <div class="seg" role="group" aria-label="Level"><button data-lv="show" aria-pressed="${level==='show'}">1 Watch</button><button data-lv="trace" aria-pressed="${level==='trace'}">2 Trace</button><button data-lv="memory" aria-pressed="${level==='memory'}">3 From memory</button></div>
-      <div class="wprompt">${level==='memory'||L>1?'':`<span class="han" style="font-size:2.4rem">${c}</span>`}<span class="py" style="font-size:1.6rem">${x.kind==='c'?contour(x.tone):''}${pyHtml(x.p)}</span><button class="play" id="say" aria-label="Play">${PLAY}</button></div>
+      <div class="wprompt">${level==='memory'||L>1?'':`<span class="han" style="font-size:2.5rem">${c}</span>`}<span class="py" style="font-size:1.5rem">${x.kind==='c'?contour(x.tone):''}${pyHtml(x.p)}</span><button class="play" id="say" aria-label="Play">${PLAY}</button></div>
       <p class="meaning">${esc(x.en)}</p>${boxes}
       <div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div>
       <p class="strokes" id="wst" role="status" aria-live="polite">${L>1?`Character ${j+1} of ${L} · `:''}${n?n+' strokes':''}</p>${note?`<p class="hint">${note}</p>`:''}
@@ -2858,13 +2909,14 @@ setTimeout(initCloud,0);
 /* ---------- Czech / English: the UI is written in English and translated on screen ----------
    Exact strings come from CS, strings with numbers from CS_P. Learning content (meanings,
    example translations, grammar notes) stays in English like the textbook. */
-const CS={"Sign up": "Zaregistrovat se", "Try without registration": "Vyzkoušet bez registrace", "About": "O aplikaci", "Flashcards": "Kartičky", "Writing": "Psaní", "Tones": "Tóny", "Sentences": "Věty", "Grammar": "Gramatika", "Tests": "Testy", "Made by Martin Paška": "Vytvořil Martin Paška", "What you can practise": "Co můžeš procvičovat", "Who made it": "Kdo to vytvořil", "Flashcards and daily review": "Kartičky a denní opakování", "Writing, stroke by stroke": "Psaní tah po tahu", "Made by Martin Paška (帕马庭). The code is open on": "Vytvořil Martin Paška (帕马庭). Kód je veřejně na", "One character at a time": "Jeden znak po druhém", "Create account": "Vytvořit účet", "Leaderboard": "Žebříček", "Pick a nickname": "Vyber si přezdívku", "Today's review": "Dnešní opakování", "due for review": "k opakování", "new today": "nových dnes", "items known": "umíš", "Start today's review": "Spustit dnešní opakování", "All done for today": "Pro dnešek hotovo", "Come back tomorrow, or pick something to do below.": "Vrať se zítra, nebo si níž vyber, co dělat.", "Change": "Změnit", "What do you want to do?": "Co chceš dělat?", "Learn something new": "Nauč se něco nového", "Practise": "Procvičuj", "Check yourself": "Otestuj se", "Learn": "Učení", "Match": "Přiřazování", "Tone trainer": "Trenažér tónů", "Tone twins": "Tónová dvojčata", "Test": "Test", "Progress & settings": "Pokrok a nastavení", "Flip, listen, sort into Know and Still learning": "Otáčej, poslouchej a třiď na Umím a Neumím", "Rounds that bring back mistakes until you get them": "Kola, která vracejí chyby, dokud je nezvládneš", "Every grammar point of each lesson, with examples": "Všechna gramatika každé lekce s příklady", "Build, translate and listen to sentences": "Skládej, překládej a poslouchej věty", "Stroke order, tracing and writing from memory": "Pořadí tahů, obtahování a psaní zpaměti", "Pair Chinese with meanings against the clock": "Spojuj čínštinu s významy na čas", "Hear it, pick the tone, then tone pairs": "Poslechni, urči tón, pak dvojice tónů", "Same syllable, different tone": "Stejná slabika, jiný tón", "Chapter test: listening, reading, pinyin, writing": "Test z kapitoly: poslech, čtení, pinyin, psaní", "What you know in each lesson, script, tone colours and audio": "Co umíš v každé lekci, písmo, barvy tónů a zvuk", "This browser has no Chinese voice, so audio may be missing. iPhone and Android usually include one; on a computer you can add it in the system's speech settings.": "Tento prohlížeč nemá čínský hlas, takže může chybět zvuk. iPhone a Android ho většinou mají, na počítači ho přidáš v nastavení řeči v systému.", "About this app": "O aplikaci", "· Vocabulary from the textbook's vocabulary index (Integrated Chinese, Level 1 Part 1, 3rd edition). The example sentences were written for this app using each lesson's vocabulary. Stroke data: Make Me a Hanzi (Arphic Public License).": "· Slovní zásoba z rejstříku učebnice (Integrated Chinese, Level 1 Part 1, 3. vydání). Ukázkové věty byly napsány pro tuto aplikaci ze slovíček jednotlivých lekcí. Data tahů: Make Me a Hanzi (Arphic Public License).", "Settings": "Nastavení", "Language": "Jazyk", "‹ Home": "‹ Domů", "‹ Back": "‹ Zpět", "‹ Leave": "‹ Odejít", "‹ Previous": "‹ Předchozí", "Next ›": "Další ›", "Continue ›": "Pokračovat ›", "Back": "Zpět", "Flip, listen, sort into Know and Still learning.": "Otáčej kartičky, poslouchej a třiď je na Umím a Neumím.", "Stroke order, tracing and writing from memory.": "Pořadí tahů, obtahování a psaní zpaměti.", "Pair Chinese with meanings against the clock.": "Spojuj čínštinu s významy na čas.", "Hear a character without seeing it and pick its tone. Then tone pairs in two-syllable words.": "Poslechni si znak, aniž bys ho viděl(a), a urči jeho tón. Pak dvojice tónů ve dvouslabičných slovech.", "Characters with the same syllable but a different tone.": "Znaky se stejnou slabikou, ale jiným tónem.", "A chapter test with listening, reading, pinyin and writing sections.": "Test z kapitoly s poslechem, čtením, pinyinem a psaním.", "Example sentences that use only vocabulary up to each lesson.": "Ukázkové věty jen se slovíčky do dané lekce.", "What do you want to practise?": "Co chceš procvičovat?", "Which lessons?": "Které lekce?", "Select all": "Vybrat vše", "Clear": "Zrušit", "Characters": "Znaky", "Words": "Slova", "Characters and words": "Znaky i slova", "Card front": "Přední strana kartičky", "Chinese → English": "Čínština → angličtina", "English → Chinese": "Angličtina → čínština", "Mixed": "Mix", "All": "Vše", "Not known yet": "Ještě neumím", "★ Starred": "★ S hvězdičkou", "Starred": "S hvězdičkou", "Intro": "Úvod", "Select at least one lesson.": "Vyber aspoň jednu lekci.", "Tap to include or leave out": "Ťukni pro přidání nebo vynechání", "Introduce each new item": "Představit každou novou položku", "Before the questions": "Před otázkami", "Colour = tone:": "Barva = tón:", "1st": "1.", "2nd": "2.", "3rd": "3.", "4th": "4.", "neutral": "neutrální", "Line under each:": "Čára pod každým:", "Build sentences": "Skládání vět", "Build from listening": "Skládání podle poslechu", "Translate into Chinese": "Překlad do čínštiny", "Read and listen": "Čtení a poslech", "Put the pieces in order": "Seřaď kousky", "Hear it, then build it": "Poslechni a slož", "Type it in characters or pinyin": "Napiš znaky nebo pinyinem", "All sentences with pinyin and audio": "Všechny věty s pinyinem a zvukem", "Practise Lesson": "Procvičit lekci", "Examples": "Příklady", "Watch out:": "Pozor:", "Textbook p.": "Učebnice s.", "The grammar points follow the textbook. The explanations and examples were written for this app.": "Gramatika jde podle učebnice. Vysvětlení a příklady jsou napsané pro tuto aplikaci.", "Pick the tone": "Urči tón", "Listen and pick the character": "Poslechni a vyber znak", "Single syllables": "Jednotlivé slabiky", "Tone pairs": "Dvojice tónů", "Listen without looking. Keys: 1 to 4 pick a tone, R replays.": "Poslouchej bez dívání. Klávesy: 1 až 4 vyberou tón, R přehraje znovu.", "Questions come from the characters of the selected lessons that have a twin with another tone.": "Otázky jsou ze znaků vybraných lekcí, které mají dvojče s jiným tónem.", "No tone twins in these lessons. Add more lessons.": "V těchto lekcích nejsou tónová dvojčata. Přidej další lekce.", "Test yourself like in class": "Otestuj se jako ve škole", "Sections": "Části", "Length": "Délka", "Time limit": "Časový limit", "Start the test": "Spustit test", "Pick at least one section": "Vyber aspoň jednu část", "Pick the sections you want, like in a chapter test. You see your score only after you hand it in.": "Vyber části jako v testu z kapitoly. Výsledek uvidíš až po odevzdání.", "Listening": "Poslech", "Reading": "Čtení", "Pinyin": "Pinyin", "Pinyin and tones": "Pinyin a tóny", "Questions only": "Jen otázky", "None": "Žádný", "10 min": "10 min", "20 min": "20 min", "Layout": "Rozložení", "Two columns": "Dva sloupce", "Meaning": "Význam", "Chinese ↔ meaning": "Čínština ↔ význam", "Chinese ↔ pinyin": "Čínština ↔ pinyin", "Match needs at least 3 items.": "Přiřazování potřebuje aspoň 3 položky.", "How it works": "Jak to funguje", "Level": "Úroveň", "✗ Still learning": "✗ Neumím", "✓ Know": "✓ Umím", "★ star": "★ hvězdička", "Shuffle the rest": "Zamíchat zbytek", "Start over": "Začít znovu", "Tap to see pinyin, tone and meaning": "Ťukni a uvidíš pinyin, tón a význam", "Tap the card to flip it back": "Ťukni na kartičku a otoč ji zpět", "Picture the Chinese and say it, then tap to check": "Představ si čínštinu, řekni ji a ťukni pro kontrolu", "Swipe the card left or right. Keys: space flips, ← still learning, → know.": "Táhni kartičku doleva nebo doprava. Klávesy: mezerník otočí, ← ještě se učím, → umím.", "✍ Try writing this character": "✍ Zkusit napsat tento znak", "✍ Try writing this word": "✍ Zkusit napsat toto slovo", "✍ Try writing": "✍ Zkusit napsat", "✍ Write it": "✍ Napsat", "Play": "Přehrát", "Play again": "Přehrát znovu", "Play sentence": "Přehrát větu", "Listen": "Poslechnout", "🐢 Slower": "🐢 Pomaleji", "Character": "Znak", "Word": "Slovo", "Example": "Příklad", "Deck finished": "Balíček dokončen", "Mastered": "Zvládnuto", "Learning": "Učím se", "Known": "Umím", "You know all of them. Try Learn or Writing next.": "Umíš všechno. Zkus teď Učení nebo Psaní.", "Show answer": "Ukázat odpověď", "Space shows the answer.": "Mezerník ukáže odpověď.", "Got it, test me in a moment ›": "Mám to, vyzkoušej mě za chvíli ›", "Say it out loud a couple of times. It comes back in a few cards to check you remember.": "Řekni to nahlas několikrát. Za pár kartiček se to vrátí, abys ověřil(a), že si to pamatuješ.", "Say the pinyin and the meaning out loud, then reveal the answer.": "Řekni nahlas pinyin a význam, pak odkryj odpověď.", "Picture the character, or write it, then reveal the answer.": "Představ si znak nebo ho napiš, pak odkryj odpověď.", "Keys 1–4. Again shows the card again in this session.": "Klávesy 1–4. Znovu ukáže kartičku ještě v tomto sezení.", "Again": "Znovu", "Hard": "Těžké", "Good": "Dobré", "Easy": "Snadné", "Review complete": "Opakování dokončeno", "Learn 10 more new": "Naučit se 10 nových", "Correct!": "Správně!", "Correct now!": "Teď správně!", "Not quite.": "Ne úplně.", "Not yet. This one will come back.": "Ještě ne. Tahle se vrátí.", "Correct, mastered!": "Správně, zvládnuto!", "Correct, with a hint.": "Správně, s nápovědou.", "I don't know": "Nevím", "I was right": "Měl(a) jsem pravdu", "Mine is also right": "Moje je taky správně", "Check": "Zkontrolovat", "Hint": "Nápověda", "Next round ›": "Další kolo ›", "Finish": "Dokončit", "See result": "Zobrazit výsledek", "Learn complete": "Učení dokončeno", "You answered every item by choosing and by typing its pinyin. Next: Test or Writing.": "Odpověděl(a) jsi na všechno výběrem i napsáním pinyinu. Dál: Test nebo Psaní.", "Step 1 of 2 · choose": "Krok 1 ze 2 · vyber", "Step 2 of 2 · type it": "Krok 2 ze 2 · napiš", "Round": "Kolo", "Left in round": "Zbývá v kole", "Skip intros": "Přeskočit představení", "Start the quiz ›": "Spustit kvíz ›", "Skip ›": "Přeskočit ›", "Watch the stroke order. Tap the character to see it again.": "Sleduj pořadí tahů. Ťukni na znak a uvidíš ho znovu.", "My memory hook": "Můj tah na zapamatování", "Use this": "Použít", "Parts:": "Části:", "Characters:": "Znaky:", "Built from": "Skládá se z", "Related words": "Příbuzná slova", "Words with this character": "Slova s tímto znakem", "Characters in this word": "Znaky v tomto slově", "Type the pinyin with tones": "Napiš pinyin s tóny", "e.g. ni3 hao3": "např. ni3 hao3", "Type in Chinese, e.g. 你好": "Piš čínsky, např. 你好", "Type tones as numbers 1–4 and ü as v. Spaces and punctuation do not matter.": "Tóny piš jako čísla 1–4 a ü jako v. Mezery a interpunkce nevadí.", "Use your Chinese keyboard. Punctuation and spaces do not matter.": "Použij čínskou klávesnici. Interpunkce a mezery nevadí.", "Build the sentence": "Slož větu", "Put the words in the right order.": "Seřaď slova správně.", "Listen and build": "Poslechni a slož", "Pieces in red are in the wrong place. Drag them to fix the order, or tap one to send it back, then check again.": "Červené kousky jsou na špatném místě. Přetáhni je, nebo na ně ťukni a vrať je zpět, a pak zkontroluj znovu.", "The sentence is:": "Věta zní:", "Sentences done": "Věty hotové", "Translation done": "Překlad hotový", "Every sentence right.": "Všechny věty správně.", "Every sentence right without hints.": "Všechny věty správně bez nápovědy.", "Not quite. One correct translation is:": "Ne úplně. Jeden správný překlad:", "Your answer, compared:": "Tvoje odpověď v porovnání:", "Your answer:": "Tvoje odpověď:", "Correct:": "Správně:", "A hint counts as half a point. Try again to beat your score.": "Nápověda se počítá za půl bodu. Zkus to znovu a překonej se.", "Try the ones you missed again, or switch to Build from listening.": "Zkus znovu ty, které ti nešly, nebo přepni na Skládání podle poslechu.", "Words to use, in mixed order:": "Slova k použití, zamíchaná:", "Hint: listen": "Nápověda: poslech", "Show": "Zobrazit", "Pinyin ": "Pinyin ", "Done": "Hotovo", "No mistakes!": "Bez chyby!", "New personal best for these lessons!": "Nový osobní rekord pro tyto lekce!", "Writing done": "Psaní hotové", "Word complete!": "Slovo hotové!", "Word complete, with some mistakes.": "Slovo hotové, s několika chybami.", "Do you have it?": "Máš to?", "↻ Again later": "↻ Znovu později", "✓ Got it": "✓ Mám to", "Next character ›": "Další znak ›", "Now from memory ›": "Teď zpaměti ›", "Show outline": "Ukázat obrys", "From memory again": "Znovu zpaměti", "1 Watch": "1 Sleduj", "2 Trace": "2 Obtahuj", "3 From memory": "3 Zpaměti", "Watch the stroke order, then switch to Trace.": "Sleduj pořadí tahů a pak přepni na Obtahování.", "Trace each stroke in order with your finger. A hint appears after two misses.": "Obtáhni prstem každý tah ve správném pořadí. Po dvou chybách se ukáže nápověda.", "Write it without the outline. A hint appears after three misses.": "Napiš to bez obrysu. Po třech chybách se ukáže nápověda.", "Write it from memory. Stuck? Show the outline and trace it.": "Napiš to zpaměti. Nejde to? Ukaž obrys a obtáhni ho.", "Trace the outline, then try it from memory again.": "Obtáhni obrys a pak to zkus znovu zpaměti.", "Loading stroke data…": "Načítám data tahů…", "No stroke data for this character.": "Pro tento znak nejsou data tahů.", "The writing library could not load. Check your connection and try again.": "Nástroj na psaní se nenačetl. Zkontroluj připojení a zkus to znovu.", "The stroke data could not load. Try reloading the page.": "Data tahů se nenačetla. Zkus stránku načíst znovu.", "Try writing": "Zkusit napsat", "Close": "Zavřít", "Details": "Podrobnosti", "· Tap for details": "· Ťukni pro podrobnosti", "Which tone do you hear?": "Jaký tón slyšíš?", "Which two tones do you hear?": "Jaké dva tóny slyšíš?", "Listen and pick": "Poslechni a vyber", "Which one do you hear?": "Který slyšíš?", "You heard a different one.": "Slyšel(a) jsi jiný.", "Perfect ears!": "Skvělý sluch!", "Try tone pairs": "Zkusit dvojice tónů", "Tones take time. Keep the sessions short and come back tomorrow.": "Tóny chtějí čas. Dělej krátká sezení a vrať se zítra.", "Tones take time. Go through the mistakes and try again.": "Tóny chtějí čas. Projdi chyby a zkus to znovu.", "single syllables": "jednotlivé slabiky", "tone pairs": "dvojice tónů", "high and level": "vysoký a rovný", "rising": "stoupavý", "low, dipping": "nízký, klesavě-stoupavý", "falling": "klesavý", "light, unstressed": "lehký, nepřízvučný", "Neutral tone": "Neutrální tón", "Hand in the test": "Odevzdat test", "Hand in anyway": "Přesto odevzdat", "Leave the test?": "Odejít z testu?", "Leave": "Odejít", "⚑ Flag": "⚑ Označit", "Use the numbers at the top to go back, or hand it in now.": "Čísly nahoře se vrať, nebo test odevzdej teď.", "Listen and choose the word you hear.": "Poslechni a vyber slovo, které slyšíš.", "Listen and choose what the sentence means.": "Poslechni a vyber, co věta znamená.", "Listen. Does the English match what you hear?": "Poslouchej. Odpovídá angličtina tomu, co slyšíš?", "True": "Pravda", "False": "Nepravda", "What does this mean?": "Co to znamená?", "Which one means:": "Které znamená:", "Write the pinyin with tones.": "Napiš pinyin s tóny.", "Write this character from memory.": "Napiš tento znak zpaměti.", "Choose the meaning.": "Vyber význam.", "Choose the word that fills the gap.": "Vyber slovo, které doplní mezeru.", "Read the sentence and choose what it means.": "Přečti větu a vyber, co znamená.", "How do you read this character?": "Jak se tento znak čte?", "Which tone does this character have?": "Jaký tón má tento znak?", "Answers": "Odpovědi", "New test": "Nový test", "Excellent. You are ready for this lesson.": "Výborně. Na tuhle lekci jsi připraven(a).", "Good. Go through the mistakes below, then practise them.": "Dobře. Projdi chyby níže a pak si je procvič.", "Practise the mistakes below, then take the test again.": "Procvič chyby níže a pak test zopakuj.", "no answer": "bez odpovědi", "· time ran out": "· vypršel čas", "Questions": "Otázky", "Good work. Play the ones you missed below.": "Dobrá práce. Níže si přehraj ty, které ti nešly.", "Very good. Replay the ones you missed below.": "Velmi dobře. Níže si přehraj ty, které ti nešly.", "Progress by lesson": "Pokrok po lekcích", "Daily review": "Denní opakování", "New cards per day": "Nových kartiček denně", "Script": "Písmo", "Simplified": "Zjednodušené", "Traditional": "Tradiční", "简 Simplified": "简 Zjednodušené", "繁 Traditional": "繁 Tradiční", "Integrated Chinese prints both. Pick the one your class uses.": "Integrated Chinese tiskne obě. Vyber tu, kterou používáte v hodinách.", "Tone colours": "Barvy tónů", "Colour-blind safe": "Bezpečné pro barvoslepé", "Classic": "Klasické", "Off": "Vypnuto", "Audio": "Zvuk", "Device voice": "Hlas zařízení", "Recordings": "Nahrávky", "No Chinese voice found on this device": "V tomto zařízení není čínský hlas", "Test voice": "Vyzkoušet hlas", "Reset progress": "Smazat pokrok", "Reset progress…": "Smazat pokrok…", "Delete everything?": "Smazat všechno?", "Yes, delete": "Ano, smazat", "No": "Ne", "Theme": "Vzhled", "Light": "Světlý", "Dark": "Tmavý", "Auto": "Automaticky", "Settings are further down: script, daily review, tone colours and audio.": "Nastavení je níž: písmo, denní opakování, barvy tónů a zvuk.", "Spaced repetition: due cards plus new ones from these lessons.": "Opakování v rozestupech: karty k opakování a nové z těchto lekcí.", "Nothing yet. Star cards in Flashcards.": "Zatím nic. Označ si kartičky hvězdičkou ve Kartičkách.", "All-time accuracy for each tone.": "Celková úspěšnost u každého tónu.", "Account": "Účet", "My account": "Můj účet", "Nickname": "Přezdívka", "Avatar": "Avatar", "Your nickname": "Tvoje přezdívka", "Save": "Uložit", "Delete account": "Smazat účet", "Delete account…": "Smazat účet…", "Delete your account?": "Smazat účet?", "Others see your nickname, avatar, how many items you know, your streak and how many cards you reviewed this week. Your progress syncs to every device where you are signed in.": "Ostatní uvidí tvou přezdívku, avatar, kolik toho umíš, tvou sérii a kolik kartiček jsi tento týden zopakoval(a). Pokrok se synchronizuje na všechna zařízení, kde jsi přihlášen(a).", "Pick a nickname with at least 2 characters.": "Vyber si přezdívku aspoň o 2 znacích.", "That nickname is taken. Try another one.": "Tahle přezdívka je obsazená. Zkus jinou.", "Use 2 to 20 characters for the nickname.": "Přezdívka musí mít 2 až 20 znaků.", "Could not save. Try again.": "Nepodařilo se uložit. Zkus to znovu.", "Signed in": "Přihlášen(a)", "Log out": "Odhlásit se", "Log in": "Přihlásit se", "Deletes your account, your leaderboard entry and the progress saved in it. Progress in this browser stays.": "Smaže tvůj účet, záznam v žebříčku i pokrok v něm uložený. Pokrok v tomto prohlížeči zůstane.", "Removes you from the leaderboard. Your progress stays.": "Odebere tě ze žebříčku. Pokrok zůstane.", "Accounts are coming soon. Until then everything works and your progress is saved in this browser.": "Účty budou brzy. Do té doby vše funguje a pokrok se ukládá v tomto prohlížeči.", "Continue without an account ›": "Pokračovat bez účtu ›", "Save your progress to an account, continue on any device and join the leaderboard.": "Ulož si pokrok do účtu, pokračuj na jakémkoli zařízení a připoj se do žebříčku.", "Welcome back. Your progress syncs as soon as you are in.": "Vítej zpět. Pokrok se synchronizuje hned po přihlášení.", "Email": "E-mail", "Password": "Heslo", "Password, at least 8 characters": "Heslo, aspoň 8 znaků", "Forgot your password?": "Zapomenuté heslo?", "No account? Everything still works and your progress stays in this browser.": "Bez účtu? Vše funguje dál a pokrok zůstane v tomto prohlížeči.", "Enter a valid email address.": "Zadej platný e-mail.", "Use a password with at least 8 characters.": "Heslo musí mít aspoň 8 znaků.", "Creating your account…": "Vytvářím účet…", "Logging in…": "Přihlašuji…", "Check your inbox.": "Zkontroluj e-mail.", "We sent a link to": "Poslali jsme odkaz na", ". Open it on this device to confirm your email and finish your account.": ". Otevři ho na tomto zařízení, potvrď e-mail a dokonči účet.", "Wrong email or password.": "Špatný e-mail nebo heslo.", "Confirm your email first: open the link we sent you.": "Nejdřív potvrď e-mail: otevři odkaz, který jsme ti poslali.", "There is already an account with this email. Log in instead.": "S tímto e-mailem už účet existuje. Přihlas se.", "Too many attempts. Wait a minute and try again.": "Příliš mnoho pokusů. Počkej chvíli a zkus to znovu.", "Something went wrong. Check your connection and try again.": "Něco se pokazilo. Zkontroluj připojení a zkus to znovu.", "Type your email above first.": "Nejdřív nahoře napiš e-mail.", "If there is an account for this email, a link to set a new password is on its way.": "Pokud k tomuto e-mailu existuje účet, posíláme odkaz pro nastavení nového hesla.", "Could not send the email. Try again in a minute.": "E-mail se nepodařilo odeslat. Zkus to za chvíli.", "Set a new password": "Nastavit nové heslo", "New password, at least 8 characters": "Nové heslo, aspoň 8 znaků", "Save password": "Uložit heslo", "Use at least 8 characters.": "Použij aspoň 8 znaků.", "Saved. You are signed in.": "Uloženo. Jsi přihlášen(a).", "Could not save the password. Open the link from the email again.": "Heslo se nepodařilo uložit. Otevři znovu odkaz z e-mailu.", "Rank by": "Řadit podle", "This week": "Tento týden", "Streak": "Série", "known": "umí", "this week": "tento týden", "day streak": "dní v řadě", "just now": "právě teď", "Known = items with a review interval of 7 days or more. This week = cards reviewed in the last 7 days.": "Umí = položky s intervalem opakování 7 dní a víc. Tento týden = kartičky zopakované za posledních 7 dní.", "No accounts yet. Create the first one.": "Zatím žádné účty. Vytvoř první.", "Loading…": "Načítám…", "The leaderboard is coming soon, together with accounts.": "Žebříček přijde brzy, spolu s účty.", "How this app helps you remember": "Jak ti aplikace pomáhá si pamatovat", "Methods with strong support from memory research": "Metody s pevnou oporou ve výzkumu paměti", "Star this card": "Označit hvězdičkou", "Filter": "Filtr", "Question": "Otázka", "Lesson": "Lekce", "Chinese voice": "Čínský hlas", "Turn the parts into a little story or picture, in your own words": "Udělej z částí krátký příběh nebo obrázek vlastními slovy", "Introductions": "Představení", "Your sentence": "Tvoje věta", "Previous": "Předchozí", "Stroke order": "Pořadí tahů", "Answer": "Odpověď", "No account? Everything still works, and your progress is saved in this browser.": "Bez účtu? Všechno funguje a pokrok se ukládá v tomto prohlížeči.", "time ran out": "vypršel čas", "Test result": "Výsledek testu", "Lesson test": "Test z lekcí", "New character": "Nový znak", "New word": "Nové slovo", "The syllable": "Slabika", "Twins with the syllable": "Dvojčata se slabikou", "You heard": "Slyšel(a) jsi", "also in": "také v", "no lessons": "žádné lekce", "characters": "znaky", "words": "slova", "Make up a picture or story that links its shape, sound and meaning": "Vymysli obrázek nebo příběh, který propojí tvar, zvuk a význam", "Chinese": "Čínština", "English": "Angličtina", "Full": "Celý", "Quick": "Rychlý", "no sentences": "žádné věty", "none": "žádný", "none = New": "žádný = Nový", "Meet each new item: what it is built from, how to remember it and its stroke order. Then rounds of questions bring back mistakes until you get them.": "Poznej každou novou položku: z čeho se skládá, jak si ji zapamatovat a pořadí tahů. Pak kola otázek vracejí chyby, dokud je nezvládneš.", "Tap a meaning on the left, then the Chinese on the right (or the other way round). Each mistake adds 1 second.": "Ťukni na význam vlevo a pak na čínštinu vpravo (nebo obráceně). Každá chyba přidá 1 sekundu.", "What you’ll practise": "Co tu procvičíš", "Vocabulary": "Slovíčka", "Flashcards with audio and a daily review": "Kartičky se zvukem a denní opakování", "Character writing": "Psaní znaků", "Hear a syllable and pick its tone": "Poslechni si slabiku a urči tón", "Every grammar point of the textbook, with examples": "Všechna gramatika z učebnice s příklady", "Build, translate and listen": "Skládej, překládej a poslouchej", "Chapter tests like in class": "Testy z kapitol jako v hodině", "Basics": "Základy", "Greetings": "Pozdravy", "Family": "Rodina", "Dates and Time": "Datum a čas", "Hobbies": "Koníčky", "Visiting Friends": "Návštěva u přátel", "Making Appointments": "Domlouvání schůzky", "Studying Chinese": "Studium čínštiny", "School Life": "Život ve škole", "Shopping": "Nakupování", "Transportation": "Doprava", "Intro screen": "Úvodní obrazovka", "Made by": "Vytvořil", "Zì You Later · Chinese 1 · FF MUNI": "Zì You Later · Čínština 1 · FF MUNI", "Tap the character to see the stroke order again.": "Ťukni na znak a uvidíš pořadí tahů znovu.", "Examples and more": "Příklady a další", "Tap to flip": "Ťukni pro otočení", "New version available": "Je tu nová verze", "Reload": "Obnovit", "Later": "Později", "Weekly race": "Týdenní závod", "Streak 🔥": "Série 🔥", "cards": "kartiček", "days": "dní", "You lead this board. Keep it up!": "Vedeš! Jen tak dál.", "Cards reviewed in the last 7 days. Everyone starts fresh each week, so newcomers can win too.": "Kartičky zopakované za posledních 7 dní. Každý týden se začíná znovu, takže vyhrát může i nováček.", "Items you know well: their next review is 7 or more days away.": "Položky, které umíš: další opakování mají za 7 a více dní.", "Days in a row with at least one review. Miss a day and it starts again.": "Dny v řadě s aspoň jedním opakováním. Když den vynecháš, začíná se znovu.",  "Write": "Napsat", "Write it": "Napsat", "Clear answer": "Smazat odpověď", "This browser has no Chinese voice, so you may not hear the sentence. Try Build sentences instead.": "Tento prohlížeč nemá čínský hlas, takže větu možná neuslyšíš. Zkus raději Skládání vět.", "Nothing here yet. Your progress fills in as you review cards.": "Zatím tu nic není. Pokrok se doplní, jak budeš opakovat kartičky.", "Start your first session": "Spustit první sezení", "Round": "Kolo", "15 at a time": "Po 15", "All at once": "Všechno najednou", "New: study it": "Nové: nauč se", "faded = later lesson": "světlejší = pozdější lekce", "top + bottom": "nahoře + dole", "left + right": "vlevo + vpravo", "one part wrapped in another": "jedna část uvnitř druhé", "outside + inside": "vně + uvnitř", "three parts stacked": "tři části nad sebou", "sound hint": "napovídá výslovnost", "meaning hint": "napovídá význam", "Picture character": "Obrázkový znak", "a shape": "tvar", "Try writing this character": "Zkusit napsat tento znak", "Try writing this word": "Zkusit napsat toto slovo", "Sentences from the selected lessons": "Věty z vybraných lekcí", "Each sentence uses only vocabulary the textbook has introduced by that lesson.": "Každá věta používá jen slovíčka, která učebnice do dané lekce probrala.", "New per day": "Nových denně", "Word audio": "Zvuk slov", "Sentence audio": "Zvuk vět", "Deletes all review history and stars in this browser.": "Smaže celou historii opakování a hvězdičky v tomto prohlížeči.", "Deletes all review history and stars on every device where you are signed in.": "Smaže celou historii opakování a hvězdičky na všech zařízeních, kde jsi přihlášen(a).", "Colour-blind safe avoids red and green and also differs in brightness: tone 1 bright blue, tone 2 amber, tone 3 dark navy (violet in dark mode), tone 4 brown. Tone marks and the tone shapes always show the tone too.": "Bezpečné pro barvoslepé se vyhýbá červené a zelené a barvy se liší i jasem: 1. tón jasně modrý, 2. tón jantarový, 3. tón tmavě modrý (v tmavém režimu fialový), 4. tón hnědý. Tón vždy ukazují i značky nad pinyinem a křivky tónů.", "The device voice is the default. Recordings are a native speaker saying every syllable, joined with tone changes such as 你好 ní hǎo; they have exact tones but sound more choppy. The best voices are the \"Natural\" ones in Microsoft Edge and Google 普通话 in Chrome. On iPhone, add a better voice in Settings › Accessibility › Spoken Content › Voices › Chinese.": "Výchozí je hlas zařízení. Nahrávky jsou rodilý mluvčí, který říká každou slabiku, spojené se změnami tónů jako 你好 ní hǎo; tóny mají přesné, ale znějí trhaněji. Nejlepší hlasy jsou „Natural“ v Microsoft Edge a Google 普通话 v Chrome. Na iPhonu přidáš lepší hlas v Nastavení › Zpřístupnění › Předčítaný obsah › Hlasy › Čínština.", "Appearance": "Vzhled", "Automatic": "Podle systému", "Light": "Světlý", "Dark": "Tmavý", "Automatic follows your phone or computer.": "Podle systému se řídí nastavením telefonu nebo počítače.", "Mastered": "Zvládnuto", "Matched": "Spojeno", "Known (interval 7+ days)": "Umím (opakování za 7+ dní)", "New": "Nové", "Progress": "Pokrok", "day streak": "dní v řadě", "cards reviewed": "zopakováno", "items known ›": "umíš ›", "✎ Practise this point": "✎ Procvičit tento bod", "Fill in the gap.": "Doplň mezeru.", "Which sentence is correct?": "Která věta je správně?", "Put the words in the right order.": "Seřaď slova ve správném pořadí.", "(nothing)": "(nic)", "Correct!": "Správně!", "The right answer is:": "Správná odpověď:", "‹ Grammar": "‹ Gramatika", "‹ Back to grammar": "‹ Zpět na gramatiku", "Go through your mistakes again until they stick.": "Projdi si chyby znovu, dokud je nebudeš umět.", "Every answer right. Well done!": "Všechno správně. Výborně!", "Loading exercises…": "Načítám cvičení…", "The exercises could not be loaded. Check your connection and try again.": "Cvičení se nepodařilo načíst. Zkontroluj připojení a zkus to znovu.", "✍ Write": "✍ Napsat", "Shuffle": "Zamíchat", "Shuffle the rest": "Zamíchat zbytek", "Still learning": "Neumím", "Know": "Umím", "To go": "Zbývá", "Mistakes": "Chyby", "Correct": "Správně", "Remembered": "Zapamatováno"};
+const CS={"Draw": "Kreslit", "Draw one character, then tap it here.": "Nakresli jeden znak a pak na něj tady klepni.", "Suggestions": "Návrhy", "Drawing pad": "Kreslicí plocha", "Undo stroke": "Vrátit tah", "Clear drawing": "Vymazat kresbu", "Delete last character": "Smazat poslední znak", "Sign up": "Zaregistrovat se", "Try without registration": "Vyzkoušet bez registrace", "About": "O aplikaci", "Flashcards": "Kartičky", "Writing": "Psaní", "Tones": "Tóny", "Sentences": "Věty", "Grammar": "Gramatika", "Tests": "Testy", "Made by Martin Paška": "Vytvořil Martin Paška", "What you can practise": "Co můžeš procvičovat", "Who made it": "Kdo to vytvořil", "Flashcards and daily review": "Kartičky a denní opakování", "Writing, stroke by stroke": "Psaní tah po tahu", "Made by Martin Paška (帕马庭). The code is open on": "Vytvořil Martin Paška (帕马庭). Kód je veřejně na", "One character at a time": "Jeden znak po druhém", "Create account": "Vytvořit účet", "Leaderboard": "Žebříček", "Pick a nickname": "Vyber si přezdívku", "Today's review": "Dnešní opakování", "due for review": "k opakování", "new today": "nových dnes", "items known": "umíš", "Start today's review": "Spustit dnešní opakování", "All done for today": "Pro dnešek hotovo", "Come back tomorrow, or pick something to do below.": "Vrať se zítra, nebo si níž vyber, co dělat.", "Change": "Změnit", "What do you want to do?": "Co chceš dělat?", "Learn something new": "Nauč se něco nového", "Practise": "Procvičuj", "Check yourself": "Otestuj se", "Learn": "Učení", "Match": "Přiřazování", "Tone trainer": "Trenažér tónů", "Tone twins": "Tónová dvojčata", "Test": "Test", "Progress & settings": "Pokrok a nastavení", "Flip, listen, sort into Know and Still learning": "Otáčej, poslouchej a třiď na Umím a Neumím", "Rounds that bring back mistakes until you get them": "Kola, která vracejí chyby, dokud je nezvládneš", "Every grammar point of each lesson, with examples": "Všechna gramatika každé lekce s příklady", "Build, translate and listen to sentences": "Skládej, překládej a poslouchej věty", "Stroke order, tracing and writing from memory": "Pořadí tahů, obtahování a psaní zpaměti", "Pair Chinese with meanings against the clock": "Spojuj čínštinu s významy na čas", "Hear it, pick the tone, then tone pairs": "Poslechni, urči tón, pak dvojice tónů", "Same syllable, different tone": "Stejná slabika, jiný tón", "Chapter test: listening, reading, pinyin, writing": "Test z kapitoly: poslech, čtení, pinyin, psaní", "What you know in each lesson, script, tone colours and audio": "Co umíš v každé lekci, písmo, barvy tónů a zvuk", "This browser has no Chinese voice, so audio may be missing. iPhone and Android usually include one; on a computer you can add it in the system's speech settings.": "Tento prohlížeč nemá čínský hlas, takže může chybět zvuk. iPhone a Android ho většinou mají, na počítači ho přidáš v nastavení řeči v systému.", "About this app": "O aplikaci", "· Vocabulary from the textbook's vocabulary index (Integrated Chinese, Level 1 Part 1, 3rd edition). The example sentences were written for this app using each lesson's vocabulary. Stroke data: Make Me a Hanzi (Arphic Public License).": "· Slovní zásoba z rejstříku učebnice (Integrated Chinese, Level 1 Part 1, 3. vydání). Ukázkové věty byly napsány pro tuto aplikaci ze slovíček jednotlivých lekcí. Data tahů: Make Me a Hanzi (Arphic Public License).", "Settings": "Nastavení", "Language": "Jazyk", "‹ Home": "‹ Domů", "‹ Back": "‹ Zpět", "‹ Leave": "‹ Odejít", "‹ Previous": "‹ Předchozí", "Next ›": "Další ›", "Continue ›": "Pokračovat ›", "Back": "Zpět", "Flip, listen, sort into Know and Still learning.": "Otáčej kartičky, poslouchej a třiď je na Umím a Neumím.", "Stroke order, tracing and writing from memory.": "Pořadí tahů, obtahování a psaní zpaměti.", "Pair Chinese with meanings against the clock.": "Spojuj čínštinu s významy na čas.", "Hear a character without seeing it and pick its tone. Then tone pairs in two-syllable words.": "Poslechni si znak, aniž bys ho viděl(a), a urči jeho tón. Pak dvojice tónů ve dvouslabičných slovech.", "Characters with the same syllable but a different tone.": "Znaky se stejnou slabikou, ale jiným tónem.", "A chapter test with listening, reading, pinyin and writing sections.": "Test z kapitoly s poslechem, čtením, pinyinem a psaním.", "Example sentences that use only vocabulary up to each lesson.": "Ukázkové věty jen se slovíčky do dané lekce.", "What do you want to practise?": "Co chceš procvičovat?", "Which lessons?": "Které lekce?", "Select all": "Vybrat vše", "Clear": "Zrušit", "Characters": "Znaky", "Words": "Slova", "Characters and words": "Znaky i slova", "Card front": "Přední strana kartičky", "Chinese → English": "Čínština → angličtina", "English → Chinese": "Angličtina → čínština", "Mixed": "Mix", "All": "Vše", "Not known yet": "Ještě neumím", "★ Starred": "★ S hvězdičkou", "Starred": "S hvězdičkou", "Intro": "Úvod", "Select at least one lesson.": "Vyber aspoň jednu lekci.", "Tap to include or leave out": "Ťukni pro přidání nebo vynechání", "Introduce each new item": "Představit každou novou položku", "Before the questions": "Před otázkami", "Colour = tone:": "Barva = tón:", "1st": "1.", "2nd": "2.", "3rd": "3.", "4th": "4.", "neutral": "neutrální", "Line under each:": "Čára pod každým:", "Build sentences": "Skládání vět", "Build from listening": "Skládání podle poslechu", "Translate into Chinese": "Překlad do čínštiny", "Put the pieces in order": "Seřaď kousky", "Hear it, then build it": "Poslechni a slož", "Type it in characters or pinyin": "Napiš znaky nebo pinyinem", "Practise Lesson": "Procvičit lekci", "Examples": "Příklady", "Watch out:": "Pozor:", "Textbook p.": "Učebnice s.", "The grammar points follow the textbook. The explanations and examples were written for this app.": "Gramatika jde podle učebnice. Vysvětlení a příklady jsou napsané pro tuto aplikaci.", "Pick the tone": "Urči tón", "Listen and pick the character": "Poslechni a vyber znak", "Single syllables": "Jednotlivé slabiky", "Tone pairs": "Dvojice tónů", "Listen without looking. Keys: 1 to 4 pick a tone, R replays.": "Poslouchej bez dívání. Klávesy: 1 až 4 vyberou tón, R přehraje znovu.", "Questions come from the characters of the selected lessons that have a twin with another tone.": "Otázky jsou ze znaků vybraných lekcí, které mají dvojče s jiným tónem.", "No tone twins in these lessons. Add more lessons.": "V těchto lekcích nejsou tónová dvojčata. Přidej další lekce.", "Test yourself like in class": "Otestuj se jako ve škole", "Sections": "Části", "Length": "Délka", "Time limit": "Časový limit", "Start the test": "Spustit test", "Pick at least one section": "Vyber aspoň jednu část", "Pick the sections you want, like in a chapter test. You see your score only after you hand it in.": "Vyber části jako v testu z kapitoly. Výsledek uvidíš až po odevzdání.", "Listening": "Poslech", "Reading": "Čtení", "Pinyin": "Pinyin", "Pinyin and tones": "Pinyin a tóny", "Questions only": "Jen otázky", "None": "Žádný", "10 min": "10 min", "20 min": "20 min", "Layout": "Rozložení", "Two columns": "Dva sloupce", "Meaning": "Význam", "Chinese ↔ meaning": "Čínština ↔ význam", "Chinese ↔ pinyin": "Čínština ↔ pinyin", "Match needs at least 3 items.": "Přiřazování potřebuje aspoň 3 položky.", "How it works": "Jak to funguje", "Level": "Úroveň", "✗ Still learning": "✗ Neumím", "✓ Know": "✓ Umím", "★ star": "★ hvězdička", "Shuffle the rest": "Zamíchat zbytek", "Start over": "Začít znovu", "Tap to see pinyin, tone and meaning": "Ťukni a uvidíš pinyin, tón a význam", "Tap the card to flip it back": "Ťukni na kartičku a otoč ji zpět", "Picture the Chinese and say it, then tap to check": "Představ si čínštinu, řekni ji a ťukni pro kontrolu", "Swipe the card left or right. Keys: space flips, ← still learning, → know.": "Táhni kartičku doleva nebo doprava. Klávesy: mezerník otočí, ← ještě se učím, → umím.", "✍ Try writing this character": "✍ Zkusit napsat tento znak", "✍ Try writing this word": "✍ Zkusit napsat toto slovo", "✍ Try writing": "✍ Zkusit napsat", "✍ Write it": "✍ Napsat", "Play": "Přehrát", "Play again": "Přehrát znovu", "Play sentence": "Přehrát větu", "Listen": "Poslechnout", "🐢 Slower": "🐢 Pomaleji", "Character": "Znak", "Word": "Slovo", "Example": "Příklad", "Deck finished": "Balíček dokončen", "Mastered": "Zvládnuto", "Learning": "Učím se", "Known": "Umím", "You know all of them. Try Learn or Writing next.": "Umíš všechno. Zkus teď Učení nebo Psaní.", "Show answer": "Ukázat odpověď", "Space shows the answer.": "Mezerník ukáže odpověď.", "Got it, test me in a moment ›": "Mám to, vyzkoušej mě za chvíli ›", "Say it out loud a couple of times. It comes back in a few cards to check you remember.": "Řekni to nahlas několikrát. Za pár kartiček se to vrátí, abys ověřil(a), že si to pamatuješ.", "Say the pinyin and the meaning out loud, then reveal the answer.": "Řekni nahlas pinyin a význam, pak odkryj odpověď.", "Picture the character, or write it, then reveal the answer.": "Představ si znak nebo ho napiš, pak odkryj odpověď.", "Keys 1–4. Again shows the card again in this session.": "Klávesy 1–4. Znovu ukáže kartičku ještě v tomto sezení.", "Again": "Znovu", "Hard": "Těžké", "Good": "Dobré", "Easy": "Snadné", "Review complete": "Opakování dokončeno", "Learn 10 more new": "Naučit se 10 nových", "Correct!": "Správně!", "Correct now!": "Teď správně!", "Not quite.": "Ne úplně.", "Not yet. This one will come back.": "Ještě ne. Tahle se vrátí.", "Correct, mastered!": "Správně, zvládnuto!", "Correct, with a hint.": "Správně, s nápovědou.", "I don't know": "Nevím", "I was right": "Měl(a) jsem pravdu", "Mine is also right": "Moje je taky správně", "Check": "Zkontrolovat", "Hint": "Nápověda", "Next round ›": "Další kolo ›", "Finish": "Dokončit", "See result": "Zobrazit výsledek", "Learn complete": "Učení dokončeno", "You answered every item by choosing and by typing its pinyin. Next: Test or Writing.": "Odpověděl(a) jsi na všechno výběrem i napsáním pinyinu. Dál: Test nebo Psaní.", "Step 1 of 2 · choose": "Krok 1 ze 2 · vyber", "Step 2 of 2 · type it": "Krok 2 ze 2 · napiš", "Round": "Kolo", "Left in round": "Zbývá v kole", "Skip intros": "Přeskočit představení", "Start the quiz ›": "Spustit kvíz ›", "Skip ›": "Přeskočit ›", "Watch the stroke order. Tap the character to see it again.": "Sleduj pořadí tahů. Ťukni na znak a uvidíš ho znovu.", "My memory hook": "Můj tah na zapamatování", "Use this": "Použít", "Parts:": "Části:", "Characters:": "Znaky:", "Built from": "Skládá se z", "Related words": "Příbuzná slova", "Words with this character": "Slova s tímto znakem", "Characters in this word": "Znaky v tomto slově", "Type the pinyin with tones": "Napiš pinyin s tóny", "e.g. ni3 hao3": "např. ni3 hao3", "Type in Chinese, e.g. 你好": "Piš čínsky, např. 你好", "Type tones as numbers 1–4 and ü as v. Spaces and punctuation do not matter.": "Tóny piš jako čísla 1–4 a ü jako v. Mezery a interpunkce nevadí.", "Use your Chinese keyboard. Punctuation and spaces do not matter.": "Použij čínskou klávesnici. Interpunkce a mezery nevadí.", "Build the sentence": "Slož větu", "Put the words in the right order.": "Seřaď slova správně.", "Listen and build": "Poslechni a slož", "Pieces in red are in the wrong place. Drag them to fix the order, or tap one to send it back, then check again.": "Červené kousky jsou na špatném místě. Přetáhni je, nebo na ně ťukni a vrať je zpět, a pak zkontroluj znovu.", "The sentence is:": "Věta zní:", "Sentences done": "Věty hotové", "Translation done": "Překlad hotový", "Every sentence right.": "Všechny věty správně.", "Every sentence right without hints.": "Všechny věty správně bez nápovědy.", "Not quite. One correct translation is:": "Ne úplně. Jeden správný překlad:", "Your answer, compared:": "Tvoje odpověď v porovnání:", "Your answer:": "Tvoje odpověď:", "Correct:": "Správně:", "A hint counts as half a point. Try again to beat your score.": "Nápověda se počítá za půl bodu. Zkus to znovu a překonej se.", "Try the ones you missed again, or switch to Build from listening.": "Zkus znovu ty, které ti nešly, nebo přepni na Skládání podle poslechu.", "Words to use, in mixed order:": "Slova k použití, zamíchaná:", "Hint: listen": "Nápověda: poslech", "Show": "Zobrazit", "Pinyin ": "Pinyin ", "Done": "Hotovo", "No mistakes!": "Bez chyby!", "New personal best for these lessons!": "Nový osobní rekord pro tyto lekce!", "Writing done": "Psaní hotové", "Word complete!": "Slovo hotové!", "Word complete, with some mistakes.": "Slovo hotové, s několika chybami.", "Do you have it?": "Máš to?", "↻ Again later": "↻ Znovu později", "✓ Got it": "✓ Mám to", "Next character ›": "Další znak ›", "Now from memory ›": "Teď zpaměti ›", "Show outline": "Ukázat obrys", "From memory again": "Znovu zpaměti", "1 Watch": "1 Sleduj", "2 Trace": "2 Obtahuj", "3 From memory": "3 Zpaměti", "Watch the stroke order, then switch to Trace.": "Sleduj pořadí tahů a pak přepni na Obtahování.", "Trace each stroke in order with your finger. A hint appears after two misses.": "Obtáhni prstem každý tah ve správném pořadí. Po dvou chybách se ukáže nápověda.", "Write it without the outline. A hint appears after three misses.": "Napiš to bez obrysu. Po třech chybách se ukáže nápověda.", "Write it from memory. Stuck? Show the outline and trace it.": "Napiš to zpaměti. Nejde to? Ukaž obrys a obtáhni ho.", "Trace the outline, then try it from memory again.": "Obtáhni obrys a pak to zkus znovu zpaměti.", "Loading stroke data…": "Načítám data tahů…", "No stroke data for this character.": "Pro tento znak nejsou data tahů.", "The writing library could not load. Check your connection and try again.": "Nástroj na psaní se nenačetl. Zkontroluj připojení a zkus to znovu.", "The stroke data could not load. Try reloading the page.": "Data tahů se nenačetla. Zkus stránku načíst znovu.", "Try writing": "Zkusit napsat", "Close": "Zavřít", "Details": "Podrobnosti", "· Tap for details": "· Ťukni pro podrobnosti", "Which tone do you hear?": "Jaký tón slyšíš?", "Which two tones do you hear?": "Jaké dva tóny slyšíš?", "Listen and pick": "Poslechni a vyber", "Which one do you hear?": "Který slyšíš?", "You heard a different one.": "Slyšel(a) jsi jiný.", "Perfect ears!": "Skvělý sluch!", "Try tone pairs": "Zkusit dvojice tónů", "Tones take time. Keep the sessions short and come back tomorrow.": "Tóny chtějí čas. Dělej krátká sezení a vrať se zítra.", "Tones take time. Go through the mistakes and try again.": "Tóny chtějí čas. Projdi chyby a zkus to znovu.", "single syllables": "jednotlivé slabiky", "tone pairs": "dvojice tónů", "high and level": "vysoký a rovný", "rising": "stoupavý", "low, dipping": "nízký, klesavě-stoupavý", "falling": "klesavý", "light, unstressed": "lehký, nepřízvučný", "Neutral tone": "Neutrální tón", "Hand in the test": "Odevzdat test", "Hand in anyway": "Přesto odevzdat", "Leave the test?": "Odejít z testu?", "Leave": "Odejít", "⚑ Flag": "⚑ Označit", "Use the numbers at the top to go back, or hand it in now.": "Čísly nahoře se vrať, nebo test odevzdej teď.", "Listen and choose the word you hear.": "Poslechni a vyber slovo, které slyšíš.", "Listen and choose what the sentence means.": "Poslechni a vyber, co věta znamená.", "Listen. Does the English match what you hear?": "Poslouchej. Odpovídá angličtina tomu, co slyšíš?", "True": "Pravda", "False": "Nepravda", "What does this mean?": "Co to znamená?", "Which one means:": "Které znamená:", "Write the pinyin with tones.": "Napiš pinyin s tóny.", "Write this character from memory.": "Napiš tento znak zpaměti.", "Choose the meaning.": "Vyber význam.", "Choose the word that fills the gap.": "Vyber slovo, které doplní mezeru.", "Read the sentence and choose what it means.": "Přečti větu a vyber, co znamená.", "How do you read this character?": "Jak se tento znak čte?", "Which tone does this character have?": "Jaký tón má tento znak?", "Answers": "Odpovědi", "New test": "Nový test", "Excellent. You are ready for this lesson.": "Výborně. Na tuhle lekci jsi připraven(a).", "Good. Go through the mistakes below, then practise them.": "Dobře. Projdi chyby níže a pak si je procvič.", "Practise the mistakes below, then take the test again.": "Procvič chyby níže a pak test zopakuj.", "no answer": "bez odpovědi", "· time ran out": "· vypršel čas", "Questions": "Otázky", "Good work. Play the ones you missed below.": "Dobrá práce. Níže si přehraj ty, které ti nešly.", "Very good. Replay the ones you missed below.": "Velmi dobře. Níže si přehraj ty, které ti nešly.", "Progress by lesson": "Pokrok po lekcích", "Daily review": "Denní opakování", "New cards per day": "Nových kartiček denně", "Script": "Písmo", "Simplified": "Zjednodušené", "Traditional": "Tradiční", "简 Simplified": "简 Zjednodušené", "繁 Traditional": "繁 Tradiční", "Integrated Chinese prints both. Pick the one your class uses.": "Integrated Chinese tiskne obě. Vyber tu, kterou používáte v hodinách.", "Tone colours": "Barvy tónů", "Colour-blind safe": "Bezpečné pro barvoslepé", "Classic": "Klasické", "Off": "Vypnuto", "Audio": "Zvuk", "Device voice": "Hlas zařízení", "Recordings": "Nahrávky", "No Chinese voice found on this device": "V tomto zařízení není čínský hlas", "Test voice": "Vyzkoušet hlas", "Reset progress": "Smazat pokrok", "Reset progress…": "Smazat pokrok…", "Delete everything?": "Smazat všechno?", "Yes, delete": "Ano, smazat", "No": "Ne", "Theme": "Vzhled", "Light": "Světlý", "Dark": "Tmavý", "Auto": "Automaticky", "Settings are further down: script, daily review, tone colours and audio.": "Nastavení je níž: písmo, denní opakování, barvy tónů a zvuk.", "Spaced repetition: due cards plus new ones from these lessons.": "Opakování v rozestupech: karty k opakování a nové z těchto lekcí.", "Nothing yet. Star cards in Flashcards.": "Zatím nic. Označ si kartičky hvězdičkou ve Kartičkách.", "All-time accuracy for each tone.": "Celková úspěšnost u každého tónu.", "Account": "Účet", "My account": "Můj účet", "Nickname": "Přezdívka", "Avatar": "Avatar", "Your nickname": "Tvoje přezdívka", "Save": "Uložit", "Delete account": "Smazat účet", "Delete account…": "Smazat účet…", "Delete your account?": "Smazat účet?", "Others see your nickname, avatar, how many items you know, your streak and how many cards you reviewed this week. Your progress syncs to every device where you are signed in.": "Ostatní uvidí tvou přezdívku, avatar, kolik toho umíš, tvou sérii a kolik kartiček jsi tento týden zopakoval(a). Pokrok se synchronizuje na všechna zařízení, kde jsi přihlášen(a).", "Pick a nickname with at least 2 characters.": "Vyber si přezdívku aspoň o 2 znacích.", "That nickname is taken. Try another one.": "Tahle přezdívka je obsazená. Zkus jinou.", "Use 2 to 20 characters for the nickname.": "Přezdívka musí mít 2 až 20 znaků.", "Could not save. Try again.": "Nepodařilo se uložit. Zkus to znovu.", "Signed in": "Přihlášen(a)", "Log out": "Odhlásit se", "Log in": "Přihlásit se", "Deletes your account, your leaderboard entry and the progress saved in it. Progress in this browser stays.": "Smaže tvůj účet, záznam v žebříčku i pokrok v něm uložený. Pokrok v tomto prohlížeči zůstane.", "Removes you from the leaderboard. Your progress stays.": "Odebere tě ze žebříčku. Pokrok zůstane.", "Accounts are coming soon. Until then everything works and your progress is saved in this browser.": "Účty budou brzy. Do té doby vše funguje a pokrok se ukládá v tomto prohlížeči.", "Continue without an account ›": "Pokračovat bez účtu ›", "Save your progress to an account, continue on any device and join the leaderboard.": "Ulož si pokrok do účtu, pokračuj na jakémkoli zařízení a připoj se do žebříčku.", "Welcome back. Your progress syncs as soon as you are in.": "Vítej zpět. Pokrok se synchronizuje hned po přihlášení.", "Email": "E-mail", "Password": "Heslo", "Password, at least 8 characters": "Heslo, aspoň 8 znaků", "Forgot your password?": "Zapomenuté heslo?", "No account? Everything still works and your progress stays in this browser.": "Bez účtu? Vše funguje dál a pokrok zůstane v tomto prohlížeči.", "Enter a valid email address.": "Zadej platný e-mail.", "Use a password with at least 8 characters.": "Heslo musí mít aspoň 8 znaků.", "Creating your account…": "Vytvářím účet…", "Logging in…": "Přihlašuji…", "Check your inbox.": "Zkontroluj e-mail.", "We sent a link to": "Poslali jsme odkaz na", ". Open it on this device to confirm your email and finish your account.": ". Otevři ho na tomto zařízení, potvrď e-mail a dokonči účet.", "Wrong email or password.": "Špatný e-mail nebo heslo.", "Confirm your email first: open the link we sent you.": "Nejdřív potvrď e-mail: otevři odkaz, který jsme ti poslali.", "There is already an account with this email. Log in instead.": "S tímto e-mailem už účet existuje. Přihlas se.", "Too many attempts. Wait a minute and try again.": "Příliš mnoho pokusů. Počkej chvíli a zkus to znovu.", "Something went wrong. Check your connection and try again.": "Něco se pokazilo. Zkontroluj připojení a zkus to znovu.", "Type your email above first.": "Nejdřív nahoře napiš e-mail.", "If there is an account for this email, a link to set a new password is on its way.": "Pokud k tomuto e-mailu existuje účet, posíláme odkaz pro nastavení nového hesla.", "Could not send the email. Try again in a minute.": "E-mail se nepodařilo odeslat. Zkus to za chvíli.", "Set a new password": "Nastavit nové heslo", "New password, at least 8 characters": "Nové heslo, aspoň 8 znaků", "Save password": "Uložit heslo", "Use at least 8 characters.": "Použij aspoň 8 znaků.", "Saved. You are signed in.": "Uloženo. Jsi přihlášen(a).", "Could not save the password. Open the link from the email again.": "Heslo se nepodařilo uložit. Otevři znovu odkaz z e-mailu.", "Rank by": "Řadit podle", "This week": "Tento týden", "Streak": "Série", "known": "umí", "this week": "tento týden", "day streak": "dní v řadě", "just now": "právě teď", "Known = items with a review interval of 7 days or more. This week = cards reviewed in the last 7 days.": "Umí = položky s intervalem opakování 7 dní a víc. Tento týden = kartičky zopakované za posledních 7 dní.", "No accounts yet. Create the first one.": "Zatím žádné účty. Vytvoř první.", "Loading…": "Načítám…", "The leaderboard is coming soon, together with accounts.": "Žebříček přijde brzy, spolu s účty.", "How this app helps you remember": "Jak ti aplikace pomáhá si pamatovat", "Methods with strong support from memory research": "Metody s pevnou oporou ve výzkumu paměti", "Star this card": "Označit hvězdičkou", "Filter": "Filtr", "Question": "Otázka", "Lesson": "Lekce", "Chinese voice": "Čínský hlas", "Turn the parts into a little story or picture, in your own words": "Udělej z částí krátký příběh nebo obrázek vlastními slovy", "Introductions": "Představení", "Your sentence": "Tvoje věta", "Previous": "Předchozí", "Stroke order": "Pořadí tahů", "Answer": "Odpověď", "No account? Everything still works, and your progress is saved in this browser.": "Bez účtu? Všechno funguje a pokrok se ukládá v tomto prohlížeči.", "time ran out": "vypršel čas", "Test result": "Výsledek testu", "Lesson test": "Test z lekcí", "New character": "Nový znak", "New word": "Nové slovo", "The syllable": "Slabika", "Twins with the syllable": "Dvojčata se slabikou", "You heard": "Slyšel(a) jsi", "also in": "také v", "no lessons": "žádné lekce", "characters": "znaky", "words": "slova", "Make up a picture or story that links its shape, sound and meaning": "Vymysli obrázek nebo příběh, který propojí tvar, zvuk a význam", "Chinese": "Čínština", "English": "Angličtina", "Full": "Celý", "Quick": "Rychlý", "no sentences": "žádné věty", "none": "žádný", "none = New": "žádný = Nový", "Meet each new item: what it is built from, how to remember it and its stroke order. Then rounds of questions bring back mistakes until you get them.": "Poznej každou novou položku: z čeho se skládá, jak si ji zapamatovat a pořadí tahů. Pak kola otázek vracejí chyby, dokud je nezvládneš.", "Tap a meaning on the left, then the Chinese on the right (or the other way round). Each mistake adds 1 second.": "Ťukni na význam vlevo a pak na čínštinu vpravo (nebo obráceně). Každá chyba přidá 1 sekundu.", "What you’ll practise": "Co tu procvičíš", "Vocabulary": "Slovíčka", "Flashcards with audio and a daily review": "Kartičky se zvukem a denní opakování", "Character writing": "Psaní znaků", "Hear a syllable and pick its tone": "Poslechni si slabiku a urči tón", "Every grammar point of the textbook, with examples": "Všechna gramatika z učebnice s příklady", "Build, translate and listen": "Skládej, překládej a poslouchej", "Chapter tests like in class": "Testy z kapitol jako v hodině", "Basics": "Základy", "Greetings": "Pozdravy", "Family": "Rodina", "Dates and Time": "Datum a čas", "Hobbies": "Koníčky", "Visiting Friends": "Návštěva u přátel", "Making Appointments": "Domlouvání schůzky", "Studying Chinese": "Studium čínštiny", "School Life": "Život ve škole", "Shopping": "Nakupování", "Transportation": "Doprava", "Intro screen": "Úvodní obrazovka", "Made by": "Vytvořil", "Zì You Later · Chinese 1 · FF MUNI": "Zì You Later · Čínština 1 · FF MUNI", "Tap the character to see the stroke order again.": "Ťukni na znak a uvidíš pořadí tahů znovu.", "Examples and more": "Příklady a další", "Tap to flip": "Ťukni pro otočení", "New version available": "Je tu nová verze", "Reload": "Obnovit", "Later": "Později", "Weekly race": "Týdenní závod", "Streak 🔥": "Série 🔥", "cards": "kartiček", "days": "dní", "You lead this board. Keep it up!": "Vedeš! Jen tak dál.", "Cards reviewed in the last 7 days. Everyone starts fresh each week, so newcomers can win too.": "Kartičky zopakované za posledních 7 dní. Každý týden se začíná znovu, takže vyhrát může i nováček.", "Items you know well: their next review is 7 or more days away.": "Položky, které umíš: další opakování mají za 7 a více dní.", "Days in a row with at least one review. Miss a day and it starts again.": "Dny v řadě s aspoň jedním opakováním. Když den vynecháš, začíná se znovu.",  "Write": "Napsat", "Write it": "Napsat", "Clear answer": "Smazat odpověď", "This browser has no Chinese voice, so you may not hear the sentence. Try Build sentences instead.": "Tento prohlížeč nemá čínský hlas, takže větu možná neuslyšíš. Zkus raději Skládání vět.", "Nothing here yet. Your progress fills in as you review cards.": "Zatím tu nic není. Pokrok se doplní, jak budeš opakovat kartičky.", "Start your first session": "Spustit první sezení", "Round": "Kolo", "15 at a time": "Po 15", "All at once": "Všechno najednou", "New: study it": "Nové: nauč se", "faded = later lesson": "světlejší = pozdější lekce", "top + bottom": "nahoře + dole", "left + right": "vlevo + vpravo", "one part wrapped in another": "jedna část uvnitř druhé", "outside + inside": "vně + uvnitř", "three parts stacked": "tři části nad sebou", "sound hint": "napovídá výslovnost", "meaning hint": "napovídá význam", "Picture character": "Obrázkový znak", "a shape": "tvar", "Try writing this character": "Zkusit napsat tento znak", "Try writing this word": "Zkusit napsat toto slovo", "Sentences from the selected lessons": "Věty z vybraných lekcí", "Each sentence uses only vocabulary the textbook has introduced by that lesson.": "Každá věta používá jen slovíčka, která učebnice do dané lekce probrala.", "New per day": "Nových denně", "Word audio": "Zvuk slov", "Sentence audio": "Zvuk vět", "Deletes all review history and stars in this browser.": "Smaže celou historii opakování a hvězdičky v tomto prohlížeči.", "Deletes all review history and stars on every device where you are signed in.": "Smaže celou historii opakování a hvězdičky na všech zařízeních, kde jsi přihlášen(a).", "Colour-blind safe avoids red and green and also differs in brightness: tone 1 bright blue, tone 2 amber, tone 3 dark navy (violet in dark mode), tone 4 brown. Tone marks and the tone shapes always show the tone too.": "Bezpečné pro barvoslepé se vyhýbá červené a zelené a barvy se liší i jasem: 1. tón jasně modrý, 2. tón jantarový, 3. tón tmavě modrý (v tmavém režimu fialový), 4. tón hnědý. Tón vždy ukazují i značky nad pinyinem a křivky tónů.", "The device voice is the default. Recordings are a native speaker saying every syllable, joined with tone changes such as 你好 ní hǎo; they have exact tones but sound more choppy. The best voices are the \"Natural\" ones in Microsoft Edge and Google 普通话 in Chrome. On iPhone, add a better voice in Settings › Accessibility › Spoken Content › Voices › Chinese.": "Výchozí je hlas zařízení. Nahrávky jsou rodilý mluvčí, který říká každou slabiku, spojené se změnami tónů jako 你好 ní hǎo; tóny mají přesné, ale znějí trhaněji. Nejlepší hlasy jsou „Natural“ v Microsoft Edge a Google 普通话 v Chrome. Na iPhonu přidáš lepší hlas v Nastavení › Zpřístupnění › Předčítaný obsah › Hlasy › Čínština.", "Appearance": "Vzhled", "Automatic": "Podle systému", "Light": "Světlý", "Dark": "Tmavý", "Automatic follows your phone or computer.": "Podle systému se řídí nastavením telefonu nebo počítače.", "Mastered": "Zvládnuto", "Matched": "Spojeno", "Known (interval 7+ days)": "Umím (opakování za 7+ dní)", "New": "Nové", "Progress": "Pokrok", "day streak": "dní v řadě", "cards reviewed": "zopakováno", "items known ›": "umíš ›", "✎ Practise this point": "✎ Procvičit tento bod", "Fill in the gap.": "Doplň mezeru.", "Which sentence is correct?": "Která věta je správně?", "Put the words in the right order.": "Seřaď slova ve správném pořadí.", "(nothing)": "(nic)", "Correct!": "Správně!", "The right answer is:": "Správná odpověď:", "‹ Grammar": "‹ Gramatika", "‹ Back to grammar": "‹ Zpět na gramatiku", "Go through your mistakes again until they stick.": "Projdi si chyby znovu, dokud je nebudeš umět.", "Every answer right. Well done!": "Všechno správně. Výborně!", "Loading exercises…": "Načítám cvičení…", "The exercises could not be loaded. Check your connection and try again.": "Cvičení se nepodařilo načíst. Zkontroluj připojení a zkus to znovu.", "✍ Write": "✍ Napsat", "Shuffle": "Zamíchat", "Shuffle the rest": "Zamíchat zbytek", "Still learning": "Neumím", "Know": "Umím", "To go": "Zbývá", "Mistakes": "Chyby", "Correct": "Správně", "Remembered": "Zapamatováno"};
 let LANG=document.documentElement.lang==='cs'?'cs':'en';
 const csPl=(n,a,b,c)=>{n=Math.abs(+n);return n===1?a:n>=2&&n<=4?b:c};
 const CS_NOUN={characters:['znak','znaky','znaků'],words:['slovo','slova','slov'],'characters and words':['znak a slovo','znaky a slova','znaků a slov'],sentences:['věta','věty','vět'],'twin groups':['skupina dvojčat','skupiny dvojčat','skupin dvojčat'],cards:['kartička','kartičky','kartiček']};
 const csN=(n,k)=>n+' '+csPl(n,...CS_NOUN[k]);
 const csLessons=t=>t.replace(/\bIntro\b/g,'Úvod').replace(/\bLesson (\d+)/g,'Lekce $1');
 const CS_P=[
+ [/^Remove (.+)$/,(m,c)=>`Odebrat ${c}`],
  [/^Place (\d+) of (\d+)$/,(m,a,b)=>`${a}. místo z ${b}`],
  [/^(\d+) more (known|cards|days) to overtake (.+)\.$/,(m,n,u,who)=>`Na další místo (${who}) ti chybí ${n} ${u==='known'?csPl(n,'položka','položky','položek'):u==='cards'?csPl(n,'kartička','kartičky','kartiček'):csPl(n,'den','dny','dní')}.`],
  [/^Your first session: (\d+) new (characters|words), about (\d+) minutes\. Each one is introduced first, then you are tested on it\.$/,(m,n,k,t)=>`Tvoje první sezení: ${n} ${k==='words'?csPl(n,'nové slovo','nová slova','nových slov'):csPl(n,'nový znak','nové znaky','nových znaků')}, asi ${t} ${csPl(t,"minutu","minuty","minut")}. Každý ti nejdřív představím a pak tě z něj vyzkouším.`],
