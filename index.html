@@ -236,6 +236,7 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .exi{display:flex;flex-direction:column;gap:2px;padding:8px 0}.exi+.exi{border-top:1px solid var(--line)}.exi:last-child{padding-bottom:0}
 .exl{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.72rem;font-weight:600;line-height:1.6;vertical-align:1px;white-space:nowrap}
 .wordbig{font-size:clamp(3rem,14vw,5rem);line-height:1.1;overflow-wrap:anywhere}
+.ansrow[data-end]::after{content:attr(data-end);order:99;align-self:flex-end;font-family:var(--f-han);font-size:1.5rem;line-height:1.6;color:var(--muted);padding:0 2px 6px}
 .ansrow{min-height:62px;width:100%;border-bottom:2px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:6px 0;align-items:flex-end}
 .bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
 .chunk{background:var(--surface);border:1.5px solid var(--line);border-bottom-width:3px;border-radius:10px;padding:6px 12px;font-size:1.5rem}
@@ -243,6 +244,9 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 #ar .chunk{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 #ar .chunk.dragging{position:relative;z-index:5;cursor:grabbing;box-shadow:0 10px 22px -10px rgb(0 0 0/.45);opacity:.92}
 #ar .chunk.dropl{box-shadow:-4px 0 0 var(--accent)}
+#ar.dropend{box-shadow:inset -3px 0 0 var(--accent)}
+#bk .chunk:not(.used){touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#bk .chunk.dragging{position:relative;z-index:5;cursor:grabbing;box-shadow:0 10px 22px -10px rgb(0 0 0/.45);opacity:.92}
 .chunk.cok{border-color:var(--ok)} .chunk.cbad{border-color:var(--bad);background:var(--bad-bg)}
 .ruby{display:flex;flex-wrap:wrap;gap:6px 10px;justify-content:center;align-items:flex-end}
 .ruby .rw{display:flex;gap:1px}
@@ -1755,7 +1759,7 @@ function exam(qs,tlMin){
     else if(q.type==='blank'){const z=sentHz(s);body=`<p class="han examzh" data-nosay>${z.map((c,k)=>k===q.bi?'<span class="gap">　　</span>':esc(c)).join('')}</p><p class="hint">${esc(s.en)}</p><div class="opts chars">${q.opts.map((o,k)=>`<button class="opt" data-i="${k}"><span class="han" style="font-size:1.6rem">${esc(state.script==='t'?toTrad(o):o)}</span></button>`).join('')}</div>`}
     else if(q.type==='pinyin')body=big+`<p class="hint">${esc(x.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. ni3 hao3" aria-label="Pinyin"></div><p class="hint">Tones as numbers 1–4, ü as v.</p>`;
     else if(q.type==='tone')body=big+`<div class="tones">${[1,2,3,4,0].map(t=>`<button class="tbtn t${t}" data-t="${t}">${contour(t)}${t||'neutral'}<small>${t?TONE[t]:'tone'}</small></button>`).join('')}</div>`;
-    else if(q.type==='order'){const z=sentHz(s);body=`<p class="meaning" style="font-weight:700">${esc(s.en)}</p><div class="ansrow" id="ar"></div><div class="bank" id="bk">${q.bank.map((ix,k)=>`<button class="chunk han" data-j="${k}">${esc(z[ix])}</button>`).join('')}</div><button class="btn ghost" id="oc">Clear</button>`}
+    else if(q.type==='order'){const z=sentHz(s);body=`<p class="meaning" style="font-weight:700">${esc(s.en)}</p><div class="ansrow" id="ar" data-end="${endMark(z,s.en)}"></div><div class="bank" id="bk">${q.bank.map((ix,k)=>`<button class="chunk han" data-j="${k}">${esc(z[ix])}</button>`).join('')}</div><button class="btn ghost" id="oc">Clear</button>`}
     else if(q.type==='trans')body=`<p class="meaning" style="font-size:1.3rem;font-weight:700">${esc(s.en)}</p><div class="typein"><input id="qi" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="你好 or ni3 hao3" aria-label="Your translation"></div><p class="hint">Characters or pinyin with tone numbers. Punctuation does not matter.</p>`;
     else if(q.type==='draw')body=`<span class="py" style="font-size:1.6rem">${pyHtml(x.p)}</span><p class="meaning">${esc(x.en)}</p><div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div><p class="strokes" id="wst"></p><button class="btn ghost" id="wre">Start over</button>`;
     $('qbox').innerHTML=`<div class="card top-align"><div class="qhead"><span class="eyebrow"><span class="han">${sec[2]}</span> ${sec[1]}</span><button class="flagbtn" id="fl" aria-pressed="${flag[i]}">⚑ ${flag[i]?'Flagged':'Flag'}</button></div>
@@ -1774,8 +1778,9 @@ function exam(qs,tlMin){
     const inp=$('qi');if(inp){inp.value=a||'';inp.oninput=()=>set(inp.value);inp.onkeydown=e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();($('nx')||$('hand')).click()}}}
     if(q.type==='order'){let picked=Array.isArray(a)?a.slice():[];const z=sentHz(s);
       const r=()=>{$('ar').innerHTML=picked.map((k,n)=>`<button class="chunk han" data-n="${n}">${esc(z[q.bank[k]])}</button>`).join('');$('bk').querySelectorAll('.chunk').forEach(b=>b.classList.toggle('used',picked.includes(+b.dataset.j)));set(picked.length?picked.slice():null)};
-      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!picked.includes(+b.dataset.j)){picked.push(+b.dataset.j);r()}};
-      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(b){picked.splice(+b.dataset.n,1);r()}};$('oc').onclick=()=>{picked=[];r()};r()}
+      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!dr.dragged()&&!picked.includes(+b.dataset.j)){picked.push(+b.dataset.j);r()}};
+      const dr=dragReorder($('ar'),picked,r,null,$('bk'));
+      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!dr.dragged()){picked.splice(+b.dataset.n,1);r()}};$('oc').onclick=()=>{picked.length=0;r()};r()}
     if(q.type==='draw'){
       const fail=m=>{$('wst').textContent=m};
       if(typeof HanziWriter==='undefined')return fail('The writing tool could not load, so this question is skipped.');
@@ -1869,6 +1874,34 @@ function sentences(){
   $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);$('sr').onclick=()=>readList(list);
 }
 const isPunct=c=>/^[，。？！、,.?!]$/.test(c);
+/* sentence building: drag a piece of your answer to another place, or drag a piece from the bank straight to a place
+   in the answer (a tap still adds a piece at the end, or sends it back). picked holds bank indexes (data-j) and is
+   mutated in place; render() redraws; onChange() runs before every change (e.g. to clear red/green marks). */
+function dragReorder(ar,picked,render,locked,bk,onChange){
+  let drag=null,just=false;
+  const ins=(x,y,skip)=>{const cs=[...ar.querySelectorAll('.chunk')].filter(c=>c!==skip);let k=0;for(const c of cs){const r=c.getBoundingClientRect();if(y>r.bottom||(y>=r.top&&x>r.left+r.width/2))k++}return [k,cs]};
+  const near=(x,y)=>{const r=ar.getBoundingClientRect();return x>=r.left-24&&x<=r.right+24&&y>=r.top-40&&y<=r.bottom+40};
+  const off=()=>{window.removeEventListener('pointermove',onMove);window.removeEventListener('pointerup',onUp);window.removeEventListener('pointercancel',onUp)};
+  const onMove=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+    if(!drag.on){if(Math.hypot(dx,dy)<8)return;drag.on=true;drag.b.classList.add('dragging');try{drag.b.setPointerCapture(e.pointerId)}catch(_){}}
+    e.preventDefault();drag.b.style.transform=`translate(${dx}px,${dy}px)`;
+    ar.querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));ar.classList.remove('dropend');drag.k=null;
+    if(drag.from==='bank'&&!near(e.clientX,e.clientY))return;
+    const [k,cs]=ins(e.clientX,e.clientY,drag.from==='row'?drag.b:null);if(cs[k])cs[k].classList.add('dropl');else ar.classList.add('dropend');drag.k=k};
+  const onUp=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;
+    ar.querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));ar.classList.remove('dropend');
+    if(!d.on)return;just=true;setTimeout(()=>just=false,0);d.b.classList.remove('dragging');d.b.style.transform='';
+    if(onChange)onChange();
+    if(d.from==='row'){const v=picked.splice(d.n,1)[0];picked.splice(d.k??d.n,0,v)}
+    else if(d.k!=null)picked.splice(d.k,0,d.j);
+    render()};
+  ar.addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||(locked&&locked()))return;drag={from:'row',b,n:+b.dataset.n,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
+  if(bk)bk.addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||(locked&&locked())||picked.includes(+b.dataset.j))return;drag={from:'bank',b,j:+b.dataset.j,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
+  window.addEventListener('pointermove',onMove,{passive:false});window.addEventListener('pointerup',onUp);window.addEventListener('pointercancel',onUp);
+  return {dragged:()=>just};
+}
+/* the end mark of a sentence (？ for questions), shown fixed at the end of the row where you build it */
+const endMark=(zh,en)=>{const l=zh&&zh.length?zh[zh.length-1]:'';if(isPunct(l))return {'?':'？','!':'！','.':'。',',':'，'}[l]||l;return /\?\s*$/.test(en||'')?'？':/!\s*$/.test(en||'')?'！':'。'};
 function rubyHtml(s){const z=sentHz(s);
   // one pinyin syllable above each character, so every chunk sits on the same line
   const cell=(p,c)=>`<span class="rb"><small>${p}</small><span class="han">${esc(c)}</span></span>`;
@@ -1884,31 +1917,20 @@ function build(list,listen){
     const s=qs[qi],z=sentHz(s),words=z.map((c,i)=>({c,i})).filter(w=>!isPunct(w.c)),bank=shuffle(words);let picked=[];
     open(tallyBar(qi-score,score,qs.length,(qi+1)+' / '+qs.length)+(listen&&!$('noVoice').hidden?`<p class="notice">This browser has no Chinese voice, so you may not hear the sentence. Try Build sentences instead.</p>`:'')+`<div class="card top-align"><p class="eyebrow">${listen?'Listen and build':'Build the sentence'} · ${LNAME(s.l)}</p>
       ${listen?`<button class="play huge" id="sp">${PLAY}Play sentence</button>`:`<p class="meaning" style="font-size:1.25rem;font-weight:700">${esc(s.en)}</p><button class="play" id="sp">${PLAY}Hint: listen</button>`}
-      <div class="ansrow" id="ar" aria-label="Your sentence"></div><div class="bank" id="bk">${bank.map((w,j)=>`<button class="chunk han" data-j="${j}">${esc(w.c)}</button>`).join('')}</div>
+      <div class="ansrow" id="ar" aria-label="Your sentence" data-end="${endMark(z,s.en)}"></div><div class="bank" id="bk">${bank.map((w,j)=>`<button class="chunk han" data-j="${j}">${esc(w.c)}</button>`).join('')}</div>
       <div class="btns"><button class="btn ghost" id="clr">Clear</button><button class="btn" id="chk" disabled>Check</button></div><div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
     $('sp').onclick=()=>speakSent(s);if(listen)setTimeout(()=>speakSent(s),250);
     let tries=0,locked=false,marks=null;
     const renderAns=()=>{$('ar').innerHTML=picked.map((j,n)=>`<button class="chunk han${marks?(marks[n]?' cok':' cbad'):''}" data-n="${n}">${esc(bank[j].c)}</button>`).join('');
       M().querySelectorAll('#bk .chunk').forEach(b=>b.classList.toggle('used',picked.includes(+b.dataset.j)));$('chk').disabled=locked||picked.length!==bank.length};
-    $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||picked.includes(+b.dataset.j))return;marks=null;picked.push(+b.dataset.j);renderAns()};
+    const dr=dragReorder($('ar'),picked,renderAns,()=>locked,$('bk'),()=>{marks=null});
+    $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged()||picked.includes(+b.dataset.j))return;marks=null;picked.push(+b.dataset.j);renderAns()};
     // tap a piece in your sentence to send it back; drag it to move it
-    let drag=null,justDragged=false;
-    $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked)return;if(justDragged){justDragged=false;return}marks=null;picked.splice(+b.dataset.n,1);renderAns()};
-    $('ar').addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||locked)return;drag={b,n:+b.dataset.n,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
-    const slotAt=(x,y)=>{const cs=[...$('ar').querySelectorAll('.chunk')].filter(c=>c!==drag.b);let k=0;
-      for(const c of cs){const r=c.getBoundingClientRect();if(y>r.bottom||(y>=r.top&&x>r.left+r.width/2))k++}return k};
-    const onMove=e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
-      if(!drag.on){if(Math.hypot(dx,dy)<8)return;drag.on=true;drag.b.classList.add('dragging');try{drag.b.setPointerCapture(e.pointerId)}catch(_){}}
-      e.preventDefault();drag.b.style.transform=`translate(${dx}px,${dy}px)`;
-      const k=slotAt(e.clientX,e.clientY);$('ar').querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));
-      const cs=[...$('ar').querySelectorAll('.chunk')].filter(c=>c!==drag.b);if(cs[k])cs[k].classList.add('dropl');drag.k=k};
-    const onUp=e=>{if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;if(!d.on)return;justDragged=true;setTimeout(()=>justDragged=false,0);
-      const v=picked.splice(d.n,1)[0];picked.splice(d.k??d.n,0,v);marks=null;renderAns()};
-    window.addEventListener('pointermove',onMove,{passive:false});window.addEventListener('pointerup',onUp);window.addEventListener('pointercancel',onUp);
-    $('clr').onclick=()=>{if(locked)return;picked=[];marks=null;renderAns()};
+    $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged())return;marks=null;picked.splice(+b.dataset.n,1);renderAns()};
+    $('clr').onclick=()=>{if(locked)return;picked.length=0;marks=null;renderAns()};
     const reveal=ok=>{locked=true;renderAns();speakSent(s);
       $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><h3>${ok?(tries===1?'Correct!':'Correct now!'):'The sentence is:'}</h3>${rubyHtml(s)}<p>${esc(s.en)}</p><button class="btn" id="nx">${qi<qs.length-1?'Next ›':'See result'}</button></div>`;
-      $('nx').onclick=()=>{window.removeEventListener('pointermove',onMove);window.removeEventListener('pointerup',onUp);window.removeEventListener('pointercancel',onUp);qi++;draw()};keyHandler=e=>{if(e.key==='Enter')$('nx').click()}};
+      $('nx').onclick=()=>{qi++;draw()};keyHandler=e=>{if(e.key==='Enter')$('nx').click()}};
     $('chk').onclick=()=>{if(locked)return;tries++;
       const got=picked.map(j=>bank[j].c),want=words.map(w=>w.c),ok=got.join('')===want.join('');
       if(ok){if(tries===1)score++;return reveal(true)}
@@ -2316,7 +2338,7 @@ function gdrill(l,gi,only){
     loadGdrill().then(()=>gdrill(l,gi,only)).catch(()=>open(bar(0,'')+`<div class="card"><p>The exercises could not be loaded. Check your connection and try again.</p><button class="btn" id="gdb">‹ Back to grammar</button></div>`)||($('gdb').onclick=()=>grammar(l)));return}
   const all=GDRILL[l+'-'+gi]||[];const qs=shuffle(only||all);let qi=0,ok=0,bad=0;const missed=[];
   const back=()=>{const b=M().querySelector('.bar .back');if(b){b.removeAttribute('data-home');b.textContent='‹ Grammar';b.onclick=()=>grammar(l)}};
-  const full=q=>q[0]==='c'?q[1].replace('＿',q[2][0]===NONE?'':q[2][0]):q[0]==='p'?q[1][0]:q[1].join('').replace(/\s+/g,'');
+  const full=q=>q[0]==='c'?q[1].replace('＿',q[2][0]===NONE?'':q[2][0]):q[0]==='p'?q[1][0]:q[1].join('').replace(/\s+/g,'')+endMark(null,q[2]);
   function draw(){
     if(qi>=qs.length)return finish();
     const q=qs[qi],head=tallyBar(bad,ok,qs.length,(qi+1)+' / '+qs.length);
@@ -2330,7 +2352,7 @@ function gdrill(l,gi,only){
         <div class="opts one gopts" id="qo">${os.map((o,k)=>`<button class="opt" data-k="${k}"><span class="han">${esc(zh(o))}</span></button>`).join('')}</div>`}
     else{let bank=shuffle(q[1].map((c,k)=>({c,k})));if(q[1].length>2)for(let t=0;t<5&&bank.every((b,k)=>b.c===q[1][k]);t++)bank=shuffle(bank);q._b=bank;q._p=[];
       body=`<p class="hint">Put the words in the right order.</p><p class="muted gen">${esc(q[2])}</p>
-        <div class="ansrow" id="ar" aria-label="Your sentence"></div><div class="bank" id="bk">${bank.map((b,k)=>`<button class="chunk han" data-j="${k}">${esc(zh(b.c))}</button>`).join('')}</div>
+        <div class="ansrow" id="ar" aria-label="Your sentence" data-end="${endMark(null,q[2])}"></div><div class="bank" id="bk">${bank.map((b,k)=>`<button class="chunk han" data-j="${k}">${esc(zh(b.c))}</button>`).join('')}</div>
         <div class="btns"><button class="btn ghost" id="clr">Clear answer</button><button class="btn" id="chk" disabled>Check</button></div>`}
     open(head+`<div class="card top-align gdcard">${top}${body}<div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);back();
     const done=(right,picked)=>{if(right)ok++;else{bad++;missed.push(q)}
@@ -2347,8 +2369,9 @@ function gdrill(l,gi,only){
     else{let locked=false;const pk=q._p;
       const render=()=>{$('ar').innerHTML=pk.map((j,n)=>`<button class="chunk han" data-n="${n}">${esc(zh(q._b[j].c))}</button>`).join('');
         M().querySelectorAll('#bk .chunk').forEach(b=>b.classList.toggle('used',pk.includes(+b.dataset.j)));$('chk').disabled=locked||pk.length!==q._b.length};
-      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||pk.includes(+b.dataset.j))return;pk.push(+b.dataset.j);render()};
-      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked)return;pk.splice(+b.dataset.n,1);render()};
+      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||pk.includes(+b.dataset.j)||dr.dragged())return;pk.push(+b.dataset.j);render()};
+      const dr=dragReorder($('ar'),pk,render,()=>locked,$('bk'));
+      $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged())return;pk.splice(+b.dataset.n,1);render()};
       $('clr').onclick=()=>{if(!locked){pk.length=0;render()}};
       $('chk').onclick=()=>{if(locked)return;locked=true;const got=pk.map(j=>q._b[j].c).join(''),r=got===q[1].join('')||(q[3]||[]).includes(got);
         $('ar').querySelectorAll('.chunk').forEach(c=>c.classList.add(r?'cok':'cbad'));$('chk').disabled=true;done(r)};
