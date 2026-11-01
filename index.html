@@ -244,6 +244,9 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 #ar .chunk{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 #ar .chunk.dragging{position:relative;z-index:5;cursor:grabbing;box-shadow:0 10px 22px -10px rgb(0 0 0/.45);opacity:.92}
 #ar .chunk.dropl{box-shadow:-4px 0 0 var(--accent)}
+#ar.dropend{box-shadow:inset -3px 0 0 var(--accent)}
+#bk .chunk:not(.used){touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#bk .chunk.dragging{position:relative;z-index:5;cursor:grabbing;box-shadow:0 10px 22px -10px rgb(0 0 0/.45);opacity:.92}
 .chunk.cok{border-color:var(--ok)} .chunk.cbad{border-color:var(--bad);background:var(--bad-bg)}
 .ruby{display:flex;flex-wrap:wrap;gap:6px 10px;justify-content:center;align-items:flex-end}
 .ruby .rw{display:flex;gap:1px}
@@ -1775,8 +1778,8 @@ function exam(qs,tlMin){
     const inp=$('qi');if(inp){inp.value=a||'';inp.oninput=()=>set(inp.value);inp.onkeydown=e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();($('nx')||$('hand')).click()}}}
     if(q.type==='order'){let picked=Array.isArray(a)?a.slice():[];const z=sentHz(s);
       const r=()=>{$('ar').innerHTML=picked.map((k,n)=>`<button class="chunk han" data-n="${n}">${esc(z[q.bank[k]])}</button>`).join('');$('bk').querySelectorAll('.chunk').forEach(b=>b.classList.toggle('used',picked.includes(+b.dataset.j)));set(picked.length?picked.slice():null)};
-      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!picked.includes(+b.dataset.j)){picked.push(+b.dataset.j);r()}};
-      const dr=dragReorder($('ar'),picked,r);
+      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!dr.dragged()&&!picked.includes(+b.dataset.j)){picked.push(+b.dataset.j);r()}};
+      const dr=dragReorder($('ar'),picked,r,null,$('bk'));
       $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(b&&!dr.dragged()){picked.splice(+b.dataset.n,1);r()}};$('oc').onclick=()=>{picked.length=0;r()};r()}
     if(q.type==='draw'){
       const fail=m=>{$('wst').textContent=m};
@@ -1871,18 +1874,29 @@ function sentences(){
   $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);$('sr').onclick=()=>readList(list);
 }
 const isPunct=c=>/^[，。？！、,.?!]$/.test(c);
-/* drag a piece of your sentence to another place (tap still sends it back); picked is mutated, then render() redraws */
-function dragReorder(ar,picked,render,locked){
+/* sentence building: drag a piece of your answer to another place, or drag a piece from the bank straight to a place
+   in the answer (a tap still adds a piece at the end, or sends it back). picked holds bank indexes (data-j) and is
+   mutated in place; render() redraws; onChange() runs before every change (e.g. to clear red/green marks). */
+function dragReorder(ar,picked,render,locked,bk,onChange){
   let drag=null,just=false;
-  const slotAt=(x,y)=>{const cs=[...ar.querySelectorAll('.chunk')].filter(c=>c!==drag.b);let k=0;for(const c of cs){const r=c.getBoundingClientRect();if(y>r.bottom||(y>=r.top&&x>r.left+r.width/2))k++}return k};
+  const ins=(x,y,skip)=>{const cs=[...ar.querySelectorAll('.chunk')].filter(c=>c!==skip);let k=0;for(const c of cs){const r=c.getBoundingClientRect();if(y>r.bottom||(y>=r.top&&x>r.left+r.width/2))k++}return [k,cs]};
+  const near=(x,y)=>{const r=ar.getBoundingClientRect();return x>=r.left-24&&x<=r.right+24&&y>=r.top-40&&y<=r.bottom+40};
   const off=()=>{window.removeEventListener('pointermove',onMove);window.removeEventListener('pointerup',onUp);window.removeEventListener('pointercancel',onUp)};
   const onMove=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
     if(!drag.on){if(Math.hypot(dx,dy)<8)return;drag.on=true;drag.b.classList.add('dragging');try{drag.b.setPointerCapture(e.pointerId)}catch(_){}}
-    e.preventDefault();drag.b.style.transform=`translate(${dx}px,${dy}px)`;const k=slotAt(e.clientX,e.clientY);
-    ar.querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));const cs=[...ar.querySelectorAll('.chunk')].filter(c=>c!==drag.b);if(cs[k])cs[k].classList.add('dropl');drag.k=k};
-  const onUp=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;if(!d.on)return;just=true;setTimeout(()=>just=false,0);
-    const v=picked.splice(d.n,1)[0];picked.splice(d.k??d.n,0,v);render()};
-  ar.addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||(locked&&locked()))return;drag={b,n:+b.dataset.n,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
+    e.preventDefault();drag.b.style.transform=`translate(${dx}px,${dy}px)`;
+    ar.querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));ar.classList.remove('dropend');drag.k=null;
+    if(drag.from==='bank'&&!near(e.clientX,e.clientY))return;
+    const [k,cs]=ins(e.clientX,e.clientY,drag.from==='row'?drag.b:null);if(cs[k])cs[k].classList.add('dropl');else ar.classList.add('dropend');drag.k=k};
+  const onUp=e=>{if(!ar.isConnected)return off();if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;
+    ar.querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));ar.classList.remove('dropend');
+    if(!d.on)return;just=true;setTimeout(()=>just=false,0);d.b.classList.remove('dragging');d.b.style.transform='';
+    if(onChange)onChange();
+    if(d.from==='row'){const v=picked.splice(d.n,1)[0];picked.splice(d.k??d.n,0,v)}
+    else if(d.k!=null)picked.splice(d.k,0,d.j);
+    render()};
+  ar.addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||(locked&&locked()))return;drag={from:'row',b,n:+b.dataset.n,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
+  if(bk)bk.addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||(locked&&locked())||picked.includes(+b.dataset.j))return;drag={from:'bank',b,j:+b.dataset.j,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
   window.addEventListener('pointermove',onMove,{passive:false});window.addEventListener('pointerup',onUp);window.addEventListener('pointercancel',onUp);
   return {dragged:()=>just};
 }
@@ -1909,25 +1923,14 @@ function build(list,listen){
     let tries=0,locked=false,marks=null;
     const renderAns=()=>{$('ar').innerHTML=picked.map((j,n)=>`<button class="chunk han${marks?(marks[n]?' cok':' cbad'):''}" data-n="${n}">${esc(bank[j].c)}</button>`).join('');
       M().querySelectorAll('#bk .chunk').forEach(b=>b.classList.toggle('used',picked.includes(+b.dataset.j)));$('chk').disabled=locked||picked.length!==bank.length};
-    $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||picked.includes(+b.dataset.j))return;marks=null;picked.push(+b.dataset.j);renderAns()};
+    const dr=dragReorder($('ar'),picked,renderAns,()=>locked,$('bk'),()=>{marks=null});
+    $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged()||picked.includes(+b.dataset.j))return;marks=null;picked.push(+b.dataset.j);renderAns()};
     // tap a piece in your sentence to send it back; drag it to move it
-    let drag=null,justDragged=false;
-    $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked)return;if(justDragged){justDragged=false;return}marks=null;picked.splice(+b.dataset.n,1);renderAns()};
-    $('ar').addEventListener('pointerdown',e=>{const b=e.target.closest('.chunk');if(!b||locked)return;drag={b,n:+b.dataset.n,x:e.clientX,y:e.clientY,on:false,id:e.pointerId}});
-    const slotAt=(x,y)=>{const cs=[...$('ar').querySelectorAll('.chunk')].filter(c=>c!==drag.b);let k=0;
-      for(const c of cs){const r=c.getBoundingClientRect();if(y>r.bottom||(y>=r.top&&x>r.left+r.width/2))k++}return k};
-    const onMove=e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
-      if(!drag.on){if(Math.hypot(dx,dy)<8)return;drag.on=true;drag.b.classList.add('dragging');try{drag.b.setPointerCapture(e.pointerId)}catch(_){}}
-      e.preventDefault();drag.b.style.transform=`translate(${dx}px,${dy}px)`;
-      const k=slotAt(e.clientX,e.clientY);$('ar').querySelectorAll('.chunk').forEach(c=>c.classList.remove('dropl'));
-      const cs=[...$('ar').querySelectorAll('.chunk')].filter(c=>c!==drag.b);if(cs[k])cs[k].classList.add('dropl');drag.k=k};
-    const onUp=e=>{if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;if(!d.on)return;justDragged=true;setTimeout(()=>justDragged=false,0);
-      const v=picked.splice(d.n,1)[0];picked.splice(d.k??d.n,0,v);marks=null;renderAns()};
-    window.addEventListener('pointermove',onMove,{passive:false});window.addEventListener('pointerup',onUp);window.addEventListener('pointercancel',onUp);
-    $('clr').onclick=()=>{if(locked)return;picked=[];marks=null;renderAns()};
+    $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged())return;marks=null;picked.splice(+b.dataset.n,1);renderAns()};
+    $('clr').onclick=()=>{if(locked)return;picked.length=0;marks=null;renderAns()};
     const reveal=ok=>{locked=true;renderAns();speakSent(s);
       $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><h3>${ok?(tries===1?'Correct!':'Correct now!'):'The sentence is:'}</h3>${rubyHtml(s)}<p>${esc(s.en)}</p><button class="btn" id="nx">${qi<qs.length-1?'Next ›':'See result'}</button></div>`;
-      $('nx').onclick=()=>{window.removeEventListener('pointermove',onMove);window.removeEventListener('pointerup',onUp);window.removeEventListener('pointercancel',onUp);qi++;draw()};keyHandler=e=>{if(e.key==='Enter')$('nx').click()}};
+      $('nx').onclick=()=>{qi++;draw()};keyHandler=e=>{if(e.key==='Enter')$('nx').click()}};
     $('chk').onclick=()=>{if(locked)return;tries++;
       const got=picked.map(j=>bank[j].c),want=words.map(w=>w.c),ok=got.join('')===want.join('');
       if(ok){if(tries===1)score++;return reveal(true)}
@@ -2366,8 +2369,8 @@ function gdrill(l,gi,only){
     else{let locked=false;const pk=q._p;
       const render=()=>{$('ar').innerHTML=pk.map((j,n)=>`<button class="chunk han" data-n="${n}">${esc(zh(q._b[j].c))}</button>`).join('');
         M().querySelectorAll('#bk .chunk').forEach(b=>b.classList.toggle('used',pk.includes(+b.dataset.j)));$('chk').disabled=locked||pk.length!==q._b.length};
-      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||pk.includes(+b.dataset.j))return;pk.push(+b.dataset.j);render()};
-      const dr=dragReorder($('ar'),pk,render,()=>locked);
+      $('bk').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||pk.includes(+b.dataset.j)||dr.dragged())return;pk.push(+b.dataset.j);render()};
+      const dr=dragReorder($('ar'),pk,render,()=>locked,$('bk'));
       $('ar').onclick=e=>{const b=e.target.closest('.chunk');if(!b||locked||dr.dragged())return;pk.splice(+b.dataset.n,1);render()};
       $('clr').onclick=()=>{if(!locked){pk.length=0;render()}};
       $('chk').onclick=()=>{if(locked)return;locked=true;const got=pk.map(j=>q._b[j].c).join(''),r=got===q[1].join('')||(q[3]||[]).includes(got);
