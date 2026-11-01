@@ -26,15 +26,26 @@ for c in chars:
         p=pathops.Path();parse_path(sd,p.getPen());paths.append(p)
     u=pathops.Path()
     pathops.union(paths,u.getPen())
-    pen=TTGlyphPen(None);u.draw(Cu2QuPen(pen,max_err=1.0,reverse_direction=True))
+    # centre every character in its square: move the outline so its bounding box centre is at (512, 400),
+    # the middle of the em box (ascent 912, descent -112)
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.pens.transformPen import TransformPen
+    bp=BoundsPen(None);u.draw(bp);x0,y0,x1,y1=bp.bounds
+    dx,dy=round(512-(x0+x1)/2),round(400-(y0+y1)/2)
+    pen=TTGlyphPen(None);u.draw(TransformPen(Cu2QuPen(pen,max_err=1.0,reverse_direction=True),(1,0,0,1,dx,dy)))
     n='uni%04X'%ord(c);glyphs[n]=pen.glyph();cmap[ord(c)]=n;order.append(n)
 glyphs['.notdef']=TTGlyphPen(None).glyph()
 fb=FontBuilder(1024,isTTF=True)
 fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap);fb.setupGlyf(glyphs)
 fb.setupHorizontalMetrics({n:(1024,0) for n in order})
-fb.setupHorizontalHeader(ascent=900,descent=-124)
+# left side bearing must equal each glyph's xMin, or browsers shift the glyph left
+fb.font['glyf'].glyphOrder=order
+for n in order:
+    gl=fb.font['glyf'][n];gl.recalcBounds(fb.font['glyf'])
+    fb.font['hmtx'][n]=(1024,getattr(gl,'xMin',0) if gl.numberOfContours else 0)
+fb.setupHorizontalHeader(ascent=912,descent=-112)
 fb.setupNameTable({'familyName':'ZiYou Kai','styleName':'Regular','copyright':'Glyphs from Make Me a Hanzi / hanzi-writer-data, derived from Arphic PL fonts, Arphic Public License'})
-fb.setupOS2(sTypoAscender=900,sTypoDescender=-124,usWinAscent=900,usWinDescent=124)
+fb.setupOS2(sTypoAscender=912,sTypoDescender=-112,sTypoLineGap=0,usWinAscent=912,usWinDescent=112,fsSelection=0x80)
 fb.setupPost()
 fb.font.flavor='woff2'
 out=repo+'/fonts/ziyoukai.woff2';fb.save(out)
