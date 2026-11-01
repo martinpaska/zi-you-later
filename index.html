@@ -1091,13 +1091,19 @@ const priority=items=>shuffle(items).sort((a,b)=>(isDue(b)-isDue(a))||(mastery(a
 const sentHz=s=>(state.script==='t'?s.zht:s.zh);
 const ORD=l=>l==='I'?0:+l;
 const keyOf=x=>x.s.replace(/\(.*?\)/g,'').split('…')[0];
+/* extra short example sentences (examples.json, built from examples/l1.txt … l10.txt), loaded in the background */
+let EX=[];const SENTS=new Map(ST.map(s=>[String(s.id),s]));
+fetch('examples.json').then(r=>r.json()).then(a=>{EX=a.map(([l,zh,py,en],i)=>({l:String(l),zh,py,en,id:'x'+i,zht:zh.map(toTrad),ex:true}));EX.forEach(s=>SENTS.set(s.id,s))}).catch(()=>{});
 function examples(x,n=2){
   const w=keyOf(x);if(!w)return [];
-  return ST.filter(s=>s.zh.join('').includes(w)).sort((a,b)=>{const da=ORD(a.l)>=ORD(x.l)?ORD(a.l)-ORD(x.l):99+ORD(x.l)-ORD(a.l),db=ORD(b.l)>=ORD(x.l)?ORD(b.l)-ORD(x.l):99+ORD(x.l)-ORD(b.l);return da-db}).slice(0,n);
+  // same lesson first, then later lessons, then earlier ones; within that the shortest sentences first
+  const dist=s=>ORD(s.l)>=ORD(x.l)?ORD(s.l)-ORD(x.l):99+ORD(x.l)-ORD(s.l);
+  const seen=new Set();
+  return ST.concat(EX).filter(s=>{const z=s.zh.join('');if(!z.includes(w)||seen.has(z))return false;seen.add(z);return true}).sort((a,b)=>dist(a)-dist(b)||a.zh.join('').length-b.zh.join('').length).slice(0,n);
 }
 const example=x=>examples(x,1)[0]||null;
-function exampleHtml(x){
-  const list=examples(x,2);if(!list.length)return '';
+function exampleHtml(x,n=2){
+  const list=examples(x,n);if(!list.length)return '';
   const w=hz(x).replace(/\(.*?\)/g,'').split('…')[0];
   return list.map(s=>{const zh=sentHz(s).join('');
     return `<div class="ex"><span class="eyebrow">Example · ${LNAME(s.l)}</span><div class="row"><span class="zh han">${esc(zh).split(esc(w)).join(`<mark>${esc(w)}</mark>`)}</span><button class="play" data-ss="${s.id}" aria-label="Play sentence">${PLAY}</button></div><span class="pyl">${pyHtml(s.py.join(' ').replace(/ ([,.?!])/g,'$1'))}</span><span class="en">${esc(s.en)}</span></div>`}).join('');
@@ -1216,7 +1222,7 @@ document.addEventListener('click',e=>{
   const t=[...h.textContent].filter(c=>isHan(c)||isPunct(c)).join('');if(!t.replace(/[，。？！、,.?!]/g,''))return;
   const x=BYHAN.get(t);x?speak(x):sayText(t,.8);
 });
-document.addEventListener('click',e=>{const b=e.target.closest('[data-ss]');if(b){e.stopPropagation();speakSent(ST[+b.dataset.ss])}},true);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ss]');if(b){e.stopPropagation();speakSent(SENTS.get(b.dataset.ss))}},true);
 
 /* home */
 function dueAll(){return ALLITEMS.filter(isDue)}
@@ -1592,8 +1598,8 @@ function intro(x,k,n,next,skip){
     <div class="introtop">${x.kind==='c'?`<div class="anim" id="anim" aria-label="Stroke order"></div>`:`<div class="animw" id="animw" aria-label="Stroke order">${wcs.map(c=>`<div class="anim awc" data-c="${c}"></div>`).join('')}</div>`}
     <div class="introinfo">${backHtml(x)}<button class="play iconplay" id="isay" aria-label="Play">${PLAY}</button></div></div>
     <p class="hint" style="text-align:center;margin:0">Tap the character to see the stroke order again.</p>
-    <div class="infox">${x.kind==='c'?partsHtml(x):wcs.length===1?partsHtml(x):wordPartsHtml(x)}</div>
-    <details class="more"><summary>Examples and more</summary><div class="infox">${exampleHtml(x)}${relatedHtml(x)}${hookHtml(x)}</div></details>
+    <div class="infox">${x.kind==='c'?partsHtml(x):wcs.length===1?partsHtml(x):wordPartsHtml(x)}${hookHtml(x)}</div>
+    <details class="more"><summary>Examples and more</summary><div class="infox">${exampleHtml(x,4)}${relatedHtml(x)}</div></details>
     <div class="btns stickyact"><button class="btn ghost" id="iskip">Skip intros</button><button class="btn" id="inext">${k<n?'Next ›':'Start the quiz ›'}</button></div></div>`);
   bindHook(x);setTimeout(()=>speak(x),250);
   const pv=M().querySelector('.pict');if(pv){const run=()=>{const ks=[...pv.children];ks.forEach((k,i)=>{k.style.animation='none';void k.getBBox();k.style.animation='';k.style.animationDelay=(i*.28)+'s'});
