@@ -232,6 +232,9 @@ body.tc-off{--t1:var(--ink);--t2:var(--ink);--t3:var(--ink);--t4:var(--ink);--t0
 .ex .zh{font-size:1.25rem} .ex mark{background:var(--accent-soft);color:inherit;border-radius:3px;padding:0 1px}
 .ex .pyl{font-size:.9rem;color:var(--muted)} .ex .en{font-size:.92rem}
 .ex .row{flex-wrap:nowrap}
+.exs{gap:0}.exs>.eyebrow{margin-bottom:2px}
+.exi{display:flex;flex-direction:column;gap:2px;padding:8px 0}.exi+.exi{border-top:1px solid var(--line)}.exi:last-child{padding-bottom:0}
+.exl{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.72rem;font-weight:600;line-height:1.6;vertical-align:1px;white-space:nowrap}
 .wordbig{font-size:clamp(3rem,14vw,5rem);line-height:1.1;overflow-wrap:anywhere}
 .ansrow{min-height:62px;width:100%;border-bottom:2px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;padding:6px 0;align-items:flex-end}
 .bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
@@ -1106,8 +1109,9 @@ const example=x=>examples(x,1)[0]||null;
 function exampleHtml(x,n=2){
   const list=examples(x,n);if(!list.length)return '';
   const w=hz(x).replace(/\(.*?\)/g,'').split('…')[0];
-  return list.map(s=>{const zh=sentHz(s).join('');
-    return `<div class="ex"><span class="eyebrow">Example · ${LNAME(s.l)}</span><div class="row"><span class="zh han">${esc(zh).split(esc(w)).join(`<mark>${esc(w)}</mark>`)}</span><button class="play" data-ss="${s.id}" aria-label="Play sentence">${PLAY}</button></div><span class="pyl">${pyHtml(s.py.join(' ').replace(/ ([,.?!])/g,'$1'))}</span><span class="en">${esc(s.en)}</span></div>`}).join('');
+  // one "Examples" heading, then each sentence with a small lesson tag
+  return `<div class="ex exs"><span class="eyebrow">${list.length>1?'Examples':'Example'}</span>${list.map(s=>{const zh=sentHz(s).join('');
+    return `<div class="exi"><div class="row"><span class="zh han">${esc(zh).split(esc(w)).join(`<mark>${esc(w)}</mark>`)}</span><button class="play" data-ss="${s.id}" aria-label="Play sentence">${PLAY}</button></div><span class="pyl">${pyHtml(s.py.join(' ').replace(/ ([,.?!])/g,'$1'))}</span><span class="en">${esc(s.en)} <span class="exl">${LNAME(s.l)}</span></span></div>`}).join('')}</div>`;
 }
 // Other textbook words that share a character with this item, in lesson order.
 function related(x){
