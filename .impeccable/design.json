@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T00:00:00Z",
+  "title": "Design System: Zì You Later",
+  "extensions": {
+    "colorMeta": {
+      "seal-red": {"role": "primary", "displayName": "Seal Red", "canonical": "#d72323", "tonalRamp": ["#3d0a0a","#6b1111","#9a1919","#c71f1f","#d72323","#e86a6a","#f7d3d3","#fdf0f0"]},
+      "charcoal": {"role": "neutral", "displayName": "Charcoal Pencil", "canonical": "#3e3636", "tonalRamp": ["#141111","#1f1a1a","#2b2424","#3e3636","#6b6262","#a39a9a","#e4dede","#f5eded"]},
+      "paper": {"role": "neutral", "displayName": "Paper Desk", "canonical": "#f8f8f8"},
+      "know-green": {"role": "feedback", "displayName": "Know Green", "canonical": "#2f6b3a"},
+      "miss-red": {"role": "feedback", "displayName": "Still-learning Red", "canonical": "#b3261e"}
+    },
+    "typographyMeta": {
+      "display": {"displayName": "Display", "purpose": "Page titles and the landing headline."},
+      "hanzi": {"displayName": "ZiYou Kai", "purpose": "Every Chinese character; built from the stroke-order data."}
+    },
+    "shadows": [
+      {"name": "rest", "value": "0 1px 2px rgb(62 54 54/.06), 0 4px 14px -4px rgb(62 54 54/.12)", "purpose": "Cards, tiles, stats at rest."},
+      {"name": "lifted", "value": "0 2px 4px rgb(62 54 54/.06), 0 16px 32px -10px rgb(62 54 54/.22)", "purpose": "Hover on tiles and choices."},
+      {"name": "primary-drop", "value": "0 6px 16px -6px rgb(215 35 35/.55)", "purpose": "Under filled red buttons, light mode."}
+    ],
+    "motion": [
+      {"name": "ease-out-expo", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Card flips, swipes, progress bars."},
+      {"name": "duration-state", "value": "200ms", "purpose": "Hover, press and colour transitions."}
+    ],
+    "breakpoints": [{"name": "small-phone", "value": "420px"}, {"name": "phone", "value": "480px"}, {"name": "wide", "value": "640px"}]
+  },
+  "components": [
+    {"name": "Primary Button", "kind": "button", "refersTo": "button-primary", "description": "The one next action on a screen.",
+     "html": "<button class=\"ds-btn\">Spustit dnešní opakování</button>",
+     "css": ".ds-btn{background:#d72323;color:#fff;font:700 1rem 'Source Sans 3',system-ui,sans-serif;border:0;border-radius:12px;padding:11px 16px;box-shadow:0 6px 16px -6px rgb(215 35 35/.55);transition:transform .2s cubic-bezier(.16,1,.3,1)}.ds-btn:hover{transform:translateY(-1px)}.ds-btn:focus-visible{outline:2px solid #d72323;outline-offset:3px}.ds-btn:active{transform:scale(.97)}"},
+    {"name": "Ghost Button", "kind": "button", "refersTo": "button-ghost", "description": "Skip, back, shuffle, start over.",
+     "html": "<button class=\"ds-ghost\">Zamíchat</button>",
+     "css": ".ds-ghost{background:#fff;color:#000;font:700 1rem 'Source Sans 3',system-ui,sans-serif;border:0;border-radius:12px;padding:11px 16px;box-shadow:0 1px 2px rgb(62 54 54/.06),0 4px 14px -4px rgb(62 54 54/.12)}.ds-ghost:focus-visible{outline:2px solid #d72323;outline-offset:3px}"},
+    {"name": "Know / Still learning", "kind": "button", "refersTo": "button-know", "description": "Answer pair under the flashcard.",
+     "html": "<div class=\"ds-pair\"><button class=\"ds-no\">✗ Neumím</button><button class=\"ds-yes\">✓ Umím</button></div>",
+     "css": ".ds-pair{display:flex;gap:8px}.ds-pair button{flex:1;color:#fff;font:700 1rem system-ui;border:0;border-radius:12px;padding:12px}.ds-no{background:#b3261e}.ds-yes{background:#2f6b3a}"},
+    {"name": "Segmented control", "kind": "chip", "refersTo": "segmented", "description": "Direction, round length, level, filters.",
+     "html": "<div class=\"ds-seg\"><button aria-pressed=\"true\">中 → EN</button><button>EN → 中</button><button>Mix</button></div>",
+     "css": ".ds-seg{display:inline-flex;background:#efecec;border-radius:12px;padding:3px}.ds-seg button{border:0;background:none;padding:6px 12px;border-radius:9px;font:600 .9rem system-ui;color:#3e3636}.ds-seg button[aria-pressed=true]{background:#fff;color:#000;box-shadow:0 1px 2px rgb(0 0 0/.12)}"},
+    {"name": "Split progress tally", "kind": "custom", "refersTo": null, "description": "Mistakes / to go / correct bar with legend.",
+     "html": "<div class=\"ds-tb\"><div class=\"ds-bar\"><i style=\"width:20%;background:#b3261e\"></i><i style=\"width:35%;background:#2f6b3a\"></i></div><div class=\"ds-lg\"><span style=\"color:#b3261e\">● 3 Chyby</span><span>7 Zbývá</span><span style=\"color:#2f6b3a\">5 Správně ●</span></div></div>",
+     "css": ".ds-tb{width:320px;font:600 .88rem system-ui;color:#3e3636}.ds-bar{display:flex;height:9px;border-radius:9px;background:#efecec;overflow:hidden}.ds-bar i{display:block;height:100%}.ds-lg{display:flex;justify-content:space-between;margin-top:6px}"},
+    {"name": "Flashcard", "kind": "card", "refersTo": "card", "description": "Paper card with a stack behind it.",
+     "html": "<div class=\"ds-card\"><span class=\"ds-han\">姐</span><span class=\"ds-hint\">Ťukni pro otočení</span></div>",
+     "css": ".ds-card{width:300px;height:260px;display:grid;place-content:center;gap:10px;text-align:center;background:#fff;border-radius:22px;box-shadow:0 1px 2px rgb(62 54 54/.06),0 4px 14px -4px rgb(62 54 54/.12),7px 9px 0 -3px #fff,7px 9px 0 -2px rgb(0 0 0/.07),14px 18px 0 -6px #fff,14px 18px 0 -5px rgb(0 0 0/.06)}.ds-han{font:500 96px 'ZiYou Kai','Noto Serif SC',serif}.ds-hint{font:.9rem system-ui;color:#3e3636}"}
+  ],
+  "narrative": {
+    "northStar": "The Practice Notebook with a Seal",
+    "overview": "Every screen is a page from a Chinese practice notebook: white paper cards on a pale desk, the 米字格 grid behind each character, one red seal that signs the work. Friendly and focused: playful touches on home and setup, quiet one-screen practice inside a session.",
+    "keyCharacteristics": ["Paper cards on a pale desk", "One red for action and identity", "Handwritten Chinese everywhere (ZiYou Kai)", "Tone colours always paired with marks", "One phone screen per practice step", "Czech UI, English content"],
+    "rules": [
+      {"name": "The One Seal Rule", "body": "Seal Red marks the single next action; skip and alternatives are ghost; selections are outlined and checked, never filled red.", "section": "colors"},
+      {"name": "The Never-Only-Colour Rule", "body": "Tone colour is always paired with tone marks and contour glyphs; Know/Still learning carry ✓/✗ and a word.", "section": "colors"},
+      {"name": "The Written-Not-Typeset Rule", "body": "All Chinese uses ZiYou Kai so characters match their stroke order.", "section": "typography"}
+    ],
+    "dos": ["Keep each practice step on one phone screen; swap feedback in place.", "Keep sessions to 15-item rounds with an end screen.", "Use ZiYou Kai and lang=zh-Hans for Chinese.", "Check light and dark mode."],
+    "donts": ["Don't fill a selected option with red or make skip the red primary.", "Don't put a kicker above a page heading.", "Don't use emoji as icons in practice UI.", "Don't imply MUNI endorsement, invent testimonials or mention price."]
+  }
+}
