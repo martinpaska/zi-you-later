@@ -1,0 +1,53 @@
+# 汉语普通话语音音节表: the syllables and tones allowed in the course's phonetics test.
+# Format: syllable tones (one or more of 1234), pairs separated by spaces.
+a 1234 e 1234 er 234 ai 1234 ao 1234 ou 134 an 134 en 14 ang 124
+ba 1234 bo 1234 bai 1234 bei 134 bao 1234 ban 134 ben 134 bang 134 beng 1234
+pa 124 po 1234 pai 1234 pei 124 pao 1234 pou 1 pan 124 pen 124 pang 1234 peng 1234
+ma 1234 mo 1234 mai 234 mei 234 mao 1234 mou 23 man 1234 men 124 mang 23 meng 1234
+fa 1234 fo 2 fei 1234 fou 3 fan 1234 fen 1234 fang 1234 feng 1234
+da 1234 de 12 dai 134 dei 13 dao 1234 dou 134 dan 134 dang 134 deng 134
+ta 134 te 4 tai 124 tao 1234 tou 124 tan 1234 tang 1234 teng 12
+na 1234 ne 24 nai 34 nei 34 nao 234 nan 234 nen 4 nang 234 neng 2
+la 1234 le 4 lai 24 lei 1234 lao 1234 lou 1234 lan 234 lang 234 leng 234
+ga 1234 ge 1234 gai 134 gei 3 gao 134 gou 134 gan 134 gen 14 gang 134 geng 134
+ka 13 ke 1234 kai 134 kei 1 kao 34 kou 134 kan 134 ken 3 kang 124 keng 1
+ha 123 he 124 hai 1234 hei 1 hao 1234 hou 1234 han 1234 hen 234 hang 124 heng 124
+zha 1234 zhe 1234 zhi 1234 zhai 1234 zhei 4 zhao 1234 zhou 1234 zhan 134 zhen 134 zhang 134 zheng 134
+cha 1234 che 134 chi 1234 chai 12 chao 123 chou 1234 chan 1234 chen 124 chang 1234 cheng 1234
+sha 1234 she 1234 shi 1234 shai 134 shei 2 shao 1234 shou 1234 shan 134 shen 1234 shang 134 sheng 1234
+re 34 ri 4 rao 234 rou 24 ran 23 ren 234 rang 1234 reng 12
+za 12 ze 24 zi 134 zai 134 zei 2 zao 1234 zou 134 zan 1234 zen 3 zang 14 zeng 14
+ca 1 ce 4 ci 1234 cai 1234 cao 123 cou 4 can 1234 cen 12 cang 12 ceng 24
+sa 134 se 4 si 134 sai 14 sao 134 sou 134 san 134 sen 1 sang 134 seng 1
+yi 1234 ya 1234 ye 1234 yao 1234 you 1234 yan 1234 yin 1234 yang 1234 ying 1234
+bi 1234 bie 1234 biao 134 bian 134 bin 14 bing 134
+pi 1234 pie 13 piao 1234 pian 124 pin 1234 ping 12
+mi 1234 mie 14 miao 234 miu 4 mian 234 min 23 ming 234
+di 1234 die 12 diao 14 diu 1 dian 134 ding 134
+ti 1234 tie 134 tiao 1234 tian 1234 ting 123
+ni 234 nie 14 niao 34 niu 1234 nian 1234 nin 2 niang 24 ning 234
+li 234 lia 3 lie 34 liao 1234 liu 1234 lian 234 lin 1234 liang 234 ling 1234
+ji 1234 jia 1234 jie 1234 jiao 1234 jiu 134 jian 134 jin 134 jiang 134 jing 134
+qi 1234 qia 134 qie 1234 qiao 1234 qiu 12 qian 1234 qin 1234 qiang 1234 qing 1234
+xi 1234 xia 124 xie 1234 xiao 1234 xiu 134 xian 1234 xin 14 xiang 1234 xing 1234
+wu 1234 wa 1234 wo 134 wai 134 wei 1234 wan 1234 wen 1234 wang 1234 weng 14
+bu 234 pu 1234 mu 234 fu 1234
+du 1234 duo 1234 dui 14 duan 134 dun 134 dong 134
+tu 1234 tuo 1234 tui 1234 tuan 12 tun 124 tong 1234
+nu 234 nuo 24 nuan 3 nong 24
+lu 234 luo 1234 luan 234 lun 124 long 234
+gu 1234 gua 134 guo 1234 guai 134 gui 134 guan 134 gun 34 guang 134 gong 134
+ku 134 kua 134 kuo 4 kuai 4 kui 1234 kuan 13 kun 134 kuang 124 kong 134
+hu 1234 hua 124 huo 1234 huai 24 hui 1234 huan 1234 hun 124 huang 1234 hong 1234
+zhu 1234 zhua 13 zhuo 12 zhuai 134 zhui 14 zhuan 134 zhun 13 zhuang 14 zhong 134
+chu 1234 chuo 14 chuai 134 chui 12 chuan 1234 chun 123 chuang 1234 chong 1234
+shu 1234 shua 13 shuo 14 shuai 134 shui 234 shuan 14 shun 34 shuang 13
+ru 234 ruo 4 rui 34 ruan 3 run 4 rong 23
+zu 123 zuo 1234 zui 34 zuan 134 zun 1 zong 134
+cu 14 cuo 134 cui 14 cuan 124 cun 1234 cong 12
+su 124 suo 13 sui 1234 suan 14 sun 13 song 134
+yu 1234 yue 14 yuan 1234 yun 1234 yong 1234
+nü 3 nüe 4 lü 234 lüe 4
+ju 1234 jue 124 juan 134 jun 14 jiong 3
+qu 1234 que 124 quan 1234 qun 2 qiong 2
+xu 1234 xue 1234 xuan 1234 xun 124 xiong 12

@@ -4,6 +4,7 @@ Aplikace na procvičování čínských znaků. Běží jako statická stránka 
 
 - `index.html` – celá aplikace
 - `strokes.json` – data pro tahy znaků
+- `phonetics.json` – slabiky a slova pro Čínský diktát (příprava na test z fonetiky). Vzniká skriptem `phonetics/build.py` z tabulky slabik kurzu `phonetics/syllables.txt`: `pip install pypinyin==0.55.0 && python3 phonetics/build.py phonetics.json`
 - Pokrok se ukládá v prohlížeči (localStorage). Účty, synchronizace pokroku a žebříček běží přes Supabase, jakmile jsou v `index.html` vyplněné klíče. Návod: [`supabase/README.md`](supabase/README.md).
 
 ## Design: Impeccable
