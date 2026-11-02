@@ -2,7 +2,7 @@
    Strategy: serve from the cache straight away, refresh the cache in the background. When the refreshed app page
    differs from the cached one, every open page gets {type:'update'} and shows "New version · Reload". */
 const CACHE='zyl-v1';
-const CORE=['./','index.html','manifest.webmanifest','fonts/ziyoukai.woff2','strokes.json','grammar-practice.json','examples.json',
+const CORE=['./','index.html','manifest.webmanifest','fonts/ziyoukai.woff2','strokes.json','grammar-practice.json','examples.json','phonetics.json',
   'apple-touch-icon.png','icon-192.png','icon-512.png','favicon-32.png'];
 const CDN=['https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
 

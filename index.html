@@ -902,6 +902,52 @@ details.gegd>.geg{padding-bottom:12px}
 #mode .section>h3{font-size:1.1rem;font-weight:700}
 #mode>h2,#mode .shead h2{font-size:1.5rem}
 @media (pointer:coarse){.bar .back,.starbtn,.langbtn,.acct,.streak,.play:not(.huge),.btn{min-height:44px}.mini{min-width:44px;min-height:44px}.link{min-height:44px;display:inline-flex;align-items:center}}
+/* pinyin dictation */
+.pycard{gap:12px}
+.pycard .play.huge{padding:12px 22px}
+.pyq{display:flex;align-items:baseline;justify-content:center;gap:2px;font-family:var(--f-display);font-size:2.5rem;font-weight:700;line-height:1.2;min-height:1.3em}
+.pyslot{display:inline-block;min-width:1.4em;padding:0 .12em;border-bottom:3px dashed var(--accent);color:var(--muted);text-align:center}
+.pyslot.wide{min-width:4em}
+.pyslot.ok{color:var(--ok);border-bottom:3px solid var(--ok)}
+.pyslot.bad{color:var(--bad);border-bottom:3px solid var(--bad)}
+.pyprev{margin:-4px 0 0;min-height:1.5em;font-size:1.1rem;font-weight:600;color:var(--muted)}
+.pynote,.pykeys{margin:0}
+.pycard .tbtn small{display:none}
+.pyopts .opt{justify-content:center;font-size:1.5rem;min-height:72px;position:relative}
+.pyopts .opt kbd{position:absolute;left:8px;top:8px}
+.pyopts .opt .han{font-size:1.25rem;font-weight:500;color:var(--muted)}
+.pyans{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0;font-size:1.25rem}
+.pyans .han{font-size:2rem;font-weight:500}
+.pyyou{margin:0}
+.pyfx{color:var(--muted);font-weight:400}
+.pychoices .choice .pystat{font-size:.8rem;font-weight:600;color:var(--ink);margin-top:4px}
+.pyconf .mmi{font-weight:600}
+.pyok{color:var(--ok)}
+.pybad{color:var(--bad)}
+.pywarn{display:flex;flex-direction:column;gap:6px;border:2px solid var(--bad);background:var(--bad-bg)}
+.pywarn ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.pyvrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pyvrow select{flex:1 1 200px;min-width:0}
+.pyvrow .btn{display:inline-flex;align-items:center;gap:6px}
+.pyvrow .btn svg{width:16px;height:16px}
+.pyrate{display:flex;align-items:center;gap:12px;font-weight:600}
+.pyrate input{flex:1;accent-color:var(--accent);min-height:44px}
+.pyrate b{font-variant-numeric:tabular-nums;min-width:3.5em;text-align:right}
+.pysec{grid-template-columns:repeat(4,1fr)}
+.pysec .stat span{font-size:.72rem}
+.pysh{margin:22px 0 10px}
+.pysheet{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pysheet section{background:var(--surface);border-radius:12px;padding:10px 8px;box-shadow:var(--sh1);min-width:0}
+.pysheet h4{font-size:.8rem;margin:0 0 6px;color:var(--muted)}
+.pysheet ol{list-style:none;margin:0;padding:0}
+.pysheet li{display:grid;grid-template-columns:2.1em minmax(0,1fr);gap:2px;padding:4px 0;border-top:1px solid var(--line);font-size:.9rem;line-height:1.3}
+.pysheet .n{color:var(--muted);font-variant-numeric:tabular-nums}
+.pysheet .a{overflow-wrap:anywhere}
+.pysheet .x{color:var(--bad);font-style:normal;font-weight:700}
+.pysheet s{color:var(--bad)}
+.pysheet .fix{display:block}
+.pysheet .pych{font-size:.9rem;color:var(--muted);padding:0 2px;margin-left:2px}
+@media (max-width:640px){.pysheet{grid-template-columns:repeat(2,minmax(0,1fr))}.pysec{grid-template-columns:repeat(2,1fr)}}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <main class="wrap">
@@ -963,6 +1009,7 @@ details.gegd>.geg{padding-bottom:12px}
         <button class="mode" data-mode="match"><span class="mart" aria-hidden="true"><svg viewBox="0 0 160 90" focusable="false"><defs><pattern id="tmatchhk" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#000000"/></pattern><pattern id="tmatchdt" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.2" fill="#d72323"/></pattern></defs><rect width="160" height="90" fill="#f7d3d3"/><rect width="160" height="90" fill="url(#tmatchdt)" opacity=".18"/><g class="o"><g transform="translate(40 46) rotate(0) scale(1)"><g transform="translate(0 0) rotate(-8)"><rect x="-19.0" y="-19.0" width="50" height="50" rx="6" fill="#000000"/><rect x="-25.0" y="-25.0" width="50" height="50" rx="6" fill="#ffffff" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -20.0V20.0M-20.0 0H20.0" stroke="#d72323" stroke-width="1.6" stroke-dasharray="4 4" opacity=".6"/><text y="12" text-anchor="middle" font-size="33" fill="#000000" font-family="Noto Serif SC,serif" font-weight="700">你</text></g></g><path d="M66 46C86 30 96 62 110 46" fill="none" stroke="#d72323" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/><g transform="translate(124 46) rotate(6)"><rect x="-27" y="-14" width="54" height="28" rx="14" fill="#000000" transform="translate(4 4)"/><rect x="-27" y="-14" width="54" height="28" rx="14" fill="#ffffff" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="6" text-anchor="middle" font-size="16" font-weight="800" font-family="Outfit,sans-serif">you</text></g></g></svg></span><b>Match</b><span>Pair Chinese with meanings against the clock</span></button>
         <button class="mode" data-mode="tones" hidden><span class="mart" aria-hidden="true"><svg viewBox="0 0 160 90" focusable="false"><defs><pattern id="ttoneshk" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#000000"/></pattern><pattern id="ttonesdt" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.2" fill="#d72323"/></pattern></defs><rect width="160" height="90" fill="#f5eded"/><rect width="160" height="90" fill="url(#ttonesdt)" opacity=".18"/><g class="o"><g transform="translate(80 48) rotate(0) scale(0.6)"><g transform="translate(-84 6)"><circle r="25" fill="#d72323" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="10" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff" font-family="Outfit,sans-serif">ā</text></g><g transform="translate(-28 -16)"><circle r="25" fill="#000000" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="10" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff" font-family="Outfit,sans-serif">á</text></g><g transform="translate(28 8)"><circle r="25" fill="#d72323" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="10" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff" font-family="Outfit,sans-serif">ǎ</text></g><g transform="translate(84 -12)"><circle r="25" fill="#000000" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="10" text-anchor="middle" font-size="28" font-weight="800" fill="#ffffff" font-family="Outfit,sans-serif">à</text></g></g></g></svg></span><b>Tone trainer</b><span>Hear it, pick the tone, then tone pairs</span></button>
         <button class="mode" data-mode="twins"><span class="mart" aria-hidden="true"><svg viewBox="0 0 160 90" focusable="false"><defs><pattern id="ttwinshk" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#000000"/></pattern><pattern id="ttwinsdt" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.2" fill="#d72323"/></pattern></defs><rect width="160" height="90" fill="#f7d3d3"/><rect width="160" height="90" fill="url(#ttwinsdt)" opacity=".18"/><g class="o"><g transform="translate(52 46)"><circle r="24" fill="#d72323" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="6.8" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff" font-family="Outfit,sans-serif">lǎo</text></g><g transform="translate(108 46)"><circle r="24" fill="#000000" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><text y="6.8" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff" font-family="Outfit,sans-serif">shī</text></g><text x="80" y="53" text-anchor="middle" font-size="22" font-weight="800" fill="#000000" font-family="Outfit,sans-serif">+</text></g></svg></span><b>Tones in words</b><span>Fill in the tones, tone twins</span></button>
+        <button class="mode" data-mode="pinyin"><span class="mart" aria-hidden="true"><svg viewBox="0 0 160 90" focusable="false"><defs><pattern id="tpinyinhk" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#000000"/></pattern><pattern id="tpinyindt" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.2" fill="#d72323"/></pattern></defs><rect width="160" height="90" fill="#f7d3d3"/><rect width="160" height="90" fill="url(#tpinyindt)" opacity=".18"/><g class="o"><g transform="translate(62 46) rotate(-5)"><rect x="-33" y="-31" width="68" height="66" rx="8" fill="#000000"/><rect x="-38" y="-36" width="68" height="66" rx="8" fill="#ffffff" stroke="#000000" stroke-width="4" stroke-linejoin="round"/><path d="M-30 -6H22M-30 18H22" stroke="#000000" stroke-opacity=".25" stroke-width="2"/><text x="-29" y="-10" font-size="19" font-weight="800" fill="#d72323" font-family="Outfit,sans-serif">zhōng</text><text x="-29" y="14" font-size="14" font-weight="800" fill="#000000" font-family="Outfit,sans-serif">yīnyuè</text></g><g transform="translate(120 46)"><path d="M-17 -8H-9L3 -18V18L-9 8H-17Z" fill="#d72323" stroke="#000000" stroke-width="4" stroke-linejoin="round"/><path d="M10 -9Q15 0 10 9M16 -17Q26 0 16 17" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/></g></g></svg></span><b>Pinyin dictation</b><span>Phonetics: initials, finals, tones, words</span></button>
         <button class="mode" data-mode="test"><span class="mart" aria-hidden="true"><svg viewBox="0 0 160 90" focusable="false"><defs><pattern id="ttesthk" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#000000"/></pattern><pattern id="ttestdt" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.2" fill="#d72323"/></pattern></defs><rect width="160" height="90" fill="#f5eded"/><rect width="160" height="90" fill="url(#ttestdt)" opacity=".18"/><g class="o"><g transform="translate(80 47) rotate(6) scale(0.56)"><rect x="-52" y="-66" width="104" height="132" rx="4" fill="#000000" transform="translate(6 6)"/><rect x="-52" y="-66" width="104" height="132" rx="4" fill="#ffffff" stroke="#000000" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M-36 -30h44" stroke="#000000" stroke-width="3" opacity=".35"/><path d="M18 -38l7 7l13-14" stroke="#d72323" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-36 -4h44" stroke="#000000" stroke-width="3" opacity=".35"/><path d="M18 -12l7 7l13-14" stroke="#d72323" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-36 22h44" stroke="#000000" stroke-width="3" opacity=".35"/><path d="M18 14l7 7l13-14" stroke="#d72323" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-36 48h44" stroke="#000000" stroke-width="3" opacity=".35"/><path d="M18 40l7 7l13-14" stroke="#d72323" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-26" cy="-50" r="0"/><text x="0" y="-44" text-anchor="middle" font-size="16" font-weight="800" fill="#d72323" font-family="Outfit,sans-serif">100</text></g><path d="M0-14C2-3 3-2 14 0C3 2 2 3 0 14C-2 3-3 2-14 0C-3-2-2-3 0-14Z" transform="translate(30 24) scale(0.6)" fill="#d72323"/><path d="M0-14C2-3 3-2 14 0C3 2 2 3 0 14C-2 3-3 2-14 0C-3-2-2-3 0-14Z" transform="translate(134 70) scale(0.45)" fill="#000000"/></g></svg></span><b>Test</b><span>Chapter test: listening, reading, pinyin, writing</span></button>
       </div></div>
       <p class="notice" id="noVoice" hidden>This browser has no Chinese voice, so audio may be missing. iPhone and Android usually include one; on a computer you can add it in the system's speech settings.</p>
@@ -1080,6 +1127,9 @@ const saveState=()=>{store.set('ic-state',{...state,sel:[...state.sel]});cloudSa
 let srs=store.get('ic-srs',{});
 const todayStr=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 let stats=Object.assign({day:'',rev:0,nw:0,streak:0,last:'',total:0,u:0},store.get('ic-stats',{}));
+/* pinyin dictation: answers and correct answers per mode, confusions (right>given), practice test scores */
+let PYS=Object.assign({m:{},c:{},tests:[],u:0},store.get('ic-pinyin',{}));
+const savePys=()=>{PYS.u=Date.now();store.set('ic-pinyin',PYS);cloudSave()};
 function rollDay(){const t=todayStr();if(stats.day!==t){stats.day=t;stats.rev=0;stats.nw=0;stats.extra=0}}
 rollDay();
 const DAY=864e5,MIN=6e4;
@@ -2804,7 +2854,7 @@ function summary(){return {known:ALLITEMS.filter(x=>mastery(x)===2).length,learn
 function cloudSave(){
   if(!cloud)return;clearTimeout(cloudTimer);
   cloudTimer=setTimeout(async()=>{
-    try{await cloud.set({srs:JSON.stringify(srs),stats,state:{...state,sel:[...state.sel]},u:Date.now()})}catch(e){}
+    try{await cloud.set({srs:JSON.stringify(srs),stats,state:{...state,sel:[...state.sel]},py:PYS,u:Date.now()})}catch(e){}
     if(me&&boardWritable!==false){try{await dbCap.doc('accounts/'+uid).set({...me,...summary()})}catch(e){}}
   },1500);
 }
@@ -2831,7 +2881,7 @@ async function initCloud(){
   try{uid=await userCap.id()}catch(e){uid=null}
   if(!uid)return done();
   const doc=dbCap.doc('data/users/'+uid+'/progress');
-  try{const snap=await doc.get();if(snap.exists){const d=snap.data();mergeSrs(typeof d.srs==='string'?JSON.parse(d.srs):(d.srs||{}));if(d.stats&&(d.stats.u||0)>(stats.u||0))stats=Object.assign(stats,d.stats);rollDay();store.set('ic-srs',srs);store.set('ic-stats',stats)}}catch(e){}
+  try{const snap=await doc.get();if(snap.exists){const d=snap.data();mergeSrs(typeof d.srs==='string'?JSON.parse(d.srs):(d.srs||{}));if(d.stats&&(d.stats.u||0)>(stats.u||0))stats=Object.assign(stats,d.stats);if(d.py&&(d.py.u||0)>(PYS.u||0)){PYS=Object.assign({m:{},c:{},tests:[]},d.py);store.set('ic-pinyin',PYS)}rollDay();store.set('ic-srs',srs);store.set('ic-stats',stats)}}catch(e){}
   cloud=doc;
   try{const c=await userCap.can('data.write');if(c===false)boardWritable=false}catch(e){}
   try{const a=await dbCap.doc('accounts/'+uid).get();if(a.exists){const d=a.data();me={name:String(d.name||'').slice(0,20),avatar:d.avatar||AVATARS[0]}}}catch(e){}
@@ -2969,7 +3019,288 @@ function newPassword(){
     $('npgo').disabled=true;try{const {error}=await sb.auth.updateUser({password:pw});if(error)throw error;$('npm').textContent='Saved. You are signed in.';setTimeout(account,900)}catch(err){$('npgo').disabled=false;$('npm').textContent='Could not save the password. Open the link from the email again.'}};
 }
 
-const MODES={grammar:()=>grammar(),cards:()=>cards(),learn,sentences,write,test,match:()=>match(),twins,tones:()=>tones(),board:leaderboard,account,progress,settings};
+/* ---------- Pinyin dictation (Fonetika / Čínský diktát): practice for the course's phonetics test ----------
+   The test has 100 dictated items and needs 80 %: 1–25 initials, 26–50 final + tone, 51–75 tones in two-syllable
+   words, 76–100 whole words. phonetics.json (built by phonetics/build.py from the course syllable table) holds one
+   speakable character per syllable+tone and 2-syllable words. The sound is the device's Chinese voice. */
+let PYD=null,pyLoad=null;
+const PY_INI=['zh','ch','sh','b','p','m','f','d','t','n','l','g','k','h','j','q','x','r','z','c','s','y','w'];
+const PY_HI=new Set('z zh c ch s sh j q x r'.split(' ')),PY_HF=new Set('ong eng ang an en in ing ian uan un ue uo ou iu ui iong iang uang'.split(' '));
+const PY_PAIRS=[['i','z','zh'],['i','c','ch'],['i','s','sh'],['i','j','zh'],['i','q','ch'],['i','x','sh'],['i','j','q'],['i','r','l'],
+  ['f','ong','eng'],['f','an','ang'],['f','en','eng'],['f','in','ing'],['f','an','en'],['f','ian','uan'],['f','uo','ou'],['f','ie','ue'],['f','un','ong'],['f','iu','ou'],['f','ui','ei']];
+const PYMODES=[
+  ['ini','Initials','Hear a syllable, type its initial. Test items 1–25.'],
+  ['fin','Finals and tone','The initial is shown, type the final with its tone. Items 26–50.'],
+  ['tone','Tones in words','Pick the tone of each syllable of a word. Items 51–75.'],
+  ['word','Whole words','Type the whole word with its tones. Items 76–100.'],
+  ['pair','Tell apart','Two syllables that differ in one sound. Which one did you hear?'],
+  ['test','Practice test','100 items like the real test. No feedback until the answer sheet at the end.']];
+const pyName=m=>PYMODES.find(x=>x[0]===m)[1];
+const pySplit=b=>{const i=PY_INI.find(x=>b.startsWith(x)&&b.length>x.length)||'';return {i,f:b.slice(i.length)}};
+const pySyl=k=>{const t=+k.slice(-1),b=k.slice(0,-1);return {b,t,k,...pySplit(b)}};
+function loadPy(){
+  if(PYD)return Promise.resolve(PYD);
+  if(!pyLoad)pyLoad=fetch('phonetics.json').then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(j=>{
+    const syl=Object.entries(j.syl).map(([k,c])=>({...pySyl(k),c})),SY=new Map(syl.map(s=>[s.k,s]));
+    const words=j.words.map(([w,p])=>({w,s:p.split(' ').map(pySyl)}));
+    const pairs={};
+    for(const [kind,a,b] of PY_PAIRS){const ct=a+'/'+b,list=pairs[ct]=[];
+      for(const s of syl){if((kind==='i'?s.i:s.f)!==a)continue;
+        const o=SY.get((kind==='i'?b+s.f:s.i+b)+s.t);if(o)list.push({kind,ct,a:s,b:o})}
+      if(!list.length)delete pairs[ct]}
+    return PYD={syl,SY,words,pairs};
+  }).catch(e=>{pyLoad=null;throw e});
+  return pyLoad;
+}
+/* pinyin text: marks and numbers, ü typed as v or u: */
+const pyNorm=s=>s.toLowerCase().normalize('NFC').replace(/u:/g,'ü').replace(/v/g,'ü');
+function pyParse1(s){let b='',t=0;for(const c of pyNorm(s)){if(MK[c]){b+=MK[c][0]==='v'?'ü':MK[c][0];if(MK[c][1])t=MK[c][1]}else if(/[1-5]/.test(c))t=+c%5;else if(/[a-zü]/.test(c))b+=c}return {b,t}}
+function pyParseMany(s){const out=[];
+  for(const ch of pyNorm(s).split(/[\s'’,.-]+/).filter(Boolean)){
+    const parts=/[0-5]/.test(ch)?ch.split(/(?<=[0-5])/):(ch.match(SYL)||[ch]);
+    for(const p of parts){const x=pyParse1(p);if(x.b)out.push({...x,...pySplit(x.b)})}}
+  return out}
+const pyPreview=v=>pyNorm(v).replace(/([a-zü]+)([0-5])/g,(m,b,t)=>+t%5?markSyl(b,+t):b);
+const pyJqxy=s=>s.replace(/([jqxy])ü/g,'$1u');
+const pyWordPy=w=>w.s.map((x,i)=>(i&&/^[aeo]/.test(x.b)?"'":'')+markSyl(x.b,x.t)).join('');
+const pyFull=it=>it.m==='pair'?markSyl(it.play.b,it.play.t):it.w?pyWordPy(it.w):markSyl(it.s.b,it.s.t);
+const pyChars=it=>it.m==='pair'?it.play.c:it.w?it.w.w:it.s.c;
+const pyFinal=s=>markSyl(s.b,s.t).slice(s.i.length);
+const pyPct=(a,b)=>b?Math.round(a/b*100):0;
+const pySay=it=>sayText(pyChars(it),state.pyRate||.8);
+const PYH=h=>`<span data-noi18n lang="zh-Latn-pinyin">${h}</span>`;
+
+/* stats: per-mode accuracy and the most frequent confusions, stored as "i:zh>z", "f:ong>eng", "t:3>2" (right>given) */
+function pyRecord(mode,ok,confs){const m=PYS.m[mode]||(PYS.m[mode]={n:0,ok:0});m.n++;if(ok)m.ok++;for(const k of confs)PYS.c[k]=(PYS.c[k]||0)+1;savePys()}
+const pyConfLabel=k=>{const [a,b]=k.slice(2).split('>');return k[0]==='t'?`Tone ${a} → ${b}`:`${a} → ${b}`};
+const pyChip=(k,n)=>`<span class="mmi">${k[0]==='t'?`<span>${esc(pyConfLabel(k))}</span>`:PYH(esc(pyConfLabel(k)))}${n>1?` <b>×${n}</b>`:''}</span>`;
+const pyTopConf=(n=12)=>Object.entries(PYS.c).sort((a,b)=>b[1]-a[1]).slice(0,n);
+function pySylDiff(a,u,parts){const out=[];
+  if(parts.includes('i')&&a.i&&u.i&&a.i!==u.i)out.push('i:'+a.i+'>'+u.i);
+  const fa=PY_JQXY(a.i)?pyJqxy(a.i+a.f).slice(a.i.length):a.f,fu=PY_JQXY(a.i)?pyJqxy(a.i+u.f).slice(a.i.length):u.f;
+  if(parts.includes('f')&&fu&&fa!==fu)out.push('f:'+fa+'>'+fu);
+  if(parts.includes('t')&&u.t&&a.t!==u.t)out.push('t:'+a.t+'>'+u.t);
+  return out}
+const PY_JQXY=i=>/^[jqxy]$/.test(i);
+
+/* weights: hard initials and finals, and the learner's own confusions, come up more often */
+function pyWeights(){const weak=state.pyWeak!==false,mi=new Map(),mf=new Map(),mt=new Map(),mc=new Map();
+  if(weak)for(const [k,n] of Object.entries(PYS.c)){const [a,b]=k.slice(2).split('>'),m=k[0]==='i'?mi:k[0]==='f'?mf:mt;
+    m.set(a,(m.get(a)||0)+n);if(k[0]!=='t')m.set(b,(m.get(b)||0)+n/2);
+    for(const [kind,x,y] of PY_PAIRS)if(kind===k[0]&&((x===a&&y===b)||(x===b&&y===a)))mc.set(x+'/'+y,(mc.get(x+'/'+y)||0)+n)}
+  const own=(m,k)=>Math.min(3,(m.get(k)||0)*.5);
+  const syl=(s,parts)=>{let w=1;if(!weak)return w;
+    if(parts.includes('i')){if(PY_HI.has(s.i))w+=2;w+=own(mi,s.i)}
+    if(parts.includes('f')){if(PY_HF.has(s.f))w+=2;w+=own(mf,s.f)}
+    if(parts.includes('t'))w+=own(mt,String(s.t));return w};
+  return {syl,word:(w,parts)=>w.s.reduce((a,s)=>a+syl(s,parts)-1,1),pair:ct=>1+(weak?own(mc,ct):0)}}
+function pyPicker(list,key,weight){const recent=[];
+  return ()=>{let tot=0;const ws=list.map(x=>{const w=recent.includes(key(x))?0:weight(x);tot+=w;return w});
+    let r=Math.random()*tot,i=0;for(;i<list.length-1;i++){r-=ws[i];if(r<=0)break}
+    const x=list[i];recent.push(key(x));if(recent.length>Math.min(12,list.length-1))recent.shift();return x}}
+function pyGen(mode){
+  const W=pyWeights(),P=PYD;
+  if(mode==='ini'){const p=pyPicker(P.syl.filter(s=>s.i),s=>s.k,s=>W.syl(s,['i']));return ()=>({m:mode,s:p()})}
+  if(mode==='fin'){const p=pyPicker(P.syl,s=>s.k,s=>W.syl(s,['f','t']));return ()=>({m:mode,s:p()})}
+  if(mode==='tone'){const p=pyPicker(P.words,w=>w.w,w=>W.word(w,['t']));return ()=>({m:mode,w:p()})}
+  if(mode==='word'){const p=pyPicker(P.words,w=>w.w,w=>W.word(w,['i','f','t']));return ()=>({m:mode,w:p()})}
+  const cts=Object.keys(P.pairs),pc=pyPicker(cts,c=>c,c=>W.pair(c));
+  return ()=>{const ct=pc(),list=P.pairs[ct],pr=list[Math.random()*list.length|0],opts=shuffle([pr.a,pr.b]);
+    return {m:'pair',pr,opts,play:opts[Math.random()*2|0]}}}
+
+/* grading one answer: ans is the typed text, the picked tones, or the picked syllable */
+function pyGrade(it,ans){
+  if(it.m==='ini'){const u=String(ans||'').toLowerCase().replace(/[^a-z]/g,''),ok=u===it.s.i;
+    return {ok,confs:!ok&&PY_INI.includes(u)?['i:'+it.s.i+'>'+u]:[],u:u?esc(u)+`<span class="pyfx">${esc(pyFinal(it.s))}</span>`:''}}
+  if(it.m==='fin'){const s=it.s,x=pyParse1(String(ans||''));let b=x.b;
+    if(s.i&&b.startsWith(s.i)&&b.length>s.i.length&&b.slice(s.i.length)===s.f)b=b.slice(s.i.length);
+    let uh=false;if(PY_JQXY(s.i)&&b.startsWith('ü')&&s.f.startsWith('u')){b='u'+b.slice(1);uh=true}
+    const ok=b===s.f&&x.t===s.t;
+    return {ok,uh:ok&&uh,confs:ok?[]:pySylDiff(s,{i:s.i,f:b,t:x.t},['f','t']),u:b||x.t?`<span class="pyfx">${esc(s.i)}</span>`+esc(pyPreview(String(ans))):''}}
+  if(it.m==='tone'){const pk=ans||[],ok=it.w.s.every((s,i)=>pk[i]===s.t);
+    return {ok,confs:it.w.s.flatMap((s,i)=>pk[i]&&pk[i]!==s.t?['t:'+s.t+'>'+pk[i]]:[]),u:pk.some(Boolean)?esc(it.w.s.map((s,i)=>markSyl(s.b,pk[i]||0)).join(' ')):''}}
+  if(it.m==='word'){const raw=String(ans||''),u=pyParseMany(raw),a=it.w.s;
+    const key=l=>pyJqxy(l.map(s=>s.b).join(''))+'|'+l.map(s=>s.t).filter(Boolean).join('');
+    const ok=!!u.length&&key(u)===key(a);
+    return {ok,uh:ok&&/[jqxy]ü/.test(pyNorm(raw)),confs:!ok&&u.length===a.length?a.flatMap((s,i)=>pySylDiff(s,u[i],['i','f','t'])):[],u:raw.trim()?esc(pyPreview(raw)):''}}
+  const p=ans,ok=p===it.play;
+  return {ok,confs:ok||!p?[]:[it.pr.kind+':'+(it.pr.kind==='i'?it.play.i+'>'+p.i:it.play.f+'>'+p.f)],u:p?esc(markSyl(p.b,p.t)):''}}
+
+/* the question part of a card, shared by practice and the test */
+function pyAsk(it){
+  if(it.m==='ini')return `<div class="pyq" aria-label="Missing initial">${PYH(`<span class="pyslot" id="pyslot">?</span><span>${esc(pyFinal(it.s))}</span>`)}</div>
+    <div class="typein"><input id="pyin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Initial, e.g. zh" aria-label="Your answer"></div>`;
+  if(it.m==='fin')return `<div class="pyq">${PYH(`<span>${it.s.i?esc(it.s.i):'–'}</span><span class="pyslot" id="pyslot">?</span>`)}</div>${it.s.i?'':'<p class="hint pynote">This syllable has no initial.</p>'}
+    <div class="typein"><input id="pyin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Final and tone, e.g. ong1 or ōng" aria-label="Your answer"></div><p class="pyprev" id="pyprev" aria-live="polite"></p>`;
+  if(it.m==='word')return `<div class="pyq">${PYH('<span class="pyslot wide" id="pyslot">? ?</span>')}</div>
+    <div class="typein"><input id="pyin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Whole word, e.g. yin1yue4 or yīnyuè" aria-label="Your answer"></div><p class="pyprev" id="pyprev" aria-live="polite"></p>`;
+  if(it.m==='tone')return `<div class="tsyls" id="ts" aria-label="Syllables"></div>
+    <div class="tones four" id="qo">${[1,2,3,4].map(t=>`<button class="tbtn t${t}" data-t="${t}">${contour(t)}${t}<small>${TONE[t]}</small></button>`).join('')}</div>`;
+  return `<div class="opts pyopts" id="qo">${it.opts.map((s,i)=>`<button class="opt c" data-i="${i}"><kbd>${i+1}</kbd>${PYH(esc(markSyl(s.b,s.t)))}</button>`).join('')}</div>`;
+}
+const PY_KEYS={ini:'Enter checks, Shift+Enter plays again.',fin:'Enter checks, Shift+Enter plays again. Type ü as v.',word:'Enter checks, Shift+Enter plays again. Type ü as v.',
+  tone:'Tap a tone for each syllable, or press 1–4. Shift+Enter plays again.',pair:'Which one did you hear? Press 1 or 2. Shift+Enter plays again.'};
+/* wires up the inputs of a card; get() returns the current answer */
+function pyWire(it,onPick){
+  const inp=$('pyin');
+  if(inp){if($('pyprev'))inp.oninput=()=>{$('pyprev').textContent=inp.value.trim()?pyPreview(inp.value):''};
+    setTimeout(()=>inp.focus({preventScroll:true}),0);return {get:()=>inp.value,inp,key:()=>false}}
+  if(it.m==='tone'){const pick=it.w.s.map(()=>0);let cur=0,lock=false;
+    const draw=(res)=>{$('ts').innerHTML=it.w.s.map((s,i)=>{const t=pick[i],st=res?(t===s.t?' ok':' bad'):'';
+      return `<button class="tsyl${i===cur&&!res?' cur':''}${t?' t'+t:''}${st}" data-i="${i}" aria-label="${esc(s.b)}" data-noi18n lang="zh-Latn-pinyin">${esc(markSyl(s.b,t))}<small${res&&t!==s.t?` class="t${s.t}"`:''}>${res&&t!==s.t?esc(markSyl(s.b,s.t)):t?t+'.':'?'}</small></button>`}).join('')};
+    const set=t=>{if(lock)return;pick[cur]=t;const nx=pick.findIndex((v,i)=>!v&&i>cur),any=pick.indexOf(0);cur=nx>=0?nx:any>=0?any:cur;draw();onPick&&onPick()};
+    draw();$('ts').onclick=e=>{const b=e.target.closest('[data-i]');if(b&&!lock){cur=+b.dataset.i;draw()}};
+    $('qo').onclick=e=>{const b=e.target.closest('[data-t]');if(b)set(+b.dataset.t)};
+    return {get:()=>pick.slice(),reveal:()=>{lock=true;draw(true)},
+      key:e=>{if(/^[1-4]$/.test(e.key)){set(+e.key);return true}if(e.key==='Backspace'&&!lock){const l=cur>0&&!pick[cur]?cur-1:cur;pick[l]=0;cur=l;draw();return true}
+        if(e.key==='ArrowLeft'&&!lock){cur=Math.max(0,cur-1);draw();return true}if(e.key==='ArrowRight'&&!lock){cur=Math.min(pick.length-1,cur+1);draw();return true}return false}}}
+  let picked=null;
+  $('qo').onclick=e=>{const b=e.target.closest('[data-i]');if(!b||$('qo').classList.contains('answered'))return;picked=it.opts[+b.dataset.i];
+    $('qo').querySelectorAll('.opt').forEach(o=>o.setAttribute('aria-pressed',String(o===b)));onPick&&onPick(true)};
+  return {get:()=>picked,key:e=>{if(e.key==='1'||e.key==='2'){const b=$('qo').querySelector(`[data-i="${+e.key-1}"]`);if(b)b.click();return true}return false}}
+}
+/* the back button of a practice bar goes to the trainer's start screen, not home */
+function pyBack(fn){const b=M().querySelector('.bar .back');if(b){b.removeAttribute('data-home');b.textContent='‹ Back';b.onclick=fn}}
+
+/* ---------- start screen ---------- */
+async function phonetics(){
+  if(!PYD){open(bar(0,'','‹ Home')+`<h2>Pinyin dictation</h2><p class="hint" id="pyload">Loading…</p>`);
+    try{await loadPy()}catch(e){if($('pyload'))$('pyload').innerHTML='Could not load the syllables. Check your connection and try again.';return}
+    if(!$('pyload'))return}
+  const mode=PYMODES.some(m=>m[0]===state.pyMode)?state.pyMode:'ini';
+  const statOf=k=>{if(k==='test'){const t=PYS.tests[PYS.tests.length-1];return t?`Last: ${t.s}%`:'Not tried yet'}
+    const m=PYS.m[k];return m&&m.n?`${pyPct(m.ok,m.n)}% right · ${m.n} answers`:'Not tried yet'};
+  const art=modeArt('pinyin'),top=pyTopConf();
+  open(bar(0,'','‹ Home')+`<div class="shead">${art?`<span class="sart">${art}</span>`:''}<div><h2>Pinyin dictation</h2><p class="muted">Get ready for the phonetics test: 100 dictated items, 80% to pass. Your device says a syllable or a word, you write it in pinyin.</p></div></div>
+    <div id="pyvoice"></div>
+    <section class="step"><h3><span class="sn">1</span>What do you want to practise?</h3>
+      <div class="choices pychoices">${PYMODES.map(([k,n,d])=>`<button class="choice" data-pm="${k}" aria-pressed="${mode===k}"><b>${n}</b><span>${d}</span><small class="pystat">${statOf(k)}</small></button>`).join('')}</div>
+      <div class="seg" role="group" aria-label="Focus"><button data-pw="1" aria-pressed="${state.pyWeak!==false}">Focus on weak spots</button><button data-pw="0" aria-pressed="${state.pyWeak===false}">Everything evenly</button></div>
+      <p class="hint" style="margin:0">Weak spots: hard initials (z zh c ch s sh j q x r), hard finals (ong eng ang an en in ing ian uan un ue …) and your own mistakes come up more often. The practice test is always mixed evenly.</p></section>
+    <section class="step"><h3><span class="sn">2</span>Voice and speed</h3><div id="pyvbox"></div></section>
+    <section class="step"><h3>Your weak spots</h3>
+      ${top.length?`<div class="mmiss pyconf">${top.map(([k,n])=>pyChip(k,n)).join('')}</div>`:'<p class="hint" style="margin:0">Nothing yet. Your most frequent mix-ups show up here, for example ong → eng.</p>'}
+      ${PYS.tests.length?`<p class="hint" style="margin:0"><span>Practice tests:</span> ${PYS.tests.slice(-8).map(t=>`<b class="${t.s>=80?'pyok':'pybad'}">${t.s}%</b>`).join(' · ')}</p>`:''}
+      <div class="confirm" id="pyrc"><button class="btn ghost" id="pyr1">Reset dictation stats…</button></div></section>
+    <div class="startbar"><button class="btn bigbtn" id="pygo"></button></div>`);
+  const go=()=>{const m=state.pyMode&&PYMODES.some(x=>x[0]===state.pyMode)?state.pyMode:'ini';$('pygo').textContent=m==='test'?'Start the test · 100 items':'Start · '+pyName(m)};go();
+  M().querySelectorAll('[data-pm]').forEach(b=>b.onclick=()=>{state.pyMode=b.dataset.pm;saveState();M().querySelectorAll('[data-pm]').forEach(c=>c.setAttribute('aria-pressed',String(c===b)));go()});
+  M().querySelectorAll('[data-pw]').forEach(b=>b.onclick=()=>{state.pyWeak=b.dataset.pw==='1';saveState();M().querySelectorAll('[data-pw]').forEach(c=>c.setAttribute('aria-pressed',String(c===b)))});
+  $('pygo').onclick=()=>{const m=state.pyMode||'ini';m==='test'?pyTest():pyPractice(m)};
+  $('pyr1').onclick=()=>{$('pyrc').innerHTML='<span>Delete the dictation stats?</span><button class="btn badb" id="pyr2">Yes, delete</button><button class="btn ghost" id="pyr3">No</button>';
+    $('pyr2').onclick=()=>{PYS={m:{},c:{},tests:[],u:0};savePys();phonetics()};$('pyr3').onclick=phonetics};
+  pyVoiceBox();setTimeout(()=>{pyVoiceLate=true;pyVoiceBox()},1500);
+}
+let pyVoiceLate=false;
+function pyVoiceBox(){
+  const box=$('pyvbox'),warn=$('pyvoice');if(!box)return;
+  const has='speechSynthesis' in window&&voices.length>0;
+  warn.innerHTML=!has&&(pyVoiceLate||!('speechSynthesis' in window))?`<div class="notice pywarn" role="alert"><b>No Chinese voice on this device, so you won't hear anything.</b><ul>
+    <li>Mac: System Settings → Accessibility → Spoken Content → System voice → Manage voices → Chinese. Download a voice, then reload this page.</li>
+    <li>Windows: Settings → Time &amp; language → Speech → Add voices → Chinese (Simplified, China).</li>
+    <li>iPhone and Android phones usually have one already.</li></ul></div>`:'';
+  const r=state.pyRate||.8;
+  box.innerHTML=`<div class="pyvrow"><select id="pyvsel" aria-label="Chinese voice"${has?'':' disabled'}>${has?voices.map(v=>`<option value="${esc(v.name)}"${voice&&v.name===voice.name?' selected':''}>${esc(v.name)} (${esc(v.lang)})</option>`).join(''):'<option>No Chinese voice found on this device</option>'}</select><button class="btn ghost" id="pyvt"${has?'':' disabled'}>${PLAY}Play a sample</button></div>
+    <label class="pyrate"><span>Speed</span><input type="range" id="pyrate" min="0.5" max="1.2" step="0.05" value="${r}"><b id="pyrv" data-noi18n>${r.toFixed(2)}×</b></label>
+    <p class="hint" style="margin:0">The voice is your device's speech synthesis, not a native speaker. It is good practice, but now and then it may read a tone oddly.</p>`;
+  if($('pyvsel'))$('pyvsel').onchange=e=>{state.voice=e.target.value;saveState();pickVoice()};
+  $('pyvt').onclick=()=>sayText('中文拼音',state.pyRate||.8);
+  $('pyrate').oninput=e=>{state.pyRate=+e.target.value;$('pyrv').textContent=state.pyRate.toFixed(2)+'×'};
+  $('pyrate').onchange=()=>saveState();
+}
+if('speechSynthesis' in window)speechSynthesis.addEventListener('voiceschanged',()=>{if($('pyvbox'))pyVoiceBox()});
+
+/* ---------- practice rounds: 15 items, a wrong one comes back about 4 items later ---------- */
+function pyPractice(mode){
+  const gen=pyGen(mode),q=Array.from({length:15},gen),miss=[],confs=[];let qi=0,good=0,bad=0;
+  function render(){
+    if(qi>=q.length)return end();
+    const it=q[qi];let done=false;
+    open(tallyBar(bad,good,q.length,(qi+1)+' / '+q.length)+`<div class="card top-align pycard"><p class="eyebrow">${pyName(mode)}${it.again?' · again':''}</p>
+      <button class="play huge" id="pyp">${PLAY}Play again</button>
+      ${pyAsk(it)}<p class="hint pykeys">${PY_KEYS[mode]}</p>
+      <div class="btns" id="pyb"><button class="btn ghost" id="pyidk">I don't know</button><button class="btn" id="pyc">Check</button></div>
+      <div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>`);
+    pyBack(phonetics);
+    const play=()=>pySay(it);$('pyp').onclick=play;setTimeout(play,250);
+    const w=pyWire(it,auto=>{if(auto)check()});
+    const check=(give)=>{if(done)return;done=true;const ans=give?null:w.get(),g=pyGrade(it,ans);
+      if(g.ok)good++;else{bad++;miss.push(it);confs.push(...g.confs);if((it.tries||0)<2)q.splice(Math.min(q.length,qi+4),0,{...it,again:true,tries:(it.tries||0)+1})}
+      pyRecord(mode,g.ok,g.confs);
+      if(w.inp){w.inp.readOnly=true;w.inp.classList.add(g.ok?'is-ok':'is-bad')}
+      if(w.reveal)w.reveal();
+      if($('pyslot')){const s=$('pyslot');s.textContent=it.m==='ini'?it.s.i:it.m==='fin'?pyFinal(it.s):pyFull(it);s.classList.add(g.ok?'ok':'bad')}
+      if(it.m==='pair'){const box=$('qo');box.classList.add('answered');box.querySelectorAll('.opt').forEach((o,i)=>{const s=it.opts[i];if(s===it.play)o.classList.add('is-ok');else if(s===ans)o.classList.add('is-bad');o.insertAdjacentHTML('beforeend',`<span class="han" lang="zh-Hans">${esc(s.c)}</span>`)})}
+      if(it.m==='tone')$('qo').classList.add('answered');
+      $('pyb').hidden=true;
+      $('fb').innerHTML=`<div class="fb ${g.ok?'ok':'bad'}"><h3>${g.ok?'✓ Correct':'✗ Not quite'}</h3>
+        <p class="pyans"><b class="han" lang="zh-Hans">${esc(pyChars(it))}</b> ${PYH(`<b>${pyHtml(pyFull(it))}</b>`)}<button class="mini" id="pyfp" aria-label="Play">${PLAY}</button></p>
+        ${g.ok?'':`<p class="pyyou"><span>Your answer:</span> ${g.u?PYH(`<b>${g.u}</b>`):'<b>(nothing)</b>'}</p>`}
+        ${g.uh?`<p class="hint" style="margin:0"><span>Counted as right. After j, q, x and y, ü is written u:</span> ${PYH(`<b>${esc(pyFull(it))}</b>`)}</p>`:''}
+        ${!g.ok&&(it.tries||0)<2?'<p class="hint" style="margin:0">This one comes back in a moment.</p>':''}
+        <button class="btn" id="pyn">${qi===q.length-1?'See result':'Next ›'}</button></div>`;
+      $('pyfp').onclick=play;$('pyn').onclick=()=>{qi++;render()};
+      if(!w.inp)document.activeElement&&document.activeElement.blur&&document.activeElement.blur();
+      $('fb').scrollIntoView({block:'nearest',behavior:MOTION?'smooth':'auto'});
+      if(!g.ok||mode==='pair')play()};
+    $('pyc').onclick=()=>check();$('pyidk').onclick=()=>check(true);
+    keyHandler=e=>{if(e.key==='Enter'){e.preventDefault();if(e.shiftKey)play();else if(done)$('pyn').click();else check();return}
+      if(!done&&w.key(e))e.preventDefault()};
+  }
+  function end(){keyHandler=null;const tot=good+bad,cc={};for(const k of confs)cc[k]=(cc[k]||0)+1;
+    const um=[...new Map(miss.map(it=>[pyFull(it),it])).values()];
+    open(bar(100,tot+' / '+tot)+`<div class="card"><p class="eyebrow">${pyName(mode)}</p><span class="score">${good} / ${tot}</span>
+      <p>${!bad?'Every answer right.':'Wrong answers came back until the round was over.'}</p>
+      ${Object.keys(cc).length?`<p class="hint" style="margin:0">Mix-ups this round:</p><div class="mmiss">${Object.entries(cc).sort((a,b)=>b[1]-a[1]).map(([k,n])=>pyChip(k,n)).join('')}</div>`:''}
+      ${um.length?`<p class="hint" style="margin:0">To listen to again:</p><div class="mmiss">${um.map((it,i)=>`<button class="mmi pymi" data-nosay data-mi="${i}"><b class="han" lang="zh-Hans">${esc(pyChars(it))}</b> ${PYH(pyHtml(pyFull(it)))}</button>`).join('')}</div>`:''}
+      <div class="btns"><button class="btn ghost" id="pyhub">‹ Back</button><button class="btn" id="pyag">Next round</button></div></div>`);
+    pyBack(phonetics);$('pyhub').onclick=phonetics;$('pyag').onclick=()=>pyPractice(mode);
+    M().querySelectorAll('[data-mi]').forEach(b=>b.onclick=()=>pySay(um[+b.dataset.mi]));
+    keyHandler=e=>{if(e.key==='Enter'){e.preventDefault();pyPractice(mode)}};
+  }
+  render();
+}
+
+/* ---------- practice test: 25 + 25 + 25 + 25, no feedback, then the corrected answer sheet ---------- */
+function pyTest(){
+  const P=PYD,take=(a,n)=>shuffle(a).slice(0,n),ws=shuffle(P.words);
+  const items=[...take(P.syl.filter(s=>s.i),25).map(s=>({m:'ini',s})),...take(P.syl,25).map(s=>({m:'fin',s})),
+    ...ws.slice(0,25).map(w=>({m:'tone',w})),...ws.slice(25,50).map(w=>({m:'word',w}))];
+  const ans=new Array(100).fill(null);let n=0;
+  const quit=()=>{if(confirm(T_('Leave the test? Your answers will be lost.')))phonetics()};
+  function render(){
+    const it=items[n];
+    open(`<div class="bar"><button class="back" id="pyq">‹ End</button><div class="progress"><span style="width:${n}%"></span></div><span class="count">${n+1} / 100</span></div>
+      <div class="card top-align pycard"><p class="eyebrow">${'Practice test · '+pyName(it.m)}</p>
+      <button class="play huge" id="pyp">${PLAY}Play again</button>
+      ${pyAsk(it)}<p class="hint pykeys">${it.m==='tone'?'Tap a tone for each syllable, or press 1–4. Enter goes on, Shift+Enter plays again.':'Enter goes on, Shift+Enter plays again.'}</p>
+      <div class="btns"><button class="btn" id="pyn">${n===99?'Finish the test':'Next ›'}</button></div></div>`);
+    $('pyq').onclick=quit;
+    const play=()=>pySay(it);$('pyp').onclick=play;setTimeout(play,250);
+    const w=pyWire(it);
+    const nx=()=>{ans[n]=w.get();if(n===99)return result();n++;render()};$('pyn').onclick=nx;
+    keyHandler=e=>{if(e.key==='Enter'){e.preventDefault();e.shiftKey?play():nx();return}if(w.key(e))e.preventDefault()};
+  }
+  function result(){keyHandler=null;
+    const gs=items.map((it,i)=>pyGrade(it,ans[i])),right=gs.filter(g=>g.ok).length,pass=right>=80;
+    for(const g of gs)for(const k of g.confs)PYS.c[k]=(PYS.c[k]||0)+1;
+    const m=PYS.m.test||(PYS.m.test={n:0,ok:0});m.n+=100;m.ok+=right;PYS.tests.push({d:todayStr(),s:right});PYS.tests=PYS.tests.slice(-20);savePys();
+    const sec=[0,1,2,3].map(k=>gs.slice(k*25,k*25+25).filter(g=>!g.ok).length);
+    open(bar(100,'100 / 100','‹ Back')+`<div class="card"><p class="eyebrow">Practice test</p><span class="score">${right}%</span>
+      <p><b class="${pass?'pyok':'pybad'}">${pass?'Passed':'Not passed yet'}</b> · <span>You need 80% to pass.</span></p>
+      <div class="pstats pysec">${[0,1,2,3].map(k=>`<div class="stat"><b>${sec[k]}</b><span>${pyName(PYMODES[k][0])}</span></div>`).join('')}</div><p class="hint" style="margin:0">Mistakes in each part (out of 25)</p>
+      <div class="btns"><button class="btn ghost" id="pyhub">‹ Back</button><button class="btn" id="pyag">New test</button></div></div>
+      <h3 class="pysh">Corrected answer sheet</h3>
+      <div class="pysheet">${[0,1,2,3].map(k=>`<section><h4><span data-noi18n>${k*25+1}–${k*25+25}</span> ${pyName(PYMODES[k][0])}</h4><ol>${items.slice(k*25,k*25+25).map((it,j)=>{const i=k*25+j,g=gs[i];
+        return `<li class="${g.ok?'':'bad'}"><span class="n">${i+1}.</span><span class="a" data-noi18n lang="zh-Latn-pinyin">${g.ok?`<b>${g.u}</b>`:`<i class="x" aria-label="wrong">✗</i> ${g.u?`<s>${g.u}</s>`:'<s>—</s>'} <b class="fix">${esc(pyFull(it))}</b>`}<button class="han pych" data-pi="${i}" lang="zh-Hans" aria-label="Play">${esc(pyChars(it))}</button></span></li>`}).join('')}</ol></section>`).join('')}</div>`);
+    pyBack(phonetics);$('pyhub').onclick=phonetics;$('pyag').onclick=pyTest;
+    M().querySelectorAll('[data-pi]').forEach(b=>b.onclick=e=>{e.stopPropagation();pySay(items[+b.dataset.pi])});
+  }
+  render();
+}
+const T_=s=>LANG==='cs'?(T(s)??s):s;
+
+const MODES={grammar:()=>grammar(),cards:()=>cards(),learn,sentences,write,test,match:()=>match(),twins,tones:()=>tones(),pinyin:phonetics,board:leaderboard,account,progress,settings};
 if(store.get('ic-welcomed',false))renderHome();else welcome();
 setTimeout(initCloud,0);
 
@@ -3033,6 +3364,50 @@ const CS_P=[
  [/^You typed “(.+)”\. Accepted answers: (.+)$/,(m,a,b)=>`Napsal(a) jsi „${a}“. Uznávám: ${b}`],
  [/^Traditional (\S+)$/,(m,c)=>`Tradiční ${c}`],[/^Simplified (\S+)$/,(m,c)=>`Zjednodušené ${c}`],
 ];
+/* Czech for the pinyin dictation trainer */
+Object.assign(CS,{"Pinyin dictation":"Čínský diktát","Phonetics: initials, finals, tones, words":"Fonetika: iniciály, finály, tóny, slova",
+ "Initials":"Iniciály","Finals and tone":"Finály a tón","Whole words":"Celá slova","Tell apart":"Rozlišování","Practice test":"Zkušební test",
+ "Hear a syllable, type its initial. Test items 1–25.":"Uslyšíš slabiku a napíšeš její iniciálu. V testu položky 1–25.",
+ "The initial is shown, type the final with its tone. Items 26–50.":"Iniciálu vidíš, napiš finálu s tónem. Položky 26–50.",
+ "Pick the tone of each syllable of a word. Items 51–75.":"Urči tón každé slabiky slova. Položky 51–75.",
+ "Type the whole word with its tones. Items 76–100.":"Napiš celé slovo i s tóny. Položky 76–100.",
+ "Two syllables that differ in one sound. Which one did you hear?":"Dvě slabiky, které se liší jednou hláskou. Kterou jsi slyšel(a)?",
+ "100 items like the real test. No feedback until the answer sheet at the end.":"100 položek jako ve skutečném testu. Výsledky uvidíš až v opraveném archu na konci.",
+ "Get ready for the phonetics test: 100 dictated items, 80% to pass. Your device says a syllable or a word, you write it in pinyin.":"Příprava na test z fonetiky: 100 diktovaných položek, k úspěchu potřebuješ 80 %. Zařízení řekne slabiku nebo slovo a ty ho zapíšeš v pinyinu.",
+ "Not tried yet":"Zatím nezkoušeno","Focus on weak spots":"Zaměřit se na slabá místa","Everything evenly":"Všechno stejně",
+ "Weak spots: hard initials (z zh c ch s sh j q x r), hard finals (ong eng ang an en in ing ian uan un ue …) and your own mistakes come up more often. The practice test is always mixed evenly.":"Slabá místa: těžké iniciály (z zh c ch s sh j q x r), těžké finály (ong eng ang an en in ing ian uan un ue …) a tvoje vlastní chyby přijdou na řadu častěji. Zkušební test je vždy namíchaný rovnoměrně.",
+ "Voice and speed":"Hlas a rychlost","Your weak spots":"Tvoje slabá místa",
+ "Nothing yet. Your most frequent mix-ups show up here, for example ong → eng.":"Zatím nic. Tady se ukáže, co si nejčastěji pleteš, třeba ong → eng.",
+ "Practice tests:":"Zkušební testy:","Reset dictation stats…":"Smazat statistiky diktátu…","Delete the dictation stats?":"Smazat statistiky diktátu?",
+ "Start":"Začít","Start the test":"Začít test","100 items":"100 položek",
+ "No Chinese voice on this device, so you won't hear anything.":"Na tomhle zařízení chybí čínský hlas, takže nic neuslyšíš.",
+ "Mac: System Settings → Accessibility → Spoken Content → System voice → Manage voices → Chinese. Download a voice, then reload this page.":"Mac: Nastavení systému → Zpřístupnění → Mluvený obsah → Systémový hlas → Spravovat hlasy → čínština. Stáhni hlas a pak stránku obnov.",
+ "Windows: Settings → Time & language → Speech → Add voices → Chinese (Simplified, China).":"Windows: Nastavení → Čas a jazyk → Řeč → Přidat hlasy → čínština (zjednodušená, Čína).",
+ "iPhone and Android phones usually have one already.":"iPhone a telefony s Androidem ho obvykle už mají.",
+ "Chinese voice":"Čínský hlas","Play a sample":"Přehrát ukázku","Speed":"Rychlost",
+ "The voice is your device's speech synthesis, not a native speaker. It is good practice, but now and then it may read a tone oddly.":"Hlas je syntéza řeči tvého zařízení, ne rodilý mluvčí. Na procvičení dobrý, ale občas může nějaký tón přečíst divně.",
+ "Could not load the syllables. Check your connection and try again.":"Slabiky se nepodařilo načíst. Zkontroluj připojení a zkus to znovu.",
+ "Play again":"Přehrát znovu","again":"znovu","I don't know":"Nevím","Missing initial":"Chybějící iniciála",
+ "Initial, e.g. zh":"Iniciála, např. zh","Final and tone, e.g. ong1 or ōng":"Finála a tón, např. ong1 nebo ōng","Whole word, e.g. yin1yue4 or yīnyuè":"Celé slovo, např. yin1yue4 nebo yīnyuè",
+ "Your answer":"Tvoje odpověď","Your answer:":"Tvoje odpověď:","(nothing)":"(nic)","This syllable has no initial.":"Tahle slabika nemá iniciálu.",
+ "Enter checks, Shift+Enter plays again.":"Enter zkontroluje, Shift+Enter přehraje znovu.",
+ "Enter checks, Shift+Enter plays again. Type ü as v.":"Enter zkontroluje, Shift+Enter přehraje znovu. ü piš jako v.",
+ "Tap a tone for each syllable, or press 1–4. Shift+Enter plays again.":"Vyber tón pro každou slabiku, nebo mačkej 1–4. Shift+Enter přehraje znovu.",
+ "Which one did you hear? Press 1 or 2. Shift+Enter plays again.":"Kterou jsi slyšel(a)? Zmáčkni 1 nebo 2. Shift+Enter přehraje znovu.",
+ "Tap a tone for each syllable, or press 1–4. Enter goes on, Shift+Enter plays again.":"Vyber tón pro každou slabiku, nebo mačkej 1–4. Enter pokračuje, Shift+Enter přehraje znovu.",
+ "Enter goes on, Shift+Enter plays again.":"Enter pokračuje, Shift+Enter přehraje znovu.",
+ "✓ Correct":"✓ Správně","✗ Not quite":"✗ Tohle ne",
+ "Counted as right. After j, q, x and y, ü is written u:":"Uznáno. Po j, q, x a y se ü píše jako u:",
+ "This one comes back in a moment.":"Tahle se za chvíli vrátí.","Every answer right.":"Všechno správně.",
+ "Wrong answers came back until the round was over.":"Chybné odpovědi se vracely až do konce kola.",
+ "Mix-ups this round:":"Co se ti v tomhle kole pletlo:","To listen to again:":"Poslechni si znovu:","Next round":"Další kolo",
+ "‹ End":"‹ Ukončit","Finish the test":"Dokončit test","Leave the test? Your answers will be lost.":"Opustit test? Odpovědi se ztratí.",
+ "Passed":"Splněno","Not passed yet":"Zatím nesplněno","You need 80% to pass.":"K úspěchu potřebuješ 80 %.",
+ "Mistakes in each part (out of 25)":"Chyby v jednotlivých částech (z 25)","Corrected answer sheet":"Opravený arch","New test":"Nový test","wrong":"špatně","Focus":"Zaměření"});
+CS_P.push(
+ [/^(\d+)% right · (\d+) answers$/,(m,a,n)=>`${a} % správně · ${n} ${csPl(n,'odpověď','odpovědi','odpovědí')}`],
+ [/^Last: (\d+)%$/,(m,a)=>`Naposledy: ${a} %`],
+ [/^Tone (\d) → (\d)$/,(m,a,b)=>`${a}. tón → ${b}.`]);
 function T(s){
   if(Object.prototype.hasOwnProperty.call(CS,s))return CS[s];
   for(const [re,f] of CS_P){const m=s.match(re);if(m)return f(...m)}
