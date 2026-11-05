@@ -1,0 +1,67 @@
+# Modální slovesa, směr 来/去, předložky 在/给/跟, 上个/下个, 以前/以后, 要是…就
+## 想 a 要 „chtít“
+- 想 + sloveso = „chtěl bych, mám v úmyslu“ (měkčí přání).
+- 要 + sloveso nebo věc = „chci“ (důraznější). 要 může znamenat i „muset“ nebo ukazovat budoucnost („půjdu, bude“); význam určí kontext.
+- Zákaz: 不要 nebo 别 + sloveso = „ne…!“
+> 我 想 喝 咖啡 。|Dal bych si kávu.
+> 我 要 一 杯 水 。|Chci sklenici vody.
+> 明天 我 要 去 图书馆 。|Zítra půjdu do knihovny.
+> 你 别 喝 咖啡 了 。|Už nepij kávu.
+## 得 „muset“ a 不用 „nemuset“
+- 得 (čte se děi) + sloveso = „muset“ (vyplývá z okolností).
+- Zápor 不得 se neužívá; „nemuset“ je 不用.
+> 我 得{děi} 去 图书馆 。|Musím jít do knihovny.
+> 你 不用 去 。|Nemusíš tam chodit.
+## 会, 能, 可以
+- 会 = „umět“ (naučená dovednost): 我会说中文.
+- 能 = „moci, být schopen“; 可以 = „smět, je dovoleno“. V otázkách „mohu…?“ jsou zaměnitelné.
+- „Nesmí se, nejde“ = 不能.
+> 我 会 说 中文 。|Umím mluvit čínsky.
+> 我 可以 进来 吗 ？|Můžu dál?
+> 今天 我 不 能 去 。|Dnes nemůžu přijít.
+## Směr pohybu: 来 a 去
+- Za slovesem pohybu: 来 = směrem k mluvčímu, 去 = směrem od mluvčího.
+- 进来 „pojď dovnitř“ (mluvčí je uvnitř), 进去 „jdi dovnitř“; 回来 „vrátit se sem“, 回去 „vrátit se tam“.
+> 你 进来 吧 。|Pojď dál.
+> 你 什么 时候 回来 ？|Kdy se vrátíš?
+> 我 得{děi} 回去 。|Musím se vrátit.
+## Předložky 在, 给, 跟
+- Stojí s místem nebo osobou před slovesem.
+- 在 + místo „kde“: 我在家看书. 给 + osoba „komu“: 我给你打电话 „zavolám ti“. 跟 + osoba „s kým“: 我跟妈妈说话.
+> 晚上 我 给 你 打电话 。|Večer ti zavolám.
+> 你 跟 我 练习 中文 吧 。|Procvičuj se mnou čínštinu.
+> 明天 我 跟 妈妈 去 商店 。|Zítra jdu s mámou do obchodu.
+## Minulý a příští: 上个, 下个
+- 上个星期 „minulý týden“, 下个星期 „příští týden“; stejně 上个月, 下个月.
+> 下个 星期 我 有 考试 。|Příští týden mám zkoušku.
+> 上个 月 我 很 忙 。|Minulý měsíc jsem měl hodně práce.
+## 以前 a 以后 „před, za, po“
+- Stojí za časovým údajem: 一个星期以后 „za týden“, 一个月以前 „před měsícem“.
+- Také za slovesem: 下课以后 „po vyučování“.
+> 一 个 星期 以后 我 回家 。|Za týden jedu domů.
+> 他 一 个 月 以前 才 来 。|Přijel teprve před měsícem.
+> 下课 以后 我 去 图书馆 。|Po vyučování jdu do knihovny.
+## 要是…就 „jestliže…, tak“
+- 要是 uvádí podmínku, stojí na začátku věty nebo za podmětem. Ve druhé části 就 „tak“.
+> 要是 你 不 喜欢 ， 就 别 吃 。|Jestli ti to nechutná, tak to nejez.
+> 要是 你 明天 有 空儿 ， 我们 就 去 看 电影 。|Jestli máš zítra čas, půjdeme do kina.
+c|我＿说中文。|会/很/的|Umím mluvit čínsky.
+c|我＿进来吗？|可以/别/了|Můžu dál?
+c|你＿喝咖啡了。|别/的/很|Už nepij kávu.
+c|晚上我＿你打电话。|给/在/是|Večer ti zavolám.
+c|明天我＿妈妈去商店。|跟/在/是|Zítra jdu s mámou do obchodu.
+c|你＿哪儿学中文？|在/给/跟|Kde se učíš čínsky?
+c|＿个星期我有考试。|下/后/以后|Příští týden mám zkoušku.
+c|他一个月＿才来。|以前/上个/下个|Přijel teprve před měsícem.
+c|要是你不喜欢，＿别吃。|就/才/所以|Jestli ti to nechutná, tak to nejez.
+c|＿你明天有空儿，我们就去看电影。|要是/还是/可是|Jestli máš zítra čas, půjdeme do kina.
+c|我得＿。|回去/去回/回来去|Musím se vrátit.
+c|你不＿去，我去。|用/得/可|Nemusíš tam chodit, půjdu já.
+p|我得去图书馆。/我去得图书馆。/得我去图书馆。|Musím jít do knihovny.
+p|晚上我给你打电话。/晚上我给打电话你。/给晚上我你打电话。|Večer ti zavolám.
+p|你不用去。/你不得去。/你用不去。|Nemusíš tam chodit.
+p|下个星期我有考试。/我有考试下个星期。/下个我星期有考试。|Příští týden mám zkoušku.
+p|我跟妈妈说话。/我说话跟妈妈。/我跟说话妈妈。|Mluvím s mámou.
+o|下课 以后 我 去 图书馆|Po vyučování jdu do knihovny.
+o|你 跟 我 练习 中文 吧|Procvičuj se mnou čínštinu.
+o|要是 你 不 喜欢 ， 就 别 吃|Jestli ti to nechutná, tak to nejez.

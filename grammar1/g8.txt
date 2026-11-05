@@ -1,0 +1,65 @@
+# Měrová slova, 的 v přívlastku, 正在 a 呢, 就, pořadí času, 一边…一边, 除了…以外
+## Numerativy, měrové jednotky a měrová jména
+- Numerativy se nepřekládají: 个, 张 (papír, fotka), 枝 (pero), 位 (osoba, zdvořile), 件 (oblečení, věc), 条 (kalhoty), 双 (pár bot).
+- Měrové jednotky se překládají: 杯 šálek, 瓶 láhev, 种 druh.
+- Měrová jména se pojí s číslem přímo, bez numerativu: 三天, 三年, 第八课, 十八岁.
+> 我 要 一 瓶 水 和 两 杯 咖啡 。|Chci láhev vody a dva šálky kávy.
+> 这 件 衬衫 很 好看 。|Tahle košile je hezká.
+> 他 学 了 三 年 中文 。|Učil se tři roky čínsky.
+## Přívlastek s 的 a bez 的
+- Přivlastnění: 老师的书 „učitelova kniha“. U rodiny a blízkých 的 odpadá: 我爸爸.
+- Druh nebo vlastnost vyjádřená podstatným jménem je bez 的: 中文书 „čínská kniha“, 中国菜 „čínské jídlo“.
+- Jednoslabičné přídavné jméno bývá bez 的 (大学校), dvouslabičné s 的 (有意思的电影).
+> 这 是 我 的 中文 书 。|Tohle je moje čínská kniha.
+> 我 喜欢 中国菜 。|Mám rád čínské jídlo.
+> 这 是 一 个 很 有意思 的 电影 。|Je to moc zajímavý film.
+## Pořadí přívlastků
+- Vlastník → 这/那 + číslo + numerativ → vlastnost → podstatné jméno.
+> 他 的 那 两 张 照片 很 好 。|Ty jeho dvě fotky jsou dobré.
+> 那 三 个 漂亮 的 女孩子{nǚháizi} 是 我 的 同学 。|Ty tři hezké dívky jsou moje spolužačky.
+## Probíhající děj: 正在, 在, 呢
+- 正在 (nebo jen 在) před slovesem = „právě teď…“.
+- 呢 na konci věty také ukazuje, že děj právě probíhá; obojí lze spojit.
+> 他 正在 写 信 。|Právě píše dopis.
+> 你 在 做 什么 呢 ？|Co právě děláš?
+> 我们 正在 吃饭 呢 。|Právě jíme.
+## Pozice časového údaje
+- Časový údaj stojí za podmětem, nebo na začátku věty, vždy před slovesem.
+> 我们 十 点 上课 。|Vyučování nám začíná v deset.
+> 明天 上午 我 去 图书馆 。|Zítra dopoledne jdu do knihovny.
+## Různé významy 就
+- „hned, už“: 我就来 „hned přijdu“; 他五岁就开始学中文 „už v pěti…“.
+- Ve druhé části souvětí „tak, hned potom“.
+- Před číslem „jen“: 我就有两块钱.
+> 请 等 一下 ， 我 就 来 。|Počkejte chvilku, hned přijdu.
+> 他 五 岁 就 开始 学 中文 。|Už v pěti letech se začal učit čínsky.
+> 我 就 有 两 块 钱 。|Mám jen dva jüany.
+## 一边…一边 „a přitom“
+- Dva děje probíhají současně: 一边 + sloveso, 一边 + sloveso.
+> 他们 一边 吃饭 一边 练习 说 中文 。|Jedí a přitom procvičují čínštinu.
+> 我 一边 洗澡 一边 唱歌 。|Ve sprše si zpívám.
+## 除了…以外 „kromě“
+- 除了…以外，都… = „kromě X všichni“.
+- 除了…以外，还/也… = „kromě X ještě/také“ (也, když jde o jinou osobu).
+> 除了 妈妈 以外 ， 大家 都 在 家 。|Kromě mámy jsou všichni doma.
+> 除了 中文 以外 ， 他 还 学 英文 。|Kromě čínštiny se učí ještě angličtinu.
+c|我要一＿水。|瓶/张/件|Chci láhev vody.
+c|这＿衬衫很好看。|件/条/双|Tahle košile je hezká.
+c|我要两＿咖啡。|杯/张/双|Chci dva šálky kávy.
+c|这是我的＿书。|中文/中国人/英国人|Tohle je moje čínská kniha.
+c|这是一个很有意思＿电影。|的/得/了|Je to moc zajímavý film.
+c|他＿写信。|正在/了/的|Právě píše dopis.
+c|你在做什么＿？|呢/了/吧|Co právě děláš?
+c|他们一边吃饭＿练习说中文。|一边/还是/和|Jedí a přitom procvičují čínštinu.
+c|＿妈妈以外，大家都在家。|除了/因为/要是|Kromě mámy jsou všichni doma.
+c|除了中文以外，他＿学英文。|还/都/就|Kromě čínštiny se učí ještě angličtinu.
+c|请等一下，我＿来。|就/才/都|Počkejte chvilku, hned přijdu.
+c|我们＿点上课。|十/十个/第十|Vyučování nám začíná v deset.
+p|我喜欢中国菜。/我喜欢菜中国。/我中国喜欢菜。|Mám rád čínské jídlo.
+p|他正在写信。/他写信正在。/正在他写信。|Právě píše dopis.
+p|我们十点上课。/我们上课十点。/上课我们十点。|Vyučování nám začíná v deset.
+p|我一边洗澡一边唱歌。/我洗澡一边一边唱歌。/一边我洗澡唱歌一边。|Ve sprše si zpívám.
+p|除了妈妈以外，大家都在家。/除了妈妈，大家以外都在家。/妈妈除了以外，大家都在家。|Kromě mámy jsou všichni doma.
+o|他 的 那 两 张 照片 很 好|Ty jeho dvě fotky jsou dobré.
+o|我们 正在 吃饭 呢|Právě jíme.
+o|他 五 岁 就 开始 学 中文|Už v pěti letech se začal učit čínsky.

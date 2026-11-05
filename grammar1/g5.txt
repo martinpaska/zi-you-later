@@ -1,0 +1,66 @@
+# 一下 a 一点儿, 在 a 有, předložka 在, 吧, 了, 就 a 才
+## 一下 „na chvilku, trochu“
+- Stojí za slovesem a zjemňuje ho: děj je krátký, „jen tak“. 看一下 „podívat se“, 介绍一下 „představit“.
+- Často odpovídá českému dokonavému vidu.
+> 你 进来 一下 。|Pojď na chvilku dovnitř.
+> 我 介绍 一下 ， 这 是 我 同学 。|Dovolte, abych představil: to je můj spolužák.
+> 你 看 一下 这 张 照片 。|Podívej se na tuhle fotku.
+## 一点儿 „trochu“
+- Stojí před podstatným jménem (něco, co se dá odměřit): 喝一点儿茶. 一 lze vynechat: 喝点儿茶.
+- 一下 rozvíjí sloveso, 一点儿 podstatné jméno.
+> 你 喝 一点儿 茶 吧 。|Napij se trochu čaje.
+> 我 想 喝 点儿 水 。|Napil bych se trochu vody.
+## 在 a 有: kde něco je
+- Věc + 在 + místo: „věc je na místě“ (mluvíme o té věci).
+- Místo + 有 + věc: „na místě je/jsou…“ (mluvíme o místě).
+> 王朋 在 图书馆 。|Wang Peng je v knihovně.
+> 图书馆 有 很 多 学生 。|V knihovně je hodně studentů.
+> 我 妈妈 不 在 家 。|Máma není doma.
+## Předložka 在 + místo + sloveso
+- 在 + místo stojí před slovesem a říká, kde se děj odehrává.
+> 你 在 哪儿 学 中文 ？|Kde se učíš čínsky?
+> 我 在 学校 学 中文 。|Čínsky se učím ve škole.
+> 他 姐姐 喜欢 在 家 看 书 。|Jeho sestra si ráda čte doma.
+## 吧: výzva a odhad
+- Zmírňuje výzvu nebo návrh: 我们走吧 „pojďme“, 你进来吧 „pojď dál“.
+- Vyjadřuje odhad: 你是王朋吧？ „Ty jsi asi Wang Peng, že?“
+> 你 进来 吧 。|Pojď dál.
+> 你 是 王朋 吧 ？|Ty jsi asi Wang Peng, že?
+## Přípona 了: děj proběhl
+- 了 za slovesem říká, že děj proběhl (je ukončený): 老师来了 „učitel už přišel“.
+- S počtem: 喝了两杯茶. Když na konci věty stojí krátký předmět, dá se 了 až za něj: 我喝茶了.
+- Zápor je 没(有) + sloveso a 了 zmizí: 老师没来.
+- Se dvěma slovesy patří 了 za to druhé: 他请我喝了一杯咖啡.
+- Otázka: …了吗？ nebo …了没有？
+> 老师 来 了 。|Učitel už přišel.
+> 老师 没 来 。|Učitel (ještě) nepřišel.
+> 她 喝 了 两 杯 茶 。|Vypila dva šálky čaje.
+> 你 吃饭 了 吗 ？|Už jsi jedl?
+> 昨天 晚上 我 去 打球 了 。|Včera večer jsem byl hrát míčové hry.
+## 就 „už“ a 才 „až“
+- Před slovesem po časovém údaji: 就 = dřív, než se čekalo („už“), 才 = později („až“).
+- Věta s 才 v tomto významu nemá 了.
+- V souvětí: 我打了球就去看电影 „hned jak dohraju, jdu na film“.
+> 他 六 点 半 就 来 了 。|Přišel už v půl sedmé.
+> 他 九 点 才 来 。|Přišel až v devět.
+> 我 打 了 球 就 去 看 电影 。|Hned jak dohraju, jdu na film.
+c|你喝＿茶吧。|一点儿/很/都|Napij se trochu čaje.
+c|我介绍＿，这是我同学。|一下/一点儿/很|Dovolte, abych představil: to je můj spolužák.
+c|王朋＿图书馆。|在/有/是|Wang Peng je v knihovně.
+c|图书馆＿很多学生。|有/在/是|V knihovně je hodně studentů.
+c|我＿学校学中文。|在/有/是|Čínsky se učím ve škole.
+c|老师来＿。|了/没/不|Učitel už přišel.
+c|老师＿来。|没/了/的|Učitel nepřišel.
+c|她喝＿两杯茶。|了/在/一点儿|Vypila dva šálky čaje.
+c|你吃饭了＿？|吗/不/的|Už jsi jedl?
+c|他六点半＿来了。|就/才/都|Přišel už v půl sedmé.
+c|他九点＿来。|才/了/的|Přišel až v devět.
+c|你是王朋＿？|吧/了/在|Ty jsi asi Wang Peng, že?
+p|老师没来。/老师没来了。/老师来没。|Učitel nepřišel.
+p|你在哪儿学中文？/你学中文在哪儿？/你哪儿在学中文？|Kde se učíš čínsky?
+p|他九点才来。/他九点才来了。/他才九点来了。|Přišel až v devět.
+p|我喝茶了。/我了喝茶。/了我喝茶。|Napil jsem se čaje.
+p|你喝一点儿茶吧。/你喝茶一点儿吧。/你一点儿喝茶吧。|Napij se trochu čaje.
+o|他 姐姐 喜欢 在 家 看 书|Jeho sestra si ráda čte doma.
+o|昨天 晚上 我 去 打球 了|Včera večer jsem byl hrát míčové hry.
+o|你 看 一下 这 张 照片|Podívej se na tuhle fotku.

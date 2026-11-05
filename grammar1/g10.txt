@@ -1,0 +1,63 @@
+# Téma na začátku věty, 还是 a 或者, 再, pořadí dějů, 先…然后…最后, 坐 a 骑, 每…都, 要…了
+## Předmět na začátku věty (téma)
+- Určitý předmět (často s 这 nebo 那) může jít na začátek věty jako téma: 这个我没买 „tohle jsem nekoupil“.
+- Často v kontrastu dvou vět: 茶他喜欢喝，咖啡他不喜欢.
+> 这个 我 没 买 。|Tohle jsem nekoupil.
+> 茶 他 喜欢 喝 ， 咖啡 他 不 喜欢 。|Čaj pije rád, kávu ne.
+> 中文 我 会 说 。|Čínsky mluvit umím.
+## „Nebo“: 还是 a 或者
+- 还是 = „nebo“ v otázce; 或者 = „nebo“ v oznamovací větě.
+> 你 喝 茶 还是 喝 咖啡 ？|Dáš si čaj, nebo kávu?
+> 我们 坐 地铁 或者 坐 公共汽车 。|Pojedeme metrem, nebo autobusem.
+## 再 „znovu“ (v budoucnu)
+- 再 = znovu, ještě jednou, a to v budoucnosti: 他明天再来; 再见 „na shledanou“.
+- Pro „znovu“ v minulosti se používá jiné příslovce.
+> 他 明天 再 来 。|Zítra přijde znovu.
+> 再见 ！|Na shledanou!
+## Pořadí dějů: 了…就, 才, 再, 先
+- 我下了课就回家 „hned jak skončí hodina, jdu domů“.
+- 才 = „teprve potom“ (důrazně), 再 = „až potom“ (mírnější: rada, návrh).
+- 先 „nejdřív“ zdůrazní první děj: 我先回家再吃饭.
+> 我 下 了 课 就 回家 。|Hned jak skončí hodina, jdu domů.
+> 你 下 了 课 再 回家 吧 。|Až skončí hodina, pak teprve jdi domů.
+> 我 先 回家 再 吃饭 。|Nejdřív půjdu domů a pak se najím.
+## 先…, 然后…, 最后… „nejdřív, pak, nakonec“
+- Spojuje řadu dějů v delším vyprávění.
+> 我 先 坐 地铁 ， 然后 换 公共汽车 ， 最后 坐 出租汽车 。|Nejdřív jedu metrem, pak přestoupím na autobus a nakonec jedu taxíkem.
+## 坐 a 骑 „jet“
+- 坐 + dopravní prostředek, ve kterém sedíme: 坐公共汽车, 坐地铁, 坐飞机.
+- 骑 + na čem sedíme obkročmo: 骑自行车, 骑摩托车.
+- 坐 může stát i před dalším slovesem: 我坐飞机去中国.
+> 我 坐 飞机 去 中国 。|Do Číny poletím letadlem.
+> 他 每 天 骑自行车 去 学校 。|Každý den jezdí do školy na kole.
+## 还是 „raději“
+- V odpovědi nebo návrhu: 还是…吧 = „raději…“.
+> 我们 还是 坐 地铁 吧 。|Raději pojeďme metrem.
+## 每…都 „každý“
+- 每 + numerativ + podstatné jméno: 每个人; 天 a 年 se pojí přímo: 每天. Ve větě obvykle i 都.
+> 每 个 人 都 很 高兴 。|Všichni mají radost.
+> 这个 星期 我 每 天 都 很 忙 。|Tento týden mám každý den hodně práce.
+## 要…了 „už brzy, co nevidět“
+- 要 + sloveso + 了 = děj co nevidět nastane; zesílí to 快要 nebo 就要.
+> 电影 要 开始 了 。|Film co nevidět začne.
+> 快 要 考试 了 ， 我 得{děi} 准备 一下 。|Brzy budou zkoušky, musím se trochu připravit.
+c|你喝茶＿喝咖啡？|还是/或者/和|Dáš si čaj, nebo kávu?
+c|我们坐地铁＿坐公共汽车。|或者/还是/也|Pojedeme metrem, nebo autobusem.
+c|他明天＿来。|再/了/的|Zítra přijde znovu.
+c|我＿坐地铁，然后换公共汽车。|先/最后/然后|Nejdřív jedu metrem, pak přestoupím na autobus.
+c|我先坐地铁，＿换公共汽车。|然后/先/每|Nejdřív jedu metrem, pak přestoupím na autobus.
+c|我＿飞机去中国。|坐/骑/走|Do Číny poletím letadlem.
+c|他每天＿自行车去学校。|骑/坐/开|Každý den jezdí do školy na kole.
+c|＿个人都很高兴。|每/都/有|Všichni mají radost.
+c|这个星期我每天＿很忙。|都/每/的|Tento týden mám každý den hodně práce.
+c|电影要开始＿。|了/的/得|Film co nevidět začne.
+c|这个我没＿。|买/买了/了买|Tohle jsem nekoupil.
+c|我们＿坐地铁吧。|还是/每/再见|Raději pojeďme metrem.
+p|你喝茶还是喝咖啡？/你喝茶或者喝咖啡？/你喝茶还是喝咖啡吗？|Dáš si čaj, nebo kávu?
+p|我坐飞机去中国。/我骑飞机去中国。/我去中国坐飞机坐。|Do Číny poletím letadlem.
+p|每个人都很高兴。/每人个都很高兴。/个每人都很高兴。|Všichni mají radost.
+p|电影要开始了。/电影开始要了。/电影了要开始。|Film co nevidět začne.
+p|我先回家再吃饭。/我再回家先吃饭。/先我回家吃饭再。|Nejdřív půjdu domů a pak se najím.
+o|我 下 了 课 就 回家|Hned jak skončí hodina, jdu domů.
+o|他 每 天 骑自行车 去 学校|Každý den jezdí do školy na kole.
+o|茶 他 喜欢 喝 ， 咖啡 他 不 喜欢|Čaj pije rád, kávu ne.

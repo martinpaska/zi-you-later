@@ -1,0 +1,78 @@
+# Datum a čas, přídavné jméno v přísudku, 几/多少, 怎么样, 为什么, otázky
+## Dny v týdnu
+- 星期 + 一…六 = pondělí až sobota; neděle je 星期天 (nebo 星期日).
+- Otázka: 今天星期几？
+> 今天 星期 几 ？|Co je dnes za den?
+> 今天 星期四 。|Dnes je čtvrtek.
+## Měsíce a datum
+- Měsíc = číslo + 月: 一月 leden, 九月 září, 十二月 prosinec. Pozor: 一个月 je „jeden měsíc“ (doba).
+- Den v měsíci = číslo + 号.
+- Datum se řadí od největšího k nejmenšímu: rok – měsíc – den – den v týdnu.
+> 九月 十二 号 是 我 的 生日 。|Dvanáctého září mám narozeniny.
+> 你 的 生日 是 几 月 几 号 ？|Kdy máš narozeniny?
+## Hodiny
+- 点 hodina, 半 půl, 刻 čtvrt, 分 minuta: 三点 3:00, 三点一刻 3:15, 三点半 3:30, 三点三刻 3:45.
+- „Kolik je hodin?“ = 几点？ (bez 是).
+> 现在 几 点 ？|Kolik je hodin?
+> 现在 八 点 半 。|Je půl deváté.
+> 晚上 七 点 一 刻 。|Večer ve čtvrt na osm.
+## Pořadí časových údajů
+- Od většího k menšímu: 明天晚上七点 „zítra večer v sedm“.
+- Časový údaj stojí za podmětem, nebo na začátku věty, nikdy na konci jako v češtině.
+- 什么时候 „kdy“ stojí za podmětem: 你什么时候来？
+> 我 明天 晚上 七 点 来 。|Přijdu zítra večer v sedm.
+> 今天 我 很 忙 。|Dnes mám hodně práce.
+> 你 什么 时候 回家 ？|Kdy jdeš domů?
+## Přídavné jméno v přísudku
+- Přídavné jméno je samo přísudkem, bez 是: 他很忙 (ne 他是忙).
+- 很 často jen doplní větu a nepřekládá se; s důrazem znamená „velmi“.
+- Další možnosti: 不忙, 太忙了 „strašně“, 不太忙 „ne moc“.
+- Bez 很 vyznívá přídavné jméno jako srovnání: 中国大，英国小.
+> 他 很 忙 。|Je zaneprázdněný.
+> 我 今天 太 忙 了 。|Dnes mám strašně moc práce.
+> 她 不 太 忙 。|Nemá moc práce.
+## 几 a 多少 „kolik“, 多 + přídavné jméno
+- 几 pro malé počty (zhruba do deseti), vždy s numerativem: 几个, 几口.
+- 多少 pro větší počty; numerativ za ním být nemusí.
+- 多 + přídavné jméno = „jak…“: 你多大？ „Kolik ti je?“
+> 你 女儿 几 岁 ？|Kolik je tvé dceři?
+> 你们 学校 有 多少 学生 ？|Kolik studentů má vaše škola?
+> 你 今年 多 大 ？|Kolik ti je letos?
+## 怎么样 a 为什么
+- 怎么样 „jak? jaký je?“ stojí na konci: 你今天怎么样？
+- 为什么 „proč“ stojí za podmětem a před slovesem.
+> 晚饭 怎么样 ？|Jaká byla večeře?
+> 你 为什么 请 我 吃饭 ？|Proč mě zveš na jídlo?
+## Otázka klad–zápor a 好吗
+- Sloveso nebo přídavné jméno + 不 + totéž: 忙不忙, 喜欢不喜欢; u 有 je to 有没有. 吗 se pak nepřidává.
+- …，好吗？ / 好不好？ na konci = „…, ano? platí?“
+> 你 今天 忙 不 忙 ？|Máš dnes hodně práce?
+> 他 有 没 有 弟弟 ？|Má mladšího bratra?
+> 我 请 你 吃饭 ， 好 吗 ？|Pozvu tě na jídlo, ano?
+## 还是 „nebo“ v otázce
+- A 还是 B？ nabízí dvě možnosti. 吗 se nepřidává.
+> 你 是 学生 还是 老师 ？|Jsi student, nebo učitel?
+> 你 喝 茶 还是 喝 咖啡 ？|Dáš si čaj, nebo kávu?
+## 还 „ještě, také“
+- Příslovce 还 stojí těsně před slovesem.
+> 我 认识 王朋 ， 还 认识 他 妹妹 。|Znám Wang Penga a znám i jeho mladší sestru.
+c|今天星期＿？|几/什么/多少|Co je dnes za den?
+c|现在几＿？|点/号/月|Kolik je hodin?
+c|九月十二＿是我的生日。|号/点/岁|Dvanáctého září mám narozeniny.
+c|他很＿。|忙/是/的|Je zaneprázdněný.
+c|你女儿＿岁？|几/什么/哪|Kolik je tvé dceři?
+c|你＿不喜欢他？|为什么/怎么样/谁|Proč ho nemáš rád?
+c|你是学生＿老师？|还是/和/也|Jsi student, nebo učitel?
+c|你今天忙＿忙？|不/没/吗|Máš dnes hodně práce?
+c|晚饭＿？|怎么样/为什么/还是|Jaká byla večeře?
+c|你们学校有＿学生？|多少/几/谁|Kolik studentů má vaše škola?
+c|我们明天＿七点见。|晚上/晚饭/现在|Uvidíme se zítra večer v sedm.
+c|我请你吃饭，好＿？|吗/呢/还是|Pozvu tě na jídlo, ano?
+p|他很忙。/他是忙。/他忙很。|Je zaneprázdněný.
+p|你什么时候来？/你来什么时候？/什么时候来你？|Kdy přijdeš?
+p|我明天晚上七点来。/我来明天晚上七点。/我七点晚上明天来。|Přijdu zítra večer v sedm.
+p|你今天忙不忙？/你今天忙不忙吗？/你今天不忙忙？|Máš dnes hodně práce?
+p|今天星期四。/今天是四星期。/今天四星期。|Dnes je čtvrtek.
+o|你 的 生日 是 几 月 几 号|Kdy máš narozeniny?
+o|你 喝 茶 还是 喝 咖啡|Dáš si čaj, nebo kávu?
+o|我 今天 太 忙 了|Dnes mám strašně moc práce.

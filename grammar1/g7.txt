@@ -1,0 +1,54 @@
+# Komplement stupně 得, řadové číslovky 第, 有一点儿, 怎么, 的 bez podstatného jména, 上来/下去
+## Směr pohybu nahoru a dolů
+- 上来 „pojď nahoru“ (mluvčí je nahoře), 上去 „jdi nahoru“; 下来 „pojď dolů“ (mluvčí je dole), 下去 „jdi dolů“.
+> 你 上来 吧 。|Pojď nahoru.
+> 你 下来 吧 。|Pojď dolů.
+## Komplement stupně s 得
+- Sloveso + 得 + hodnocení říká, jak se děj dělá: 他说得很快 „mluví rychle“.
+- Zápor patří do hodnocení: 他写得不好.
+- S předmětem se sloveso zopakuje (他写字写得很好), nebo předmět jde dopředu (他中文说得很好).
+> 他 说 得 很 快 。|Mluví rychle.
+> 你 写 得 不 对 。|Nenapsal jsi to správně.
+> 他 写 字 写 得 很 好 。|Píše znaky hezky.
+> 他 中文 说 得 很 好 。|Mluví čínsky dobře.
+> 我 睡觉 睡 得 很 晚 。|Chodím spát pozdě.
+## Řadové číslovky s 第
+- 第 + číslovka = řadová číslovka: 第一 první, 第二 druhý. Za ní numerativ: 第一个问题.
+- Slova jako 课 (lekce), 天 (den), 年 (rok) se pojí s číslem přímo, bez numerativu: 第七课, 三天.
+> 我 不 懂 第 一{yī} 个 问题 。|Nerozumím první otázce.
+> 我们 今天 学 第 七 课 。|Dnes se učíme sedmou lekci.
+## 有(一)点儿 „trochu, poněkud“
+- Stojí před přídavným jménem nebo slovesem, většinou když je něco nepříjemné: 有点儿难, 有点儿累.
+- Pozor: 一点儿 stojí jen před podstatným jménem (一点儿茶). 我一点儿忙 je chyba, správně 我有点儿忙.
+> 我 觉得 中文 有 点儿 难 。|Připadá mi, že čínština je trochu těžká.
+> 今天 我 有 点儿 累 。|Dnes jsem trochu unavený.
+> 给 我 一点儿 茶 。|Dej mi trochu čaje.
+## 怎么 „jak, jak to, že“
+- 怎么 + sloveso = „jak se to dělá?“: 这个字怎么写？
+- Vyjadřuje i údiv: 你怎么才来？ „Jak to, že jdeš až teď?“
+> 这 个 字 怎么 写 ？|Jak se píše tenhle znak?
+> 你 怎么 才 来 ？|Jak to, že jdeš až teď?
+## 的 bez podstatného jména
+- Když je jasné, o čem mluvíme, podstatné jméno za 的 vynecháme: 五个难的 „pět těžkých (znaků)“.
+> 我 写 了 十 个 字 ， 五 个 难 的 ， 五 个 容易 的 。|Napsal jsem deset znaků, pět těžkých a pět lehkých.
+> 这 枝 笔 是 我 的 。|Tohle pero je moje.
+c|他说＿很快。|得/的/了|Mluví rychle.
+c|他写字写得很＿。|好/得/的|Píše znaky hezky.
+c|我们今天学＿七课。|第/个/一|Dnes se učíme sedmou lekci.
+c|我不懂第一＿问题。|个/课/第|Nerozumím první otázce.
+c|我觉得中文＿难。|有点儿/一点儿/点|Připadá mi, že čínština je trochu těžká.
+c|给我＿茶。|一点儿/有点儿/一下|Dej mi trochu čaje.
+c|这个字＿写？|怎么/什么/怎么样|Jak se píše tenhle znak?
+c|你＿才来？|怎么/什么/谁|Jak to, že jdeš až teď?
+c|这枝笔是我＿。|的/得/了|Tohle pero je moje.
+c|你写得＿对。|不/没/别|Nenapsal jsi to správně.
+c|我睡觉睡得很＿。|晚/晚上/早上|Chodím spát pozdě.
+c|今天我＿累。|有点儿/一点儿/一下|Dnes jsem trochu unavený.
+p|他说得很快。/他说很快得。/他很快说得。|Mluví rychle.
+p|我有点儿忙。/我一点儿忙。/我忙有点儿。|Mám trochu moc práce.
+p|他中文说得很好。/他说中文得很好。/他中文说很好得。|Mluví čínsky dobře.
+p|我们学第七课。/我们学七第课。/我们学第七个课。|Učíme se sedmou lekci.
+p|这个字怎么写？/这个字写怎么？/怎么这个字写？|Jak se píše tenhle znak?
+o|他 写 字 写 得 很 好|Píše znaky hezky.
+o|我 觉得 中文 有 点儿 难|Připadá mi, že čínština je trochu těžká.
+o|我 不 懂 第 一 个 问题|Nerozumím první otázce.

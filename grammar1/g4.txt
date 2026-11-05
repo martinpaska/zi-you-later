@@ -1,0 +1,71 @@
+# Pořadí příslovcí, otázka klad–zápor, 想, 那, 去, objektová slovesa, 有的, 因为…所以
+## Kde stojí příslovce a časový údaj
+- Příslovce (都, 也, 常常, 很, 还…) stojí vždy mezi podmětem a slovesem.
+- Časový údaj stojí za podmětem, nebo před ním na začátku věty.
+> 我 常常 听 音乐 。|Často poslouchám hudbu.
+> 王老师 现在 没 有 事儿 。|Učitel Wang teď nemá nic na práci.
+> 八 点 半 我 有 事儿 。|V půl deváté něco mám.
+## Otázka klad–zápor: další pravidla
+- U dvouslabičného slovesa jdou obě formy: 喜欢不喜欢 i 喜不喜欢.
+- Se dvěma slovesy se ptáme tím prvním: 你想不想去？
+- Když je ve větě příslovce (很, 也, 常常…), použijeme jen 吗: 你今天很忙吗？ (ne 很忙不忙).
+> 你 喜 不{bu} 喜欢 看 电影 ？|Díváš se rád na filmy?
+> 你 想 不 想 跳舞 ？|Chceš jít tancovat?
+> 你 也 喜欢 唱歌 吗 ？|Ty taky rád zpíváš?
+## 想 „chtít“ a „myslet“
+- 想 + sloveso = „chtít, mít v úmyslu“: 我想看电影.
+- 想 + podstatné jméno nebo zájmeno = „myslet na“: 你想什么？
+> 我 想 看 电影 。|Chci se podívat na film.
+> 我 现在 不 想 吃饭 。|Teď nechci jíst.
+> 你 想 什么 ？|Na co myslíš?
+## 那 „tak tedy“
+- Na začátku věty v rozhovoru: „tak tedy…, a co…“. Uvádí návrh podle toho, co zaznělo.
+> 我 今天 很 忙 。|Dnes mám hodně práce.
+> 那 明天 呢 ？|Tak co zítra?
+> 那 我们 明天 见 吧 。|Tak se uvidíme zítra.
+## 去 + místo a 去 + sloveso
+- 去 + místo: 我去北京.
+- 去 + další sloveso = „jít něco dělat“: 我去跳舞.
+> 你 去 哪儿 ？|Kam jdeš?
+> 晚上 我 去 跳舞 。|Večer jdu tancovat.
+> 周末 我们 去 看 电影 吧 。|O víkendu se pojďme podívat na film.
+## Objektová slovesa
+- Některá slovesa mají „vestavěný“ předmět, který se do češtiny nepřekládá: 吃饭 jíst, 睡觉 spát, 跳舞 tancovat, 唱歌 zpívat, 说话 mluvit.
+- Další předmět za ně přidat nejde: 说中文 (ne 说话中文), 吃中国菜.
+- Mezi obě části lze něco vložit: 唱中国歌 „zpívat čínské písně“.
+> 我 很 喜欢 唱歌 。|Moc rád zpívám.
+> 他 喜欢 唱 中国 歌 。|Rád zpívá čínské písně.
+> 他们 说 中文 。|Mluví čínsky.
+## Zamlčený předmět
+- Když je předmět jasný z otázky nebo z kontextu, v odpovědi ho vynecháme (česky řekneme „to, ho, ji“).
+> 你 喜欢 他 吗 ？|Máš ho rád?
+> 喜欢 。|Mám. (doslova „Mám rád.“)
+> 这 个 电影 很 有意思 ， 我 想 看 。|Ten film je zajímavý, chci ho vidět.
+## 有的 „někteří“
+- 有的 + podstatné jméno = „někteří, některé“; 有的时候 = „někdy“.
+> 有的 人 喜欢 唱歌 ， 有的 人 喜欢 跳舞 。|Někteří lidé rádi zpívají, jiní rádi tancují.
+> 有的 时候 我 去 打球 。|Někdy chodím hrát míčové hry.
+## 因为…所以 „protože…, a proto“
+- 因为 uvádí důvod, 所以 důsledek. Jedno z nich (i obě) lze vynechat.
+> 因为 我 很 忙 ， 所以 不 去 看 电影 。|Protože mám hodně práce, do kina nejdu.
+> 因为 今天 是 我 的 生日 ， 所以 我 请客 。|Protože mám dnes narozeniny, zvu vás.
+c|我＿听音乐。|常常/很/的|Často poslouchám hudbu.
+c|你今天很忙＿？|吗/不忙/呢|Máš dnes hodně práce?
+c|你想不想＿跳舞？|去/很/也|Chceš jít tancovat?
+c|我现在不想＿。|吃饭/饭吃/吃饭饭|Teď nechci jíst.
+c|我今天很忙。——＿明天呢？|那/所以/也|Dnes mám hodně práce. — Tak co zítra?
+c|晚上我＿跳舞。|去/的/很|Večer jdu tancovat.
+c|＿人喜欢唱歌，有的人喜欢跳舞。|有的/有/的|Někteří lidé rádi zpívají, jiní rádi tancují.
+c|因为我很忙，＿不去看电影。|所以/因为/可是|Protože mám hodně práce, do kina nejdu.
+c|＿我很忙，所以不去。|因为/所以/还是|Protože mám hodně práce, nejdu.
+c|你喜欢他吗？——＿。|喜欢/喜欢吗/他喜欢|Máš ho rád? — Mám.
+c|他们说＿。|中文/话中文/说中文|Mluví čínsky.
+c|你喜不＿看电影？|喜欢/喜/欢|Díváš se rád na filmy?
+p|你今天很忙吗？/你今天很忙不忙？/你今天很不很忙？|Máš dnes hodně práce?
+p|我常常听音乐。/我听音乐常常。/常常我听音乐。|Často poslouchám hudbu.
+p|我说中文。/我说话中文。/我中文说话。|Mluvím čínsky.
+p|你想不想跳舞？/你想不想跳舞吗？/你不想想跳舞？|Chceš tancovat?
+p|八点半我有事儿。/我有事儿八点半。/有事儿我八点半。|V půl deváté něco mám.
+o|周末 我们 去 看 电影 吧|O víkendu se pojďme podívat na film.
+o|因为 我 很 忙 ， 所以 不 去|Protože mám hodně práce, nejdu.
+o|有的 人 喜欢 唱歌|Někteří lidé rádi zpívají.

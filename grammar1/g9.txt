@@ -1,0 +1,56 @@
+# Peníze, barvy, 要是/如果…的话, 多 + přídavné jméno, 跟…一样, 虽然…可是/但是, 不过
+## Peníze
+- „Kolik to stojí?“ = 多少钱？ (bez numerativu).
+- Hovorově 块 = jüan, 毛 = desetina jüanu, 分 = setina.
+> 这 件 衬衫 多少 钱 ？|Kolik stojí tahle košile?
+> 二十 块 。|Dvacet jüanů.
+> 一共 三十五 块 。|Dohromady třicet pět jüanů.
+## Barvy
+- 黄 žlutá, 红 červená, 黑 černá, 绿 zelená, 蓝 modrá, 咖啡色 hnědá.
+- Barvy obvykle nestojí v přísudku s 很: řekneme 这是红的 „tohle je červené“, ne 这很红.
+> 这 件 衬衫 是 红 的 。|Tahle košile je červená.
+> 我 想 买 一 条 黑 裤子 。|Chci si koupit černé kalhoty.
+> 那 双 鞋 不 是 黄 的 。|Tamty boty nejsou žluté.
+## Podmínka: 要是 / 如果 … 的话, 就
+- 要是 i 如果 = „jestliže, kdyby“ (要是 je hovorovější). Na konec podmínky lze přidat 的话; jedno z nich můžeš vynechat.
+- Ve druhé části bývá 就.
+> 如果 你 不 喜欢 的话 ， 就 别 买 。|Jestli se ti to nelíbí, tak to nekupuj.
+> 要是 太 贵 ， 我 就 不 买 了 。|Jestli je to moc drahé, tak to nekoupím.
+## 多 + přídavné jméno „jak…?“
+- 多大 „kolik let, jak velký“: ptá se na míru nebo rozsah.
+> 你 姐姐 今年 多 大 ？|Kolik je letos tvé sestře?
+> 你 穿 多 大 的 鞋 ？|Jakou velikost bot nosíš?
+## Stejné a jiné: 跟/和…一样
+- A 跟/和 B 一样 = „A je stejné jako B“; zápor 不一样.
+- Za 一样 může stát přídavné jméno nebo sloveso: 跟她一样漂亮 „stejně hezká jako ona“.
+- Pozor na místo záporu: A 和 B 不一样 „nejsou stejné“, A 不跟 B 一样 „A není jako B“.
+> 他 的 鞋 跟 你 的 一样 。|Jeho boty jsou stejné jako tvoje.
+> 这 两 件 衬衫 不 一样 。|Ty dvě košile nejsou stejné.
+> 她 女儿 跟 她 一样 漂亮 。|Její dcera je stejně hezká jako ona.
+## 虽然…, 可是/但是 „i když…, ale“
+- 虽然 uvádí přípustku, ve druhé části 可是 (hovorové) nebo 但是. 虽然 lze vynechat.
+> 虽然 这 件 衬衫 很 便宜 ， 可是 大小 不 合适 。|I když je ta košile levná, nesedí velikostí.
+> 这 双 鞋 很 好看 ， 但是 太 贵 了 。|Ty boty jsou hezké, ale moc drahé.
+## Tři druhy „ale“: 但是, 不过, 只是
+- 但是 / 可是 – silná výhrada; 不过 – střední; 只是 – mírná („jen“).
+> 这 件 衣服 很 好看 ， 不过 有 点儿 贵 。|To oblečení je hezké, jen je trochu drahé.
+c|这件衬衫＿钱？|多少/几/什么|Kolik stojí tahle košile?
+c|这件衬衫是红＿。|的/得/了|Tahle košile je červená.
+c|我想买一＿裤子。|条/件/双|Chci si koupit kalhoty.
+c|我想买一＿鞋。|双/条/件|Chci si koupit boty.
+c|如果你不喜欢的话，＿别买。|就/才/还是|Jestli se ti to nelíbí, tak to nekupuj.
+c|＿太贵，我就不买了。|要是/虽然/还是|Jestli je to moc drahé, tak to nekoupím.
+c|你姐姐今年＿大？|多/几/什么|Kolik je letos tvé sestře?
+c|他的鞋跟你的＿。|一样/一个/样子|Jeho boty jsou stejné jako tvoje.
+c|这两件衬衫＿一样。|不/没/别|Ty dvě košile nejsou stejné.
+c|＿这件衬衫很便宜，可是大小不合适。|虽然/因为/要是|I když je ta košile levná, nesedí velikostí.
+c|这双鞋很好看，＿太贵了。|但是/所以/因为|Ty boty jsou hezké, ale moc drahé.
+c|她女儿跟她一样＿。|漂亮/的/得|Její dcera je stejně hezká jako ona.
+p|这是红的。/这很红。/这是红。|Tohle je červené.
+p|这件衬衫多少钱？/这件衬衫几钱？/这件衬衫多少个钱？|Kolik stojí tahle košile?
+p|我跟你一样。/我一样跟你。/一样我跟你。|Jsem stejný jako ty.
+p|虽然很便宜，可是不合适。/虽然很便宜，所以不合适。/可是很便宜，虽然不合适。|I když je to levné, nesedí to.
+p|你穿多大的鞋？/你穿大多的鞋？/你多穿大的鞋？|Jakou velikost bot nosíš?
+o|她 女儿 跟 她 一样 漂亮|Její dcera je stejně hezká jako ona.
+o|如果 你 不 喜欢 的话 ， 就 别 买|Jestli se ti to nelíbí, tak to nekupuj.
+o|这 件 衣服 很 好看 ， 不过 有 点儿 贵|To oblečení je hezké, jen je trochu drahé.
