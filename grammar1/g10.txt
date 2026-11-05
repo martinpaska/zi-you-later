@@ -5,6 +5,7 @@
 > 这个 我 没 买 。|Tohle jsem nekoupil.
 > 茶 他 喜欢 喝 ， 咖啡 他 不 喜欢 。|Čaj pije rád, kávu ne.
 > 中文 我 会 说 。|Čínsky mluvit umím.
+> 捷克{Jiékè=Česko} 啤酒{píjiǔ=pivo} 他 不 喜欢 。|České pivo nemá rád.
 ## „Nebo“: 还是 a 或者
 - 还是 = „nebo“ v otázce; 或者 = „nebo“ v oznamovací větě.
 > 你 喝 茶 还是 喝 咖啡 ？|Dáš si čaj, nebo kávu?
@@ -30,6 +31,7 @@
 - 坐 může stát i před dalším slovesem: 我坐飞机去中国.
 > 我 坐 飞机 去 中国 。|Do Číny poletím letadlem.
 > 他 每 天 骑自行车 去 学校 。|Každý den jezdí do školy na kole.
+> 他 会 骑{qí} 马{mǎ=kůň} 。|Umí jezdit na koni.
 ## 还是 „raději“
 - V odpovědi nebo návrhu: 还是…吧 = „raději…“.
 > 我们 还是 坐 地铁 吧 。|Raději pojeďme metrem.
@@ -37,6 +39,7 @@
 - 每 + numerativ + podstatné jméno: 每个人; 天 a 年 se pojí přímo: 每天. Ve větě obvykle i 都.
 > 每 个 人 都 很 高兴 。|Všichni mají radost.
 > 这个 星期 我 每 天 都 很 忙 。|Tento týden mám každý den hodně práce.
+> 这儿 每 个 人 我 都 认识 。|Tady znám každého.
 ## 要…了 „už brzy, co nevidět“
 - 要 + sloveso + 了 = děj co nevidět nastane; zesílí to 快要 nebo 就要.
 > 电影 要 开始 了 。|Film co nevidět začne.

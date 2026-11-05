@@ -7,6 +7,7 @@
 > 我 喜欢 我 的 工作 。|Mám rád svou práci.
 > 我 爸爸 在 学校 工作 。|Můj táta pracuje ve škole.
 > 王朋 认识 李友 。|Wang Peng zná Li You.
+> 我 在 工厂{gōngchǎng=továrna} 工作 。|Pracuji v továrně.
 ## Osobní zájmena
 - 我 já, 你 ty, 他 on, 她 ona, 它 ono (věc, zvíře); zdvořile 您 „Vy“.
 - Množné číslo tvoří přípona 们: 我们, 你们, 他们, 她们.
@@ -60,6 +61,8 @@
 - Oslovení: příjmení + titul, např. 王老师, 王先生, 李小姐. Známe-li funkci (učitel), použijeme ji.
 > 请问 ， 您 贵 姓 ？|Promiňte, jak se jmenujete?
 > 王老师 好 ！|Dobrý den, pane učiteli!
+> 王 太太{tàitai=paní (vdaná žena)} 好 ！|Dobrý den, paní Wangová!
+> 王 师傅{shīfu=mistr (řidič, řemeslník)} 好 ！|Dobrý den, mistře Wangu!
 c|我＿王，叫王朋。|姓/叫/是|Příjmením jsem Wang, jmenuji se Wang Peng.
 c|我姓李，＿李友。|叫/姓/是|Příjmením jsem Li, jmenuji se Li You.
 c|他＿美国人。|是/姓/叫|Je Američan.

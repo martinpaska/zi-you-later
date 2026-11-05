@@ -16,6 +16,7 @@
 > 现在 几 点 ？|Kolik je hodin?
 > 现在 八 点 半 。|Je půl deváté.
 > 晚上 七 点 一 刻 。|Večer ve čtvrt na osm.
+> 差{chà=chybět, bez} 一 刻 四 点 。|Tři čtvrtě na čtyři.
 ## Pořadí časových údajů
 - Od většího k menšímu: 明天晚上七点 „zítra večer v sedm“.
 - Časový údaj stojí za podmětem, nebo na začátku věty, nikdy na konci jako v češtině.
@@ -31,6 +32,7 @@
 > 他 很 忙 。|Je zaneprázdněný.
 > 我 今天 太 忙 了 。|Dnes mám strašně moc práce.
 > 她 不 太 忙 。|Nemá moc práce.
+> 中国 大 ， 捷克{Jiékè=Česko} 小 。|Čína je větší, Česko menší.
 ## 几 a 多少 „kolik“, 多 + přídavné jméno
 - 几 pro malé počty (zhruba do deseti), vždy s numerativem: 几个, 几口.
 - 多少 pro větší počty; numerativ za ním být nemusí.
