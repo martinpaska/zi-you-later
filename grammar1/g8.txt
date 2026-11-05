@@ -6,6 +6,7 @@
 > 我 要 一 瓶 水 和 两 杯 咖啡 。|Chci láhev vody a dva šálky kávy.
 > 这 件 衬衫 很 好看 。|Tahle košile je hezká.
 > 他 学 了 三 年 中文 。|Učil se tři roky čínsky.
+> 这儿 有 一 把{bǎ=numerativ pro věci s držadlem} 椅子{yǐzi=židle} 。|Tady je židle.
 ## Přívlastek s 的 a bez 的
 - Přivlastnění: 老师的书 „učitelova kniha“. U rodiny a blízkých 的 odpadá: 我爸爸.
 - Druh nebo vlastnost vyjádřená podstatným jménem je bez 的: 中文书 „čínská kniha“, 中国菜 „čínské jídlo“.
@@ -13,6 +14,7 @@
 > 这 是 我 的 中文 书 。|Tohle je moje čínská kniha.
 > 我 喜欢 中国菜 。|Mám rád čínské jídlo.
 > 这 是 一 个 很 有意思 的 电影 。|Je to moc zajímavý film.
+> 这 是 一 个 电脑 公司{gōngsī=firma} 。|Tohle je počítačová firma.
 ## Pořadí přívlastků
 - Vlastník → 这/那 + číslo + numerativ → vlastnost → podstatné jméno.
 > 他 的 那 两 张 照片 很 好 。|Ty jeho dvě fotky jsou dobré.

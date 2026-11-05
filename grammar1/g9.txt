@@ -11,6 +11,7 @@
 > 这 件 衬衫 是 红 的 。|Tahle košile je červená.
 > 我 想 买 一 条 黑 裤子 。|Chci si koupit černé kalhoty.
 > 那 双 鞋 不 是 黄 的 。|Tamty boty nejsou žluté.
+> 天 黑 了 。|Setmělo se.
 ## Podmínka: 要是 / 如果 … 的话, 就
 - 要是 i 如果 = „jestliže, kdyby“ (要是 je hovorovější). Na konec podmínky lze přidat 的话; jedno z nich můžeš vynechat.
 - Ve druhé části bývá 就.
@@ -34,6 +35,7 @@
 ## Tři druhy „ale“: 但是, 不过, 只是
 - 但是 / 可是 – silná výhrada; 不过 – střední; 只是 – mírná („jen“).
 > 这 件 衣服 很 好看 ， 不过 有 点儿 贵 。|To oblečení je hezké, jen je trochu drahé.
+> 这 件 毛衣{máoyī=svetr} 很 好看 ， 只是 有 点儿 贵 。|Ten svetr je hezký, jen je trochu drahý.
 c|这件衬衫＿钱？|多少/几/什么|Kolik stojí tahle košile?
 c|这件衬衫是红＿。|的/得/了|Tahle košile je červená.
 c|我想买一＿裤子。|条/件/双|Chci si koupit kalhoty.

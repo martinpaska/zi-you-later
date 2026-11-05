@@ -23,6 +23,7 @@
 > 我 觉得 中文 有 点儿 难 。|Připadá mi, že čínština je trochu těžká.
 > 今天 我 有 点儿 累 。|Dnes jsem trochu unavený.
 > 给 我 一点儿 茶 。|Dej mi trochu čaje.
+> 他 哥哥 有 点儿 不 高兴 。|Jeho bratr je trochu rozladěný.
 ## 怎么 „jak, jak to, že“
 - 怎么 + sloveso = „jak se to dělá?“: 这个字怎么写？
 - Vyjadřuje i údiv: 你怎么才来？ „Jak to, že jdeš až teď?“

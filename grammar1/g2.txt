@@ -24,6 +24,7 @@
 > 我 家 有 五 口 人 。|Moje rodina má pět členů.
 > 这 张 照片 是 你 的 吗 ？|Je tahle fotka tvoje?
 > 那 位 老师 姓 王 。|Tamten pan učitel se jmenuje Wang.
+> 我 有 三 本{běn=numerativ pro knihy} 书 。|Mám tři knihy.
 ## 二 a 两
 - Obě znamenají „dva“. S numerativem se počítá 两: 两个人, 两杯茶.
 - 二 se používá při počítání, ve složených číslech a v datu: 十二, 二十二, 二月.
@@ -36,6 +37,7 @@
 > 这 是 我 弟弟 。|Tohle je můj mladší bratr.
 > 这 个 学生 是 美国人 。|Tento student je Američan.
 > 你 的 是 哪 个 ？|Který je tvůj?
+> 这些{zhèxiē=tito, tyto} 人 都 是 我 的 同学 。|Všichni tihle lidé jsou moji spolužáci.
 ## Tázací slova
 - 谁 „kdo“, 谁的 „čí“, 什么 „co, jaký“, 哪儿 „kde, kam“, 几 „kolik“ (malé počty, s numerativem).
 - Tázací slovo stojí tam, kde bude odpověď: 这是谁的照片？ – 这是我的照片。

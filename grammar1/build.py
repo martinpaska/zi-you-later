@@ -6,8 +6,9 @@
 #   - bullet (Czech; Chinese may appear inline)
 #   > 我 不 是 老师 。|Czech translation    example: words separated by spaces; pinyin is generated
 #   c|sentence with ＿|right/wrong/wrong|Czech   p|right sentence/wrong/wrong|Czech   o|chunks in order|Czech
-# Every Chinese character must come from the textbook vocabulary (Integrated Chinese 1/1, lessons 1-10)
-# or the names below; each seminar needs exactly 20 drills.
+# Drills may use only the textbook vocabulary (Integrated Chinese 1/1, lessons 1-10) and its names. Examples may also
+# use other words (e.g. from the seminar slides), written 桌子{zhuōzi=stůl}; the app marks them "mimo učebnici".
+# Each seminar needs exactly 20 drills.
 # Run: python3 grammar1/build.py
 import json,re,os
 root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,10 +38,15 @@ for n in range(1,11):
         if line.startswith('# '):S['t']=line[2:].strip();continue
         if line.startswith('- '):cur['p'].append(line[2:].strip());check(line,w,errs);continue
         if line.startswith('> '):
-            zh,cz=[x.strip() for x in line[2:].split('|')];ws=zh.split()
+            zh,cz=[x.strip() for x in line[2:].split('|')];ws=[];nw=[]
+            # a word from outside the textbook is allowed in examples only, written 桌子{zhuōzi=stůl}
+            for x in re.findall(r'[^\s{]+\{[^}]*\}|\S+',zh):
+                m=re.match(r'^(.+)\{([^=}]+)=([^}]+)\}$',x)
+                if m:nw.append([m.group(1),m.group(2),m.group(3)]);x=m.group(1)+'{'+m.group(2)+'}'
+                ws.append(x)
             ps=[word_py(x,10,errs,w) for x in ws];forced={i:p for i,(x,p) in enumerate(zip(ws,ps)) if '{' in x};ws=[re.sub(r'\{.*\}','',x) for x in ws];ps=sandhi(ws,ps)
             for i,p in forced.items():ps[i]=p   # a reading given with {…} wins over the automatic tone changes
-            check(''.join(ws),w,errs);cur['ex'].append([ws,ps,cz]);continue
+            ok=set(''.join(a for a,_,_ in nw));check(''.join(c for c in ''.join(ws) if c not in ok),w,errs);cur['ex'].append([ws,ps,cz]+([nw] if nw else []));continue
         fl=line.split('|');t=fl[0]
         if t=='c' and len(fl)==4:
             q,opts=fl[1],fl[2].split('/')

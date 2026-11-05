@@ -16,6 +16,8 @@
 > 王朋 在 图书馆 。|Wang Peng je v knihovně.
 > 图书馆 有 很 多 学生 。|V knihovně je hodně studentů.
 > 我 妈妈 不 在 家 。|Máma není doma.
+> 你 的 书 在 桌子{zhuōzi=stůl} 上 。|Tvoje kniha je na stole.
+> 桌子{zhuōzi=stůl} 上 有 你 的 书 。|Na stole je tvoje kniha.
 ## Předložka 在 + místo + sloveso
 - 在 + místo stojí před slovesem a říká, kde se děj odehrává.
 > 你 在 哪儿 学 中文 ？|Kde se učíš čínsky?
@@ -37,6 +39,7 @@
 > 她 喝 了 两 杯 茶 。|Vypila dva šálky čaje.
 > 你 吃饭 了 吗 ？|Už jsi jedl?
 > 昨天 晚上 我 去 打球 了 。|Včera večer jsem byl hrát míčové hry.
+> 小高 请 我 喝 了 一 杯 啤酒{píjiǔ=pivo} 。|Malý Gao mě pozval na pivo.
 ## 就 „už“ a 才 „až“
 - Před slovesem po časovém údaji: 就 = dřív, než se čekalo („už“), 才 = později („až“).
 - Věta s 才 v tomto významu nemá 了.
