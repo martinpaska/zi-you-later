@@ -48,3 +48,30 @@ jako dřív: pokrok se ukládá jen v prohlížeči.
 - **E-maily:** vestavěné posílání (potvrzení registrace, zapomenuté heslo) je omezené
   na pár e-mailů za hodinu. Pro víc uživatelů nastav vlastní SMTP:
   *Authentication* → *Emails* → *SMTP Settings* (např. služba Resend má bezplatný tarif).
+
+## Admin stránka
+
+Na adrese `https://martinpaska.github.io/zi-you-later/#admin` (nebo v aplikaci *Nastavení → Admin*) je přehled:
+kolik zařízení aplikaci denně otevře (s účtem i bez), nové a aktivní účty, co lidé nejčastěji otevírají,
+a tabulka všech účtů (přezdívka, e-mail, registrace, poslední aktivita, pokrok) s hledáním, řazením a exportem do CSV.
+
+1. **Vytvoř tabulky a funkce.** *SQL Editor* → *New query*, vlož celý obsah [`admin.sql`](admin.sql) a klikni na *Run*.
+   Skript jde bezpečně spustit i opakovaně.
+2. **Udělej ze sebe admina.** V *SQL Editoru* spusť (se svým e-mailem, kterým se do aplikace přihlašuješ):
+   ```sql
+   insert into public.admins (user_id)
+   select id from auth.users where email = 'tvuj@email.cz'
+   on conflict do nothing;
+   ```
+   Svůj e-mail sem do souboru nepiš, repozitář je veřejný.
+3. **Přihlas se** v aplikaci tím účtem a otevři `#admin`.
+
+Odebrání admina: `delete from public.admins where user_id = (select id from auth.users where email = '…');`
+
+**Bezpečnost:** data všech uživatelů vrací jen funkce `admin_stats()`, která nejdřív ověří, že je přihlášený
+účet v tabulce `admins`. Tu tabulku z aplikace nikdo nečte ani nemění, jde to jen v dashboardu Supabase.
+
+**Anonymní počty:** každé zařízení pošle nejvýš jednou denně „byl jsem tu“ a za každé otevřené cvičení
+„otevřel jsem X“. Ukládají se jen denní součty (tabulka `usage`), bez ID, IP adresy a cookies, takže unikátní
+lidi za týden spočítat nejde: graf ukazuje zařízení za den. Počítat se začne od chvíle, kdy spustíš `admin.sql`.
+Aplikace to uvádí na stránce *O aplikaci*.
