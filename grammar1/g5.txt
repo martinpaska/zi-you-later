@@ -1,52 +1,80 @@
 # 一下 a 一点儿, 在 a 有, předložka 在, 吧, 了, 就 a 才
 ## 一下 „na chvilku, trochu“
-- Stojí za slovesem a zjemňuje ho: děj je krátký, „jen tak“. 看一下 „podívat se“, 介绍一下 „představit“.
-- Často odpovídá českému dokonavému vidu.
+- 一下 se klade za sloveso a říká, že činnost proběhla krátce, jednorázově nebo „jen tak trochu“.
+- Často vyjadřuje rozdíl, který čeština vyjadřuje videm: 看 „dívat se“ × 看一下 „podívat se“, 做 „dělat“ × 做一下 „udělat“.
+- 吃一下 „kousni si, ochutnej, dej si trochu“. 吃一下饭 „něco sněz“ znamená v zásadě totéž.
 > 你 进来 一下 。|Pojď na chvilku dovnitř.
-> 我 介绍 一下 ， 这 是 我 同学 。|Dovolte, abych představil: to je můj spolužák.
 > 你 看 一下 这 张 照片 。|Podívej se na tuhle fotku.
+> 我 介绍 一下 ， 这 是 我 同学 。|Dovolte, abych představil: to je můj spolužák.
+> 你 吃 一下 。|Ochutnej. / Dej si trochu.
 ## 一点儿 „trochu“
-- Stojí před podstatným jménem (něco, co se dá odměřit): 喝一点儿茶. 一 lze vynechat: 喝点儿茶.
-- 一下 rozvíjí sloveso, 一点儿 podstatné jméno.
+- 一点(儿) znamená „trochu“ a klade se před podstatné jméno (nebo stojí samostatně). 一 se může vynechat: 我吃点儿饭 „trochu se najím“.
+- Významem je blízké 一下 a často je lze zaměnit. 一点(儿) se ale používá jen tam, kde jde o nějaké odměřitelné množství: 看一下书 „podívat se do knihy“ × 看一点书 „přečíst si kus knihy“.
+- 一下 rozvíjí sloveso, 一点(儿) podstatné jméno: 一点饭 je „trochu jídla“, ale samotné 一下饭 nedává smysl.
+> 我 吃 点儿 饭 。|Trochu se najím.
+> 喝 一点儿 可乐{kělè=kola} 吧 。|Napij se trochu koly.
 > 你 喝 一点儿 茶 吧 。|Napij se trochu čaje.
-> 我 想 喝 点儿 水 。|Napil bych se trochu vody.
 ## 在 a 有: kde něco je
-- Věc + 在 + místo: „věc je na místě“ (mluvíme o té věci).
-- Místo + 有 + věc: „na místě je/jsou…“ (mluvíme o místě).
-> 王朋 在 图书馆 。|Wang Peng je v knihovně.
-> 图书馆 有 很 多 学生 。|V knihovně je hodně studentů.
-> 我 妈妈 不 在 家 。|Máma není doma.
+- Slovesa existence (GSČ 96, 103–104): věc + 在 + místo = „věc je na místě“; místo + 有 + věc = „na místě je…“.
+- Rozdíl je v tématu výpovědi: věta začíná tím, o čem mluvíme.
 > 你 的 书 在 桌子{zhuōzi=stůl} 上 。|Tvoje kniha je na stole.
 > 桌子{zhuōzi=stůl} 上 有 你 的 书 。|Na stole je tvoje kniha.
+> 中国人 在 中国 。|Číňané jsou v Číně.
+> 中国 有 中国人 。|V Číně jsou Číňané.
+> 王朋 在 图书馆 。|Wang Peng je v knihovně.
+> 我 妈妈 不 在 家 。|Máma není doma.
 ## Předložka 在 + místo + sloveso
-- 在 + místo stojí před slovesem a říká, kde se děj odehrává.
-> 你 在 哪儿 学 中文 ？|Kde se učíš čínsky?
-> 我 在 学校 学 中文 。|Čínsky se učím ve škole.
-> 他 姐姐 喜欢 在 家 看 书 。|Jeho sestra si ráda čte doma.
+- 在 jako prepoziční sloveso (předložka, GSČ 82–83) označuje místo, kde se něco děje nebo kde někdo něco dělá.
+- Ve větě po něm vždy následuje plnovýznamové sloveso.
+> 你 在 哪儿 学 中文 ？|Kde studuješ čínštinu?
+> 我 在 北京 学 中文 。|Studuju čínštinu v Pekingu.
+> 他 姐姐 喜欢 在 家 看 书 。|Jeho sestra si ráda doma čte.
 ## 吧: výzva a odhad
-- Zmírňuje výzvu nebo návrh: 我们走吧 „pojďme“, 你进来吧 „pojď dál“.
-- Vyjadřuje odhad: 你是王朋吧？ „Ty jsi asi Wang Peng, že?“
+- Koncová částice 吧 (GSČ 91–92) má dva významy.
+- 1) Vybídnutí, zmírňuje rozkaz: 你进来吧 „pojď dál“.
+- 2) Odhad: 你是中国人吧 „ty jsi asi Číňan“.
 > 你 进来 吧 。|Pojď dál.
+> 你 是 中国人 吧 。|Ty jsi asi Číňan.
 > 你 是 王朋 吧 ？|Ty jsi asi Wang Peng, že?
-## Přípona 了: děj proběhl
-- 了 za slovesem říká, že děj proběhl (je ukončený): 老师来了 „učitel už přišel“.
-- S počtem: 喝了两杯茶. Když na konci věty stojí krátký předmět, dá se 了 až za něj: 我喝茶了.
-- Zápor je 没(有) + sloveso a 了 zmizí: 老师没来.
-- Se dvěma slovesy patří 了 za to druhé: 他请我喝了一杯咖啡.
-- Otázka: …了吗？ nebo …了没有？
-> 老师 来 了 。|Učitel už přišel.
+## Přípona 了: ukončený děj
+- 了 je vido-časová slovesná přípona (GSČ 87–88). Stojí za slovesem.
+- Říká, že děj je ukončený a jeho výsledný stav trvá. Odpovídá zhruba anglickému předpřítomnému času (present perfect): 老师来了 „učitel (už) přišel“, a je tady.
+- Často tak jde o minulost, ale ne nutně: 了 může vyjádřit i ukončení, které teprve předjímáme v budoucnu („Až to dopiju, …“).
+- Zápor je 没(有) a 了 se v záporné větě vynechává: 老师没来 „učitel (ještě) nepřišel“.
+> 老师 来 了 。|Učitel (už) přišel.
 > 老师 没 来 。|Učitel (ještě) nepřišel.
+> 我 喝 了 这 杯 咖啡 就 走 。|Až dopiju tuhle kávu, půjdu.
+## 了 a předmět
+- Předmět s počtem: 了 stojí hned za slovesem: 妈妈喝了三杯咖啡 „maminka vypila tři šálky kávy“.
+- Pozor: pokud je na konci věty za slovesem jednoslovný předmět, klade se 了 zpravidla až za něj: 妈妈喝咖啡了 „maminka vypila kávu“. 喝了咖啡 působí neukončeně.
+- Zápor: 妈妈没喝咖啡 „maminka nevypila kávu“.
+> 妈妈 喝 了 三 杯 咖啡 。|Maminka vypila tři šálky kávy.
+> 妈妈 喝 咖啡 了 。|Maminka vypila kávu.
+> 妈妈 没 喝 咖啡 。|Maminka nevypila kávu.
 > 她 喝 了 两 杯 茶 。|Vypila dva šálky čaje.
+## Dvě slovesa: 了 za druhým
+- Důležité: ve větách se dvěma slovesy („šel jsem něco udělat“, „pozval jsem někoho, ať přijde…“) se 了 klade za DRUHÉ z nich.
+> 星期一 小高 请 我 喝 了 一 杯 啤酒{píjiǔ=pivo} 。|V pondělí mě Malý Gao pozval na pivo.
+> 昨天 晚上 我 去 打球 了 。|Včera večer jsem šel (byl) hrát míčové hry.
+## Souvětí: nejdřív jedna akce, pak druhá
+- 了 za prvním slovesem tvoří souvětí, které vyjadřuje následnost dvou akcí: 我打了球去看电影 „až dohraju míčovou hru, půjdu se dívat na film“.
+- Srovnej s 晚上我去打球了 „večer jsem šel hrát míčovou hru“: tady je 了 na konci věty, proto se přesouvá až za předmět.
+- Když je 了 i ve druhé části souvětí, je ukončené celé, v minulosti: 我打了球去看电影了 „když jsem dohrál, šel jsem se dívat na film“.
+> 我 打 了 球 去 看 电影 。|Až dohraju míčovou hru, půjdu se dívat na film.
+> 晚上 我 去 打球 了 。|Večer jsem šel (byl) hrát míčovou hru.
+> 我 打 了 球 去 看 电影 了 。|Když jsem dohrál míčovou hru, šel jsem se dívat na film.
+## Otázka s 了
+- Otázka se tvoří s 吗 nebo s 没有 na konci: 你吃饭了吗？ / 你吃饭了没有？
 > 你 吃饭 了 吗 ？|Už jsi jedl?
-> 昨天 晚上 我 去 打球 了 。|Včera večer jsem byl hrát míčové hry.
-> 小高 请 我 喝 了 一 杯 啤酒{píjiǔ=pivo} 。|Malý Gao mě pozval na pivo.
+> 你 吃饭 了 没有 ？|Už jsi jedl, nebo ne?
 ## 就 „už“ a 才 „až“
-- Před slovesem po časovém údaji: 就 = dřív, než se čekalo („už“), 才 = později („až“).
-- Věta s 才 v tomto významu nemá 了.
-- V souvětí: 我打了球就去看电影 „hned jak dohraju, jdu na film“.
-> 他 六 点 半 就 来 了 。|Přišel už v půl sedmé.
+- Obě příslovce stojí za časovým údajem a před slovesem, s významem „už“ a „až“ (GSČ 79–80): 他六点半就来了 „přišel už o půl sedmé“, 他九点才来 „přišel až v devět“.
+- Věta s 才 v této funkci nepřibírá 了.
+- Obě se objevují i v souvětích s 了, která vyjadřují následnost dvou akcí: 我打了球就去看电影 „hned jak dohraju, půjdu na film“, 我打了球才去看电影 „teprve až dohraju, půjdu na film“.
+> 他 六 点 半 就 来 了 。|Přišel už o půl sedmé.
 > 他 九 点 才 来 。|Přišel až v devět.
-> 我 打 了 球 就 去 看 电影 。|Hned jak dohraju, jdu na film.
+> 我 打 了 球 就 去 看 电影 。|Hned jak dohraju míčovou hru, půjdu se dívat na film.
+> 我 打 了 球 才 去 看 电影 。|Teprve až dohraju míčovou hru, půjdu se dívat na film.
 c|你喝＿茶吧。|一点儿/很/都|Napij se trochu čaje.
 c|我介绍＿，这是我同学。|一下/一点儿/很|Dovolte, abych představil: to je můj spolužák.
 c|王朋＿图书馆。|在/有/是|Wang Peng je v knihovně.
