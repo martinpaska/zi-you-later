@@ -29,17 +29,57 @@
 > 你 进来 吧 。|Pojď dál.
 > 你 是 王朋 吧 ？|Ty jsi asi Wang Peng, že?
 ## Přípona 了: děj proběhl
-- 了 za slovesem říká, že děj proběhl (je ukončený): 老师来了 „učitel už přišel“.
-- S počtem: 喝了两杯茶. Když na konci věty stojí krátký předmět, dá se 了 až za něj: 我喝茶了.
-- Zápor je 没(有) + sloveso a 了 zmizí: 老师没来.
-- Se dvěma slovesy patří 了 za to druhé: 他请我喝了一杯咖啡.
-- Otázka: …了吗？ nebo …了没有？
+- 了 hned za slovesem říká, že děj proběhl, je hotový: 老师来了 „učitel už přišel“.
+- Není to minulý čas. 了 mluví o dokončení, ne o čase: o minulosti se často mluví bez 了 (昨天我很忙) a 了 může stát i u budoucího děje (我明天下了课就去 „zítra, až skončí hodina, půjdu“).
+- Nejčastěji stojí u předmětu s počtem nebo přívlastkem: 喝了两杯茶 „vypil dva šálky čaje“, 买了一件衬衫 „koupil košili“.
+- Česky ho často vyjádříš dokonavým videm: 写 „psát“, 写了 „napsat“.
 > 老师 来 了 。|Učitel už přišel.
-> 老师 没 来 。|Učitel (ještě) nepřišel.
 > 她 喝 了 两 杯 茶 。|Vypila dva šálky čaje.
-> 你 吃饭 了 吗 ？|Už jsi jedl?
-> 昨天 晚上 我 去 打球 了 。|Včera večer jsem byl hrát míčové hry.
+> 我 昨天 买 了 一 件 衬衫 。|Včera jsem si koupil košili.
+> 他 昨天 晚上 看 了 一 个 中国 电影 。|Včera večer viděl jeden čínský film.
 > 小高 请 我 喝 了 一 杯 啤酒{píjiǔ=pivo} 。|Malý Gao mě pozval na pivo.
+## Kde stojí 了
+- Sloveso + 了 + předmět s počtem nebo přívlastkem: 我写了三个字 „napsal jsem tři znaky“.
+- Holý předmět bez počtu: 了 dej na konec věty: 我喝茶了 „napil jsem se čaje“. Věta 我喝了茶 zní nedořečeně, jako by mělo něco následovat: 我喝了茶就走 „napiju se čaje a jdu“.
+- Sloveso bez předmětu: 了 stojí na konci: 他走了 „odešel“.
+- Objektová slovesa (G4): 了 stojí mezi slovesem a předmětem (吃了饭, 下了课), nebo na konci věty (吃饭了).
+- Se dvěma slovesy za sebou patří 了 za to druhé: 他请我喝了一杯咖啡, 我去打球了.
+> 我 喝 茶 了 。|Napil jsem se čaje.
+> 我 写 了 三 个 字 。|Napsal jsem tři znaky.
+> 他 走 了 。|Odešel.
+> 我 吃 了 饭 就 去 图书馆 。|Až se najím, půjdu do knihovny.
+> 他 请 我 喝 了 一 杯 咖啡 。|Pozval mě na kávu.
+> 昨天 晚上 我 去 打球 了 。|Včera večer jsem byl hrát míčové hry.
+## Zápor a otázka s 了
+- Zápor je 没(有) + sloveso a 了 zmizí: 老师没来 „učitel nepřišel“. Nikdy ne 没来了.
+- Zápor 不 tu nepoužiješ: 不 zapírá vůli nebo zvyk, ne to, že se něco stalo.
+- „Ještě ne“: 还没(有) + sloveso + 呢: 我还没吃饭呢 „ještě jsem nejedl“.
+- Otázka: …了吗？ nebo …了没有？ Krátká odpověď je sloveso + 了 (吃了 „ano“), nebo 没有 / 还没有 „ne, ještě ne“.
+> 老师 没 来 。|Učitel (ještě) nepřišel.
+> 你 吃饭 了 吗 ？|Už jsi jedl?
+> 你 吃饭 了 没有 ？|Už jsi jedl, nebo ne?
+> 我 还 没 吃饭 呢 。|Ještě jsem nejedl.
+> 你 看 了 那 个 电影 没有 ？|Viděl jsi ten film?
+> 没有 ， 我 还 没 看 呢 。|Ne, ještě jsem ho neviděl.
+## Kdy 了 nepatří
+- U obvyklého nebo opakovaného děje, i v minulosti (每天, 常常, 以前…): 我以前常常去打球.
+- U sloves, která popisují stav, ne děj: 是, 姓, 叫, 喜欢, 觉得, 认识: 他以前是老师.
+- U přídavného jména, které popisuje, jaké něco bylo: 昨天我很忙.
+- Za 想 a 要, když jde o plán, který ještě neproběhl: 我想去看电影.
+- S 才 „až“ (viz další bod): 他九点才来.
+> 我 以前 常常 去 打球 。|Dřív jsem často chodil hrát míčové hry.
+> 他 以前 是 老师 。|Dřív byl učitel.
+> 昨天 我 很 忙 。|Včera jsem měl hodně práce.
+> 上 个 星期 我 每天 都 去 图书馆 。|Minulý týden jsem chodil každý den do knihovny.
+## 了 na konci věty: nová situace
+- 了 na konci věty může říkat také „teď už je to jinak“: 现在九点了 „už je devět“.
+- 不…了 = „už ne“, plán se změnil: 我不去了 „tak to už nepůjdu“.
+- Ustálená spojení: 太…了 (G3) a 要…了 „co nevidět“ (G10).
+- Ve větě jako 我吃饭了 se oba významy slévají: „najedl jsem se“ i „už mám po jídle“.
+> 现在 九 点 了 。|Už je devět.
+> 我 不 去 了 。|Tak to už nepůjdu.
+> 太 好 了 ！|To je skvělé!
+> 他 是 大学生 了 。|Už je vysokoškolák.
 ## 就 „už“ a 才 „až“
 - Před slovesem po časovém údaji: 就 = dřív, než se čekalo („už“), 才 = později („až“).
 - Věta s 才 v tomto významu nemá 了.
