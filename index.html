@@ -1362,6 +1362,8 @@ function stopAudio(){try{speechSynthesis.cancel()}catch(e){}UTT=null}
 // a character with several readings is read through a homophone (ALT) so the voice says the reading taught here
 function speak(x){sayText(x.kind==='c'?(ALT[x.t]||x.s):x.s.replace(/[()…]/g,''))}
 function speakSent(s){sayText(s.zh.join(''))}
+// pinyin of a word or phrase split into syllables (used by writing and the tone exercises)
+const sylsOf=p=>p.replace(/[()…]/g,' ').match(SYL)||[];
 /* tap any Chinese text to hear it, except where the sound would give away the answer or the element already plays */
 const BYHAN=new Map();for(const x of [...WD,...CH])for(const k of [x.s.replace(/[()…]/g,''),x.t.replace(/[()…]/g,'')])if(!BYHAN.has(k))BYHAN.set(k,x);
 document.addEventListener('click',e=>{
