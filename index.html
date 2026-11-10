@@ -1202,12 +1202,6 @@ details.gegd>.geg{padding-bottom:12px}
 .jflag{flex:none;width:58px;height:58px;display:grid;place-items:center;font-family:var(--f-han);font-size:1.9rem;font-weight:700;color:#000;background:#fff;border:2.5px solid #000;border-radius:12px;box-shadow:3px 3px 0 #000;transform:rotate(3deg)}
 @media (prefers-reduced-motion:no-preference){.jst.here .stamp{animation:jpulse 2.2s ease-in-out infinite}}
 @keyframes jpulse{50%{transform:translateY(-3px)}}
-/* Home: Today's review is a row inside Your path */
-.prv{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:9px 14px;margin-top:4px}
-.prv>span:nth-child(2){flex:1;display:flex;flex-direction:column}.prv b{font-family:var(--f-display);font-size:.98rem}.prv small{color:var(--muted);font-size:.82rem}
-.prvi{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-family:var(--f-han);font-size:1.1rem;flex:none}
-.prv .go{font-size:1.4rem;color:var(--muted)}.prv:disabled{opacity:.6}.prv:disabled .prvi{background:var(--sunk);color:var(--muted)}
-.prlx{margin:0;font-size:.82rem;color:var(--muted)}.herolx.prlx .link{font-size:inherit;color:var(--accent-fg,var(--accent))}
 /* a chapter opens like a chapter of a book: 第一章 between thin rules, the title, one line of the story */
 .jchh{background:none;border:0;padding:14px 0 4px;text-align:center}
 .jnum{margin:0;display:flex;align-items:center;gap:12px;color:var(--accent-fg,var(--accent));font-family:var(--f-han);font-size:1.05rem;letter-spacing:.15em}
@@ -3823,12 +3817,11 @@ function sealHtml(l,cls=''){const m=lessonMeta(l),done=!!sealOf(l),p=lessonInk(l
   return `<span class="stamp ${done?'done':p?'prog':''} ${cls}" style="--p:${done?100:p}${done?`;transform:rotate(${[-4,3,-2,4,-3][LESSONS.indexOf(l)%5]}deg)`:''}" lang="zh-Hans"><span>${m.seal}</span></span>`}
 // Home (HSK 1 only): the next lesson and the row of seals
 function pathHome(){const box=$('pathbox');if(!box)return;box.hidden=false;
-  const rv=$('goReview'),rvs=rv.querySelector('b+span'),n=nextLesson(),got=PL.filter(x=>sealOf(x.l)).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(n));
+  const n=nextLesson(),got=PL.filter(x=>sealOf(x.l)).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(n));
   box.innerHTML=`<h2>Your path</h2><button class="jcard" data-go="album" type="button">${sealHtml(n,'pn')}<span class="jct"><small class="eyebrow">${esc(PATH.story)}</small><b>${esc(`Continue: ${LNAME(n)}`)}</b>
       <span class="jbar" aria-hidden="true"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><small><span>${esc(`Chapter ${ch+1}`)}</span> · <span>${esc(SEAL_CHAPTERS[ch][0])}</span> · <span>${esc(`${got} / ${PL.length} seals`)}</span></small></span><span class="go" aria-hidden="true">›</span></button>
-    <button class="prv" id="prv" type="button"${rv.disabled?' disabled':''}><span class="prvi" aria-hidden="true">今</span><span><b>Today's review</b><small>${esc(rvs?rvs.textContent:'')}</small></span><span class="go" aria-hidden="true">›</span></button>
-    <p class="herolx prlx">${$('herolx').innerHTML.replace('id="chl"','id="prchl"')}</p>`;
-  $('prv').onclick=()=>review();if($('prchl'))$('prchl').onclick=()=>setup('review');$('rvsec').hidden=true;
+`;
+  $('rvsec').hidden=true;   // Today's review is not on Home any more
   document.getElementById('home').classList.toggle('compact',PACK==='hsk1')}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');if(b){e.preventDefault();lessonSheet(b.dataset.lsheet)}});
 /* Your path: the course told as a story. Each chapter opens with a few lines of the story, its lessons are stops on a
