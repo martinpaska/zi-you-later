@@ -1098,7 +1098,7 @@ details.gegd>.geg{padding-bottom:12px}
 .lsteps{display:flex;flex-direction:column;gap:6px}
 .lstep{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;text-align:left;font-size:.97rem;width:100%}
 .lstep .dot{width:26px;height:26px;border-radius:999px;display:grid;place-items:center;font-size:.8rem;font-weight:800;flex:none;background:var(--sunk);color:var(--muted)}
-.lstep .ln{flex:1}.lstep small{color:var(--muted);font-size:.8rem}
+.lstep .ln{flex:1}.lstep small{color:var(--muted);font-size:.8rem}.lstep .lgo{font-size:1.4rem;line-height:1;color:var(--accent-fg,var(--accent));font-weight:700}
 .lstep.ok .dot{background:var(--ok-bg);color:var(--ok)}
 .lstep.now{border-color:var(--accent)}.lstep.now .dot{background:var(--accent);color:var(--accent-ink)}.lstep.now small{color:var(--accent-fg,var(--accent));font-weight:700}
 .lstep:disabled{opacity:.55}
@@ -3776,14 +3776,14 @@ function lessonSheet(l){
   const steps=[['learn','Learn the new words',`${seen} / ${ws.length}`,seen>=ws.length],['cards','Flashcards',`${known} known`,known>=Math.ceil(it.length*.6)],
     ['tones','Tones in words','',!!flags.tones],['grammar','Grammar',`${(GRAMMAR[l]||[]).length} ${(GRAMMAR[l]||[]).length===1?'point':'points'}`,!!flags.grammar],['sentences','Sentences',`${ST.filter(x=>x.l===l).length} sentences`,!!flags.sentences],
     ['write','Writing characters',`${wr.length} ${wr.length===1?'character':'characters'}`,!wr.length||!!flags.write],['final','Final test',s?`${s.s} %`:`from ${PASS} %`,!!s]];
-  if(s)steps.forEach(x=>{if(x[3]!==null){x[3]=true;if(x[0]!=='final')x[2]='done'}});   // a stamped seal: the whole lesson counts as done
+  if(s)steps.forEach(x=>{if(x[3]!==null)x[3]=true});   // a stamped seal: the whole lesson counts as done
   const rec_=steps.find(x=>x[3]===false);
   const saved=keyHandler,sh=document.createElement('div');sh.className='nsheet';
   sh.innerHTML=`<div class="npanel" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="lst" style="height:auto;max-height:92svh"><div class="nhead"><span class="ngrab" aria-hidden="true"></span>
     <button class="nclose" id="lsx" type="button">${T_('Close')}</button><span></span><span></span></div>
     <div class="nbody"><div class="lsh">${sealHtml(l,'lg')}<div><h2 id="lst">${esc(T_('Lesson '+l))} · ${esc(T_(m.en))}</h2><p class="hint" style="margin:2px 0 0"><span lang="zh-Hans">${m.zh}</span> · ${esc(T_(`${ws.length} words · ${cs.length} characters`))}</p>
       <p class="lshp">${s?esc(T_(`Seal stamped · ${s.s}%`)):esc(T_(`Seal ${lessonInk(l)}% inked`))}</p></div></div>
-    <div class="lsteps">${steps.map(([k,n,c,done],i)=>`<button class="lstep${done?' ok':''}${rec_&&rec_[0]===k?' now':''}" data-step="${k}" type="button"${done===null?' disabled':''}><span class="dot">${done?'✓':k==='final'?'印':i+1}</span><span class="ln">${esc(T_(n))}</span><small>${esc(T_(rec_&&rec_[0]===k?'recommended':c))}</small></button>`).join('')}</div>
+    <div class="lsteps">${steps.map(([k,n,c,done],i)=>`<button class="lstep${done?' ok':''}${rec_&&rec_[0]===k?' now':''}" data-step="${k}" type="button"${done===null?' disabled':''}><span class="dot">${done?'✓':k==='final'?'印':i+1}</span><span class="ln">${esc(T_(n))}</span>${rec_&&rec_[0]===k?'<span class="lgo" aria-hidden="true">›</span>':k==='final'&&s?`<small>${s.s} %</small>`:''}</button>`).join('')}</div>
     ${rec_?`<button class="btn lscta" data-step="${rec_[0]}" type="button">${esc(T_('Continue: '+rec_[1]))}</button>`:`<button class="btn ghost lscta" data-step="final" type="button">${esc(T_('Take the Final test again'))}</button>`}</div></div>`;
   document.body.appendChild(sh);document.body.style.overflow='hidden';sheetFocus(sh);
   const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved};
