@@ -1,0 +1,168 @@
+# HSK 1 sentences for the Sentences mode, by lesson, written for this app with only the 300 words of the official
+# HSK 1 vocabulary list (build_grammar.py checks this). The examples of each lesson's grammar points are added to these.
+# Words are separated by spaces; = English
+
+## 1
+你 好 ！ = Hello!
+你 叫 什么 名字 ？ = What is your name?
+我 是 中国 人 。 = I am Chinese.
+认识 你 很 高兴 。 = Nice to meet you.
+她 是 我 的 女朋友 。 = She is my girlfriend.
+我 家 有 爸爸 、 妈妈 和 我 。 = In my family there are my dad, my mum and me.
+他 是 我 哥哥 ， 不 是 我 弟弟 。 = He is my older brother, not my younger brother.
+你们 都 是 我 的 朋友 。 = You are all my friends.
+那 个 女士 是 谁 ？ = Who is that lady?
+他 有 一 个 儿子 和 一 个 女儿 。 = He has a son and a daughter.
+
+## 2
+今天 是 几 月 几 号 ？ = What is the date today?
+今天 是 五 月 八 号 。 = Today is the eighth of May.
+明天 星期 几 ？ = What day is it tomorrow?
+我 今年 十九 岁 。 = I am nineteen this year.
+去年 我 十八 岁 。 = Last year I was eighteen.
+一 年 有 十二 个 月 。 = A year has twelve months.
+一 个 星期 有 七 天 。 = A week has seven days.
+我 明年 去 中国 。 = I am going to China next year.
+昨天 是 星期 天 。 = Yesterday was Sunday.
+
+## 3
+这 是 什么 东西 ？ = What is this thing?
+那 是 我 的 新 手机 。 = That is my new phone.
+这些 书 都 是 你 的 吗 ？ = Are all these books yours?
+我 的 杯子 很 小 。 = My cup is small.
+你 要 哪个 ？ = Which one do you want?
+我 有 一 只 狗 ， 它 很 大 。 = I have a dog. It is big.
+这 个 椅子 是 新 的 。 = This chair is new.
+我 的 书 很 少 。 = I have few books.
+有些 东西 很 贵 。 = Some things are expensive.
+
+## 4
+今天 天气 很 好 。 = The weather is nice today.
+今天 非常 冷 。 = It is very cold today.
+明天 下雨 吗 ？ = Will it rain tomorrow?
+外边 下 雪 了 。 = It is snowing outside.
+今天 太 热 了 ！ = It is so hot today!
+昨天 有点儿 冷 。 = Yesterday was a bit cold.
+今天 天气 真 好 ！ = The weather is really nice today!
+今天 不 冷 ， 也 不 热 。 = Today it's neither cold nor hot.
+
+## 5
+我 家 在 那儿 。 = My home is over there.
+商店 在 哪里 ？ = Where is the shop?
+书店 在 学校 外边 。 = The bookshop is outside the school.
+我 的 房间 很 小 。 = My room is small.
+你 住 在 哪儿 ？ = Where do you live?
+我 住 在 中国 。 = I live in China.
+这边 是 商店 ， 那边 是 书店 。 = This side is the shop, that side is the bookshop.
+你 的 手机 在 桌子 上 。 = Your phone is on the table.
+我 家 外边 有 一 个 商店 。 = There is a shop outside my home.
+
+## 6
+谢谢 ！ 不客气 。 = Thank you! You're welcome.
+对不起 ！ 没关系 。 = Sorry! That's all right.
+再见 ！ = Goodbye!
+请问 ， 商店 在 哪儿 ？ = Excuse me, where is the shop?
+喂 ， 你 好 ！ = Hello? (on the phone)
+我 给 你 打电话 。 = I'll give you a call.
+认识 你 很 高兴 。 = Pleased to meet you.
+我们 明天 见 ！ = See you tomorrow!
+对 ， 我 是 学生 。 = Right, I am a student.
+没事 ， 你 回 家 吧 。 = It's nothing, go home.
+
+## 7
+我 想 吃 一点儿 面包 。 = I'd like a bit of bread.
+你 喝 牛奶 吗 ？ = Do you drink milk?
+早饭 我 吃 了 两 个 鸡蛋 。 = I had two eggs for breakfast.
+我们 去 饭店 吃 午饭 吧 。 = Let's go to a restaurant for lunch.
+这 个 苹果 很 好吃 。 = This apple is tasty.
+我 喜欢 吃 水果 。 = I like eating fruit.
+你 晚饭 吃 什么 ？ = What are you having for dinner?
+妈妈 在 做饭 。 = Mum is cooking.
+请 给 我 一 杯 水 。 = Please give me a glass of water.
+
+## 8
+你 去 哪儿 ？ = Where are you going?
+我 回 家 。 = I am going home.
+我们 坐 出租车 去 吧 。 = Let's take a taxi.
+他 明天 坐 飞机 来 中国 。 = He is flying to China tomorrow.
+我 开车 去 学校 。 = I drive to school.
+火车 几 点 到 ？ = When does the train arrive?
+我 在 找 我 的 手机 。 = I am looking for my phone.
+我 和 朋友 坐 火车 去 。 = My friend and I are going by train.
+你 什么 时候 回 来 ？ = When are you coming back?
+
+## 9
+我 想 买 一 件 衣服 。 = I'd like to buy a piece of clothing.
+这 件 衣服 很 漂亮 。 = This piece of clothing is beautiful.
+太 贵 了 ！ = Too expensive!
+这 个 很 便宜 。 = This one is cheap.
+你 在 哪儿 买 的 ？ = Where did you buy it?
+超市 里 有 很 多 东西 。 = There are lots of things in the supermarket.
+这 个 商店 卖 什么 ？ = What does this shop sell?
+你 穿 这 件 衣服 很 好看 。 = You look good in this.
+我 还 想 买 一些 水果 。 = I also want to buy some fruit.
+
+## 10
+我 生病 了 。 = I'm ill.
+你 去 看 医生 吧 。 = Go and see a doctor.
+医院 在 哪儿 ？ = Where is the hospital?
+你 要 多 休息 。 = You need to rest more.
+我 觉得 有点儿 冷 。 = I feel a bit cold.
+他 在 医院 工作 ， 他 是 医生 。 = He works at the hospital; he is a doctor.
+我 今天 不 能 上班 。 = I can't go to work today.
+你 睡 了 几 个 小时 ？ = How many hours did you sleep?
+
+## 11
+你 喜欢 看 电影 吗 ？ = Do you like watching films?
+这 个 电影 很 好看 。 = This film is good.
+我们 去 电影院 吧 。 = Let's go to the cinema.
+这 个 歌 很 好听 。 = This song sounds nice.
+我 爱 我 的 家 。 = I love my family.
+你 看见 我 的 猫 了 吗 ？ = Have you seen my cat?
+我 听见 了 。 = I heard it.
+晚上 我 在 家 看 电视 。 = In the evening I watch TV at home.
+这儿 很 好玩儿 。 = It's fun here.
+
+## 12
+我 在 大学 学习 汉语 。 = I study Chinese at university.
+这 个 字 怎么 读 ？ = How do you read this character?
+我 会 写 我 的 名字 。 = I can write my name.
+老师 ， 我 有 一 个 问题 。 = Teacher, I have a question.
+我 可以 问 你 一 个 问题 吗 ？ = May I ask you a question?
+你 知道 这 个 字 吗 ？ = Do you know this character?
+我 不 知道 。 = I don't know.
+我们 今天 有 汉语 课 。 = We have a Chinese class today.
+请 说 中文 。 = Please speak Chinese.
+
+## 13
+我 早上 七 点 起床 。 = I get up at seven in the morning.
+你 几 点 上课 ？ = When does your class start?
+我们 十二 点 下课 。 = We finish class at twelve.
+我 是 中学生 。 = I am a secondary school student.
+我 的 学校 很 大 。 = My school is big.
+现在 几 点 了 ？ = What time is it now?
+我 没有 时间 。 = I don't have time.
+上午 我 在 学校 ， 下午 我 在 家 。 = In the morning I'm at school, in the afternoon at home.
+他 是 我 的 同学 。 = He is my classmate.
+一 个 小时 有 六十 分钟 。 = An hour has sixty minutes.
+
+## 14
+你 在 哪儿 工作 ？ = Where do you work?
+我 在 一 个 公司 工作 。 = I work at a company.
+你 几 点 上班 ？ = What time do you start work?
+我 下午 五 点 下班 。 = I finish work at five in the afternoon.
+我 今天 很 忙 。 = I'm very busy today.
+你 有 事 吗 ？ = Is something up?
+他 的 工作 很 好 。 = He has a good job.
+你 明天 做 什么 ？ = What are you doing tomorrow?
+我 要 买 一 个 新 电脑 。 = I want to buy a new computer.
+
+## 15
+你 喜欢 喝 茶 吗 ？ = Do you like tea?
+中国 人 很 爱 喝 茶 。 = Chinese people love drinking tea.
+我 想 吃 饺子 。 = I'd like dumplings.
+包子 多少 钱 一 个 ？ = How much is one bun?
+我 很 喜欢 吃 面条儿 。 = I really like noodles.
+你 吃 米饭 吗 ？ = Do you eat rice?
+这 个 菜 叫 什么 名字 ？ = What is this dish called?
+中国 菜 很 好吃 。 = Chinese food is delicious.
