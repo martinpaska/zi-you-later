@@ -6,6 +6,7 @@
 #   write.txt     the 100 characters to write for HSK 1–2 (official order)
 #   lessons.txt   the words grouped into the 15 communicative tasks of the official task syllabus
 #   grammar.txt, sentences.txt  grammar points, exercises and sentences (build_grammar.py); exercises go to grammar-hsk1.json
+#   tests.txt     practice tests in the official HSK 1 format (build_grammar.py), written to hsk1-tests.json
 #   cedict-hsk1.u8  CC-CEDICT entries for these words and characters (English meanings, traditional forms; CC BY-SA 4.0)
 # Stroke data for characters missing from strokes.json comes from hanzi-writer-data (Make Me a Hanzi, Arphic PL).
 #
@@ -176,7 +177,7 @@ ch.sort(key=lambda x:(ORD[x[0]],chars.index(x[2])))
 meta=dict(id='hsk1',lessons=[dict(l=x['l'],en=x['en'],zh=x['zh'],seal=x['seal']) for x in L],write=[c for c in chars if c in write])
 # grammar points, their exercises and the sentences (grammar.txt, sentences.txt; see build_grammar.py)
 sys.path.insert(0,H);import build_grammar
-st,gram,drills,gerr=build_grammar.make([(w['s'],w['py']) for w in W]);errs+=gerr;meta['grammar']=gram
+st,gram,drills,tests,gerr=build_grammar.make([(w['s'],w['py']) for w in W]);errs+=gerr;meta['grammar']=gram
 pack=dict(ch=ch,wd=wd,st=st,t2=t2,meta=meta)
 
 # stroke data for characters not yet in strokes.json
@@ -198,4 +199,5 @@ s2,n=re.subn(r'^const HSK1=.*;$',lambda m:line,s,count=1,flags=re.M)
 if not n:sys.exit('index.html has no line "const HSK1=…;"')
 open(ip,'w',encoding='utf8').write(s2)
 json.dump(drills,open(os.path.join(R,'grammar-hsk1.json'),'w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
-print(f'{len(ch)} characters, {len(wd)} words, {len(L)} lessons, {len(meta["write"])} to write, {sum(map(len,gram.values()))} grammar points, {sum(map(len,drills.values()))} exercises, {len(st)} sentences; {add} stroke sets added; {len(errs)} problems')
+json.dump(tests,open(os.path.join(R,'hsk1-tests.json'),'w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
+print(f'{len(ch)} characters, {len(wd)} words, {len(L)} lessons, {len(meta["write"])} to write, {sum(map(len,gram.values()))} grammar points, {sum(map(len,drills.values()))} exercises, {len(st)} sentences, {len(tests)} practice tests; {add} stroke sets added; {len(errs)} problems')

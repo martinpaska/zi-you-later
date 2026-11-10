@@ -1,11 +1,12 @@
 # HSK 1 grammar points, exercises and sentences, called by build.py.
 #   grammar.txt    the grammar points by lesson, with examples and exercises (format at the top of the file)
 #   sentences.txt  more sentences by lesson for the Sentences mode
+#   tests.txt      practice tests in the format of the official HSK 1 sample test
 # Every sentence may use only the 300 official words (plus a few grammar words of the official grammar list, EXTRA),
 # and every choice and wrong sentence only their characters. The pinyin of a sentence is put together from the words.
-import os,re,unicodedata
+import os,re,random
 H=os.path.dirname(os.path.abspath(__file__))
-PUNCT={'，':',','。':'.','？':'?','！':'!','、':','}
+PUNCT={'，':',','。':'.','？':'?','！':'!','、':',','：':':'}
 NUMS='零一二三四五六七八九十百千'
 NUMPY={'零':'líng','一':'yī','二':'èr','三':'sān','四':'sì','五':'wǔ','六':'liù','七':'qī','八':'bā','九':'jiǔ','十':'shí','百':'bǎi','千':'qiān'}
 EXTRA={'杯':'bēi','没':'méi'}   # in the official grammar list (借用名量词 杯, 否定副词 没（有）) but not in the word list
@@ -21,7 +22,7 @@ def first_tone(py):
 def src(name):return [l.rstrip('\n') for l in open(os.path.join(H,name),encoding='utf8') if l.strip() and not l.startswith('# ') and l.strip()!='#']
 
 def make(words):
-    """words: [(simplified, pinyin)] of the official list. Returns (st, grammar, drills, errors)."""
+    """words: [(simplified, pinyin)] of the official list. Returns (st, grammar, drills, tests, errors)."""
     PY={}
     for s,p in words:PY.setdefault(s,p.replace(' ',''))
     chars=set(''.join(PY))|set(EXTRA)|set(NUMS)
@@ -116,4 +117,62 @@ def make(words):
         if r and ''.join(r[0]) not in seen:seen.add(''.join(r[0]));st.append([les,r[0],r[1],r[2]])
     order=[str(i) for i in range(1,16)]
     st.sort(key=lambda x:order.index(x[0]))
-    return st,out,drills,errs
+    return st,out,drills,make_tests(sent,errs),errs
+
+SPK={'女：':'f','男：':'m'}
+def make_tests(sent,errs):
+    """tests.txt → [{n, l1:[…], …}]. A text is a list of lines [speaker ('f', 'm' or ''), tokens, pinyin]; choices are
+    shuffled here (the same way on every build) and k is the index of the right one."""
+    def text(s,where):
+        lines=[];cur=['',[]]
+        for t in s.split():
+            if t in SPK:
+                if cur[1]:lines.append(cur)
+                cur=[SPK[t],[]]
+            else:cur[1].append(t)
+        if cur[1]:lines.append(cur)
+        out=[]
+        for sp,toks in lines:
+            r=sent(' '.join(toks)+' = -',where)
+            out.append([sp,r[0],r[1]] if r else [sp,toks,['?']*len(toks)])
+        return out
+    tests=[];T=None;rnd=random.Random(1)
+    def choices(right,wrong,where,pic=False):
+        opts=[right]+wrong;rnd.shuffle(opts)
+        return [o if pic else text(o,where) for o in opts],opts.index(right)
+    for l in src('tests.txt'):
+        if l.startswith('## '):T=dict(n=l[3:].strip(),l1=[],l2=[],l3=dict(pics=[],q=[]),l4=[],r1=dict(pics=[],q=[]),r2=dict(ans=[],q=[]),r3=dict(words=[],q=[]),r4=[]);tests.append(T);continue
+        k,v=l.split(':',1);v=v.strip();where=f'test {T["n"]} {k}'
+        if k in('l1','l2','l4','r4'):
+            q,a=v.split(' = ',1);a=[x.strip() for x in a.split(' / ')]
+            o,ki=choices(a[0],a[1:] if k!='l1' else a[1].split(),where,pic=k=='l1')
+            item=dict(o=o,k=ki)
+            if k in('l4','r4'):s,qq=q.split(' | ');item['t']=text(s,where);item['q']=text(qq,where)
+            else:item['t']=text(q,where)
+            T[k].append(item)
+        elif k in('l3','r1'):q,pic=v.rsplit(' = ',1);T[k]['q'].append(dict(t=text(q,where),pic=pic.strip()))
+        elif k in('l3x','r1x'):T[k[:2]]['x']=v
+        elif k=='r2':q,a=v.split(' = ',1);T['r2']['q'].append(dict(t=text(q,where),a=a.strip()))
+        elif k=='r2x':T['r2']['x']=v
+        elif k=='r3w':T['r3']['w']=v.split()
+        elif k=='r3':
+            m=re.match(r'(.*?)\[(.+?)\](.*)$',v);a,w,c=m.groups()
+            full=text(a+' '+w+' '+c,where);n=len([t for t in a.split() if t not in SPK])
+            for line in full:   # the word to fill in becomes a gap, without its pinyin
+                if n<len(line[1]):line[1][n]='＿';line[2][n]='';break
+                n-=len(line[1])
+            T['r3']['q'].append(dict(t=full,w=w))
+        else:errs.append(f'{where}: unknown line "{l}"')
+    for T in tests:
+        for part,key in (('l3','pic'),('r1','pic')):
+            P=T[part];pics=[q[key] for q in P['q']]+[P.pop('x')];rnd.shuffle(pics);P['pics']=pics
+            for q in P['q']:q['k']=pics.index(q.pop(key))
+        P=T['r2'];ans=[q['a'] for q in P['q']]+[P.pop('x')];rnd.shuffle(ans);P['ans']=[text(a,'test r2') for a in ans]
+        for q in P['q']:q['k']=ans.index(q.pop('a'))
+        P=T['r3'];ws=P.pop('w');rnd.shuffle(ws);P['words']=[text(w,'test r3')[0] for w in ws]
+        for q in P['q']:
+            if q['w'] not in ws:errs.append(f'test {T["n"]} r3: {q["w"]} is not in the word bank')
+            q['k']=ws.index(q.pop('w')) if q['w'] in ws else 0
+        n=sum(len(T[x]) if isinstance(T[x],list) else len(T[x]['q']) for x in('l1','l2','l3','l4','r1','r2','r3','r4'))
+        if n!=40:errs.append(f'test {T["n"]}: {n} questions, not 40')
+    return tests
