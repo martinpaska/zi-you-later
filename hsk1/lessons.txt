@@ -1,0 +1,51 @@
+# HSK 1 (new HSK, syllabus of 2025-11, valid from 2026-07): the 280 words of the official vocabulary list,
+# grouped into the 15 communicative tasks of the official task syllabus (HSK 任务大纲, 一级).
+# Line format:  ## <lesson> | <English title> | <Chinese topic> | <seal character>
+# then the words of that lesson, separated by spaces, written exactly as in the official list (with its 1/2 marks).
+# phonetics/build-like check: hsk1/build.py fails if a word is missing, repeated or not in the official list.
+
+## 1 | About me and my family | 个人信息 | 我
+我 你 您 他 她 我们 你们 他们 她们 们 大家 人 是 叫 名字 国 岁 多 男 女 先生 女士 认识 什么 谁 也 都
+爸爸 妈妈 哥哥 姐姐 弟弟 妹妹 儿子 女儿 家人 孩子 口 朋友 男朋友 女朋友
+
+## 2 | Numbers and dates | 事件信息 | 号
+一 二 三 四 五 六 七 八 九 十 零 百 千 两1 半 一半 几 第 号 日 月 年 星期 星期日 星期天 天 今天 明天 今年 明年 去年
+
+## 3 | Things | 物品信息 | 本
+东西 书 本1 杯子 椅子 手机 个 这 那 哪 那个 哪个 那些 哪些 些 一些 有些 有的 有 没有 的 大 小 新 少 狗 猫 它 它们
+
+## 4 | Weather | 天气 | 雨
+天气 冷 热 下雨 雨 雪 很 太 非常 有点儿 怎么样 了
+
+## 5 | Places and directions | 环境信息 | 边
+在 里 外 外边 前 后 边 上 下 这边 那边 那里 那儿 哪里 哪儿 家 房间 商店 书店 店
+
+## 6 | Everyday phrases | 交往 | 好
+你好 好 谢谢 不客气 对不起 没关系 没事 见 再见 请 请问 喂1 打电话 电话 要 想 高兴 吧 吗 呢 对 不 不要 一下
+
+## 7 | Food and drink | 饮食 | 吃
+吃 喝 饭 早饭 午饭 晚饭 面包 鸡蛋 牛奶 水 水果 苹果 好吃 饭店 一点儿
+
+## 8 | Getting around | 交通出行 | 车
+车 出租车 火车 飞机 开 开车 去 来 回 到 找 怎么 和1 再
+
+## 9 | Shopping | 购物 | 买
+买 卖 钱 块 元 多少 贵 便宜 超市 衣服 件 穿 漂亮 给 还
+
+## 10 | Feeling ill | 医疗健康 | 病
+病 生病 看病 医生 医院 休息 睡 睡觉 觉得 能
+
+## 11 | Free time | 休闲 | 玩
+玩 好玩儿 看 看见 听 听见 唱 歌 电影 电影院 电视 好看 好听 喜欢 爱
+
+## 12 | Studying Chinese | 学习情况 | 学
+学 学习 学生 大学 大学生 汉语 汉字 写 读 说 说话 问 问题 课 会1 可以
+
+## 13 | My school day | 校园生活 | 校
+学校 小学 小学生 老师 同学 小朋友 上课 下课 上学 读书 起床 早上 上午 下午 晚上 白天 早 晚 点1 分 分钟 小时 时候 时间 现在
+
+## 14 | Work | 职场生活 | 工
+工作 公司 上班 下班 忙 事 电脑
+
+## 15 | Chinese food | 饮食文化 | 茶
+茶 包子 饺子 面条儿 米饭 菜
