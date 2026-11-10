@@ -2229,6 +2229,8 @@ function match(kind){
    character appears in; a search over every lesson by character, pinyin (with or without tones) or meaning.
    The ★ tab lists everything you starred (the same stars as everywhere else) and starts practice on just those. ---------- */
 const vUniq=a=>[...new Map(a.map(x=>[x.k,x])).values()];
+// a character that is also a one-character word in the same list is shown once, as the word
+const vOnce=a=>{const w=new Set(a.filter(x=>x.kind==='w').map(x=>x.s));return a.filter(x=>x.kind!=='c'||!w.has(x.s))};
 // pinyin order: letters without tones first (ü after u), then tones 1–4 and neutral, a character before a word, then the character itself
 const VSYL=new Map();const vSyl=x=>{if(!VSYL.has(x.k)){const syl=(x.p.replace(/\([^)]*\)/g,'').toLowerCase().normalize('NFC').match(SYL)||[]);
   const one=m=>{let o='';for(const c of m)o+=MK[c]?(MK[c][0]==='v'?'u~':MK[c][0]):c==='ü'?'u~':/[a-z]/.test(c)?c:'';return o};
@@ -2271,18 +2273,18 @@ function vocab(){
   let list=[],shown=new Set();
   function body(){
     shown=new Set();const fav=l==='star';let h='';
-    if(q){list=vSearch(q);
+    if(q){list=vOnce(vSearch(q));
       h=`<p class="vtitle" aria-live="polite">${list.length?`<b>${(list.length===80?'80+':list.length)+' '+(list.length===1?'result':'results')}</b>`:'<span>Nothing found. Try the pinyin without tones, a character, or an English word.</span>'}</p>
         ${list.length?`<ol class="vlist" id="vl">${list.map((x,j)=>row(x,j,kindTag(x))).join('')}</ol>`:''}`}
-    else if(fav){list=favs();
+    else if(fav){list=vOnce(favs());
       h=`<p class="vtitle"><b>Starred</b> · ${list.length} ${list.length===1?'item':'items'} from all lessons</p>
         ${list.length?`<div class="vprac"><span class="hint">Practise only these:</span><div class="vpbtns">${[['cards','Flashcards'],['learn','Learn'],['write','Writing'],['match','Match']].map(([m,n])=>`<button class="btn ghost" data-pm="${m}">${n}</button>`).join('')}</div></div>`
           :`<div class="card vempty"><span class="vbig">★</span><p>Nothing starred yet. Tap ★ next to a word in any lesson and it is saved here, ready to practise.</p></div>`}
         <ol class="vlist" id="vl">${list.map((x,j)=>row(x,j,kindTag(x))).join('')}</ol>`}
-    else{const cs=vUniq(CH.filter(x=>x.l===l)),ws=vUniq(WD.filter(x=>x.l===l));list=[...cs,...ws].sort(vAlpha);
+    else{const cs=vUniq(CH.filter(x=>x.l===l)),ws=vUniq(WD.filter(x=>x.l===l));list=vOnce([...cs,...ws]).sort(vAlpha);
       h=`<p class="vtitle"><b>${LNAME(l)}</b> · ${LTITLE[l]} <span class="han">${LZH[l]}</span> · ${cs.length} characters${ws.length?` · ${ws.length} words`:''}</p>
         <p class="hint vsh">Characters and words together, in pinyin order. Under a character: the words of this and earlier lessons that use it.</p>
-        <ol class="vlist" id="vl">${list.map((x,j)=>row(x,j,'',x.kind==='c'?vWordsWith(x,l):null)).join('')}</ol>`}
+        <ol class="vlist" id="vl">${list.map((x,j)=>row(x,j,'',x.kind==='c'||[...x.s].filter(isHan).length===1?vWordsWith(x,l):null)).join('')}</ol>`}
     $('vbody').innerHTML=h;$('vbody').className=(hp?'hp ':'')+(he?'he':'');
     const i=ls.indexOf(l);$('vnav').innerHTML=q||fav?'':`${i>0?`<button class="btn ghost" data-go="${ls[i-1]}">‹ <span>${LNAME(ls[i-1])}</span></button>`:'<span></span>'}${i<ls.length-1?`<button class="btn ghost" data-go="${ls[i+1]}"><span>${LNAME(ls[i+1])}</span> ›</button>`:''}`;
     M().querySelectorAll('.vtab').forEach(b=>b.setAttribute('aria-selected',String(!q&&b.dataset.l===l)));
