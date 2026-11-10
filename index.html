@@ -3837,7 +3837,7 @@ function album(){lessonRestore();
   const got=PL.filter(x=>sealOf(x.l)).length,n=nextLesson(),order=PL.map(x=>x.l),at=order.indexOf(n);let k=0;
   const stop=l=>{const x=lessonMeta(l),s=sealOf(l),p=lessonInk(l),side=k++%2?'r':'l',here=l===n;
     return `<button class="jst ${side}${s?' ok':''}${here?' here':''}" data-lsheet="${l}" type="button"><span class="jseal">${sealHtml(l,'lg')}${here?'<span class="jhere">You are here</span>':''}</span>
-      <span class="jtx"><small>${esc(LNAME(l))}</small><b>${esc(x.en)}</b><small class="jst2">${s?`<span>${esc(`Stamped · ${s.s}%`)}</span>`:p?`<span>${esc(`${p}% of the seal`)}</span>`:''}</small></span></button>`};
+      <span class="jtx"><small>${esc(LNAME(l))}</small><b>${esc(x.en)}</b><small class="jst2">${s?`<span>${esc(`Stamped · ${s.s}%`)}</span>`:p?`<span>${esc(`${p}% done`)}</span>`:''}</small></span></button>`};
   open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
       <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div>
       <button class="btn jgo" data-lsheet="${n}" type="button">${esc(`Continue: ${LNAME(n)}`)}</button></div>
@@ -3860,7 +3860,7 @@ function lessonSheet(l){
   sh.innerHTML=`<div class="npanel" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="lst" style="height:auto;max-height:92svh"><div class="nhead"><span class="ngrab" aria-hidden="true"></span>
     <button class="nclose" id="lsx" type="button">${T_('Close')}</button><span></span><span></span></div>
     <div class="nbody"><div class="lsh">${sealHtml(l,'lg')}<div><h2 id="lst">${esc(T_(LNAME(l)))} · ${esc(T_(m.en))}</h2><p class="hint" style="margin:2px 0 0"><span lang="zh-Hans">${m.zh}</span> · ${esc(T_(`${ws.length} words · ${cs.length} characters`))}</p>
-      <p class="lshp">${s?esc(T_(`Seal stamped · ${s.s}%`)):esc(T_(`Seal ${lessonInk(l)}% inked`))}</p></div></div>
+      <p class="lshp">${s?esc(T_(`Seal stamped · ${s.s}%`)):esc(T_(`${lessonInk(l)}% done`))}</p></div></div>
     <div class="lsteps">${steps.map(([k,n,c,done],i)=>`<button class="lstep${done?' ok':''}${rec_&&rec_[0]===k?' now':''}" data-step="${k}" type="button"${done===null?' disabled':''}><span class="dot">${done?'✓':k==='final'?'印':i+1}</span><span class="ln">${esc(T_(n))}</span>${rec_&&rec_[0]===k?'<span class="lgo" aria-hidden="true">›</span>':k==='final'&&s?`<small>${s.s} %</small>`:''}</button>`).join('')}</div>
     ${rec_?`<button class="btn lscta" data-step="${rec_[0]}" type="button">${esc(T_('Continue: '+rec_[1]))}</button>`:`<button class="btn ghost lscta" data-step="final" type="button">${esc(T_('Take the Final test again'))}</button>`}</div></div>`;
   document.body.appendChild(sh);document.body.style.overflow='hidden';sheetFocus(sh);
@@ -4126,12 +4126,11 @@ const CS_P=[
  [/^(\d+) · (Listening|Reading) (\d)$/,(m,i,s,n)=>`${i} · ${s==='Listening'?'Poslech':'Čtení'} ${n}`],
  [/^To look at again \((\d+)\)$/,(m,n)=>`K zopakování (${n})`],
  [/^Continue: Lesson (\d+)$/,(m,n)=>`Pokračuj: Lekce ${n}`],
- [/^(\d+)% of the seal$/,(m,n)=>`Pečeť napuštěná z ${n} %`],
+ [/^(\d+)% done$/,(m,n)=>`Splněno ${n} %`],
  [/^(\d+) \/ (\d+) seals$/,(m,a,b)=>`${a} / ${b} ${csPl(+b,'pečeť','pečetě','pečetí')}`],
  [/^(\d+) of (\d+) seals$/,(m,a,b)=>`${a} z ${b} pečetí`],
  [/^Stamped · (\d+)%$/,(m,n)=>`Orazítkováno · ${n} %`],
  [/^Seal stamped · (\d+)%$/,(m,n)=>`Pečeť orazítkována · ${n} %`],
- [/^Seal (\d+)% inked$/,(m,n)=>`Pečeť napuštěná z ${n} %`],
  [/^(\d+) known$/,(m,n)=>`umíš ${n}`],
  [/^(\d+) (character|characters)$/,(m,n)=>`${n} ${csPl(+n,'znak','znaky','znaků')}`],
  [/^(\d+) words · (\d+) characters$/,(m,a,b)=>`${csN(+a,'words')} · ${csN(+b,'characters')}`],
