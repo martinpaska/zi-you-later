@@ -1156,11 +1156,6 @@ details.gegd>.geg{padding-bottom:12px}
 .path .album{gap:8px}.path .ach{padding:10px 10px 12px}.path .ach h3{margin-bottom:8px}
 .path .agrid{grid-template-columns:repeat(5,1fr);gap:8px 2px}
 .path .aseal{padding:2px 0;gap:3px}.path .aseal .stamp{width:48px;height:48px;font-size:1.55rem}.path .aseal b{font-size:.66rem;font-weight:600}.path .aseal small{display:none}
-#home.compact .mgroup .modes{grid-template-columns:repeat(3,1fr);gap:6px}
-#home.compact .mode{padding:10px 8px;gap:0;justify-content:center;align-items:center;text-align:center;min-height:52px;border-radius:12px}
-#home.compact .mode .mart,#home.compact .mode>span:not(.mart){display:none}
-#home.compact .mode b{font-size:.88rem;line-height:1.2}
-#home.compact .mgroup{gap:6px}
 /* seals in the style of the page: like the tiles' pictures and the calendar, flat colours with a black outline and an
    offset black shadow. Stamped: red with a white character and a thin white inner rim, tilted a little. In progress: white,
    filling with red from below, with a red character. Waiting: a dashed outline. */
@@ -1577,7 +1572,7 @@ function renderHome(){
 }
 $('goReview').onclick=()=>review();
 /* modes that need content a pack does not have are hidden there (HSK 1: no chapter tests and no FF MUNI courses, so its Courses group is hidden) */
-const PACK_HIDE={cin1:['hsktest','learn','album'],hsk1:['test','gram1','pinyin','album']};   // the seals are on Home (Your path) in both courses
+const PACK_HIDE={cin1:['hsktest','learn','album'],hsk1:['test','gram1','pinyin','album','learn']};   // the seals are on Home (Your path) in both courses
 function packHome(){const P=PACKS.find(x=>x.id===PACK);if($('packname'))$('packname').textContent=P.n;   // plain text: the page translator turns it into Czech (T_ is not ready on the first render)
   document.querySelectorAll('#home [data-mode]').forEach(b=>{if((PACK_HIDE[PACK]||[]).includes(b.dataset.mode))b.hidden=true});
   document.querySelectorAll('#home .mgroup').forEach(g=>{g.hidden=![...g.querySelectorAll('[data-mode]')].some(b=>!b.hidden)})}
@@ -3822,7 +3817,7 @@ function pathHome(){const box=$('pathbox');if(!box)return;box.hidden=false;
       <span class="jbar" aria-hidden="true"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><small><span>${esc(`Chapter ${ch+1}`)}</span> · <span>${esc(SEAL_CHAPTERS[ch][0])}</span> · <span>${esc(`${got} / ${PL.length} seals`)}</span></small></span><span class="go" aria-hidden="true">›</span></button>
 `;
   $('rvsec').hidden=true;   // Today's review is not on Home any more
-  document.getElementById('home').classList.toggle('compact',PACK==='hsk1')}
+}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');if(b){e.preventDefault();lessonSheet(b.dataset.lsheet)}});
 /* Your path: the course told as a story. Each chapter opens with a few lines of the story, its lessons are stops on a
    winding path (a seal for each), the line is red as far as you have come, and the path ends at the course's goal. */
