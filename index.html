@@ -1049,6 +1049,17 @@ details.gegd>.geg{padding-bottom:12px}
 .nuend .btn{grid-column:1/-1}
 @media (min-width:560px){.nuend{grid-template-columns:auto 1fr auto}.nuend .btn{grid-column:auto}}
 .nucta{color:var(--accent-fg,#b51c1c);border:2px solid var(--accent)!important}
+/* ★ on any character or word: a small star in the top right corner of the card, row or chip that shows it */
+.xstar{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:999px;font-size:1.05rem;line-height:1;color:var(--line);display:grid;place-items:center;background:transparent;z-index:1}
+.xstar[aria-pressed="true"]{color:var(--accent)}
+.xstar:hover{color:var(--muted)}.xstar[aria-pressed="true"]:hover{color:var(--accent)}
+.card>.xstar,.card .xstar:not(.xs-sm):not(.xs-in){top:10px;right:10px}
+.gi,.why,.rv,.mmi,.wprompt{position:relative}
+.gi:has(.xstar),.why:has(.xstar),.rv:has(.xstar){padding-right:34px}
+.xstar.xs-sm{top:2px;right:2px;width:28px;height:28px;font-size:.95rem}
+.xstar.xs-in{top:1px;right:1px;width:22px;height:22px;font-size:.75rem}
+.mmi:has(.xstar){padding-right:22px}
+@media (pointer:coarse){.xstar.xs-in{width:26px;height:26px;top:0;right:0}}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <main class="wrap">
@@ -1277,6 +1288,12 @@ function grade(x,ok){const r=rec(x);if(!ok)rate(x,'again');else if(!r||!r.n||r.d
 const mastery=x=>{const r=rec(x);return !r||!r.n?0:r.i>=7?2:1};
 const isDue=x=>{const r=rec(x);return !!r&&r.n>0&&r.d<=Date.now()};
 const starred=x=>!!(srs[x.k]&&srs[x.k].s);
+/* a ★ for any character or word: the same stars as the Vocabulary list (★ tab) and the details sheet, synced with the account */
+const starHtml=(x,cls='')=>x&&x.k&&BYKEY.has(x.k)?`<button type="button" class="xstar ${cls}" data-xstar="${esc(x.k)}" aria-pressed="${starred(x)}" aria-label="Star" title="Star">★</button>`:'';
+document.addEventListener('click',e=>{const b=e.target.closest('[data-xstar]');if(!b)return;e.preventDefault();e.stopPropagation();
+  const x=BYKEY.get(b.dataset.xstar);if(!x)return;const on=toggleStar(x);
+  document.querySelectorAll(`[data-xstar="${CSS.escape(b.dataset.xstar)}"]`).forEach(o=>o.setAttribute('aria-pressed',String(on)));
+  if($('ifstar')&&b.closest('.wsheet'))$('ifstar').setAttribute('aria-pressed',String(on))},true);
 function toggleStar(x){const r=srs[x.k]||(srs[x.k]={e:2.5,i:0,n:0,lp:0,d:Date.now()+3650*DAY,fresh:1});r.s=!r.s;r.u=Date.now();saveSrs();return r.s}
 const seen=x=>{const r=rec(x);return r&&r.n>0};
 
@@ -1509,11 +1526,11 @@ const bar=(pct,count,label='‹ Home')=>`<div class="bar"><button class="back" d
 const tallyBar=(bad,good,total,count,badL='Mistakes',goodL='Correct',label='‹ Home',barBad=true)=>{const T=Math.max(total,1),b=Math.max(0,Math.round(bad)),g=Math.max(0,Math.round(good)),left=Math.max(0,total-(barBad?b:0)-g);
   return `<div class="bar"><button class="back" data-home>${label}</button><div class="progress split" aria-hidden="true"><span class="r" style="width:${barBad?b/T*100:0}%"></span><span class="g" style="width:${g/T*100}%"></span></div><span class="count">${count}</span></div>
   <div class="tally"><span class="no"><i aria-hidden="true"></i><b>${b}</b> ${badL}</span><span class="left"><b>${left}</b> To go</span><span class="yes"><b>${g}</b> ${goodL}<i aria-hidden="true"></i></span></div>`};
-const answerLine=x=>`<div class="why">${x.kind==='c'?`<span class="t${x.tone}">${contour(x.tone)}</span>`:''}<span><b class="han" style="font-size:1.5rem">${hzHtml(x)}</b> <b>${pyHtml(x.p)}</b>${x.kind==='c'?' · '+TLABEL(x.tone):''} · ${esc(x.en)}</span></div>`;
-function backHtml(x){
+const answerLine=x=>`<div class="why">${x.kind==='c'?`<span class="t${x.tone}">${contour(x.tone)}</span>`:''}<span><b class="han" style="font-size:1.5rem">${hzHtml(x)}</b> <b>${pyHtml(x.p)}</b>${x.kind==='c'?' · '+TLABEL(x.tone):''} · ${esc(x.en)}</span>${starHtml(x,'xs-sm')}</div>`;
+function backHtml(x,noStar){
   return `<span class="py">${x.kind==='c'?`<span class="t${x.tone}">${contour(x.tone)}</span>`:''}${pyHtml(x.p)}</span>
     ${x.kind==='c'?`<span class="t${x.tone}" style="font-weight:600">${TLABEL(x.tone)}, ${TONE[x.tone]}</span>`:x.pos?`<span class="tag">${esc(x.pos)}</span>`:''}
-    <span class="meaning">${esc(x.en)}</span>${x.t!==x.s?`<span class="alt">${state.script==='t'?'Simplified '+x.s:'Traditional '+x.t}</span>`:''}`;
+    <span class="meaning">${esc(x.en)}</span>${x.t!==x.s?`<span class="alt">${state.script==='t'?'Simplified '+x.s:'Traditional '+x.t}</span>`:''}${noStar?'':starHtml(x)}`;
 }
 
 /* dialogs: move focus inside once rendered, keep Tab within, focus is restored by the caller on close */
@@ -1533,7 +1550,7 @@ function infoSheet(list,i){
   function draw(){
     const x=list[i],m=mastery(x);
     sh.innerHTML=`<div class="wpanel infop"><div class="row"><button class="btn ghost" id="ifp" ${i?'':'disabled'} aria-label="Previous">‹</button><span class="tag">${kindLabel(x)} · ${LNAME(x.l)} · ${i+1} / ${list.length}</span><button class="btn ghost" id="ifn" ${i<list.length-1?'':'disabled'} aria-label="Next">›</button></div>
-      <span class="${bigClass(x)} han">${hzHtml(x)}</span>${backHtml(x)}
+      <span class="${bigClass(x)} han">${hzHtml(x)}</span>${backHtml(x,true)}
       <p class="hint">${m===2?'✓ Known':m===1?'Learning':'New'}</p>
       <div class="btns"><button class="btn ghost" id="ifplay">${PLAY} Play</button><button class="btn ghost" id="iftw">${PEN}Try writing</button><button class="starbtn" id="ifstar" aria-pressed="${starred(x)}">★ star</button></div>
       <div class="infox">${hookHtml(x)+relatedHtml(x)+exampleHtml(x,4)}</div>
@@ -1661,7 +1678,7 @@ function cards(deck0,rest0,at){
   function done(){resClear('cards');
     open(bar(100,deck.length+' / '+deck.length)+`<div class="card"><p class="eyebrow">Deck finished</p><span class="score">${yes.length} / ${deck.length}</span>
       <p>${no.length?`Still learning: ${no.length}. Go through them again until they are all in the Know pile.`:'You know all of them. Try Learn or Writing next.'}</p>
-      ${no.length?`<div class="grp">${no.map((y,j)=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><button class="mini" data-j="${j}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>`:''}
+      ${no.length?`<div class="grp">${no.map((y,j)=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><button class="mini" data-j="${j}" aria-label="Play">${PLAY}</button>${starHtml(y,'xs-sm')}</div>`).join('')}</div>`:''}
       <div class="btns">${no.length?`<button class="btn${rest.length?' ghost':''}" id="again">Study the ${no.length} again</button>`:''}${rest.length?`<button class="btn" id="nextr">Next round · ${rest.length} left</button>`:''}<button class="btn ghost" id="restart">Start over</button></div></div>`);
     M().querySelectorAll('.mini').forEach(m=>m.onclick=()=>speak(no[+m.dataset.j]));
     if($('again'))$('again').onclick=()=>cards(shuffle(no),rest);
@@ -1819,7 +1836,7 @@ function learn(at){
     keyHandler=e=>{if(e.key==='Enter'){e.preventDefault();ask()}};
   }
   function roundDone(){
-    open(head()+`<div class="card"><p class="eyebrow">Round ${round} done</p><h2>Mastered ${mastered} of ${all.length}</h2><div class="grp">${items.map(y=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><span></span></div>`).join('')}</div>
+    open(head()+`<div class="card"><p class="eyebrow">Round ${round} done</p><h2>Mastered ${mastered} of ${all.length}</h2><div class="grp">${items.map(y=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><span></span>${starHtml(y,'xs-sm')}</div>`).join('')}</div>
       <div class="btns"><button class="btn" id="nr">${next<all.length?'Next round ›':'Finish'}</button></div></div>`);
     $('nr').onclick=newRound;
   }
@@ -1972,7 +1989,7 @@ function exam(qs,tlMin){
       <div class="secres">${secs.map(s=>`<div class="prow"><b><span class="han">${s.z}</span> ${s.n}</b><span class="mbar"><i class="m2" style="width:${s.c/s.t*100}%"></i></span><span class="count">${s.c} / ${s.t}</span></div>`).join('')}</div>
       <p>${pct>=90?'Excellent. You are ready for this lesson.':pct>=70?'Good. Go through the mistakes below, then practise them.':'Practise the mistakes below, then take the test again.'}</p>
       <div class="btns">${wrongItems.length?`<button class="btn" id="pm">Practise my ${wrongItems.length} mistakes</button>`:''}<button class="btn ghost" data-go="test">New test</button></div></div>
-      <h3>Answers</h3><div class="revlist">${qs.map((q,k)=>`<div class="rv ${res[k]?'ok':'bad'}"><span class="rvn">${res[k]?'✓':'✗'} ${k+1}</span><div><p class="hint">${QTITLE[q.type]}</p>${res[k]?'':`<p>Your answer: ${yourA(q,ans[k])}</p>`}<p>${res[k]?'':'Correct: '}${rightA(q)}</p></div></div>`).join('')}</div>`);
+      <h3>Answers</h3><div class="revlist">${qs.map((q,k)=>`<div class="rv ${res[k]?'ok':'bad'}"><span class="rvn">${res[k]?'✓':'✗'} ${k+1}</span><div><p class="hint">${QTITLE[q.type]}</p>${res[k]?'':`<p>Your answer: ${yourA(q,ans[k])}</p>`}<p>${res[k]?'':'Correct: '}${rightA(q)}</p></div>${q.x?starHtml(q.x,'xs-sm'):''}</div>`).join('')}</div>`);
     if($('pm'))$('pm').onclick=()=>cards(shuffle(wrongItems));
   }
   show();
@@ -2012,7 +2029,7 @@ function match(kind){
     g.innerHTML=`<div class="mres"><p class="eyebrow">Done</p><span class="score">${fmt(tenth)}</span>
       <div class="mseals" aria-label="${stars} / 3">${['好','很','棒'].map((c,i)=>`<span class="mseal han${i<stars?' on':''}" style="animation-delay:${.15+i*.18}s">${c}</span>`).join('')}</div>
       <p>${nb?'New personal best for these lessons!':'Your best is '+fmt(best)+'.'}</p>
-      ${missed.size?`<p class="hint">Mixed up:</p><div class="mmiss">${[...missed].map(i=>`<span class="mmi"><b class="han">${hz(items[i])}</b> ${other(items[i])}</span>`).join('')}</div>`:pen===0?'<p class="hint">No mistakes!</p>':''}
+      ${missed.size?`<p class="hint">Mixed up:</p><div class="mmiss">${[...missed].map(i=>`<span class="mmi"><b class="han">${hz(items[i])}</b>${starHtml(items[i],'xs-in')} ${other(items[i])}</span>`).join('')}</div>`:pen===0?'<p class="hint">No mistakes!</p>':''}
       <div class="btns"><button class="btn ghost" data-home>‹ Home</button><button class="btn" id="mag">New round</button></div></div>`;
     trTree(g);$('mag').onclick=()=>match(kind);fit();if(stars===3)confetti()}
   g.onclick=e=>{const b=e.target.closest('.mt');if(!b||b.classList.contains('gone')||b.classList.contains('ok'))return;
@@ -2742,7 +2759,7 @@ function write(rest0,at){
     const nextLabel=!lastChar?'Next character ›':i<deck.length-1?'Skip ›':'Finish';
     open(tallyBar(i-got,got,deck.length,(i+1)+' / '+deck.length)+`<div class="card top-align">
       <div class="seg" role="group" aria-label="Level"><button data-lv="show" aria-pressed="${level==='show'}">1 Watch</button><button data-lv="trace" aria-pressed="${level==='trace'}">2 Trace</button><button data-lv="memory" aria-pressed="${level==='memory'}">3 From memory</button></div>
-      <div class="wprompt">${level==='memory'||L>1?'':`<span class="han" style="font-size:2.5rem">${c}</span>`}<span class="py" style="font-size:1.5rem">${x.kind==='c'?contour(x.tone):''}${pyHtml(x.p)}</span><button class="play" id="say" aria-label="Play">${PLAY}</button></div>
+      <div class="wprompt">${level==='memory'||L>1?'':`<span class="han" style="font-size:2.5rem">${c}</span>`}<span class="py" style="font-size:1.5rem">${x.kind==='c'?contour(x.tone):''}${pyHtml(x.p)}</span><button class="play" id="say" aria-label="Play">${PLAY}</button></div>${starHtml(x)}
       <p class="meaning">${esc(x.en)}</p>${boxes}
       <div class="pad" id="pad"><svg class="guide" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-opacity=".18" stroke-width=".6" stroke-dasharray="2 2" fill="none"><line x1="0" y1="50" x2="100" y2="50"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></g></svg><div class="hw" id="hw"></div></div>
       <p class="strokes" id="wst" role="status" aria-live="polite">${L>1?`Character ${j+1} of ${L} · `:''}${n?n+' strokes':''}</p>${note?`<p class="hint">${note}</p>`:''}
@@ -2845,7 +2862,7 @@ function tones(level){
       <p>${score===ROUND?'Perfect ears!':score>=9?'Very good. Replay the ones you missed below.':'Tones take time. Keep the sessions short and come back tomorrow.'}</p>
       <div class="tacc">${acc.map(a=>`<div class="t${a.t}">${contour(a.t)}<span>Tone ${a.t}</span><i><b style="width:${a.p||0}%"></b></i><small>${a.p===null?'–':a.p+'%'}</small></div>`).join('')}</div>
       <p class="hint">All-time accuracy for each tone.${weak&&weak.p<90?` Your hardest is tone ${weak.t} (${TONE[weak.t]}).`:''}</p>
-      ${u.length?`<div class="grp">${u.map((y,i)=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><button class="mini" data-mi="${i}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>`:''}
+      ${u.length?`<div class="grp">${u.map((y,i)=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><button class="mini" data-mi="${i}" aria-label="Play">${PLAY}</button>${starHtml(y,'xs-sm')}</div>`).join('')}</div>`:''}
       <div class="btns"><button class="btn ghost" data-home>‹ Home</button>${level==='one'?'<button class="btn ghost" id="lv2">Try tone pairs</button>':''}<button class="btn" id="ra">Play again</button></div></div>`);
     M().querySelectorAll('.mini').forEach(m=>m.onclick=()=>speak(u[+m.dataset.mi]));$('ra').onclick=()=>tones(level);if($('lv2'))$('lv2').onclick=()=>tones('two');
   }
@@ -2893,7 +2910,7 @@ function toneFill(){
   }
   function finish(){keyHandler=null;open(bar(100,qs.length+' / '+qs.length)+`<div class="card"><p class="eyebrow">Tones done</p><span class="score">${+score.toFixed(1)} / ${qs.length}</span>
     <p>${score===qs.length?'Every tone right without hints.':'A hint counts as half a point.'}</p>
-    ${missed.length?`<p class="hint">Words to look at again:</p><div class="mmiss">${missed.map(x=>`<span class="mmi"><b class="han">${esc(hz(x))}</b> ${pyHtml(x.p)}</span>`).join('')}</div>`:''}
+    ${missed.length?`<p class="hint">Words to look at again:</p><div class="mmiss">${missed.map(x=>`<span class="mmi"><b class="han">${esc(hz(x))}</b> ${pyHtml(x.p)}${starHtml(x,'xs-in')}</span>`).join('')}</div>`:''}
     <div class="btns"><button class="btn ghost" data-home>‹ Home</button><button class="btn" id="ag">Again</button></div></div>`);$('ag').onclick=toneFill}
   render();
 }
@@ -2919,7 +2936,7 @@ function twinQuiz(qmode){
       const x=q.x,last=qi===ROUND-1;
       const h=ok?`<h3>Correct!</h3>${answerLine(x)}`:qmode==='tone'?`<h3>That wasn't ${TLABEL(picked).toLowerCase()}.</h3><div class="why t${x.tone}">${contour(x.tone)}<span>It was <b>${TLABEL(x.tone).toLowerCase()}</b>, ${TONE[x.tone]}: <b class="han">${hz(x)}</b> <b>${x.p}</b></span></div>`
         :`<h3>You heard a different one.</h3><div class="why t${x.tone}">${contour(x.tone)}<span>You heard <b class="han">${hz(x)}</b> <b>${x.p}</b>, ${TLABEL(x.tone).toLowerCase()} (${TONE[x.tone]}). You picked <b class="han">${hz(picked)}</b> <span class="t${picked.tone}"><b>${picked.p}</b>, ${TLABEL(picked.tone).toLowerCase()}</span>.</span></div>`;
-      $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${h}<p class="hint">Twins with the syllable <b>${q.g.syl}</b>:</p><div class="grp">${q.g.items.map((y,i)=>`<div class="gi t${y.tone}${y===x?' target':''}"><span class="han">${hz(y)}</span><span class="p">${y.p}</span><span class="m">${TLABEL(y.tone)} · ${esc(y.en)}</span><button class="mini" data-gi="${i}" aria-label="Play">${PLAY}</button></div>`).join('')}</div><button class="btn" id="qn">${last?'See result':'Next question ›'}</button></div>`;
+      $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${h}<p class="hint">Twins with the syllable <b>${q.g.syl}</b>:</p><div class="grp">${q.g.items.map((y,i)=>`<div class="gi t${y.tone}${y===x?' target':''}"><span class="han">${hz(y)}</span><span class="p">${y.p}</span><span class="m">${TLABEL(y.tone)} · ${esc(y.en)}</span><button class="mini" data-gi="${i}" aria-label="Play">${PLAY}</button>${starHtml(y,'xs-sm')}</div>`).join('')}</div><button class="btn" id="qn">${last?'See result':'Next question ›'}</button></div>`;
       $('fb').querySelectorAll('.mini').forEach(m=>m.onclick=()=>speak(q.g.items[+m.dataset.gi]));
       const nx=()=>{if(last)result();else{qi++;render()}};$('qn').onclick=nx;keyHandler=e=>{if(e.key==='Enter')nx()};
       speak(x);
@@ -2929,7 +2946,7 @@ function twinQuiz(qmode){
     const u=[...new Set(missed)];
     open(bar(100,ROUND+' / '+ROUND)+`<div class="card"><p class="eyebrow">${qmode==='tone'?'Pick the tone':'Listen and pick'}</p><span class="score">${score} / ${ROUND}</span>
       <p>${score===ROUND?'Perfect. Try adding another lesson.':score>=7?'Good work. Play the ones you missed below.':'Tones take time. Go through the mistakes and try again.'}</p>
-      ${u.length?`<div class="grp">${u.map((y,i)=>`<div class="gi t${y.tone}"><span class="han">${hz(y)}</span><span class="p">${y.p}</span><span class="m">${TLABEL(y.tone)} · ${esc(y.en)}</span><button class="mini" data-mi="${i}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>`:''}
+      ${u.length?`<div class="grp">${u.map((y,i)=>`<div class="gi t${y.tone}"><span class="han">${hz(y)}</span><span class="p">${y.p}</span><span class="m">${TLABEL(y.tone)} · ${esc(y.en)}</span><button class="mini" data-mi="${i}" aria-label="Play">${PLAY}</button>${starHtml(y,'xs-sm')}</div>`).join('')}</div>`:''}
       <div class="btns"><button class="btn ghost" data-home>‹ Home</button><button class="btn" id="ra">Play again</button></div></div>`);
     M().querySelectorAll('.mini').forEach(m=>m.onclick=()=>speak(u[+m.dataset.mi]));$('ra').onclick=()=>twinQuiz(qmode);
   }
