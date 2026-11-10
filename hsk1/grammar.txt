@@ -1,0 +1,566 @@
+# HSK 1 grammar, following the official grammar list: HSK 语法大纲 · HSK（一级）, pages 383–385 of the HSK 考试大纲
+# (CLEC 2025, valid from 2026-07). The grouping into lessons, the explanations, examples and exercises are written for this app,
+# and use only the 300 words of the official HSK 1 vocabulary list (build_grammar.py checks this).
+#
+# ## lesson | title | the item of the official grammar list
+# ex:   explanation           pat:  pattern            tip:  a common mistake (optional)
+# eg:   example sentence, words separated by spaces = English
+# gap:  a sentence with [the answer] = English / other choices (∅ = nothing)
+# bad:  the right sentence / wrong ones = English
+
+## 1 | Personal pronouns and 们 | 代词 · 人称代词；后缀 —们
+ex: 我 I, 你 you, 您 you (polite), 他 he, 她 she, 它 it. Add 们 for more than one person: 我们 we, 你们 you all, 他们 / 她们 they. 大家 means everyone. The same word is used for "I" and "me", "he" and "him".
+pat: 我 / 你 / 他 / 她 / 它 + 们
+tip: There is no 您们. To be polite to a group, say 大家 or 你们.
+eg: 我们 是 朋友 。 = We are friends.
+eg: 他 认识 我 。 = He knows me.
+eg: 大家 好 ！ = Hello, everyone!
+gap: [他们] 是 我 的 同学 。 = They are my classmates. / 他 你们
+gap: 他 认识 [她] 。 = He knows her. / 她们 我们
+gap: [它] 是 我 的 狗 。 = It is my dog. / 他 她们
+gap: [您] 好 ！ = Hello! (polite) / 它 您们
+gap: 我 认识 [你们] 。 = I know you (all). / 你 它
+bad: 你们好！ / 您们好！ / 你好们！ = Hello, you all!
+bad: 他认识我。 / 他我认识。 / 他是认识我。 = He knows me.
+bad: 我们是朋友。 / 我是们朋友。 / 们我是朋友。 = We are friends.
+
+## 1 | A 是 B | “是”字句1：表示等同或类属
+ex: 是 links two nouns: "A is B". To say "A is not B", put 不 before 是. 不 is said bú before a fourth tone, so 不是 is bú shì.
+pat: A + 是 / 不是 + B
+tip: 是 is not used with adjectives: 我很高兴, not 我是高兴.
+eg: 我 是 学生 。 = I am a student.
+eg: 他 不 是 中国 人 。 = He is not Chinese.
+eg: 她 是 我 妈妈 。 = She is my mother.
+gap: 我 [是] 老师 。 = I am a teacher. / 有 叫
+gap: 他 [不] 是 医生 。 = He is not a doctor. / 没有 也
+gap: 她 是 我 的 [朋友] 。 = She is my friend. / 男 好
+gap: 这 [是] 我 爸爸 。 = This is my father. / 在 叫
+gap: 我 不 是 [大学生] 。 = I am not a university student. / 大学 学习
+bad: 我不是老师。 / 我是不老师。 / 我不老师是。 = I am not a teacher.
+bad: 他是我哥哥。 / 他我是哥哥。 / 是他我哥哥。 = He is my older brother.
+bad: 我很高兴。 / 我是高兴。 / 我高兴是。 = I am happy.
+
+## 1 | Questions with 吗 | 疑问句：是非问句；语气助词 吗
+ex: Put 吗 at the end of a statement to make a yes-or-no question. The word order does not change. Answer with the verb: 是 / 不是, 认识 / 不认识.
+pat: Statement + 吗？
+tip: Do not add 吗 to a question that already has a question word: 他是谁？ not 他是谁吗？
+eg: 你 是 老师 吗 ？ = Are you a teacher?
+eg: 你 认识 他 吗 ？ = Do you know him?
+eg: 她 是 你 女儿 吗 ？ = Is she your daughter?
+gap: 你 是 中国 人 [吗] ？ = Are you Chinese? / 呢 吧
+gap: 他 是 你 哥哥 [吗] ？ = Is he your older brother? / 谁 什么
+gap: 你 [认识] 她 吗 ？ = Do you know her? / 叫 是
+gap: 你们 是 学生 吗 ？ [是] ， 我们 是 学生 。 = Are you students? Yes, we are students. / 吗 有
+gap: 他 是 谁 [∅] ？ = Who is he? / 吗 呢
+bad: 你是学生吗？ / 你吗是学生？ / 吗你是学生？ = Are you a student?
+bad: 他是谁？ / 他是谁吗？ / 吗他是谁？ = Who is he?
+bad: 你认识我吗？ / 你认识吗我？ / 你吗认识我？ = Do you know me?
+
+## 1 | Question words 什么 and 谁 | 疑问代词 什么、谁；特指问句
+ex: 什么 means "what", 谁 means "who". The question word goes where the answer goes, so the word order stays the same as in the answer. 叫 means "to be called": 你叫什么名字？ What is your name?
+pat: Answer word order, with 什么 / 谁 in the place of the answer
+tip: 什么你叫？ is wrong. Keep the order of the answer: 你叫什么？ → 我叫……
+eg: 你 叫 什么 名字 ？ = What is your name?
+eg: 他 是 谁 ？ = Who is he?
+eg: 谁 是 你 的 老师 ？ = Who is your teacher?
+gap: 你 叫 [什么] 名字 ？ = What is your name? / 谁 吗
+gap: 那 是 [谁] ？ = Who is that? / 什么 哪
+gap: [谁] 是 你 妈妈 ？ = Who is your mother? / 什么 几
+gap: 这 是 [什么] ？ = What is this? / 谁 吗
+gap: 你 女儿 [叫] 什么 名字 ？ = What is your daughter's name? / 是 有
+bad: 你叫什么名字？ / 你什么叫名字？ / 什么你叫名字？ = What is your name?
+bad: 他是谁？ / 谁他是？ / 他谁是？ = Who is he?
+bad: 这是什么？ / 什么这是？ / 这什么是？ = What is this?
+
+## 1 | 也 and 都 | 关联副词 也；范围副词 都
+ex: 也 means "also, too" and 都 means "all, both". Both go right before the verb, never at the start of the sentence. When both are used, the order is 也都.
+pat: Subject + 也 / 都 + verb
+tip: 也我是学生 is wrong. Say 我也是学生.
+eg: 我 也 是 学生 。 = I am a student, too.
+eg: 我们 都 是 中国 人 。 = We are all Chinese.
+eg: 他们 也 都 认识 我 。 = They all know me, too.
+gap: 我 [也] 是 老师 。 = I am a teacher, too. / 都 很
+gap: 我们 [都] 是 学生 。 = We are all students. / 也 很
+gap: 我 爸爸 妈妈 [都] 是 医生 。 = My father and mother are both doctors. / 也 和
+gap: 她 [也] 认识 你 。 = She knows you, too. / 都 吗
+gap: 他们 也 [都] 是 我 的 朋友 。 = They are all my friends, too. / 很 吗
+bad: 我也是学生。 / 也我是学生。 / 我是也学生。 = I am a student, too.
+bad: 我们都认识他。 / 都我们认识他。 / 我们认识都他。 = We all know him.
+bad: 他们也都是老师。 / 他们都也是老师。 / 也都他们是老师。 = They are all teachers, too.
+
+## 2 | Numbers | 数词：一、二/两、三……十、百、千、零
+ex: 1–10 are 一 二 三 四 五 六 七 八 九 十. Bigger numbers are built from them: 十一 11, 二十 20, 九十九 99, 一百 100, 一千 1000. 零 is zero. Before a measure word, "two" is 两, not 二: 两个人.
+pat: Number + measure word + noun (两 for "two")
+tip: 二个 is wrong. Say 两个. In numbers like 十二 or 第二, 二 is used.
+eg: 我 家 有 五 口 人 。 = There are five people in my family.
+eg: 我 有 两 个 妹妹 。 = I have two younger sisters.
+eg: 我们 学校 有 一千 个 学生 。 = Our school has a thousand students.
+gap: 他 有 [两] 个 孩子 。 = He has two children. / 二 第二
+gap: 我 [十八] 岁 。 = I am eighteen. / 八十 十
+gap: 我 家 有 [三] 口 人 。 = There are three people in my family. / 第三 三百
+gap: 这 本 书 一百 [零] 五 块 。 = This book is a hundred and five kuai. / 十 两
+bad: 我有两个哥哥。 / 我有二个哥哥。 / 我有两哥哥。 = I have two older brothers.
+bad: 她二十岁。 / 她二十岁是。 / 她岁二十。 = She is twenty.
+bad: 我家有四口人。 / 我家有四人口。 / 我家有口四人。 = There are four people in my family.
+
+## 2 | Dates, days and age | 时间表示法：年、月、日、星期；名词谓语句
+ex: Dates go from big to small: year, month, day. 号 is used for the day in speech, 日 in writing. The days of the week are 星期 + number (星期一 Monday … 星期六 Saturday), and Sunday is 星期天 or 星期日. With dates, days and age, the sentence needs no verb: 今天星期一。我二十岁。
+pat: 年 → 月 → 号 / 日 → 星期 ; Subject + number + 岁
+tip: 我是二十岁 is wrong. Say 我二十岁. In the negative, 是 comes back: 今天不是星期一.
+eg: 今天 星期 三 。 = Today is Wednesday.
+eg: 明天 是 九 月 十 号 。 = Tomorrow is the tenth of September.
+eg: 我 女儿 六 岁 。 = My daughter is six.
+gap: 今天 [星期] 五 。 = Today is Friday. / 月 号
+gap: 我 [二十] 岁 。 = I am twenty. / 是 有
+gap: 明天 是 十 月 一 [号] 。 = Tomorrow is the first of October. / 岁 天
+gap: 昨天 [星期天] 。 = Yesterday was Sunday. / 星期七 第七
+gap: 今天 [不] 是 星期 六 。 = Today is not Saturday. / 没有 也
+bad: 我二十岁。 / 我是二十岁。 / 我岁二十。 = I am twenty.
+bad: 今天十月五号。 / 今天五号十月。 / 今天号五月十。 = Today is the fifth of October.
+bad: 明天星期天。 / 明天星期七。 / 明天天星期。 = Tomorrow is Sunday.
+
+## 2 | Asking with 几; order with 第 | 疑问代词 几；序数表达法1：第+数词
+ex: 几 asks "how many" when the answer is a small number (under ten or so), and it needs a measure word: 几个? It also asks for dates and days: 几号? 星期几? Put 第 before a number for order: 第一 first, 第二 second.
+pat: 几 + measure word + noun？ ; 第 + number
+tip: In 星期几 and 几号, the answer goes in the same place: 星期几？ → 星期三.
+eg: 今天 几 号 ？ = What is the date today?
+eg: 你 家 有 几 口 人 ？ = How many people are there in your family?
+eg: 这 是 我 的 第一 本 书 。 = This is my first book.
+gap: 今天 星期 [几] ？ = What day of the week is it today? / 什么 谁
+gap: 你 有 [几] 个 孩子 ？ = How many children do you have? / 什么 第
+gap: 明天 [几] 号 ？ = What is the date tomorrow? / 哪 多
+gap: 他 是 我 的 [第一] 个 汉语 老师 。 = He was my first Chinese teacher. / 一第 几
+gap: 你 女儿 [几] 岁 了 ？ = How old is your daughter? / 谁 什么
+bad: 今天星期几？ / 今天几星期？ / 几今天星期？ = What day is it today?
+bad: 你有几个朋友？ / 你有几朋友？ / 你几有个朋友？ = How many friends do you have?
+bad: 这是第二本书。 / 这是二第本书。 / 这是本第二书。 = This is the second book.
+
+## 3 | Measure words with 这, 那, 哪 | 量词：个、本、件、口、块、只、杯；指示代词 这、那、哪
+ex: Between a number (or 这 this, 那 that, 哪 which) and a noun, Chinese needs a measure word. 个 is the most common one. Others go with certain nouns: 本 books, 件 clothes, 口 family members, 只 animals, 杯 cups of a drink, 块 money (and pieces).
+pat: 这 / 那 / 哪 / number + measure word + noun
+tip: 一书 is wrong. Say 一本书. 这个 and 那个 can also stand on their own: 我要这个 "I want this one".
+eg: 这 本 书 是 我 的 。 = This book is mine.
+eg: 我 家 有 一 只 猫 。 = We have a cat at home.
+eg: 你 要 哪 件 衣服 ？ = Which piece of clothing do you want?
+gap: 我 有 一 [本] 汉语 书 。 = I have a Chinese book. / 个 件
+gap: 那 [只] 狗 很 大 。 = That dog is big. / 本 口
+gap: 我 想 喝 一 [杯] 茶 。 = I would like a cup of tea. / 个 本
+gap: 这 [件] 衣服 很 漂亮 。 = This piece of clothing is beautiful. / 只 本
+gap: 你 喜欢 [哪] 个 ？ = Which one do you like? / 什么 几
+bad: 我有一本书。 / 我有一书。 / 我有本一书。 = I have a book.
+bad: 这个人是我哥哥。 / 这人个是我哥哥。 / 个这人是我哥哥。 = This person is my older brother.
+bad: 我家有两只猫。 / 我家有两猫。 / 我家有猫两只。 = We have two cats at home.
+
+## 3 | The particle 的 | 结构助词 的1；定语
+ex: 的 joins a word that describes a noun to that noun, like "'s" or "of" in English: 我的书 my book, 妈妈的手机 Mum's phone. Close family and very close things often drop it: 我妈妈, 我家. With 的 at the end, the noun can be left out: 这本书是我的 "This book is mine".
+pat: Owner / description + 的 + noun
+tip: The owner always comes first: 我的朋友 "my friend", never 朋友的我.
+eg: 这 是 我 的 手机 。 = This is my phone.
+eg: 那 本 书 是 老师 的 。 = That book is the teacher's.
+eg: 他 是 我 的 好 朋友 。 = He is my good friend.
+gap: 这 是 我 [的] 杯子 。 = This is my cup. / 了 吗
+gap: 那 是 谁 [的] 狗 ？ = Whose dog is that? / 吗 个
+gap: 这 本 书 是 [我 的] 。 = This book is mine. / 的我 我们
+gap: 她 是 我 [∅] 妈妈 。 = She is my mother. / 是 了
+gap: [妈妈] 的 手机 很 新 。 = Mum's phone is new. / 的 是
+bad: 这是我的书。 / 这是书的我。 / 这的我是书。 = This is my book.
+bad: 那是谁的杯子？ / 那是杯子谁的？ / 那的谁是杯子？ = Whose cup is that?
+bad: 这个手机是我的。 / 这个手机是的我。 / 这个是手机我的。 = This phone is mine.
+
+## 3 | 有 and 没有 | “有”字句1：表示领有；否定副词 没（有）
+ex: 有 means "to have". Its negative is 没有, never 不有. 有 also answers yes-or-no questions with 吗, and 有没有 asks "do you have…?" without 吗.
+pat: Subject + 有 / 没有 + object
+tip: 我不有 is wrong. Say 我没有.
+eg: 我 有 一 个 弟弟 。 = I have a younger brother.
+eg: 我 没有 手机 。 = I don't have a phone.
+eg: 你 有 汉语 书 吗 ？ = Do you have a Chinese book?
+gap: 我 [没有] 姐姐 。 = I don't have an older sister. / 不有 不是
+gap: 你 [有] 狗 吗 ？ = Do you have a dog? / 是 在
+gap: 他 有 [两] 个 孩子 。 = He has two children. / 二 几
+gap: 我们 [没有] 杯子 。 = We have no cups. / 不 不要
+gap: 你 [有 没有] 电脑 ？ = Do you have a computer? / 有吗 没有吗
+bad: 我没有猫。 / 我不有猫。 / 我有不猫。 = I don't have a cat.
+bad: 你有手机吗？ / 你有吗手机？ / 你吗有手机？ = Do you have a phone?
+bad: 他有三本书。 / 他有三书。 / 他三本有书。 = He has three books.
+
+## 4 | Adjectives: 很, 太……了, 有点儿 | 形容词谓语句；程度副词 很、太、非常、真、有（一）点儿
+ex: An adjective can be the verb of the sentence. It needs no 是, and in a plain statement it usually takes 很. 很 adds little meaning; to say "very", use 非常. 太……了 means "too…" or "so…!", 真 means "really", and 有点儿 means "a bit", usually for something not so nice.
+pat: Subject + 很 / 非常 / 真 / 有点儿 + adjective ; Subject + 太 + adjective + 了
+tip: 今天是冷 is wrong. Say 今天很冷. In the negative, no 很 is needed: 今天不冷.
+eg: 今天 很 冷 。 = It is cold today.
+eg: 这 个 菜 太 好吃 了 ！ = This dish is so delicious!
+eg: 今天 有点儿 热 。 = It is a bit hot today.
+gap: 今天 天气 [很] 好 。 = The weather is nice today. / 是 有
+gap: 太 冷 [了] ！ = It's too cold! / 吗 的
+gap: 今天 [有点儿] 冷 。 = It is a bit cold today. / 一点儿 一些
+gap: 明天 [不] 热 。 = It won't be hot tomorrow. / 没有 很不
+gap: 这 本 书 [非常] 好 。 = This book is very good. / 是 有
+bad: 今天很热。 / 今天是热。 / 今天热很。 = It is hot today.
+bad: 太好了！ / 太好！了 / 好太了！ = Great!
+bad: 今天有点儿冷。 / 今天冷有点儿。 / 今天一点儿冷。 = It is a bit cold today.
+
+## 4 | 了 for a change; 怎么样 | 变化态：用语气助词“了2”表示；疑问代词 怎么样
+ex: 了 at the end of a sentence says that something has changed or is new: 下雨了 "it has started raining", 冷了 "it has got cold". 怎么样 asks "how is it?" or "what is it like?", and is often used for the weather.
+pat: … + 了 (a new situation) ; … 怎么样？
+tip: Compare 很冷 "it is cold" with 冷了 "it has got cold".
+eg: 下雨 了 。 = It is raining (now).
+eg: 明天 天气 怎么样 ？ = What will the weather be like tomorrow?
+eg: 天气 热 了 。 = It has got hot.
+gap: 下雨 [了] ！ = It's started raining! / 吗 的
+gap: 今天 天气 [怎么样] ？ = What is the weather like today? / 什么 谁
+gap: 下 雪 [了] 。 = It's snowing. / 吧 很
+gap: 我 女儿 七 岁 [了] 。 = My daughter is seven now. / 的 吗
+gap: 你 的 新 手机 [怎么样] ？ = How is your new phone? / 几 哪
+bad: 下雨了。 / 了下雨。 / 下了雨了雨。 = It's raining.
+bad: 天气怎么样？ / 怎么样天气？ / 天气怎么样吗？ = What's the weather like?
+bad: 天气冷了。 / 天气了冷。 / 了天气冷。 = It has got cold.
+
+## 5 | Where things are: 在 and position words | 动词 在；方位名词 上、下、里、外、前、后；方位短语
+ex: 在 means "to be (somewhere)". The place comes after it. Position words go after the noun, not before it: 桌子上 "on the table", 房间里 "in the room", 商店外边 "outside the shop". Ask with 在哪儿 "where is…?".
+pat: Thing / person + 在 + place (+ 上 / 下 / 里 / 外边)
+tip: 在上桌子 is wrong. The position word comes last: 在桌子上.
+eg: 我 的 书 在 桌子 上 。 = My book is on the table.
+eg: 妈妈 在 家 。 = Mum is at home.
+eg: 你 的 手机 在 哪儿 ？ = Where is your phone?
+gap: 猫 [在] 椅子 下 。 = The cat is under the chair. / 有 是
+gap: 老师 在 房间 [里] 。 = The teacher is in the room. / 外 前
+gap: 你 爸爸 在 [哪儿] ？ = Where is your father? / 什么 谁
+gap: 我 的 杯子 在 桌子 [上] 。 = My cup is on the table. / 里 前
+gap: 我 住 [在] 这儿 。 = I live here. / 有 是
+bad: 书在桌子上。 / 书在上桌子。 / 书上在桌子。 = The book is on the table.
+bad: 你在哪儿？ / 你哪儿在？ / 哪儿你在？ = Where are you?
+bad: 我住在这儿。 / 我在住这儿。 / 我住这儿在。 = I live here.
+
+## 5 | There is: place + 有 / 是 | 存现句1：处所+是+名词；处所+有+数量短语+名词
+ex: To say what there is somewhere, put the place first, then 有: 房间里有两个人 With 是 instead of 有, you say exactly what is there: 那边是商店 "Over there is a shop". Compare: 书在桌子上 (we know which book; where is it?) and 桌子上有一本书 (there is a book on the table).
+pat: Place + 有 + number + measure word + noun ; Place + 是 + noun
+tip: 有一本书在桌子上 sounds foreign. Start with the place: 桌子上有一本书.
+eg: 桌子 上 有 一 本 书 。 = There is a book on the table.
+eg: 房间 里 有 两 个 人 。 = There are two people in the room.
+eg: 那边 是 一 个 商店 。 = Over there is a shop.
+gap: 房间 里 [有] 一 只 猫 。 = There is a cat in the room. / 在 是
+gap: [桌子 上] 有 一 个 杯子 。 = There is a cup on the table. / 上桌子 在桌子
+gap: 学校 外边 [有] 一 个 书店 。 = There is a bookshop outside the school. / 在 了
+gap: 那边 [是] 医院 。 = Over there is the hospital. / 在 很
+gap: 椅子 [下] 有 一 只 狗 。 = There is a dog under the chair. / 外 前
+bad: 桌子上有一本书。 / 有一本书在桌子上。 / 一本书有桌子上。 = There is a book on the table.
+bad: 房间里有三个人。 / 房间里在三个人。 / 里房间有三个人。 = There are three people in the room.
+bad: 学校外边有一个商店。 / 外边学校有一个商店。 / 学校外边在一个商店。 = There is a shop outside the school.
+
+## 6 | Requests and suggestions: 请, 不要, 吧, 一下 | 祈使句；语气助词 吧1；否定副词 不要；动词+动量补语（一下）
+ex: 请 before a verb makes a polite request: 请坐 "please sit down". 不要 + verb says "don't". 吧 at the end makes a suggestion: 我们去吧 "let's go". Verb + 一下 makes a request softer: "just, for a moment".
+pat: 请 + verb ; 不要 + verb ; … + 吧 ; verb + 一下
+tip: 一下 comes after the verb: 看一下, not 一下看.
+eg: 请 坐 。 = Please sit down.
+eg: 我们 去 吃 饭 吧 。 = Let's go and eat.
+eg: 你 看 一下 。 = Have a look.
+gap: [请] 喝 茶 。 = Please have some tea. / 吧 吗
+gap: 我们 去 商店 [吧] 。 = Let's go to the shop. / 吗 呢
+gap: [不要] 说话 ！ = Don't talk! / 没有 不是
+gap: 你 来 [一下] 。 = Come here for a moment. / 一点儿 一些
+bad: 请喝水。 / 喝请水。 / 喝水请。 = Please drink some water.
+bad: 你看一下。 / 你一下看。 / 一下你看。 = Have a look.
+bad: 不要开车！ / 要不开车！ / 开车不要！ = Don't drive!
+
+## 6 | Wanting: 想 and 要 | 能愿动词 想、要
+ex: 想 + verb means "would like to, feel like". 要 + verb is stronger: "want to, are going to". 要 can also take a thing directly: 我要这个 "I want this one". Both go before the verb.
+pat: Subject + 想 / 要 + verb (+ object)
+tip: To say you don't want to, use 不想. 不要 + verb means "don't!".
+eg: 我 想 喝 水 。 = I would like to drink some water.
+eg: 我 要 买 一 个 新 手机 。 = I want to buy a new phone.
+eg: 你 想 去 哪儿 ？ = Where would you like to go?
+gap: 我 [想] 回 家 。 = I would like to go home. / 在 是
+gap: 你 [要] 这 个 吗 ？ = Do you want this one? / 想 是
+gap: 我 不 [想] 去 。 = I don't feel like going. / 要 有
+gap: 你 想 [吃] 什么 ？ = What would you like to eat? / 喝 叫
+gap: 她 要 [买] 衣服 。 = She wants to buy clothes. / 卖 穿
+bad: 我想喝茶。 / 我喝想茶。 / 想我喝茶。 = I would like some tea.
+bad: 我不想去。 / 我想不去吗。 / 不我想去。 = I don't feel like going.
+bad: 你要买什么？ / 你买要什么？ / 你要什么买？ = What do you want to buy?
+
+## 6 | And you? 呢 | 语气助词 呢1
+ex: After a statement, a noun or pronoun + 呢 asks the same question back: "and you?", "what about…?". On its own, 呢 can also ask where someone or something is: 我的手机呢？ "Where is my phone?"
+pat: Statement, noun / pronoun + 呢？
+tip: 你呢 needs no 吗: 我很好，你呢？
+eg: 我 很 好 ， 你 呢 ？ = I am fine, and you?
+eg: 我 是 学生 ， 你 呢 ？ = I am a student. What about you?
+eg: 我 的 手机 呢 ？ = Where is my phone?
+gap: 我 是 中国 人 ， 你 [呢] ？ = I am Chinese. And you? / 吗 吧
+gap: 我 想 喝 茶 ， 你 [呢] ？ = I would like tea. What about you? / 吗 了
+gap: 我 爸爸 在 家 ， 你 爸爸 [呢] ？ = My father is at home. And yours? / 吗 的
+gap: [我] 也 很 好 。 = I am fine, too. / 我也 呢
+gap: 你 好 [吗] ？ = How are you? / 呢 吧
+bad: 我很好，你呢？ / 我很好，呢你？ / 我很好，你呢吗？ = I'm fine, and you?
+bad: 我的书呢？ / 呢我的书？ / 我呢的书？ = Where is my book?
+bad: 我喝茶，你呢？ / 我喝茶，你吗呢？ / 我喝茶，呢你？ = I'm having tea, and you?
+
+## 7 | Verb-not-verb questions | 疑问句：正反问句
+ex: Another way to ask yes or no: say the verb or adjective twice, with 不 in the middle: 喝不喝 "do you drink or not?". With 有, the middle is 没: 有没有. Such questions never take 吗.
+pat: Verb + 不 + verb ? ; 有没有 … ?
+tip: 你喝不喝吗？ is wrong: drop 吗.
+eg: 你 喝 不 喝 茶 ？ = Do you drink tea?
+eg: 你 有 没有 面包 ？ = Do you have any bread?
+eg: 这 个 菜 好吃 不 好吃 ？ = Is this dish tasty?
+gap: 你 吃 [不] 吃 米饭 ？ = Do you eat rice? / 没 也
+gap: 你 [有 没有] 牛奶 ？ = Do you have any milk? / 有不有 是不是
+gap: 他 是 不 是 医生 [∅] ？ = Is he a doctor? / 吗 吧
+gap: 你 [想] 不 想 吃 饺子 ？ = Would you like dumplings? / 有 了
+gap: 苹果 [贵] 不 贵 ？ = Are apples expensive? / 很 太
+bad: 你喝不喝茶？ / 你喝不喝茶吗？ / 你不喝喝茶？ = Do you drink tea?
+bad: 你有没有钱？ / 你有不有钱？ / 你没有有钱？ = Do you have any money?
+bad: 你是不是老师？ / 你是老师不是吗？ / 你不是是老师？ = Are you a teacher?
+
+## 7 | 了 for something done; 没有 + verb | 完成态：用动态助词“了1”表示；否定副词 没（有）
+ex: 了 right after a verb says the action is done: 我吃了一个苹果 "I ate an apple". To say it did not happen, use 没有 (or just 没) before the verb, and drop 了. 吃了吗？ / 吃饭了吗？ is also an everyday greeting at mealtimes.
+pat: Verb + 了 (+ number + object) ; 没有 + verb
+tip: 我没有吃了 is wrong. With 没有, there is no 了: 我没有吃.
+eg: 我 吃 了 一 个 苹果 。 = I ate an apple.
+eg: 你 吃 饭 了 吗 ？ = Have you eaten?
+eg: 我 没有 喝 牛奶 。 = I didn't drink the milk.
+gap: 我 喝 [了] 两 杯 茶 。 = I drank two cups of tea. / 的 吗
+gap: 他 [没有] 吃 早饭 。 = He didn't have breakfast. / 不 不要
+gap: 你 吃 饭 [了] 吗 ？ = Have you eaten? / 的 呢
+gap: 我 没有 买 [∅] 。 = I didn't buy it. / 了 的
+gap: 妈妈 做 [了] 很 多 菜 。 = Mum made a lot of dishes. / 的 吗
+bad: 我没有吃。 / 我没有吃了。 / 我不吃了没有。 = I didn't eat.
+bad: 我买了一本书。 / 我了买一本书。 / 我买一本了书。 = I bought a book.
+bad: 你吃饭了吗？ / 你吃了饭吗了？ / 你了吃饭吗？ = Have you eaten?
+
+## 8 | Two verbs in a row: 去……做…… | 连动句1：后一动作是前一动作的目的；前一动作是后一动作的方式
+ex: Chinese can put two verb phrases one after the other, in the order things happen. 去商店买东西: go to the shop (first), to buy things (the purpose). 坐飞机去: by plane (the way), go. No word for "to" or "by" is needed.
+pat: Subject + 去 / 来 + place + verb ; Subject + 坐 / 开 + vehicle + 去 / 来 + place
+tip: 我去买东西商店 is wrong. The place comes right after 去: 我去商店买东西.
+eg: 我 去 商店 买 东西 。 = I am going to the shop to buy things.
+eg: 我们 坐 火车 去 。 = We are going by train.
+eg: 你 来 我 家 吃 饭 吧 。 = Come and eat at my place.
+gap: 我 去 [饭店] 吃 饭 。 = I'm going to a restaurant to eat. / 吃 去
+gap: 他 [坐] 出租车 去 医院 。 = He is going to the hospital by taxi. / 在 是
+gap: 我们 [去] 书店 买 书 。 = We are going to the bookshop to buy books. / 在 有
+gap: 爸爸 [开车] 去 公司 。 = Dad drives to the office. / 开 车
+gap: 明天 你 来 我 家 [玩] 吧 。 = Come over to my place tomorrow. / 好玩儿 去
+bad: 我去商店买东西。 / 我买东西去商店。 / 我去买东西商店。 = I am going to the shop to buy things.
+bad: 他坐火车去。 / 他去坐火车去。 / 他火车坐去。 = He is going by train.
+bad: 我们去饭店吃饭。 / 我们吃饭去饭店在。 / 我们去吃饭饭店。 = We are going to a restaurant to eat.
+
+## 8 | How: 怎么; again: 再 | 疑问代词 怎么；频率副词 再1
+ex: 怎么 + verb asks "how (do you do it)?": 怎么去？ "How do you get there?" 再 means "again" (or "then, later"), and goes before the verb. 再见 literally means "see you again".
+pat: 怎么 + verb？ ; 再 + verb
+tip: Ask 怎么去 for the way of going, and 怎么样 for "what is it like".
+eg: 你 怎么 去 学校 ？ = How do you get to school?
+eg: 请 再 说 一下 。 = Please say it again.
+eg: 我们 明天 再 来 。 = We will come again tomorrow.
+gap: 你 [怎么] 回 家 ？ = How are you getting home? / 怎么样 什么
+gap: 请 [再] 说 一下 。 = Please say it again. / 还 也
+gap: 这 个 字 [怎么] 写 ？ = How do you write this character? / 怎么样 几
+gap: 我们 明天 [再] 去 吧 。 = Let's go again tomorrow. / 都 很
+gap: 你 [怎么] 去 公司 ？ 我 坐 车 去 。 = How do you get to the office? I go by car. / 什么 哪
+bad: 你怎么去学校？ / 你去学校怎么？ / 怎么你去学校吗？ = How do you get to school?
+bad: 请再说一下。 / 请说再一下。 / 再请说一下吗。 = Please say it again.
+bad: 这个字怎么读？ / 这个字读怎么？ / 怎么这个字读？ = How do you read this character?
+
+## 9 | Prices: 多少钱, 块, 元 | 钱数表示法；疑问代词 多少；量词 块、元
+ex: 多少钱？ asks "how much (money)?". 多少 is for any number, big or small, and needs no measure word. Money is counted in 元 (written) or 块 (spoken). Like 二 and 两 elsewhere, "2 kuai" is 两块.
+pat: Thing + 多少钱？ ; Number + 块 / 元 (+ 钱)
+tip: 几 is for small numbers you expect; for prices always ask 多少钱.
+eg: 这 件 衣服 多少 钱 ？ = How much is this piece of clothing?
+eg: 一 个 苹果 两 块 钱 。 = One apple is two kuai.
+eg: 这 本 书 三十 元 。 = This book is thirty yuan.
+gap: 这 个 手机 [多少] 钱 ？ = How much is this phone? / 什么 怎么
+gap: 一 杯 茶 [两] 块 钱 。 = A cup of tea is two kuai. / 二 第二
+gap: 这 件 衣服 一百 [块] 。 = This piece of clothing is a hundred kuai. / 个 本
+gap: 你 有 [多少] 钱 ？ = How much money do you have? / 什么 哪
+gap: 这些 水果 [多少] 钱 ？ = How much is this fruit? / 怎么样 谁
+bad: 这个多少钱？ / 这个钱多少？ / 多少这个钱？ = How much is this?
+bad: 一个苹果两块钱。 / 一个苹果二块钱。 / 一个苹果块两钱。 = An apple is two kuai.
+bad: 这本书很便宜。 / 这本书是便宜。 / 这本书便宜很。 = This book is cheap.
+
+## 9 | Two objects: 给 someone something | 双宾语句1：主语+动词+宾语1+宾语2；还1
+ex: 给 means "to give". The person comes first, then the thing: 给我一本书 "give me a book". 还 means "also, in addition": 我还要一杯茶 "I'd also like a cup of tea".
+pat: Subject + 给 + person + thing ; Subject + 还 + verb
+tip: 给一本书我 is wrong. The person comes right after 给.
+eg: 妈妈 给 我 一 件 衣服 。 = Mum gave me a piece of clothing.
+eg: 请 给 我 一 杯 水 。 = Please give me a glass of water.
+eg: 我 还 要 一 个 苹果 。 = I'd also like an apple.
+gap: 请 [给] 我 一 杯 茶 。 = Please give me a cup of tea. / 是 有
+gap: 他 给 [我] 一 本 书 。 = He gave me a book. / 的 了
+gap: 我 [还] 想 买 一 件 衣服 。 = I'd also like to buy a piece of clothing. / 再 很
+gap: 老师 给 [我们] 很 多 书 。 = The teacher gave us lots of books. / 我们的 有
+gap: 你 [还] 要 什么 ？ = What else would you like? / 也 都
+bad: 请给我一本书。 / 请给一本书我。 / 请我给一本书。 = Please give me a book.
+bad: 我还要一杯茶。 / 还我要一杯茶。 / 我要还一杯茶。 = I'd also like a cup of tea.
+bad: 爸爸给我钱。 / 爸爸给钱我。 / 爸爸我给钱。 = Dad gives me money.
+
+## 10 | Can: 能 and 可以 | 能愿动词 能、可以
+ex: 能 means "can, be able to" (you are well, have time, it is possible). 可以 means "may, be allowed to", and 可以……吗？ asks for permission. Both go before the verb.
+pat: Subject + 能 / 可以 + verb ; 可以 + verb + 吗？
+tip: "I can't" is 我不能. To refuse permission, say 不可以 or 不能.
+eg: 我 生病 了 ， 不 能 去 上课 。 = I'm ill, so I can't go to class.
+eg: 我 可以 坐 这儿 吗 ？ = May I sit here?
+eg: 你 明天 能 来 吗 ？ = Can you come tomorrow?
+gap: 我 今天 不 [能] 去 。 = I can't go today. / 会 想
+gap: 我 [可以] 喝 一点儿 水 吗 ？ = May I have some water? / 会 有
+gap: 你 [能] 来 我 家 吗 ？ = Can you come to my place? / 是 在
+gap: 这儿 不 [可以] 打电话 。 = You may not make phone calls here. / 会 要
+gap: 他 生病 了 ， [不] 能 上班 。 = He is ill and can't go to work. / 没有 也
+bad: 我可以坐这儿吗？ / 我坐可以这儿吗？ / 可以我坐这儿吗？ = May I sit here?
+bad: 我不能去。 / 我能不去吗了。 / 不我能去。 = I can't go.
+bad: 你能来吗？ / 你来能吗？ / 能你来吗？ = Can you come?
+
+## 10 | Separable verbs: 看病, 睡觉, 生病 | 离合词：看病、睡觉、说话、上课、下课、上班、下班、生病
+ex: Some verbs are really a verb + object: 睡觉 "sleep", 看病 "see a doctor", 生病 "fall ill", 说话 "talk", 上课 "have class". They already have their object, so they cannot take another one. Other words, like 了, can come in the middle.
+pat: Separable verb (no other object) ; 去医院看病
+tip: 我看病医生 is wrong. Say 我去医院看病 or 我去看医生.
+eg: 我 生病 了 。 = I'm ill.
+eg: 他 去 医院 看病 了 。 = He has gone to the hospital to see a doctor.
+eg: 晚上 十一 点 我 睡觉 。 = I go to sleep at eleven at night.
+gap: 我 不 想 去 医院 [看病] 。 = I don't want to go to the hospital to see a doctor. / 看医院 生病
+gap: 你 [睡觉] 了 吗 ？ = Have you gone to sleep? / 觉 睡觉觉
+gap: 他 [生病] 了 ， 在 家 休息 。 = He is ill and is resting at home. / 看病 病生
+gap: 上课 的 时候 不要 [说话] 。 = Don't talk during class. / 话说 说的
+gap: 医生 说 我 要 多 [休息] 。 = The doctor says I need to rest more. / 睡 生病
+bad: 我去医院看病。 / 我看病医院。 / 我去看病医院。 = I'm going to the hospital to see a doctor.
+bad: 他生病了。 / 他病生了。 / 他了生病。 = He is ill.
+bad: 你几点睡觉？ / 你睡觉几点？ / 几点你睡觉吗？ = When do you go to sleep?
+
+## 11 | Doing it right now: 在, 正在, 呢 | 进行态：在/正在+动词（+呢）；……呢；时间副词 在、正在
+ex: To say that something is going on right now, put 在 or 正在 before the verb. 呢 at the end adds "right now" too, and can be used with them or on its own: 他在看电视呢 / 他看电视呢. 正在 stresses "at this very moment".
+pat: Subject + 在 / 正在 + verb (+ object) (+ 呢)
+tip: The negative is 没有在: 我没有在看电视, not 我不在看.
+eg: 我 在 看 电视 。 = I am watching TV.
+eg: 他们 正在 唱 歌 呢 。 = They are singing right now.
+eg: 妈妈 在 做饭 呢 。 = Mum is cooking.
+gap: 我 [在] 听 歌 。 = I am listening to songs. / 有 了
+gap: 你 在 做 什么 [呢] ？ = What are you doing? / 吗 吧
+gap: 他们 [正在] 看 电影 。 = They are watching a film right now. / 了在 正的
+gap: 爸爸 在 [睡觉] 呢 。 = Dad is sleeping. / 睡觉了 起床了
+gap: 我 [没有] 在 看 书 。 = I am not reading. / 不 不要
+bad: 我在看电视。 / 我看在电视。 / 在我看电视呢了。 = I am watching TV.
+bad: 他正在唱歌呢。 / 他唱歌正在呢。 / 他正在呢唱歌。 = He is singing.
+bad: 你在做什么呢？ / 你做在什么呢？ / 你在做呢什么？ = What are you doing?
+
+## 11 | Liking: 喜欢 and 爱 + verb | 动词或动词性短语作宾语
+ex: 喜欢 "to like" and 爱 "to love" can take a noun or a whole activity: 我喜欢电影, 我喜欢看电影. 爱 + verb also means "to love doing, to like doing a lot". Use 很 or 非常 before them: 我很喜欢.
+pat: Subject + (很) 喜欢 / 爱 + noun or verb + object
+tip: The activity comes after 喜欢, never before it: 我喜欢唱歌, not 我唱歌喜欢.
+eg: 我 喜欢 看 电影 。 = I like watching films.
+eg: 她 很 爱 唱 歌 。 = She loves singing.
+eg: 你 喜欢 做 什么 ？ = What do you like doing?
+gap: 我 [喜欢] 听 歌 。 = I like listening to songs. / 喜欢的 好听
+gap: 我 女儿 非常 [爱] 玩 。 = My daughter loves to play. / 好 是
+gap: 你 喜欢 [看] 电视 吗 ？ = Do you like watching TV? / 看见 听
+gap: 他 不 喜欢 [唱] 歌 。 = He doesn't like singing. / 听见 好听
+gap: 这 个 电影 很 [好看] 。 = This film is good. / 看 喜欢
+bad: 我喜欢看电影。 / 我看电影喜欢。 / 喜欢我看电影。 = I like watching films.
+bad: 她很爱唱歌。 / 她爱很唱歌。 / 她唱歌很爱。 = She loves singing.
+bad: 你喜欢做什么？ / 你做什么喜欢？ / 你喜欢什么做吗？ = What do you like doing?
+
+## 12 | Can: 会 | 能愿动词 会
+ex: 会 + verb means "can" for a skill you have learnt: 我会说汉语 "I can speak Chinese". Compare 能 (able to, now) and 可以 (allowed to). 会 can also take a language directly: 我会汉语.
+pat: Subject + 会 / 不会 + verb (+ object)
+tip: For a learnt skill, use 会, not 能: 我会写汉字.
+eg: 我 会 说 汉语 。 = I can speak Chinese.
+eg: 你 会 写 这 个 字 吗 ？ = Can you write this character?
+eg: 我 妈妈 不 会 开车 。 = My mother can't drive.
+gap: 我 [会] 写 汉字 。 = I can write Chinese characters. / 可以 想
+gap: 你 会 [说] 汉语 吗 ？ = Can you speak Chinese? / 说话 叫
+gap: 我 不 [会] 做饭 。 = I can't cook. / 想 要
+gap: 他 会 [读] 这 本 书 。 = He can read this book. / 读书 写字
+gap: 这 个 字 你 会 [写] 吗 ？ = Can you write this character? / 字 读书
+bad: 我会说汉语。 / 我说会汉语。 / 我会汉语说。 = I can speak Chinese.
+bad: 你会写汉字吗？ / 你写会汉字吗？ / 你会汉字写吗？ = Can you write Chinese characters?
+bad: 他不会开车。 / 他会不开车吗。 / 他开车不会。 = He can't drive.
+
+## 12 | 和 and 对 | 连词 和2；介词 和1、对
+ex: 和 joins nouns: 我和你 "you and me". It is not used to join sentences or verbs. As a preposition, 和 means "with" and 对 means "to, toward": 老师对我们很好 "the teacher is good to us". Both go before the verb.
+pat: A + 和 + B ; Subject + 和 / 对 + person + verb / adjective
+tip: 和 does not join two sentences: for "and then" Chinese just uses a comma.
+eg: 我 和 我 的 朋友 都 是 学生 。 = My friend and I are both students.
+eg: 我 和 老师 说 了 一下 。 = I had a word with the teacher.
+eg: 老师 对 我们 很 好 。 = The teacher is very good to us.
+gap: 我 [和] 他 是 同学 。 = He and I are classmates. / 也 都
+gap: 他 [对] 我 很 好 。 = He is very good to me. / 是 在
+gap: 我 不 想 [和] 他 说话 。 = I don't want to talk with him. / 是 也
+gap: 我 爸爸 [和] 妈妈 都 是 老师 。 = My father and mother are both teachers. / 也 都
+bad: 我和你是朋友。 / 我是和你朋友。 / 和我你是朋友。 = You and I are friends.
+bad: 老师对我们很好。 / 老师很好对我们。 / 老师我们对很好。 = The teacher is very good to us.
+bad: 我和他说话。 / 我说话和他。 / 和我他说话。 = I am talking with him.
+
+## 13 | Telling the time | 钟点表示法；量词 点、分
+ex: 点 is "o'clock" and 分 is minutes: 八点 8:00, 八点十分 8:10, 八点半 8:30. Ask 现在几点？ "What time is it?". 两点 is 2:00 (not 二点), but 十二点 is 12:00.
+pat: Number + 点 (+ number + 分 / 半)
+tip: Morning or evening goes before the time: 晚上八点 8 p.m.
+eg: 现在 几 点 ？ = What time is it now?
+eg: 现在 八 点 半 。 = It's half past eight.
+eg: 我们 九 点 十 分 上课 。 = We start class at 9:10.
+gap: 现在 [几] 点 ？ = What time is it? / 多少 什么
+gap: 现在 [两] 点 。 = It's two o'clock. / 二 第二
+gap: 我 七 点 [半] 起床 。 = I get up at half past seven. / 一半 分钟
+gap: 现在 十 点 二十 [分] 。 = It's 10:20. / 分钟 小时
+gap: [晚上] 十 点 我 睡觉 。 = I go to sleep at ten at night. / 晚饭 晚
+bad: 现在几点？ / 现在点几？ / 几点现在吗？ = What time is it?
+bad: 现在两点半。 / 现在二点半。 / 现在半两点。 = It's half past two.
+bad: 晚上八点。 / 八点晚上。 / 点八晚上。 = Eight in the evening.
+
+## 13 | When: time words before the verb | 状语：表示时间、处所的词语作状语；时候
+ex: Time words (今天, 早上, 八点, 下午) go before the verb: at the start of the sentence or right after the subject, never at the end. If there is also a place, the order is: subject + time + 在 + place + verb. ……的时候 means "when…, at the time of…".
+pat: Subject + time + (在 + place) + verb
+tip: 我起床七点 is wrong. Say 我七点起床.
+eg: 我 早上 七 点 起床 。 = I get up at seven in the morning.
+eg: 我们 下午 在 学校 上课 。 = We have class at school in the afternoon.
+eg: 你 什么 时候 下课 ？ = When do you finish class?
+gap: 我 [早上] 八 点 上学 。 = I go to school at eight in the morning. / 早饭 起床
+gap: 他 [中午] 在 学校 吃 饭 。 = He eats at school at noon. / 午饭 中学
+gap: 你 [什么] 时候 回 家 ？ = When are you going home? / 几 怎么
+gap: 我们 晚上 [在] 家 看 电视 。 = We watch TV at home in the evening. / 有 是
+gap: 上课 的 [时候] 不要 说话 。 = Don't talk in class. / 时间 小时
+bad: 我七点起床。 / 我起床七点。 / 起床我七点。 = I get up at seven.
+bad: 我下午在学校上课。 / 我在学校上课下午。 / 我上课下午在学校。 = I have class at school in the afternoon.
+bad: 你什么时候来？ / 你来什么时候？ / 什么你时候来？ = When are you coming?
+
+## 14 | 有的 and 有些 | 指示代词 有的、有些
+ex: 有的 + noun means "some (of them)": 有的同学 "some classmates". It often comes in pairs: 有的……，有的…… "some…, others…". 有些 means "some, a few" and is used the same way.
+pat: 有的 / 有些 + noun + verb ; 有的……，有的……
+tip: 有的 goes before the subject, not after the verb: 有的人喜欢, not 人有的喜欢.
+eg: 有的 人 喜欢 喝 茶 。 = Some people like drinking tea.
+eg: 有的 同学 上课 ， 有的 同学 上班 。 = Some classmates are in class, some are at work.
+eg: 有些 事 我 不 知道 。 = There are some things I don't know.
+gap: [有的] 人 不 喜欢 吃 米饭 。 = Some people don't like eating rice. / 有 的
+gap: 有的 同学 会 开车 ， [有的] 不 会 。 = Some classmates can drive, some can't. / 有些 都
+gap: 我 [有些] 问题 。 = I have some questions. / 有的 哪些
+gap: [有的] 公司 星期 六 也 上班 。 = Some companies work on Saturdays too. / 那些 有
+gap: 这些 书 [有的] 很 新 。 = Some of these books are new. / 都 也
+bad: 有的人喜欢喝茶。 / 人有的喜欢喝茶。 / 有的喜欢人喝茶。 = Some people like tea.
+bad: 有的同学会开车，有的不会。 / 有的同学会开车，不会有的。 / 同学有的会开车，有的不会。 = Some classmates can drive, some can't.
+bad: 我有些问题。 / 我问题有些。 / 有些我问题。 = I have some questions.
+
+## 14 | Two sides: ……，也…… / ……，还…… | 不用关联词语的复句：并列复句
+ex: Two sentences can stand side by side, joined only by a comma, with 也 "also" or 还 "and also, on top of that" in the second part. 也 adds something similar; 还 adds one more thing.
+pat: Clause 1，(subject) + 也 / 还 + clause 2
+tip: Chinese does not use 和 here: 我会说汉语，也会写汉字, not 我会说汉语，和会写汉字.
+eg: 他 是 医生 ， 我 也 是 医生 。 = He is a doctor, and so am I.
+eg: 我 工作 很 忙 ， 还 要 学 汉语 。 = I'm busy at work, and on top of that I'm learning Chinese.
+eg: 我 想 买 衣服 ， 也 想 买 书 。 = I want to buy clothes, and I also want to buy books.
+gap: 我 是 学生 ， 他 [也] 是 学生 。 = I am a student, and so is he. / 和 都
+gap: 他 白天 工作 ， 晚上 [还] 学习 。 = He works in the daytime, and he studies in the evening as well. / 和 再
+gap: 我 会 说 汉语 ， [也] 会 写 汉字 。 = I can speak Chinese, and I can also write characters. / 和 都
+gap: 今天 很 冷 ， [还] 下雨 了 。 = It's cold today, and it's raining too. / 和 都
+gap: 他 喜欢 唱 歌 ， 我 [也] 喜欢 。 = He likes singing, and so do I. / 和 都
+bad: 他是老师，我也是老师。 / 他是老师，也我是老师。 / 他是老师，我是也老师。 = He is a teacher, and so am I.
+bad: 我工作很忙，还要学汉语。 / 我工作很忙，要还学汉语。 / 我工作很忙，和要学汉语。 = I'm busy at work and I'm also learning Chinese.
+bad: 我会说汉语，也会写汉字。 / 我会说汉语，和会写汉字。 / 我会说汉语，会也写汉字。 = I can speak Chinese and write characters too.
+
+## 15 | Exclamations: 真……！ 太……了！ | 句类：感叹句；程度副词 真、太
+ex: To say "how…!" or "so…!", use 真 + adjective or 太 + adjective + 了. 太 alone (without 了) usually means "too": 太贵 "too expensive". 好 before an adjective can also mean "so": 好好吃！
+pat: 真 + adjective！ ; 太 + adjective + 了！
+tip: 太好吃 without 了 sounds unfinished in an exclamation. Say 太好吃了！
+eg: 这 个 菜 真 好吃 ！ = This dish is really delicious!
+eg: 太 好 了 ！ = That's great!
+eg: 这儿 的 饺子 太 好吃 了 ！ = The dumplings here are so good!
+gap: 这 个 包子 [真] 好吃 ！ = This bun is really tasty! / 是 有
+gap: 太 好吃 [了] ！ = So delicious! / 的 吗
+gap: 你 女儿 [真] 漂亮 ！ = Your daughter is really pretty! / 是 有
+gap: 这 杯 茶 太 [热] 了 ！ = This tea is too hot! / 冷了 热的
+gap: [太] 贵 了 ！ = That's too expensive! / 真 很
+bad: 太好吃了！ / 太了好吃！ / 好吃太了！ = So delicious!
+bad: 这个菜真好吃！ / 这个菜好吃真！ / 真这个菜好吃！ = This dish is really tasty!
+bad: 他的汉字真好看！ / 他的汉字好看真！ / 他的真汉字好看！ = His characters look really nice!

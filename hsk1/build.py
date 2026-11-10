@@ -1,10 +1,11 @@
 # Builds the HSK 1 pack: the line `const HSK1=…;` in index.html, and stroke data for its characters in strokes.json.
 #
 # Sources (all in this folder):
-#   words.tsv     the 280 words of the official vocabulary list (HSK 考试大纲, CLEC 2025, valid from 2026-07)
+#   words.tsv     the 300 words of the official vocabulary list (HSK 考试大纲, CLEC 2025, valid from 2026-07)
 #   chars.txt     the 246 characters to recognise for HSK 1 (official order)
 #   write.txt     the 100 characters to write for HSK 1–2 (official order)
 #   lessons.txt   the words grouped into the 15 communicative tasks of the official task syllabus
+#   grammar.txt, sentences.txt  grammar points, exercises and sentences (build_grammar.py); exercises go to grammar-hsk1.json
 #   cedict-hsk1.u8  CC-CEDICT entries for these words and characters (English meanings, traditional forms; CC BY-SA 4.0)
 # Stroke data for characters missing from strokes.json comes from hanzi-writer-data (Make Me a Hanzi, Arphic PL).
 #
@@ -24,7 +25,7 @@ W=[]
 for l in lines('words.tsv'):
     no,lv,w,py,pos=(l.split('\t')+[''])[:5];W.append(dict(no=int(no),w=w,s=base(w),py=py.split('/')[0].replace('’',"'"),pos=pos))
 chars=list(lines('chars.txt')[0]);write=set(lines('write.txt')[0])
-if len(W)!=280:errs.append(f'{len(W)} words, the official list has 280')
+if len(W)!=300:errs.append(f"{len(W)} words, the official list has 300")
 if len(chars)!=246:errs.append(f'{len(chars)} characters, the official list has 246')
 
 # lessons
@@ -109,7 +110,11 @@ OVERRIDE={'好玩儿':'fun; interesting','面条儿':'noodles','菜':'dish (of f
   '们':'(plural suffix for people)','第':'(prefix for ordinal numbers)','个':'(the most common measure word)','件':'(measure word for clothes, matters)',
   '口':'(measure word for family members); mouth','块':'kuai (yuan, in speech); piece','元':'yuan (unit of money)','还':'also; still',
   '都':'all; both','再':'again','也':'also; too','很':'very','太':'too; extremely','非常':'very; extremely','有点儿':'a bit, somewhat',
-  '一下':'(after a verb) briefly, a bit','一点儿':'a little, a bit','没事':"it's nothing; never mind",'那个':'that one','哪个':'which one'}
+  '一下':'(after a verb) briefly, a bit','一点儿':'a little, a bit','没事':"it's nothing; never mind",'那个':'that one','哪个':'which one',
+  '只':'(measure word for animals)','这个':'this; this one','正在':'(be) in the middle of doing','字':'character; word','做':'to do; to make',
+  '坐':'to sit; to travel by (bus, plane)','住':'to live (somewhere)','知道':'to know','中文':'Chinese (language)','中学生':'secondary school student','中学':'secondary school'}
+# traditional forms the dictionary would get wrong for the HSK 1 sense
+TRAD={'只':'隻'}
 POS={'名':'n','动':'v','形':'adj','副':'adv','代':'pr','数':'nu','量':'m','助':'p','介':'prep','连':'conj','叹':'interj','数量':'nu+m','前缀':'prefix','后缀':'suffix'}
 def pos_of(p):
     p=re.sub(r'[（）()]','',p).split('、')[0].strip()
@@ -120,6 +125,7 @@ t2={};wd=[]
 for w in W:
     e=entry(w['s'],w['py']);en=OVERRIDE.get(w['w']) or OVERRIDE.get(w['s']) or (clean(e['senses'],2) if e else '')
     if not en:errs.append(f'no meaning for {w["w"]}')
+    if e and w['s'] in TRAD:e={**e,'t':TRAD[w['s']]}
     if e:
         for a,b in zip(w['s'],e['t']):
             if a!=b:t2[a]=b
@@ -127,11 +133,11 @@ for w in W:
 wd.sort(key=lambda x:(ORD[x[0]],[y['words'] for y in L if y['l']==x[0]][0].index(next(w['w'] for w in W if w['s']==x[1] and at[w['w']]==x[0]))))
 
 # characters: the lesson of the first word that uses it, its reading in that word; the rest by hand
-NOWORD={'中':'1','住':'5','做':'14','只':'3','坐':'8','文':'12','昨':'2','桌':'3','正':'13','真':'4','知':'12','道':'12'}
-NOWORD_PY={'中':'zhōng','住':'zhù','做':'zuò','只':'zhǐ','坐':'zuò','文':'wén','昨':'zuó','桌':'zhuō','正':'zhèng','真':'zhēn','知':'zhī','道':'dào'}
+NOWORD={}   # every character of the list is in one of the 300 words
+NOWORD_PY={}
 NEUTRAL=set('吗呢吧的了么们')   # particles and suffixes that are neutral on their own too
 # short meanings for single characters, where the dictionary's first senses are not the HSK 1 sense
-CHAR_EN={'只':'only; (measure word for animals)','中':'middle; China','午':'noon','汉':'Han; Chinese','明':'bright; next (day, year)','苹':'(as in 苹果) apple',
+CHAR_EN={'只':'(measure word for animals)','中':'middle; China','午':'noon','汉':'Han; Chinese','明':'bright; next (day, year)','苹':'(as in 苹果) apple',
   '先':'first; before','士':'(as in 女士) person; scholar','期':'period of time','星':'star','什':'(as in 什么) what','关':'to close; to turn off','话':'words; speech',
   '系':'(as in 关系) relation','宜':'suitable','漂':'(as in 漂亮) pretty','亮':'bright','便':'(as in 便宜) cheap; convenient','欢':'happy','喜':'to like; happy',
   '视':'to look at','影':'shadow; image','道':'road; way','题':'topic; question','以':'(as in 可以) can','可':'can; may','候':'(as in 时候) time','现':'now; present',
@@ -168,7 +174,10 @@ for c in chars:
 ch.sort(key=lambda x:(ORD[x[0]],chars.index(x[2])))
 
 meta=dict(id='hsk1',lessons=[dict(l=x['l'],en=x['en'],zh=x['zh'],seal=x['seal']) for x in L],write=[c for c in chars if c in write])
-pack=dict(ch=ch,wd=wd,st=[],t2=t2,meta=meta)
+# grammar points, their exercises and the sentences (grammar.txt, sentences.txt; see build_grammar.py)
+sys.path.insert(0,H);import build_grammar
+st,gram,drills,gerr=build_grammar.make([(w['s'],w['py']) for w in W]);errs+=gerr;meta['grammar']=gram
+pack=dict(ch=ch,wd=wd,st=st,t2=t2,meta=meta)
 
 # stroke data for characters not yet in strokes.json
 sp=os.path.join(R,'strokes.json');S=json.load(open(sp,encoding='utf8'));add=0
@@ -188,4 +197,5 @@ line='const HSK1='+json.dumps(pack,ensure_ascii=False,separators=(',',':'))+';'
 s2,n=re.subn(r'^const HSK1=.*;$',lambda m:line,s,count=1,flags=re.M)
 if not n:sys.exit('index.html has no line "const HSK1=…;"')
 open(ip,'w',encoding='utf8').write(s2)
-print(f'{len(ch)} characters, {len(wd)} words, {len(L)} lessons, {len(meta["write"])} to write; {add} stroke sets added; {len(errs)} problems')
+json.dump(drills,open(os.path.join(R,'grammar-hsk1.json'),'w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
+print(f'{len(ch)} characters, {len(wd)} words, {len(L)} lessons, {len(meta["write"])} to write, {sum(map(len,gram.values()))} grammar points, {sum(map(len,drills.values()))} exercises, {len(st)} sentences; {add} stroke sets added; {len(errs)} problems')
