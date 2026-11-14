@@ -11,7 +11,8 @@ from fontTools.svgLib.path import parse_path
 import pathops
 repo=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 d=json.load(open(repo+'/strokes.json'))
-s=open(repo+'/index.html').read()+open(repo+'/grammar-practice.json').read()+(open(sys.argv[2]).read() if len(sys.argv)>2 else '')
+import glob
+s=open(repo+'/index.html').read()+''.join(open(f,encoding='utf8').read() for f in sorted(glob.glob(repo+'/js/*.js')))+open(repo+'/grammar-practice.json').read()+(open(sys.argv[2]).read() if len(sys.argv)>2 else '')
 chars=sorted(set(c for c in s if '㐀'<=c<='鿿'))
 def strokes(c):
     if c in d:return d[c]['strokes']

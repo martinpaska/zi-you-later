@@ -22,3 +22,4 @@
 **/.impeccable/live/*.png
 # impeccable-ignore-end
 __pycache__/
+node_modules/

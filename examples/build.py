@@ -3,11 +3,11 @@
 #   - every word gets its pinyin from the app's vocabulary (characters and words), or from NAMES below;
 #   - force a reading with 字{pinyin}, e.g. 得{děi};  不 and 一 get their tone changes automatically.
 # The checker refuses words that are not in the vocabulary up to that lesson (names and numbers are fine).
-# Run: python3 examples/build.py  (writes examples.json next to index.html)
+# Run: python3 examples/build.py  (writes examples.json next to index.html; reads the Chinese 1 data in js/data-cin1.js)
 import json,re,os,sys
 root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-s=open(os.path.join(root,'index.html'),encoding='utf8').read()
-i=s.index('const DATA=');j=s.index('\n',i);D=json.loads(s[i+len('const DATA='):j].rstrip(';'))
+s=open(os.path.join(root,'js','data-cin1.js'),encoding='utf8').read()
+i=s.index('const DATA_CIN1=');j=s.index('\n',i);D=json.loads(s[i+len('const DATA_CIN1='):j].rstrip(';'))
 ORD={str(n):n for n in range(1,11)};ORD['I']=0
 py={};lev={}
 def add(w,p,l):

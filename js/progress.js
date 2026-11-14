@@ -1,0 +1,35 @@
+/* ---------- Progress ---------- */
+function progress(){
+  const st=ALLITEMS.filter(starred);
+  const rowsFor=src=>LESSONS.map(l=>{const a=[...new Map(src.filter(x=>x.l===l).map(x=>[x.k,x])).values()];if(!a.length)return '';const m2=a.filter(x=>mastery(x)===2).length,m1=a.filter(x=>mastery(x)===1).length;
+      return `<div class="prow"><b>${LNAME(l)}</b><span class="mbar"><i class="m2" style="width:${m2/a.length*100}%"></i><i class="m1" style="width:${m1/a.length*100}%"></i></span><span class="count">${m2} / ${a.length}</span></div>`}).join('');
+  open(bar(0,'','‹ Back')+`<h2>Progress</h2>${!stats.total?`<div class="notice pempty"><p>Nothing here yet. Your progress fills in as you review cards.</p><button class="btn" id="pstart">Start today's review</button></div>`:''}<div class="pstats">${SUPA_ON&&!uid?`<button class="stat statlink" data-go="account"><b>–</b><span>day streak, with an account ›</span></button>`:`<div class="stat"><b>${stats.streak||0}</b><span>day streak</span></div>`}<div class="stat"><b>${ALLITEMS.filter(x=>mastery(x)===2).length}</b><span>items known</span></div><div class="stat"><b>${stats.total||0}</b><span>cards reviewed</span></div></div><h3>Progress by lesson</h3><div class="keys"><span><i style="background:var(--accent)"></i>Known (interval 7+ days)</span><span><i style="background:var(--accent);opacity:.4"></i>Learning</span><span><i style="background:var(--sunk)"></i>New</span></div>
+    <div class="section"><h3>Characters</h3>${rowsFor(CH)}</div><div class="section"><h3>Words</h3>${rowsFor(WD)}</div>
+    <div class="section"><h3>Starred</h3><button class="link" id="pgst">★ ${st.length} <span>· Open in the vocabulary list ›</span></button></div>`);
+  $('pgst').onclick=()=>{store.set('ic-vlesson','star');vocab()};
+  if($('pstart'))$('pstart').onclick=()=>review();
+}
+function settings(){
+  open(bar(0,'','‹ Back')+`<h2>Settings</h2><div class="section"><h3>Appearance</h3><div class="seg" role="group" aria-label="Appearance">${[['auto','Automatic'],['light','Light'],['dark','Dark']].map(([k,n])=>`<button data-th="${k}" aria-pressed="${(state.theme||'auto')===k}">${n}</button>`).join('')}</div><p class="hint">Automatic follows your phone or computer.</p></div><div class="section"><h3>Language</h3><div class="seg" role="group" aria-label="Language"><button data-lang-set="cs" aria-pressed="${LANG==='cs'}" data-noi18n>Čeština</button><button data-lang-set="en" aria-pressed="${LANG!=='cs'}" data-noi18n>English</button></div></div>
+    <div class="section"><h3>Characters</h3><div class="seg" role="group" aria-label="Script"><button data-sc="s" aria-pressed="${state.script!=='t'}">简 Simplified</button><button data-sc="t" aria-pressed="${state.script==='t'}">繁 Traditional</button></div><p class="hint">Integrated Chinese prints both. Pick the one your class uses.</p></div>
+    <div class="section"><h3>Daily review</h3><div class="row"><span>New cards per day</span><div class="seg" role="group" aria-label="New per day">${[5,10,20,30].map(n=>`<button data-np="${n}" aria-pressed="${state.newPerDay===n}">${n}</button>`).join('')}</div></div><p class="hint">Reviewed today: ${stats.rev} · all time: ${stats.total}</p></div>
+    <div class="section"><h3>Tone colours</h3><div class="seg" role="group" aria-label="Tone colours">${[['cb','Colour-blind safe'],['classic','Classic'],['off','Off']].map(([k,n])=>`<button data-tc="${k}" aria-pressed="${(state.tc||'cb')===k}">${n}</button>`).join('')}</div>
+      <p class="tonekey">${[1,2,3,4,0].map(t=>`<b class="t${t}">${t?'Tone '+t:'neutral'}</b>`).join(' · ')}</p><p class="hint">Colour-blind safe avoids red and green and also differs in brightness: tone 1 bright blue, tone 2 amber, tone 3 dark navy (violet in dark mode), tone 4 brown. Tone marks and the tone shapes always show the tone too.</p></div>
+    <div class="section"><h3>Sound</h3><div id="snovoice">${'speechSynthesis' in window&&voices.length?'':NOVOICE_HTML}</div>${voiceControls('s')}</div>
+    <div class="section"><h3>Reminders</h3><div class="row"><span>Remind me when cards are due</span><div class="seg" role="group" aria-label="Reminders"><button data-rem="1" aria-pressed="${!!state.remind}">On</button><button data-rem="0" aria-pressed="${!state.remind}">Off</button></div></div>
+      <p class="hint" id="remh">${!REMIND_OK?'This browser cannot show notifications. Cards that are due still show on Home.':state.remind&&!REMIND_BG?'On this device a notification can only come while the app is open. Cards that are due always show on Home. On an iPhone, add the app to the Home Screen first.':'Once a day, when cards are due and you have not studied yet. Works best with the app installed (Chrome or Edge). Cards that are due always show on Home.'}</p>
+      ${state.remind&&REMIND_OK?'<div class="btns"><button class="btn ghost" id="remt">Send a test notification</button></div>':''}</div>
+    <div id="sadmin"></div><div class="section"><h3>What's new</h3><div class="btns"><button class="btn ghost" data-news>Show what's new</button></div></div><div class="section"><h3>Reset progress</h3><p class="hint">Deletes all review history and stars${cloud?' on every device where you are signed in':' in this browser'}.</p><div class="confirm" id="rc"><button class="btn ghost" id="r1">Reset progress…</button></div></div>`);
+  isAdmin().then(a=>{if(a&&$('sadmin'))$('sadmin').innerHTML=`<div class="section"><h3>Admin</h3><div class="btns"><button class="btn ghost" data-go="admin">${T_('Open the admin page')}</button></div></div>`});
+  M().querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{state.theme=b.dataset.th;saveState();applyTheme();{const y=scrollY;settings();scrollTo(0,y)}});
+  M().querySelectorAll('[data-tc]').forEach(b=>b.onclick=()=>{state.tc=b.dataset.tc;saveState();applyTc();{const y=scrollY;settings();scrollTo(0,y)}});
+  M().querySelectorAll('[data-sc]').forEach(b=>b.onclick=()=>{state.script=b.dataset.sc;saveState();document.body.classList.toggle('trad',state.script==='t');const y=scrollY;settings();scrollTo(0,y)});
+  wireVoice('s');
+  M().querySelectorAll('[data-rem]').forEach(b=>b.onclick=async()=>{const r=await remindSet(b.dataset.rem==='1');const y=scrollY;settings();scrollTo(0,y);
+    if(r==='denied'&&$('remh'))$('remh').textContent=T_('Notifications are blocked for this site. Allow them in the browser settings and try again.')});
+  if($('remt'))$('remt').onclick=async()=>{try{const r=await navigator.serviceWorker.ready;if(r.active)r.active.postMessage({type:'remind-test'})}catch(e){}};
+  M().querySelectorAll('[data-np]').forEach(b=>b.onclick=()=>{state.newPerDay=+b.dataset.np;saveState();{const y=scrollY;settings();scrollTo(0,y)}});
+  $('r1').onclick=()=>{$('rc').innerHTML='<span>Delete everything?</span><button class="btn badb" id="r2">Yes, delete</button><button class="btn ghost" id="r3">No</button>';
+    $('r2').onclick=()=>{srs={};stats={day:'',rev:0,nw:0,streak:0,last:'',total:0,u:Date.now()};rollDay();saveSrs();settings()};$('r3').onclick=settings};
+}
+
