@@ -1203,6 +1203,20 @@ details.gegd>.geg{padding-bottom:12px}
 .jnum::before,.jnum::after{content:"";flex:1;border-top:1.5px solid var(--line)}
 .jchh h3{margin:6px 0 2px;font:800 1.3rem var(--f-display);letter-spacing:-.01em}
 .jchh .jq{margin:0;font-style:italic;color:var(--muted);font-size:.95rem}
+/* the end of a round: the 完 seal */
+.card.rdone{position:relative;overflow:visible}
+.rstamp{position:absolute;top:-14px;right:-6px;width:64px;height:64px;display:grid;place-items:center;transform:rotate(9deg);pointer-events:none;z-index:2}
+.rstamp>span{width:100%;height:100%;display:grid;place-items:center;font-family:var(--f-han);font-size:2.1rem;font-weight:700;line-height:1;color:#fff;background:var(--seal);border:3px solid #000;border-radius:12px;
+  box-shadow:inset 0 0 0 3px var(--seal),inset 0 0 0 5px rgb(255 255 255/.75),4px 4px 0 #000}
+.rspark{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px;background:var(--seal);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .rstamp>span{animation:rdrop .5s cubic-bezier(.2,1.4,.4,1) .12s backwards}
+  .card.rdone{animation:rshake .28s ease-out .4s}
+  .rspark{animation:rspark .6s ease-out both}
+}
+@keyframes rdrop{0%{transform:translateY(-60px) scale(2.2) rotate(-18deg);opacity:0}55%{opacity:1}70%{transform:translateY(0) scale(.92)}100%{transform:none}}
+@keyframes rshake{0%{transform:translateY(0)}30%{transform:translateY(4px) rotate(.4deg)}60%{transform:translateY(-2px)}100%{transform:none}}
+@keyframes rspark{0%{opacity:0;transform:translate(0,0) scale(.2)}30%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.1) rotate(60deg)}}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <main class="wrap">
@@ -1678,13 +1692,26 @@ let keyHandler=null,TIMER=null;
 const MOTION=!matchMedia('(prefers-reduced-motion: reduce)').matches;
 function open(html){keyHandler=null;clearInterval(TIMER);stopAudio();
   const was=M().hidden?[]:[...M().querySelectorAll('.progress span')],from=was.map(e=>e.style.width),same=!!html.match(/class="card[^"]*" id="card"/)&&!!M().querySelector('#card');
-  $('home').hidden=true;$('welcome').hidden=true;$('aboutpage').hidden=true;M().hidden=false;M().innerHTML=html;window.scrollTo(0,0);nudgeEnd();lessonRoundEnd();
+  $('home').hidden=true;$('welcome').hidden=true;$('aboutpage').hidden=true;M().hidden=false;M().innerHTML=html;window.scrollTo(0,0);nudgeEnd();lessonRoundEnd();roundDone();
   if(!MOTION)return;
   M().classList.remove('anim');void M().offsetWidth;if(!same)M().classList.add('anim');
   [...M().querySelectorAll('.progress span')].forEach((pb,k)=>{if(from[k]==null)return;const to=pb.style.width;pb.style.transition='none';pb.style.width=from[k];void pb.offsetWidth;pb.style.transition='';pb.style.width=to});
   const sc=M().querySelector('.score');if(sc){const m=sc.textContent.match(/^(\d+)(.*)$/);if(m){const n=+m[1],rest=m[2],t0=performance.now();
     const tick=t=>{const k=Math.min(1,(t-t0)/700);sc.textContent=Math.round(n*(1-Math.pow(1-k,3)))+rest;if(k<1&&sc.isConnected)requestAnimationFrame(tick)};requestAnimationFrame(tick)}
     const r=sc.textContent.match(/^(\d+)\s*\/\s*(\d+)/),pc=sc.textContent.match(/^(\d+)%/);if(r?+r[1]>=.6*+r[2]:pc?+pc[1]>=60:true)confetti()}
+}
+/* the end of a round: a red 完 ("done") seal drops onto the result card, the card shakes once, sparks pop around the seal
+   and the score counts up. Not on a failed Final test; with reduced motion the seal is simply there. */
+function roundDone(){
+  const sc=M().querySelector('.card .score');if(!sc||M().querySelector('#ftag'))return;const card=sc.closest('.card');if(card.querySelector('.rstamp'))return;
+  card.classList.add('rdone');
+  card.insertAdjacentHTML('beforeend',`<span class="rstamp" aria-hidden="true" lang="zh-Hans"><span>完</span>${[[-34,-8],[-22,-36],[14,-42],[42,-18],[46,20],[-40,26]].map(([x,y],i)=>`<i class="rspark" style="--x:${x}px;--y:${y}px;animation-delay:${.42+i*.03}s"></i>`).join('')}</span>`);
+  if(!MOTION)return;
+  try{if(navigator.vibrate)setTimeout(()=>navigator.vibrate(18),380)}catch(e){}
+  const m=sc.textContent.match(/^(\d+(?:\.\d+)?)(.*)$/);if(!m||!+m[1])return;
+  const to=+m[1],dec=(m[1].split('.')[1]||'').length,t0=performance.now()+450,D=650;sc.textContent=(0).toFixed(dec)+m[2];
+  const tick=t=>{if(!sc.isConnected)return;const k=Math.min(1,Math.max(0,(t-t0)/D)),e=1-Math.pow(1-k,3);sc.textContent=(to*e).toFixed(dec)+m[2];if(k<1)requestAnimationFrame(tick)};
+  requestAnimationFrame(tick);
 }
 function confetti(){
   if(!MOTION)return;const cv=document.createElement('canvas');cv.className='confetti';document.body.appendChild(cv);
