@@ -39,7 +39,7 @@ The course textbook is in English, so learning content (meanings, sentence trans
 
 - **Modes:** Flashcards, Learn, Grammar, Sentences (build, listen, translate, read), Writing (watch, trace, from memory), Match, Tone trainer, Tone twins, Test, a daily spaced review, and Progress & settings.
 - **Data:** about 400 characters, 363 words and 184 example sentences from Intro and Lessons 1–10. Simplified and traditional script.
-- **Stack:** one static `index.html` (inline CSS and JS) plus `strokes.json`, hosted on GitHub Pages. No build step. External: Google Fonts, hanzi-writer from jsDelivr, supabase-js from jsDelivr.
+- **Stack:** a static page: `index.html`, `css/app.css` and plain scripts in `js/` that share one global scope (no modules), plus JSON data files, hosted on GitHub Pages. No build step; `tests/` and `package.json` are only for the tests. External: Google Fonts, hanzi-writer from jsDelivr, supabase-js from jsDelivr.
 - **Accounts:** optional, via Supabase (email and password). They sync progress across devices and power a public leaderboard of nickname, avatar, known, week and streak. Without an account everything works and progress stays in the browser (localStorage).
 - **Free tier:** the Supabase project pauses after about a week of inactivity, and built-in auth email is rate-limited. The app must keep working without the backend.
 - **Audio:** device speech synthesis for Chinese. Some devices have no Chinese voice.

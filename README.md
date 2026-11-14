@@ -2,11 +2,41 @@
 
 Aplikace na procvičování čínských znaků. Běží jako statická stránka na GitHub Pages.
 
-- `index.html` – celá aplikace
+- `index.html` – kostra stránky (HTML); styly jsou v `css/app.css`, kód v `js/*.js`
 - `strokes.json` – data pro tahy znaků
-- `hsk1/` – kurz **HSK 1** (nové HSK, oficiální osnova CLEC z listopadu 2025, platí od července 2026): oficiální seznam 300 slov (`words.tsv`), 246 znaků ke čtení (`chars.txt`), znaky k psaní (`write.txt`), rozdělení do 15 lekcí podle oficiálních komunikačních úkolů (`lessons.txt`), gramatika podle oficiálního seznamu gramatiky HSK 1 s příklady a cvičeními (`grammar.txt`, cvičení se zapíší do `grammar-hsk1.json`), věty k lekcím (`sentences.txt`), dva cvičné testy ve formátu oficiálního testu HSK 1 (`tests.txt`, zapíší se do `hsk1-tests.json`; `build_grammar.py` hlídá, že všechno používá jen slova HSK 1) a anglické významy z CC-CEDICT (`cedict-hsk1.u8`, CC BY-SA 4.0). `hsk1/build.py` z nich vloží data do `index.html` a doplní tahy do `strokes.json`: `pip install pypinyin==0.55.0`, `npm pack hanzi-writer-data@2.0.1 && tar xzf hanzi-writer-data-2.0.1.tgz`, `python3 hsk1/build.py package`. Písmo pak znovu sestaví `fonts/build_font.py`.
+- `hsk1/` – kurz **HSK 1** (nové HSK, oficiální osnova CLEC z listopadu 2025, platí od července 2026): oficiální seznam 300 slov (`words.tsv`), 246 znaků ke čtení (`chars.txt`), znaky k psaní (`write.txt`), rozdělení do 15 lekcí podle oficiálních komunikačních úkolů (`lessons.txt`), gramatika podle oficiálního seznamu gramatiky HSK 1 s příklady a cvičeními (`grammar.txt`, cvičení se zapíší do `grammar-hsk1.json`), věty k lekcím (`sentences.txt`), dva cvičné testy ve formátu oficiálního testu HSK 1 (`tests.txt`, zapíší se do `hsk1-tests.json`; `build_grammar.py` hlídá, že všechno používá jen slova HSK 1) a anglické významy z CC-CEDICT (`cedict-hsk1.u8`, CC BY-SA 4.0). `hsk1/build.py` z nich vloží data do `js/data-hsk1.js` a doplní tahy do `strokes.json`: `pip install pypinyin==0.55.0`, `npm pack hanzi-writer-data@2.0.1 && tar xzf hanzi-writer-data-2.0.1.tgz`, `python3 hsk1/build.py package`. Písmo pak znovu sestaví `fonts/build_font.py`.
 - `phonetics.json` – slabiky a slova pro Čínský diktát (příprava na test z fonetiky). Vzniká skriptem `phonetics/build.py` z tabulky slabik kurzu `phonetics/syllables.txt`: `pip install pypinyin==0.55.0 && python3 phonetics/build.py phonetics.json`
-- Pokrok se ukládá v prohlížeči (localStorage). Účty, synchronizace pokroku a žebříček běží přes Supabase, jakmile jsou v `index.html` vyplněné klíče. Návod: [`supabase/README.md`](supabase/README.md).
+- Pokrok se ukládá v prohlížeči (localStorage). Účty, synchronizace pokroku a žebříček běží přes Supabase, jakmile jsou v `js/account.js` vyplněné klíče. Návod: [`supabase/README.md`](supabase/README.md).
+
+## Jak je aplikace poskládaná
+
+Žádný build, žádné moduly: stránka načte `css/app.css` a pak postupně všechny skripty z `js/` (`<script src>` v `index.html`, ve stejném pořadí, v jakém jsou tam). Jsou to obyčejné skripty se **společným globálním prostorem**, takže funkce a konstanty z jednoho souboru jsou vidět v dalších.
+
+- Soubor smí při načtení použít jen to, co deklarují soubory **před ním** a on sám (funkce uvnitř funkcí a v obsluze kliknutí můžou volat cokoli). To hlídá test `03-load-order`.
+- `js/data-cin1.js` a `js/data-hsk1.js` jsou data kurzů (HSK 1 generuje `hsk1/build.py`), `js/data-chars.js` rozklad a příběhy znaků, `js/strings-cs.js` slovník českých překladů, `js/i18n.js` překladač.
+- Nový soubor: přidej ho do `index.html` na správné místo, do `CORE` v `sw.js` a spusť testy.
+- **Vydání:** při každé změně kódu nebo dat zvyš `CACHE` v `sw.js` (`zyl-vN`), jinak by se starým návštěvníkům mísily staré a nové soubory. Služba pak po aktualizaci ukáže „Nová verze · Načíst znovu“.
+- České texty: aplikace je psaná anglicky a překládá se při zobrazení. Nový text přidej do `CS` (přesný text) nebo do `CS_P` (text s číslem) v `js/strings-cs.js` / `js/i18n.js`. Test `15-i18n` zachytí chybějící překlad novinek, kurzů a hlavních obrazovek.
+
+## Testy
+
+```bash
+npm install            # eslint, acorn, hanzi-writer (jen pro testy)
+npm test               # všechno: statické kontroly i prohlížeč
+npm run test:static    # jen kontroly bez prohlížeče (pár sekund)
+node tests/run.js path # jen soubory, v jejichž názvu je „path“
+```
+
+Prohlížečové testy potřebují Playwright s Chromiem (`npx playwright install chromium`). Spouští aplikaci z `index.html` tak, jak je, na lokálním serveru, a vyhodí chybu při jakékoli výjimce na stránce. `tests/cases/`:
+
+| Soubor | Co hlídá |
+|---|---|
+| `01-structure` | `index.html`, `js/`, `css/` a `sw.js` si odpovídají (každý skript je načtený, v cache a existuje) |
+| `02-lint` | ESLint nad všemi skripty dohromady: nedefinované názvy, název deklarovaný dvakrát |
+| `03-load-order` | soubor při načtení nepoužívá nic z pozdějšího souboru |
+| `04-data` | data HSK 1 a Čínštiny 1, tahy znaků, cvičení, cvičné testy |
+| `05-service-worker` | připomínky a nová verze (služba v simulovaném prostředí) |
+| `10-smoke` … `16-reminders` | načtení obou kurzů a jazyků, všechny obrazovky, cesta s pečetěmi a Finální test, seznam slovíček bez duplicit, cvičný test HSK 1, dokončení cvičení, překlady, připomínky |
 
 ## Design: Impeccable
 
