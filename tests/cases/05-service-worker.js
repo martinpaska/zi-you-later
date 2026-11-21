@@ -2,6 +2,7 @@
 const assert=require('node:assert/strict'),vm=require('vm');
 const {read}=require('../lib/scripts');
 const src=read('sw.js');
+const CACHE=(src.match(/const CACHE='([^']+)'/)||[])[1],OLD='zyl-v'+(+CACHE.slice(5)-1);   // this version's cache and the one before it
 
 function env({keys=[],note,sent}={}){
   const shown=[],posted=[],deleted=[],store=new Map();
@@ -43,9 +44,9 @@ module.exports=[
   const b=env({note:{on:true,lang:'cs',due:[],last:''}});await b.fire('message',{data:{type:'remind-test'}});assert.match(b.shown[0],/^Připomínky fungují/);
 }],
 ['a new version drops the old caches, keeps the reminder note, and tells open pages',async()=>{
-  const e=env({keys:['zyl-v11','zyl-v12','zyl-remind','something-else']});await e.fire('activate');
-  assert.deepEqual(e.deleted.sort(),['something-else','zyl-v11']);assert.ok(!e.deleted.includes('zyl-remind'),'the reminder note was deleted');assert.deepEqual(e.posted,['update']);
+  const e=env({keys:[OLD,CACHE,'zyl-remind','something-else']});await e.fire('activate');
+  assert.deepEqual(e.deleted.sort(),['something-else',OLD].sort());assert.ok(!e.deleted.includes('zyl-remind'),'the reminder note was deleted');assert.deepEqual(e.posted,['update']);
 }],
 ['the very first install does not announce a "new version"',async()=>{
-  const e=env({keys:['zyl-v12']});await e.fire('activate');assert.deepEqual(e.deleted,[]);assert.deepEqual(e.posted,[]);
+  const e=env({keys:[CACHE]});await e.fire('activate');assert.deepEqual(e.deleted,[]);assert.deepEqual(e.posted,[]);
 }]];

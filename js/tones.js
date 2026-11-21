@@ -21,7 +21,7 @@ function tones(level){
       <div id="fb" role="status" aria-live="polite" style="width:100%"></div></div>
       <p class="hint" style="text-align:center">Listen without looking. Keys: ${level==='two'?'press two numbers 1 to 4':'1 to 4 pick a tone'}, R replays.</p>`);
     M().querySelectorAll('[data-tl]').forEach(b=>b.onclick=()=>tones(b.dataset.tl));
-    const play=()=>speak(x);$('tp').onclick=play;$('ts').onclick=()=>sayText(han(x).join(''),true);setTimeout(play,250);
+    const play=()=>speak(x);$('tp').onclick=play;$('ts').onclick=()=>sayText(SAYAS[x.k]||han(x).join(''),true);setTimeout(play,250);
     const choose=(r,t)=>{if($('tq').classList.contains('answered')||pick[r])return;pick[r]=t;
       $('tq').querySelector(`[data-row="${r}"] [data-t="${t}"]`).classList.add('picked');
       if(pick.filter(Boolean).length===tt.length)check()};
