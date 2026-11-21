@@ -28,11 +28,26 @@ module.exports=[
 ['flashcards: the back of a card shows one or two short sentences with the word; tapping a sentence does not turn the card',async t=>{
   const a=await open(t,{pack:'hsk1',state:{set:'w',cdir:'zh',cflips:9}});
   try{await a.page.evaluate(()=>{const x=ALLITEMS.find(x=>x.kind==='w'&&x.s==='喝');state.sel=new Set(LESSONS);state.set='w';window.pool=()=>[x];cards()});
-    assert.ok(!(await a.page.$('#card .cexin')),'sentences on the front of the card');
+    const front=await a.page.$$eval('#card .cexf .exi',e=>e.map(x=>x.textContent));   // the side that shows the word: its sentences in Chinese only
+    assert.ok(front.length>=1&&front.every(s=>/[一-鿿]/.test(s)&&!/[a-z]/i.test(s)),'Chinese side: '+front);
     await a.page.click('#card');await a.page.waitForSelector('#card .cexin .exi');
     const zh=await a.page.$$eval('#card .cexin .zh',e=>e.map(x=>x.textContent));assert.ok(zh.length>=1&&zh.length<=2,'sentences: '+zh.length);assert.ok(zh.every(s=>s.includes('喝')&&s.length<=12),'not short, or without the word: '+zh);
     await a.page.click('#card .cexin [data-ss]');await a.page.waitForTimeout(200);assert.ok(await a.page.$('#card.flipped'),'tapping a sentence turned the card');
     assert.ok(!(await a.page.evaluate(()=>{const c=document.querySelector('#card');return c.scrollHeight>c.clientHeight+6})),'the card back does not fit');assert.deepEqual(a.errors,[])}finally{await a.close()}
+}],
+['flashcards, English side: the front shows the sentences in English only, and the back shows both languages',async t=>{
+  const a=await open(t,{pack:'hsk1',state:{set:'w',cdir:'en',cflips:9}});
+  try{await a.page.evaluate(()=>{const x=ALLITEMS.find(x=>x.kind==='w'&&x.s==='喝');state.sel=new Set(LESSONS);state.set='w';window.pool=()=>[x];cards()});
+    const front=await a.page.$$eval('#card .cexf .exi',e=>e.map(x=>x.textContent));assert.ok(front.length>=1&&front.every(s=>/[a-z]/i.test(s)&&!/[一-鿿]/.test(s)),'English side: '+front);
+    assert.ok(!(await a.page.$('#card .cexf [data-ss]')),'a play button on the front would give the answer away');
+    await a.page.click('#card');await a.page.waitForSelector('#card .cexin .exi .pyl');assert.ok(!(await a.page.$('#card .cexf')),'the front sentences stay on the back');assert.deepEqual(a.errors,[])}finally{await a.close()}
+}],
+['entries written alike but read differently (得 de / děi) are said differently',async t=>{
+  for(const pack of ['cin1','hsk1']){const a=await open(t,{pack});
+    try{const groups=await a.page.evaluate(()=>{const g={};for(const x of ALLITEMS)(g[x.kind+x.s]=g[x.kind+x.s]||[]).push(x);
+        return Object.values(g).filter(v=>new Set(v.map(x=>x.p)).size>1).map(v=>({w:v[0].s,pinyin:v.map(x=>x.p),said:v.map(said)}))});
+      if(pack==='cin1')assert.ok(groups.some(g=>g.w==='得'),'the 得 entries are gone: this test would check nothing');
+      for(const g of groups)assert.equal(new Set(g.said).size,g.said.length,`${g.w} (${g.pinyin}) is said alike: ${g.said}`)}finally{await a.close()}}
 }],
 ['sentences of HSK 1 are its own: none for Chinese 1 (they use words that are not in HSK 1), and every character is an HSK 1 one',async t=>{
   const a=await open(t,{pack:'hsk1'});

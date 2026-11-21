@@ -1221,3 +1221,7 @@ details.gegd>.geg{padding-bottom:12px}
 .cexin .exi{padding:6px 0;text-align:left}.cexin .zh{font-size:1.1rem}.cexin .pyl,.cexin .en{font-size:.8rem}
 .cexin .exi+.exi{border-top:1px dashed var(--line)}.cexin .play{width:32px;height:32px;flex:none}
 .card.hasex{gap:6px}.card.hasex .cinfo{gap:4px}.card.hasex .cinfo .tag{display:none}
+/* the front of a card: the same sentences, in the language of that side */
+.cexf{border-top:0;margin-top:2px;text-align:center}.cexf .exi{text-align:center;padding:4px 0;border:0}
+.cexf .zh{font-size:1.2rem}.cexf .en{font-size:.95rem;color:var(--ink)}
+.cexf mark{background:var(--accent-soft);color:inherit;border-radius:4px;padding:0 2px}

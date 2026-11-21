@@ -10,9 +10,11 @@ function examples(x,n=2){
   return ST.concat(EX).filter(s=>{const z=s.zh.join('');if(!z.includes(w)||seen.has(z))return false;seen.add(z);return true}).sort((a,b)=>dist(a)-dist(b)||a.zh.join('').length-b.zh.join('').length).slice(0,n);
 }
 const example=x=>examples(x,1)[0]||null;
+// the short sentences of an item (at most max characters), the same ones on both sides of a flashcard
+const examplesShort=(x,n,max=12)=>examples(x,12).filter(s=>s.zh.join('').length<=max).slice(0,n);
 // o: {max: only sentences of at most this many characters, heading: false for no "Example" heading, tag: false for no lesson tag, cls: an extra class}
 function exampleHtml(x,n=2,o={}){
-  let list=examples(x,o.max?12:n);if(o.max)list=list.filter(s=>s.zh.join('').length<=o.max).slice(0,n);if(!list.length)return '';
+  const list=o.max?examplesShort(x,n,o.max):examples(x,n);if(!list.length)return '';
   const w=hz(x).replace(/\(.*?\)/g,'').split('…')[0];
   // one "Examples" heading, then each sentence with a small lesson tag
   return `<div class="ex exs${o.cls?' '+o.cls:''}">${o.heading===false?'':`<span class="eyebrow">${list.length>1?'Examples':'Example'}</span>`}${list.map(s=>{const zh=sentHz(s).join('');

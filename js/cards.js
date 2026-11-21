@@ -23,7 +23,14 @@ function strokeCard(x,front){
 /* short sessions: Flashcards and Writing go 15 items at a time unless "All at once" is picked in the setup */
 const ROUNDN=15,roundOf=list=>[list.slice(0,ROUNDN),list.slice(ROUNDN)];
 // the back of a card: one or two short sentences with the word, inside the card under the word (two when the screen is tall enough)
-const cardSents=x=>exampleHtml(x,innerHeight>=760?2:1,{max:12,heading:false,tag:false,cls:'cexin',span:true});
+const cardN=()=>innerHeight>=760?2:1;
+const cardSents=x=>exampleHtml(x,cardN(),{max:12,heading:false,tag:false,cls:'cexin',span:true});
+// the front shows the same sentences in the language of that side: Chinese when the card shows the word, English when it shows the meaning
+// (no sound and no pinyin: they would give the answer away)
+function cardSentsFront(x,en){
+  const list=examplesShort(x,cardN());if(!list.length)return '';
+  const w=hz(x).replace(/\(.*?\)/g,'').split('…')[0];
+  return `<div class="cexin cexf" aria-hidden="true">${list.map(s=>en?`<div class="exi"><span class="en">${esc(s.en)}</span></div>`:`<div class="exi"><span class="zh han">${esc(sentHz(s).join('')).split(esc(w)).join(`<mark>${esc(w)}</mark>`)}</span></div>`).join('')}</div>`}
 function cards(deck0,rest0,at){
   let rest=rest0||[];if(!deck0||!deck0.length)[deck0,rest]=roundOf(shuffle(pool()));
   let deck=deck0,i=at?Math.min(at.i,deck.length-1):0,flipped=false,yes=at?fromK(at.y):[],no=at?fromK(at.n):[],cardH=0;
@@ -31,11 +38,11 @@ function cards(deck0,rest0,at){
   function draw(){
     if(i>=deck.length)return done();
     resSave('cards',{k:kOf(deck),r:kOf(rest),i,y:kOf(yes),n:kOf(no),d:dir,pos:(i+1)+' / '+deck.length});
-    const x=deck[i],en=isEn(x),sents=flipped?cardSents(x):'';
+    const x=deck[i],en=isEn(x),sents=flipped?cardSents(x):'',sentsF=flipped?'':cardSentsFront(x,en);
     open(tallyBar(no.length,yes.length,deck.length,(i+1)+' / '+deck.length,'Still learning','Know')+
       `
       <div class="seg cdirseg" role="group" aria-label="Card front">${[['zh','中 → EN'],['en','EN → 中'],['mix','Mixed']].map(([k,n])=>`<button data-cd2="${k}" aria-pressed="${dir===k}">${n}</button>`).join('')}</div>
-      <div class="cardwrap"><button class="cstar" id="star" aria-pressed="${starred(x)}" aria-label="Star this card" title="Star this card">★</button><button class="card${flipped?' flipped':''}${sents?' hasex':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${x.kind==='c'?'one':'wordbig'}"><span class="han cst">${hzHtml(x)}</span></span><div class="cinfo">${cardBack(x)}<span class="play iconplay cplay" data-play role="button" aria-label="Play">${PLAY}</span></div></div>${sents}`:`${en?`<p class="meaning" style="font-size:1.5rem;font-weight:700">${esc(x.en)}</p>`:`<span class="cfront han">${hz(x)}</span>`}${(state.cflips||0)<5?`<span class="flip-hint">Tap to flip</span>`:''}`}</button></div>
+      <div class="cardwrap"><button class="cstar" id="star" aria-pressed="${starred(x)}" aria-label="Star this card" title="Star this card">★</button><button class="card${flipped?' flipped':''}${sents||sentsF?' hasex':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${x.kind==='c'?'one':'wordbig'}"><span class="han cst">${hzHtml(x)}</span></span><div class="cinfo">${cardBack(x)}<span class="play iconplay cplay" data-play role="button" aria-label="Play">${PLAY}</span></div></div>${sents}`:`${en?`<p class="meaning" style="font-size:1.5rem;font-weight:700">${esc(x.en)}</p>`:`<span class="cfront han">${hz(x)}</span>`}${sentsF}${(state.cflips||0)<5?`<span class="flip-hint">Tap to flip</span>`:''}`}</button></div>
       <div class="btns"><button class="btn badb" id="no">✗ Still learning</button><button class="btn okb" id="yes">✓ Know</button></div>
       <div class="btns cardnav"><button class="btn ghost" id="prev" ${i?'':'disabled'}>‹ Back</button><button class="btn ghost" id="tw" aria-label="Try writing ${x.kind==='w'&&[...x.s].filter(isHan).length>1?'this word':'this character'}">${PEN}Write</button><button class="btn ghost" id="shuf" aria-label="Shuffle the rest">Shuffle</button></div>`);
     const card=$('card');
