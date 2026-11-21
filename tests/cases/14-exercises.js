@@ -25,6 +25,23 @@ module.exports=[
     await a.page.evaluate(()=>{state.sel=new Set(['3']);goHome();build(ST.filter(s=>s.l==='3'),false)});await a.page.waitForTimeout(300);
     assert.ok(await a.page.$('#bk .chunk'),'no pieces to build with');assert.deepEqual(a.errors,[])}finally{await a.close()}
 }],
+['flashcards: the back of a card shows one or two short sentences with the word; tapping a sentence does not turn the card',async t=>{
+  const a=await open(t,{pack:'hsk1',state:{set:'w',cdir:'zh',cflips:9}});
+  try{await a.page.evaluate(()=>{const x=ALLITEMS.find(x=>x.kind==='w'&&x.s==='喝');state.sel=new Set(LESSONS);state.set='w';window.pool=()=>[x];cards()});
+    assert.ok(!(await a.page.$('#card .cexin')),'sentences on the front of the card');
+    await a.page.click('#card');await a.page.waitForSelector('#card .cexin .exi');
+    const zh=await a.page.$$eval('#card .cexin .zh',e=>e.map(x=>x.textContent));assert.ok(zh.length>=1&&zh.length<=2,'sentences: '+zh.length);assert.ok(zh.every(s=>s.includes('喝')&&s.length<=12),'not short, or without the word: '+zh);
+    await a.page.click('#card .cexin [data-ss]');await a.page.waitForTimeout(200);assert.ok(await a.page.$('#card.flipped'),'tapping a sentence turned the card');
+    assert.ok(!(await a.page.evaluate(()=>{const c=document.querySelector('#card');return c.scrollHeight>c.clientHeight+6})),'the card back does not fit');assert.deepEqual(a.errors,[])}finally{await a.close()}
+}],
+['sentences of HSK 1 are its own: none for Chinese 1 (they use words that are not in HSK 1), and every character is an HSK 1 one',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{await a.page.waitForTimeout(500);const r=await a.page.evaluate(()=>{const known=new Set(ALLITEMS.flatMap(x=>[...x.s.replace(/[()…]/g,'')]));
+      const bad=ALLITEMS.flatMap(x=>examples(x,9)).filter(s=>[...s.zh.join('')].some(c=>/[㐀-鿿]/.test(c)&&!known.has(c))).map(s=>s.zh.join(''));return {ex:EX.length,bad:[...new Set(bad)].slice(0,5)}});
+    assert.equal(r.ex,0,'Chinese 1 sentences are loaded in HSK 1');assert.deepEqual(r.bad,[],'sentences with characters outside HSK 1')}finally{await a.close()}
+  const b=await open(t,{pack:'cin1'});
+  try{await b.page.waitForFunction(()=>EX.length>300,null,{timeout:4000});assert.deepEqual(b.errors,[])}finally{await b.close()}
+}],
 ['the 完 seal and the counting score appear at the end of a round; with reduced motion the score is simply there',async t=>{
   for(const reduced of [false,true]){
     const a=await open(t,{pack:'hsk1',reducedMotion:reduced});

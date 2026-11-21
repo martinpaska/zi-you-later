@@ -1216,3 +1216,8 @@ details.gegd>.geg{padding-bottom:12px}
 .prdot{min-width:34px;height:34px;padding:0 6px;border-radius:99px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font:800 .95rem var(--f-display);flex:none;font-variant-numeric:tabular-nums}
 .premind .go{font-size:1.4rem;color:var(--muted)}
 .nolder{margin-top:4px}.nold{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+/* flashcards: one or two short sentences with the word, inside the card under it */
+.cexin{width:100%;border-top:1.5px solid var(--line);margin-top:4px;padding:0;background:none;box-shadow:none;border-radius:0;gap:0}
+.cexin .exi{padding:6px 0;text-align:left}.cexin .zh{font-size:1.1rem}.cexin .pyl,.cexin .en{font-size:.8rem}
+.cexin .exi+.exi{border-top:1px dashed var(--line)}.cexin .play{width:32px;height:32px;flex:none}
+.card.hasex{gap:6px}.card.hasex .cinfo{gap:4px}.card.hasex .cinfo .tag{display:none}
