@@ -4,6 +4,10 @@ const CS_NOUN={characters:['znak','znaky','znaků'],words:['slovo','slova','slov
 const csN=(n,k)=>n+' '+csPl(n,...CS_NOUN[k]);
 const csLessons=t=>t.replace(/\bIntro\b/g,'Úvod').replace(/\bLesson (\d+)/g,'Lekce $1');
 const CS_P=[
+ [/^About (\d+) cards will be due by tomorrow\.$/,(m,n)=>`Do zítřka bude k opakování asi ${n} ${csPl(+n,'kartička','kartičky','kartiček')}.`],
+ [/^(\d+) more cards are waiting today\.$/,(m,n)=>`Dnes na tebe čeká ještě ${n} ${csPl(+n,'kartička','kartičky','kartiček')}.`],
+ [/^Cards reviewed today: (\d+)\. About (\d+) will be due by tomorrow\.$/,(m,a,b)=>`Dnes zopakováno: ${a}. Do zítřka bude k opakování asi ${b}.`],
+ [/^Go over the (\d+) again$/,(m,n)=>`Projít ${n} znovu`],
  [/^(\d+) cards to review today$/,(m,n)=>`Dnes tě čeká ${n} ${csPl(+n,'kartička','kartičky','kartiček')}`],
  [/^Chapter (\d+)$/,(m,n)=>`Kapitola ${n}`],
  [/^Practice test (\d+)$/,(m,n)=>`Cvičný test ${n}`],

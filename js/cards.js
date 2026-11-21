@@ -31,15 +31,15 @@ function cardSentsFront(x,en){
   const list=examplesShort(x,cardN());if(!list.length)return '';
   const w=hz(x).replace(/\(.*?\)/g,'').split('…')[0];
   return `<div class="cexin cexf" aria-hidden="true">${list.map(s=>en?`<div class="exi"><span class="en">${esc(s.en)}</span></div>`:`<div class="exi"><span class="zh han">${esc(sentHz(s).join('')).split(esc(w)).join(`<mark>${esc(w)}</mark>`)}</span></div>`).join('')}</div>`}
-function cards(deck0,rest0,at){
+function cards(deck0,rest0,at,rv){
   let rest=rest0||[];if(!deck0||!deck0.length)[deck0,rest]=roundOf(shuffle(pool()));
   let deck=deck0,i=at?Math.min(at.i,deck.length-1):0,flipped=false,yes=at?fromK(at.y):[],no=at?fromK(at.n):[],cardH=0;
   let dir=at&&at.d||state.cdir||'zh';const fromEn=new Map(),isEn=x=>{if(!fromEn.has(x))fromEn.set(x,dir==='en'||(dir==='mix'&&Math.random()<.5));return fromEn.get(x)};
   function draw(){
     if(i>=deck.length)return done();
-    resSave('cards',{k:kOf(deck),r:kOf(rest),i,y:kOf(yes),n:kOf(no),d:dir,pos:(i+1)+' / '+deck.length});
+    if(!rv)resSave('cards',{k:kOf(deck),r:kOf(rest),i,y:kOf(yes),n:kOf(no),d:dir,pos:(i+1)+' / '+deck.length});
     const x=deck[i],en=isEn(x),sents=flipped?cardSents(x):'',sentsF=flipped?'':cardSentsFront(x,en);
-    open(tallyBar(no.length,yes.length,deck.length,(i+1)+' / '+deck.length,'Still learning','Know')+
+    open(tallyBar(no.length,yes.length,deck.length,rv?`${deck.length-i+rest.length} left`:(i+1)+' / '+deck.length,'Still learning','Know')+
       `
       <div class="seg cdirseg" role="group" aria-label="Card front">${[['zh','中 → EN'],['en','EN → 中'],['mix','Mixed']].map(([k,n])=>`<button data-cd2="${k}" aria-pressed="${dir===k}">${n}</button>`).join('')}</div>
       <div class="cardwrap"><button class="cstar" id="star" aria-pressed="${starred(x)}" aria-label="Star this card" title="Star this card">★</button><button class="card${flipped?' flipped':''}${sents||sentsF?' hasex':''}" id="card" aria-live="polite" ${en&&!flipped?'data-nosay':''}>${flipped?`<div class="cflip${[...hz(x)].filter(isHan).length>2?' stack':''}"><span class="cbox ${x.kind==='c'?'one':'wordbig'}"><span class="han cst">${hzHtml(x)}</span></span><div class="cinfo">${cardBack(x)}<span class="play iconplay cplay" data-play role="button" aria-label="Play">${PLAY}</span></div></div>${sents}`:`${en?`<p class="meaning" style="font-size:1.5rem;font-weight:700">${esc(x.en)}</p>`:`<span class="cfront han">${hz(x)}</span>`}${sentsF}${(state.cflips||0)<5?`<span class="flip-hint">Tap to flip</span>`:''}`}</button></div>
@@ -64,7 +64,8 @@ function cards(deck0,rest0,at){
     card.addEventListener('touchcancel',()=>{sx=null;card.classList.remove('dragging','drag-l','drag-r');card.style.transform=''});
     keyHandler=e=>{if(e.key===' '){e.preventDefault();card.click()}else if(e.key==='ArrowRight')sort(true);else if(e.key==='ArrowLeft')sort(false)};
   }
-  function done(){resClear('cards');
+  function done(){if(!rv)resClear('cards');
+    if(rv)return reviewDone();
     open(bar(100,deck.length+' / '+deck.length)+`<div class="card"><p class="eyebrow">Deck finished</p><span class="score">${yes.length} / ${deck.length}</span>
       <p>${no.length?`Still learning: ${no.length}. Go through them again until they are all in the Know pile.`:'You know all of them. Try Learn or Writing next.'}</p>
       ${no.length?`<div class="grp">${no.map((y,j)=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><button class="mini" data-j="${j}" aria-label="Play">${PLAY}</button>${starHtml(y,'xs-sm')}</div>`).join('')}</div>`:''}
@@ -73,6 +74,18 @@ function cards(deck0,rest0,at){
     if($('again'))$('again').onclick=()=>cards(shuffle(no),rest);
     if($('nextr'))$('nextr').onclick=()=>cards(...roundOf(rest));
     $('restart').onclick=()=>cards();
+  }
+  // review: after each round of 15 the next one, the cards to go over again, or the end of today's review
+  function reviewDone(){
+    const tomorrow=ALLITEMS.filter(x=>{const r=rec(x);return r&&r.n&&r.d<=Date.now()+DAY}).length;
+    open(bar(100,'done')+`<div class="card"><p class="eyebrow">${rest.length?'Round done':'Review complete'}</p><span class="score">${yes.length} / ${deck.length}</span>
+      <p>${rest.length?`${rest.length} more cards are waiting today.`:`Cards reviewed today: ${stats.rev}. About ${tomorrow} will be due by tomorrow.`}</p>
+      ${no.length?`<div class="grp">${no.map((y,j)=>`<div class="gi"><span class="han">${hzHtml(y)}</span><span class="p">${pyHtml(y.p)}</span><span class="m">${esc(y.en)}</span><button class="mini" data-j="${j}" aria-label="Play">${PLAY}</button></div>`).join('')}</div>`:''}
+      <div class="btns">${no.length?`<button class="btn${rest.length?' ghost':''}" id="again">Go over the ${no.length} again</button>`:''}${rest.length?`<button class="btn" id="nextr">Next round · ${rest.length} left</button>`:`<button class="btn ghost" data-home>‹ Home</button><button class="btn" id="more">Learn 10 more new</button>`}</div></div>`);
+    M().querySelectorAll('.mini').forEach(m=>m.onclick=()=>speak(no[+m.dataset.j]));
+    if($('again'))$('again').onclick=()=>cards(shuffle(no),rest,null,true);
+    if($('nextr'))$('nextr').onclick=()=>cards(...roundOf(rest),null,true);
+    if($('more')){$('more').onclick=()=>{stats.extra=(stats.extra||0)+10;saveSrs();review()};if(!basePool().some(x=>!seen(x)))$('more').disabled=true}
   }
   draw();
 }

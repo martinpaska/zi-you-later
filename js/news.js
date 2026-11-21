@@ -3,6 +3,10 @@
 /* id: a new id makes the sheet open once after the update; d: the real date shown on the card; t: title.
    The newest entry is the big card on top: art (a home tile's picture), what, where, go (what "Try it" opens). */
 const NEWS=[
+  {id:'2026-11-21',d:'2026-11-21',t:"Today’s review as flashcards",art:'cards',go:()=>review(),
+    what:"The cards to review today now look and work like Flashcards: tap to flip, then Know or Still learning, or swipe.",
+    where:"Home › Cards to review today",
+    items:["Rounds of 15. After each round you see the cards you did not know and can go over them again, or go on with the next round.", "Know and Still learning set when each card comes back, as before: a card you know comes back later and later, one you did not know comes back soon."]},
   {id:'2026-11-15',d:'2026-11-10',t:'Album of seals for Chinese 1',go:()=>album(),
     what:'Chinese 1 now has its own seals: one for the Intro and each of Lessons 1–10, on Home under Your path, in place of the Learn tile.',
     where:'Home › Your path',
