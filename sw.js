@@ -1,7 +1,7 @@
 /* Zì You Later service worker: the app works offline, and tells the page when a new version is on the web.
    Strategy: serve from the cache straight away, refresh the cache in the background. When the refreshed app page
    differs from the cached one, every open page gets {type:'update'} and shows "New version · Reload". */
-const CACHE='zyl-v10';
+const CACHE='zyl-v11';
 const CORE=['./','index.html','manifest.webmanifest','fonts/ziyoukai.woff2','strokes.json','grammar-practice.json','grammar-hsk1.json','hsk1-tests.json','examples.json','phonetics.json','grammar1.json',
   'apple-touch-icon.png','icon-192.png','icon-512.png','favicon-32.png'];
 const CDN=['https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
@@ -12,8 +12,23 @@ self.addEventListener('install',e=>{
     await self.skipWaiting()})());
 });
 self.addEventListener('activate',e=>{
-  e.waitUntil((async()=>{for(const k of await caches.keys())if(k!==CACHE)await caches.delete(k);await self.clients.claim()})());
+  e.waitUntil((async()=>{for(const k of await caches.keys())if(k!==CACHE&&k!==REMIND)await caches.delete(k);await self.clients.claim()})());
 });
+
+/* reminders: the page leaves a note in the cache 'zyl-remind' (on, lang, when cards are due, the last day of study). Once a
+   day (periodic background sync) a notification says how many cards are due, unless something was studied today already. */
+const REMIND='zyl-remind';
+const day=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+async function remind(test){
+  const c=await caches.open(REMIND),r=await c.match('note');if(!r)return;const n=await r.json().catch(()=>null);if(!n||(!n.on&&!test))return;
+  const due=(n.due||[]).filter(t=>t<=Date.now()).length,today=day();
+  if(!test){if(!due||n.last===today)return;const s=await c.match('sent');if(s&&(await s.text())===today)return;await c.put('sent',new Response(today))}
+  const cs=n.lang==='cs',k=due===1?0:due>=2&&due<=4?1:2;
+  const title=test&&!due?(cs?'Připomínky fungují':'Reminders work'):cs?`Čeká tě ${due} ${['kartička','kartičky','kartiček'][k]}`:`${due} ${due===1?'card':'cards'} to review`;
+  await self.registration.showNotification(title,{body:cs?'Pár minut a zůstanou ti v hlavě.':'A few minutes keep them in your head.',icon:'icon-192.png',badge:'icon-192.png',tag:'zyl-remind',data:{url:new URL('./',self.registration.scope).href}})}
+self.addEventListener('periodicsync',e=>{if(e.tag===REMIND)e.waitUntil(remind(false))});
+self.addEventListener('notificationclick',e=>{e.notification.close();const url=(e.notification.data&&e.notification.data.url)||new URL('./',self.registration.scope).href;
+  e.waitUntil((async()=>{for(const w of await self.clients.matchAll({type:'window',includeUncontrolled:true})){if('focus' in w)return w.focus()}return self.clients.openWindow(url)})())});
 
 const isApp=url=>url.origin===location.origin&&(/\/$/.test(url.pathname)||/\/index\.html$/.test(url.pathname));
 const cachable=url=>url.origin===location.origin||url.hostname==='cdn.jsdelivr.net'||url.hostname==='fonts.googleapis.com'||url.hostname==='fonts.gstatic.com';
@@ -21,7 +36,7 @@ const cachable=url=>url.origin===location.origin||url.hostname==='cdn.jsdelivr.n
 // a found update is remembered (pages that open later ask for it), and cleared once a page gets the new copy
 const FLAG='__update-ready';
 async function notifyUpdate(){const c=await caches.open(CACHE);await c.put(FLAG,new Response('1'));for(const w of await self.clients.matchAll({type:'window'}))w.postMessage({type:'update'})}
-self.addEventListener('message',e=>{if(!e.data||e.data.type!=='hello')return;
+self.addEventListener('message',e=>{if(e.data&&e.data.type==='remind-test'){e.waitUntil(remind(true));return}if(!e.data||e.data.type!=='hello')return;
   e.waitUntil((async()=>{const c=await caches.open(CACHE),f=await c.match(FLAG);if(f&&e.source)e.source.postMessage({type:'update'})})())});
 
 self.addEventListener('fetch',e=>{
