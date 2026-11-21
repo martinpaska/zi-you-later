@@ -1,4 +1,4 @@
-# Builds the HSK 1 pack: the line `const HSK1=…;` in index.html, and stroke data for its characters in strokes.json.
+# Builds the HSK 1 pack: the line `const HSK1=…;` in js/data-hsk1.js, and stroke data for its characters in strokes.json.
 #
 # Sources (all in this folder):
 #   words.tsv     the 300 words of the official vocabulary list (HSK 考试大纲, CLEC 2025, valid from 2026-07)
@@ -193,10 +193,10 @@ if add:json.dump(S,open(sp,'w',encoding='utf8'),ensure_ascii=False,separators=('
 
 for e in errs:print('!',e)
 if errs and any(not e.startswith('no stroke data') for e in errs):sys.exit(1)
-ip=os.path.join(R,'index.html');s=open(ip,encoding='utf8').read()
+ip=os.path.join(R,'js','data-hsk1.js');s=open(ip,encoding='utf8').read()
 line='const HSK1='+json.dumps(pack,ensure_ascii=False,separators=(',',':'))+';'
 s2,n=re.subn(r'^const HSK1=.*;$',lambda m:line,s,count=1,flags=re.M)
-if not n:sys.exit('index.html has no line "const HSK1=…;"')
+if not n:sys.exit('js/data-hsk1.js has no line "const HSK1=…;"')
 open(ip,'w',encoding='utf8').write(s2)
 json.dump(drills,open(os.path.join(R,'grammar-hsk1.json'),'w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))
 json.dump(tests,open(os.path.join(R,'hsk1-tests.json'),'w',encoding='utf8'),ensure_ascii=False,separators=(',',':'))

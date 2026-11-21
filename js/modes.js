@@ -1,0 +1,1 @@
+const MODES={gram1:()=>gram1(),vocab:()=>vocab(),grammar:()=>grammar(),cards:()=>cards(),learn,sentences,write,test,match:()=>match(),twins,tones:()=>tones(),pinyin:phonetics,admin:()=>{if(location.hash!=='#admin')history.replaceState(null,'','#admin');adminPage()},board:leaderboard,account,progress,settings,album,hsktest:hskTest};

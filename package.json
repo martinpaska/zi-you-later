@@ -1,0 +1,16 @@
+{
+  "name": "zi-you-later",
+  "private": true,
+  "description": "Zì You Later: a static Chinese study app (no build step). npm is only for the tests.",
+  "scripts": {
+    "test": "node tests/run.js",
+    "test:static": "node tests/run.js --static"
+  },
+  "devDependencies": {
+    "acorn": "^8.12.0",
+    "eslint": "^8.57.0",
+    "eslint-scope": "^7.2.2",
+    "hanzi-writer": "3.7.2",
+    "playwright": "^1.49.0"
+  }
+}

@@ -1,6 +1,6 @@
 # Účty, synchronizace pokroku a žebříček (Supabase)
 
-Aplikace umí účty přes [Supabase](https://supabase.com). Dokud nejsou v `index.html`
+Aplikace umí účty přes [Supabase](https://supabase.com). Dokud nejsou v `js/account.js`
 vyplněné `SUPABASE_URL` a `SUPABASE_ANON_KEY`, účty jsou vypnuté a vše funguje
 jako dřív: pokrok se ukládá jen v prohlížeči.
 
@@ -21,7 +21,7 @@ jako dřív: pokrok se ukládá jen v prohlížeči.
    - *Project URL*, např. `https://abcdefgh.supabase.co`
    - *anon public* klíč (dlouhý text začínající `eyJ…`, případně nový „publishable“ klíč `sb_publishable_…`)
 
-   Oba vlož do `index.html` na místo prázdných uvozovek:
+   Oba vlož do `js/account.js` na místo prázdných uvozovek:
    ```js
    const SUPABASE_URL='https://abcdefgh.supabase.co';
    const SUPABASE_ANON_KEY='eyJ...';
