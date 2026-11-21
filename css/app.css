@@ -1053,7 +1053,7 @@ details.gegd>.geg{padding-bottom:12px}
 .mmi:has(.xstar){padding-right:22px}
 @media (pointer:coarse){.xstar.xs-in{width:26px;height:26px;top:0;right:0}}
 /* course switcher */
-.packrow{display:flex;justify-content:flex-start;margin:-4px 0 -6px}
+#home #packbtn{order:0;gap:4px;padding:0 10px;white-space:nowrap}#home #packbtn b{font-family:var(--f-display);font-size:.9rem}#home #packbtn .packc{font-size:.72rem;color:var(--muted)}
 .packbtn{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border-radius:999px;padding:8px 14px;box-shadow:var(--sh1);font:inherit;color:var(--ink)}
 .packbtn .packk{font-size:.8rem;color:var(--muted);font-weight:600}.packbtn b{font-family:var(--f-display);font-size:1rem}.packbtn .packc{color:var(--muted);font-size:.8rem}
 .pkcard{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px;color:var(--ink);font:inherit}

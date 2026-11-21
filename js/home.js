@@ -27,7 +27,7 @@ function renderHome(){
 $('goReview').onclick=()=>review();
 /* modes that need content a pack does not have are hidden there (HSK 1: no chapter tests and no FF MUNI courses, so its Courses group is hidden) */
 const PACK_HIDE={cin1:['hsktest','learn','album'],hsk1:['test','gram1','pinyin','album','learn']};   // the seals are on Home (Your path) in both courses
-function packHome(){const P=PACKS.find(x=>x.id===PACK);if($('packname'))$('packname').textContent=P.n;   // plain text: the page translator turns it into Czech (T_ is not ready on the first render)
+function packHome(){const P=PACKS.find(x=>x.id===PACK);if($('packname'))$('packname').textContent=P.s;   // plain text: the page translator turns it into Czech (T_ is not ready on the first render)
   document.querySelectorAll('#home [data-mode]').forEach(b=>{if((PACK_HIDE[PACK]||[]).includes(b.dataset.mode))b.hidden=true});
   document.querySelectorAll('#home .mgroup').forEach(g=>{g.hidden=![...g.querySelectorAll('[data-mode]')].some(b=>!b.hidden)})}
 $('packbtn').onclick=()=>packSheet();
