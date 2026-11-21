@@ -12,7 +12,11 @@ function sayText(t,slow){
 }
 function stopAudio(){HT_PLAY=null;try{speechSynthesis.cancel()}catch(e){}UTT=null}
 // a character with several readings is read through a homophone (ALT) so the voice says the reading taught here
-function speak(x){sayText(x.kind==='c'?(ALT[x.t]||x.s):x.s.replace(/[()…]/g,''))}
+// two entries with the same writing and a different reading (得 de / děi) would be said alike by the voice: each is said through a text
+// that is read the way it is meant (的 is read de; 得去 is read děi qù). A test makes sure no two entries that are written alike sound alike.
+const SAYAS={'w:得|de':'的','w:得|děi':'得去'};
+const said=x=>SAYAS[x.k]||(x.kind==='c'?(ALT[x.t]||x.s):x.s.replace(/[()…]/g,''));
+function speak(x){sayText(said(x))}
 function speakSent(s){sayText(s.zh.join(''))}
 // pinyin of a word or phrase split into syllables (used by writing and the tone exercises)
 const sylsOf=p=>p.replace(/[()…]/g,' ').match(SYL)||[];
