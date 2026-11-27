@@ -10,19 +10,17 @@ const finalTest=async(a,lesson,right=true)=>{
 const steps=a=>a.page.$$eval('.lstep',s=>s.map(x=>({n:x.querySelector('.ln').textContent,ok:x.classList.contains('ok'),now:x.classList.contains('now'),off:x.disabled})));
 
 module.exports=[
-['HSK 1: the card on Home opens Your path: a map with a city for each of the 15 lessons, the next lesson listed unit by unit, and the button to the next unit',async t=>{
+['HSK 1: the card on Home opens Your path: 4 chapters, 15 lessons, each with its units as stamps, one "start" and the button to the next unit',async t=>{
   const a=await open(t,{pack:'hsk1',state:{seals:{'hsk1:1':{d:'2026-11-10',s:90}}}});
   try{assert.match(await a.text('.jcard'),/Rok v Pekingu.*Lekce 2.*Slova 1.*1 \/ 15/);await a.page.click('.jcard');await a.page.waitForSelector('.journey');
-    assert.equal(await a.page.$$eval('.mcity',e=>e.length),15);assert.equal(await a.page.$$eval('.mcity.done',e=>e.length),1);assert.equal(await a.page.$eval('.mcity.now',e=>e.dataset.city),'2');
-    assert.equal(await a.page.$$eval('.urow2',e=>e.length),await a.page.evaluate(()=>lessonUnits('2').length));
-    assert.equal(await a.page.$$eval('.urow2.cur',e=>e.length),1);assert.equal(await a.page.$eval('.urow2.cur',e=>e.dataset.unit),'2|w1','the first unit of lesson 2 is not the next one');
-    assert.match(await a.text('.lph'),/Lekce 2 · 天津 Tianjin.*Čísla a data/);assert.match(await a.text('.tcta'),/Pokračuj: Lekce 2 · Slova 1/);assert.ok(await a.page.$('.jgoal [data-go="hsktest"]'),'no goal');
-    assert.equal(await a.page.evaluate(()=>document.documentElement.scrollWidth),390,'the page is wider than the screen');
-    await a.page.click('.mcity[data-city="1"]');assert.equal(await a.page.$$eval('.urow2.done',e=>e.length),await a.page.evaluate(()=>lessonUnits('1').length),'a stamped lesson is not all done');
-    assert.match(await a.text('.lph'),/Lekce 1.*Splněno/);assert.match(await a.text('.lpanel'),/Procvičovat zvlášť/);
-    await a.page.click('.mcity[data-city="3"]');assert.ok(await a.page.$('.lpanel.locked [data-jump="3"]'),'lesson 3 is not locked with a way to skip to it');
-    await a.page.click('.mcity[data-city="2"]');assert.ok(!(await a.page.$('.lpanel.locked')),'lesson 2 is locked');
-    await a.page.click('.urow2.cur');await a.page.waitForSelector('.nsheet .usheet');assert.match(await a.text('.usheet'),/Slova 1.*Začít/);
+    assert.equal(await a.page.$$eval('.jch',e=>e.length),4);assert.equal(await a.page.$$eval('.ulesson',e=>e.length),15);
+    const n=await a.page.evaluate(()=>LESSONS.reduce((s,l)=>s+lessonUnits(l).length,0));assert.equal(await a.page.$$eval('.unode',e=>e.length),n);
+    assert.equal(await a.page.$$eval('.unode.cur',e=>e.length),1);assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'2|w1','the first unit of lesson 2 is not marked');
+    assert.equal(await a.page.$$eval('#ul-1 .unode.done',e=>e.length),await a.page.evaluate(()=>lessonUnits('1').length),'a stamped lesson is not all done');
+    assert.ok(await a.page.$('#ul-3.locked [data-jump="3"]'),'lesson 3 is not locked with a way to skip to it');assert.ok(!(await a.page.$('#ul-2.locked')),'lesson 2 is locked');
+    assert.match(await a.text('.tcta'),/Pokračuj: Lekce 2 · Slova 1/);assert.match(await a.text('#ul-1 .ulh'),/Lekce 1 · Splněno.*Procvičovat zvlášť/);assert.ok(await a.page.$('.jgoal [data-go="hsktest"]'),'no goal');
+    assert.equal(await a.page.evaluate(()=>document.documentElement.scrollWidth),390,'the path is wider than the screen');
+    await a.page.click('.unode.cur');await a.page.waitForSelector('.nsheet .usheet');assert.match(await a.text('.usheet'),/Slova 1.*Začít/);
     await a.page.click('.nsheet [data-ugo]');await a.page.waitForSelector('.ubar');noErrors(a)}finally{await a.close()}
 }],
 ['every lesson of both courses is split into units: words units of about 5 words that cover the lesson, grammar units for its points, then the review and the Final test',async t=>{
@@ -46,7 +44,7 @@ module.exports=[
     assert.deepEqual(await a.page.evaluate(()=>state.units),{'hsk1:1':{w1:1}});
     assert.ok(await a.page.evaluate(()=>lessonUnits('1')[0].items.every(seen)),'the words of the unit were not learnt');
     await a.page.click('#unext');await a.page.waitForSelector('.ubar');assert.equal(await a.page.evaluate(()=>unitNow().u.id),'w2');
-    await a.page.evaluate(()=>album());assert.equal(await a.page.$eval('.urow2.cur',e=>e.dataset.unit),'1|w2');assert.equal(await a.page.$$eval('[data-unit="1|w1"].done .ulvb i.on',e=>e.length),1,'no level on a done unit');
+    await a.page.evaluate(()=>album());assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'1|w2');assert.equal(await a.page.$$eval('[data-unit="1|w1"].done .ulvb i.on',e=>e.length),1,'no level on a done unit');
     await a.page.click('[data-unit="1|w1"]');assert.match(await a.text('.usheet'),/Úroveň 1 ze 3.*Procvičit na úrovni 2/);await a.page.click('.nsheet [data-ugo="2"]');
     const t2=await playUnit(a);assert.ok(!t2.includes('intro'),'level 2 introduces the words again');assert.match(await a.text('.udone'),/Úroveň výš!/);
     assert.equal(await a.page.evaluate(()=>state.units['hsk1:1'].w1),2);noErrors(a)}finally{await a.close()}
@@ -67,12 +65,12 @@ module.exports=[
 }],
 ['a locked lesson opens at once by passing its Final test; the lessons before it then count as done',async t=>{
   const a=await open(t,{pack:'hsk1'});
-  try{await a.page.evaluate(()=>album('3'));assert.ok(await a.page.$('.lpanel.locked'),'lesson 3 is open');
+  try{await a.page.evaluate(()=>album());assert.ok(await a.page.$('#ul-3.locked'),'lesson 3 is open');
     await a.page.evaluate(()=>{const r=Math.random;Math.random=()=>0.999999;document.querySelector('[data-jump="3"]').click();Math.random=r});
     for(let i=0;i<40;i++){if(!await a.page.$('#qo'))break;await a.page.click('#qo .opt[data-i="0"]');await a.page.click('#qn')}
     await a.page.waitForTimeout(300);assert.match(await a.text('#mode'),/Pečeť orazítkována/);
     const r=await a.page.evaluate(()=>[lessonDone('1'),lessonDone('2'),!!sealOf('3'),!!sealOf('1'),lessonOpen('4'),unitNow().l]);assert.deepEqual(r,[true,true,true,false,true,'4']);
-    await a.page.evaluate(()=>album('4'));assert.ok(!(await a.page.$('.lpanel.locked')),'lesson 4 is still locked');noErrors(a)}finally{await a.close()}
+    await a.page.evaluate(()=>album());assert.ok(!(await a.page.$('#ul-4.locked')),'lesson 4 is still locked');noErrors(a)}finally{await a.close()}
 }],
 ['HSK 1: passing a Final test stamps the seal for good, and the whole lesson then counts as done',async t=>{
   const a=await open(t,{pack:'hsk1',state:{selBy:{hsk1:['3','4']}}});

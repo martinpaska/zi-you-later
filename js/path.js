@@ -36,18 +36,21 @@ ${due?`<button class="premind" id="premind" type="button"><span class="prdot" ar
   $('rvsec').hidden=true;remindSave();   // Today's review is not a section of Home; cards that are due show as a reminder
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');if(b){e.preventDefault();lessonSheet(b.dataset.lsheet)}});
-/* Your path: the course as a journey across China (js/units.js). The map shows every lesson as a city on the way; the
-   lesson of the city you tap is listed under it, unit by unit; the button at the bottom always starts the next unit. */
-function album(l0){lessonRestore();JUMP=null;
-  const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow(),sel=LESSONS.includes(l0)?l0:now.l,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(now.l));
-  open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2>
+/* Your path: the course told as a story. Each chapter opens with a few lines of the story; its lessons follow, each a
+   sheet of an old map with its units as stamps on the road (js/units.js), and the path ends at the course's goal. The
+   button at the bottom always starts the next unit; the page opens where you are. */
+function album(){lessonRestore();JUMP=null;
+  const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow();let k=0;
+  open(bar(0,'','‹ Home')+`<div class="journey">${INK_DEFS}<div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
       <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div></div>
-    <div class="mapcard">${chinaMap(sel)}<p class="maplab"><span>${esc(`Chapter ${ch+1}`)}</span> · <span>${esc(SEAL_CHAPTERS[ch][0])}</span></p></div>
-    ${lessonPanelHtml(sel)}
+    ${SEAL_CHAPTERS.map(([cn,ls,story],ci)=>`<section class="jch"><div class="jchh"><p class="jnum" lang="zh-Hans" aria-label="${esc(`Chapter ${ci+1}`)}"><span>第${'一二三四五六七八九十'[ci]}章</span></p><h3>${esc(cn)}</h3><p class="jq">„<span>${esc(story)}</span>“</p></div>
+      ${ls.map(l=>{const h=lessonPathHtml(l,k);k+=lessonUnits(l).length;return h}).join('')}</section>`).join('')}
     <section class="jgoal"><span class="jflag" aria-hidden="true">${PATH.goal.zh}</span><div><p class="eyebrow">Goal</p><h3>${esc(PATH.goal.t)}</h3><p class="hint">${esc(PATH.goal.d)}</p>
       <button class="btn ghost" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div></section>
     <div class="tdock"><button class="tcta" id="tcta" type="button"><span class="tsign" lang="zh-Hans">${unitGlyph(now.l,now.u)}</span><span class="ttx"><b><span>${esc(`Continue: ${LNAME(now.l)}`)}</span> · <span>${esc(unitName(now.l,now.u))}</span></b><small${now.u.kind==='w'?' class="han"':''}>${esc(unitWords(now.l,now.u))}</small></span><span class="tar" aria-hidden="true">›</span></button></div></div>`);
   $('tcta').onclick=()=>now.u.kind==='f'?startStep(now.l,'final'):unitRun(now.l,now.u.id);
+  // the path opens where you are
+  const cur=M().querySelector('.unode.cur');if(cur&&cur.getBoundingClientRect().top>innerHeight*.6)cur.scrollIntoView({block:'center'});
 }
 // the steps of a lesson; a step started from here is remembered when its round is finished
 function lessonSheet(l){

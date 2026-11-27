@@ -1227,41 +1227,49 @@ details.gegd>.geg{padding-bottom:12px}
 .cexf{border-top:0;margin-top:2px;text-align:center}.cexf .exi{text-align:center;padding:4px 0;border:0}
 .cexf .zh{font-size:1.2rem}.cexf .en{font-size:.95rem;color:var(--ink)}
 .cexf mark{background:var(--accent-soft);color:inherit;border-radius:4px;padding:0 2px}
-/* Your path (js/units.js): a map of China in the app's colours. Land: blush with a black outline; the road: red as far
-   as you have come, dashed grey after; a city: a small square stamp (red when its seal is stamped, black outline when
-   started, grey ahead); the city you are at is black, the one shown below has a red ring. */
-.mapcard{background:var(--surface);border:2px solid #000;border-radius:16px;box-shadow:4px 4px 0 #000;padding:8px 6px 10px;overflow:hidden}
-.cnmap{display:block;width:100%;height:auto}
-.cnmap .land{fill:var(--blush,#f5eded);stroke:#000;stroke-width:1.6;stroke-linejoin:round}
-:root[data-theme="dark"] .cnmap .land{fill:#2b2424;stroke:#f5eded}
-.cnmap .road line{stroke:var(--line);stroke-width:3;stroke-dasharray:3 6;stroke-linecap:round}
-.cnmap .road line.done{stroke:var(--accent);stroke-width:4;stroke-dasharray:none}
-.cnmap .road line.now{stroke:var(--accent);stroke-width:3;stroke-dasharray:6 5}
-.cnmap .stops circle{fill:var(--surface);stroke:var(--muted);stroke-width:1;opacity:.6}.cnmap .stops circle.done{fill:var(--accent);stroke:var(--accent);opacity:1}
-.mcity{cursor:pointer}.mcity .hit{fill:transparent}
-.mcity rect{fill:var(--surface);stroke:#b9aeae;stroke-width:2}
-.mcity.prog rect{stroke:#000;stroke-width:2.5}
-.mcity.done rect{fill:var(--seal);stroke:#000;stroke-width:2.5}
-.mcity.now rect{fill:#000;stroke:#000}
-.mcity.sel rect{stroke-width:3}.mcity.sel .hit{fill:none;stroke:var(--accent);stroke-width:2;r:11px}
-.mcity text{font:700 12px var(--f-han);fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px}
-.mcity:focus{outline:none}.mcity:focus-visible .hit{fill:none;stroke:var(--accent);stroke-width:2}
-.maplab{margin:2px 8px 0;font:600 .76rem var(--f-display);color:var(--muted);text-align:center}
-.lpanel{display:flex;flex-direction:column;gap:8px}
-.lph{display:flex;align-items:center;gap:12px;padding:4px 2px}
-.ulht{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.ulht small{color:var(--muted);font-size:.76rem}.ulht b{font-family:var(--f-display);font-size:1.1rem;line-height:1.2}
+/* Your path (js/units.js): each lesson is a sheet of an old Chinese map, Silk Road style. Paper with a faint grid (the
+   old maps' 计里画方), a double frame, ink drawings around a road; the units are stamps on the road, which is red as far as
+   you have come. Only the app's colours. */
+.journey{--paper:#f7f1e8}
+:root[data-theme="dark"] .journey{--paper:#1f1b19}
+.ulesson{display:flex;flex-direction:column;gap:10px;padding:4px 0 14px}
+.ulh{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:0 6px 12px -10px rgb(0 0 0/.3)}
+.ulht{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.ulht small{color:var(--muted);font-size:.76rem}.ulht b{font-family:var(--f-display);font-size:1rem;line-height:1.2}
 .ulbar{display:block;height:5px;border-radius:9px;background:var(--sunk);overflow:hidden;margin-top:3px}.ulbar i{display:block;height:100%;background:var(--accent);border-radius:inherit}
-.urows{display:flex;flex-direction:column;gap:6px}
-.urow2{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:8px 12px;min-height:62px}
-.ust{flex:none;width:38px;height:44px;border-radius:7px;display:grid;place-items:center;font:700 1.25rem var(--f-han);line-height:1;background:var(--seal);color:#fff;border:2px solid #000;box-shadow:inset 0 0 0 2px var(--seal),inset 0 0 0 3.5px rgb(255 255 255/.7)}
-.urow2.cur{border:2px solid var(--accent)}.urow2.cur .ust{background:var(--surface);color:var(--accent-fg,var(--accent));border-color:var(--accent);box-shadow:none}
-.urow2.lock{background:none}.urow2.lock .ust{background:none;color:var(--icon-off,#b7abab);border:2px dashed var(--line);box-shadow:none}.urow2.lock .ttx{opacity:.6}
-.ugo{flex:none;background:var(--accent);color:var(--accent-ink);border:2px solid #000;border-radius:10px;padding:6px 12px;font:800 .85rem var(--f-display)}
-.uok{flex:none;color:var(--accent-fg,var(--accent));font-weight:800}
-.ulvb{flex:none;display:flex;gap:3px}.ulvb i{width:12px;height:5px;border-radius:3px;background:var(--line)}.ulvb i.on{background:var(--accent)}
-.ulmore{align-self:center;font-size:.82rem;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:8px 2px}
+.ulmore{flex:none;font-size:.78rem;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:6px 2px;max-width:92px;text-align:right;line-height:1.2}
+.umap{position:relative;border-radius:4px;padding:14px 0 6px;overflow:hidden;content-visibility:auto;contain-intrinsic-size:auto 900px;background:var(--paper);
+  box-shadow:inset 0 0 0 1px rgb(0 0 0/.12),inset 0 0 0 6px var(--paper),inset 0 0 0 7px rgb(0 0 0/.18),0 10px 24px -16px rgb(60 40 30/.5)}
+.unodes{position:relative}
+.uart,.ulink{position:absolute;left:50%;top:0;overflow:visible;pointer-events:none}
+.uart{color:var(--ink)}
+.uart .dab{fill:var(--ink);opacity:.2}
+.uart .trunk{fill:none;stroke:var(--ink);stroke-width:4.5;stroke-linecap:round;opacity:.55}
+.uart .needle path{stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;opacity:.55}.uart .clump{fill:var(--ink);opacity:.26}
+.uart .line{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round;opacity:.55}
+.uart .line .roof{fill:var(--ink);fill-opacity:.25}.uart .line .wall{fill:var(--seal);fill-opacity:.07}.uart .line .hull{fill:var(--ink);fill-opacity:.35}
+.uart .calli text{font:400 19px var(--f-brush);fill:var(--ink);opacity:.62}
+.uart .iseal{fill:none;stroke:var(--seal);stroke-width:1.8;opacity:.8}.uart .isealc{font:700 13px var(--f-han);fill:var(--seal);opacity:.85}
+.ulink path{fill:none;stroke-linecap:round}.ulink .todo{stroke:var(--ink);stroke-width:2.5;stroke-dasharray:1 9;opacity:.4}.ulink .ink{stroke:var(--accent);stroke-width:6}
+.urow{position:relative;height:118px;width:max-content;margin:0 auto;display:flex;flex-direction:column;align-items:center;transform:translateX(var(--x,0))}
+.unode{position:relative;display:grid;place-items:center;padding:0;margin-top:11px;transform:rotate(var(--r,0deg));border-radius:16px}
+.ubub{width:64px;height:64px;border-radius:14px;display:grid;place-items:center;font:700 1.85rem var(--f-han);line-height:1;
+  background:var(--surface);color:var(--ink);border:2.5px solid #000;box-shadow:4px 4px 0 #000;transition:transform .12s ease,box-shadow .12s ease}
+.unode:active .ubub{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+.unode.done .ubub{background:var(--seal);color:#fff;box-shadow:inset 0 0 0 3px var(--seal),inset 0 0 0 5px rgb(255 255 255/.7),4px 4px 0 #000}
+.unode.f .ubub{width:74px;height:74px;font-size:2.2rem;border-radius:10px}
+.unode.cur .ubub{color:var(--accent-fg,var(--accent));border-color:var(--accent);box-shadow:4px 4px 0 var(--accent)}
+.unode.lock .ubub{background:var(--paper);color:var(--icon-off,#b7abab);border:2px dashed #b9aeae;box-shadow:none}
+.ulvb{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);display:flex;gap:3px}
+.ulvb i{width:12px;height:5px;border-radius:3px;background:var(--line)}.ulvb i.on{background:var(--ink)}
+.unode.lock .ulvb{display:none}
+.ustart{position:absolute;left:calc(100% + 14px);top:50%;transform:translateY(-50%) rotate(calc(var(--r,0deg) * -1));white-space:nowrap;background:#000;color:#fff;font:800 .74rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:8px}
+.ustart::after{content:"";position:absolute;right:100%;top:50%;margin-top:-5px;border:5px solid transparent;border-right-color:#000}
+@media (prefers-reduced-motion:no-preference){.unode.cur .ustart{animation:ubob 1.6s ease-in-out infinite}}
+@keyframes ubob{50%{margin-left:4px}}
+.uname{margin-top:20px;font:700 .72rem var(--f-display);color:var(--muted);white-space:nowrap;background:var(--paper);padding:0 4px;border-radius:4px}
+.unode.cur+.uname{color:var(--accent-fg,var(--accent))}
+.ulesson.locked .ulh{opacity:.75}
 .ujump{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}.ujump .hint{margin:0}
-.lpanel.locked .lph{opacity:.8}
 .tdock{position:sticky;bottom:12px;z-index:4;margin-top:4px}
 .tcta{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--accent);color:var(--accent-ink);border:2px solid #000;border-radius:16px;padding:10px 12px;box-shadow:3px 3px 0 #000}
 .tsign{flex:none;width:36px;height:42px;border-radius:6px;background:#fff;color:var(--accent);border:2px solid #000;display:grid;place-items:center;font:700 1.3rem var(--f-han);line-height:1}
