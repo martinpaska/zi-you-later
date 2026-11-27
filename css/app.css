@@ -1227,3 +1227,53 @@ details.gegd>.geg{padding-bottom:12px}
 .cexf{border-top:0;margin-top:2px;text-align:center}.cexf .exi{text-align:center;padding:4px 0;border:0}
 .cexf .zh{font-size:1.2rem}.cexf .en{font-size:.95rem;color:var(--ink)}
 .cexf mark{background:var(--accent-soft);color:inherit;border-radius:4px;padding:0 2px}
+/* Your path, step by step (js/units.js): each lesson is a block with its seal, then its units as round stops on a winding
+   line, like buttons pressed into the page: black outline, a black edge below. Done: red. Gold (level 3): yellow. Locked: grey. */
+.ulesson{display:flex;flex-direction:column;gap:14px;padding:6px 0 18px}
+.ulh{display:flex;align-items:center;gap:12px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px}
+.ulht{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}.ulht small{color:var(--muted);font-size:.76rem}.ulht b{font-family:var(--f-display);font-size:1rem;line-height:1.2}
+.ulht .ulhp{color:var(--accent-fg,var(--accent));font-weight:600}
+.ulmore{flex:none;font-size:.78rem;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:6px 2px;max-width:92px;text-align:right;line-height:1.2}
+.unodes{display:flex;flex-direction:column;align-items:center;gap:16px;padding:4px 0}
+.urow{display:flex;justify-content:center;transform:translateX(var(--x,0))}
+.unode{position:relative;display:grid;place-items:center;padding:0 0 10px;border-radius:999px}
+.ubub{width:66px;height:66px;border-radius:999px;display:grid;place-items:center;font-family:var(--f-han);font-size:1.9rem;font-weight:700;line-height:1;
+  background:var(--surface);color:var(--accent-fg,var(--accent));border:2.5px solid #000;box-shadow:0 6px 0 #000;transition:transform .12s ease,box-shadow .12s ease}
+.unode:active .ubub{transform:translateY(4px);box-shadow:0 2px 0 #000}
+.unode.done .ubub{background:var(--seal);color:#fff}
+.unode.gold .ubub{background:#f4c430;color:#000}
+.unode.lock .ubub{background:var(--sunk);color:var(--icon-off,#b7abab);border-color:var(--line);box-shadow:0 6px 0 var(--line)}
+.unode.g .ubub{font-size:1.6rem}.unode.r .ubub{font-size:1.6rem}
+.unode.f .stamp{width:66px;height:66px;font-size:2rem}
+.unode.f.lock .stamp{opacity:.55}
+.ulv{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);display:flex;gap:3px}
+.ulv i{width:7px;height:7px;border-radius:99px;background:var(--line);border:1px solid #000}.ulv i.on{background:#f4c430}
+.ustart{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--surface);color:var(--accent-fg,var(--accent));
+  font:800 .8rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border:2px solid #000;border-radius:10px;box-shadow:2px 2px 0 #000}
+.ustart::after{content:"";position:absolute;top:100%;left:50%;width:10px;height:10px;background:var(--surface);border:2px solid #000;border-top:0;border-left:0;transform:translate(-50%,-5px) rotate(45deg)}
+.unode.cur{margin-top:34px}
+.unode.cur .ubub{outline:4px solid var(--accent-soft);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.unode.cur .ustart{animation:ubob 1.6s ease-in-out infinite}}
+@keyframes ubob{50%{transform:translate(-50%,-4px)}}
+.ulesson.locked .ulh{opacity:.7}
+.ujump{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}.ujump .hint{margin:0}
+.jhead .jgo span{white-space:nowrap}
+.jct .jnext{color:var(--accent-fg,var(--accent));font-weight:600}
+/* the unit sheet */
+.usheet{display:flex;flex-direction:column;gap:10px}.usheet .eyebrow,.usheet h2{margin:0}
+.ulvt{display:flex;align-items:center;gap:8px;margin:0;font-weight:600;font-size:.9rem}.ulvt .ulv{position:static;transform:none}
+.uwords{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.uw{display:flex;flex-direction:column;align-items:center;gap:1px;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;min-width:64px;position:relative}
+.uw b{font-size:1.5rem;font-weight:500;line-height:1.2}.uw small{font-size:.78rem}.uw .m{color:var(--muted);max-width:120px;text-align:center;line-height:1.2}
+.uw.miss{border-color:var(--bad)}
+.ugp{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.ucta{flex-direction:column}.ucta .btn{width:100%;flex:none}
+/* a unit's session */
+.ubar .back{font-size:1.1rem;min-width:44px}
+.ucombo{display:inline-block;background:#f4c430;color:#000;border:2px solid #000;border-radius:8px;padding:0 6px;font:800 .85rem var(--f-display)}
+.ucard .eyebrow{margin:0;color:var(--accent-fg,var(--accent))}
+.ucard .ugt{font-size:1.35rem}
+.umatch{height:auto}.umatch .mt{min-height:62px}.umatch .mt .han{font-size:1.8rem}.umatch .mt .han.mw{font-size:1.4rem}
+.upad{width:min(260px,70vw)}
+.udone{align-items:center;text-align:center}.udone h2{font-size:1.5rem}.udone .ulv{position:static;transform:none;gap:6px}.udone .ulv i{width:12px;height:12px}
+.ufin{font-weight:600;color:var(--accent-fg,var(--accent))}
