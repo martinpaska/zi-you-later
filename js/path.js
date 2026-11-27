@@ -36,32 +36,18 @@ ${due?`<button class="premind" id="premind" type="button"><span class="prdot" ar
   $('rvsec').hidden=true;remindSave();   // Today's review is not a section of Home; cards that are due show as a reminder
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');if(b){e.preventDefault();lessonSheet(b.dataset.lsheet)}});
-/* Your path: one lesson at a time, as a tower to build (js/units.js). The row of towers on top shows the whole course and
-   switches lessons, as do ‹ › and a swipe. The page opens at the floor you build now; the button below starts it. */
+/* Your path: the course as a journey across China (js/units.js). The map shows every lesson as a city on the way; the
+   lesson of the city you tap is listed under it, unit by unit; the button at the bottom always starts the next unit. */
 function album(l0){lessonRestore();JUMP=null;
-  const now=unitNow(),l=LESSONS.includes(l0)?l0:now.l,m=lessonMeta(l),us=lessonUnits(l),k=LESSONS.indexOf(l),op=lessonOpen(l),nx=op?unitNext(l):null;
-  const done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(l)),prev=LESSONS[k-1],next=LESSONS[k+1];
-  const cta=!op?`<button class="tcta ghost" data-jump="${l}" type="button"><span>${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</span></button>`
-    :nx?`<button class="tcta" id="tcta" type="button"><span class="tsign" lang="zh-Hans">${unitGlyph(l,nx)}</span><span class="ttx"><b>${esc(nx.kind==='f'?'Take the Final test':`Build floor ${us.indexOf(nx)+1}: ${unitName(l,nx)}`)}</b><small${nx.kind==='w'?' class="han"':''}>${esc(unitWords(l,nx))}</small></span><span class="tar" aria-hidden="true">›</span></button>`
-    :now.l!==l?`<button class="tcta" data-tower="${now.l}" type="button"><span class="ttx"><b>${esc(`Continue: ${LNAME(now.l)}`)}</b><small>${esc(lessonMeta(now.l).en)}</small></span><span class="tar" aria-hidden="true">›</span></button>`:'';
-  open(bar(0,'','‹ Home')+`<div class="towerv">${skylineHtml(l)}
-    <div class="thead"><button class="tnav" ${prev?`data-tower="${prev}"`:'disabled'} type="button" aria-label="Previous lesson">‹</button>
-      <div class="tht"><p class="eyebrow"><span>${esc(LNAME(l))}</span> · <span>${esc(`Chapter ${ch+1}`)}</span></p><h2>${esc(m.en)}</h2>
-        <p class="hint">${sealOf(l)?`<span>${esc(`Final test ${sealOf(l).s}%`)}</span>`:`<span>${esc(`${done} / ${us.length-1} floors`)}</span>`}</p></div>
-      <button class="tnav" ${next?`data-tower="${next}"`:'disabled'} type="button" aria-label="Next lesson">›</button></div>
-    ${op?'':`<p class="hint tlock">Finish the lesson before it to open this one.</p>`}
-    ${towerHtml(l)}
-    <div class="tfoot"><button class="ulmore" data-lsheet="${l}" type="button">Practise by mode</button><button class="ulmore" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div>
-    ${cta?`<div class="tdock">${cta}</div>`:''}</div>`);
-  if($('tcta'))$('tcta').onclick=()=>nx.kind==='f'?startStep(l,'final'):unitRun(l,nx.id);
-  // the tower opens at the floor you build now (or at its foot); the row of towers shows this one
-  const at=M().querySelector('.tfl.cur')||M().querySelector('.tbase');if(at)at.scrollIntoView({block:'center'});
-  const sk=M().querySelector('.skt.on');if(sk)sk.scrollIntoView({block:'nearest',inline:'center'});
-  // swipe the tower sideways for the next or the previous lesson
-  const tw=$('tower');let sx=null,sy=0,moved=false;
-  tw.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;moved=false});
-  tw.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)){moved=true;const to=dx<0?next:prev;if(to)album(to)}});
-  tw.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);
+  const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow(),sel=LESSONS.includes(l0)?l0:now.l,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(now.l));
+  open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2>
+      <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div></div>
+    <div class="mapcard">${chinaMap(sel)}<p class="maplab"><span>${esc(`Chapter ${ch+1}`)}</span> · <span>${esc(SEAL_CHAPTERS[ch][0])}</span></p></div>
+    ${lessonPanelHtml(sel)}
+    <section class="jgoal"><span class="jflag" aria-hidden="true">${PATH.goal.zh}</span><div><p class="eyebrow">Goal</p><h3>${esc(PATH.goal.t)}</h3><p class="hint">${esc(PATH.goal.d)}</p>
+      <button class="btn ghost" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div></section>
+    <div class="tdock"><button class="tcta" id="tcta" type="button"><span class="tsign" lang="zh-Hans">${unitGlyph(now.l,now.u)}</span><span class="ttx"><b><span>${esc(`Continue: ${LNAME(now.l)}`)}</span> · <span>${esc(unitName(now.l,now.u))}</span></b><small${now.u.kind==='w'?' class="han"':''}>${esc(unitWords(now.l,now.u))}</small></span><span class="tar" aria-hidden="true">›</span></button></div></div>`);
+  $('tcta').onclick=()=>now.u.kind==='f'?startStep(now.l,'final'):unitRun(now.l,now.u.id);
 }
 // the steps of a lesson; a step started from here is remembered when its round is finished
 function lessonSheet(l){

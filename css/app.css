@@ -1227,62 +1227,48 @@ details.gegd>.geg{padding-bottom:12px}
 .cexf{border-top:0;margin-top:2px;text-align:center}.cexf .exi{text-align:center;padding:4px 0;border:0}
 .cexf .zh{font-size:1.2rem}.cexf .en{font-size:.95rem;color:var(--ink)}
 .cexf mark{background:var(--accent-soft);color:inherit;border-radius:4px;padding:0 2px}
-/* Your path (js/units.js): a lesson is a tower, a unit one of its floors, the first at the bottom. A built floor: wall, roof
-   and balcony in the lesson's colours, the unit's character on a white sign; gold roof at level 3. The floor you build now
-   is white with scaffolding; the rest are dashed outlines. Five styles take turns lesson by lesson. */
-.towerv{display:flex;flex-direction:column;gap:12px}
-.ts0{--tw:#d72323;--tr:#2b2424;--tt:#f4c430;--tink:#fff}
-.ts1{--tw:#f5ede0;--tr:#1f7a5a;--tt:#c9a227;--tink:#000}
-.ts2{--tw:#eef3fb;--tr:#2458b8;--tt:#c9a227;--tink:#000}
-.ts3{--tw:#f4c430;--tr:#7a1010;--tt:#2b2424;--tink:#000}
-.ts4{--tw:#ffffff;--tr:#3e3636;--tt:#d72323;--tink:#000}
-.sky{position:sticky;top:0;z-index:3;display:flex;align-items:flex-end;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:8px 16px 6px;background:var(--bg);border-bottom:1.5px solid var(--line)}
-.sky::-webkit-scrollbar{display:none}
-.skt{flex:none;width:34px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;padding:4px 0 2px;border-radius:8px}
-.skt.on{background:var(--surface);box-shadow:inset 0 0 0 2px var(--accent)}
-.skb{display:flex;flex-direction:column;align-items:center;gap:1px}
-.skb i{display:block;height:4px;border:1px solid var(--line);border-radius:1px}
-.skb i.d{background:var(--tw);border-color:#000;box-shadow:0 -1.5px 0 var(--tr)}
-.skc{font:700 .78rem var(--f-han);color:var(--muted);line-height:1.2}.skt.on .skc{color:var(--accent-fg,var(--accent))}
-.thead{display:flex;align-items:center;gap:8px}.tht{flex:1;min-width:0;text-align:center}.tht .eyebrow,.tht .hint{margin:0}.tht h2{margin:2px 0;font:800 1.35rem var(--f-display)}
-.tnav{flex:none;width:44px;height:44px;border-radius:999px;background:var(--surface);box-shadow:var(--sh1);font:800 1.3rem var(--f-display)}.tnav:disabled{opacity:.3}
-.tlock{text-align:center;margin:0}
-.tower{display:flex;flex-direction:column;align-items:center;padding:34px 0 0;touch-action:pan-y}
-.tspire{position:relative;width:4px;height:42px;background:var(--line)}.tspire i{position:absolute;top:-18px;left:50%;width:24px;height:24px;margin-left:-12px;border-radius:50%;background:var(--sunk);border:2px dashed var(--line)}
-.tower.sealed .tspire{background:#000}.tower.sealed .tspire i{background:#f4c430;border:2.5px solid #000}
-.tfl{display:flex;flex-direction:column;padding:0;text-align:left;min-width:0;max-width:100%;color:inherit}
-.troof{display:block;width:calc(100% + 34px);height:22px;margin:0 -17px -1px;overflow:visible}
-.troof path{fill:var(--tr);stroke:#000;stroke-width:2.5px;stroke-linejoin:round}
-.tfl.gold .troof path{fill:#f4c430}
-.tbody{position:relative;display:flex;align-items:center;gap:12px;min-height:80px;padding:10px 12px 18px;background:var(--tw);color:var(--tink);border:2.5px solid #000;border-top:0;
-  box-shadow:inset 0 -8px 0 var(--tt),inset 0 -10px 0 #000;background-image:linear-gradient(90deg,rgb(0 0 0/.1) 2px,transparent 2px);background-size:30px 100%;background-position:14px 0}
-.tsign{flex:none;width:40px;height:46px;border-radius:6px;background:#fff;color:#000;border:2px solid #000;display:grid;place-items:center;font:700 1.35rem var(--f-han);line-height:1}
-.tfl.g .tsign{color:#2458b8}.tfl.r .tsign{color:#2a7a3f}.tfl.f .tsign{color:var(--seal)}
-.ttx{flex:1;min-width:0;display:flex;flex-direction:column}.ttx b{font:800 1rem var(--f-display);line-height:1.2}.ttx small{font-size:.82rem;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tfl .ulv{position:static;transform:none;flex:none}
-.tfl.lv2 .tbody::before,.tfl.lv2 .tbody::after{content:"";position:absolute;top:2px;width:10px;height:14px;border-radius:45%;background:var(--seal);border:1.5px solid #000}
-.tfl.lv2 .tbody::before{left:6px}.tfl.lv2 .tbody::after{right:6px}
-.tfl.cur{position:relative}
-.tfl.cur .tbody{background:var(--surface);color:var(--ink);box-shadow:inset 0 -8px 0 var(--line),inset 0 -10px 0 #000;background-image:none}
-.tfl.cur .tsign{color:var(--accent);border-color:var(--accent);border-style:dashed}
-.tfl.cur::before,.tfl.cur::after{content:"";position:absolute;top:6px;bottom:0;width:4px;background:#b08a5a;border-radius:2px}
-.tfl.cur::before{left:-12px}.tfl.cur::after{right:-12px}
-.tfl.cur .troof path{fill:none;stroke:#b08a5a;stroke-dasharray:6 4}
-.tgo{flex:none;background:var(--accent);color:var(--accent-ink);border:2px solid #000;border-radius:10px;padding:6px 10px;font:800 .85rem var(--f-display);box-shadow:2px 2px 0 #000}
-.tfl.lock .tbody{background:none;color:var(--muted);border:2px dashed var(--line);border-top:0;box-shadow:none}
-.tfl.lock .tsign{background:none;border:2px dashed var(--line);color:var(--icon-off,#b7abab)}
-.tfl.lock .ttx{opacity:.7}
-.tfl.lock .troof path{fill:none;stroke:var(--line);stroke-dasharray:6 5}
-.tbase{display:block;width:100%;height:18px;margin-top:-1px;background:var(--sunk);border:2.5px solid #000;border-radius:4px}
-.tfoot{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+/* Your path (js/units.js): a map of China in the app's colours. Land: blush with a black outline; the road: red as far
+   as you have come, dashed grey after; a city: a small square stamp (red when its seal is stamped, black outline when
+   started, grey ahead); the city you are at is black, the one shown below has a red ring. */
+.mapcard{background:var(--surface);border:2px solid #000;border-radius:16px;box-shadow:4px 4px 0 #000;padding:8px 6px 10px;overflow:hidden}
+.cnmap{display:block;width:100%;height:auto}
+.cnmap .land{fill:var(--blush,#f5eded);stroke:#000;stroke-width:1.6;stroke-linejoin:round}
+:root[data-theme="dark"] .cnmap .land{fill:#2b2424;stroke:#f5eded}
+.cnmap .road line{stroke:var(--line);stroke-width:3;stroke-dasharray:3 6;stroke-linecap:round}
+.cnmap .road line.done{stroke:var(--accent);stroke-width:4;stroke-dasharray:none}
+.cnmap .road line.now{stroke:var(--accent);stroke-width:3;stroke-dasharray:6 5}
+.cnmap .stops circle{fill:var(--surface);stroke:var(--muted);stroke-width:1;opacity:.6}.cnmap .stops circle.done{fill:var(--accent);stroke:var(--accent);opacity:1}
+.mcity{cursor:pointer}.mcity .hit{fill:transparent}
+.mcity rect{fill:var(--surface);stroke:#b9aeae;stroke-width:2}
+.mcity.prog rect{stroke:#000;stroke-width:2.5}
+.mcity.done rect{fill:var(--seal);stroke:#000;stroke-width:2.5}
+.mcity.now rect{fill:#000;stroke:#000}
+.mcity.sel rect{stroke-width:3}.mcity.sel .hit{fill:none;stroke:var(--accent);stroke-width:2;r:11px}
+.mcity text{font:700 12px var(--f-han);fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px}
+.mcity:focus{outline:none}.mcity:focus-visible .hit{fill:none;stroke:var(--accent);stroke-width:2}
+.maplab{margin:2px 8px 0;font:600 .76rem var(--f-display);color:var(--muted);text-align:center}
+.lpanel{display:flex;flex-direction:column;gap:8px}
+.lph{display:flex;align-items:center;gap:12px;padding:4px 2px}
+.ulht{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.ulht small{color:var(--muted);font-size:.76rem}.ulht b{font-family:var(--f-display);font-size:1.1rem;line-height:1.2}
+.ulbar{display:block;height:5px;border-radius:9px;background:var(--sunk);overflow:hidden;margin-top:3px}.ulbar i{display:block;height:100%;background:var(--accent);border-radius:inherit}
+.urows{display:flex;flex-direction:column;gap:6px}
+.urow2{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:8px 12px;min-height:62px}
+.ust{flex:none;width:38px;height:44px;border-radius:7px;display:grid;place-items:center;font:700 1.25rem var(--f-han);line-height:1;background:var(--seal);color:#fff;border:2px solid #000;box-shadow:inset 0 0 0 2px var(--seal),inset 0 0 0 3.5px rgb(255 255 255/.7)}
+.urow2.cur{border:2px solid var(--accent)}.urow2.cur .ust{background:var(--surface);color:var(--accent-fg,var(--accent));border-color:var(--accent);box-shadow:none}
+.urow2.lock{background:none}.urow2.lock .ust{background:none;color:var(--icon-off,#b7abab);border:2px dashed var(--line);box-shadow:none}.urow2.lock .ttx{opacity:.6}
+.ugo{flex:none;background:var(--accent);color:var(--accent-ink);border:2px solid #000;border-radius:10px;padding:6px 12px;font:800 .85rem var(--f-display)}
+.uok{flex:none;color:var(--accent-fg,var(--accent));font-weight:800}
+.ulvb{flex:none;display:flex;gap:3px}.ulvb i{width:12px;height:5px;border-radius:3px;background:var(--line)}.ulvb i.on{background:var(--accent)}
+.ulmore{align-self:center;font-size:.82rem;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:8px 2px}
+.ujump{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}.ujump .hint{margin:0}
+.lpanel.locked .lph{opacity:.8}
 .tdock{position:sticky;bottom:12px;z-index:4;margin-top:4px}
 .tcta{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--accent);color:var(--accent-ink);border:2px solid #000;border-radius:16px;padding:10px 12px;box-shadow:3px 3px 0 #000}
-.tcta .tsign{color:var(--accent);width:36px;height:42px}
-.tcta .ttx small{opacity:.9}.tcta .tar{font:800 1.6rem var(--f-display)}
-.tcta.ghost{background:var(--surface);color:var(--ink);justify-content:center;text-align:center;font-weight:700}
-.ulmore{flex:none;font-size:.82rem;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:8px 2px}
-.ulv{display:flex;gap:3px}.ulv i{width:8px;height:8px;border-radius:99px;background:var(--line);border:1px solid #000}.ulv i.on{background:#f4c430}
+.tsign{flex:none;width:36px;height:42px;border-radius:6px;background:#fff;color:var(--accent);border:2px solid #000;display:grid;place-items:center;font:700 1.3rem var(--f-han);line-height:1}
+.ttx{flex:1;min-width:0;display:flex;flex-direction:column}.ttx b{font:800 1rem var(--f-display);line-height:1.2}.ttx small{font-size:.82rem;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tcta .tar{font:800 1.6rem var(--f-display)}
 .jct .jnext{color:var(--accent-fg,var(--accent));font-weight:600}
+.ulv{display:flex;gap:3px}.ulv i{width:8px;height:8px;border-radius:99px;background:var(--line);border:1px solid #000}.ulv i.on{background:var(--accent)}
 /* the unit sheet */
 .usheet{display:flex;flex-direction:column;gap:10px}.usheet .eyebrow,.usheet h2{margin:0}
 .ulvt{display:flex;align-items:center;gap:8px;margin:0;font-weight:600;font-size:.9rem}.ulvt .ulv{position:static;transform:none}
