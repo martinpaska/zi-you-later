@@ -1,22 +1,28 @@
 /* Zì You Later service worker: the app works offline, and tells the page when a new version is on the web.
    Strategy: serve from the cache straight away, refresh the cache in the background. When the refreshed app page (or one of
    css/ and js/) differs from the cached one, every open page gets {type:'update'} and shows "New version · Reload".
-   Every release changes CACHE below, so the files of a version are cached together and an older cache is dropped. */
-const CACHE='zyl-v15';
+   Every release changes CACHE below, so the files of a version are cached together and an older cache is dropped.
+   The big files that rarely change (DATA_FILES) live in their own cache, DATA: a release keeps it, so they are not
+   downloaded again. Change DATA only when one of those files changes. */
+const CACHE='zyl-v16';
 const CORE=['./','index.html','css/app.css',
   'js/data-cin1.js','js/data-hsk1.js','js/packs.js','js/data-chars.js','js/items.js','js/util.js','js/state.js','js/examples.js','js/voice.js','js/update.js','js/speech.js','js/home.js','js/setup.js','js/review.js','js/cards.js','js/try-writing.js','js/questions.js','js/learn.js','js/test.js','js/match.js','js/vocab.js','js/sentences.js','js/grammar-data.js','js/grammar.js','js/writing.js','js/tones.js','js/progress.js','js/account.js','js/welcome.js','js/phonetics.js','js/admin.js','js/nudges.js','js/path.js','js/hsk-test.js','js/modes.js','js/news.js','js/strings-cs.js','js/i18n.js',
-  'manifest.webmanifest','fonts/ziyoukai.woff2','strokes.json','grammar-practice.json','grammar-hsk1.json','hsk1-tests.json','examples.json','phonetics.json','grammar1.json',
+  'manifest.webmanifest','grammar-practice.json','grammar-hsk1.json','hsk1-tests.json','examples.json','phonetics.json','grammar1.json',
   'apple-touch-icon.png','icon-192.png','icon-512.png','favicon-32.png'];
-const CDN=['https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
+const DATA='zyl-data-v1';
+const DATA_FILES=['strokes.json','fonts/ziyoukai.woff2','https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
+const isData=url=>DATA_FILES.some(f=>new URL(f,self.registration.scope).href===url.origin+url.pathname);
 
 self.addEventListener('install',e=>{
-  e.waitUntil((async()=>{const c=await caches.open(CACHE);
-    await Promise.all(CORE.concat(CDN).map(u=>c.add(new Request(u,{cache:'reload'})).catch(()=>{})));
+  e.waitUntil((async()=>{const c=await caches.open(CACHE),d=await caches.open(DATA);
+    const get=(cache,u)=>cache.add(new Request(u,{cache:'reload'})).catch(()=>{});
+    // the data files already in DATA are kept as they are: a new DATA name brings new copies
+    await Promise.all(CORE.map(u=>get(c,u)).concat(DATA_FILES.map(async u=>{if(!await d.match(u))await get(d,u)})));
     await self.skipWaiting()})());
 });
 self.addEventListener('activate',e=>{
-  // a new version (a new CACHE name) replaces the old caches; open pages are told, unless this is the very first install
-  e.waitUntil((async()=>{let had=false;for(const k of await caches.keys())if(k!==CACHE&&k!==REMIND){if(/^zyl-v\d+$/.test(k))had=true;await caches.delete(k)}
+  // a new version (a new CACHE name) replaces the old caches, keeping DATA and the reminder note; open pages are told, unless this is the very first install
+  e.waitUntil((async()=>{let had=false;for(const k of await caches.keys())if(k!==CACHE&&k!==DATA&&k!==REMIND){if(/^zyl-v\d+$/.test(k))had=true;await caches.delete(k)}
     await self.clients.claim();if(had)await notifyUpdate()})());
 });
 
@@ -51,7 +57,9 @@ self.addEventListener('fetch',e=>{
   // the app page: one cache key for "./" and "index.html", ignoring ?query and #hash
   const key=req.mode==='navigate'||isApp(url)?new URL('./',self.registration.scope).href:req;
   e.respondWith((async()=>{
-    const c=await caches.open(CACHE),hit=await c.match(key,{ignoreSearch:req.mode==='navigate'||isApp(url)});
+    // the data files are kept in DATA, everything else in CACHE; a hit in either one is served
+    const main=await caches.open(CACHE),data=await caches.open(DATA),c=isData(url)?data:main,o={ignoreSearch:req.mode==='navigate'||isApp(url)};
+    const hit=await c.match(key,o)||await (c===data?main:data).match(key,o);
     const appKey=key===new URL('./',self.registration.scope).href;
     // read the cached app page before handing it to the browser, to compare it with the one on the web
     const watch=appKey||isAsset(url);
@@ -62,10 +70,10 @@ self.addEventListener('fetch',e=>{
         await c.put(key,res.clone());if(changed)await notifyUpdate()}
       return res}).catch(()=>null);
     // a page opened after an update was found already gets the new copy, so the notice is no longer needed
-    if(hit&&req.mode==='navigate')await c.delete(FLAG);
+    if(hit&&req.mode==='navigate')await main.delete(FLAG);
     if(hit){e.waitUntil(fresh);return hit}
     const res=await fresh;if(res)return res;
-    if(req.mode==='navigate'){const any=await c.match(new URL('./',self.registration.scope).href);if(any)return any}
+    if(req.mode==='navigate'){const any=await main.match(new URL('./',self.registration.scope).href);if(any)return any}
     return new Response('',{status:504,statusText:'Offline'});
   })());
 });

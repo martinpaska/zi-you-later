@@ -15,7 +15,7 @@ Aplikace na procvičování čínských znaků. Běží jako statická stránka 
 - Soubor smí při načtení použít jen to, co deklarují soubory **před ním** a on sám (funkce uvnitř funkcí a v obsluze kliknutí můžou volat cokoli). To hlídá test `03-load-order`.
 - `js/data-cin1.js` a `js/data-hsk1.js` jsou data kurzů (HSK 1 generuje `hsk1/build.py`), `js/data-chars.js` rozklad a příběhy znaků, `js/strings-cs.js` slovník českých překladů, `js/i18n.js` překladač.
 - Nový soubor: přidej ho do `index.html` na správné místo, do `CORE` v `sw.js` a spusť testy.
-- **Vydání:** při každé změně kódu nebo dat zvyš `CACHE` v `sw.js` (`zyl-vN`), jinak by se starým návštěvníkům mísily staré a nové soubory. Služba pak po aktualizaci ukáže „Nová verze · Načíst znovu“.
+- **Vydání:** při každé změně kódu nebo dat zvyš `CACHE` v `sw.js` (`zyl-vN`), jinak by se starým návštěvníkům mísily staré a nové soubory. Služba pak po aktualizaci ukáže „Nová verze · Načíst znovu“. Velké soubory, které se mění zřídka (`strokes.json`, `fonts/ziyoukai.woff2`, skript hanzi-writer; seznam `DATA_FILES`), mají vlastní cache `DATA` (`zyl-data-vN`), kterou vydání nemaže, takže se znovu nestahují. Když se některý z nich změní (třeba po `hsk1/build.py` nebo `fonts/build_font.py`), zvyš kromě `CACHE` i `DATA`.
 - České texty: aplikace je psaná anglicky a překládá se při zobrazení. Nový text přidej do `CS` (přesný text) nebo do `CS_P` (text s číslem) v `js/strings-cs.js` / `js/i18n.js`. Test `15-i18n` zachytí chybějící překlad novinek, kurzů a hlavních obrazovek.
 
 ## Testy

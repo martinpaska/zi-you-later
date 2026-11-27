@@ -18,14 +18,17 @@ module.exports=[
   assert.equal(inline.length,1,'inline scripts: '+inline.length);assert.match(inline[0][1],/dataset\.theme/);
 }],
 ['the service worker caches index.html, the stylesheet, every script and every JSON file the app fetches',()=>{
-  const sw=read('sw.js'),core=(sw.match(/const CORE=\[([\s\S]*?)\];/)||[])[1];assert.ok(core,'no CORE list in sw.js');
-  const cached=new Set([...core.matchAll(/'([^']+)'/g)].map(m=>m[1]));
+  const sw=read('sw.js'),core=(sw.match(/const CORE=\[([\s\S]*?)\];/)||[])[1],data=(sw.match(/const DATA_FILES=\[([\s\S]*?)\];/)||[])[1];
+  assert.ok(core,'no CORE list in sw.js');assert.ok(data,'no DATA_FILES list in sw.js');
+  const cached=new Set([...(core+','+data).matchAll(/'([^']+)'/g)].map(m=>m[1]));
   const need=['index.html','css/app.css',...list];
   for(const f of list){for(const m of read(f).matchAll(/fetch\('([^']+\.json)'/g))need.push(m[1]);
     for(const m of read(f).matchAll(/fetch\(PACK==='hsk1'\?'([^']+)':'([^']+)'/g))need.push(m[1],m[2])}
   const missing=[...new Set(need)].filter(f=>!cached.has(f));assert.deepEqual(missing,[],'not in sw.js CORE: '+missing.join(', '));
   for(const f of cached)if(!/^https?:/.test(f)&&f!=='./')assert.ok(fs.existsSync(path.join(ROOT,f)),'sw.js caches a missing file: '+f);
-  assert.match(sw,/const CACHE='zyl-v\d+';/);
+  assert.match(sw,/const CACHE='zyl-v\d+';/);assert.match(sw,/const DATA='zyl-data-v\d+';/);
+  // the big files go in DATA only, so a release does not download them again
+  for(const f of ['strokes.json','fonts/ziyoukai.woff2'])assert.ok(data.includes("'"+f+"'")&&!core.includes("'"+f+"'"),f+' should be in DATA_FILES, not CORE');
 }],
 ['every file that the stylesheet or the page refers to by path exists',()=>{
   const css=read('css/app.css');
