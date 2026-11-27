@@ -164,6 +164,7 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "Units open one after another. Grammar units come between the words, then a lesson review and the Final test, which stamps the seal as before.":"Podbody se odemykají jeden po druhém. Mezi slovy jsou podbody s gramatikou, na konci opakování lekce a Finální test, který jako dřív orazítkuje pečeť.",
  "Play a finished unit again at level 2 and 3 (gold): fewer hints, more typing and writing from memory.":"Hotový podbod můžeš zahrát znovu na úrovni 2 a 3 (zlatá): méně nápověd, víc psaní pinyinu a znaků zpaměti.",
  "Know a lesson already? Pass its Final test to skip straight to it. What you have learnt so far counts: units with words you know are done.":"Lekci už umíš? Splň její Finální test a přeskočíš rovnou k ní. Co už umíš, se počítá: podbody se slovy, která znáš, jsou hotové.",
+ "Each lesson sits on an old Chinese ink landscape from The Metropolitan Museum of Art (public domain).":"Každá lekce leží na staré čínské tušové malbě z Metropolitního muzea v New Yorku (volné dílo).",
  "The modes of each lesson (flashcards, tones, writing…) are still there under Practise by mode.":"Režimy každé lekce (kartičky, tóny, psaní…) zůstaly pod Procvičovat zvlášť."});
 CS_P.push(
  [/^Words (\d+)$/,(m,n)=>`Slova ${n}`],
