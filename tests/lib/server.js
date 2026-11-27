@@ -1,7 +1,7 @@
 // a tiny static server for the repo root (the app has no build step, so the tests serve the files as they are)
 const http=require('http'),fs=require('fs'),path=require('path');
 const ROOT=path.resolve(__dirname,'..','..');
-const TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.woff2':'font/woff2','.png':'image/png','.webmanifest':'application/manifest+json','.svg':'image/svg+xml'};
+const TYPES={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.woff2':'font/woff2','.png':'image/png','.jpg':'image/jpeg','.webmanifest':'application/manifest+json','.svg':'image/svg+xml'};
 function start(){
   const srv=http.createServer((req,res)=>{
     let p=decodeURIComponent(new URL(req.url,'http://x').pathname);if(p.endsWith('/'))p+='index.html';

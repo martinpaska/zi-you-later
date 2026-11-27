@@ -47,49 +47,17 @@ const unitName=(l,u)=>u.kind==='w'?`Words ${u.n}`:u.kind==='g'?(u.pts.length>1?`
 const unitGlyph=(l,u)=>u.kind==='w'?esc(state.script==='t'?toTrad(u.g):u.g):u.kind==='g'?'法':u.kind==='r'?'复':lessonMeta(l).seal;
 const lvDots=lv=>`<span class="ulv" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=lv?'on':''}"></i>`).join('')}</span>`;
 
-/* the path: each lesson is a sheet of an old Chinese map, Silk Road style: a faint grid, ink mountains, rivers, clouds,
-   pagodas and a caravan drawn around a winding road. The units are stamps on the road, red as far as you have come.
-   Only the app's colours: black ink, red, the paper. A stamp shows its unit's character (法 grammar, 复 the review,
+/* the path: each lesson is a sheet of paper with an old ink landscape; the units are stamps on a winding road over it,
+   red as far as you have come. Only the app's colours: black ink, red, the paper. A stamp shows its unit's character (法 grammar, 复 the review,
    the lesson's seal for the Final test); three bars under it are its level. */
 const UX=[0,-56,-84,-56,0,56,84,56],UROW=118;
 const unitWords=(l,u)=>u.kind==='w'?u.items.map(hz).join(' '):u.kind==='g'?u.pts.map(p=>GRAMMAR[l][p].t).join(' · '):u.kind==='r'?'Everything from this lesson':`${PASS}% stamps the seal`;
 // the unit to play next in a lesson (or null when the lesson is done)
 const unitNext=l=>{const n=unitNow();if(n.l===l)return n.u;return lessonUnits(l).find(u=>unitLv(l,u)===0&&unitOpen(l,u))||null};
-/* the painting behind each lesson, in the manner of a Chinese ink landscape (shan shui): ink-wash hills fading into
-   mist, pines made of small brush dabs, a pavilion in fine line, a boat on the river, a column of calligraphy with a red
-   seal. Drawn from a seed per lesson, so every lesson has a picture of its own, always the same. Ink is var(--ink) at a
-   low opacity, so it works on the dark paper too. The shared filters and gradients are in INK_DEFS (once per page). */
-const INK_DEFS='<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'+
-  '<filter id="inkf" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" seed="4"/><feDisplacementMap in="SourceGraphic" scale="9"/><feGaussianBlur stdDeviation=".6"/></filter>'+
-  '<filter id="inkw" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="14"/><feGaussianBlur stdDeviation="2.2"/></filter>'+
-  '<linearGradient id="inkh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".42"/><stop offset=".55" stop-color="currentColor" stop-opacity=".16"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>'+
-  '<linearGradient id="inkm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--paper)" stop-opacity="0"/><stop offset=".5" stop-color="var(--paper)" stop-opacity=".9"/><stop offset="1" stop-color="var(--paper)" stop-opacity="0"/></linearGradient>'+
-  '</defs></svg>';
-function inkArt(l,us,xs,ys,k,H){
-  let seed=k*97+13;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647},R=(a,b)=>a+(b-a)*rnd();
-  const hills=(x,y,w,h,flip)=>{let d=`M${x-w/2} ${y}`;const n=7;for(let i=0;i<=n;i++){const px=x-w/2+w*i/n,py=y-h*(i%2?R(.55,1):R(.15,.45));d+=` Q${(px-w/n/2).toFixed(0)} ${(py-R(5,15)).toFixed(0)} ${px.toFixed(0)} ${py.toFixed(0)}`}d+=` L${x+w/2} ${y+h*.6} L${x-w/2} ${y+h*.6}Z`;
-    let dabs='';for(let i=0;i<26;i++){const px=x+R(-w/2.4,w/2.4),py=y-h*R(.2,.9);dabs+=`<ellipse cx="${px.toFixed(0)}" cy="${py.toFixed(0)}" rx="${R(3,7).toFixed(1)}" ry="${R(1.5,3).toFixed(1)}" transform="rotate(${R(-30,30).toFixed(0)} ${px.toFixed(0)} ${py.toFixed(0)})"/>`}
-    return `<g filter="url(#inkw)"><path d="${d}" fill="url(#inkh)"${flip?` transform="translate(${2*x} 0) scale(-1 1)"`:''}/></g><g class="dab" filter="url(#inkf)">${dabs}</g>`};
-  const pine=(x,y,s,dir)=>{let o=`<path class="trunk" d="M${x} ${y} q${dir*8*s} ${-22*s} ${dir*2*s} ${-46*s} q${-dir*6*s} ${-16*s} ${dir*10*s} ${-34*s}"/>`;
-    const cl=(cx,cy,r)=>{let c='';for(let i=0;i<14;i++){const a=R(-3.1,0),len=R(.6,1)*r;c+=`<path d="M${cx} ${cy} l${(Math.cos(a)*len).toFixed(1)} ${(Math.sin(a)*len*.55).toFixed(1)}"/>`}return `<g class="needle">${c}</g><ellipse class="clump" cx="${cx}" cy="${cy-3}" rx="${r*.9}" ry="${r*.38}"/>`};
-    o+=cl(x+dir*10*s,y-80*s,16*s)+cl(x-dir*12*s,y-58*s,14*s)+cl(x+dir*20*s,y-44*s,13*s)+cl(x+dir*4*s,y-96*s,11*s);
-    return `<g filter="url(#inkf)">${o}</g>`};
-  const pavilion=(x,y,s)=>`<g class="line" transform="translate(${x} ${y}) scale(${s})"><path d="M-30 -30 Q0 -40 30 -30 L22 -38 Q0 -46 -22 -38 Z" class="roof"/><path d="M0 -46 v-8"/><rect x="-18" y="-30" width="36" height="16" class="wall"/><path d="M-12 -30 v16 M-4 -30 v16 M4 -30 v16 M12 -30 v16"/>
-    <path d="M-34 -12 Q0 -22 34 -12 L26 -18 Q0 -26 -26 -18 Z" class="roof"/><rect x="-24" y="-12" width="48" height="20" class="wall"/><path d="M-24 0 h48 M-16 -12 v20 M16 -12 v20"/><path d="M-30 8 h60 M-34 14 h68" /></g>`;
-  const boat=(x,y,s)=>`<g class="line" transform="translate(${x} ${y}) scale(${s})"><path d="M-30 0 Q0 8 32 -4 L26 2 Q0 10 -26 4 Z" class="hull"/><path d="M14 -2 l4 -12 l4 12 Z" class="roof"/><path d="M-50 10 q10 -3 20 0 M30 9 q10 -3 20 0 M-20 14 q10 -3 20 0" opacity=".6"/></g>`;
-  const seal=(x,y,c)=>`<g transform="translate(${x} ${y}) rotate(${R(-6,6).toFixed(0)})"><rect x="-11" y="-11" width="22" height="22" rx="2" class="iseal"/><text y="6" text-anchor="middle" class="isealc" lang="zh-Hans">${c}</text></g>`;
-  const side=i=>xs[i]<=0?1:-1;let o='';
-  // hills high on the sheet behind everything, a band of mist through them
-  o+=hills(side(0)*110,ys[0]+50,280,130,k%2);if(us.length>4)o+=hills(-side(3)*100,ys[3]+60,270,140,!(k%2));if(us.length>8)o+=hills(side(7)*120,ys[7]+60,290,130,k%2);
-  // a column of calligraphy (the lesson's topic) and its seal, top corner opposite the first stamp
-  const cx=-side(0)*150,zh=[...(LZH[l]||'')].slice(0,6);
-  o+=`<g class="calli" lang="zh-Hans">${zh.map((c,i)=>`<text x="${cx}" y="${ys[0]-8+i*20}" text-anchor="middle">${c}</text>`).join('')}</g>`+seal(cx,ys[0]+zh.length*20+4,lessonMeta(l).seal);
-  // along the road: pines, a pavilion, a boat on the water
-  us.forEach((u,i)=>{if(i===0)return;const sd=side(i),x=sd*(118+R(0,30)),y=ys[i]+R(10,30),m=(k+i)%5;
-    if(m===0)o+=pine(x,y+30,R(1.1,1.35),sd);else if(m===2&&i%2)o+=pavilion(x,y+10,R(.9,1.1));else if(m===3)o+=boat(x,y,R(.9,1.1));else if(m===4&&i>2)o+=pine(x,y+34,R(.9,1.1),-sd)});
-  // mist across the sheet now and then
-  for(let y=UROW*2.5;y<H;y+=UROW*4)o+=`<rect x="-172" y="${y}" width="344" height="70" fill="url(#inkm)"/>`;
-  return o}
+/* the picture behind each lesson: an old Chinese ink landscape (art/ink1–5.jpg, public domain, The Metropolitan Museum
+   of Art, Open Access CC0; see art/README.md), turned into the app's ink and paper. A long lesson shows a second one
+   below the first; the paper of both is the paper of the sheet, so they meet without a seam. */
+const INKS=5,inkOf=n=>n%INKS+1;
 function lessonPathHtml(l,k){
   const m=lessonMeta(l),us=lessonUnits(l),op=lessonOpen(l),nx=op?unitNext(l):null,done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,tot=us.length-1;
   const xs=us.map((u,i)=>UX[(k+i)%UX.length]),ys=us.map((u,i)=>i*UROW+44),reach=nx?us.indexOf(nx):sealOf(l)?us.length-1:-1,H=us.length*UROW;
@@ -100,7 +68,7 @@ function lessonPathHtml(l,k){
       <span class="uname">${esc(unitName(l,u))}</span></div>`};
   return `<section class="ulesson${op?'':' locked'}" id="ul-${l}"><div class="ulh">${sealHtml(l,'sm')}<div class="ulht"><small><span>${esc(LNAME(l))}</span>${sealOf(l)?' · <span>Completed</span>':` · <span>${esc(`${done} / ${tot} units`)}</span>`}</small><b>${esc(m.en)}</b>
       <span class="ulbar" aria-hidden="true"><i style="width:${sealOf(l)?100:Math.round(done/Math.max(1,tot)*100)}%"></i></span></div><button class="ulmore" data-lsheet="${l}" type="button">Practise by mode</button></div>
-    <div class="umap"><div class="unodes" style="height:${H}px"><svg class="uart" width="1" height="${H}" aria-hidden="true" focusable="false">${inkArt(l,us,xs,ys,k,H)}</svg><svg class="ulink" width="1" height="${H}" aria-hidden="true" focusable="false"><path class="todo" d="${line}"/><path class="ink" d="${ink}"/></svg>${us.map(node).join('')}</div></div>
+    <div class="umap ia${inkOf(LESSONS.indexOf(l))} ib${inkOf(LESSONS.indexOf(l)+2)}"><div class="unodes" style="height:${H}px"><svg class="ulink" width="1" height="${H}" aria-hidden="true" focusable="false"><path class="todo" d="${line}"/><path class="ink" d="${ink}"/></svg>${us.map(node).join('')}</div></div>
     ${op?'':`<div class="ujump"><p class="hint">Finish the lesson before it to open this one.</p><button class="btn ghost" data-jump="${l}" type="button">${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</button></div>`}</section>`;
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b){e.preventDefault();const [l,id]=b.dataset.unit.split('|');unitSheet(l,id);return}

@@ -41,7 +41,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');
    button at the bottom always starts the next unit; the page opens where you are. */
 function album(){lessonRestore();JUMP=null;
   const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow();let k=0;
-  open(bar(0,'','‹ Home')+`<div class="journey">${INK_DEFS}<div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
+  open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
       <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div></div>
     ${SEAL_CHAPTERS.map(([cn,ls,story],ci)=>`<section class="jch"><div class="jchh"><p class="jnum" lang="zh-Hans" aria-label="${esc(`Chapter ${ci+1}`)}"><span>第${'一二三四五六七八九十'[ci]}章</span></p><h3>${esc(cn)}</h3><p class="jq">„<span>${esc(story)}</span>“</p></div>
       ${ls.map(l=>{const h=lessonPathHtml(l,k);k+=lessonUnits(l).length;return h}).join('')}</section>`).join('')}
