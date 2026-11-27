@@ -56,7 +56,8 @@ module.exports=[
   vm.createContext(ctx);vm.runInContext(src,ctx);let w;handlers.install({waitUntil:p=>{w=p}});await w;
   assert.ok(added[CACHE].includes('index.html')&&added[CACHE].includes('js/util.js'),'the app files were not cached');
   assert.ok(!added[CACHE].includes('strokes.json'),'strokes.json went into CACHE');
-  assert.deepEqual(added[DATA].sort(),['fonts/ziyoukai.woff2','https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js']);
+  const want=(src.match(/const DATA_FILES=\[([^\]]*)\]/)[1].match(/'([^']+)'/g)||[]).map(x=>x.slice(1,-1)).filter(f=>f!=='strokes.json');
+  assert.deepEqual(added[DATA].sort(),want.sort());
 }],
 ['the very first install does not announce a "new version"',async()=>{
   const e=env({keys:[CACHE]});await e.fire('activate');assert.deepEqual(e.deleted,[]);assert.deepEqual(e.posted,[]);

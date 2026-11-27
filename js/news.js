@@ -3,6 +3,15 @@
 /* id: a new id makes the sheet open once after the update; d: the real date shown on the card; t: title.
    The newest entry is the big card on top: art (a home tile's picture), what, where, go (what "Try it" opens). */
 const NEWS=[
+  {id:'2026-11-27',d:'2026-11-27',t:'Your path, step by step',go:()=>album(),
+    what:'Every lesson on Your path is now split into short units of about 5 new words, with mixed exercises, like in a language game.',
+    where:'Home › Your path',
+    items:['One unit takes 3 to 5 minutes: meet the new words, then choose, listen, type the pinyin, fill in the tones, match pairs, build sentences and write characters. Mistakes come back at the end.',
+      'Units open one after another. Grammar units come between the words, then a lesson review and the Final test, which stamps the seal as before.',
+      'Play a finished unit again at level 2 and 3 (gold): fewer hints, more typing and writing from memory.',
+      'Know a lesson already? Pass its Final test to skip straight to it. What you have learnt so far counts: units with words you know are done.',
+      'Each lesson sits on an old Chinese ink landscape from The Metropolitan Museum of Art (public domain).',
+      'The modes of each lesson (flashcards, tones, writing…) are still there under Practise by mode.']},
   {id:'2026-11-21',d:'2026-11-21',t:"Today’s review as flashcards",art:'cards',go:()=>review(),
     what:"The cards to review today now look and work like Flashcards: tap to flip, then say how well you remembered it: Again, Hard, Good or Easy.",
     where:"Home › Cards to review today",
