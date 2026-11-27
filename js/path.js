@@ -36,20 +36,32 @@ ${due?`<button class="premind" id="premind" type="button"><span class="prdot" ar
   $('rvsec').hidden=true;remindSave();   // Today's review is not a section of Home; cards that are due show as a reminder
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');if(b){e.preventDefault();lessonSheet(b.dataset.lsheet)}});
-/* Your path: the course told as a story. Each chapter opens with a few lines of the story; its lessons follow, each with
-   its seal and its units on a winding line (js/units.js), and the path ends at the course's goal. */
-function album(){lessonRestore();JUMP=null;
-  const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow();let k=0;
-  open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
-      <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div>
-      <button class="btn jgo" id="jgo" type="button"><span>${esc(`Continue: ${LNAME(now.l)}`)}</span> · <span>${esc(unitName(now.l,now.u))}</span></button></div>
-    ${SEAL_CHAPTERS.map(([cn,ls,story],ci)=>`<section class="jch"><div class="jchh"><p class="jnum" lang="zh-Hans" aria-label="${esc(`Chapter ${ci+1}`)}"><span>第${'一二三四五六七八九十'[ci]}章</span></p><h3>${esc(cn)}</h3><p class="jq">„<span>${esc(story)}</span>“</p></div>
-      ${ls.map(l=>{const h=lessonPathHtml(l,now,k);k+=lessonUnits(l).length;return h}).join('')}</section>`).join('')}
-    <section class="jgoal"><span class="jflag" aria-hidden="true">${PATH.goal.zh}</span><div><p class="eyebrow">Goal</p><h3>${esc(PATH.goal.t)}</h3><p class="hint">${esc(PATH.goal.d)}</p>
-      <button class="btn ghost" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div></section></div>`);
-  $('jgo').onclick=()=>now.u.kind==='f'?startStep(now.l,'final'):unitRun(now.l,now.u.id);
-  // the path opens where you are
-  const cur=M().querySelector('.unode.cur');if(cur&&cur.getBoundingClientRect().top>innerHeight*.7)cur.scrollIntoView({block:'center'});
+/* Your path: one lesson at a time, as a tower to build (js/units.js). The row of towers on top shows the whole course and
+   switches lessons, as do ‹ › and a swipe. The page opens at the floor you build now; the button below starts it. */
+function album(l0){lessonRestore();JUMP=null;
+  const now=unitNow(),l=LESSONS.includes(l0)?l0:now.l,m=lessonMeta(l),us=lessonUnits(l),k=LESSONS.indexOf(l),op=lessonOpen(l),nx=op?unitNext(l):null;
+  const done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(l)),prev=LESSONS[k-1],next=LESSONS[k+1];
+  const cta=!op?`<button class="tcta ghost" data-jump="${l}" type="button"><span>${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</span></button>`
+    :nx?`<button class="tcta" id="tcta" type="button"><span class="tsign" lang="zh-Hans">${unitGlyph(l,nx)}</span><span class="ttx"><b>${esc(nx.kind==='f'?'Take the Final test':`Build floor ${us.indexOf(nx)+1}: ${unitName(l,nx)}`)}</b><small${nx.kind==='w'?' class="han"':''}>${esc(unitWords(l,nx))}</small></span><span class="tar" aria-hidden="true">›</span></button>`
+    :now.l!==l?`<button class="tcta" data-tower="${now.l}" type="button"><span class="ttx"><b>${esc(`Continue: ${LNAME(now.l)}`)}</b><small>${esc(lessonMeta(now.l).en)}</small></span><span class="tar" aria-hidden="true">›</span></button>`:'';
+  open(bar(0,'','‹ Home')+`<div class="towerv">${skylineHtml(l)}
+    <div class="thead"><button class="tnav" ${prev?`data-tower="${prev}"`:'disabled'} type="button" aria-label="Previous lesson">‹</button>
+      <div class="tht"><p class="eyebrow"><span>${esc(LNAME(l))}</span> · <span>${esc(`Chapter ${ch+1}`)}</span></p><h2>${esc(m.en)}</h2>
+        <p class="hint">${sealOf(l)?`<span>${esc(`Final test ${sealOf(l).s}%`)}</span>`:`<span>${esc(`${done} / ${us.length-1} floors`)}</span>`}</p></div>
+      <button class="tnav" ${next?`data-tower="${next}"`:'disabled'} type="button" aria-label="Next lesson">›</button></div>
+    ${op?'':`<p class="hint tlock">Finish the lesson before it to open this one.</p>`}
+    ${towerHtml(l)}
+    <div class="tfoot"><button class="ulmore" data-lsheet="${l}" type="button">Practise by mode</button><button class="ulmore" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div>
+    ${cta?`<div class="tdock">${cta}</div>`:''}</div>`);
+  if($('tcta'))$('tcta').onclick=()=>nx.kind==='f'?startStep(l,'final'):unitRun(l,nx.id);
+  // the tower opens at the floor you build now (or at its foot); the row of towers shows this one
+  const at=M().querySelector('.tfl.cur')||M().querySelector('.tbase');if(at)at.scrollIntoView({block:'center'});
+  const sk=M().querySelector('.skt.on');if(sk)sk.scrollIntoView({block:'nearest',inline:'center'});
+  // swipe the tower sideways for the next or the previous lesson
+  const tw=$('tower');let sx=null,sy=0,moved=false;
+  tw.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;moved=false});
+  tw.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)){moved=true;const to=dx<0?next:prev;if(to)album(to)}});
+  tw.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);
 }
 // the steps of a lesson; a step started from here is remembered when its round is finished
 function lessonSheet(l){

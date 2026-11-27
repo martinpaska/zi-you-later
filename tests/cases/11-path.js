@@ -10,13 +10,69 @@ const finalTest=async(a,lesson,right=true)=>{
 const steps=a=>a.page.$$eval('.lstep',s=>s.map(x=>({n:x.querySelector('.ln').textContent,ok:x.classList.contains('ok'),now:x.classList.contains('now'),off:x.disabled})));
 
 module.exports=[
-['HSK 1: the card on Home opens the story with 4 chapters, 15 stops and one "you are here"',async t=>{
+['HSK 1: the card on Home opens Your path at the tower of the next lesson, one floor per unit, with the row of all 15 towers',async t=>{
   const a=await open(t,{pack:'hsk1',state:{seals:{'hsk1:1':{d:'2026-11-10',s:90}}}});
-  try{assert.match(await a.text('.jcard'),/Rok v Pekingu.*Lekce 2.*1 \/ 15/);await a.page.click('.jcard');await a.page.waitForSelector('.journey');
-    assert.equal(await a.page.$$eval('.jch',e=>e.length),4);assert.equal(await a.page.$$eval('.jst',e=>e.length),15);
-    assert.equal(await a.page.$$eval('.jst.here',e=>e.length),1);assert.equal(await a.page.$eval('.jst.here',e=>e.dataset.lsheet),'2','the next lesson is not marked');
-    assert.equal(await a.page.$$eval('.jst.ok',e=>e.length),1);assert.match(await a.text('.jch .jchh'),/第一章/);assert.ok(await a.page.$('.jgoal [data-go="hsktest"]'),'no goal');
-    await a.page.click('.jst.here');assert.ok(await a.page.waitForSelector('.nsheet'),'a stop does not open its lesson');noErrors(a)}finally{await a.close()}
+  try{assert.match(await a.text('.jcard'),/Rok v Pekingu.*Lekce 2.*Slova 1.*1 \/ 15/);await a.page.click('.jcard');await a.page.waitForSelector('.towerv');
+    assert.equal(await a.page.$$eval('.skt',e=>e.length),15);assert.equal(await a.page.$eval('.skt.on',e=>e.dataset.tower),'2');
+    assert.equal(await a.page.$$eval('.tfl',e=>e.length),await a.page.evaluate(()=>lessonUnits('2').length));
+    assert.equal(await a.page.$$eval('.tfl.cur',e=>e.length),1);assert.equal(await a.page.$eval('.tfl.cur',e=>e.dataset.unit),'2|w1','the first floor of lesson 2 is not the one to build');
+    assert.match(await a.text('.thead'),/Lekce 2 · Kapitola 1.*Čísla a data.*0 \/ \d+ pater/);assert.match(await a.text('.tcta'),/Stavět 1\. patro: Slova 1/);
+    assert.match(await a.text('.tfoot'),/Procvičovat zvlášť.*Cvičný test HSK 1/);
+    await a.page.click('.tfl.cur');await a.page.waitForSelector('.nsheet .usheet');assert.match(await a.text('.usheet'),/Slova 1.*Začít/);
+    await a.page.click('.nsheet [data-ugo]');await a.page.waitForSelector('.ubar');
+    await a.page.evaluate(()=>album('1'));assert.equal(await a.page.$$eval('.tfl.done',e=>e.length),await a.page.evaluate(()=>lessonUnits('1').length),'a stamped lesson is not all built');
+    assert.ok(await a.page.$('.tower.sealed'),'no gold ball on a stamped tower');
+    await a.page.click('.skt[data-tower="3"]');assert.ok(await a.page.$('.tower.locked'),'lesson 3 is not locked');assert.ok(await a.page.$('.tcta[data-jump="3"]'),'no way to skip to lesson 3');
+    await a.page.click('.tnav[data-tower="2"]');assert.ok(!(await a.page.$('.tower.locked')),'lesson 2 is locked');noErrors(a)}finally{await a.close()}
+}],
+['every lesson of both courses is split into units: words units of about 5 words that cover the lesson, grammar units for its points, then the review and the Final test',async t=>{
+  for(const pack of ['hsk1','cin1']){const a=await open(t,{pack});
+    try{const bad=await a.page.evaluate(()=>LESSONS.flatMap(l=>{const us=lessonUnits(l),it=lessonItems(l),ws=it.filter(x=>x.kind==='w'),main=ws.length?ws:it,e=[];
+        const w=us.filter(u=>u.kind==='w'),got=w.flatMap(u=>u.items.map(x=>x.k)),chars=w.flatMap(u=>u.chars.map(x=>x.k));
+        if(us[0].kind!=='w')e.push(l+': does not start with words');if(us.slice(-2).map(u=>u.id).join()!=='r,f')e.push(l+': does not end with the review and the Final test');
+        if(got.length!==main.length||new Set(got).size!==main.length||main.some(x=>!got.includes(x.k)))e.push(l+': the words units do not cover the lesson once');
+        if(ws.length&&chars.length!==it.filter(x=>x.kind==='c').length)e.push(l+': not every character is in a unit');
+        if(w.some(u=>u.items.length<2||u.items.length>8))e.push(l+': a words unit of '+w.map(u=>u.items.length));
+        if(w.some(u=>!u.g))e.push(l+': a words unit without its character');
+        const gp=us.filter(u=>u.kind==='g').flatMap(u=>u.pts);if(gp.join()!==(GRAMMAR[l]||[]).map((g,i)=>i).join())e.push(l+': grammar points '+gp);
+        if(new Set(us.map(u=>u.id)).size!==us.length)e.push(l+': two units with one id');return e}));
+      assert.deepEqual(bad,[],pack);noErrors(a)}finally{await a.close()}}
+}],
+['a unit is a session of mixed exercises: it ends with its result, saves the level, teaches its words and opens the next floor; played again it goes up a level',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{await a.page.evaluate(()=>unitRun('1','w1'));const types=await playUnit(a);
+    for(const k of ['intro','mc','match','tone','pinyin'])assert.ok(types.includes(k),'no '+k+' exercise in '+types.join(' '));
+    assert.match(await a.text('.udone'),/Lekce 1 · Slova 1.*Podbod hotový!.*\d+ %.*správně napoprvé/);assert.ok(await a.page.$('.udone .rstamp'),'no 完 seal');
+    assert.deepEqual(await a.page.evaluate(()=>state.units),{'hsk1:1':{w1:1}});
+    assert.ok(await a.page.evaluate(()=>lessonUnits('1')[0].items.every(seen)),'the words of the unit were not learnt');
+    await a.page.click('#unext');await a.page.waitForSelector('.ubar');assert.equal(await a.page.evaluate(()=>unitNow().u.id),'w2');
+    await a.page.evaluate(()=>album());assert.equal(await a.page.$eval('.tfl.cur',e=>e.dataset.unit),'1|w2');assert.ok(await a.page.$('[data-unit="1|w1"].done .ulv'),'no level on a built floor');
+    await a.page.click('[data-unit="1|w1"]');assert.match(await a.text('.usheet'),/Úroveň 1 ze 3.*Procvičit na úrovni 2/);await a.page.click('.nsheet [data-ugo="2"]');
+    const t2=await playUnit(a);assert.ok(!t2.includes('intro'),'level 2 introduces the words again');assert.match(await a.text('.udone'),/Úroveň výš!/);
+    assert.equal(await a.page.evaluate(()=>state.units['hsk1:1'].w1),2);noErrors(a)}finally{await a.close()}
+}],
+['grammar units and the lesson review run with their exercises; units after the current one are locked',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{assert.equal(await a.page.evaluate(()=>unitOpen('1',lessonUnits('1')[1])),false,'the second unit is open before the first is done');
+    const g=await a.page.evaluate(()=>lessonUnits('1').find(u=>u.kind==='g').id);
+    await a.page.evaluate(g=>unitRun('1',g),g);await a.page.waitForSelector('.ucard');let types=await playUnit(a);
+    assert.ok(types.includes('gcard')&&types.includes('gram'),'no grammar in '+types.join(' '));
+    await a.page.evaluate(()=>unitRun('1','r'));await a.page.waitForSelector('.ucard');types=await playUnit(a);assert.ok(types.length>8,'a short review: '+types.join(' '));
+    assert.deepEqual(Object.keys(await a.page.evaluate(()=>state.units['hsk1:1'])).sort(),[g,'r'].sort());noErrors(a)}finally{await a.close()}
+}],
+['what you know counts: the words units of words you already learnt are built, and the path starts after them',async t=>{
+  const a0=await open(t,{pack:'hsk1'});let srs;try{srs=await a0.page.evaluate(()=>Object.fromEntries(lessonUnits('1')[0].items.map(x=>[x.k,{e:2.5,i:3,n:2,lp:0,d:Date.now()+9e8}])))}finally{await a0.close()}
+  const a=await open(t,{pack:'hsk1',srs});
+  try{assert.deepEqual(await a.page.evaluate(()=>[unitLv('1',lessonUnits('1')[0]),unitNow().u.id]),[1,'w2']);noErrors(a)}finally{await a.close()}
+}],
+['a locked lesson opens at once by passing its Final test; the lessons before it then count as done',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{await a.page.evaluate(()=>album('3'));assert.ok(await a.page.$('.tower.locked'),'lesson 3 is open');
+    await a.page.evaluate(()=>{const r=Math.random;Math.random=()=>0.999999;document.querySelector('[data-jump="3"]').click();Math.random=r});
+    for(let i=0;i<40;i++){if(!await a.page.$('#qo'))break;await a.page.click('#qo .opt[data-i="0"]');await a.page.click('#qn')}
+    await a.page.waitForTimeout(300);assert.match(await a.text('#mode'),/Pečeť orazítkována/);
+    const r=await a.page.evaluate(()=>[lessonDone('1'),lessonDone('2'),!!sealOf('3'),!!sealOf('1'),lessonOpen('4'),unitNow().l]);assert.deepEqual(r,[true,true,true,false,true,'4']);
+    await a.page.evaluate(()=>album('4'));assert.ok(!(await a.page.$('.tower.locked')),'lesson 4 is still locked');noErrors(a)}finally{await a.close()}
 }],
 ['HSK 1: passing a Final test stamps the seal for good, and the whole lesson then counts as done',async t=>{
   const a=await open(t,{pack:'hsk1',state:{selBy:{hsk1:['3','4']}}});
@@ -56,5 +112,20 @@ module.exports=[
   try{assert.match(await a.text('#premind'),/Dnes tě čeká 5 kartiček/);await a.page.click('#premind');await a.page.waitForTimeout(300);assert.match(await a.text('#mode'),/zbývá/)}finally{await a.close()}
   a=await open(t,{pack:'hsk1'});try{assert.ok(!(await a.page.$('#premind')),'a reminder row with nothing due');noErrors(a)}finally{await a.close()}
 }]];
+// plays a unit to its end, choosing the first answer, typing a wrong pinyin, skipping the writing (a mistake comes back twice at most)
+async function playUnit(a){const p=a.page,types=[];
+  for(let i=0;i<200;i++){await p.waitForTimeout(40);
+    const k=await p.evaluate(()=>{const M=document.getElementById('mode');if(M.querySelector('.udone'))return 'done';if(M.querySelector('#inext'))return 'intro';if(M.querySelector('#fb .fb #ucont'))return 'fb';
+      if(M.querySelector('#ucont'))return 'gcard';if(M.querySelector('.gdcard'))return 'gram';if(M.querySelector('#uhw'))return 'write';if(M.querySelector('#mg'))return 'match';if(M.querySelector('#ts'))return 'tone';
+      if(M.querySelector('#uin'))return 'pinyin';if(M.querySelector('#bk'))return 'build';if(M.querySelector('.opts'))return 'mc';return '?'});
+    if(k==='done')return types;if(k!=='fb')types.push(k);
+    if(k==='intro')await p.click('#inext');else if(k==='fb'||k==='gcard')await p.click('#ucont');else if(k==='mc')await p.click('.opts .opt');
+    else if(k==='gram'){if(await p.$('#bk')){for(const b of await p.$$('#bk .chunk'))await b.click();await p.click('#chk')}else await p.click('#qo .opt')}
+    else if(k==='pinyin'){await p.fill('#uin','xx');await p.press('#uin','Enter')}
+    else if(k==='tone'){const n=await p.$$eval('#ts .tsyl',x=>x.length);for(let j=0;j<n;j++)await p.keyboard.press('1');await p.click('#tfc')}
+    else if(k==='match'){const ts=await p.$$('#mg .mt');for(let x=0;x<ts.length;x+=2)for(let y=1;y<ts.length;y+=2){if(await ts[x].evaluate(e=>e.classList.contains('gone')))break;if(await ts[y].evaluate(e=>e.classList.contains('gone')))continue;await ts[x].click();await ts[y].click()}}
+    else if(k==='build'){for(const b of await p.$$('#bk .chunk'))await b.click();await p.click('#chk');if(!(await p.$('#fb #ucont')))await p.click('#chk')}
+    else if(k==='write')await p.click('#unow');else throw new Error('an unknown exercise: '+(await a.text('#mode')).slice(0,120))}
+  throw new Error('the unit does not end')}
 // the characters of HSK 1 lesson 1, for seeding progress (read from the page's own data)
 async function a0(t){const a=await open(t,{pack:'hsk1'});try{return await a.page.evaluate(()=>HSK1.ch.filter(c=>c[0]==='1'))}finally{await a.close()}}

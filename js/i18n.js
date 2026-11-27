@@ -35,7 +35,7 @@ const CS_P=[
  [/^Final test (\d+)%$/,(m,n)=>`Finální test ${n} %`],
  [/^You need (\d+)% to stamp the seal\.$/,(m,n)=>`K orazítkování pečeti potřebuješ ${n} %.`],
  [/^(\d+) of (\d+) correct\.$/,(m,a,b)=>`Správně ${a} z ${b}.`],
- [/^(‹ )?(Lesson \d+|Intro) · (.+)$/,(m,a,n,t)=>`${a||''}${csLessons(n)} · ${CS[t]||t}`],
+ [/^(‹ )?(Lesson \d+|Intro) · (.+)$/,(m,a,n,t)=>`${a||''}${csLessons(n)} · ${CS[t]||T(t)||t}`],
  [/^‹ (Lesson \d+|Intro)$/,(m,n)=>`‹ ${csLessons(n)}`],
  [/^Next: (Lesson \d+|Intro) ›$/,(m,n)=>`Další: ${csLessons(n)} ›`],
  [/^(\d+) topics · Seminar (\d+)$/,(m,a,b)=>`${a} ${csPl(+a,'téma','témata','témat')} · Seminář ${b}`],
@@ -156,6 +156,7 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "Pieces in red are in the wrong place. Fix the order and check again.":"Červené dílky jsou na špatném místě. Oprav pořadí a zkontroluj znovu.",
  "Gold!":"Zlatá!","Level up!":"Úroveň výš!","Unit complete!":"Podbod hotový!","right the first time":"správně napoprvé","Final test ›":"Finální test ›","‹ Your path":"‹ Tvoje cesta",
  "Gold · level 3 of 3":"Zlatá · úroveň 3 ze 3",
+ "Everything from this lesson":"Všechno z lekce","Build ›":"Stavět ›","Test ›":"Test ›","Previous lesson":"Předchozí lekce","Next lesson":"Další lekce",
  "Your path, step by step":"Tvoje cesta krok za krokem",
  "Every lesson on Your path is now split into short units of about 5 new words, with mixed exercises, like in a language game.":"Každá lekce na Tvé cestě je teď rozdělená na krátké podbody po zhruba 5 nových slovech s namíchanými úlohami, jako ve hře na jazyky.",
  "Home › Your path":"Domů › Tvoje cesta",
@@ -166,6 +167,9 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "The modes of each lesson (flashcards, tones, writing…) are still there under Practise by mode.":"Režimy každé lekce (kartičky, tóny, psaní…) zůstaly pod Procvičovat zvlášť."});
 CS_P.push(
  [/^Words (\d+)$/,(m,n)=>`Slova ${n}`],
+ [/^(\d+)% stamps the seal$/,(m,n)=>`${n} % orazítkuje pečeť`],
+ [/^(\d+) \/ (\d+) floors$/,(m,a,b)=>`${a} / ${b} ${csPl(+b,'patro','patra','pater')}`],
+ [/^Build floor (\d+): (.+)$/,(m,n,u)=>`Stavět ${n}. patro: ${T(u)||u}`],
  [/^Grammar (\d+)$/,(m,n)=>`Gramatika ${n}`],
  [/^(\d+) \/ (\d+) units$/,(m,a,b)=>`${a} / ${b} ${csPl(+b,'podbod','podbody','podbodů')}`],
  [/^Know it already\? Take the Final test of (.+)$/,(m,l)=>`Už to umíš? Přeskoč sem Finálním testem (${csLessons(l)})`],

@@ -14,7 +14,8 @@ function lessonUnits(l){
   // a lesson's characters go with the first unit whose words use them; the rest are shared out
   const chars=chunks.map(()=>[]);
   if(ws.length){let k=0;for(const c of cs){const i=chunks.findIndex(ch=>ch.some(w=>w.s.includes(c.s)));(chars[i>=0?i:k++%n]).push(c)}}
-  const wu=chunks.map((ch,i)=>({id:'w'+(i+1),kind:'w',n:i+1,items:ch,chars:chars[i]}));
+  // each words unit shows a character of its own: the first one of its words that no unit before it shows
+  const used=new Set(),wu=chunks.map((ch,i)=>{const hs=ch.flatMap(x=>[...x.s].filter(isHan)),g=hs.find(c=>!used.has(c))||hs[0]||'';used.add(g);return {id:'w'+(i+1),kind:'w',n:i+1,items:ch,chars:chars[i],g}});
   const gp=(GRAMMAR[l]||[]).map((g,i)=>i),gu=[];for(let i=0;i<gp.length;i+=2)gu.push({id:'g'+(gu.length+1),kind:'g',n:gu.length+1,pts:gp.slice(i,i+2)});
   // grammar units are spread between the words units: never first, the last one before the review
   const out=[];wu.forEach((u,i)=>{out.push(u);gu.forEach((g,j)=>{if(Math.max(1,Math.round((j+1)*wu.length/(gu.length+1)))===i+1)out.push(g)})});
@@ -43,21 +44,28 @@ function unitSave(l,u,lv){const k=unitKey(l),all=state.units||{};state.units={..
 let JUMP=null;
 function jumpTo(l){const k=LESSONS.indexOf(l);LESSONS.slice(0,k+1).forEach(m=>lessonUnits(m).forEach(u=>{if(u.kind!=='f'&&!unitStored(m,u))unitSave(m,u,1)}));JUMP=null}
 const unitName=(l,u)=>u.kind==='w'?`Words ${u.n}`:u.kind==='g'?(u.pts.length>1?`Grammar ${u.n}`:'Grammar'):u.kind==='r'?'Lesson review':'Final test';
-const unitGlyph=(l,u)=>u.kind==='w'?esc([...hz(u.items[0])].filter(isHan)[0]||hz(u.items[0])):u.kind==='g'?'法':u.kind==='r'?'复':lessonMeta(l).seal;
+const unitGlyph=(l,u)=>u.kind==='w'?esc(state.script==='t'?toTrad(u.g):u.g):u.kind==='g'?'法':u.kind==='r'?'复':lessonMeta(l).seal;
 const lvDots=lv=>`<span class="ulv" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=lv?'on':''}"></i>`).join('')}</span>`;
 
-/* the path: every lesson is a block with its seal, then its units on a winding line */
-const UX=[0,-46,-70,-46,0,46,70,46];
-function lessonPathHtml(l,now,k){
-  const m=lessonMeta(l),us=lessonUnits(l),op=lessonOpen(l),done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,tot=us.length-1;
-  const node=(u,i)=>{const lv=unitLv(l,u),o=unitOpen(l,u),here=now.l===l&&now.u===u,x=UX[(k+i)%UX.length];
-    return `<div class="urow" style="--x:${x}px"><button class="unode ${u.kind}${lv?' done':''}${lv>=UNIT_MAX?' gold':''}${here?' cur':''}${o?'':' lock'}" data-unit="${l}|${u.id}" type="button" aria-label="${esc(`${LNAME(l)} · ${unitName(l,u)}`)}">
-      ${u.kind==='f'?sealHtml(l,'xs'):`<span class="ubub" lang="zh-Hans">${unitGlyph(l,u)}</span>`}${here?`<span class="ustart">${lv?'Here':'Start'}</span>`:''}${u.kind!=='f'&&lv?lvDots(lv):''}</button></div>`};
-  return `<section class="ulesson${op?'':' locked'}" id="ul-${l}"><div class="ulh">${sealHtml(l,'sm')}<div class="ulht"><small>${esc(LNAME(l))}</small><b>${esc(m.en)}</b>
-      <small class="ulhp">${sealOf(l)?'<span>Completed</span>':`<span>${esc(`${done} / ${tot} units`)}</span>`}</small></div><button class="ulmore" data-lsheet="${l}" type="button">Practise by mode</button></div>
-    <div class="unodes">${us.map(node).join('')}</div>
-    ${op?'':`<div class="ujump"><p class="hint">Finish the lesson before it to open this one.</p><button class="btn ghost" data-jump="${l}" type="button">${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</button></div>`}</section>`;
+/* the path: every lesson is a tower and every unit one of its floors, the first unit at the bottom. Each lesson has a
+   style of its own (ts0–ts4: a red pagoda, a jade tower, a blue tower, a golden pavilion, a white pagoda). A built floor
+   has its roof (gold at level 3) and the unit's character; the floor you build now has scaffolding; the rest are outlines. */
+const ROOF='<svg class="troof" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 19 Q3 18 5 12 Q13 5 20 3 L80 3 Q87 5 95 12 Q97 18 100 19 Q50 14 0 19Z" vector-effect="non-scaling-stroke"/></svg>';
+const unitWords=(l,u)=>u.kind==='w'?u.items.map(hz).join(' '):u.kind==='g'?u.pts.map(p=>GRAMMAR[l][p].t).join(' · '):u.kind==='r'?'Everything from this lesson':`${PASS}% stamps the seal`;
+// the unit to build next in a lesson (or null when the lesson is done)
+const unitNext=l=>{const n=unitNow();if(n.l===l)return n.u;return lessonUnits(l).find(u=>unitLv(l,u)===0&&unitOpen(l,u))||null};
+function towerHtml(l){
+  const us=lessonUnits(l),n=us.length,op=lessonOpen(l),nx=op?unitNext(l):null;
+  const fl=(u,i)=>{const lv=unitLv(l,u),here=nx===u,w=88-i*(30/Math.max(1,n-1));
+    const cls=[u.kind,lv?'done':here?'cur':'lock',lv>=UNIT_MAX?'gold':'',lv===2?'lv2':''].join(' ');
+    return `<button class="tfl ${cls}" data-unit="${l}|${u.id}" type="button" style="width:${w.toFixed(1)}%">${ROOF}<span class="tbody"><span class="tsign" lang="zh-Hans">${unitGlyph(l,u)}</span>
+      <span class="ttx"><b>${esc(unitName(l,u))}</b><small${u.kind==='w'?' class="han"':''}>${esc(unitWords(l,u))}</small></span>${here?`<span class="tgo">${u.kind==='f'?'Test':'Build'} ›</span>`:lv&&u.kind!=='f'?lvDots(lv):''}</span></button>`};
+  return `<div class="tower ts${LESSONS.indexOf(l)%5}${op?'':' locked'}${sealOf(l)?' sealed':''}" id="tower"><span class="tspire" aria-hidden="true"><i></i></span>${us.map(fl).reverse().join('')}<span class="tbase" aria-hidden="true"></span></div>`;
 }
+// every tower of the course in a row: its height is its number of units, built floors are coloured
+function skylineHtml(cur){return `<div class="sky" id="sky">${LESSONS.map((l,i)=>{const us=lessonUnits(l);
+  return `<button class="skt ts${i%5}${l===cur?' on':''}${sealOf(l)?' sealed':''}" data-tower="${l}" type="button" aria-label="${esc(LNAME(l))}"${l===cur?' aria-current="true"':''}><span class="skb">${us.map((u,j)=>`<i class="${unitLv(l,u)?'d':''}" style="width:${Math.round(22-10*j/Math.max(1,us.length-1))}px"></i>`).reverse().join('')}</span><span class="skc" lang="zh-Hans">${lessonMeta(l).seal}</span></button>`}).join('')}</div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-tower]');if(b){e.preventDefault();album(b.dataset.tower)}});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b){e.preventDefault();const [l,id]=b.dataset.unit.split('|');unitSheet(l,id);return}
   const j=e.target.closest('[data-jump]');if(j){e.preventDefault();JUMP=j.dataset.jump;startStep(JUMP,'final')}});
 function unitSheet(l,id){
