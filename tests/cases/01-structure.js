@@ -32,6 +32,6 @@ module.exports=[
 }],
 ['every file that the stylesheet or the page refers to by path exists',()=>{
   const css=read('css/app.css');
-  for(const m of css.matchAll(/url\(["']?(\.\.\/[^)"']+)["']?\)/g)){const f=path.join(ROOT,'css',m[1]);assert.ok(fs.existsSync(f),'css/app.css refers to '+m[1])}
+  for(const m of css.matchAll(/url\(["']?(\.\.\/[^)"']+)["']?\)/g)){const f=path.join(ROOT,'css',m[1].split('?')[0]);assert.ok(fs.existsSync(f),'css/app.css refers to '+m[1])}
   for(const m of html.matchAll(/(?:href|src)="((?!https?:|#|data:)[^"]+)"/g))assert.ok(fs.existsSync(path.join(ROOT,m[1].split('?')[0])),'index.html refers to '+m[1]);
 }]];

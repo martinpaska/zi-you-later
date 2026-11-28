@@ -1,9 +1,13 @@
 # Paintings behind Your path
 
 Old Chinese ink landscapes from The Metropolitan Museum of Art, New York, released by the museum as Open Access
-(public domain, CC0). Each one is cropped to the painted area, turned into the app's ink and paper, its edges fade into
-the paper, and it is saved as WebP (`ink1.webp` … `ink22.webp`). Every lesson of a course shows one of them, the one
-whose shape is closest to the shape of the lesson (`INKS` in `js/units.js` lists their width / height).
+(public domain, CC0). `build.py` makes `ink1.webp` … `ink22.webp` from the sources in `src/`: it evens out the paper
+(no grey ground or one-sided vignette), trims the blank margins and the detached strips at the left and right edges,
+lays the ink on the app's `--paper` with a soft top and bottom, and saves WebP. The left and right edges fade in CSS,
+the same on both sides. Every lesson of a course shows one of them, the one whose shape is closest to the shape of the
+lesson (`INKS` in `js/units.js` lists their width / height and is written by `build.py`).
+
+    pip install pillow numpy && python3 art/build.py
 
 | File | Painting | Artist | Date | Source |
 | --- | --- | --- | --- | --- |

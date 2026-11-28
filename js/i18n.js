@@ -146,7 +146,7 @@ CS_P.push(
  [/^Last: (\d+)%$/,(m,a)=>`Naposledy: ${a} %`],
  [/^Tone (\d) → (\d)$/,(m,a,b)=>`${a}. tón → ${b}.`]);
 /* Your path, step by step (js/units.js) */
-Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practise by mode":"Procvičovat zvlášť",
+Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi",
  "Finish the lesson before it to open this one.":"Lekce se odemkne, až dokončíš tu předchozí.",
  "Everything from this lesson, mixed: words, characters, tones, sentences and grammar.":"Všechno z téhle lekce namíchané dohromady: slova, znaky, tóny, věty a gramatika.",
  "Finish the units before it first.":"Nejdřív dokonči podbody před ním.","Take the Final test":"Udělat Finální test","Play it again":"Zahrát znovu",
@@ -164,8 +164,7 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "Units open one after another. Grammar units come between the words, then a lesson review and the Final test, which stamps the seal as before.":"Podbody se odemykají jeden po druhém. Mezi slovy jsou podbody s gramatikou, na konci opakování lekce a Finální test, který jako dřív orazítkuje pečeť.",
  "Play a finished unit again at level 2 and 3 (gold): fewer hints, more typing and writing from memory.":"Hotový podbod můžeš zahrát znovu na úrovni 2 a 3 (zlatá): méně nápověd, víc psaní pinyinu a znaků zpaměti.",
  "Know a lesson already? Pass its Final test to skip straight to it. What you have learnt so far counts: units with words you know are done.":"Lekci už umíš? Splň její Finální test a přeskočíš rovnou k ní. Co už umíš, se počítá: podbody se slovy, která znáš, jsou hotové.",
- "Each lesson has its own old Chinese ink landscape from The Metropolitan Museum of Art (public domain), shown whole while you scroll.":"Každá lekce má svou starou čínskou tušovou malbu z Metropolitního muzea v New Yorku (volné dílo), celou a viditelnou i při posouvání.","New words are taught two at a time, a mistake comes back a few exercises later, and after a unit you can practise its mistakes.":"Nová slova se učí po dvou, chyba se vrátí o pár úloh později a po podbodu si můžeš procvičit své chyby.",
- "The modes of each lesson (flashcards, tones, writing…) are still there under Practise by mode.":"Režimy každé lekce (kartičky, tóny, psaní…) zůstaly pod Procvičovat zvlášť."});
+ "Each lesson has its own old Chinese ink landscape from The Metropolitan Museum of Art (public domain), shown whole while you scroll.":"Každá lekce má svou starou čínskou tušovou malbu z Metropolitního muzea v New Yorku (volné dílo), celou a viditelnou i při posouvání.","New words are taught two at a time, a mistake comes back a few exercises later, and after a unit you can practise its mistakes.":"Nová slova se učí po dvou, chyba se vrátí o pár úloh později a po podbodu si můžeš procvičit své chyby."});
 CS_P.push(
  [/^Words (\d+)$/,(m,n)=>`Slova ${n}`],
  [/^(\d+)% stamps the seal$/,(m,n)=>`${n} % orazítkuje pečeť`],
