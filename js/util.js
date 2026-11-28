@@ -11,7 +11,7 @@ const V='aeiouüāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ';
 const SYL=new RegExp(`(?:[zcs]h|[bpmfdtnlgkhjqxrzcsyw])?[${V}]+(?:ng(?![${V}])|n(?![${V}])|r(?![${V}]))?`,'gi');
 const MK={};'āáǎàa ēéěèe īíǐìi ōóǒòo ūúǔùu ǖǘǚǜü'.split(' ').forEach(g=>{const base=g[4]==='ü'?'v':g[4];[...g].forEach((c,i)=>MK[c]=[base,i<4?i+1:0])});
 const sylTone=s=>{for(const c of s)if(MK[c]&&MK[c][1])return MK[c][1];return 0};
-function pyHtml(p){return esc(p).replace(SYL,m=>`<span class="t${sylTone(m)}">${m}</span>`)}
+function pyHtml(p){return esc(p).replace(SYL,m=>`<span class="t${sylTone(m)} pys">${m}</span>`)}
 function tonesOf(x){return x.kind==='c'?[x.tone]:(x.p.replace(/\([^)]*\)/g,'').match(SYL)||[]).map(sylTone)}
 const hz=x=>state.script==='t'?x.t:x.s;
 function hzHtml(x){

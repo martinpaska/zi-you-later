@@ -1307,3 +1307,10 @@ details.gegd>.geg{padding-bottom:12px}
 .privacy b{color:var(--ink)}
 .privacy p .link{font-size:inherit;padding:0}.privacy a{color:var(--accent-text,var(--accent));font-weight:600}
 #ioshint:not(:empty){margin-top:14px}
+
+/* pinyin on the path: the "pīn" switch in the unit bar and on Your path; off hides the pinyin of units, their sheets and results */
+.upy{flex:none;min-width:44px;min-height:36px;padding:4px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper,var(--bg));color:var(--muted);font:700 .9rem var(--f-body);cursor:pointer}
+.upy[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.jtop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+body.nopy :is(.ucard,.udone,.usheet,.intro.upath) :is(.pys,.pyl,.wprompt .py){display:none}
+body.nopy :is(.ucard,.udone,.usheet) .rb small{visibility:hidden}
