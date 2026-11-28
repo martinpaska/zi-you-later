@@ -22,7 +22,7 @@ function renderHome(){
   const ls=[...state.sel].sort((a,b)=>LESSONS.indexOf(a)-LESSONS.indexOf(b));
   $('herolx').innerHTML=`New cards come from ${ls.length?ls.map(l=>l==='I'?'Intro':'L'+l).join(', '):'no lessons'} · ${noun} <button class="link" id="chl">Change</button>`;
   $('chl').onclick=()=>setup('review');
-  nudgeHome();packHome();pathHome();
+  nudgeHome();iosHint();packHome();pathHome();
 }
 $('goReview').onclick=()=>review();
 /* modes that need content a pack does not have are hidden there (HSK: no chapter tests and no FF MUNI courses, so its Courses group is hidden;

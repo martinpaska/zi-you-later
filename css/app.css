@@ -1293,3 +1293,17 @@ details.gegd>.geg{padding-bottom:12px}
 .udone{align-items:center;text-align:center}.udone h2{font-size:1.5rem}.udone .ulv{position:static;transform:none;gap:6px}.udone .ulv i{width:12px;height:12px}
 .ufin{font-weight:600;color:var(--accent-fg,var(--accent))}
 .umist{align-self:stretch}
+
+/* Privacy, "Report a problem" and the iPhone Home Screen hint (js/help.js) */
+.noreport .rlink,.noreport [data-report]{display:none!important}
+.wlegal{text-align:center;font-size:.85rem;color:var(--muted);margin:12px 0 0;position:relative;z-index:1}
+.wlegal .link,.wlegal a{font-size:inherit;padding:0}
+.wlink2{color:var(--accent-text,var(--accent));font-weight:600;text-decoration:none}
+.wmore{margin:0;font-size:.9rem}.wmore .link{font-size:inherit;padding:0}
+.mreport{text-align:center;margin:28px 0 4px;font-size:.8rem}
+.mreport .link{font-size:inherit;color:var(--muted);font-weight:600}
+.privacy h3{font-size:1.05rem;margin:10px 0 -4px}
+.privacy ul{margin:0;padding-left:1.2em;color:var(--muted);display:flex;flex-direction:column;gap:6px;line-height:1.45}
+.privacy b{color:var(--ink)}
+.privacy p .link{font-size:inherit;padding:0}.privacy a{color:var(--accent-text,var(--accent));font-weight:600}
+#ioshint:not(:empty){margin-top:14px}

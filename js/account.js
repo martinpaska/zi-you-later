@@ -5,6 +5,11 @@
 const SUPABASE_URL='https://hhjwwkgwqowfglwxruzk.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_RWAD8X3RQXRjmPuUas0-Gw_GW9tItJD';
 const SUPA_ON=!!(SUPABASE_URL&&SUPABASE_ANON_KEY);
+/* Contact for the privacy page and "Report a problem" (js/help.js). Empty: the report links are hidden and the privacy page
+   points to GitHub instead. SUPABASE_REGION: the region shown in Supabase → Project Settings → General, e.g. 'EU (Frankfurt)';
+   empty: the privacy page says it is not verified yet. */
+const CONTACT_EMAIL='';
+const SUPABASE_REGION='';
 const SITE_URL=location.origin+location.pathname;
 const FIRST_HASH=location.hash;
 let sb=null,sbLoad=null,sbHooked=false,boardTimer=null,boardPull=null,cloudBusy=false;
