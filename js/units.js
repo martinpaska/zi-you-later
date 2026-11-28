@@ -3,8 +3,8 @@
    then a lesson review and the Final test (the seal). A unit is one session of mixed exercises: meet a word, then
    choose, listen, type the pinyin, fill in the tones, match, build a sentence and write a character. Mistakes come back
    at the end of the session. A finished unit can be played again at level 2 and 3 (gold): fewer hints, more recall.
-   Levels are kept in state.units ('hsk1:1' → {w1:2,g1:1,r:1}), so they sync with the account. A lesson opens when the
-   one before it is done (its units, not its Final test); a locked lesson can be opened at once by passing its Final test. ---------- */
+   Levels are kept in state.units ('hsk1:1' → {w1:2,g1:1,r:1}), so they sync with the account. Every lesson and unit is open:
+   you can jump anywhere, and the path goes on from where you last played (state.pathAt, per course). ---------- */
 const UNIT_N=5,UNIT_MAX=3;
 const UNITS={};
 function lessonUnits(l){
@@ -31,18 +31,23 @@ function unitLv(l,u){if(u.kind==='f')return sealOf(l)?1:0;const s=unitStored(l,u
   if(u.kind==='g'&&((state.lsteps||{})[unitKey(l)]||{}).grammar)return 1;return 0}
 const lessonDone=l=>!!sealOf(l)||lessonUnits(l).every(u=>u.kind==='f'||unitLv(l,u)>0);
 const lessonStarted=l=>lessonUnits(l).some(u=>u.kind!=='f'&&unitLv(l,u)>0);
-function lessonOpen(l){const i=LESSONS.indexOf(l);return i<=0||lessonDone(LESSONS[i-1])||lessonStarted(l)||!!sealOf(l)}
-// a unit is open when its lesson is open and every unit before it is done; the Final test is open with its lesson
-function unitOpen(l,u){if(!lessonOpen(l))return false;if(u.kind==='f')return true;const us=lessonUnits(l);return us.slice(0,us.indexOf(u)).every(v=>v.kind==='f'||unitLv(l,v)>0)}
-// where you are: the first open unit that is not done (the Final test counts once the rest of its lesson is done)
-function unitNow(){for(const [i,l] of LESSONS.entries()){if(!lessonOpen(l))continue;const nl=LESSONS[i+1];
-    // a Final test you went past (the next lesson is started) no longer holds you back
-    const u=lessonUnits(l).find(u=>unitLv(l,u)===0&&unitOpen(l,u)&&!(u.kind==='f'&&nl&&lessonStarted(nl)));if(u)return {l,u}}
+// nothing is locked: every lesson and every unit can be played in any order
+const lessonOpen=()=>true,unitOpen=()=>true;
+// where you last played on the path (lesson and unit), so the path goes on from there
+const pathAt=()=>((state.pathAt||{})[PACK])||null;
+function pathMark(l,u){state.pathAt={...(state.pathAt||{}),[PACK]:{l,u:u.id}};saveState()}
+/* where you are: from the unit you last played, the next unit that is not done (in that lesson, then in the lessons after
+   it, then from the start of the course). Without a last unit, the first one that is not done. A Final test you went
+   past (the next lesson is started) does not hold you back. */
+function unitNow(){const at=pathAt(),k=at?Math.max(0,LESSONS.indexOf(at.l)):0;
+  const order=[...LESSONS.slice(k),...LESSONS.slice(0,k)];
+  for(const [j,l] of order.entries()){const nl=LESSONS[LESSONS.indexOf(l)+1],us=lessonUnits(l);
+    const from=j===0&&at&&at.l===l?Math.max(0,us.findIndex(u=>u.id===at.u)):0;
+    const u=us.slice(from).find(u=>unitLv(l,u)===0&&!(u.kind==='f'&&nl&&lessonStarted(nl)));if(u)return {l,u}}
+  // everything after the last unit is done: the units before it in its lesson, then the last lesson
+  if(at){const us=lessonUnits(at.l),u=us.find(u=>unitLv(at.l,u)===0);if(u)return {l:at.l,u}}
   const l=LESSONS[LESSONS.length-1];return {l,u:lessonUnits(l)[0]}}
 function unitSave(l,u,lv){const k=unitKey(l),all=state.units||{};state.units={...all,[k]:{...(all[k]||{}),[u.id]:Math.max(lv,unitStored(l,u))}};saveState()}
-// passing the Final test of a locked lesson opens it: the units of every lesson before it count as done
-let JUMP=null;
-function jumpTo(l){const k=LESSONS.indexOf(l);LESSONS.slice(0,k+1).forEach(m=>lessonUnits(m).forEach(u=>{if(u.kind!=='f'&&!unitStored(m,u))unitSave(m,u,1)}));JUMP=null}
 const unitName=(l,u)=>u.kind==='w'?`Words ${u.n}`:u.kind==='g'?(u.pts.length>1?`Grammar ${u.n}`:'Grammar'):u.kind==='r'?'Lesson review':'Final test';
 const unitGlyph=(l,u)=>u.kind==='w'?esc(state.script==='t'?toTrad(u.g):u.g):u.kind==='g'?'法':u.kind==='r'?'复':lessonMeta(l).seal;
 const lvDots=lv=>`<span class="ulv" aria-hidden="true">${[1,2,3].map(i=>`<i class="${i<=lv?'on':''}"></i>`).join('')}</span>`;
@@ -52,8 +57,6 @@ const lvDots=lv=>`<span class="ulv" aria-hidden="true">${[1,2,3].map(i=>`<i clas
    the lesson's seal for the Final test); three bars under it are its level. */
 const UX=[0,-56,-84,-56,0,56,84,56],UROW=118;
 const unitWords=(l,u)=>u.kind==='w'?u.items.map(hz).join(' '):u.kind==='g'?u.pts.map(p=>GRAMMAR[l][p].t).join(' · '):u.kind==='r'?'Everything from this lesson':`${PASS}% stamps the seal`;
-// the unit to play next in a lesson (or null when the lesson is done)
-const unitNext=l=>{const n=unitNow();if(n.l===l)return n.u;return lessonUnits(l).find(u=>unitLv(l,u)===0&&unitOpen(l,u))||null};
 /* the picture behind each lesson: one old Chinese ink landscape per lesson (art/ink1–22.webp, public domain, The
    Metropolitan Museum of Art, Open Access CC0; see art/README.md), turned into the app's ink and paper. It spans the
    width of the sheet from the top, whole, never cut or stretched; each lesson gets the
@@ -68,30 +71,29 @@ const INK_OF=(()=>{let m=null;return l=>{if(!m){m={};const used=new Set(),h=i=>3
     let b=-1;if(H>h(a)+260){let bb=1e9;INKS.forEach((v,i)=>{if(i===a||h(a)+h(i)>H)return;const d=(H-h(a)-h(i))+(used.has(i)?2000:0);if(d<bb){bb=d;b=i}});if(b>=0)used.add(b)}
     m[x]=[a+1,b+1]}}return m[l]}})();
 function lessonPathHtml(l,k){
-  const m=lessonMeta(l),us=lessonUnits(l),op=lessonOpen(l),nx=op?unitNext(l):null,done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,tot=us.length-1;
-  const xs=us.map((u,i)=>UX[(k+i)%UX.length]),ys=us.map((u,i)=>i*UROW+44),reach=nx?us.indexOf(nx):sealOf(l)?us.length-1:-1,H=us.length*UROW;
+  // only the lesson you are in has a current stamp; elsewhere the red road reaches the first unit not done yet
+  const now=unitNow(),m=lessonMeta(l),us=lessonUnits(l),nx=now.l===l?now.u:null,first=us.find(u=>unitLv(l,u)===0),done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,tot=us.length-1;
+  const xs=us.map((u,i)=>UX[(k+i)%UX.length]),ys=us.map((u,i)=>i*UROW+44),reach=nx?us.indexOf(nx):sealOf(l)?us.length-1:first?us.indexOf(first):-1,H=us.length*UROW;
   let line='',ink='';for(let i=1;i<us.length;i++){const d=`M${xs[i-1]} ${ys[i-1]} C${xs[i-1]} ${ys[i-1]+UROW/2} ${xs[i]} ${ys[i]-UROW/2} ${xs[i]} ${ys[i]}`;if(i<=reach)ink+=d;else line+=d}
   const node=(u,i)=>{const lv=unitLv(l,u),here=nx===u,cls=[u.kind,lv?'done':'',here?'cur':'',!lv&&!here?'lock':''].join(' ');
     return `<div class="urow" style="--x:${xs[i]}px;--r:${[-4,3,-2,4,-3,2][(k+i)%6]}deg"><button class="unode ${cls}" data-unit="${l}|${u.id}" type="button" aria-label="${esc(`${LNAME(l)} · ${unitName(l,u)}`)}">
       ${here?`<span class="ustart">${u.kind==='f'?'Test':lv?'Here':'Start'}</span>`:''}<span class="ubub" lang="zh-Hans">${unitGlyph(l,u)}</span>${u.kind!=='f'?`<span class="ulvb" aria-hidden="true">${[1,2,3].map(j=>`<i class="${j<=lv?'on':''}"></i>`).join('')}</span>`:''}</button>
       <span class="uname">${esc(unitName(l,u))}</span></div>`};
-  return `<section class="ulesson${op?'':' locked'}" id="ul-${l}"><div class="ulh">${sealHtml(l,'sm')}<div class="ulht"><small><span>${esc(LNAME(l))}</span>${sealOf(l)?' · <span>Completed</span>':` · <span>${esc(`${done} / ${tot} units`)}</span>`}</small><b>${esc(m.en)}</b>
+  return `<section class="ulesson" id="ul-${l}"><div class="ulh">${sealHtml(l,'sm')}<div class="ulht"><small><span>${esc(LNAME(l))}</span>${sealOf(l)?' · <span>Completed</span>':` · <span>${esc(`${done} / ${tot} units`)}</span>`}</small><b>${esc(m.en)}</b>
       <span class="ulbar" aria-hidden="true"><i style="width:${sealOf(l)?100:Math.round(done/Math.max(1,tot)*100)}%"></i></span></div></div>
     <div class="umap ia${INK_OF(l)[0]}${INK_OF(l)[1]?` ib${INK_OF(l)[1]}`:''}"><div class="unodes" style="height:${H}px"><svg class="ulink" width="1" height="${H}" aria-hidden="true" focusable="false"><path class="todo" d="${line}"/><path class="ink" d="${ink}"/></svg>${us.map(node).join('')}</div></div>
-    ${op?'':`<div class="ujump"><p class="hint">Finish the lesson before it to open this one.</p><button class="btn ghost" data-jump="${l}" type="button">${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</button></div>`}</section>`;
+    </section>`;
 }
-document.addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b){e.preventDefault();const [l,id]=b.dataset.unit.split('|');unitSheet(l,id);return}
-  const j=e.target.closest('[data-jump]');if(j){e.preventDefault();JUMP=j.dataset.jump;startStep(JUMP,'final')}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b){e.preventDefault();const [l,id]=b.dataset.unit.split('|');unitSheet(l,id)}});
 function unitSheet(l,id){
   const us=lessonUnits(l),u=us.find(x=>x.id===id);if(!u)return;
-  const lv=unitLv(l,u),o=unitOpen(l,u),m=lessonMeta(l);
+  const lv=unitLv(l,u),m=lessonMeta(l);
   const what=u.kind==='w'?`<div class="uwords">${u.items.map(x=>`<span class="uw"><b class="han">${hzHtml(x)}</b><small>${pyHtml(x.p)}</small><small class="m">${esc(short(x.en))}</small></span>`).join('')}</div>`
     :u.kind==='g'?`<ul class="ugp">${u.pts.map(i=>`<li>${esc(GRAMMAR[l][i].t)}</li>`).join('')}</ul>`
     :u.kind==='r'?'<p class="hint">Everything from this lesson, mixed: words, characters, tones, sentences and grammar.</p>'
     :`<p class="hint">${esc(`16 questions on the words and characters of the lesson. ${PASS}% stamps the seal.`)}</p>`;
   const lvTxt=u.kind==='f'?'':lv?`<p class="ulvt">${lvDots(lv)}<span>${esc(lv>=UNIT_MAX?'Gold · level 3 of 3':`Level ${lv} of 3`)}</span></p>`:'';
-  const cta=!o?`<p class="hint">${u.kind==='f'?'':'Finish the units before it first.'}</p>`
-    :u.kind==='f'?`<button class="btn" data-ugo="1" type="button">${sealOf(l)?'Take the Final test again':'Take the Final test'}</button>`
+  const cta=u.kind==='f'?`<button class="btn" data-ugo="1" type="button">${sealOf(l)?'Take the Final test again':'Take the Final test'}</button>`
     :!lv?`<button class="btn" data-ugo="1" type="button">Start</button>`
     :lv<UNIT_MAX?`<button class="btn" data-ugo="${lv+1}" type="button">${esc(`Practise at level ${lv+1}`)}</button><button class="btn ghost" data-ugo="${lv}" type="button">Play it again</button>`
     :`<button class="btn" data-ugo="3" type="button">Play it again</button>`;
@@ -102,7 +104,7 @@ function unitSheet(l,id){
   document.body.appendChild(sh);document.body.style.overflow='hidden';sheetFocus(sh);
   const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved};
   sh.onclick=e=>{if(e.target===sh)return close();const b=e.target.closest('[data-ugo]');if(!b)return;close();
-    if(u.kind==='f')return startStep(l,'final');unitRun(l,u.id,+b.dataset.ugo)};
+    if(u.kind==='f'){pathMark(l,u);return startStep(l,'final')}unitRun(l,u.id,+b.dataset.ugo)};
   $('usx').onclick=close;keyHandler=e=>{if(e.key==='Escape'){e.preventDefault();close()}};
 }
 
@@ -156,12 +158,18 @@ function unitPlan(l,u,lv){
 // mixes the exercises, keeping every word's first meeting before its questions
 function shuffleTail(T,from){const s=shuffle(T.slice(from));T.splice(from,s.length,...s)}
 function unitRun(l,id,lv){
-  const u=lessonUnits(l).find(x=>x.id===id);if(!u)return;if(u.kind==='f')return startStep(l,'final');
+  const u=lessonUnits(l).find(x=>x.id===id);if(!u)return;pathMark(l,u);if(u.kind==='f')return startStep(l,'final');
   lv=Math.max(1,Math.min(UNIT_MAX,lv||unitLv(l,u)+1||1));lessonRestore();
   const need=[STROKES?null:loadStrokes().catch(()=>null),u.kind!=='w'&&!GDRILL?loadGdrill().catch(()=>null):null].filter(Boolean);
   if(need.length){open(ubar(0)+`<div class="card"><p class="hint">Loading…</p></div>`);Promise.all(need).then(()=>{if(M().querySelector('.ubar'))unitPlay(l,u,lv)});return}
   unitPlay(l,u,lv)}
-const ubar=(pct,combo)=>`<div class="bar ubar"><button class="back" data-go="album" aria-label="Your path">✕</button><div class="progress"><span style="width:${pct}%"></span></div><span class="count">${combo>=3?`<span class="ucombo">${combo}×</span>`:''}</span></div>`;
+const ubar=(pct,combo)=>`<div class="bar ubar"><button class="back" data-go="album" aria-label="Your path">✕</button><div class="progress"><span style="width:${pct}%"></span></div><span class="count">${combo>=3?`<span class="ucombo">${combo}×</span>`:''}</span>${pyBtn()}</div>`;
+/* pinyin on the path can be switched off (state.pathPy === false): the units, their sheets and the results then show the
+   characters without pinyin, except where the pinyin is the exercise itself (type the pinyin, fill in the tones) */
+const pyBtn=()=>`<button class="upy" data-pathpy type="button" aria-pressed="${state.pathPy!==false}" aria-label="Show pinyin" title="Show pinyin">pīn</button>`;
+function pathPyApply(){document.body.classList.toggle('nopy',state.pathPy===false);document.querySelectorAll('[data-pathpy]').forEach(b=>b.setAttribute('aria-pressed',String(state.pathPy!==false)))}
+document.addEventListener('click',e=>{if(!e.target.closest('[data-pathpy]'))return;e.preventDefault();state.pathPy=state.pathPy===false;saveState();pathPyApply()});
+pathPyApply();
 // extra: a list of items to go over again after a unit (its mistakes); such a round leaves the unit's level as it is
 function unitPlay(l,u,lv,extra){
   const plan=extra?shuffle(extra.flatMap(x=>[{t:'char',x},{t:'audio',x}])).concat(shuffle(extra.map(x=>({t:'pinyin',x})))):unitPlan(l,u,lv),q=plan.slice(),total=plan.filter(t=>t.t!=='intro'&&t.t!=='gcard').length||1,t0=Date.now();
@@ -173,7 +181,7 @@ function unitPlay(l,u,lv,extra){
     if(!confirm(T_('Leave this unit? It is not finished yet, so it stays open on your path.'))){e.preventDefault();e.stopImmediatePropagation()}};
   document.addEventListener('click',quit,true);
   function next(){keyHandler=null;const t=q.shift();if(!t){document.removeEventListener('click',quit,true);return finish()}
-    if(t.t==='intro'){if(noIntro)return next();return intro(t.x,0,1,()=>next(),()=>{noIntro=true;next()}),fixBar()}
+    if(t.t==='intro'){if(noIntro)return next();intro(t.x,0,1,()=>next(),()=>{noIntro=true;next()});const ic=M().querySelector('.intro');if(ic)ic.classList.add('upath');return fixBar()}
     if(t.t==='write'&&noWrite){solved++;return next()}
     ({gcard:gcardTask,mean:mcTask,char:mcTask,audio:mcTask,pinyin:pyTask,tone:toneTask,match:matchTask,build:buildTask,write:writeTask,gram:gramTask})[t.t](t)}
   const fixBar=()=>{const b=M().querySelector('.bar');if(b)b.outerHTML=head()};
@@ -279,10 +287,10 @@ function unitPlay(l,u,lv,extra){
     if(u.kind==='w'&&!extra)u.items.forEach(x=>gradeOnce(x,!missed.has(x)));
     if(!extra)unitSave(l,u,lv);
     const mi=[...missed];
-    const acc=asked?Math.round(firstOk/asked*100):100,min=Math.max(1,Math.round((Date.now()-t0)/6e4)),us=lessonUnits(l),nx=unitNow(),last=us.filter(v=>v.kind!=='f').every(v=>unitLv(l,v)>0)&&!sealOf(l);
+    const acc=asked?Math.round(firstOk/asked*100):100,sec=Math.max(1,Math.round((Date.now()-t0)/1e3)),took=sec<60?`${sec} s`:`${sec/60|0} min ${sec%60} s`,us=lessonUnits(l),nx=unitNow(),last=us.filter(v=>v.kind!=='f').every(v=>unitLv(l,v)>0)&&!sealOf(l);
     const nxt=nx.l===l&&nx.u===u?null:nx;
     open(ubar(100,0)+`<div class="card udone"><p class="eyebrow">${esc(`${LNAME(l)} · ${unitName(l,u)}`)}</p><h2>${extra?'Mistakes practised':lv>=UNIT_MAX?'Gold!':lv>1?'Level up!':'Unit complete!'}</h2>
-      <span class="score">${acc}%</span><p class="hint">${esc(`right the first time · about ${min} min`)}</p>${lvDots(unitStored(l,u))}
+      <span class="score">${acc}%</span><p class="hint">${esc(`right the first time · ${took}`)}</p>${lvDots(unitStored(l,u))}
       ${u.kind==='w'?`<div class="uwords">${u.items.map(x=>`<span class="uw${missed.has(x)?' miss':''}"><b class="han">${hzHtml(x)}</b><small>${pyHtml(x.p)}</small>${starHtml(x,'xs-in')}</span>`).join('')}</div>`:''}
       ${last?`<p class="ufin">${esc(`Every unit of ${LNAME(l)} is done. Take the Final test to stamp the seal.`)}</p>`:''}
       ${mi.length?`<button class="btn ghost umist" id="umist" type="button">${esc(`Practise the ${mi.length} mistakes`)}</button>`:''}<div class="btns"><button class="btn ghost" data-go="album" type="button">Your path</button>${last?`<button class="btn" id="ufinal" type="button">Final test ›</button>`:nxt?`<button class="btn" id="unext" type="button">Continue ›</button>`:''}</div></div>`);

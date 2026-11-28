@@ -3,6 +3,10 @@
 /* id: a new id makes the sheet open once after the update; d: the real date shown on the card; t: title.
    The newest entry is the big card on top: art (a home tile's picture), what, where, go (what "Try it" opens). */
 const NEWS=[
+  {id:'2026-11-28b',d:'2026-11-28',t:'Your path: go anywhere',go:()=>album(),
+    what:'Every lesson and unit on Your path is open: jump wherever you like, and the path goes on from where you last played.',
+    where:'Home › Your path',
+    items:['The pīn button on Your path and in the exercises switches pinyin off and on.','After a unit you see exactly how long it took, not a guess.']},
   {id:'2026-11-28',d:'2026-11-28',t:'New courses: HSK 2 and HSK 3',go:()=>packSheet(),
     what:'The next two levels of the new HSK: HSK 2 in 17 lessons and HSK 3 in 22, each with its own path of seals, grammar and sentences.',
     where:'Home › the course button at the top',
