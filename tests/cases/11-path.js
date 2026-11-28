@@ -17,7 +17,7 @@ module.exports=[
     const n=await a.page.evaluate(()=>LESSONS.reduce((s,l)=>s+lessonUnits(l).length,0));assert.equal(await a.page.$$eval('.unode',e=>e.length),n);
     assert.equal(await a.page.$$eval('.unode.cur',e=>e.length),1);assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'2|w1','the first unit of lesson 2 is not marked');
     assert.equal(await a.page.$$eval('#ul-1 .unode.done',e=>e.length),await a.page.evaluate(()=>lessonUnits('1').length),'a stamped lesson is not all done');
-    assert.ok(await a.page.$('#ul-3.locked [data-jump="3"]'),'lesson 3 is not locked with a way to skip to it');assert.ok(!(await a.page.$('#ul-2.locked')),'lesson 2 is locked');
+    assert.ok(!(await a.page.$('.ulesson.locked, [data-jump]')),'a lesson is locked');
     assert.match(await a.text('.tcta'),/Pokračuj: Lekce 2 · Slova 1/);assert.match(await a.text('#ul-1 .ulh'),/Lekce 1 · Splněno/);assert.ok(!(await a.page.$('.ulh button')),'the lesson card still has a button');assert.ok(await a.page.$('.jgoal [data-go="hsktest"]'),'no goal');
     assert.equal(await a.page.evaluate(()=>document.documentElement.scrollWidth),390,'the path is wider than the screen');
     await a.page.click('.unode.cur');await a.page.waitForSelector('.nsheet .usheet');assert.match(await a.text('.usheet'),/Slova 1.*Začít/);
@@ -40,7 +40,7 @@ module.exports=[
   const a=await open(t,{pack:'hsk1'});
   try{await a.page.evaluate(()=>unitRun('1','w1'));const types=await playUnit(a);
     for(const k of ['intro','mc','match','tone','pinyin'])assert.ok(types.includes(k),'no '+k+' exercise in '+types.join(' '));
-    assert.match(await a.text('.udone'),/Lekce 1 · Slova 1.*Podbod hotový!.*\d+ ?%.*správně napoprvé/);assert.ok(await a.page.$('.udone .rstamp'),'no 完 seal');
+    assert.match(await a.text('.udone'),/Lekce 1 · Slova 1.*Podbod hotový!.*\d+ ?%.*správně napoprvé · (\d+ min )?\d+ s/);assert.ok(!/asi \d+ min/.test(await a.text('.udone')),'the time is a guess');assert.ok(await a.page.$('.udone .rstamp'),'no 完 seal');
     assert.deepEqual(await a.page.evaluate(()=>state.units),{'hsk1:1':{w1:1}});
     assert.ok(await a.page.evaluate(()=>lessonUnits('1')[0].items.every(seen)),'the words of the unit were not learnt');
     await a.page.click('#unext');await a.page.waitForSelector('.ubar');assert.equal(await a.page.evaluate(()=>unitNow().u.id),'w2');
@@ -49,9 +49,9 @@ module.exports=[
     const t2=await playUnit(a);assert.ok(!t2.includes('intro'),'level 2 introduces the words again');assert.match(await a.text('.udone'),/Úroveň výš!/);
     assert.equal(await a.page.evaluate(()=>state.units['hsk1:1'].w1),2);noErrors(a)}finally{await a.close()}
 }],
-['grammar units and the lesson review run with their exercises; units after the current one are locked',async t=>{
+['grammar units and the lesson review run with their exercises; every unit is open from the start',async t=>{
   const a=await open(t,{pack:'hsk1'});
-  try{assert.equal(await a.page.evaluate(()=>unitOpen('1',lessonUnits('1')[1])),false,'the second unit is open before the first is done');
+  try{assert.ok(await a.page.evaluate(()=>LESSONS.every(l=>lessonOpen(l)&&lessonUnits(l).every(u=>unitOpen(l,u)))),'a lesson or unit is locked');
     const g=await a.page.evaluate(()=>lessonUnits('1').find(u=>u.kind==='g').id);
     await a.page.evaluate(g=>unitRun('1',g),g);await a.page.waitForSelector('.ucard');let types=await playUnit(a);
     assert.ok(types.includes('gcard')&&types.includes('gram'),'no grammar in '+types.join(' '));
@@ -63,14 +63,39 @@ module.exports=[
   const a=await open(t,{pack:'hsk1',srs});
   try{assert.deepEqual(await a.page.evaluate(()=>[unitLv('1',lessonUnits('1')[0]),unitNow().u.id]),[1,'w2']);noErrors(a)}finally{await a.close()}
 }],
-['a locked lesson opens at once by passing its Final test; the lessons before it then count as done',async t=>{
+['you can jump anywhere on the path, and it goes on from there: a unit of lesson 3, then the Final test of lesson 5',async t=>{
   const a=await open(t,{pack:'hsk1'});
-  try{await a.page.evaluate(()=>album());assert.ok(await a.page.$('#ul-3.locked'),'lesson 3 is open');
-    await a.page.evaluate(()=>{const r=Math.random;Math.random=()=>0.999999;document.querySelector('[data-jump="3"]').click();Math.random=r});
+  try{await a.page.evaluate(()=>album());assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'1|w1');
+    await a.page.click('[data-unit="3|w2"]');await a.page.waitForSelector('.nsheet .usheet');assert.match(await a.text('.usheet'),/Začít/);
+    await a.page.click('.nsheet [data-ugo]');await a.page.waitForSelector('.ubar');await playUnit(a);
+    assert.deepEqual(await a.page.evaluate(()=>[unitNow().l,unitNow().u.id]),['3',await a.page.evaluate(()=>lessonUnits('3')[2].id)],'the path does not go on after the unit you played');
+    await a.page.evaluate(()=>album());assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit.split('|')[0]),'3');
+    await a.page.evaluate(()=>{const r=Math.random;Math.random=()=>0.999999;pathMark('5',lessonUnits('5').find(u=>u.kind==='f'));startStep('5','final');Math.random=r});
     for(let i=0;i<40;i++){if(!await a.page.$('#qo'))break;await a.page.click('#qo .opt[data-i="0"]');await a.page.click('#qn')}
     await a.page.waitForTimeout(300);assert.match(await a.text('#mode'),/Pečeť orazítkována/);
-    const r=await a.page.evaluate(()=>[lessonDone('1'),lessonDone('2'),!!sealOf('3'),!!sealOf('1'),lessonOpen('4'),unitNow().l]);assert.deepEqual(r,[true,true,true,false,true,'4']);
-    await a.page.evaluate(()=>album());assert.ok(!(await a.page.$('#ul-4.locked')),'lesson 4 is still locked');noErrors(a)}finally{await a.close()}
+    const r=await a.page.evaluate(()=>[!!sealOf('5'),lessonDone('5'),lessonDone('1'),unitNow().l]);assert.deepEqual(r,[true,true,false,'6'],'nothing before lesson 5 counts as done, and the path goes on with lesson 6');
+    noErrors(a)}finally{await a.close()}
+}],
+['the app opens again where you left Your path: on the path, at the same place; from Home it opens on Home',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{await a.page.evaluate(()=>album());await a.page.evaluate(()=>scrollTo(0,2400));await a.page.waitForTimeout(400);const y=await a.page.evaluate(()=>scrollY);assert.ok(y>1500,'the path is too short to scroll: '+y);
+    await a.page.reload();await a.page.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');await a.page.waitForTimeout(400);
+    assert.ok(await a.page.isVisible('.journey'),'the app did not open on Your path');assert.ok(Math.abs(await a.page.evaluate(()=>scrollY)-y)<5,'not at the same place');
+    await a.page.evaluate(()=>unitRun('2','w1'));await a.page.waitForSelector('.ubar');await a.page.reload();await a.page.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');await a.page.waitForTimeout(400);
+    assert.ok(await a.page.isVisible('.journey'),'left in a unit, the app did not open on Your path');assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'2|w1');
+    const r=await a.page.evaluate(()=>document.querySelector('.unode.cur').getBoundingClientRect().top);assert.ok(r>0&&r<844,'the unit you are on is not on screen: '+r);
+    await a.page.evaluate(()=>goHome());await a.page.reload();await a.page.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');await a.page.waitForTimeout(300);
+    assert.ok(await a.page.isVisible('#home'),'left on Home, the app did not open on Home');noErrors(a)}finally{await a.close()}
+}],
+['pinyin on the path can be switched off and on: the units, their sheets and results then hide it',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{await a.page.evaluate(()=>album());assert.equal(await a.page.getAttribute('.jhead [data-pathpy]','aria-pressed'),'true');
+    await a.page.click('.jhead [data-pathpy]');assert.deepEqual(await a.page.evaluate(()=>[state.pathPy,document.body.classList.contains('nopy')]),[false,true]);
+    await a.page.click('[data-unit="1|w1"]');await a.page.waitForSelector('.nsheet .usheet');
+    assert.equal(await a.page.$$eval('.usheet .pys',e=>e.filter(x=>x.offsetParent).length),0,'pinyin still shows on the unit sheet');
+    await a.page.click('.nsheet [data-ugo]');await a.page.waitForSelector('.ubar [data-pathpy]');assert.equal(await a.page.getAttribute('.ubar [data-pathpy]','aria-pressed'),'false');
+    await a.page.click('.ubar [data-pathpy]');assert.equal(await a.page.evaluate(()=>state.pathPy),true);assert.ok(!(await a.page.evaluate(()=>document.body.classList.contains('nopy'))));
+    noErrors(a)}finally{await a.close()}
 }],
 ['HSK 1: passing a Final test stamps the seal for good, and the whole lesson then counts as done',async t=>{
   const a=await open(t,{pack:'hsk1',state:{selBy:{hsk1:['3','4']}}});

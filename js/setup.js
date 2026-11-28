@@ -107,7 +107,7 @@ function confetti(){
   (function f(t){const k=(t-t0)/1600;g.clearRect(0,0,W,H);for(const p of P){p.vy+=H*.0007;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;g.save();g.globalAlpha=Math.max(0,1-k);g.translate(p.x,p.y);g.rotate(p.a);g.fillStyle=p.c;g.fillRect(-p.r,-p.r/2,p.r*2,p.r);g.restore()}
     if(k<1)requestAnimationFrame(f);else cv.remove()})(t0);
 }
-function goHome(){keyHandler=null;lessonRestore();clearInterval(TIMER);stopAudio();M().hidden=true;M().innerHTML='';$('welcome').hidden=true;$('aboutpage').hidden=true;$('home').hidden=false;renderHome();window.scrollTo(0,0);if(MOTION){$('home').classList.remove('anim');void $('home').offsetWidth;$('home').classList.add('anim')}}
+function goHome(){keyHandler=null;try{localStorage.removeItem('ic-onpath')}catch(e){}lessonRestore();clearInterval(TIMER);stopAudio();M().hidden=true;M().innerHTML='';$('welcome').hidden=true;$('aboutpage').hidden=true;$('home').hidden=false;renderHome();window.scrollTo(0,0);if(MOTION){$('home').classList.remove('anim');void $('home').offsetWidth;$('home').classList.add('anim')}}
 document.addEventListener('click',e=>{const h=e.target.closest('[data-home]');if(h){goHome();return}const g=e.target.closest('[data-go]');if(g&&!g.disabled)MODES[g.dataset.go]()});
 document.addEventListener('keydown',e=>{if(keyHandler&&!(e.target.tagName==='INPUT'&&e.key!=='Enter')&&e.target.tagName!=='TEXTAREA')keyHandler(e)});
 const bar=(pct,count,label='‹ Home')=>`<div class="bar"><button class="back" data-home>${label}</button>${count===''&&!pct?'<span class="barsp"></span>':`<div class="progress"><span style="width:${pct}%"></span></div>`}<span class="count">${count}</span></div>`;

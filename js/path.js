@@ -53,9 +53,9 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');
 /* Your path: the course told as a story. Each chapter opens with a few lines of the story; its lessons follow, each a
    sheet of an old map with its units as stamps on the road (js/units.js), and the path ends at the course's goal. The
    button at the bottom always starts the next unit; the page opens where you are. */
-function album(){lessonRestore();JUMP=null;
+function album(){lessonRestore();
   const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow();let k=0;
-  open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
+  open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><div class="jtop"><p class="eyebrow">Your path</p>${pyBtn()}</div><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
       <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div></div>
     ${SEAL_CHAPTERS.map(([cn,ls,story],ci)=>`<section class="jch"><div class="jchh"><p class="jnum" lang="zh-Hans" aria-label="${esc(`Chapter ${ci+1}`)}"><span>第${'一二三四五六七八九十'[ci]}章</span></p><h3>${esc(cn)}</h3><p class="jq">„<span>${esc(story)}</span>“</p></div>
       ${ls.map(l=>{const h=lessonPathHtml(l,k);k+=lessonUnits(l).length;return h}).join('')}</section>`).join('')}
@@ -63,9 +63,15 @@ function album(){lessonRestore();JUMP=null;
       <button class="btn ghost" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div></section>
     <div class="tdock"><button class="tcta" id="tcta" type="button"><span class="tsign" lang="zh-Hans">${unitGlyph(now.l,now.u)}</span><span class="ttx"><b><span>${esc(`Continue: ${LNAME(now.l)}`)}</span> · <span>${esc(unitName(now.l,now.u))}</span></b><small${now.u.kind==='w'?' class="han"':''}>${esc(unitWords(now.l,now.u))}</small></span><span class="tar" aria-hidden="true">›</span></button></div></div>`);
   $('tcta').onclick=()=>now.u.kind==='f'?startStep(now.l,'final'):unitRun(now.l,now.u.id);
-  // the path opens where you are
-  const cur=M().querySelector('.unode.cur');if(cur&&cur.getBoundingClientRect().top>innerHeight*.6)cur.scrollIntoView({block:'center'});
+  // the path opens where you left it: the place you scrolled to, or (after playing a unit) the unit you are on now
+  store.set('ic-onpath',PACK);const y=(store.get('ic-pathy',{})||{})[PACK];
+  if(y!=null)window.scrollTo(0,y);else{const cur=M().querySelector('.unode.cur');if(cur&&cur.getBoundingClientRect().top>innerHeight*.6)cur.scrollIntoView({block:'center'})}
 }
+/* where you are on Your path is kept in this browser: the scroll position of the path (ic-pathy, per course, forgotten
+   when you start a unit, so the path then opens at the unit you are on), and whether you left the app on the path or in
+   one of its units (ic-onpath): then the app opens there again instead of on Home */
+try{history.scrollRestoration='manual'}catch(e){}   // (the browser would put the page back where the last screen was on reload)
+{let tm=0;addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(()=>{if(!M().hidden&&M().querySelector('.journey'))store.set('ic-pathy',{...(store.get('ic-pathy',{})||{}),[PACK]:Math.round(scrollY)})},150)},{passive:true})}
 // the steps of a lesson; a step started from here is remembered when its round is finished
 function lessonSheet(l){
   const m=lessonMeta(l),it=lessonItems(l),ws=it.filter(x=>x.kind==='w'),cs=it.filter(x=>x.kind==='c'),wr=cs.filter(x=>!PATH.write||PATH.write.includes(x.s));
@@ -134,7 +140,7 @@ function finalTest(l){
     keyHandler=e=>{if(/^[1-4]$/.test(e.key)&&q.opts[+e.key-1])pick(+e.key-1)};
   }
   function end(){keyHandler=null;const pct=Math.round(good/qs.length*100),prev=sealOf(l);
-    if(pct>=PASS){state.seals={...(state.seals||{}),[PACK+':'+l]:{d:todayStr(),s:Math.max(pct,prev?prev.s:0)}};if(JUMP===l)jumpTo(l);
+    if(pct>=PASS){state.seals={...(state.seals||{}),[PACK+':'+l]:{d:todayStr(),s:Math.max(pct,prev?prev.s:0)}};
       saveKept();return stampScreen(l,pct,!prev)}
     const um=byHz(miss);
     open(bar(100,qs.length+' / '+qs.length)+`<div class="card"><p class="eyebrow">${esc(`Final test · ${LNAME(l)}`)}</p><span class="score">${pct}%</span>

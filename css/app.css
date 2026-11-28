@@ -1293,3 +1293,9 @@ details.gegd>.geg{padding-bottom:12px}
 .udone{align-items:center;text-align:center}.udone h2{font-size:1.5rem}.udone .ulv{position:static;transform:none;gap:6px}.udone .ulv i{width:12px;height:12px}
 .ufin{font-weight:600;color:var(--accent-fg,var(--accent))}
 .umist{align-self:stretch}
+/* pinyin on the path: the "pīn" switch in the unit bar and on Your path; off hides the pinyin of units, their sheets and results */
+.upy{flex:none;min-width:44px;min-height:36px;padding:4px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper,var(--bg));color:var(--muted);font:700 .9rem var(--f-body);cursor:pointer}
+.upy[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.jtop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+body.nopy :is(.ucard,.udone,.usheet,.intro.upath) :is(.pys,.pyl,.wprompt .py){display:none}
+body.nopy :is(.ucard,.udone,.usheet) .rb small{visibility:hidden}
