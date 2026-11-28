@@ -38,4 +38,70 @@ module.exports=[
   const a=await open(t,{pack:'hsk1',lang:'en'});
   try{const txt=await a.text('#home'),cz=txt.match(/\b(Tvoje cesta|Pokračuj|Cvičení|Kartičky|Nastavení|Zavřít|Slovíčka|Kapitola|Vytvořit účet|Co chceš dělat)\b/);
     assert.ok(!cz,'Czech on the English Home: '+(cz&&cz[0]));assert.match(txt,/Your path/);assert.match(txt,/What do you want to do/);assert.deepEqual(a.errors,[])}finally{await a.close()}
+}],
+['privacy: opens from the landing page, About, Home and the sign-up form, in Czech and in English, and Back returns there',async t=>{
+  const a=await open(t,{lang:'cs',welcome:true});
+  try{const p=a.page;
+    await p.click('#welcome .wlegal [data-privacy]');await p.waitForSelector('#privacy');
+    const shown=async()=>(await p.innerText('#mode')).replace(/\s+/g,' ');   // only what is visible (the other language is hidden)
+    let txt=await shown();
+    for(const re of [/Soukromí/,/localStorage/,/Supabase/,/Google Fonts/,/jsDelivr/,/Smazat účet/,/Admin/])assert.match(txt,re);
+    assert.match(txt,/zatím neověřený/,'with no region set, the page says it is not verified');
+    assert.ok(!/@/.test(txt),'no email address while CONTACT_EMAIL is empty');
+    assert.ok(!/Who sees what/.test(txt),'the English text is hidden in Czech');
+    await p.click('#mode .bar .back');assert.equal(await p.isVisible('#welcome'),true,'Back returns to the landing page');
+    await p.evaluate(()=>{location.hash='about'});await p.waitForSelector('#aboutpage:not([hidden])');
+    await p.click('#aboutpage [data-lang="cs"] [data-privacy]');await p.waitForSelector('#privacy');await p.click('#mode .bar .back');
+    assert.equal(await p.isVisible('#aboutpage'),true,'Back returns to About');
+    await p.evaluate(()=>{history.replaceState(null,'',location.pathname);closeAbout();goHome()});
+    await p.click('#home footer [data-privacy]');await p.waitForSelector('#privacy');await p.click('#mode .bar .back');assert.equal(await p.isVisible('#home'),true);
+    await p.evaluate(()=>{setLang('en');authForm('up')});await p.click('#mode [data-privacy]');await p.waitForSelector('#privacy');
+    txt=await shown();assert.match(txt,/Who sees what/);assert.match(txt,/not verified yet/);assert.ok(!/Soukromí/.test(txt));
+    await p.click('#mode .bar .back');assert.ok(await p.$('#af'),'Back returns to the sign-up form');
+    assert.deepEqual(a.errors,[])}finally{await a.close()}
+}],
+['Report a problem: hidden without a contact email; with one, the footers and exercise screens have it and the email says what was on screen',async t=>{
+  const a=await open(t,{lang:'cs',welcome:true});
+  try{const p=a.page;
+    assert.equal(await p.evaluate(()=>[...document.querySelectorAll('[data-report]')].some(e=>e.getClientRects().length)),false,'no visible report link');
+    await p.evaluate(()=>{goHome();setup('cards')});assert.equal(await p.$('#mode .mreport'),null);
+    // the same app with a contact email and the region filled in
+    await p.route('**/js/account.js',async r=>{const res=await r.fetch();r.fulfill({response:res,body:(await res.text()).replace("const CONTACT_EMAIL='';","const CONTACT_EMAIL='bugs@example.com';").replace("const SUPABASE_REGION='';","const SUPABASE_REGION='EU (Frankfurt)';")})});
+    await p.reload();await p.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');
+    assert.equal(await p.evaluate(()=>CONTACT_ON),true);
+    await p.evaluate(()=>welcome());assert.equal(await p.isVisible('#welcome .wlegal [data-report]'),true);
+    await p.evaluate(()=>goHome());assert.equal(await p.isVisible('#home footer [data-report]'),true);
+    assert.equal(await a.text('#home footer [data-report]'),'Nahlásit chybu');
+    await p.click('#home [data-mode="cards"]');await p.click('#sgo');await p.waitForSelector('#mode .mreport [data-report]');
+    assert.equal(await a.text('#mode .mreport'),'Nahlásit chybu na téhle obrazovce');
+    const href=decodeURIComponent(await p.evaluate(()=>reportHref()));
+    assert.match(href,/^mailto:bugs@example\.com\?subject=Zì You Later: chyba/);
+    assert.match(href,/Kurz: Čínština 1/);assert.match(href,/Obrazovka: Kartičky/);assert.match(href,/Lekce: Lekce 1, Lekce 2/);assert.match(href,/Položka: [^\n]*[㐀-鿿]/);
+    await p.evaluate(()=>privacy());const txt=await a.text('#mode');assert.match(txt,/bugs@example\.com/);assert.match(txt,/EU \(Frankfurt\)/);
+    assert.equal(await p.$('#mode .mreport'),null,'not on the privacy page itself');
+    assert.deepEqual(a.errors,[])}finally{await a.close()}
+}],
+['iPhone: Home says once how to add the app to the Home Screen; closing it is for good, and it is not shown when installed or elsewhere',async t=>{
+  const UA='Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1';
+  const ios=standalone=>new Function(`Object.defineProperty(Navigator.prototype,'userAgent',{get:()=>${JSON.stringify(UA)}});Object.defineProperty(Navigator.prototype,'standalone',{get:()=>${standalone}})`);
+  let a=await open(t,{lang:'cs',init:ios(false)});
+  try{const p=a.page;assert.equal(await p.isVisible('#ioshint .ioshint'),true,'shown on an iPhone in Safari');
+    const txt=await a.text('#ioshint');assert.match(txt,/Přidej si ji na plochu/);assert.match(txt,/připomínky/);
+    await p.click('#iosx');assert.equal(await p.$('#ioshint .ioshint'),null);
+    await p.evaluate(()=>renderHome());assert.equal(await p.$('#ioshint .ioshint'),null,'closed for good');
+    // shown on one day only: on a later day it does not come back
+    await p.evaluate(()=>{store.set('ic-ioshint',{day:'2000-01-01'});renderHome()});assert.equal(await p.$('#ioshint .ioshint'),null);
+    assert.deepEqual(a.errors,[])}finally{await a.close()}
+  a=await open(t,{lang:'cs',init:ios(true)});
+  try{assert.equal(await a.page.$('#ioshint .ioshint'),null,'not when running from the Home Screen')}finally{await a.close()}
+  a=await open(t,{lang:'cs'});
+  try{assert.equal(await a.page.$('#ioshint .ioshint'),null,'not in a desktop browser')}finally{await a.close()}
+}],
+['the new texts (privacy, report, Home Screen hint) have Czech',async t=>{
+  const a=await open(t,{lang:'cs'});
+  try{const miss=await a.page.evaluate(()=>['Privacy','Report a problem','Report a problem on this screen','What is stored and who can see it:','Add it to your Home Screen','Home',
+      'In Safari, tap Share (the square with an arrow), then Add to Home Screen. The app then opens like any other, full screen. On an iPhone, reminders only work this way.'].filter(s=>T(s)==null));
+    assert.deepEqual(miss,[],'not translated:\n'+miss.join('\n'));
+    assert.equal(await a.text('#home footer [data-privacy]'),'Soukromí');
+    await a.page.evaluate(()=>authForm('up'));assert.match(await a.text('#mode'),/Co se ukládá a kdo to vidí: Soukromí/);assert.deepEqual(a.errors,[])}finally{await a.close()}
 }]];

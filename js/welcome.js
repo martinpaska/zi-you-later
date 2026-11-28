@@ -14,7 +14,7 @@ function showAbout(){const a=$('aboutpage');if(!a.hidden)return;aboutPrev=!$('we
   if(MOTION){a.classList.remove('anim');void a.offsetWidth;a.classList.add('anim')}}
 function closeAbout(){if($('aboutpage').hidden)return;$('aboutpage').hidden=true;if(aboutPrev==='welcome')welcome();else goHome()}
 function openAbout(e){if(e)e.preventDefault();aboutPushed=true;location.hash='about'}
-$('welcome').querySelector('.wlink').onclick=openAbout;
+$('welcome').querySelectorAll('.wlink,.wlink2').forEach(a=>a.onclick=openAbout);
 $('about').onclick=openAbout;
 $('aboutback').onclick=()=>{if(aboutPushed){aboutPushed=false;history.back()}else{history.replaceState(null,'',location.pathname+location.search);closeAbout()}};
 window.addEventListener('hashchange',()=>{if(location.hash==='#about')showAbout();else{aboutPushed=false;closeAbout()}});
@@ -33,7 +33,8 @@ function authForm(mode='up'){
       <div class="btns"><button class="btn" id="ago" type="submit">${up?'Create account':'Log in'}</button></div>
       ${up?'':'<button class="link" type="button" id="aforgot" style="align-self:flex-start">Forgot your password?</button>'}
     </form>
-    <p class="hint">No account? Everything still works and your progress stays in this browser. <button class="link" data-home>Continue without an account ›</button></p>`);
+    <p class="hint">No account? Everything still works and your progress stays in this browser. <button class="link" data-home>Continue without an account ›</button></p>
+    ${up?'<p class="hint">What is stored and who can see it: <button class="link" type="button" data-privacy>Privacy</button></p>':''}`);
   M().querySelectorAll('[data-am]').forEach(b=>b.onclick=()=>authForm(b.dataset.am));
   const msg=t=>{$('am').textContent=t};
   $('af').onsubmit=async e=>{e.preventDefault();

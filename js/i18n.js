@@ -180,6 +180,11 @@ CS_P.push(
  [/^Every unit of (.+) is done\. Take the Final test to stamp the seal\.$/,(m,l)=>`${csLessons(l)}: všechny podbody hotové. Udělej Finální test a orazítkuj pečeť.`],
  [/^You typed “(.*)”\.$/,(m,v)=>`Napsal(a) jsi „${v}“.`],
  [/^Accepted: (.+)$/,(m,v)=>`Správně je: ${v}`]);
+/* Privacy, Report a problem and the iPhone Home Screen hint (js/help.js) */
+Object.assign(CS,{"Privacy":"Soukromí","Report a problem":"Nahlásit chybu","Report a problem on this screen":"Nahlásit chybu na téhle obrazovce",
+ "What is stored and who can see it:":"Co se ukládá a kdo to vidí:","Home":"Domů",
+ "Add it to your Home Screen":"Přidej si ji na plochu",
+ "In Safari, tap Share (the square with an arrow), then Add to Home Screen. The app then opens like any other, full screen. On an iPhone, reminders only work this way.":"V Safari klepni na Sdílet (čtvereček se šipkou) a pak na Přidat na plochu. Aplikace se pak otevírá jako každá jiná, přes celou obrazovku. Na iPhonu fungují připomínky jen takhle."});
 function T(s){
   if(Object.prototype.hasOwnProperty.call(CS,s))return CS[s];
   for(const [re,f] of CS_P){const m=s.match(re);if(m)return f(...m)}
