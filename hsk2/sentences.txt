@@ -1,0 +1,167 @@
+# HSK 2 sentences for the Sentences mode, by lesson, written for this app with only the words of the official HSK 1 and
+# HSK 2 vocabulary lists (build_grammar.py checks this). The examples of each lesson's grammar points are added to these.
+# Words are separated by spaces; = English (过|guo: a word with several readings, and the one meant)
+
+## 1
+你 姓 什么 ？ = What is your surname?
+我 姓 王 ， 叫 王 小 雨 。 = My surname is Wang, my name is Wang Xiaoyu.
+你 的 生日 是 几 月 几 号 ？ = When is your birthday?
+我 从小 就 喜欢 唱 歌 。 = I have loved singing since I was little.
+我 的 爱好 是 看 书 和 跑步 。 = My hobbies are reading and running.
+他 是 外国 人 ， 但是 他 的 汉语 很 好 。 = He is a foreigner, but his Chinese is very good.
+那 个 男孩儿 很 爱 笑 。 = That boy laughs a lot.
+小时候 我 住 在 中国 。 = When I was little I lived in China.
+请 写 一下 你 的 姓名 。 = Please write your full name.
+
+## 2
+你 为什么 来 中国 ？ = Why did you come to China?
+因为 我 想 学习 汉语 。 = Because I want to study Chinese.
+电影 七 点 开始 ， 九 点 完 。 = The film starts at seven and ends at nine.
+我 已经 告诉 他 这 件 事情 了 。 = I have already told him about this.
+你 还 记得 我 吗 ？ = Do you still remember me?
+对不起 ， 我 忘 了 你 的 名字 。 = Sorry, I have forgotten your name.
+你 等 我 一会儿 ， 我 就 来 。 = Wait for me a moment, I'm coming right away.
+他 从 去年 开始 学习 汉语 。 = He started learning Chinese last year.
+
+## 3
+你 喜欢 什么 颜色 ？ = What colour do you like?
+我 喜欢 绿色 ， 不 喜欢 黑色 。 = I like green, I don't like black.
+这 个 书包 是 谁 的 ？ = Whose schoolbag is this?
+请 打开 你们 的 书 。 = Please open your books.
+你 能 给 我 拿 一 个 本子 吗 ？ = Can you get me a notebook?
+桌子 上 有 笔 和 手表 。 = There is a pen and a watch on the table.
+这 条 裤子 是 白色 的 。 = These trousers are white.
+我 每 个 星期 都 买 一 本 新 书 。 = I buy a new book every week.
+
+## 4
+今天 是 晴 天 还是 阴 天 ？ = Is it sunny or cloudy today?
+今天 天气 不错 ， 我们 出去 走走|zǒuzou 吧 。 = The weather is nice today, let's go out for a walk.
+今天 比 昨天 舒服 多 了 。 = Today is much more pleasant than yesterday.
+明天 可能 是 阴 天 。 = Tomorrow may be cloudy.
+我 最 喜欢 下 雪 的 时候 。 = I like it best when it snows.
+这儿 的 天气 没有 我 家 那儿 冷 。 = The weather here is not as cold as where I live.
+外边 太 热 了 ， 我们 在 家 吧 。 = It's too hot outside, let's stay at home.
+
+## 5
+你 家 离 学校 远 不 远 ？ = Is your home far from school?
+我 家 离 学校 很 近 ， 走路 十 分钟 。 = My home is close to school, ten minutes on foot.
+书店 在 超市 的 右边 。 = The bookshop is to the right of the supermarket.
+我 在 门口 等 你 。 = I'll wait for you at the door.
+你 家 住 几 楼 ？ = Which floor do you live on?
+里面 人 太 多 了 ， 我们 出去 吧 。 = There are too many people inside, let's go out.
+他 从 外面 回来 了 。 = He has come back from outside.
+你们 上来 吧 ， 我 在 三 楼 。 = Come up, I'm on the third floor.
+老师 走 进来 了 。 = The teacher came in.
+
+## 6
+生日 快乐 ！ = Happy birthday!
+谢谢 你 帮 我 ！ = Thank you for helping me!
+不好意思 ， 我 来 晚 了 。 = Sorry I'm late.
+别 走 ， 我们 一起 吃 饭 吧 。 = Don't go, let's eat together.
+这 是 我 送 给 你 的 。 = This is for you (a present).
+希望 你 能 来 。 = I hope you can come.
+这 个 电影 很 有意思 。 = This film is very interesting.
+这 个 字 是 什么 意思 ？ = What does this character mean?
+你 能 帮 我 一下 吗 ？ = Can you help me for a moment?
+
+## 7
+你 想 喝 什么 ？ = What would you like to drink?
+我 要 一 杯 咖啡 。 = I'd like a cup of coffee.
+你 喜欢 喝 红茶 还是 绿茶 ？ = Do you like black tea or green tea?
+这 家 饭馆 的 菜 很 好吃 。 = The food in this restaurant is very tasty.
+我 不 吃 肉 。 = I don't eat meat.
+我们 点 菜 吧 。 = Let's order.
+她 每 天 下午 都 喝 一 杯 奶茶 。 = She has a cup of milk tea every afternoon.
+
+## 8
+请问 ， 地铁 站 怎么 走 ？ = Excuse me, how do I get to the metro station?
+往 前 走 ， 到 了 门口 往 左 。 = Go straight on and turn left at the gate.
+我们 坐 公交车 去 机场 吧 。 = Let's take the bus to the airport.
+太 晚 了 ， 我们 打车 回去 吧 。 = It's too late, let's take a taxi back.
+我 买 了 明天 的 机票 。 = I have bought a plane ticket for tomorrow.
+路上 车 很 多 ， 开 得 很 慢 。 = There is a lot of traffic on the road, it is moving slowly.
+飞机 已经 飞 走 了 。 = The plane has already flown off.
+我 想 出国 旅游 。 = I'd like to travel abroad.
+酒店 就 在 车站 旁边 。 = The hotel is right next to the station.
+
+## 9
+这 条 裤子 多少 钱 ？ = How much are these trousers?
+商场 里 的 东西 太 贵 了 。 = Things in the mall are too expensive.
+我 花 了 两 百 多 块 钱 。 = I spent over two hundred kuai.
+门票 一 个 人 五十 块 。 = Entrance is fifty kuai per person.
+我 的 手机 坏 了 ， 想 买 一 个 新 的 。 = My phone is broken, I want to buy a new one.
+你 买 了 什么 东西 ？ = What did you buy?
+这 个 很 好 ， 但是 那 个 比 这 个 便宜 。 = This one is good, but that one is cheaper than this one.
+
+## 10
+你 身体 怎么样 ？ = How is your health?
+我 头 疼 ， 不 想 吃 饭 。 = I have a headache and don't want to eat.
+你 吃 药 了 吗 ？ = Have you taken your medicine?
+药店 在 医院 旁边 。 = The pharmacy is next to the hospital.
+医生 说 我 要 多 休息 。 = The doctor says I should rest more.
+你 生病 了 ， 我 去 看 你 吧 。 = You're ill, let me come and see you.
+希望 你 身体 快 好 起来 。 = I hope you get well soon.
+
+## 11
+你 有 什么 爱好 ？ = What are your hobbies?
+我 喜欢 运动 ， 最 喜欢 打 篮球 。 = I like sport, most of all basketball.
+星期 六 我 经常 去 游泳 。 = I often go swimming on Saturdays.
+他 每 天 早上 都 去 跑步 。 = He goes running every morning.
+我们 晚上 去 跳舞 吧 。 = Let's go dancing tonight.
+我 不 太 会 踢 足球 。 = I'm not very good at football.
+我 喜欢 在 网上 看 电影 。 = I like watching films online.
+她 很 会 画 画 ， 画 得 很 漂亮 。 = She paints well, her paintings are beautiful.
+你 看 ， 那儿 有 一 只 鸟 ！ = Look, there is a bird over there!
+
+## 12
+我 家 有 四 口 人 。 = There are four people in my family.
+周 日 我们 一 家 人 一起 吃 饭 。 = On Sundays my family eats together.
+吃 饭 前 要 洗 手 。 = Wash your hands before eating.
+洗手间 在 哪儿 ？ = Where is the toilet?
+我 每 天 十一 点 上 床 睡觉 。 = I go to bed at eleven every day.
+妈妈 做饭 ， 爸爸 洗 衣服 。 = Mum cooks and Dad does the laundry.
+你 等 一下 ， 我 一会儿 就 好 。 = Wait a moment, I'll be ready soon.
+
+## 13
+这 个 词 是 什么 意思 ？ = What does this word mean?
+这 个 题 我 不 懂 ， 你 能 教 我 吗 ？ = I don't understand this question, can you teach me?
+我们 明天 考试 。 = We have an exam tomorrow.
+这 次 考试 我 考 得 不错 。 = I did well in this exam.
+对不起 ， 我 说 错 了 。 = Sorry, I said it wrong.
+老师 ， 我 可能 写 错 了 。 = Teacher, I may have written it wrong.
+你 学 了 几 年 汉语 ？ = How many years have you studied Chinese?
+
+## 14
+我们 的 教室 在 二 楼 。 = Our classroom is on the second floor.
+九 月 一 号 开学 。 = School starts on the first of September.
+我 弟弟 是 高中 学生 。 = My younger brother is a senior high school student.
+我 来 介绍 一下 ， 这 是 我 的 同学 。 = Let me introduce: this is my classmate.
+下课 了 ， 我们 一起 去 吃 饭 吧 。 = Class is over, let's go and eat together.
+我们 班 有 二十 个 学生 。 = There are twenty students in our class.
+我 经常 在 学校 看 书 。 = I often read at school.
+
+## 15
+你 在 哪儿 工作 ？ = Where do you work?
+我 在 一 家 公司 工作 。 = I work at a company.
+我 每 天 工作 八 个 小时 ， 很 累 。 = I work eight hours a day, it's tiring.
+我们 公司 有 一 百 多 个 人 。 = Our company has over a hundred people.
+那 位 先生 是 我们 的 老师 。 = That gentleman is our teacher.
+明天 有 很 多 工作 ， 我 要 准备 一下 。 = There is a lot of work tomorrow, I need to prepare.
+我 在 这 间 房间 工作 。 = I work in this room.
+
+## 16
+快要 过年 了 ！ = It's almost New Year!
+新 年 快乐 ！ = Happy New Year!
+过年 的 时候 我们 吃 饺子 。 = At New Year we eat dumplings.
+过年 的 时候 家 里 都 是 红色 的 。 = At New Year everything at home is red.
+过年 我们 要 吃 鱼 。 = At New Year we eat fish.
+今年 你 在 哪儿 过年 ？ = Where are you spending New Year this year?
+过年 好 ！ = Happy New Year!
+
+## 17
+王 老师 ， 您 好 ！ = Hello, Teacher Wang!
+张 爷爷 ， 您 去 哪儿 ？ = Grandpa Zhang, where are you going?
+我 奶奶 今年 八十 岁 了 。 = My grandma is eighty this year.
+她 的 丈夫 是 医生 。 = Her husband is a doctor.
+李 先生 和 他 的 妻子 都 是 老师 。 = Mr Li and his wife are both teachers.
+爷爷 奶奶 住 在 我们 家 旁边 。 = Grandpa and grandma live next to us.

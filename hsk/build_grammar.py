@@ -1,16 +1,17 @@
-# HSK 1 grammar points, exercises and sentences, called by build.py.
+# HSK grammar points, exercises and sentences of one level, called by build.py. In the level's folder:
 #   grammar.txt    the grammar points by lesson, with examples and exercises (format at the top of the file)
 #   sentences.txt  more sentences by lesson for the Sentences mode
-#   tests.txt      practice tests in the format of the official HSK 1 sample test
-# Every sentence may use only the 300 official words (plus a few grammar words of the official grammar list, EXTRA),
-# and every choice and wrong sentence only their characters. The pinyin of a sentence is put together from the words.
+#   tests.txt      practice tests in the format of the official HSK sample test of that level (optional)
+# Every sentence may use only the official words of that level and the levels below it (plus a few grammar words of the
+# official grammar list, EXTRA in meanings.py), and every choice and wrong sentence only their characters. The pinyin of a
+# sentence is put together from the words; a word with several readings takes the one of the lowest level, or the one
+# written after it: 还|huán, 得|děi.
 import os,re,random
-H=os.path.dirname(os.path.abspath(__file__))
 PUNCT={'，':',','。':'.','？':'?','！':'!','、':',','：':':'}
 NUMS='零一二三四五六七八九十百千'
 NUMPY={'零':'líng','一':'yī','二':'èr','三':'sān','四':'sì','五':'wǔ','六':'liù','七':'qī','八':'bā','九':'jiǔ','十':'shí','百':'bǎi','千':'qiān'}
-EXTRA={'杯':'bēi','没':'méi'}   # in the official grammar list (借用名量词 杯, 否定副词 没（有）) but not in the word list
 MW=set('个本件口块只杯天年点分')   # 一 changes its tone before these
+MW_MORE=set('条位间名包次张双种把层封页辆节所班段头句斤角毛刻米碗盘回遍声')   # (from HSK 2 on)
 GE_AFTER=set(NUMS)|set('这那哪几两')
 TONES={'āēīōūǖ':1,'áéíóúǘ':2,'ǎěǐǒǔǚ':3,'àèìòùǜ':4}
 def first_tone(py):
@@ -19,12 +20,13 @@ def first_tone(py):
             if c in k:return t
         if c.isalpha() and c not in 'aeiouü' and False:pass
     return 5
-def src(name):return [l.rstrip('\n') for l in open(os.path.join(H,name),encoding='utf8') if l.strip() and not l.startswith('# ') and l.strip()!='#']
-
-def make(words):
-    """words: [(simplified, pinyin)] of the official list. Returns (st, grammar, drills, tests, errors)."""
-    PY={}
-    for s,p in words:PY.setdefault(s,p.replace(' ',''))
+def make(H,level,words,below,EXTRA,order):
+    """words: [(simplified, pinyin)] of the official list of this level, below: of the levels below it, EXTRA: grammar words
+    that are not in the lists, order: the lessons. Returns (st, grammar, drills, tests, errors)."""
+    src=lambda name:[l.rstrip('\n') for l in open(os.path.join(H,name),encoding='utf8') if l.strip() and not l.startswith('# ') and l.strip()!='#'] if os.path.exists(os.path.join(H,name)) else []
+    mw=MW|MW_MORE if level>1 else MW
+    PY={};READ={}
+    for s,p in below+words:PY.setdefault(s,p.replace(' ',''));READ.setdefault(s,set()).add(p.replace(' ',''))
     chars=set(''.join(PY))|set(EXTRA)|set(NUMS)
     errs=[]
     def num_py(t):
@@ -36,6 +38,12 @@ def make(words):
         return ('dì' if t.startswith('第') else '')+''.join(out)
     def tok_py(t):
         if t in PUNCT:return PUNCT[t]
+        if '|' in t:
+            w,p=t.split('|')
+            if p in READ.get(w,()):return p
+            # a doubled word (高高, 看看, 舒舒服服, 介绍介绍) of an allowed word, with its pinyin written out
+            h=len(w)//2;dbl=(len(w)==2 and w[0]==w[1] and w[0] in PY) or (len(w)==4 and ((w[0]==w[1] and w[2]==w[3] and w[0]+w[2] in PY) or (w[:2]==w[2:] and w[:2] in PY)))
+            return p if dbl else None
         if t in PY:return PY[t]
         if t in EXTRA:return EXTRA[t]
         if re.fullmatch(f'第?[{NUMS}]+',t):return num_py(t)
@@ -47,14 +55,17 @@ def make(words):
         pys=[]
         for t in toks:
             p=tok_py(t)
-            if p is None:errs.append(f'{where}: "{t}" is not an HSK 1 word ({zh})');p='?'
+            if p is None:errs.append(f'{where}: "{t}" is not an HSK 1–{level} word ({zh})' if level>1 else f'{where}: "{t}" is not an HSK 1 word ({zh})');p='?'
             pys.append(p)
+        toks=[t.split('|')[0] for t in toks]
         for i,t in enumerate(toks):   # tone changes of 不 and 一, and the neutral 个 after numbers
             nxt=pys[i+1] if i+1<len(toks) else ''
             if t=='不' and first_tone(nxt)==4:pys[i]='bú'
             if t=='不' and 0<i<len(toks)-1 and toks[i-1]==toks[i+1]:pys[i]='bu'   # 喝不喝 hē bu hē
-            if t=='一' and i+1<len(toks) and toks[i+1] in MW:pys[i]='yí' if (first_tone(nxt)==4 or toks[i+1]=='个') else 'yì'
-            if t=='个' and i and (toks[i-1] in GE_AFTER or re.fullmatch(f'第?[{NUMS}]+',toks[i-1])):pys[i]='ge'
+            if t=='一' and i+1<len(toks) and toks[i+1] in mw:pys[i]='yí' if (first_tone(nxt)==4 or toks[i+1]=='个') else 'yì'
+            # (from HSK 2 on, before any word: 一到家 yí dào, 一起床 yì qǐchuáng; not in dates, 一月 yī yuè, nor at the end, 星期一)
+            elif level>1 and t=='一' and i+1<len(toks) and toks[i+1] not in PUNCT and toks[i+1][0] not in '月号日' and first_tone(nxt) in (1,2,3,4):pys[i]='yí' if first_tone(nxt)==4 else 'yì'
+            if t=='个' and i and (toks[i-1] in GE_AFTER or (level>1 and toks[i-1] in ('每','多')) or re.fullmatch(f'第?[{NUMS}]+',toks[i-1])):pys[i]='ge'
         return toks,pys,en.strip()
     def py_line(toks,pys):
         s=''
@@ -62,7 +73,7 @@ def make(words):
         s=re.sub(r' ([,.?!])',r'\1',s).strip();return s[:1].upper()+s[1:]
     def chk_chars(text,where):
         bad=[c for c in text if '㐀'<=c<='鿿' and c not in chars]
-        if bad:errs.append(f'{where}: {"".join(bad)} not in HSK 1 ({text})')
+        if bad:errs.append(f'{where}: {"".join(bad)} not in HSK {"1–"+str(level) if level>1 else 1} ({text})')
 
     # grammar points
     gr={};drills={};st=[];seen=set()
@@ -84,8 +95,9 @@ def make(words):
             if not r:continue
             os_=others.split()
             for o in os_:chk_chars(o,where)
+            ans=ans.split('|')[0];os_=[o.split('|')[0] for o in os_]
             if ans in os_:errs.append(f'{where}: the answer is also a wrong choice ({v})')
-            gz=''.join(a.split())+'＿'+''.join(b.split())
+            gz=''.join(t.split('|')[0] for t in a.split())+'＿'+''.join(t.split('|')[0] for t in b.split())
             cur['_gap'].append((gz,[ans.replace(' ','')]+[o for o in os_],en.strip(),r))
         elif k=='bad':
             m=re.match(r'(.*) = (.*)$',v);opts=[x.strip() for x in m.group(1).split(' / ')]
@@ -115,12 +127,11 @@ def make(words):
         if l.startswith('## '):les=l[3:].strip();continue
         r=sent(l,f'sentences {les}')
         if r and ''.join(r[0]) not in seen:seen.add(''.join(r[0]));st.append([les,r[0],r[1],r[2]])
-    order=[str(i) for i in range(1,16)]
     st.sort(key=lambda x:order.index(x[0]))
-    return st,out,drills,make_tests(sent,errs),errs
+    return st,out,drills,make_tests(sent,errs,src) if src('tests.txt') else [],errs
 
 SPK={'女：':'f','男：':'m'}
-def make_tests(sent,errs):
+def make_tests(sent,errs,src):
     """tests.txt → [{n, l1:[…], …}]. A text is a list of lines [speaker ('f', 'm' or ''), tokens, pinyin]; choices are
     shuffled here (the same way on every build) and k is the index of the right one."""
     def text(s,where):

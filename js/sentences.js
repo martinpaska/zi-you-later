@@ -1,7 +1,7 @@
 /* ---------- Sentences ---------- */
 function sentences(){
   const list=ST.filter(s=>state.sel.has(s.l));
-  open(bar(0,list.length+' sentences')+`<div class="card"><h2>Sentences from the selected lessons</h2><p class="muted">${PACK==='hsk1'?'Each sentence uses only HSK 1 words.':'Each sentence uses only vocabulary the textbook has introduced by that lesson.'}</p>
+  open(bar(0,list.length+' sentences')+`<div class="card"><h2>Sentences from the selected lessons</h2><p class="muted">${HSK?{hsk1:'Each sentence uses only HSK 1 words.',hsk2:'Each sentence uses only HSK 1 and 2 words.',hsk3:'Each sentence uses only HSK 1–3 words.'}[PACK]:'Each sentence uses only vocabulary the textbook has introduced by that lesson.'}</p>
     <div class="btns"><button class="btn ghost" id="sb">Build sentences</button><button class="btn ghost" id="st">Translate into Chinese</button><button class="btn ghost" id="sl">Build from listening</button></div></div>`);
   $('sb').onclick=()=>build(list,false);$('st').onclick=()=>translate(list);$('sl').onclick=()=>build(list,true);
 }

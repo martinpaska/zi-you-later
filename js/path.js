@@ -1,7 +1,8 @@
-/* ---------- HSK 1 path: an album of seals, one per lesson. A seal fills with ink as the lesson's characters and words are
+/* ---------- Your path: an album of seals, one per lesson. A seal fills with ink as the lesson's characters and words are
    learnt (learning counts half, known counts full) and is stamped for good when its Final test is passed with 80 % or more.
    Stamped seals are kept in state.seals ('hsk1:5' → {d,s}), so they sync with the account. ---------- */
-/* each course has its own seals: Chinese 1 (Intro + Lessons 1–10 of Integrated Chinese 1/1) and HSK 1 (15 lessons) */
+/* each course has its own seals: Chinese 1 (Intro + Lessons 1–10 of Integrated Chinese 1/1), HSK 1 (15 lessons), HSK 2 (17) and HSK 3 (22).
+   HSK 2 and 3 have no practice test yet (no official sample test of the new format), so their goal is the grammar. */
 const PATHS={
   hsk1:HSK1&&{lessons:HSK1.meta.lessons,write:HSK1.meta.write,story:'A year in Beijing',intro:'You have just landed in Beijing for a year. Every lesson is a stop on the way, and every stop gives you a seal.',
     chapters:[['The basics',['1','2','3','4','5'],'You have just landed in Beijing.'],
@@ -9,6 +10,19 @@ const PATHS={
       ['School and work',['12','13','14'],'Chinese classes and a first part-time job.'],
       ['Chinese culture',['15'],'Tea and dumplings with the family.']],
     goal:{zh:'考',t:'The HSK 1 test',d:'Forty questions, listening and reading. Try the practice test whenever you like.',b:'HSK 1 practice test ›',go:'data-go="hsktest"'}},
+  hsk2:PACK_DATA.hsk2&&{lessons:PACK_DATA.hsk2.meta.lessons,write:PACK_DATA.hsk2.meta.write,story:'Back in China',intro:'Your second year in China: you know your way around now. Every lesson is a step further, and every step gives you a seal.',
+    chapters:[['People and things',['1','2','3','4','5'],'New friends, new things, a new neighbourhood.'],
+      ['Out and about',['6','7','8','9','10','11'],'Cafés, metro rides, shops and a game of football.'],
+      ['Home, school and work',['12','13','14','15'],'Exams at school and your first real job.'],
+      ['Family and New Year',['16','17'],'New Year with your Chinese grandparents.']],
+    goal:{zh:'考',t:'The HSK 2 test',d:'A practice test in the new HSK 2 format comes once the official sample test is out. Until then, the grammar of every lesson is waiting for you.',b:'Grammar ›',go:'data-mode="grammar"'}},
+  hsk3:PACK_DATA.hsk3&&{lessons:PACK_DATA.hsk3.meta.lessons,write:PACK_DATA.hsk3.meta.write,story:'Living in China',intro:'You live in China now, with a flat, a job and friends. Every lesson is a part of your new life, and every part gives you a seal.',
+    chapters:[['A new life',['1','2','3','4','5','6'],'New faces, a bank card, dinner out and a train ticket.'],
+      ['Home and family',['7','8','9','10'],'A cold, a weekend off, a flat of your own.'],
+      ['Study and work',['11','12','13','14','15'],'Classes, the school sports day and the office.'],
+      ['Nature and the city',['16','17','18'],'Seasons, places and a city that keeps changing.'],
+      ['Culture',['19','20','21','22'],'Shows, matches, chopsticks and festivals.']],
+    goal:{zh:'考',t:'The HSK 3 test',d:'A practice test in the new HSK 3 format comes once the official sample test is out. Until then, the grammar of every lesson is waiting for you.',b:'Grammar ›',go:'data-mode="grammar"'}},
   cin1:{lessons:Object.entries({I:'人',1:'好',2:'家',3:'天',4:'乐',5:'茶',6:'话',7:'汉',8:'信',9:'买',10:'车'}).sort((a,b)=>LESSONS.indexOf(a[0])-LESSONS.indexOf(b[0])).map(([l,seal])=>({l,en:LTITLE[l],zh:LZH[l],seal})),write:null,
     story:'Your first semester',intro:'Your first semester of Chinese at FF MUNI, lesson by lesson. Every lesson you finish gives you a seal.',
     chapters:[['First steps',['I','1','2'],'Strokes, tones and the first characters.'],
@@ -23,33 +37,34 @@ const lessonMeta=l=>PL.find(x=>x.l===l);
 const lessonItems=l=>vUniq([...CH.filter(x=>x.l===l),...WD.filter(x=>x.l===l)]);
 function lessonInk(l){const it=lessonItems(l);if(!it.length)return 0;return Math.min(100,Math.round(it.reduce((a,x)=>a+[0,.5,1][mastery(x)],0)/it.length*100))}
 const sealOf=l=>(state.seals||{})[PACK+':'+l];
-function nextLesson(){const ls=PL.map(x=>x.l);return ls.find(l=>!sealOf(l)&&lessonInk(l)>0)||ls.find(l=>!sealOf(l))||ls[ls.length-1]}
+function nextLesson(){return unitNow().l}
 function sealHtml(l,cls=''){const m=lessonMeta(l),done=!!sealOf(l),p=lessonInk(l);
   return `<span class="stamp ${done?'done':p?'prog':''} ${cls}" style="--p:${done?100:p}${done?`;transform:rotate(${[-4,3,-2,4,-3][LESSONS.indexOf(l)%5]}deg)`:''}" lang="zh-Hans"><span>${m.seal}</span></span>`}
-// Home (HSK 1 only): the next lesson and the row of seals
+// Home: the next lesson and the row of seals
 function pathHome(){const box=$('pathbox');if(!box)return;box.hidden=false;
-  const due=dueAll().length,n=nextLesson(),got=PL.filter(x=>sealOf(x.l)).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(n));
-  box.innerHTML=`<h2>Your path</h2><button class="jcard" data-go="album" type="button">${sealHtml(n,'pn')}<span class="jct"><small class="eyebrow">${esc(PATH.story)}</small><b>${esc(`Continue: ${LNAME(n)}`)}</b>
+  const due=dueAll().length,now=unitNow(),n=now.l,got=PL.filter(x=>sealOf(x.l)).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(n));
+  box.innerHTML=`<h2>Your path</h2><button class="jcard" data-go="album" type="button">${sealHtml(n,'pn')}<span class="jct"><small class="eyebrow">${esc(PATH.story)}</small><b>${esc(`Continue: ${LNAME(n)}`)}</b><small class="jnext">${esc(unitName(n,now.u))}</small>
       <span class="jbar" aria-hidden="true"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><small><span>${esc(`Chapter ${ch+1}`)}</span> · <span>${esc(SEAL_CHAPTERS[ch][0])}</span> · <span>${esc(`${got} / ${PL.length} seals`)}</span></small></span><span class="go" aria-hidden="true">›</span></button>
 ${due?`<button class="premind" id="premind" type="button"><span class="prdot" aria-hidden="true">${due>99?'99+':due}</span><span><b>${esc(due===1?'1 card to review today':`${due} cards to review today`)}</b><small>A few minutes keep them in your head.</small></span><span class="go" aria-hidden="true">›</span></button>`:''}`;
   if($('premind'))$('premind').onclick=()=>review();
   $('rvsec').hidden=true;remindSave();   // Today's review is not a section of Home; cards that are due show as a reminder
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lsheet]');if(b){e.preventDefault();lessonSheet(b.dataset.lsheet)}});
-/* Your path: the course told as a story. Each chapter opens with a few lines of the story, its lessons are stops on a
-   winding path (a seal for each), the line is red as far as you have come, and the path ends at the course's goal. */
-function album(){lessonRestore();
-  const got=PL.filter(x=>sealOf(x.l)).length,n=nextLesson(),order=PL.map(x=>x.l),at=order.indexOf(n);let k=0;
-  const stop=l=>{const x=lessonMeta(l),s=sealOf(l),p=lessonInk(l),side=k++%2?'r':'l',here=l===n;
-    return `<button class="jst ${side}${s?' ok':''}${here?' here':''}" data-lsheet="${l}" type="button"><span class="jseal">${sealHtml(l,'lg')}${here?'<span class="jhere">You are here</span>':''}</span>
-      <span class="jtx"><small>${esc(LNAME(l))}</small><b>${esc(x.en)}</b><small class="jst2">${s?`<span>${esc('Completed')}</span>`:p?`<span>${esc(`${p}% done`)}</span>`:''}</small></span></button>`};
+/* Your path: the course told as a story. Each chapter opens with a few lines of the story; its lessons follow, each a
+   sheet of an old map with its units as stamps on the road (js/units.js), and the path ends at the course's goal. The
+   button at the bottom always starts the next unit; the page opens where you are. */
+function album(){lessonRestore();JUMP=null;
+  const got=PL.filter(x=>sealOf(x.l)).length,now=unitNow();let k=0;
   open(bar(0,'','‹ Home')+`<div class="journey"><div class="jhead"><p class="eyebrow">Your path</p><h2>${esc(PATH.story)}</h2><p class="hint">${esc(PATH.intro)}</p>
-      <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div>
-      <button class="btn jgo" data-lsheet="${n}" type="button">${esc(`Continue: ${LNAME(n)}`)}</button></div>
+      <div class="jprog"><span class="jbar"><i style="width:${Math.round(got/PL.length*100)}%"></i></span><b>${esc(`${got} / ${PL.length} seals`)}</b></div></div>
     ${SEAL_CHAPTERS.map(([cn,ls,story],ci)=>`<section class="jch"><div class="jchh"><p class="jnum" lang="zh-Hans" aria-label="${esc(`Chapter ${ci+1}`)}"><span>第${'一二三四五六七八九十'[ci]}章</span></p><h3>${esc(cn)}</h3><p class="jq">„<span>${esc(story)}</span>“</p></div>
-      <div class="jpath">${ls.map(l=>{const i=order.indexOf(l);return `<div class="jseg${i<at?' done':''}" aria-hidden="true"></div>${stop(l)}`}).join('')}</div></section>`).join('')}
+      ${ls.map(l=>{const h=lessonPathHtml(l,k);k+=lessonUnits(l).length;return h}).join('')}</section>`).join('')}
     <section class="jgoal"><span class="jflag" aria-hidden="true">${PATH.goal.zh}</span><div><p class="eyebrow">Goal</p><h3>${esc(PATH.goal.t)}</h3><p class="hint">${esc(PATH.goal.d)}</p>
-      <button class="btn ghost" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div></section></div>`);
+      <button class="btn ghost" ${PATH.goal.go} type="button">${esc(PATH.goal.b)}</button></div></section>
+    <div class="tdock"><button class="tcta" id="tcta" type="button"><span class="tsign" lang="zh-Hans">${unitGlyph(now.l,now.u)}</span><span class="ttx"><b><span>${esc(`Continue: ${LNAME(now.l)}`)}</span> · <span>${esc(unitName(now.l,now.u))}</span></b><small${now.u.kind==='w'?' class="han"':''}>${esc(unitWords(now.l,now.u))}</small></span><span class="tar" aria-hidden="true">›</span></button></div></div>`);
+  $('tcta').onclick=()=>now.u.kind==='f'?startStep(now.l,'final'):unitRun(now.l,now.u.id);
+  // the path opens where you are
+  const cur=M().querySelector('.unode.cur');if(cur&&cur.getBoundingClientRect().top>innerHeight*.6)cur.scrollIntoView({block:'center'});
 }
 // the steps of a lesson; a step started from here is remembered when its round is finished
 function lessonSheet(l){
@@ -119,23 +134,24 @@ function finalTest(l){
     keyHandler=e=>{if(/^[1-4]$/.test(e.key)&&q.opts[+e.key-1])pick(+e.key-1)};
   }
   function end(){keyHandler=null;const pct=Math.round(good/qs.length*100),prev=sealOf(l);
-    if(pct>=PASS){state.seals={...(state.seals||{}),[PACK+':'+l]:{d:todayStr(),s:Math.max(pct,prev?prev.s:0)}};
+    if(pct>=PASS){state.seals={...(state.seals||{}),[PACK+':'+l]:{d:todayStr(),s:Math.max(pct,prev?prev.s:0)}};if(JUMP===l)jumpTo(l);
       saveKept();return stampScreen(l,pct,!prev)}
     const um=byHz(miss);
     open(bar(100,qs.length+' / '+qs.length)+`<div class="card"><p class="eyebrow">${esc(`Final test · ${LNAME(l)}`)}</p><span class="score">${pct}%</span>
       <p><span>${esc(`You need ${PASS}% to stamp the seal.`)}</span> <span>${esc(`${good} of ${qs.length} correct.`)}</span></p>
       ${um.length?`<p class="hint" style="margin:0">To look at again:</p><div class="mmiss">${um.map(x=>`<span class="mmi"><b class="han">${esc(hz(x))}</b> ${pyHtml(x.p)}${starHtml(x,'xs-in')}</span>`).join('')}</div>`:''}
-      <div class="btns"><button class="btn ghost" data-lsheet="${l}" type="button">${esc(`‹ ${LNAME(l)}`)}</button><button class="btn" id="ftag" type="button">Try again</button></div></div>`);
+      <div class="btns"><button class="btn ghost" data-go="album" type="button">‹ Your path</button><button class="btn" id="ftag" type="button">Try again</button></div></div>`);
     $('ftag').onclick=()=>finalTest(l);
   }
   render();
 }
 function stampScreen(l,pct,first){
-  const m=lessonMeta(l),got=PL.filter(x=>sealOf(x.l)).length,n=PL.find(x=>!sealOf(x.l));
+  const m=lessonMeta(l),got=PL.filter(x=>sealOf(x.l)).length,n=PL.find(x=>!sealOf(x.l)),nx=unitNow();
   open(bar(100,'')+`<div class="stampv"><div class="spaper"><span class="sbig" lang="zh-Hans">${m.seal}</span>${[[14,20],[80,26],[22,78],[76,72]].map(([x,y],k)=>`<i class="sdrop" style="left:${x}%;top:${y}%;animation-delay:${.32+k*.04}s"></i>`).join('')}</div>
     <h2 class="swon">${first?'Seal stamped!':'Seal stamped again'}</h2><p class="hint" style="text-align:center;margin:0"><span>${esc(`${LNAME(l)} · ${m.en}`)}</span> · <span>${esc(`Final test ${pct}%`)}</span> · <span>${esc(`${got} of ${PL.length} seals`)}</span></p>
     <div class="srow">${PL.map(x=>sealHtml(x.l,'xs'+(x.l===l?' cur':''))).join('')}</div>
-    <div class="btns"><button class="btn ghost" data-go="album" type="button">Your path</button>${n?`<button class="btn" data-lsheet="${n.l}" type="button">${esc(`Next: ${LNAME(n.l)} ›`)}</button>`:''}</div></div>`);
+    <div class="btns"><button class="btn ghost" data-go="album" type="button">Your path</button>${nx.l!==l&&!sealOf(nx.l)?`<button class="btn" id="snext" type="button">${esc(`Next: ${LNAME(nx.l)} ›`)}</button>`:''}</div></div>`);
+  if($('snext'))$('snext').onclick=()=>unitRun(nx.l,nx.u.id);
   try{if(navigator.vibrate)navigator.vibrate([10,60,30])}catch(e){}
   if(!n)setTimeout(confetti,500);
 }

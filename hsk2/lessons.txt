@@ -1,0 +1,58 @@
+# HSK 2 (new HSK, syllabus of 2025-11, valid from 2026-07): the 200 words of the official vocabulary list,
+# grouped into the 17 communicative tasks of the official task syllabus (HSK 任务大纲, 二级, pages 6–10).
+# Line format:  ## <lesson> | <English title> | <Chinese topic> | <seal character>
+# then the words of that lesson, separated by spaces, written exactly as in the official list (with its 1/2 marks;
+# a word that the list has twice in the same spelling is written word|pinyin: 过|guò, 过|guo).
+# hsk/build.py fails if a word is missing, repeated or not in the official list.
+
+## 1 | About me | 个人基本情况 | 姓
+姓 姓名 生日 个子 高 长 头 眼睛 手 爱好 自己 外国 从小 小时候 男孩儿 女孩儿 小孩儿 笑
+
+## 2 | What happened | 事件情况 | 为
+为什么 因为 所以 事情 时 已经 开始 完 正 着 过|guo 一会儿 有时 快要 记得 忘 就 从 跟 但 但是 虽然 地 得
+
+## 3 | Things and colours | 物品情况 | 色
+颜色 白色 黑色 绿色 每 本子 笔 书包 手表 条 包 拿 打开 万 那么 这么 那样 这样
+
+## 4 | Weather | 天气 | 晴
+晴 阴 舒服 比 最 不错
+
+## 5 | Places | 介绍某个地方 | 远
+远 近 离 旁边 前面 后面 上面 下面 里面 外面 左 右 左边 右边 门口 楼 门 面1
+进 进来 进去 出 出来 出去 上来 上去 下来 下去 回来 回去 过来 起来
+
+## 6 | Everyday phrases | 日常言语交往 | 送
+帮 帮忙 送 让 告诉 别1 不好意思 希望 啊 意思 有意思 没意思 还是
+
+## 7 | Meals | 日常饮食 | 肉
+肉 奶茶 红茶 绿茶 咖啡 饭馆 点2
+
+## 8 | Getting around | 出行情况 | 路
+路 路上 走 走路 往 地铁 公交车 打车 机场 机票 飞 出门 车站 站1 酒店 出国 过|guò 过去1 慢 快
+
+## 9 | Shopping | 商品情况 | 票
+商场 裤子 票 门票 花1 坏
+
+## 10 | Feeling ill | 生病、探病 | 药
+药 药店 身体 疼
+
+## 11 | Free time | 休闲活动 | 球
+旅游 上网 网上 跳舞 跑 跑步 运动 动 球 篮球 足球 踢 游 游泳 画 鸟 花2 打1
+
+## 12 | Life at home | 家庭日常生活 | 洗
+洗 洗手间 床 周 等1
+
+## 13 | Studying | 学习情况、学习经历 | 词
+词 题 考 考试 懂 错 教 次 可能
+
+## 14 | School | 学校情况、课后活动 | 室
+教室 开学 高中 一起 介绍 经常 班
+
+## 15 | Work | 工作情况 | 位
+位 间 名 累 准备
+
+## 16 | Chinese New Year | 过年及传统饮食 | 过
+过年 快乐 红色 鱼
+
+## 17 | Calling people | 中文称谓语 | 爷
+爷爷 奶奶 丈夫 妻子

@@ -3,6 +3,7 @@ const assert=require('node:assert/strict'),vm=require('vm');
 const {read}=require('../lib/scripts');
 const src=read('sw.js');
 const CACHE=(src.match(/const CACHE='([^']+)'/)||[])[1],OLD='zyl-v'+(+CACHE.slice(5)-1);   // this version's cache and the one before it
+const DATA=(src.match(/const DATA='([^']+)'/)||[])[1],OLD_DATA='zyl-data-v'+(+DATA.slice(10)-1);   // the cache of the big data files, and the one before it
 
 function env({keys=[],note,sent}={}){
   const shown=[],posted=[],deleted=[],store=new Map();
@@ -44,8 +45,19 @@ module.exports=[
   const b=env({note:{on:true,lang:'cs',due:[],last:''}});await b.fire('message',{data:{type:'remind-test'}});assert.match(b.shown[0],/^Připomínky fungují/);
 }],
 ['a new version drops the old caches, keeps the reminder note, and tells open pages',async()=>{
-  const e=env({keys:[OLD,CACHE,'zyl-remind','something-else']});await e.fire('activate');
-  assert.deepEqual(e.deleted.sort(),['something-else',OLD].sort());assert.ok(!e.deleted.includes('zyl-remind'),'the reminder note was deleted');assert.deepEqual(e.posted,['update']);
+  const e=env({keys:[OLD,CACHE,OLD_DATA,DATA,'zyl-remind','something-else']});await e.fire('activate');
+  assert.deepEqual(e.deleted.sort(),['something-else',OLD,OLD_DATA].sort());assert.ok(!e.deleted.includes(DATA),'the data cache was deleted');assert.ok(!e.deleted.includes('zyl-remind'),'the reminder note was deleted');assert.deepEqual(e.posted,['update']);
+}],
+['installing a new version downloads the app files again, but the data files only when DATA has no copy yet',async()=>{
+  const added={},have={[DATA]:new Set(['strokes.json'])};
+  const open=async n=>({match:async u=>have[n]&&have[n].has(u)||undefined,add:async r=>{(added[n]=added[n]||[]).push(r.url)}});
+  const handlers={},self={addEventListener:(t,f)=>{handlers[t]=f},registration:{scope:'https://x/app/'},skipWaiting:async()=>{}};
+  const ctx={self,caches:{open},Request:function(u,o){this.url=u;this.cache=o.cache},Response:function(){},URL,location:{origin:'https://x'},Date,console,Promise};
+  vm.createContext(ctx);vm.runInContext(src,ctx);let w;handlers.install({waitUntil:p=>{w=p}});await w;
+  assert.ok(added[CACHE].includes('index.html')&&added[CACHE].includes('js/util.js'),'the app files were not cached');
+  assert.ok(!added[CACHE].includes('strokes.json'),'strokes.json went into CACHE');
+  const want=(src.match(/const DATA_FILES=\[([^\]]*)\]/)[1].match(/'([^']+)'/g)||[]).map(x=>x.slice(1,-1)).filter(f=>f!=='strokes.json');
+  assert.deepEqual(added[DATA].sort(),want.sort());
 }],
 ['the very first install does not announce a "new version"',async()=>{
   const e=env({keys:[CACHE]});await e.fire('activate');assert.deepEqual(e.deleted,[]);assert.deepEqual(e.posted,[]);

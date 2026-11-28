@@ -3,6 +3,21 @@
 /* id: a new id makes the sheet open once after the update; d: the real date shown on the card; t: title.
    The newest entry is the big card on top: art (a home tile's picture), what, where, go (what "Try it" opens). */
 const NEWS=[
+  {id:'2026-11-28',d:'2026-11-28',t:'New courses: HSK 2 and HSK 3',go:()=>packSheet(),
+    what:'The next two levels of the new HSK: HSK 2 in 17 lessons and HSK 3 in 22, each with its own path of seals, grammar and sentences.',
+    where:'Home › the course button at the top',
+    items:['HSK 2: the 200 words and 125 characters of the official HSK 2 lists (syllabus of 2025, valid from July 2026), in 17 lessons following its communicative tasks, with 34 grammar points and 232 sentences.',
+      'HSK 3: the 500 words and 284 characters of the official HSK 3 lists, in 22 lessons, with 58 grammar points and 336 sentences. The exercises may use the words of the levels below.',
+      'What you know counts everywhere: a word you learnt in HSK 1 is known in HSK 2 and 3 too. A level is downloaded only when you choose it.']},
+  {id:'2026-11-27',d:'2026-11-27',t:'Your path, step by step',go:()=>album(),
+    what:'Every lesson on Your path is now split into short units of about 5 new words, with mixed exercises, like in a language game.',
+    where:'Home › Your path',
+    items:['One unit takes 3 to 5 minutes: meet the new words, then choose, listen, type the pinyin, fill in the tones, match pairs, build sentences and write characters. Mistakes come back at the end.',
+      'Units open one after another. Grammar units come between the words, then a lesson review and the Final test, which stamps the seal as before.',
+      'Play a finished unit again at level 2 and 3 (gold): fewer hints, more typing and writing from memory.',
+      'Know a lesson already? Pass its Final test to skip straight to it. What you have learnt so far counts: units with words you know are done.',
+      'Each lesson has its own old Chinese ink landscape from The Metropolitan Museum of Art (public domain), shown whole while you scroll.',
+      'New words are taught two at a time, a mistake comes back a few exercises later, and after a unit you can practise its mistakes.']},
   {id:'2026-11-21',d:'2026-11-21',t:"Today’s review as flashcards",art:'cards',go:()=>review(),
     what:"The cards to review today now look and work like Flashcards: tap to flip, then say how well you remembered it: Again, Hard, Good or Easy.",
     where:"Home › Cards to review today",

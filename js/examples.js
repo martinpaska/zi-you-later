@@ -1,7 +1,7 @@
 const keyOf=x=>x.s.replace(/\(.*?\)/g,'').split('…')[0];
 /* extra short example sentences (examples.json, built from examples/l1.txt … l10.txt), loaded in the background */
 let EX=[];const SENTS=new Map(ST.map(s=>[String(s.id),s]));
-if(PACK!=='hsk1')fetch('examples.json').then(r=>r.json()).then(a=>{EX=a.map(([l,zh,py,en],i)=>({l:String(l),zh,py,en,id:'x'+i,zht:zh.map(toTrad),ex:true}));EX.forEach(s=>SENTS.set(s.id,s))}).catch(()=>{});
+if(PACK==='cin1')fetch('examples.json').then(r=>r.json()).then(a=>{EX=a.map(([l,zh,py,en],i)=>({l:String(l),zh,py,en,id:'x'+i,zht:zh.map(toTrad),ex:true}));EX.forEach(s=>SENTS.set(s.id,s))}).catch(()=>{});
 function examples(x,n=2){
   const w=keyOf(x);if(!w)return [];
   // same lesson first, then later lessons, then earlier ones; within that the shortest sentences first

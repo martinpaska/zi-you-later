@@ -35,7 +35,7 @@ const CS_P=[
  [/^Final test (\d+)%$/,(m,n)=>`Finální test ${n} %`],
  [/^You need (\d+)% to stamp the seal\.$/,(m,n)=>`K orazítkování pečeti potřebuješ ${n} %.`],
  [/^(\d+) of (\d+) correct\.$/,(m,a,b)=>`Správně ${a} z ${b}.`],
- [/^(‹ )?(Lesson \d+|Intro) · (.+)$/,(m,a,n,t)=>`${a||''}${csLessons(n)} · ${CS[t]||t}`],
+ [/^(‹ )?(Lesson \d+|Intro) · (.+)$/,(m,a,n,t)=>`${a||''}${csLessons(n)} · ${CS[t]||T(t)||t}`],
  [/^‹ (Lesson \d+|Intro)$/,(m,n)=>`‹ ${csLessons(n)}`],
  [/^Next: (Lesson \d+|Intro) ›$/,(m,n)=>`Další: ${csLessons(n)} ›`],
  [/^(\d+) topics · Seminar (\d+)$/,(m,a,b)=>`${a} ${csPl(+a,'téma','témata','témat')} · Seminář ${b}`],
@@ -145,6 +145,41 @@ CS_P.push(
  [/^(\d+)% right · (\d+) answers$/,(m,a,n)=>`${a} % správně · ${n} ${csPl(n,'odpověď','odpovědi','odpovědí')}`],
  [/^Last: (\d+)%$/,(m,a)=>`Naposledy: ${a} %`],
  [/^Tone (\d) → (\d)$/,(m,a,b)=>`${a}. tón → ${b}.`]);
+/* Your path, step by step (js/units.js) */
+Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi",
+ "Finish the lesson before it to open this one.":"Lekce se odemkne, až dokončíš tu předchozí.",
+ "Everything from this lesson, mixed: words, characters, tones, sentences and grammar.":"Všechno z téhle lekce namíchané dohromady: slova, znaky, tóny, věty a gramatika.",
+ "Finish the units before it first.":"Nejdřív dokonči podbody před ním.","Take the Final test":"Udělat Finální test","Play it again":"Zahrát znovu",
+ "Choose the meaning":"Vyber význam","Choose the Chinese":"Vyber čínsky","Listen and choose":"Poslechni si a vyber","Type the pinyin":"Napiš pinyin",
+ "Match the pairs":"Spoj dvojice","Listen and build the sentence":"Poslechni si a slož větu","Write it from memory":"Napiš ho zpaměti","Trace the character":"Obtáhni znak",
+ "Can't write now":"Teď psát nemůžu","New grammar":"Nová gramatika","Excellent!":"Výborně!","Not quite. It will come back.":"Ne úplně. Ještě se k tomu vrátíme.",
+ "Pieces in red are in the wrong place. Fix the order and check again.":"Červené dílky jsou na špatném místě. Oprav pořadí a zkontroluj znovu.",
+ "Gold!":"Zlatá!","Level up!":"Úroveň výš!","Unit complete!":"Podbod hotový!","right the first time":"správně napoprvé","Final test ›":"Finální test ›","‹ Your path":"‹ Tvoje cesta",
+ "Gold · level 3 of 3":"Zlatá · úroveň 3 ze 3",
+ "Everything from this lesson":"Všechno z lekce","Leave this unit? It is not finished yet, so it stays open on your path.":"Opustit podbod? Ještě není dokončený, takže na cestě zůstane otevřený.","Mistakes practised":"Chyby procvičené","Build ›":"Stavět ›","Test ›":"Test ›","Previous lesson":"Předchozí lekce","Next lesson":"Další lekce",
+ "Your path, step by step":"Tvoje cesta krok za krokem",
+ "Every lesson on Your path is now split into short units of about 5 new words, with mixed exercises, like in a language game.":"Každá lekce na Tvé cestě je teď rozdělená na krátké podbody po zhruba 5 nových slovech s namíchanými úlohami, jako ve hře na jazyky.",
+ "Home › Your path":"Domů › Tvoje cesta",
+ "One unit takes 3 to 5 minutes: meet the new words, then choose, listen, type the pinyin, fill in the tones, match pairs, build sentences and write characters. Mistakes come back at the end.":"Jeden podbod zabere 3 až 5 minut: seznámíš se s novými slovy, pak vybíráš, posloucháš, píšeš pinyin, doplňuješ tóny, spojuješ dvojice, skládáš věty a píšeš znaky. Chyby se vrátí na konci.",
+ "Units open one after another. Grammar units come between the words, then a lesson review and the Final test, which stamps the seal as before.":"Podbody se odemykají jeden po druhém. Mezi slovy jsou podbody s gramatikou, na konci opakování lekce a Finální test, který jako dřív orazítkuje pečeť.",
+ "Play a finished unit again at level 2 and 3 (gold): fewer hints, more typing and writing from memory.":"Hotový podbod můžeš zahrát znovu na úrovni 2 a 3 (zlatá): méně nápověd, víc psaní pinyinu a znaků zpaměti.",
+ "Know a lesson already? Pass its Final test to skip straight to it. What you have learnt so far counts: units with words you know are done.":"Lekci už umíš? Splň její Finální test a přeskočíš rovnou k ní. Co už umíš, se počítá: podbody se slovy, která znáš, jsou hotové.",
+ "Each lesson has its own old Chinese ink landscape from The Metropolitan Museum of Art (public domain), shown whole while you scroll.":"Každá lekce má svou starou čínskou tušovou malbu z Metropolitního muzea v New Yorku (volné dílo), celou a viditelnou i při posouvání.","New words are taught two at a time, a mistake comes back a few exercises later, and after a unit you can practise its mistakes.":"Nová slova se učí po dvou, chyba se vrátí o pár úloh později a po podbodu si můžeš procvičit své chyby."});
+CS_P.push(
+ [/^Words (\d+)$/,(m,n)=>`Slova ${n}`],
+ [/^(\d+)% stamps the seal$/,(m,n)=>`${n} % orazítkuje pečeť`],
+ [/^(\d+) \/ (\d+) floors$/,(m,a,b)=>`${a} / ${b} ${csPl(+b,'patro','patra','pater')}`],
+ [/^Build floor (\d+): (.+)$/,(m,n,u)=>`Stavět ${n}. patro: ${T(u)||u}`],
+ [/^Grammar (\d+)$/,(m,n)=>`Gramatika ${n}`],
+ [/^(\d+) \/ (\d+) units$/,(m,a,b)=>`${a} / ${b} ${csPl(+b,'podbod','podbody','podbodů')}`],
+ [/^Know it already\? Take the Final test of (.+)$/,(m,l)=>`Už to umíš? Přeskoč sem Finálním testem (${csLessons(l)})`],
+ [/^(\d+) questions on the words and characters of the lesson\. (\d+)% stamps the seal\.$/,(m,n,p)=>`${n} otázek na slova a znaky lekce. ${p} % orazítkuje pečeť.`],
+ [/^Level (\d) of 3$/,(m,n)=>`Úroveň ${n} ze 3`],
+ [/^Practise at level (\d)$/,(m,n)=>`Procvičit na úrovni ${n}`],
+ [/^about (\d+) min$/,(m,n)=>`asi ${n} min`],
+ [/^Every unit of (.+) is done\. Take the Final test to stamp the seal\.$/,(m,l)=>`${csLessons(l)}: všechny podbody hotové. Udělej Finální test a orazítkuj pečeť.`],
+ [/^You typed “(.*)”\.$/,(m,v)=>`Napsal(a) jsi „${v}“.`],
+ [/^Accepted: (.+)$/,(m,v)=>`Správně je: ${v}`]);
 function T(s){
   if(Object.prototype.hasOwnProperty.call(CS,s))return CS[s];
   for(const [re,f] of CS_P){const m=s.match(re);if(m)return f(...m)}

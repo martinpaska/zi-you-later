@@ -1227,3 +1227,69 @@ details.gegd>.geg{padding-bottom:12px}
 .cexf{border-top:0;margin-top:2px;text-align:center}.cexf .exi{text-align:center;padding:4px 0;border:0}
 .cexf .zh{font-size:1.2rem}.cexf .en{font-size:.95rem;color:var(--ink)}
 .cexf mark{background:var(--accent-soft);color:inherit;border-radius:4px;padding:0 2px}
+/* Your path (js/units.js): each lesson is a sheet of an old Chinese map, Silk Road style. Paper with a faint grid (the
+   old maps' 计里画方), a double frame, ink drawings around a road; the units are stamps on the road, which is red as far as
+   you have come. Only the app's colours. */
+.journey{--paper:#f7f1e8}
+:root[data-theme="dark"] .journey{--paper:#1f1b19}
+.ulesson{display:flex;flex-direction:column;gap:10px;padding:4px 0 14px}
+.ulh{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:0 6px 12px -10px rgb(0 0 0/.3)}
+.ulht{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.ulht small{color:var(--muted);font-size:.76rem}.ulht b{font-family:var(--f-display);font-size:1rem;line-height:1.2}
+.ulbar{display:block;height:5px;border-radius:9px;background:var(--sunk);overflow:hidden;margin-top:3px}.ulbar i{display:block;height:100%;background:var(--accent);border-radius:inherit}
+.umap{position:relative;border-radius:4px;padding:30px 0 64px;overflow:hidden;background:var(--paper);
+  box-shadow:inset 0 0 0 1px rgb(0 0 0/.12),inset 0 0 0 6px var(--paper),inset 0 0 0 7px rgb(0 0 0/.18),0 10px 24px -16px rgb(60 40 30/.5)}
+/* the painting, faint enough for the stamps to stay in front. The images are trimmed to the painted area and laid on
+   --paper (art/build.py); they span the sheet edge to edge and fade out the same on the left and the right */
+.umap::before{content:"";position:absolute;inset:8px;background:var(--a1) top center/100% auto no-repeat,var(--a2,none) bottom center/100% auto no-repeat;opacity:.55;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.ia1{--a1:url(../art/ink1.webp?v=2)}.ia2{--a1:url(../art/ink2.webp?v=2)}.ia3{--a1:url(../art/ink3.webp?v=2)}.ia4{--a1:url(../art/ink4.webp?v=2)}.ia5{--a1:url(../art/ink5.webp?v=2)}.ia6{--a1:url(../art/ink6.webp?v=2)}.ia7{--a1:url(../art/ink7.webp?v=2)}.ia8{--a1:url(../art/ink8.webp?v=2)}.ia9{--a1:url(../art/ink9.webp?v=2)}.ia10{--a1:url(../art/ink10.webp?v=2)}.ia11{--a1:url(../art/ink11.webp?v=2)}.ia12{--a1:url(../art/ink12.webp?v=2)}.ia13{--a1:url(../art/ink13.webp?v=2)}.ia14{--a1:url(../art/ink14.webp?v=2)}.ia15{--a1:url(../art/ink15.webp?v=2)}.ia16{--a1:url(../art/ink16.webp?v=2)}.ia17{--a1:url(../art/ink17.webp?v=2)}.ia18{--a1:url(../art/ink18.webp?v=2)}.ia19{--a1:url(../art/ink19.webp?v=2)}.ia20{--a1:url(../art/ink20.webp?v=2)}.ia21{--a1:url(../art/ink21.webp?v=2)}.ia22{--a1:url(../art/ink22.webp?v=2)}.ib1{--a2:url(../art/ink1.webp?v=2)}.ib2{--a2:url(../art/ink2.webp?v=2)}.ib3{--a2:url(../art/ink3.webp?v=2)}.ib4{--a2:url(../art/ink4.webp?v=2)}.ib5{--a2:url(../art/ink5.webp?v=2)}.ib6{--a2:url(../art/ink6.webp?v=2)}.ib7{--a2:url(../art/ink7.webp?v=2)}.ib8{--a2:url(../art/ink8.webp?v=2)}.ib9{--a2:url(../art/ink9.webp?v=2)}.ib10{--a2:url(../art/ink10.webp?v=2)}.ib11{--a2:url(../art/ink11.webp?v=2)}.ib12{--a2:url(../art/ink12.webp?v=2)}.ib13{--a2:url(../art/ink13.webp?v=2)}.ib14{--a2:url(../art/ink14.webp?v=2)}.ib15{--a2:url(../art/ink15.webp?v=2)}.ib16{--a2:url(../art/ink16.webp?v=2)}.ib17{--a2:url(../art/ink17.webp?v=2)}.ib18{--a2:url(../art/ink18.webp?v=2)}.ib19{--a2:url(../art/ink19.webp?v=2)}.ib20{--a2:url(../art/ink20.webp?v=2)}.ib21{--a2:url(../art/ink21.webp?v=2)}.ib22{--a2:url(../art/ink22.webp?v=2)}
+:root[data-theme="dark"] .umap::before{filter:invert(1) sepia(.15) brightness(.85);mix-blend-mode:screen;opacity:.35}
+.unodes{position:relative;z-index:1}
+.ulink{position:absolute;left:50%;top:0;overflow:visible;pointer-events:none}
+.ulink path{fill:none;stroke-linecap:round}.ulink .todo{stroke:var(--ink);stroke-width:2.5;stroke-dasharray:1 9;opacity:.4}.ulink .ink{stroke:var(--accent);stroke-width:6}
+.urow{position:relative;height:118px;width:max-content;margin:0 auto;display:flex;flex-direction:column;align-items:center;transform:translateX(var(--x,0))}
+.unode{position:relative;display:grid;place-items:center;padding:0;margin-top:11px;transform:rotate(var(--r,0deg));border-radius:16px}
+.ubub{width:64px;height:64px;border-radius:14px;display:grid;place-items:center;font:700 1.85rem var(--f-han);line-height:1;
+  background:var(--surface);color:var(--ink);border:2.5px solid #000;box-shadow:4px 4px 0 #000;transition:transform .12s ease,box-shadow .12s ease}
+.unode:active .ubub{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+.unode.done .ubub{background:var(--seal);color:#fff;box-shadow:inset 0 0 0 3px var(--seal),inset 0 0 0 5px rgb(255 255 255/.7),4px 4px 0 #000}
+.unode.f .ubub{width:74px;height:74px;font-size:2.2rem;border-radius:10px}
+.unode.cur .ubub{color:var(--accent-fg,var(--accent));border-color:var(--accent);box-shadow:4px 4px 0 var(--accent)}
+.unode.lock .ubub{background:var(--paper);color:var(--icon-off,#b7abab);border:2px dashed #b9aeae;box-shadow:none}
+.ulvb{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);display:flex;gap:3px}
+.ulvb i{width:12px;height:5px;border-radius:3px;background:var(--line)}.ulvb i.on{background:var(--ink)}
+.unode.lock .ulvb{display:none}
+.ustart{position:absolute;left:calc(100% + 14px);top:50%;transform:translateY(-50%) rotate(calc(var(--r,0deg) * -1));white-space:nowrap;background:#000;color:#fff;font:800 .74rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:8px}
+.ustart::after{content:"";position:absolute;right:100%;top:50%;margin-top:-5px;border:5px solid transparent;border-right-color:#000}
+@media (prefers-reduced-motion:no-preference){.unode.cur .ustart{animation:ubob 1.6s ease-in-out infinite}}
+@keyframes ubob{50%{margin-left:4px}}
+.uname{margin-top:20px;font:700 .72rem var(--f-display);color:var(--muted);white-space:nowrap;background:var(--paper);padding:0 4px;border-radius:4px}
+.unode.cur+.uname{color:var(--accent-fg,var(--accent))}
+.ulesson.locked .ulh{opacity:.75}
+.ujump{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}.ujump .hint{margin:0}
+.tdock{position:sticky;bottom:12px;z-index:4;margin-top:4px}
+.tcta{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--accent);color:var(--accent-ink);border:2px solid #000;border-radius:16px;padding:10px 12px;box-shadow:3px 3px 0 #000}
+.tsign{flex:none;width:36px;height:42px;border-radius:6px;background:#fff;color:var(--accent);border:2px solid #000;display:grid;place-items:center;font:700 1.3rem var(--f-han);line-height:1}
+.ttx{flex:1;min-width:0;display:flex;flex-direction:column}.ttx b{font:800 1rem var(--f-display);line-height:1.2}.ttx small{font-size:.82rem;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tcta .tar{font:800 1.6rem var(--f-display)}
+.jct .jnext{color:var(--accent-fg,var(--accent));font-weight:600}
+.ulv{display:flex;gap:3px}.ulv i{width:8px;height:8px;border-radius:99px;background:var(--line);border:1px solid #000}.ulv i.on{background:var(--accent)}
+/* the unit sheet */
+.usheet{display:flex;flex-direction:column;gap:10px}.usheet .eyebrow,.usheet h2{margin:0}
+.ulvt{display:flex;align-items:center;gap:8px;margin:0;font-weight:600;font-size:.9rem}.ulvt .ulv{position:static;transform:none}
+.uwords{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.uw{display:flex;flex-direction:column;align-items:center;gap:1px;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;min-width:64px;position:relative}
+.uw b{font-size:1.5rem;font-weight:500;line-height:1.2}.uw small{font-size:.78rem}.uw .m{color:var(--muted);max-width:120px;text-align:center;line-height:1.2}
+.uw.miss{border-color:var(--bad)}
+.ugp{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.ucta{flex-direction:column}.ucta .btn{width:100%;flex:none}
+/* a unit's session */
+.ubar .back{font-size:1.1rem;min-width:44px}
+.ucombo{display:inline-block;background:#f4c430;color:#000;border:2px solid #000;border-radius:8px;padding:0 6px;font:800 .85rem var(--f-display)}
+.ucard .eyebrow{margin:0;color:var(--accent-fg,var(--accent))}
+.ucard .ugt{font-size:1.35rem}
+.umatch{height:auto}.umatch .mt{min-height:62px}.umatch .mt .han{font-size:1.8rem}.umatch .mt .han.mw{font-size:1.4rem}
+.upad{width:min(260px,70vw)}
+.udone{align-items:center;text-align:center}.udone h2{font-size:1.5rem}.udone .ulv{position:static;transform:none;gap:6px}.udone .ulv i{width:12px;height:12px}
+.ufin{font-weight:600;color:var(--accent-fg,var(--accent))}
+.umist{align-self:stretch}
