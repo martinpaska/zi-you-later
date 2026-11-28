@@ -18,7 +18,7 @@ module.exports=[
     assert.equal(await a.page.$$eval('.unode.cur',e=>e.length),1);assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'2|w1','the first unit of lesson 2 is not marked');
     assert.equal(await a.page.$$eval('#ul-1 .unode.done',e=>e.length),await a.page.evaluate(()=>lessonUnits('1').length),'a stamped lesson is not all done');
     assert.ok(await a.page.$('#ul-3.locked [data-jump="3"]'),'lesson 3 is not locked with a way to skip to it');assert.ok(!(await a.page.$('#ul-2.locked')),'lesson 2 is locked');
-    assert.match(await a.text('.tcta'),/Pokračuj: Lekce 2 · Slova 1/);assert.match(await a.text('#ul-1 .ulh'),/Lekce 1 · Splněno.*Procvičovat zvlášť/);assert.ok(await a.page.$('.jgoal [data-go="hsktest"]'),'no goal');
+    assert.match(await a.text('.tcta'),/Pokračuj: Lekce 2 · Slova 1/);assert.match(await a.text('#ul-1 .ulh'),/Lekce 1 · Splněno/);assert.ok(!(await a.page.$('.ulh button')),'the lesson card still has a button');assert.ok(await a.page.$('.jgoal [data-go="hsktest"]'),'no goal');
     assert.equal(await a.page.evaluate(()=>document.documentElement.scrollWidth),390,'the path is wider than the screen');
     await a.page.click('.unode.cur');await a.page.waitForSelector('.nsheet .usheet');assert.match(await a.text('.usheet'),/Slova 1.*Začít/);
     await a.page.click('.nsheet [data-ugo]');await a.page.waitForSelector('.ubar');noErrors(a)}finally{await a.close()}

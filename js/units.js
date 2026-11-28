@@ -58,7 +58,8 @@ const unitNext=l=>{const n=unitNow();if(n.l===l)return n.u;return lessonUnits(l)
    Metropolitan Museum of Art, Open Access CC0; see art/README.md), turned into the app's ink and paper. It spans the
    width of the sheet from the top, whole, never cut or stretched; each lesson gets the
    painting whose shape (width / height) is closest to its sheet, and no two lessons of a course share one. */
-const INKS=[0.684,0.513,0.579,0.282,0.504,0.595,0.484,0.374,0.425,0.473,0.557,0.364,0.324,0.442,0.716,0.474,0.506,0.239,0.461,0.401,0.268,0.308];
+// INKS is written by art/build.py
+const INKS=[0.722,0.525,0.608,0.295,0.522,0.651,0.501,0.347,0.443,0.48,0.532,0.338,0.324,0.431,0.759,0.46,0.509,0.237,0.454,0.416,0.278,0.301];
 // the sheet is about 340px wide; a painting spans it, so it is 340 / aspect tall. A lesson gets the painting closest to
 // its own shape; a long lesson whose sheet holds two paintings whole gets a second one at its foot, never overlapping.
 const INK_OF=(()=>{let m=null;return l=>{if(!m){m={};const used=new Set(),h=i=>336/INKS[i];
@@ -75,7 +76,7 @@ function lessonPathHtml(l,k){
       ${here?`<span class="ustart">${u.kind==='f'?'Test':lv?'Here':'Start'}</span>`:''}<span class="ubub" lang="zh-Hans">${unitGlyph(l,u)}</span>${u.kind!=='f'?`<span class="ulvb" aria-hidden="true">${[1,2,3].map(j=>`<i class="${j<=lv?'on':''}"></i>`).join('')}</span>`:''}</button>
       <span class="uname">${esc(unitName(l,u))}</span></div>`};
   return `<section class="ulesson${op?'':' locked'}" id="ul-${l}"><div class="ulh">${sealHtml(l,'sm')}<div class="ulht"><small><span>${esc(LNAME(l))}</span>${sealOf(l)?' · <span>Completed</span>':` · <span>${esc(`${done} / ${tot} units`)}</span>`}</small><b>${esc(m.en)}</b>
-      <span class="ulbar" aria-hidden="true"><i style="width:${sealOf(l)?100:Math.round(done/Math.max(1,tot)*100)}%"></i></span></div><button class="ulmore" data-lsheet="${l}" type="button">Practise by mode</button></div>
+      <span class="ulbar" aria-hidden="true"><i style="width:${sealOf(l)?100:Math.round(done/Math.max(1,tot)*100)}%"></i></span></div></div>
     <div class="umap ia${INK_OF(l)[0]}${INK_OF(l)[1]?` ib${INK_OF(l)[1]}`:''}"><div class="unodes" style="height:${H}px"><svg class="ulink" width="1" height="${H}" aria-hidden="true" focusable="false"><path class="todo" d="${line}"/><path class="ink" d="${ink}"/></svg>${us.map(node).join('')}</div></div>
     ${op?'':`<div class="ujump"><p class="hint">Finish the lesson before it to open this one.</p><button class="btn ghost" data-jump="${l}" type="button">${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</button></div>`}</section>`;
 }
