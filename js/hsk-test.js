@@ -16,7 +16,7 @@ function htPlay(lines,times=2){stopAudio();if(!('speechSynthesis' in window))ret
   const tok={};HT_PLAY=tok;let i=0;
   const next=()=>{if(HT_PLAY!==tok||i>=seq.length){if(HT_PLAY===tok)HT_PLAY=null;return}const s=seq[i++];
     const go=()=>{if(HT_PLAY!==tok)return;const u=new SpeechSynthesisUtterance(s.t);u.lang='zh-CN';if(voice)u.voice=voice;u.rate=state.rate||.8;u.pitch=s.sp==='m'?.7:s.sp==='f'?1.3:1;
-      u.onend=u.onerror=()=>setTimeout(next,s.sp?300:0);UTT=u;speechSynthesis.speak(u)};
+      u.onend=u.onerror=()=>setTimeout(next,s.sp?300:0);UTT=u;unmuteIOS();speechSynthesis.speak(u)};
     s.wait?setTimeout(go,1600):go()};
   next()}
 function htFlat(T){const Q=[];
