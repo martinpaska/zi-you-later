@@ -55,13 +55,17 @@ const unitWords=(l,u)=>u.kind==='w'?u.items.map(hz).join(' '):u.kind==='g'?u.pts
 // the unit to play next in a lesson (or null when the lesson is done)
 const unitNext=l=>{const n=unitNow();if(n.l===l)return n.u;return lessonUnits(l).find(u=>unitLv(l,u)===0&&unitOpen(l,u))||null};
 /* the picture behind each lesson: one old Chinese ink landscape per lesson (art/ink1–22.webp, public domain, The
-   Metropolitan Museum of Art, Open Access CC0; see art/README.md), turned into the app's ink and paper. It stays in
-   view while you scroll through the lesson (sticky), whole, never cut or stretched; each lesson gets the
+   Metropolitan Museum of Art, Open Access CC0; see art/README.md), turned into the app's ink and paper. It spans the
+   width of the sheet from the top, whole, never cut or stretched; each lesson gets the
    painting whose shape (width / height) is closest to its sheet, and no two lessons of a course share one. */
 const INKS=[0.684,0.513,0.579,0.282,0.504,0.595,0.484,0.374,0.425,0.473,0.557,0.364,0.324,0.442,0.716,0.474,0.506,0.239,0.461,0.401,0.268,0.308];
-const INK_OF=(()=>{let m=null;return l=>{if(!m){m={};const used=new Set();
-  for(const x of LESSONS){const r=Math.max(.42,340/Math.min(lessonUnits(x).length*UROW+94,640));let best=-1,bd=1e9;
-    INKS.forEach((a,i)=>{const d=Math.abs(Math.log(a/r))+(used.has(i)?9:0);if(d<bd){bd=d;best=i}});used.add(best);m[x]=best+1}}return m[l]}})();
+// the sheet is about 340px wide; a painting spans it, so it is 340 / aspect tall. A lesson gets the painting closest to
+// its own shape; a long lesson whose sheet holds two paintings whole gets a second one at its foot, never overlapping.
+const INK_OF=(()=>{let m=null;return l=>{if(!m){m={};const used=new Set(),h=i=>336/INKS[i];
+  for(const x of LESSONS){const H=lessonUnits(x).length*UROW+94,r=340/H;let a=-1,bd=1e9;
+    INKS.forEach((v,i)=>{const d=Math.abs(Math.log(v/Math.max(r,.42)))+(used.has(i)?9:0);if(d<bd){bd=d;a=i}});used.add(a);
+    let b=-1;if(H>h(a)+260){let bb=1e9;INKS.forEach((v,i)=>{if(i===a||h(a)+h(i)>H)return;const d=(H-h(a)-h(i))+(used.has(i)?2000:0);if(d<bb){bb=d;b=i}});if(b>=0)used.add(b)}
+    m[x]=[a+1,b+1]}}return m[l]}})();
 function lessonPathHtml(l,k){
   const m=lessonMeta(l),us=lessonUnits(l),op=lessonOpen(l),nx=op?unitNext(l):null,done=us.filter(u=>u.kind!=='f'&&unitLv(l,u)>0).length,tot=us.length-1;
   const xs=us.map((u,i)=>UX[(k+i)%UX.length]),ys=us.map((u,i)=>i*UROW+44),reach=nx?us.indexOf(nx):sealOf(l)?us.length-1:-1,H=us.length*UROW;
@@ -72,7 +76,7 @@ function lessonPathHtml(l,k){
       <span class="uname">${esc(unitName(l,u))}</span></div>`};
   return `<section class="ulesson${op?'':' locked'}" id="ul-${l}"><div class="ulh">${sealHtml(l,'sm')}<div class="ulht"><small><span>${esc(LNAME(l))}</span>${sealOf(l)?' · <span>Completed</span>':` · <span>${esc(`${done} / ${tot} units`)}</span>`}</small><b>${esc(m.en)}</b>
       <span class="ulbar" aria-hidden="true"><i style="width:${sealOf(l)?100:Math.round(done/Math.max(1,tot)*100)}%"></i></span></div><button class="ulmore" data-lsheet="${l}" type="button">Practise by mode</button></div>
-    <div class="umap ia${INK_OF(l)}"><span class="upaint" style="--h:${H}px" aria-hidden="true"></span><div class="unodes" style="height:${H}px"><svg class="ulink" width="1" height="${H}" aria-hidden="true" focusable="false"><path class="todo" d="${line}"/><path class="ink" d="${ink}"/></svg>${us.map(node).join('')}</div></div>
+    <div class="umap ia${INK_OF(l)[0]}${INK_OF(l)[1]?` ib${INK_OF(l)[1]}`:''}"><div class="unodes" style="height:${H}px"><svg class="ulink" width="1" height="${H}" aria-hidden="true" focusable="false"><path class="todo" d="${line}"/><path class="ink" d="${ink}"/></svg>${us.map(node).join('')}</div></div>
     ${op?'':`<div class="ujump"><p class="hint">Finish the lesson before it to open this one.</p><button class="btn ghost" data-jump="${l}" type="button">${esc(`Know it already? Take the Final test of ${LNAME(l)}`)}</button></div>`}</section>`;
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-unit]');if(b){e.preventDefault();const [l,id]=b.dataset.unit.split('|');unitSheet(l,id);return}
