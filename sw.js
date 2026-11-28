@@ -4,14 +4,15 @@
    Every release changes CACHE below, so the files of a version are cached together and an older cache is dropped.
    The big files that rarely change (DATA_FILES) live in their own cache, DATA: a release keeps it, so they are not
    downloaded again. Change DATA only when one of those files changes. */
-const CACHE='zyl-v18';
+const CACHE='zyl-v19';
 const CORE=['./','index.html','css/app.css',
   'js/data-cin1.js','js/data-hsk1.js','js/packs.js','js/data-chars.js','js/items.js','js/util.js','js/state.js','js/examples.js','js/voice.js','js/update.js','js/speech.js','js/home.js','js/setup.js','js/review.js','js/cards.js','js/try-writing.js','js/questions.js','js/learn.js','js/test.js','js/match.js','js/vocab.js','js/sentences.js','js/grammar-data.js','js/grammar.js','js/writing.js','js/tones.js','js/progress.js','js/account.js','js/welcome.js','js/phonetics.js','js/admin.js','js/nudges.js','js/path.js','js/units.js','js/hsk-test.js','js/modes.js','js/news.js','js/strings-cs.js','js/i18n.js',
   'manifest.webmanifest','grammar-practice.json','grammar-hsk1.json','hsk1-tests.json','examples.json','phonetics.json','grammar1.json',
   'apple-touch-icon.png','icon-192.png','icon-512.png','favicon-32.png'];
-const DATA='zyl-data-v2';
-const DATA_FILES=['strokes.json','fonts/ziyoukai.woff2','art/ink1.jpg','art/ink2.jpg','art/ink3.jpg','art/ink4.jpg','art/ink5.jpg','https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
-const isData=url=>DATA_FILES.some(f=>new URL(f,self.registration.scope).href===url.origin+url.pathname);
+const DATA='zyl-data-v3';
+const DATA_FILES=['strokes.json','fonts/ziyoukai.woff2','https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
+// the paintings behind Your path (art/*.webp) are big and never change: they go in DATA too, once they are first shown
+const isData=url=>DATA_FILES.some(f=>new URL(f,self.registration.scope).href===url.origin+url.pathname)||(url.origin===location.origin&&/\/art\/[^/]+\.webp$/.test(url.pathname));
 
 self.addEventListener('install',e=>{
   e.waitUntil((async()=>{const c=await caches.open(CACHE),d=await caches.open(DATA);

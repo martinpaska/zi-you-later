@@ -156,7 +156,7 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "Pieces in red are in the wrong place. Fix the order and check again.":"Červené dílky jsou na špatném místě. Oprav pořadí a zkontroluj znovu.",
  "Gold!":"Zlatá!","Level up!":"Úroveň výš!","Unit complete!":"Podbod hotový!","right the first time":"správně napoprvé","Final test ›":"Finální test ›","‹ Your path":"‹ Tvoje cesta",
  "Gold · level 3 of 3":"Zlatá · úroveň 3 ze 3",
- "Everything from this lesson":"Všechno z lekce","Build ›":"Stavět ›","Test ›":"Test ›","Previous lesson":"Předchozí lekce","Next lesson":"Další lekce",
+ "Everything from this lesson":"Všechno z lekce","Leave this unit? It is not finished yet, so it stays open on your path.":"Opustit podbod? Ještě není dokončený, takže na cestě zůstane otevřený.","Mistakes practised":"Chyby procvičené","Build ›":"Stavět ›","Test ›":"Test ›","Previous lesson":"Předchozí lekce","Next lesson":"Další lekce",
  "Your path, step by step":"Tvoje cesta krok za krokem",
  "Every lesson on Your path is now split into short units of about 5 new words, with mixed exercises, like in a language game.":"Každá lekce na Tvé cestě je teď rozdělená na krátké podbody po zhruba 5 nových slovech s namíchanými úlohami, jako ve hře na jazyky.",
  "Home › Your path":"Domů › Tvoje cesta",
@@ -164,7 +164,7 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "Units open one after another. Grammar units come between the words, then a lesson review and the Final test, which stamps the seal as before.":"Podbody se odemykají jeden po druhém. Mezi slovy jsou podbody s gramatikou, na konci opakování lekce a Finální test, který jako dřív orazítkuje pečeť.",
  "Play a finished unit again at level 2 and 3 (gold): fewer hints, more typing and writing from memory.":"Hotový podbod můžeš zahrát znovu na úrovni 2 a 3 (zlatá): méně nápověd, víc psaní pinyinu a znaků zpaměti.",
  "Know a lesson already? Pass its Final test to skip straight to it. What you have learnt so far counts: units with words you know are done.":"Lekci už umíš? Splň její Finální test a přeskočíš rovnou k ní. Co už umíš, se počítá: podbody se slovy, která znáš, jsou hotové.",
- "Each lesson sits on an old Chinese ink landscape from The Metropolitan Museum of Art (public domain).":"Každá lekce leží na staré čínské tušové malbě z Metropolitního muzea v New Yorku (volné dílo).",
+ "Each lesson has its own old Chinese ink landscape from The Metropolitan Museum of Art (public domain), shown whole while you scroll.":"Každá lekce má svou starou čínskou tušovou malbu z Metropolitního muzea v New Yorku (volné dílo), celou a viditelnou i při posouvání.","New words are taught two at a time, a mistake comes back a few exercises later, and after a unit you can practise its mistakes.":"Nová slova se učí po dvou, chyba se vrátí o pár úloh později a po podbodu si můžeš procvičit své chyby.",
  "The modes of each lesson (flashcards, tones, writing…) are still there under Practise by mode.":"Režimy každé lekce (kartičky, tóny, psaní…) zůstaly pod Procvičovat zvlášť."});
 CS_P.push(
  [/^Words (\d+)$/,(m,n)=>`Slova ${n}`],
