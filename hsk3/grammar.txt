@@ -62,7 +62,7 @@ gap: 我 的 手机 被 [∅] 拿 走 了 。 = My phone has been taken. / 把 �
 bad: 我的自行车被他骑走了。 / 我的自行车他被骑走了。 / 被我的自行车他骑走了。 = My bike was ridden off by him.
 bad: 蛋糕被吃完了。 / 被蛋糕吃完了。 / 蛋糕被完吃了。 = The cake has been eaten up.
 
-## 2 | 找到, 记住, 拿走, 关上 | 结果补语2：动词+到/住/走/上
+## 2 | Results: 找到, 记住, 拿走, 关上 | 结果补语2：动词+到/住/走/上
 ex: More result words after a verb: 到 says the aim was reached (找到 find, 买到 manage to buy, 收到 receive), 住 that it stays fixed (记住 remember), 走 that it went away (拿走 take away), 上 that it is closed or on (关上 close, 穿上 put on).
 pat: Verb + 到 / 住 / 走 / 上 · 没 + verb + result
 eg: 我 找 到 我 的 护照 了 。 = I have found my passport.
@@ -233,7 +233,7 @@ gap: 我 [只|zhǐ] 想 看看|kànkan ， 不 买 。 = I only want to have a l
 gap: 这 双 鞋 [特别] 舒服 。 = This pair of shoes is especially comfortable. / 特 别特
 bad: 我只买了一件。 / 我买只了一件。 / 只我买了一件。 = I only bought one.
 bad: 一共多少钱？ / 多少钱一共一共？ / 一共钱多少？ = How much is it altogether?
-## 7 | 必须, 最好, 不用, 一定 | 情态副词 必须、一定、差不多；否定副词 不必、不用
+## 7 | Must, had better, need not: 必须, 最好, 不用 | 情态副词 必须、一定、差不多；否定副词 不必、不用
 ex: 必须 means "must" (no choice), 最好 "you had better", 一定 "surely, be sure to", and 不用 / 不必 "there is no need to". They go before the verb.
 pat: Subject + 必须 / 最好 / 一定 / 不用 + verb
 eg: 你 发烧 了 ， 必须 去 医院 。 = You have a fever, you must go to the hospital.
@@ -273,7 +273,7 @@ gap: 他 一边 [看] 地图 一边 往 前 走 。 = He walks on while looking 
 bad: 他一边走一边唱歌。 / 他一边走唱歌一边。 / 一边他走一边唱歌。 = He sings as he walks.
 bad: 我喜欢一边听音乐一边做作业。 / 我喜欢一边听音乐做作业一边。 / 我一边喜欢听音乐一边做作业。 = I like doing homework while listening to music.
 
-## 8 | 又……又……, 一会儿……一会儿…… | 并列复句 又……，又……；一会儿……，一会儿……；频率副词 又
+## 8 | Both … and, now … now: 又……又……, 一会儿……一会儿…… | 并列复句 又……，又……；一会儿……，一会儿……；频率副词 又
 ex: 又 A 又 B means "both A and B": 又便宜又好 cheap and good. 一会儿 A 一会儿 B means "now A, now B", for things that keep changing. 又 alone means "again" for something that has already happened: 他又来了 he came again.
 pat: 又 + adjective / verb + 又 + adjective / verb · 一会儿 A，一会儿 B
 eg: 这 家 饭馆 的 菜 又 便宜 又 好吃 。 = The food in this restaurant is cheap and tasty.
@@ -339,7 +339,7 @@ gap: 你 [平时] 几 点 睡觉 ？ = What time do you usually go to bed? / 平
 bad: 妈妈总是很早起床。 / 妈妈很早总是起床。 / 总是妈妈起床很早。 = Mum always gets up early.
 bad: 我一直住在这儿。 / 我住一直在这儿。 / 一直我在这儿住一直。 = I have always lived here.
 
-## 10 | 看书看了一下午, 来中国三年了 | 重动句：主语+动词+宾语+动词+补语；数量补语3：表示动作结束到某个时间点的间隔时间
+## 10 | How long: 看书看了一下午, 来中国三年了 | 重动句：主语+动词+宾语+动词+补语；数量补语3：表示动作结束到某个时间点的间隔时间
 ex: With an object and a time or result, say the verb twice: 他看书看了一个下午 he read all afternoon, 我做饭做得不好. To say how long ago something started or ended, put the time after the verb and 了 at the end: 他来中国三年了 he has been in China for three years (since he came), 他们结婚十年了 they have been married ten years.
 pat: Verb + object + verb + 了 / 得 + … · verb (+ object) + time + 了
 eg: 他 看 书 看 了 一 个 下午 。 = He read all afternoon.
@@ -380,7 +380,7 @@ gap: 教室 里 [就] 我 一 个 人 。 = I am the only one in the classroom. 
 bad: 他十点才来。 / 他十点才来了。 / 他才十点来了。 = He didn't come until ten.
 bad: 我八点就起床了。 / 我八点就起床。 / 我就八点了起床。 = I got up as early as eight.
 
-## 11 | 只有……才……, 只要……就…… | 条件复句 只有……，才……；只要……，就……；连词 只有、只要
+## 11 | Only if, as long as: 只有……才……, 只要……就…… | 条件复句 只有……，才……；只要……，就……；连词 只有、只要
 ex: 只要 A 就 B: "as long as A, B" (A is enough). 只有 A 才 B: "only if A, B" (A is the only way). 只要努力，就能学好 as long as you work hard, you'll learn it well; 只有努力，才能学好 only by working hard will you learn it well.
 pat: 只要 A，(subject) 就 B · 只有 A，(subject) 才 B
 eg: 只要 每 天 练习 ， 你 就 能 说 好 汉语 。 = As long as you practise every day, you'll speak Chinese well.
@@ -419,7 +419,7 @@ gap: 他 是 一 个 很 [认真] 的 老师 。 = He is a very conscientious te
 bad: 我的那本词典很有用。 / 那本我的词典很有用。 / 我那的本词典很有用。 = That dictionary of mine is very useful.
 bad: 这是我们学校新的图书馆。 / 这是新的我们学校图书馆。 / 这是我们新的学校的图书馆的。 = This is our school's new library.
 
-## 12 | 在……上, 在……中, 对……来说 | 固定格式 在……上/下/中、对……来说
+## 12 | In, among, for someone: 在……上, 对……来说 | 固定格式 在……上/下/中、对……来说
 ex: 在……上 means "in (the field of)": 在学习上 in studying. 在……中 means "among, in the course of": 在比赛中. 在……下 means "under": 在老师的帮助下 with the teacher's help. 对……来说 means "for (someone)": 对我来说 for me.
 pat: 在 + noun + 上 / 中 / 下 · 对 + person + 来说
 eg: 在 学习 上 ， 他 很 认真 。 = When it comes to studying, he is very conscientious.
@@ -432,7 +432,7 @@ gap: 对 我 来 [说] ， 这 个 问题 很 简单 。 = For me this question 
 bad: 对我来说，这很重要。 / 对我说来，这很重要。 / 我对来说，这很重要。 = For me this is important.
 bad: 在学习上他很努力。 / 在上学习他很努力。 / 学习在上他很努力。 = He works hard at his studies.
 
-## 13 | 不但……而且…… | 递进复句 不但……，而且……；连词 不但、而且
+## 13 | Not only … but also: 不但……而且…… | 递进复句 不但……，而且……；连词 不但、而且
 ex: 不但 A 而且 B means "not only A, but also B". With one subject, 不但 goes after it: 他不但会说汉语，而且会写汉字. 也 or 还 often follows 而且.
 pat: Subject + 不但 A，而且 (还 / 也) B
 eg: 他 不但 会 说 汉语 ， 而且 会 写 汉字 。 = He can not only speak Chinese, he can also write characters.
@@ -445,7 +445,7 @@ gap: 他 不但 会 打 篮球 ， 而且 [还] 会 踢 足球 。 = He can not 
 bad: 他不但会说，而且会写。 / 他而且会说，不但会写。 / 不但他会说，他而且会写。 = He can not only speak but also write.
 bad: 这儿不但安静，而且干净。 / 这儿不但安静，但是干净。 / 这儿安静不但，干净而且。 = It's not only quiet here but also clean.
 
-## 13 | 如果……就……, ……的话 | 假设复句 如果……，就……；……的话，就……；连词 如果；助词 的话
+## 13 | If: 如果……就……, ……的话 | 假设复句 如果……，就……；……的话，就……；连词 如果；助词 的话
 ex: 如果 A，就 B means "if A, then B". 的话 at the end of the first part also means "if", and both can be used together: 如果你有时间的话，就来吧.
 pat: 如果 A (的话)，(subject) 就 B · A 的话，就 B
 eg: 如果 明天 下雨 ， 我们 就 不 去 了 。 = If it rains tomorrow, we won't go.
@@ -524,7 +524,7 @@ gap: 我 买 了 一 个 新 [箱子] 。 = I bought a new suitcase. / 箱儿 �
 bad: 老王是我的同事。 / 王老是我的同事。 / 老是王我的同事。 = Old Wang is my colleague.
 bad: 他是有名的画家。 / 他是有名的家画。 / 他是画有名的家。 = He is a famous painter.
 
-## 15 | 虽然……可是……, 只是, 不过 | 转折复句 虽然……，可是……；连词 可1、可是；范围副词 只是
+## 15 | But: 虽然……可是……, 只是 | 转折复句 虽然……，可是……；连词 可1、可是；范围副词 只是
 ex: 可是 means "but", like 但是, and can follow 虽然: 虽然工作很累，可是我很喜欢. 只是 means "only, it's just that": 这个工作很好，只是太远了 the job is good, it's just too far. 可 alone also means "but" in speech.
 pat: 虽然 A，可是 B · A，只是 B
 eg: 虽然 这 个 工作 很 累 ， 可是 我 很 喜欢 。 = Although this job is tiring, I like it.
@@ -550,7 +550,7 @@ gap: 我 以为 他 是 经理 ， 其实 他 [是] 司机 。 = I thought he wa
 bad: 他终于找到工作了。 / 他找到终于工作了。 / 终于他找到了工作了终于。 = He finally found a job.
 bad: 其实这不难。 / 这其实难不。 / 不难其实这。 = Actually this isn't hard.
 
-## 16 | 越来越, 越……越…… | 固定短语 越来越；固定格式 越……越……；程度副词 越
+## 16 | More and more: 越来越, 越……越…… | 固定短语 越来越；固定格式 越……越……；程度副词 越
 ex: 越来越 + adjective means "more and more": 天气越来越冷 it is getting colder and colder. 越 A 越 B means "the more A, the more B": 雨越下越大 the rain is getting heavier, 越看越喜欢 the more I look, the more I like it.
 pat: Subject + 越来越 + adjective · 越 A 越 B
 tip: 越来越很冷 is wrong: no 很 after 越来越.
@@ -564,7 +564,7 @@ gap: 这儿 的 游客 越 来 [越] 多 。 = There are more and more tourists 
 bad: 天气越来越冷。 / 天气越来越很冷。 / 天气越冷越来。 = It's getting colder and colder.
 bad: 雨越下越大。 / 雨越大越下。 / 越雨下越大。 = The rain is getting heavier.
 
-## 16 | 不一会儿, 一般来说, 看来 | 固定短语 不一会儿、一般来说、看来、在……看来
+## 16 | Soon, generally, it seems: 不一会儿, 一般来说, 看来 | 固定短语 不一会儿、一般来说、看来、在……看来
 ex: 不一会儿 means "soon after, before long". 一般来说 means "generally speaking". 看来 means "it seems, it looks as if" from what one sees; 在 + person + 看来 means "in someone's opinion".
 pat: 不一会儿，… · 一般来说，… · 看来，… · 在 + person + 看来，…
 eg: 刮 起 了 大 风 ， 不 一会儿 就 下雨 了 。 = A strong wind came up, and soon it began to rain.
@@ -603,7 +603,7 @@ gap: 咱们 [一块儿] 去 吧 。 = Let's go together. / 一点儿 一会儿
 bad: 咱们一起去吧。 / 一起咱们去吧咱们。 / 咱们去一起吧。 = Let's go together.
 bad: 这个问题怎样解决？ / 这个问题解决怎样？ / 怎样这个问题解决吗？ = How can this problem be solved?
 
-## 18 | 除了……以外, ……还 / 也 / 都…… | 固定格式 除了……（以外），……还/也/都……
+## 18 | Besides and except: 除了……以外 | 固定格式 除了……（以外），……还/也/都……
 ex: 除了 A (以外) with 还 or 也 means "besides A, also": 除了汉语，他还会说外语 besides Chinese he also speaks foreign languages. With 都 it means "except A": 除了他，大家都来了 everyone came except him.
 pat: 除了 A (以外)，subject + 还 / 也 … · 除了 A (以外)，… 都 …
 eg: 除了 看 书 以外 ， 我 还 喜欢 听 音乐 。 = Besides reading, I also like listening to music.
@@ -669,7 +669,7 @@ gap: 你 可以 发 邮件 [或] 打 电话 。 = You can send an email or call.
 bad: 我晚上看书或者听音乐。 / 我晚上看书还是听音乐。 / 我或者晚上看书听音乐或者。 = In the evening I read or listen to music.
 bad: 你喝茶还是喝咖啡？ / 你喝茶或者喝咖啡吗还是？ / 你或者喝茶还是咖啡？ = Do you drink tea or coffee?
 
-## 19 | 从……起, ……以前 / 以后 | 固定格式 从……起；（在）……以前/以后/前/后
+## 19 | From … on, before, after: 从……起, 以前, 以后 | 固定格式 从……起；（在）……以前/以后/前/后
 ex: 从 + time + 起 means "from … on": 从明天起 from tomorrow on. Time or event + 以前 / 前 means "before", + 以后 / 后 means "after": 吃饭以前 before eating, 下课以后 after class. 以前 and 以后 alone mean "in the past" and "in the future".
 pat: 从 + time + 起 · event + 以前 / 以后
 eg: 从 下 个 月 起 ， 我 要 每 天 锻炼 。 = From next month on, I'm going to exercise every day.

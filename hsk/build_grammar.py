@@ -95,7 +95,7 @@ def make(H,level,words,below,EXTRA,order):
             if not r:continue
             os_=others.split()
             for o in os_:chk_chars(o,where)
-            ans=ans.split('|')[0]
+            ans=ans.split('|')[0];os_=[o.split('|')[0] for o in os_]
             if ans in os_:errs.append(f'{where}: the answer is also a wrong choice ({v})')
             gz=''.join(t.split('|')[0] for t in a.split())+'＿'+''.join(t.split('|')[0] for t in b.split())
             cur['_gap'].append((gz,[ans.replace(' ','')]+[o for o in os_],en.strip(),r))

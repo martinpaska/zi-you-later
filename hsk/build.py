@@ -160,15 +160,15 @@ extra={k:v for lv in range(1,LEVEL+1) for k,v in runpy.run_path(os.path.join(R,f
 st,gram,drills,tests,gerr=build_grammar.make(H,LEVEL,[(w['s'],w['py']) for w in W],below,extra,[x['l'] for x in L]);errs+=gerr;meta['grammar']=gram
 if tests:meta['tests']=len(tests)
 pack=dict(ch=ch,wd=wd,st=st,t2=t2,meta=meta)
-# traditional forms of the characters of the sentences that come from lower levels (their own packs may not be loaded)
+# traditional forms of the characters of the sentences that come from lower levels (their own packs may not be loaded):
+# taken from the packs of those levels as built
+def built_t2(lv):
+    f=os.path.join(R,'js','data-hsk1.js') if lv==1 else os.path.join(R,'packs',f'hsk{lv}.js')
+    m=re.search(r'^(?:const HSK1|PACK_DATA\.hsk\d+)=(\{.*\});$',open(f,encoding='utf8').read(),flags=re.M)
+    return json.loads(m.group(1))['t2'] if m else {}
 if LEVEL>1:
     t2low={}
-    for lv in range(1,LEVEL):
-        for l in lines(f'cedict-hsk{lv}.u8',os.path.join(R,f'hsk{lv}')):
-            m=re.match(r'(\S+) (\S+) \[',l)
-            if m and len(m.group(1))==len(m.group(2)):
-                for a,b in zip(m.group(2),m.group(1)):
-                    if a!=b:t2low.setdefault(a,b)
+    for lv in range(1,LEVEL):t2low.update(built_t2(lv))
     for x in st:
         for c in ''.join(x[1]):
             if c not in t2 and c in t2low:t2[c]=t2low[c]

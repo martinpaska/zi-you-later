@@ -21,10 +21,10 @@ function resClear(m){const r=resAll();if(r[m]){delete r[m];store.set(RES_KEY,r)}
 function resume(m){const r=resAll()[m];if(!r)return;state.sel=new Set(r.sel);state.set=r.set;state.filter=r.filter;saveState();
   if(m==='cards')cards(fromK(r.k),fromK(r.r),r);else if(m==='learn')learn(r);else if(m==='write')write(null,r)}
 const BYKEY=new Map(ALLITEMS.map(x=>[x.k,x]));
-const LESSONS=PACK==='hsk1'?HSK1.meta.lessons.map(x=>x.l):['I','1','2','3','4','5','6','7','8','9','10'];
+const LESSONS=HSK?HSK.meta.lessons.map(x=>x.l):['I','1','2','3','4','5','6','7','8','9','10'];
 const LNAME=l=>l==='I'?'Intro':'Lesson '+l;
-const LZH=PACK==='hsk1'?Object.fromEntries(HSK1.meta.lessons.map(x=>[x.l,x.zh])):{I:'入门',1:'问好',2:'家庭',3:'时间',4:'爱好',5:'看朋友',6:'约时间',7:'学中文',8:'学校生活',9:'买东西',10:'交通'};
-const LTITLE=PACK==='hsk1'?Object.fromEntries(HSK1.meta.lessons.map(x=>[x.l,x.en])):{I:'Basics',1:'Greetings',2:'Family',3:'Dates and Time',4:'Hobbies',5:'Visiting Friends',6:'Making Appointments',7:'Studying Chinese',8:'School Life',9:'Shopping',10:'Transportation'};
+const LZH=HSK?Object.fromEntries(HSK.meta.lessons.map(x=>[x.l,x.zh])):{I:'入门',1:'问好',2:'家庭',3:'时间',4:'爱好',5:'看朋友',6:'约时间',7:'学中文',8:'学校生活',9:'买东西',10:'交通'};
+const LTITLE=HSK?Object.fromEntries(HSK.meta.lessons.map(x=>[x.l,x.en])):{I:'Basics',1:'Greetings',2:'Family',3:'Dates and Time',4:'Hobbies',5:'Visiting Friends',6:'Making Appointments',7:'Studying Chinese',8:'School Life',9:'Shopping',10:'Transportation'};
 const TONE={1:'high and level',2:'rising',3:'low, dipping',4:'falling',0:'light, unstressed'};
 const TLABEL=t=>t?'Tone '+t:'Neutral tone';
 // Characters with several readings: speak a homophone so the speech engine says the reading taught here.

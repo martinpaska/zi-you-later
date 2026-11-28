@@ -4,15 +4,18 @@
    Every release changes CACHE below, so the files of a version are cached together and an older cache is dropped.
    The big files that rarely change (DATA_FILES) live in their own cache, DATA: a release keeps it, so they are not
    downloaded again. Change DATA only when one of those files changes. */
-const CACHE='zyl-v20';
+const CACHE='zyl-v21';
 const CORE=['./','index.html','css/app.css',
-  'js/data-cin1.js','js/data-hsk1.js','js/packs.js','js/data-chars.js','js/items.js','js/util.js','js/state.js','js/examples.js','js/voice.js','js/update.js','js/speech.js','js/home.js','js/setup.js','js/review.js','js/cards.js','js/try-writing.js','js/questions.js','js/learn.js','js/test.js','js/match.js','js/vocab.js','js/sentences.js','js/grammar-data.js','js/grammar.js','js/writing.js','js/tones.js','js/progress.js','js/account.js','js/welcome.js','js/phonetics.js','js/admin.js','js/nudges.js','js/path.js','js/units.js','js/hsk-test.js','js/modes.js','js/news.js','js/strings-cs.js','js/i18n.js',
+  'js/data-cin1.js','js/data-hsk1.js','js/pack-load.js','js/packs.js','js/data-chars.js','js/items.js','js/util.js','js/state.js','js/examples.js','js/voice.js','js/update.js','js/speech.js','js/home.js','js/setup.js','js/review.js','js/cards.js','js/try-writing.js','js/questions.js','js/learn.js','js/test.js','js/match.js','js/vocab.js','js/sentences.js','js/grammar-data.js','js/grammar.js','js/writing.js','js/tones.js','js/progress.js','js/account.js','js/welcome.js','js/phonetics.js','js/admin.js','js/nudges.js','js/path.js','js/units.js','js/hsk-test.js','js/modes.js','js/news.js','js/strings-cs.js','js/i18n.js',
   'manifest.webmanifest','grammar-practice.json','grammar-hsk1.json','hsk1-tests.json','examples.json','phonetics.json','grammar1.json',
   'apple-touch-icon.png','icon-192.png','icon-512.png','favicon-32.png'];
-const DATA='zyl-data-v3';
+const DATA='zyl-data-v4';
 const DATA_FILES=['strokes.json','fonts/ziyoukai.woff2','https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js'];
-// the paintings behind Your path (art/*.webp) are big and never change: they go in DATA too, once they are first shown
-const isData=url=>DATA_FILES.some(f=>new URL(f,self.registration.scope).href===url.origin+url.pathname)||(url.origin===location.origin&&/\/art\/[^/]+\.webp$/.test(url.pathname));
+// the paintings behind Your path (art/*.webp) are big and never change: they go in DATA too, once they are first shown;
+// so do the stroke data and the font of HSK 2 and up (packs/hsk<N>-strokes.json, fonts/ziyoukai-hsk<N>.woff2), which only
+// the people who chose that course download. The rest of such a pack (packs/hsk<N>.js, -grammar.json) is cached in CACHE
+// on first use, like any other file of the app.
+const isData=url=>DATA_FILES.some(f=>new URL(f,self.registration.scope).href===url.origin+url.pathname)||(url.origin===location.origin&&/\/(art\/[^/]+\.webp|packs\/hsk\d+-strokes\.json|fonts\/ziyoukai-hsk\d+\.woff2)$/.test(url.pathname));
 
 self.addEventListener('install',e=>{
   e.waitUntil((async()=>{const c=await caches.open(CACHE),d=await caches.open(DATA);

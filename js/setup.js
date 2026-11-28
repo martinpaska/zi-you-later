@@ -3,7 +3,7 @@ const MODEINFO={
   review:{ic:'复',n:'Today\'s review',d:'Spaced repetition: due cards plus new ones from these lessons.',set:true,start:'Start the review'},
   cards:{ic:'卡',n:'Flashcards',d:'Flip, listen, sort into Know and Still learning.',set:true,filter:true},
   learn:{ic:'学',n:'Learn',d:'Meet each new item: what it is built from, how to remember it and its stroke order. Then rounds of questions bring back mistakes until you get them.',set:true,filter:true},
-  sentences:{ic:'句',n:'Sentences',d:PACK==='hsk1'?'Sentences for each lesson that use only HSK 1 words.':'Example sentences that use only vocabulary up to each lesson.',sent:true},
+  sentences:{ic:'句',n:'Sentences',d:HSK?{hsk1:'Sentences for each lesson that use only HSK 1 words.',hsk2:'Sentences for each lesson that use only HSK 1 and 2 words.',hsk3:'Sentences for each lesson that use only HSK 1–3 words.'}[PACK]:'Example sentences that use only vocabulary up to each lesson.',sent:true},
   write:{ic:'写',n:'Writing',d:'Stroke order, tracing and writing from memory.',set:true,filter:true},
   match:{ic:'配',n:'Match',d:'Pair Chinese with meanings against the clock.',set:true,filter:true},
   tones:{ic:'调',n:'Tone trainer',d:'Hear a character without seeing it and pick its tone. Then tone pairs in two-syllable words.'},

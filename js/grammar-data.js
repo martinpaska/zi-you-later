@@ -156,8 +156,8 @@ const GRAMMAR_CIN1={
   eg:[['我们要放假了。','Wǒmen yào fàng jià le.','We\'ll be on vacation soon.'],['我们要考试了。','Wǒmen yào kǎoshì le.','We\'re about to have an exam.']]}]
 };
 
-// HSK 1: the points of the official HSK 1 grammar list, built by hsk1/build.py from hsk1/grammar.txt
-const GRAMMAR=PACK==='hsk1'?HSK1.meta.grammar:GRAMMAR_CIN1;
+// HSK: the points of the official grammar list of that level, built by hsk/build.py from hsk<N>/grammar.txt
+const GRAMMAR=HSK?HSK.meta.grammar:GRAMMAR_CIN1;
 // Longer explanations for each grammar point, in the same order as GRAMMAR.
 const GDETAIL={
 '1':[

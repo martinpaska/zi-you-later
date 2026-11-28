@@ -37,7 +37,7 @@ gap: 他 个子 [高高|gāogāo] 的 。 = He is nice and tall. / 很高高 高
 bad: 他个子高高的。 / 他个子很高高的。 / 他个子高的高。 = He is nice and tall.
 bad: 她眼睛大大的。 / 她眼睛很大大。 / 她大大眼睛的。 = Her eyes are big.
 
-## 2 | 为什么, 因为……所以…… | 疑问代词 为什么；因果复句 因为……，所以……；连词 因为、所以
+## 2 | Why and because: 为什么, 因为……所以…… | 疑问代词 为什么；因果复句 因为……，所以……；连词 因为、所以
 ex: 为什么 asks "why". Answer with 因为 (because), and say the result with 所以 (so). You may use both together, or only one of them.
 pat: 为什么……？ · 因为 A，所以 B
 tip: 为什么 goes after the subject, like other question words: 你为什么不来？
@@ -67,7 +67,7 @@ gap: 你 怎么 [还] 不 起床 ？ = Why are you still not up? / 已经 都
 bad: 我已经吃了。 / 已经我吃了。 / 我吃已经了。 = I have already eaten.
 bad: 都十点了！ / 十点都了！ / 都了十点！ = It's already ten!
 
-## 2 | 虽然……但是…… | 转折复句 虽然……，但是……；连词 但、但是、虽然
+## 2 | Although: 虽然……但是…… | 转折复句 虽然……，但是……；连词 但、但是、虽然
 ex: 但是 and 但 mean "but". 虽然 means "although". In Chinese both halves are marked: 虽然 A，但是 B. The English "although … but" sounds wrong, but in Chinese it is normal.
 pat: 虽然 A，但是 / 但 B
 tip: 虽然 may go before or after the subject: 虽然他很忙 or 他虽然很忙.
@@ -94,7 +94,7 @@ gap: 我 [有时] 坐 地铁 ， 有时 打车 。 = Sometimes I take the metro,
 bad: 他正在看书呢。 / 他看书正在呢。 / 正在他看书呢。 = He is reading right now.
 bad: 外边正下着雨。 / 外边正下雨着。 / 外边着正下雨。 = It is raining outside.
 
-## 3 | 这么, 那么, 这样, 那样 | 代词 · 指示代词 那么、那样、这么、这样
+## 3 | So, like this: 这么, 那么, 这样, 那样 | 代词 · 指示代词 那么、那样、这么、这样
 ex: 这么 and 那么 go before an adjective: 这么大 this big, 那么远 that far. 这样 and 那样 mean "like this / like that" and can stand before a noun (这样的书) or a verb (这样写). 这 is for things near, 那 for things far away.
 pat: 这么 / 那么 + adjective · 这样 / 那样 + (的) noun / verb
 eg: 你 的 书包 怎么 这么 大 ？ = Why is your schoolbag so big?
@@ -136,7 +136,7 @@ bad: 今天比昨天冷。 / 今天比昨天很冷。 / 今天冷比昨天。 = 
 bad: 他比我高一点儿。 / 他比我一点儿高。 / 他一点儿比我高。 = He is a little taller than me.
 bad: 地铁比公交车快。 / 地铁比公交车很快。 / 比地铁公交车快。 = The metro is faster than the bus.
 
-## 4 | A 有 / 没有 B 那么…… | 比较句1：A有/没有B（+这么/那么）+形容词；“有”字句2：表示达到
+## 4 | Not as … as: A 没有 B 那么…… | 比较句1：A有/没有B（+这么/那么）+形容词；“有”字句2：表示达到
 ex: To say A is not as … as B, use 没有: 今天没有昨天那么冷 today is not as cold as yesterday. With 有 the sentence says A reaches B: 他有你这么高吗？ Is he as tall as you?
 pat: A + 有 / 没有 + B (+ 这么 / 那么) + adjective
 eg: 今天 没有 昨天 那么 热 。 = Today is not as hot as yesterday.
@@ -149,7 +149,7 @@ gap: 坐 车 没有 走路 [舒服] 。 = Going by car is not as comfortable as 
 bad: 今天没有昨天冷。 / 今天不有昨天冷。 / 今天没有昨天很冷。 = Today is not as cold as yesterday.
 bad: 他有我这么高。 / 他有这么我高。 / 他这么有我高。 = He is as tall as me.
 
-## 4 | 最, 多, 好, 可能 | 程度副词 多、好、最；能愿动词 可能
+## 4 | The most, so, maybe: 最, 多, 好, 可能 | 程度副词 多、好、最；能愿动词 可能
 ex: 最 means "the most": 最好 the best, 最冷 the coldest. 好 and 多 before an adjective say "how …!" or "so …": 好冷啊！ So cold! 今天多热啊！ How hot it is today! 可能 means "may, possibly".
 pat: 最 + adjective · 好 / 多 + adjective + 啊 · 可能 + verb
 eg: 这儿 一 月 最 冷 。 = Here January is the coldest.
@@ -282,7 +282,7 @@ gap: 你 喜欢 肉 还是 [鱼] ？ = Do you like meat or fish? / 吗 呢
 bad: 你喝茶还是喝咖啡？ / 你喝茶还是喝咖啡吗？ / 你还是喝茶喝咖啡？ = Do you drink tea or coffee?
 bad: 你去还是不去？ / 你去还是不去吗？ / 还是你去不去？ = Are you going or not?
 
-## 7 | 红的, 我买的, ……什么的 | “的”字短语；定语：动词或动词性短语、主谓短语作定语；固定短语 什么的
+## 7 | The red one, the one I bought: 的 phrases and 什么的 | “的”字短语；定语：动词或动词性短语、主谓短语作定语；固定短语 什么的
 ex: A noun can be left out after 的 when it is clear: 红的 the red one, 我的 mine, 我买的 the one I bought. A verb phrase or a whole clause can also describe a noun with 的: 我买的咖啡 the coffee I bought. 什么的 at the end of a list means "and so on".
 pat: adjective / pronoun / verb phrase + 的 (+ noun) · A、B 什么的
 eg: 这 个 是 我 的 ， 那 个 是 你 的 。 = This one is mine, that one is yours.
@@ -443,7 +443,7 @@ gap: 我 [有时候] 早上 跑步 。 = Sometimes I run in the morning. / 时�
 bad: 我们一起去吧。 / 我们去一起吧。 / 一起我们去吧。 = Let's go together.
 bad: 他经常来这儿。 / 他来这儿经常。 / 经常他来这儿来。 = He often comes here.
 
-## 15 | 一位老师, 两间教室, 三名学生 | 量词 · 专用名量词：条、位、间、名
+## 15 | Measure words for people and rooms: 位, 名, 间 | 量词 · 专用名量词：条、位、间、名
 ex: 位 is the polite measure word for people: 一位老师, 几位？ how many of you (in a restaurant). 名 counts people in a formal way, often for jobs and students: 三名医生. 间 counts rooms: 一间教室, 两间房间.
 pat: number + 位 / 名 + person · number + 间 + room
 eg: 我们 公司 有 两 位 中国 老师 。 = Our company has two Chinese teachers.

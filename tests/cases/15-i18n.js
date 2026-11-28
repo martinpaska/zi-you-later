@@ -10,16 +10,16 @@ module.exports=[
     assert.deepEqual(miss,[],'not translated:\n'+miss.join('\n'));assert.deepEqual(a.errors,[])}finally{await a.close()}
 }],
 ['the course, mode and story texts of both courses have a Czech text',async t=>{
-  for(const pack of ['cin1','hsk1']){
+  for(const pack of ['cin1','hsk1','hsk2','hsk3']){
     const a=await open(t,{pack,lang:'cs'});
     try{const miss=await a.page.evaluate(()=>{
         const s=[...PACKS.flatMap(p=>[p.n,p.d]),...Object.values(MODEINFO).flatMap(i=>[i.n,i.d]),PATH.story,PATH.intro,PATH.goal.t,PATH.goal.d,PATH.goal.b,...SEAL_CHAPTERS.flatMap(([n,,st])=>[n,st]),...Object.values(LTITLE)];
-        return s.filter(Boolean).filter(x=>!/[㐀-鿿]/.test(x)&&!['HSK 1','Integrated Chinese 1/1 · FF MUNI'].includes(x)&&T(x)==null)});   // (names stay as they are)
+        return s.filter(Boolean).filter(x=>!/[㐀-鿿]/.test(x)&&!/^HSK \d$/.test(x)&&x!=='Integrated Chinese 1/1 · FF MUNI'&&T(x)==null)});   // (names stay as they are)
       assert.deepEqual(miss,[],pack+' not translated:\n'+miss.join('\n'))}finally{await a.close()}}
 }],
 ['Czech screens show no English interface text (Home, Your path, a lesson, Settings)',async t=>{
   const leftovers=/\b(Continue|Settings|Close|Reminders?|Your path|Chapter \d|You are here|Older news|Completed|Lessons?|seals?|Final test|Flashcards|Grammar|Sentences|Writing|Vocabulary)\b/;
-  for(const pack of ['hsk1','cin1']){
+  for(const pack of ['hsk1','cin1','hsk2','hsk3']){
     const a=await open(t,{pack,lang:'cs',srs:known([],0)});
     try{const shots={};
       shots.home=await a.text('#home');

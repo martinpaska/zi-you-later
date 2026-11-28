@@ -11,7 +11,7 @@ function grammar(l0){
       <details class="more gegd"><summary><span>Examples <span class="gcnt">${[...g.eg,...(D.eg||[])].length}</span></span></summary><div class="geg">${[...g.eg,...(D.eg||[])].map(([z,p,e])=>`<div class="ge"><div><span class="han">${esc(zh(z))}</span><span class="pyl">${pyHtml(p)}</span><span class="en">${esc(e)}</span></div><button class="play" data-gsay="${esc(z)}" aria-label="Play">${PLAY}</button></div>`).join('')}</div></details>
       ${g.tip?`<p class="gtip"><b>Watch out:</b> ${esc(g.tip)}</p>`:''}<button class="btn gdbtn" data-gd="${i}">✎ Practise this point</button></article>`).join('')}</div>
     ${list.length?`<div class="btns"><button class="btn" id="gpr">Practise Lesson ${l} sentences</button></div>`:''}
-    <p class="hint">${PACK==='hsk1'?'The grammar points follow the official HSK 1 grammar list (HSK syllabus, 2025). The explanations, examples and exercises were written for this app and use only HSK 1 words.':'The grammar points follow the textbook. The explanations and examples were written for this app.'}</p>`);
+    <p class="hint">${HSK?{hsk1:'The grammar points follow the official HSK 1 grammar list (HSK syllabus, 2025). The explanations, examples and exercises were written for this app and use only HSK 1 words.',hsk2:'The grammar points follow the official HSK 2 grammar list (HSK syllabus, 2025). The explanations, examples and exercises were written for this app and use only HSK 1 and 2 words.',hsk3:'The grammar points follow the official HSK 3 grammar list (HSK syllabus, 2025). The explanations, examples and exercises were written for this app and use only HSK 1–3 words.'}[PACK]:'The grammar points follow the textbook. The explanations and examples were written for this app.'}</p>`);
   M().querySelectorAll('[data-gl]').forEach(b=>b.onclick=()=>grammar(b.dataset.gl));
   M().querySelectorAll('[data-gsay]').forEach(b=>b.onclick=e=>{e.stopPropagation();sayText(b.dataset.gsay)});
   if($('gpr'))$('gpr').onclick=()=>build(list,false);
@@ -45,7 +45,7 @@ async function gram1(k0){
 
 /* ---------- Grammar drills: 20 exercises for one grammar point ---------- */
 let GDRILL=null;
-async function loadGdrill(){if(GDRILL)return GDRILL;const r=await fetch(PACK==='hsk1'?'grammar-hsk1.json':'grammar-practice.json');GDRILL=await r.json();return GDRILL}
+async function loadGdrill(){if(GDRILL)return GDRILL;const r=await fetch(PACK==='hsk1'?'grammar-hsk1.json':HSK?`packs/${PACK}-grammar.json`:'grammar-practice.json');GDRILL=await r.json();return GDRILL}
 function gdrill(l,gi,only){
   const sem=!!(G1D&&G1D[l]),G=sem?{t:'Chinese Grammar I · Seminar '+l.slice(1)}:GRAMMAR[l][gi],toList=()=>sem?gram1(l):grammar(l),zh=t=>state.script==='t'?toTrad(t):t,NONE='∅';
   if(!GDRILL){open(bar(0,'')+`<div class="card"><p class="hint">Loading exercises…</p></div>`);

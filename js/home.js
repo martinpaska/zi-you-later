@@ -25,23 +25,26 @@ function renderHome(){
   nudgeHome();packHome();pathHome();
 }
 $('goReview').onclick=()=>review();
-/* modes that need content a pack does not have are hidden there (HSK 1: no chapter tests and no FF MUNI courses, so its Courses group is hidden) */
-const PACK_HIDE={cin1:['hsktest','learn','album'],hsk1:['test','gram1','pinyin','album','learn']};   // the seals are on Home (Your path) in both courses
+/* modes that need content a pack does not have are hidden there (HSK: no chapter tests and no FF MUNI courses, so its Courses group is hidden;
+   HSK 2 and 3 have no practice test yet, as there is no official sample test of the new format for them) */
+const PACK_HIDE={cin1:['hsktest','learn','album'],hsk1:['test','gram1','pinyin','album','learn'],hsk2:['test','gram1','pinyin','album','learn','hsktest'],hsk3:['test','gram1','pinyin','album','learn','hsktest']};   // the seals are on Home (Your path) in both courses
 function packHome(){const P=PACKS.find(x=>x.id===PACK);if($('packname'))$('packname').textContent=P.s;   // plain text: the page translator turns it into Czech (T_ is not ready on the first render)
   document.querySelectorAll('#home [data-mode]').forEach(b=>{if((PACK_HIDE[PACK]||[]).includes(b.dataset.mode))b.hidden=true});
   document.querySelectorAll('#home .mgroup').forEach(g=>{g.hidden=![...g.querySelectorAll('[data-mode]')].some(b=>!b.hidden)})}
 $('packbtn').onclick=()=>packSheet();
 function packSheet(){
-  const items=x=>x==='hsk1'?[...HSK1.ch,...HSK1.wd].map(r=>r.length===7?'c:'+r[1]+'|'+r[3]:'w:'+r[1]+'|'+r[2]):[...DATA_CIN1.ch,...DATA_CIN1.wd].map(r=>r.length===7?'c:'+r[1]+'|'+r[3]:'w:'+r[1]+'|'+r[2]);
+  // a pack that is not loaded (HSK 2 and up, unless chosen) shows its size from PACKS, without the progress bar
+  const dataOf=x=>x==='cin1'?DATA_CIN1:PACK_DATA[x]||null;
+  const items=d=>[...d.ch,...d.wd].map(r=>r.length===7?'c:'+r[1]+'|'+r[3]:'w:'+r[1]+'|'+r[2]);
   const known=k=>{const r=srs[k];return r&&r.n&&r.i>=7};
   const saved=keyHandler,sh=document.createElement('div');sh.className='nsheet';
   sh.innerHTML=`<div class="npanel" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="pkt" style="height:auto;max-height:92svh"><div class="nhead"><span class="ngrab" aria-hidden="true"></span>
     <button class="nclose" id="pkx" type="button">${T_('Close')}</button><h2 id="pkt">${T_('Course')}</h2><span></span></div>
-    <div class="nbody">${PACKS.map(P=>{const ks=[...new Set(items(P.id))],k=ks.filter(known).length,d=P.id==='hsk1'?HSK1:DATA_CIN1;
+    <div class="nbody">${PACKS.map(P=>{const d=dataOf(P.id),ks=d?[...new Set(items(d))]:[],k=ks.filter(known).length;
       return `<button class="pkcard${P.id===PACK?' on':''}" data-pack="${P.id}" type="button"><span class="pkzh" lang="zh-Hans">${P.zh}</span><span class="pkt"><b>${esc(T_(P.n))}</b><small>${esc(T_(P.d))}</small>
-        <small class="pkn">${esc(T_(`${new Set(d.ch.map(r=>r[2])).size} characters · ${d.wd.length} words · ${d === HSK1 ? HSK1.meta.lessons.length : 11} lessons`))}</small>
-        <span class="mbar"><i class="m2" style="width:${ks.length?k/ks.length*100:0}%"></i></span><small>${esc(T_(`${k} of ${ks.length} known`))}</small></span>${P.id===PACK?`<span class="pkon">✓</span>`:''}</button>`}).join('')}
-      <p class="hint" style="margin:4px 4px 0">${T_('What you know counts in both courses: a character or word you learnt in one is known in the other too.')}</p></div></div>`;
+        <small class="pkn">${esc(T_(d?`${new Set(d.ch.map(r=>r[2])).size} characters · ${d.wd.length} words · ${d.meta?d.meta.lessons.length:11} lessons`:`${P.c[0]} characters · ${P.c[1]} words · ${P.c[2]} lessons`))}</small>
+        ${d?`<span class="mbar"><i class="m2" style="width:${ks.length?k/ks.length*100:0}%"></i></span><small>${esc(T_(`${k} of ${ks.length} known`))}</small>`:''}</span>${P.id===PACK?`<span class="pkon">✓</span>`:''}</button>`}).join('')}
+      <p class="hint" style="margin:4px 4px 0">${T_('What you know counts in every course: a character or word you learnt in one is known in the others too.')}</p></div></div>`;
   document.body.appendChild(sh);document.body.style.overflow='hidden';sheetFocus(sh);
   const close=()=>{sh.remove();document.body.style.overflow='';keyHandler=saved};
   sh.onclick=e=>{if(e.target===sh)close();const b=e.target.closest('[data-pack]');if(!b)return;

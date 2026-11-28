@@ -1,7 +1,8 @@
-/* ---------- HSK 1 path: an album of seals, one per lesson. A seal fills with ink as the lesson's characters and words are
+/* ---------- Your path: an album of seals, one per lesson. A seal fills with ink as the lesson's characters and words are
    learnt (learning counts half, known counts full) and is stamped for good when its Final test is passed with 80 % or more.
    Stamped seals are kept in state.seals ('hsk1:5' → {d,s}), so they sync with the account. ---------- */
-/* each course has its own seals: Chinese 1 (Intro + Lessons 1–10 of Integrated Chinese 1/1) and HSK 1 (15 lessons) */
+/* each course has its own seals: Chinese 1 (Intro + Lessons 1–10 of Integrated Chinese 1/1), HSK 1 (15 lessons), HSK 2 (17) and HSK 3 (22).
+   HSK 2 and 3 have no practice test yet (no official sample test of the new format), so their goal is the grammar. */
 const PATHS={
   hsk1:HSK1&&{lessons:HSK1.meta.lessons,write:HSK1.meta.write,story:'A year in Beijing',intro:'You have just landed in Beijing for a year. Every lesson is a stop on the way, and every stop gives you a seal.',
     chapters:[['The basics',['1','2','3','4','5'],'You have just landed in Beijing.'],
@@ -9,6 +10,19 @@ const PATHS={
       ['School and work',['12','13','14'],'Chinese classes and a first part-time job.'],
       ['Chinese culture',['15'],'Tea and dumplings with the family.']],
     goal:{zh:'考',t:'The HSK 1 test',d:'Forty questions, listening and reading. Try the practice test whenever you like.',b:'HSK 1 practice test ›',go:'data-go="hsktest"'}},
+  hsk2:PACK_DATA.hsk2&&{lessons:PACK_DATA.hsk2.meta.lessons,write:PACK_DATA.hsk2.meta.write,story:'Back in China',intro:'Your second year in China: you know your way around now. Every lesson is a step further, and every step gives you a seal.',
+    chapters:[['People and things',['1','2','3','4','5'],'New friends, new things, a new neighbourhood.'],
+      ['Out and about',['6','7','8','9','10','11'],'Cafés, metro rides, shops and a game of football.'],
+      ['Home, school and work',['12','13','14','15'],'Exams at school and your first real job.'],
+      ['Family and New Year',['16','17'],'New Year with your Chinese grandparents.']],
+    goal:{zh:'考',t:'The HSK 2 test',d:'A practice test in the new HSK 2 format comes once the official sample test is out. Until then, the grammar of every lesson is waiting for you.',b:'Grammar ›',go:'data-mode="grammar"'}},
+  hsk3:PACK_DATA.hsk3&&{lessons:PACK_DATA.hsk3.meta.lessons,write:PACK_DATA.hsk3.meta.write,story:'Living in China',intro:'You live in China now, with a flat, a job and friends. Every lesson is a part of your new life, and every part gives you a seal.',
+    chapters:[['A new life',['1','2','3','4','5','6'],'New faces, a bank card, dinner out and a train ticket.'],
+      ['Home and family',['7','8','9','10'],'A cold, a weekend off, a flat of your own.'],
+      ['Study and work',['11','12','13','14','15'],'Classes, the school sports day and the office.'],
+      ['Nature and the city',['16','17','18'],'Seasons, places and a city that keeps changing.'],
+      ['Culture',['19','20','21','22'],'Shows, matches, chopsticks and festivals.']],
+    goal:{zh:'考',t:'The HSK 3 test',d:'A practice test in the new HSK 3 format comes once the official sample test is out. Until then, the grammar of every lesson is waiting for you.',b:'Grammar ›',go:'data-mode="grammar"'}},
   cin1:{lessons:Object.entries({I:'人',1:'好',2:'家',3:'天',4:'乐',5:'茶',6:'话',7:'汉',8:'信',9:'买',10:'车'}).sort((a,b)=>LESSONS.indexOf(a[0])-LESSONS.indexOf(b[0])).map(([l,seal])=>({l,en:LTITLE[l],zh:LZH[l],seal})),write:null,
     story:'Your first semester',intro:'Your first semester of Chinese at FF MUNI, lesson by lesson. Every lesson you finish gives you a seal.',
     chapters:[['First steps',['I','1','2'],'Strokes, tones and the first characters.'],
@@ -26,7 +40,7 @@ const sealOf=l=>(state.seals||{})[PACK+':'+l];
 function nextLesson(){return unitNow().l}
 function sealHtml(l,cls=''){const m=lessonMeta(l),done=!!sealOf(l),p=lessonInk(l);
   return `<span class="stamp ${done?'done':p?'prog':''} ${cls}" style="--p:${done?100:p}${done?`;transform:rotate(${[-4,3,-2,4,-3][LESSONS.indexOf(l)%5]}deg)`:''}" lang="zh-Hans"><span>${m.seal}</span></span>`}
-// Home (HSK 1 only): the next lesson and the row of seals
+// Home: the next lesson and the row of seals
 function pathHome(){const box=$('pathbox');if(!box)return;box.hidden=false;
   const due=dueAll().length,now=unitNow(),n=now.l,got=PL.filter(x=>sealOf(x.l)).length,ch=SEAL_CHAPTERS.findIndex(c=>c[1].includes(n));
   box.innerHTML=`<h2>Your path</h2><button class="jcard" data-go="album" type="button">${sealHtml(n,'pn')}<span class="jct"><small class="eyebrow">${esc(PATH.story)}</small><b>${esc(`Continue: ${LNAME(n)}`)}</b><small class="jnext">${esc(unitName(n,now.u))}</small>

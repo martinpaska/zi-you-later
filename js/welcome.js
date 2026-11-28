@@ -3,7 +3,7 @@ function welcome(){keyHandler=null;stopAudio();M().hidden=true;M().innerHTML='';
   if(MOTION){w.classList.remove('anim');void w.offsetWidth;w.classList.add('anim')}}
 $('wtry').onclick=()=>{store.set('ic-welcomed',true);signupFlow=false;goHome()};
 // the tiles of "What you'll practise" open that exercise straight away, without signing up
-document.querySelectorAll('[data-wmode]').forEach(b=>b.onclick=()=>{store.set('ic-welcomed',true);signupFlow=false;goHome();const m=b.dataset.wmode;setup(PACK==='hsk1'&&m==='test'?'hsktest':m)});
+document.querySelectorAll('[data-wmode]').forEach(b=>b.onclick=()=>{store.set('ic-welcomed',true);signupFlow=false;goHome();const m=b.dataset.wmode;setup(PACK==='hsk1'&&m==='test'?'hsktest':HSK&&m==='test'?'sentences':m)});
 $('tologo').onclick=()=>welcome();
 $('wsign').onclick=$('wsign2').onclick=()=>{store.set('ic-welcomed',true);signupFlow=true;account()};
 {const lg=document.querySelector('#home .logo');if(lg)$('welcome').querySelector('.wlogo').replaceWith(lg.cloneNode(true))}
