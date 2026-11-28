@@ -116,17 +116,26 @@ function unitPlan(l,u,lv){
   const pick=(a,n)=>shuffle(a).slice(0,n),mc=()=>['mean','char','audio'][Math.random()*3|0];
   const old=pick(before.filter(seen).length?before.filter(seen):before,2).map(x=>({t:lv>1?'pinyin':mc(),x}));
   if(u.kind==='w'){const it=u.items,chars=u.chars.length?u.chars:it.filter(x=>x.kind==='c'),ss=sentsWith(l,it),wr=writable(l,chars);
-    if(lv===1){it.forEach((x,i)=>{if(mastery(x)<2)T.push({t:'intro',x});T.push({t:'mean',x});if(i&&i%2===0)T.push({t:'char',x:it[i-1]})});
-      T.push({t:'match',xs:it});pick(it,3).forEach(x=>T.push({t:Math.random()<.5?'audio':'char',x}));
+    if(lv===1){
+      /* level 1 teaches the words two at a time: meet one, recognise it at once, meet the next, recognise it, then tell the
+         two apart (choose the Chinese, listen). Each word thus goes from recognising it to recalling it; the pairs are
+         mixed at the end with a match, a tone, the pinyin, a sentence and a character to write. */
+      for(let i=0;i<it.length;i+=2){const p=it.slice(i,i+2);
+        p.forEach(x=>{if(mastery(x)<2)T.push({t:'intro',x});T.push({t:'mean',x})});
+        p.forEach((x,j)=>T.push({t:j?'audio':'char',x}))}
+      T.push({t:'match',xs:it});
       const tn=it.filter(toneable);if(tn.length)T.push({t:'tone',x:pick(tn,1)[0]});T.push({t:'pinyin',x:pick(it,1)[0]});
       if(chars.length&&it.some(x=>x.kind==='w'))T.push({t:'mean',x:pick(chars,1)[0]});
       if(ss.length)T.push({t:'build',s:pick(ss,1)[0]});if(wr.length)T.push({t:'write',x:pick(wr,1)[0],lv});}
-    else{it.forEach(x=>T.push({t:lv===3?(Math.random()<.5?'pinyin':'audio'):(Math.random()<.5?'char':'audio'),x}));
-      T.push({t:'match',xs:it});pick(it.filter(toneable),2).forEach(x=>T.push({t:'tone',x}));pick(it,lv===3?2:1).forEach(x=>T.push({t:'pinyin',x}));
+    else{
+      // levels 2 and 3: no intros; every word is recalled (level 2) or produced (level 3), from the easier exercises to the harder
+      const easy=[],hard=[];
+      it.forEach(x=>{easy.push({t:lv===3?'audio':(Math.random()<.5?'char':'audio'),x});hard.push({t:lv===3||Math.random()<.4?'pinyin':'char',x})});
+      T.push(...shuffle(easy),{t:'match',xs:it});pick(it.filter(toneable),2).forEach(x=>T.push({t:'tone',x}));T.push(...shuffle(hard));
       if(chars.length&&it.some(x=>x.kind==='w'))pick(chars,2).forEach(x=>T.push({t:lv===3?'pinyin':'char',x}));
-      pick(ss,2).forEach(s=>T.push({t:'build',s,listen:lv===3}));pick(wr,2).forEach(x=>T.push({t:'write',x,lv}));
-      shuffleTail(T,0)}
-    T.push(...old)}
+      pick(ss,2).forEach(s=>T.push({t:'build',s,listen:lv===3}));pick(wr,lv===3?2:1).forEach(x=>T.push({t:'write',x,lv}))}
+    // two words from the units before come back between the new ones, not only at the end
+    old.forEach((t,i)=>T.splice(Math.min(T.length,Math.round(T.length*(i+1)/3)),0,t))}
   else if(u.kind==='g'){const drills=u.pts.map(i=>({i,qs:shuffle((GDRILL&&GDRILL[l+'-'+i])||[])}));
     drills.forEach(({i,qs})=>{if(lv===1)T.push({t:'gcard',g:GRAMMAR[l][i]});qs.slice(0,lv===1?4:5).forEach(q=>T.push({t:'gram',q,g:GRAMMAR[l][i]}))});
     if(lv>1)shuffleTail(T,0);
@@ -148,12 +157,17 @@ function unitRun(l,id,lv){
   if(need.length){open(ubar(0)+`<div class="card"><p class="hint">Loading…</p></div>`);Promise.all(need).then(()=>{if(M().querySelector('.ubar'))unitPlay(l,u,lv)});return}
   unitPlay(l,u,lv)}
 const ubar=(pct,combo)=>`<div class="bar ubar"><button class="back" data-go="album" aria-label="Your path">✕</button><div class="progress"><span style="width:${pct}%"></span></div><span class="count">${combo>=3?`<span class="ucombo">${combo}×</span>`:''}</span></div>`;
-function unitPlay(l,u,lv){
-  const plan=unitPlan(l,u,lv),q=plan.slice(),total=plan.filter(t=>t.t!=='intro'&&t.t!=='gcard').length||1,t0=Date.now();
+// extra: a list of items to go over again after a unit (its mistakes); such a round leaves the unit's level as it is
+function unitPlay(l,u,lv,extra){
+  const plan=extra?shuffle(extra.flatMap(x=>[{t:'char',x},{t:'audio',x}])).concat(shuffle(extra.map(x=>({t:'pinyin',x})))):unitPlan(l,u,lv),q=plan.slice(),total=plan.filter(t=>t.t!=='intro'&&t.t!=='gcard').length||1,t0=Date.now();
   let solved=0,firstOk=0,asked=0,combo=0,noIntro=false,noWrite=false;const graded=new Set(),missed=new Set(),tries=new Map();
   const head=()=>ubar(Math.min(100,solved/total*100),combo);
   const gradeOnce=(x,ok)=>{if(!x||graded.has(x.k))return;graded.add(x.k);grade(x,ok)};
-  function next(){keyHandler=null;const t=q.shift();if(!t)return finish();
+  // leaving a unit half way asks first (what was answered is kept in the review, the unit is not marked done)
+  const quit=e=>{const b=e.target.closest('.ubar .back');if(!b||!M().querySelector('.ucard,.intro'))return;if(!solved)return;
+    if(!confirm(T_('Leave this unit? It is not finished yet, so it stays open on your path.'))){e.preventDefault();e.stopImmediatePropagation()}};
+  document.addEventListener('click',quit,true);
+  function next(){keyHandler=null;const t=q.shift();if(!t){document.removeEventListener('click',quit,true);return finish()}
     if(t.t==='intro'){if(noIntro)return next();return intro(t.x,0,1,()=>next(),()=>{noIntro=true;next()}),fixBar()}
     if(t.t==='write'&&noWrite){solved++;return next()}
     ({gcard:gcardTask,mean:mcTask,char:mcTask,audio:mcTask,pinyin:pyTask,tone:toneTask,match:matchTask,build:buildTask,write:writeTask,gram:gramTask})[t.t](t)}
@@ -161,7 +175,7 @@ function unitPlay(l,u,lv){
   // after an answer: feedback, then Continue. A mistake brings the exercise back at the end (twice at most).
   function answered(t,ok,html,extra=''){
     const n=(tries.get(t)||0)+1;tries.set(t,n);if(n===1){asked++;if(ok)firstOk++}
-    if(ok){solved++;combo++}else{combo=0;if(t.x)missed.add(t.x);if(n<3)q.push(t);else solved++}
+    if(ok){solved++;combo++}else{combo=0;if(t.x)missed.add(t.x);if(n<3)q.splice(Math.min(q.length,3),0,t);else solved++}   // a mistake comes back three exercises later
     const b=M().querySelector('.ubar .progress span');if(b)b.style.width=Math.min(100,solved/total*100)+'%';const c=M().querySelector('.ubar .count');if(c)c.innerHTML=combo>=3?`<span class="ucombo">${combo}×</span>`:'';
     $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}"><h3>${ok?(combo>=5?'Excellent!':'Correct!'):'Not quite. It will come back.'}</h3>${html||''}<div class="btns">${extra}<button class="btn" id="ucont" type="button">Continue ›</button></div></div>`;
     $('fb').scrollIntoView({block:'nearest',behavior:'smooth'});$('ucont').onclick=next;$('ucont').focus({preventScroll:true});
@@ -257,15 +271,17 @@ function unitPlay(l,u,lv){
       $('ar').querySelectorAll('.chunk').forEach(c=>c.classList.add(ok?'cok':'cbad'));$('gbt').hidden=true;fin(ok)};render()}
   function finish(){keyHandler=null;
     // every item of a words unit counts as met, even one that was only in an intro or a match
-    if(u.kind==='w')u.items.forEach(x=>gradeOnce(x,!missed.has(x)));
-    unitSave(l,u,lv);
+    if(u.kind==='w'&&!extra)u.items.forEach(x=>gradeOnce(x,!missed.has(x)));
+    if(!extra)unitSave(l,u,lv);
+    const mi=[...missed];
     const acc=asked?Math.round(firstOk/asked*100):100,min=Math.max(1,Math.round((Date.now()-t0)/6e4)),us=lessonUnits(l),nx=unitNow(),last=us.filter(v=>v.kind!=='f').every(v=>unitLv(l,v)>0)&&!sealOf(l);
     const nxt=nx.l===l&&nx.u===u?null:nx;
-    open(ubar(100,0)+`<div class="card udone"><p class="eyebrow">${esc(`${LNAME(l)} · ${unitName(l,u)}`)}</p><h2>${lv>=UNIT_MAX?'Gold!':lv>1?'Level up!':'Unit complete!'}</h2>
+    open(ubar(100,0)+`<div class="card udone"><p class="eyebrow">${esc(`${LNAME(l)} · ${unitName(l,u)}`)}</p><h2>${extra?'Mistakes practised':lv>=UNIT_MAX?'Gold!':lv>1?'Level up!':'Unit complete!'}</h2>
       <span class="score">${acc}%</span><p class="hint">${esc(`right the first time · about ${min} min`)}</p>${lvDots(unitStored(l,u))}
       ${u.kind==='w'?`<div class="uwords">${u.items.map(x=>`<span class="uw${missed.has(x)?' miss':''}"><b class="han">${hzHtml(x)}</b><small>${pyHtml(x.p)}</small>${starHtml(x,'xs-in')}</span>`).join('')}</div>`:''}
       ${last?`<p class="ufin">${esc(`Every unit of ${LNAME(l)} is done. Take the Final test to stamp the seal.`)}</p>`:''}
-      <div class="btns"><button class="btn ghost" data-go="album" type="button">Your path</button>${last?`<button class="btn" id="ufinal" type="button">Final test ›</button>`:nxt?`<button class="btn" id="unext" type="button">Continue ›</button>`:''}</div></div>`);
+      ${mi.length?`<button class="btn ghost umist" id="umist" type="button">${esc(`Practise the ${mi.length} mistakes`)}</button>`:''}<div class="btns"><button class="btn ghost" data-go="album" type="button">Your path</button>${last?`<button class="btn" id="ufinal" type="button">Final test ›</button>`:nxt?`<button class="btn" id="unext" type="button">Continue ›</button>`:''}</div></div>`);
+    if($('umist'))$('umist').onclick=()=>unitPlay(l,u,lv,mi);
     if($('ufinal'))$('ufinal').onclick=()=>startStep(l,'final');if($('unext'))$('unext').onclick=()=>unitRun(nxt.l,nxt.u.id)}
   next();
 }

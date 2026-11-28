@@ -156,7 +156,7 @@ Object.assign(CS,{"Lesson review":"Opakování lekce","Here":"Tady jsi","Practis
  "Pieces in red are in the wrong place. Fix the order and check again.":"Červené dílky jsou na špatném místě. Oprav pořadí a zkontroluj znovu.",
  "Gold!":"Zlatá!","Level up!":"Úroveň výš!","Unit complete!":"Podbod hotový!","right the first time":"správně napoprvé","Final test ›":"Finální test ›","‹ Your path":"‹ Tvoje cesta",
  "Gold · level 3 of 3":"Zlatá · úroveň 3 ze 3",
- "Everything from this lesson":"Všechno z lekce","Build ›":"Stavět ›","Test ›":"Test ›","Previous lesson":"Předchozí lekce","Next lesson":"Další lekce",
+ "Everything from this lesson":"Všechno z lekce","Leave this unit? It is not finished yet, so it stays open on your path.":"Opustit podbod? Ještě není dokončený, takže na cestě zůstane otevřený.","Mistakes practised":"Chyby procvičené","Build ›":"Stavět ›","Test ›":"Test ›","Previous lesson":"Předchozí lekce","Next lesson":"Další lekce",
  "Your path, step by step":"Tvoje cesta krok za krokem",
  "Every lesson on Your path is now split into short units of about 5 new words, with mixed exercises, like in a language game.":"Každá lekce na Tvé cestě je teď rozdělená na krátké podbody po zhruba 5 nových slovech s namíchanými úlohami, jako ve hře na jazyky.",
  "Home › Your path":"Domů › Tvoje cesta",
