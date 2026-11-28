@@ -6,7 +6,7 @@ const NEWS=[
   {id:'2026-11-28b',d:'2026-11-28',t:'Your path: go anywhere',go:()=>album(),
     what:'Every lesson and unit on Your path is open: jump wherever you like, and the path goes on from where you last played.',
     where:'Home › Your path',
-    items:['The pīn button on Your path and in the exercises switches pinyin off and on.','After a unit you see exactly how long it took, not a guess.']},
+    items:['Close the app on Your path and it opens there again, at the same place.','The pīn button on Your path and in the exercises switches pinyin off and on.','After a unit you see exactly how long it took, not a guess.']},
   {id:'2026-11-28',d:'2026-11-28',t:'New courses: HSK 2 and HSK 3',go:()=>packSheet(),
     what:'The next two levels of the new HSK: HSK 2 in 17 lessons and HSK 3 in 22, each with its own path of seals, grammar and sentences.',
     where:'Home › the course button at the top',
@@ -105,6 +105,6 @@ function whatsNew(force){
   hd.addEventListener('pointerup',up);hd.addEventListener('pointercancel',up);
 }
 document.addEventListener('click',e=>{if(e.target.closest('[data-news]'))whatsNew(true)});
-if(store.get('ic-welcomed',false)){renderHome();setTimeout(whatsNew,700)}else{store.set('ic-news',NEWS[0].id);welcome()}
+if(store.get('ic-welcomed',false)){renderHome();if(store.get('ic-onpath',null)===PACK)album();setTimeout(whatsNew,700)}else{store.set('ic-news',NEWS[0].id);welcome()}
 setTimeout(initCloud,0);
 

@@ -76,6 +76,17 @@ module.exports=[
     const r=await a.page.evaluate(()=>[!!sealOf('5'),lessonDone('5'),lessonDone('1'),unitNow().l]);assert.deepEqual(r,[true,true,false,'6'],'nothing before lesson 5 counts as done, and the path goes on with lesson 6');
     noErrors(a)}finally{await a.close()}
 }],
+['the app opens again where you left Your path: on the path, at the same place; from Home it opens on Home',async t=>{
+  const a=await open(t,{pack:'hsk1'});
+  try{await a.page.evaluate(()=>album());await a.page.evaluate(()=>scrollTo(0,2400));await a.page.waitForTimeout(400);const y=await a.page.evaluate(()=>scrollY);assert.ok(y>1500,'the path is too short to scroll: '+y);
+    await a.page.reload();await a.page.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');await a.page.waitForTimeout(400);
+    assert.ok(await a.page.isVisible('.journey'),'the app did not open on Your path');assert.ok(Math.abs(await a.page.evaluate(()=>scrollY)-y)<5,'not at the same place');
+    await a.page.evaluate(()=>unitRun('2','w1'));await a.page.waitForSelector('.ubar');await a.page.reload();await a.page.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');await a.page.waitForTimeout(400);
+    assert.ok(await a.page.isVisible('.journey'),'left in a unit, the app did not open on Your path');assert.equal(await a.page.$eval('.unode.cur',e=>e.dataset.unit),'2|w1');
+    const r=await a.page.evaluate(()=>document.querySelector('.unode.cur').getBoundingClientRect().top);assert.ok(r>0&&r<844,'the unit you are on is not on screen: '+r);
+    await a.page.evaluate(()=>goHome());await a.page.reload();await a.page.waitForFunction(()=>typeof renderHome==='function'&&document.readyState==='complete');await a.page.waitForTimeout(300);
+    assert.ok(await a.page.isVisible('#home'),'left on Home, the app did not open on Home');noErrors(a)}finally{await a.close()}
+}],
 ['pinyin on the path can be switched off and on: the units, their sheets and results then hide it',async t=>{
   const a=await open(t,{pack:'hsk1'});
   try{await a.page.evaluate(()=>album());assert.equal(await a.page.getAttribute('.jhead [data-pathpy]','aria-pressed'),'true');

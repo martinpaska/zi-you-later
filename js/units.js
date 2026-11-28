@@ -35,7 +35,7 @@ const lessonStarted=l=>lessonUnits(l).some(u=>u.kind!=='f'&&unitLv(l,u)>0);
 const lessonOpen=()=>true,unitOpen=()=>true;
 // where you last played on the path (lesson and unit), so the path goes on from there
 const pathAt=()=>((state.pathAt||{})[PACK])||null;
-function pathMark(l,u){state.pathAt={...(state.pathAt||{}),[PACK]:{l,u:u.id}};saveState()}
+function pathMark(l,u){state.pathAt={...(state.pathAt||{}),[PACK]:{l,u:u.id}};saveState();const y=store.get('ic-pathy',{})||{};delete y[PACK];store.set('ic-pathy',y);store.set('ic-onpath',PACK)}
 /* where you are: from the unit you last played, the next unit that is not done (in that lesson, then in the lessons after
    it, then from the start of the course). Without a last unit, the first one that is not done. A Final test you went
    past (the next lesson is started) does not hold you back. */
