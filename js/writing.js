@@ -5,7 +5,9 @@ let STROKES=null;
 function hwCreate(id,ch,o){const w=HanziWriter.create(id,ch,o);try{const el=typeof id==='string'?document.getElementById(id):id,d=STROKES&&STROKES[ch],svg=el&&el.querySelector('svg');
   if(d&&svg){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const st of d.strokes){const n=st.match(/-?\d+(?:\.\d+)?/g).map(Number);for(let i=0;i+1<n.length;i+=2){const x=n[i],y=n[i+1];if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}}
     const k=((o.width||el.clientWidth)-2*(o.padding||0))/1024;svg.style.transform=`translate(${((512-(x0+x1)/2)*k).toFixed(1)}px,${(((y0+y1)/2-388)*k).toFixed(1)}px)`}}catch(e){}return w}
-async function loadStrokes(){if(STROKES)return STROKES;const r=await fetch('strokes.json');STROKES=await r.json();return STROKES}
+// HSK 2 and up: the characters that strokes.json does not have come from the pack's own file (packs/hsk<N>-strokes.json)
+async function loadStrokes(){if(STROKES)return STROKES;const own=HSK_LV>1?fetch(`packs/${PACK}-strokes.json`).then(r=>r.json()).catch(()=>({})):null;
+  const r=await fetch('strokes.json'),all=await r.json();STROKES=own?Object.assign(all,await own):all;return STROKES}
 /* handwriting recognition for "Translate · Draw": the drawn strokes are compared with the stroke medians in strokes.json
    (in order, with skipped or joined strokes allowed, and in any order as a fallback). Candidates are the characters of the
    textbook's words and sentences, so nothing outside the course is suggested. Works offline. */

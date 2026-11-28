@@ -1,0 +1,773 @@
+# HSK 3 grammar, following the official grammar list: HSK 语法大纲 · HSK（三级）, pages 389–391 of the HSK 考试大纲
+# (CLEC 2025, valid from 2026-07). The grouping into lessons, the explanations, examples and exercises are written for this app,
+# and use only the words of the official HSK 1, 2 and 3 vocabulary lists (build_grammar.py checks this).
+#
+# ## lesson | title | the item of the official grammar list
+# ex:   explanation           pat:  pattern            tip:  a common mistake (optional)
+# eg:   example sentence, words separated by spaces = English (得|děi: a word with several readings, and the one meant)
+# gap:  a sentence with [the answer] = English / other choices (∅ = nothing)
+# bad:  the right sentence / wrong ones = English
+
+## 1 | A 跟 B 一样: the same as | 比较句2：A跟B一样；A跟B一样+形容词
+ex: A 跟 B 一样 means "A is the same as B". Add an adjective to say in what way: 他跟他爸爸一样高 he is as tall as his father. The negative is 不一样: 我们的想法不一样.
+pat: A + 跟 + B + (不) 一样 (+ adjective)
+tip: 他一样高跟他爸爸 is wrong: 跟 B comes first, then 一样.
+eg: 我 的 手机 跟 你 的 一样 。 = My phone is the same as yours.
+eg: 她 跟 她 妈妈 一样 漂亮 。 = She is as pretty as her mother.
+eg: 南方 的 天气 跟 北方 不 一样 。 = The weather in the south is different from the north.
+gap: 他 [跟] 我 一样 大 。 = He is as old as me. / 比 给
+gap: 我 的 书 跟 你 的 书 [一样] 。 = My book is the same as yours. / 一下 一起
+gap: 哥哥 跟 弟弟 一样 [聪明] 。 = The older brother is as clever as the younger one. / 很聪明 聪明多了
+gap: 这儿 的 菜 跟 我 家 的 [不] 一样 。 = The food here is different from my family's. / 没 别
+bad: 我跟你一样高。 / 我一样高跟你。 / 我跟你高一样。 = I am as tall as you.
+bad: 她跟她姐姐不一样。 / 她不跟她姐姐一样不。 / 她跟不她姐姐一样。 = She is different from her older sister.
+
+## 1 | 看起来, 看上去, 好像: it looks like | 固定短语 看起来、看上去；动词 像
+ex: 看起来 and 看上去 mean "it looks, he seems": 他看起来很年轻 he looks young. 好像 means "it seems, as if", and 像 means "to look like, to take after": 你很像你爸爸.
+pat: Subject + 看起来 / 看上去 + adjective · A + 像 + B · 好像 + statement
+eg: 你 爷爷 看 起来 很 年轻 。 = Your grandpa looks young.
+eg: 她 长|zhǎng 得 很 像 她 妈妈 。 = She looks a lot like her mother.
+eg: 外边 好像 下雨 了 。 = It seems to be raining outside.
+gap: 这 个 蛋糕 看 [起来] 很 好吃 。 = This cake looks delicious. / 上来 起
+gap: 他 好像 不 [认识] 我 。 = He doesn't seem to know me. / 认为 认真
+gap: 你 [像] 你 哥哥 。 = You look like your older brother. / 想 向
+gap: 她 看 [上去] 有点儿 累 。 = She looks a little tired. / 上来 下去
+bad: 他看起来很年轻。 / 他看很年轻起来。 / 看起来他年轻很。 = He looks young.
+bad: 你很像你爸爸。 / 你很你爸爸像。 / 像你很你爸爸。 = You look a lot like your dad.
+
+## 2 | 把: what you do with something | “把”字句1：主语+把+宾语+动词+在/到+处所；主语+把+宾语1+动词（+给）+宾语2
+ex: 把 brings the object before the verb when you say what happens to it: 我把书放在桌子上 I put the book on the table. After the verb there must be more: where it goes (在 / 到 + place) or who gets it (给 + person). 把 is used with things that are known: this book, my passport.
+pat: Subject + 把 + thing + verb + 在 / 到 + place · subject + 把 + thing + verb + 给 + person
+tip: 我把书放 is not finished: say where, 我把书放在这儿.
+eg: 我 把 护照 放 在 箱子 里 了 。 = I put my passport in the suitcase.
+eg: 请 把 这 本 书 还|huán 给 他 。 = Please give this book back to him.
+eg: 他 把 车 开 到 学校 门口 。 = He drove the car to the school gate.
+gap: 你 [把] 手机 放 在 哪儿 了 ？ = Where did you put your phone? / 被 给
+gap: 我 把 钱 还|huán [给] 你 。 = I'm giving you the money back. / 跟 对
+gap: 请 把 箱子 搬 [到] 楼 上 。 = Please carry the suitcase upstairs. / 在 往
+gap: 她 把 照片 发 给 [我] 了 。 = She sent me the photos. / 我的 给我
+bad: 我把书放在桌子上。 / 我把书放。 / 我放把书在桌子上。 = I put the book on the table.
+bad: 请把这本书还给他。 / 请还把这本书给他。 / 请把还给他这本书。 = Please give this book back to him.
+
+## 2 | 被: something was done to it | 被动句1：主语+被+宾语+动词+其他成分；主语+被+动词+其他成分
+ex: 被 makes a passive sentence: the thing that something happens to comes first, then 被, the doer (it may be left out) and the verb with what came of it. It is used most for things that went wrong: 我的自行车被骑走了 my bike was ridden off.
+pat: Thing + 被 + (doer) + verb + result
+eg: 我 的 自行车 被 弟弟 骑 走 了 。 = My bike was taken (ridden off) by my younger brother.
+eg: 蛋糕 被 孩子 们 吃 完 了 。 = The cake was eaten up by the children.
+eg: 我 的 伞 被 别人 拿 走 了 。 = My umbrella was taken by someone else.
+gap: 我 的 书 [被] 同学 借 走 了 。 = My book was borrowed by a classmate. / 把 给
+gap: 他 被 老师 [叫] 到 办公室 去 了 。 = He was called to the office by the teacher. / 叫叫 叫着
+gap: 你 的 作业 被 [谁] 拿 走 了 ？ = Who took your homework? / 什么 哪
+gap: 我 的 手机 被 [∅] 拿 走 了 。 = My phone has been taken. / 把 给
+bad: 我的自行车被他骑走了。 / 我的自行车他被骑走了。 / 被我的自行车他骑走了。 = My bike was ridden off by him.
+bad: 蛋糕被吃完了。 / 被蛋糕吃完了。 / 蛋糕被完吃了。 = The cake has been eaten up.
+
+## 2 | Results: 找到, 记住, 拿走, 关上 | 结果补语2：动词+到/住/走/上
+ex: More result words after a verb: 到 says the aim was reached (找到 find, 买到 manage to buy, 收到 receive), 住 that it stays fixed (记住 remember), 走 that it went away (拿走 take away), 上 that it is closed or on (关上 close, 穿上 put on).
+pat: Verb + 到 / 住 / 走 / 上 · 没 + verb + result
+eg: 我 找 到 我 的 护照 了 。 = I have found my passport.
+eg: 请 记 住 我 的 电话 号码 。 = Please remember my phone number.
+eg: 外边 冷 ， 把 门 关 上 吧 。 = It's cold outside, close the door.
+gap: 你 [收到] 我 的 邮件 了 吗 ？ = Did you receive my email? / 收着 收完
+gap: 这 个 字 我 记 [住] 了 。 = I've remembered this character. / 走 到
+gap: 我 的 笔 被 谁 拿 [走] 了 ？ = Who took my pen? / 住 上
+gap: 我 [没] 买 到 火车 票 。 = I didn't manage to buy a train ticket. / 不 别
+bad: 我找到了我的护照。 / 我到找了我的护照。 / 我找了我的护照到。 = I have found my passport.
+bad: 我没买到票。 / 我不买到票。 / 我买没到票。 = I didn't manage to get a ticket.
+
+## 3 | 什么都, 谁都, 哪儿都: any and every | 疑问代词的非疑问用法：任指用法 疑问代词+都……、疑问代词+疑问代词
+ex: A question word followed by 都 (or 也) means "every, any": 谁都知道 everyone knows, 他什么都吃 he eats anything, 我哪儿都不想去 I don't want to go anywhere. The same question word twice joins two clauses: 你想吃什么就吃什么 eat whatever you like.
+pat: 谁 / 什么 / 哪儿 + 都 / 也 + verb · question word … 就 … the same question word
+eg: 这 件 事 谁 都 知道 。 = Everyone knows about this.
+eg: 我 今天 很 累 ， 哪儿 都 不 想 去 。 = I'm tired today, I don't want to go anywhere.
+eg: 你 想 吃 什么 就 吃 什么 。 = Eat whatever you like.
+gap: 他 [什么] 都 喜欢 吃 。 = He likes to eat everything. / 怎么 吗
+gap: 这 个 问题 谁 [都] 不 会 。 = Nobody can do this question. / 就 还
+gap: 你 想 去 哪儿 ， 我们 就 去 [哪儿] 。 = We'll go wherever you want. / 那儿 这儿
+gap: [谁] 都 可以 参加 。 = Anyone can take part. / 什么 哪
+bad: 我什么都不想吃。 / 我都什么不想吃。 / 什么我不想都吃。 = I don't want to eat anything.
+bad: 谁都知道。 / 都谁知道。 / 谁知道都。 = Everyone knows.
+
+## 3 | 不是……吗？: isn't it? | 反问句1：用反问句表示强调：不是……吗？
+ex: 不是……吗？ does not really ask: it says "surely …, didn't you …?" and shows surprise. 你不是说今天不来吗？ Didn't you say you weren't coming today?
+pat: Subject + 不是 + … + 吗？
+eg: 你 不 是 去 中国 了 吗 ？ = Didn't you go to China?
+eg: 这 不 是 你 的 书 吗 ？ = Isn't this your book?
+eg: 他 不 是 已经 结婚 了 吗 ？ = Isn't he already married?
+gap: 你 [不] 是 说 你 很 忙 吗 ？ = Didn't you say you were busy? / 没 别
+gap: 这 不 是 你 的 手机 [吗] ？ = Isn't this your phone? / 呢 吧
+gap: 你 不 是 [喜欢] 喝 咖啡 吗 ？ = Don't you like coffee? / 喜欢喜欢 喜欢着
+gap: 他 不 是 你 的 同事 [吗] ？ = Isn't he your colleague? / 了 的
+bad: 你不是去北方了吗？ / 你是不去北方了吗？ / 不是你去北方吗了？ = Didn't you go to the north?
+bad: 这不是你的伞吗？ / 这是不你的伞吗？ / 这不是你的伞呢吗？ = Isn't this your umbrella?
+
+## 3 | 是……的 for an opinion | “是……的”句2：强调说话人的看法或态度
+ex: 是……的 around a statement makes it a firm opinion: 这个办法是很好的 this way really is good. 我是不会去的 I'm certainly not going.
+pat: Subject + 是 + opinion + 的
+eg: 学 汉语 是 很 有意思 的 。 = Learning Chinese is really interesting.
+eg: 我 是 不 会 同意 的 。 = I will certainly not agree.
+eg: 他 的 办法 是 对 的 。 = His way is right.
+gap: 你 的 办法 是 很 好 [的] 。 = Your way really is good. / 地 得
+gap: 他 [是] 不 会 来 的 。 = He certainly won't come. / 在 有
+gap: 我 是 [相信] 你 的 。 = I do believe you. / 想 相
+gap: 这 件 事 是 很 [重要] 的 。 = This matter really is important. / 重 要
+bad: 这个办法是很好的。 / 这个办法很好是的。 / 是这个办法很好的。 = This way really is good.
+bad: 我是不会去的。 / 我不是会去的。 / 我是会不去的的。 = I will certainly not go.
+
+## 3 | Can, want, should: 愿意, 需要, 应该, 该, 得 | 能愿动词 需要、该、应该、愿意、得
+ex: 愿意 be willing to, 需要 need to, 应该 / 该 should, 得 (said děi) have to. They all go before the verb. 不用 means "need not": 你不用来.
+pat: Subject + 愿意 / 需要 / 应该 / 该 / 得 + verb · 不用 + verb
+tip: The negative of 得 (děi) is 不用, not 不得.
+eg: 你 愿意 跟 我 一起 去 吗 ？ = Would you like to go with me?
+eg: 太 晚 了 ， 我 得|děi 走 了 。 = It's late, I have to go.
+eg: 你 不 用 来 ， 我 一 个 人 就 行 。 = You don't need to come, I can do it alone.
+gap: 你 [应该] 多 锻炼 身体 。 = You should exercise more. / 应 该应
+gap: 他 不 [愿意] 告诉 我 。 = He isn't willing to tell me. / 愿 意愿
+gap: 明天 考试 ， 我 [得|děi] 复习 。 = There is an exam tomorrow, I have to revise. / 的 地
+gap: 你 不 [用] 担心 。 = You don't need to worry. / 要 该
+bad: 你应该早点儿睡觉。 / 你早点儿应该睡觉。 / 应该你早点儿睡觉了应该。 = You should go to bed earlier.
+bad: 你不用来。 / 你不得来。 / 你用不来。 = You don't need to come.
+
+## 4 | 好吃极了, 饿坏了, 好得很: very, very | 程度补语1：形容词+得很；形容词/动词+极了/坏了
+ex: After an adjective, 极了 and 得很 make it very strong: 好吃极了 really delicious, 冷得很 very cold. 坏了 says it is so strong that it hurts: 饿坏了 starving, 累坏了 worn out.
+pat: Adjective + 极了 / 得很 · adjective / verb + 坏了
+tip: 很好吃极了 is wrong: 极了 already says "very".
+eg: 这 个 蛋糕 好吃 极 了 ！ = This cake is absolutely delicious!
+eg: 我 一 天 没 吃 饭 ， 饿 坏 了 。 = I haven't eaten all day, I'm starving.
+eg: 今天 冷 得 很 。 = It's very cold today.
+gap: 这儿 的 西瓜 甜 [极] 了 。 = The watermelon here is really sweet. / 很 太
+gap: 跑 了 一 个 小时 ， 我 累 [坏] 了 。 = After running for an hour I'm worn out. / 好 完
+gap: 他 高兴 [得] 很 。 = He is very happy. / 地 的
+gap: 这 家 饭馆 的 菜 [好吃] 极 了 。 = The food in this restaurant is absolutely delicious. / 很好吃 非常好吃
+bad: 这个菜好吃极了。 / 这个菜很好吃极了。 / 这个菜极了好吃。 = This dish is absolutely delicious.
+bad: 我饿坏了。 / 我坏饿了。 / 我饿了坏。 = I'm starving.
+
+## 4 | 一碗饭, 一盘菜, 个个都: measure words for food | 量词 · 借用名量词：碗、盘；量词重叠 个个、张张
+ex: A container can be a measure word: 一碗饭 a bowl of rice, 一盘菜 a plate of food, 一杯茶 a cup of tea, 一瓶水 a bottle of water. A measure word said twice means "every one": 个个都很好吃 every one is delicious.
+pat: number + 碗 / 盘 / 杯 / 瓶 + food · measure word × 2 + 都
+eg: 我 要 一 碗 米饭 和 一 盘 鸡 。 = I'd like a bowl of rice and a plate of chicken.
+eg: 这儿 的 菜 个个|gègè 都 很 好吃 。 = Every dish here is delicious.
+eg: 他 一 天 喝 四 杯 水 。 = He drinks four cups of water a day.
+gap: 我 吃 了 两 [碗] 面条儿 。 = I had two bowls of noodles. / 个 本
+gap: 桌子 上 有 一 [盘] 饺子 。 = There is a plate of dumplings on the table. / 张 条
+gap: 我们 班 的 学生 [个个|gègè] 都 很 认真 。 = Every student in our class is hard-working. / 个 些
+gap: 请 给 我 一 [杯] 啤酒 。 = A glass of beer, please. / 双 张
+bad: 我要一碗米饭。 / 我要一米饭碗。 / 我要碗一米饭。 = I'd like a bowl of rice.
+bad: 他们个个都很高。 / 他们个都个很高。 / 个个他们很高都。 = Every one of them is tall.
+
+## 5 | 走着去, 站着吃: doing two things at once | 连动句2：“着”表示动作的伴随：动词1+着+动词2
+ex: Verb1 + 着 + verb2 says how the second action is done: 走着去 go on foot, 站着吃 eat standing up, 笑着说 say with a smile.
+pat: Verb1 + 着 + verb2
+eg: 学校 不 远 ， 我们 走 着 去 吧 。 = The school isn't far, let's walk there.
+eg: 他 笑 着 说 ： 欢迎 欢迎 ！ = He said with a smile: welcome!
+eg: 车 上 人 很 多 ， 我 只能 站 着 。 = There are many people on the bus, I can only stand.
+gap: 我们 [走] 着 去 公园 吧 。 = Let's walk to the park. / 走走 走过
+gap: 她 笑 [着] 说 ： 没关系 。 = She said with a smile: it's fine. / 了 过|guo
+gap: 别 [站] 着 吃 饭 。 = Don't eat standing up. / 站站 站过|guo
+gap: 孩子 [哭] 着 说 ： 我 要 妈妈 ！ = The child said, crying: I want Mum! / 哭哭 哭了
+bad: 我们走着去吧。 / 我们着走去吧。 / 我们走去着吧。 = Let's walk there.
+bad: 他笑着说。 / 他着笑说。 / 他笑说着着。 = He said with a smile.
+
+## 5 | 先……再 / 然后……: first, then | 承接复句 先……，再/然后……；时间副词 先
+ex: 先 means "first", 再 or 然后 "then": 先买票，再上车 first buy a ticket, then get on. 再 is for things still to be done; 然后 works for the past too. 最后 means "at last, finally".
+pat: 先 A，再 / 然后 B，最后 C
+eg: 我们 先 吃 饭 ， 再 去 机场 。 = We'll eat first, then go to the airport.
+eg: 他 先 坐 地铁 ， 然后 换 公交车 。 = He takes the metro first, then changes to a bus.
+eg: 先 往 前 走 ， 然后 往 右 ， 最后 就 到 了 。 = Go straight on first, then turn right, and you're there.
+gap: 你 [先] 休息 一下 ， 我们 再 走 。 = Rest a little first, then we'll go. / 再 最
+gap: 先 检票 ， [再] 上 车 。 = Have your ticket checked first, then get on. / 先 又
+gap: 我 先 去 银行 ， [然后] 去 超市 。 = I'll go to the bank first, then to the supermarket. / 以后 后来
+gap: 先 洗 手 ， 再 [吃] 饭 。 = Wash your hands first, then eat. / 先吃 吃再
+bad: 我们先吃饭，再走。 / 我们再吃饭，先走。 / 先我们吃饭再，走。 = Let's eat first and then go.
+bad: 他先去银行，然后去超市。 / 他然后去银行，先去超市。 / 他去先银行，去然后超市。 = He goes to the bank first, then to the supermarket.
+
+## 5 | 向, 往 and the directions 东南西北 | 介词 向2；方位名词 东、南、西、北、北方、东方、南方、西方、中间
+ex: 向 and 往 + a direction say which way: 向前走 / 往前走 go straight on, 向东走 go east. The four directions are 东 east, 南 south, 西 west, 北 north. Chinese says 东北 northeast, 西南 southwest (east or west first). 中间 means "in the middle, between".
+pat: 向 / 往 + direction + verb · A 和 B 中间
+eg: 你 向 东 走 ， 就 能 看 到 银行 。 = Walk east and you'll see the bank.
+eg: 车站 在 城市 的 北 边 。 = The station is in the north of the city.
+eg: 商店 在 银行 和 医院 中间 。 = The shop is between the bank and the hospital.
+gap: 到 了 路口 ， [向] 右 走 。 = At the crossing, turn right. / 在 从
+gap: 太阳 从 [东] 边 出来 。 = The sun comes up in the east. / 西 北
+gap: 我 家 在 学校 和 公园 [中间] 。 = My home is between the school and the park. / 中 间中
+gap: 他 [向] 我 走 过来 。 = He walked over to me. / 在 到
+bad: 你向前走。 / 你走向前前。 / 向你前走。 = Go straight on.
+bad: 车站在银行和医院中间。 / 车站在中间银行和医院。 / 车站中间在银行和医院。 = The station is between the bank and the hospital.
+
+## 6 | More comparing: 更, 还, 不比, 比……早来 | 比较句2：A比B+更/还+形容词；A不比B+形容词；A比B+多/少/早/晚+动词+数量短语；程度副词 更、比较
+ex: 更 or 还 after 比 says "even more": 这件比那件还贵 this one is even more expensive. 不比 means "not more … than", that is about the same. To say someone did more or came earlier, put 多 / 少 / 早 / 晚 before the verb: 他比我早来十分钟 he came ten minutes earlier than me. 比较 alone means "quite, fairly".
+pat: A + 比 + B + 更 / 还 + adjective · A + 不比 + B + adjective · A + 比 + B + 早 / 晚 / 多 / 少 + verb + amount
+eg: 这 双 鞋 比 那 双 更 合适 。 = This pair of shoes fits even better than that one.
+eg: 我 比 他 早 到 了 十 分钟 。 = I arrived ten minutes earlier than him.
+eg: 这儿 的 东西 不 比 商场 便宜 。 = Things here are not cheaper than in the mall.
+gap: 这 件 衣服 比 那 件 [还] 贵 。 = This piece of clothing is even more expensive than that one. / 很 非常
+gap: 他 比 我 [多] 买 了 两 斤 苹果 。 = He bought two jin of apples more than me. / 很 太
+gap: 这 条 裙子 [比较] 便宜 。 = This skirt is fairly cheap. / 比 较
+gap: 今天 比 昨天 [更] 冷 。 = Today is even colder than yesterday. / 很 非常
+bad: 这双鞋比那双更好看。 / 这双鞋比那双很好看。 / 这双鞋更比那双好看。 = This pair of shoes looks even better than that one.
+bad: 他比我早来十分钟。 / 他比我来早十分钟。 / 他比我十分钟早来。 = He came ten minutes earlier than me.
+
+## 6 | Money and weights: 块, 毛, 斤, 两三个 | 量词 · 名量词 公斤、斤、角、毛、刻、米；概数表达法2：用“大概”表示概数、相邻数词连用表示概数
+ex: Money: 1 元 (块 in speech) = 10 角 (毛 in speech). 三块五 is 3.50. Weight: 一斤 is half a kilo, 一公斤 a kilo. Two numbers next to each other mean "about": 两三个 two or three, 十七八岁 seventeen or eighteen. 大概 means "about, probably".
+pat: number + 块 + number (毛) · number + 斤 / 公斤 · two numbers in a row · 大概 + number
+eg: 苹果 五 块 钱 一 斤 。 = Apples are five kuai a jin.
+eg: 我 买 了 两 三 斤 香蕉 。 = I bought two or three jin of bananas.
+eg: 这儿 离 车站 大概 五 百 米 。 = It's about five hundred metres from here to the station.
+gap: 一 块 是 十 [毛] 。 = One kuai is ten mao. / 分 斤
+gap: 这 个 西瓜 有 八 [公斤] 。 = This watermelon weighs eight kilos. / 公里 米
+gap: 他 [大概] 二十 岁 。 = He is about twenty. / 大小 大家
+gap: 我 等 了 [十] 七 八 分钟 。 = I waited seventeen or eighteen minutes. / 大 一
+bad: 苹果五块钱一斤。 / 苹果一斤钱五块。 / 苹果五斤一块钱钱。 = Apples are five kuai a jin.
+bad: 他大概二十岁。 / 他二十岁大概大概。 / 大概他岁二十。 = He is about twenty.
+
+
+## 6 | 挺, 特别, 有些, 一共, 只: quite, very, altogether, only | 程度副词 比较、还3、特别、挺、有些；范围副词 一共、只
+ex: 挺……的 means "quite, rather" (挺好的 pretty good), 特别 "especially, very", 有些 "somewhat, a little". 一共 means "altogether, in total", 只 means "only" and goes before the verb: 我只买了一件.
+pat: 挺 + adjective + 的 · 特别 / 有些 + adjective · 一共 + number · 只 + verb
+eg: 这 条 裙子 挺 好看 的 。 = This skirt looks pretty nice.
+eg: 一共 多少 钱 ？ = How much is it altogether?
+eg: 我 只|zhǐ 买 了 一 双 鞋 。 = I only bought one pair of shoes.
+gap: 这 件 衬衫 [挺] 便宜 的 。 = This shirt is quite cheap. / 挺挺 挺的
+gap: 这些 东西 [一共] 两 百 块 。 = These things come to two hundred kuai altogether. / 一起 一样
+gap: 我 [只|zhǐ] 想 看看|kànkan ， 不 买 。 = I only want to have a look, I'm not buying. / 只有 只要
+gap: 这 双 鞋 [特别] 舒服 。 = This pair of shoes is especially comfortable. / 特 别特
+bad: 我只买了一件。 / 我买只了一件。 / 只我买了一件。 = I only bought one.
+bad: 一共多少钱？ / 多少钱一共一共？ / 一共钱多少？ = How much is it altogether?
+## 7 | Must, had better, need not: 必须, 最好, 不用 | 情态副词 必须、一定、差不多；否定副词 不必、不用
+ex: 必须 means "must" (no choice), 最好 "you had better", 一定 "surely, be sure to", and 不用 / 不必 "there is no need to". They go before the verb.
+pat: Subject + 必须 / 最好 / 一定 / 不用 + verb
+eg: 你 发烧 了 ， 必须 去 医院 。 = You have a fever, you must go to the hospital.
+eg: 你 最好 多 喝 水 ， 多 休息 。 = You'd better drink more water and rest more.
+eg: 别 担心 ， 你 的 病 一定 会 好 的 。 = Don't worry, you will surely get well.
+gap: 吃 药 以前 ， 你 [必须] 吃 饭 。 = You must eat before taking the medicine. / 必 须必
+gap: 你 感冒 了 ， [最好] 在 家 休息 。 = You have a cold, you'd better rest at home. / 最后 最近
+gap: 我 好 多 了 ， 你 [不用] 来 看 我 。 = I'm much better, you don't need to come and see me. / 不行 不同
+gap: 你 [一定] 要 坚持 锻炼 。 = You really must keep on exercising. / 一样 一共
+bad: 你必须去医院。 / 必须你去医院必须。 / 你去必须医院。 = You must go to the hospital.
+bad: 你最好在家休息。 / 你在家最好休息最好。 / 最好你休息在家。 = You'd better rest at home.
+
+## 7 | 吃得下, 听不懂: can or can't | 可能补语1：动词+得/不+动词/形容词
+ex: 得 or 不 between a verb and its result says whether it can happen: 听得懂 can understand, 听不懂 can't understand, 吃不下 can't eat any more, 看不清楚 can't see clearly. The question is 听得懂听不懂？ or 听得懂吗？
+pat: Verb + 得 / 不 + result
+tip: 我不能听懂 is not natural. Say 我听不懂.
+eg: 老师 说 得 太 快 ， 我 听 不 懂 。 = The teacher speaks too fast, I can't understand.
+eg: 我 饱 了 ， 吃 不 下 了 。 = I'm full, I can't eat any more.
+eg: 黑板 上 的 字 你 看 得 清楚 吗 ？ = Can you see the characters on the board clearly?
+gap: 这 本 书 太 难 了 ， 我 看 [不] 懂 。 = This book is too hard, I can't understand it. / 没 别
+gap: 他 说 的 汉语 你 听 [得] 懂 吗 ？ = Can you understand his Chinese? / 的 地
+gap: 箱子 太 大 了 ， 我 [搬] 不 动 。 = The suitcase is too big, I can't move it. / 搬家 搬搬
+gap: 今天 的 作业 太 多 ， 我 做 不 [完] 。 = There is too much homework today, I can't finish it. / 好 到
+bad: 我听不懂。 / 我不听懂。 / 我听懂不。 = I can't understand.
+bad: 你看得清楚吗？ / 你得看清楚吗？ / 你看清楚得吗？ = Can you see clearly?
+
+## 8 | 一边……一边……: while | 并列复句 一边……，一边……；关联副词 一边
+ex: 一边 A 一边 B means doing two things at the same time: 一边听音乐一边做作业 do homework while listening to music. Both 一边 go before verbs, and the subject comes before the first one.
+pat: Subject + 一边 + verb A + 一边 + verb B
+eg: 我 喜欢 一边 喝 茶 一边 看 书 。 = I like reading while drinking tea.
+eg: 他们 一边 走 一边 聊天儿 。 = They chatted as they walked.
+eg: 别 一边 吃 饭 一边 玩 手机 。 = Don't play on your phone while eating.
+gap: 她 一边 唱 歌 ， [一边] 跳舞 。 = She sings and dances at the same time. / 一样 一起
+gap: 我们 一边 吃 饭 一边 [聊天儿] 。 = We chat while eating. / 天聊 聊聊天
+gap: 爸爸 [一边] 开车 一边 听 音乐 。 = Dad listens to music while driving. / 一下 一些
+gap: 他 一边 [看] 地图 一边 往 前 走 。 = He walks on while looking at the map. / 看看 看着看
+bad: 他一边走一边唱歌。 / 他一边走唱歌一边。 / 一边他走一边唱歌。 = He sings as he walks.
+bad: 我喜欢一边听音乐一边做作业。 / 我喜欢一边听音乐做作业一边。 / 我一边喜欢听音乐一边做作业。 = I like doing homework while listening to music.
+
+## 8 | Both … and, now … now: 又……又……, 一会儿……一会儿…… | 并列复句 又……，又……；一会儿……，一会儿……；频率副词 又
+ex: 又 A 又 B means "both A and B": 又便宜又好 cheap and good. 一会儿 A 一会儿 B means "now A, now B", for things that keep changing. 又 alone means "again" for something that has already happened: 他又来了 he came again.
+pat: 又 + adjective / verb + 又 + adjective / verb · 一会儿 A，一会儿 B
+eg: 这 家 饭馆 的 菜 又 便宜 又 好吃 。 = The food in this restaurant is cheap and tasty.
+eg: 今天 天气 一会儿 晴 一会儿 阴 。 = Today the weather keeps changing, now sunny, now cloudy.
+eg: 他 昨天 迟到 了 ， 今天 又 迟到 了 。 = He was late yesterday, and he was late again today.
+gap: 她 的 房间 又 干净 [又] 漂亮 。 = Her room is clean and pretty. / 也 还
+gap: 孩子 一会儿 哭 ， [一会儿] 笑 。 = The child cries one moment and laughs the next. / 一下 有时
+gap: 我 的 手机 [又] 坏 了 。 = My phone is broken again. / 再 还
+gap: 这 个 箱子 又 大 又 [新] 。 = This suitcase is big and new. / 很新 新新
+bad: 这件衣服又便宜又好看。 / 这件衣服又便宜也好看。 / 这件衣服便宜又又好看。 = This piece of clothing is cheap and looks good.
+bad: 他又迟到了。 / 他再迟到了。 / 又他迟到了。 = He was late again.
+
+## 8 | 笑起来, 说下去, 想起来: start, go on, come up | 趋向补语2：趋向补语的引申用法 动词+出/起/下；动词+上/起来；动词+下去/下来
+ex: 起来 after a verb can mean "start": 笑起来 burst out laughing, 下起雨来 it started raining. 下去 means "go on": 说下去 go on talking. 下来 means "stay, be kept": 记下来 write down. 出(来) means "get out, find out": 看出来 make out, 想出 think of. 起(来) also means "recall": 想起来 remember.
+pat: Verb + 起来 / 下去 / 下来 / 出(来)
+eg: 他 听 了 以后 笑 起来 了 。 = After hearing it he burst out laughing.
+eg: 你 说 得 很 好 ， 说 下去 。 = You're doing well, go on.
+eg: 我 想 起来 了 ， 他 姓 李 。 = Now I remember, his surname is Li.
+gap: 孩子 一 看 见 妈妈 就 哭 [起来] 了 。 = As soon as the child saw Mum, it started to cry. / 下去 过去
+gap: 这 个 故事 很 有意思 ， 你 讲 [下去] 。 = This story is interesting, go on. / 起来 上来
+gap: 请 把 我 的 电话 号码 记 [下来] 。 = Please write down my phone number. / 下去 进来
+gap: 他 想 [出] 了 一 个 好 办法 。 = He came up with a good idea. / 起 下
+bad: 他笑起来了。 / 他起来笑了。 / 他笑了起来起来。 = He started laughing.
+bad: 我想起来了。 / 我起来想了。 / 我想了来起。 = Now I remember.
+
+## 9 | 把 with results: 把房间打扫干净 | “把”字句1：主语+把+宾语+动词+结果补语/趋向补语/状态补语
+ex: 把 is also used to say what came of an action: 把房间打扫干净 clean the room (so that it is clean), 把箱子搬上去 carry the suitcase up, 把作业做完 finish the homework. The verb never stands alone after 把.
+pat: Subject + 把 + thing + verb + result / direction
+tip: 没 and other negatives go before 把: 我没把作业做完.
+eg: 我 已经 把 房间 打扫 干净 了 。 = I've already cleaned the room.
+eg: 请 把 这些 箱子 搬 上去 。 = Please carry these boxes up.
+eg: 他 没 把 灯 关 上 。 = He didn't turn off the light.
+gap: 你 [把] 空调 关 了 吗 ？ = Did you turn off the air conditioner? / 被 给
+gap: 我 把 作业 做 [完] 了 。 = I've finished my homework. / 完成 做完
+gap: 他 没 把 冰箱 门 [关] 上 。 = He didn't close the fridge door. / 关心 关系
+gap: 请 把 沙发 搬 [进来] 。 = Please carry the sofa in. / 进 来进
+bad: 我把房间打扫干净了。 / 我把房间打扫了干净。 / 我打扫把房间干净了。 = I've cleaned the room.
+bad: 他没把灯关上。 / 他把灯没关上。 / 他把没灯关上。 = He didn't turn off the light.
+
+## 9 | 前面走过来一个人: appearing and disappearing | 存现句3：表示出现、表示消失
+ex: A sentence that starts with a place can tell that someone or something appeared there or left: 前面走过来一个人 a person came walking over (from ahead), 我们楼里搬走了一家人 a family moved out of our building. The verb has a direction or result and often 了, and the new person or thing comes last.
+pat: Place + verb + direction / result + (了) + number + measure word + person / thing
+eg: 楼 下 搬 来 了 一 家 新 邻居 。 = A new family has moved in downstairs.
+eg: 前面 走 过来 一 个 人 。 = Someone is walking towards us.
+eg: 我们 班 走 了 两 个 同学 。 = Two classmates have left our class.
+gap: 楼 上 [搬] 来 了 一 家 人 。 = A family has moved in upstairs. / 搬家 搬搬
+gap: 门口 [走] 过来 一 个 小孩儿 。 = A child came walking over from the door. / 走走 走路
+gap: 楼 里 搬 走 [了] 一 家 人 。 = A family has moved out of the building. / 过|guo 着
+gap: 我们 小区 来 了 很 多 [新] 邻居 。 = Lots of new neighbours have come to our neighbourhood. / 新新 很新
+bad: 楼下搬来了一家人。 / 一家人搬来了楼下。 / 楼下一家人了搬来。 = A family has moved in downstairs.
+bad: 前面走过来一个人。 / 一个人前面走过来走。 / 前面过来走一个人。 = Someone is walking towards us.
+
+## 10 | 总是, 一直, 常常: how often and how long | 频率副词 总、总是、常常；时间副词 一直
+ex: 总 / 总是 means "always", 常常 "often", 一直 "all along, all the time, straight". 平时 means "usually (on normal days)". All go before the verb.
+pat: Subject + 总是 / 常常 / 一直 + verb
+eg: 妈妈 总是 很 早 起床 。 = Mum always gets up early.
+eg: 我 一直 住 在 这儿 。 = I have always lived here.
+eg: 我们 平时 常常 一起 吃 晚饭 。 = We often have dinner together on normal days.
+gap: 他 [总是] 忘 带 伞 。 = He always forgets his umbrella. / 总 是总
+gap: 雨 [一直] 下 到 晚上 。 = It rained all the way until the evening. / 一定 一般
+gap: 爷爷 [常常] 去 公园 。 = Grandpa often goes to the park. / 常常常 常见
+gap: 你 [平时] 几 点 睡觉 ？ = What time do you usually go to bed? / 平 时平
+bad: 妈妈总是很早起床。 / 妈妈很早总是起床。 / 总是妈妈起床很早。 = Mum always gets up early.
+bad: 我一直住在这儿。 / 我住一直在这儿。 / 一直我在这儿住一直。 = I have always lived here.
+
+## 10 | How long: 看书看了一下午, 来中国三年了 | 重动句：主语+动词+宾语+动词+补语；数量补语3：表示动作结束到某个时间点的间隔时间
+ex: With an object and a time or result, say the verb twice: 他看书看了一个下午 he read all afternoon, 我做饭做得不好. To say how long ago something started or ended, put the time after the verb and 了 at the end: 他来中国三年了 he has been in China for three years (since he came), 他们结婚十年了 they have been married ten years.
+pat: Verb + object + verb + 了 / 得 + … · verb (+ object) + time + 了
+eg: 他 看 书 看 了 一 个 下午 。 = He read all afternoon.
+eg: 我 来 中国 两 年 了 。 = I have been in China for two years.
+eg: 爷爷 奶奶 结婚 五十 年 了 。 = Grandpa and grandma have been married for fifty years.
+gap: 她 打 电话 [打] 了 一 个 小时 。 = She was on the phone for an hour. / 了 在
+gap: 他 学 汉语 学 [了] 三 年 。 = He studied Chinese for three years. / 过|guo 着
+gap: 我 [来] 中国 一 年 了 。 = I have been in China for a year. / 来来 来着
+gap: 他们 结婚 十 年 [了] 。 = They have been married for ten years. / 的 过|guo
+bad: 他看书看了两个小时。 / 他看书了两个小时看。 / 他两个小时看书看。 = He read for two hours.
+bad: 我来中国三年了。 / 我三年来中国了。 / 我来三年中国了了。 = I've been in China for three years.
+
+
+## 10 | 结婚, 见面, 洗澡: verbs that come apart | 离合词 · 动宾式离合词：放假、见面、结婚、洗澡；动补式离合词：离开、完成、分开
+ex: 结婚, 见面, 洗澡 and 放假 are a verb and its object, so they take no other object: 跟他结婚 marry him (not 结婚他), 跟朋友见面 meet a friend. 了, 过 and time words can go between the parts: 见过面, 洗了个澡, 放三天假. 离开, 完成 and 分开 are verb + result and can take an object: 离开家 leave home.
+pat: 跟 + person + 结婚 / 见面 · A + 了 / 过 + B · 离开 / 完成 + object
+tip: 我明天见面他 is wrong. Say 我明天跟他见面.
+eg: 他们 去年 结婚 了 。 = They got married last year.
+eg: 我 明天 跟 朋友 见面 。 = I'm meeting a friend tomorrow.
+eg: 我们 见 过|guo 面 。 = We have met before.
+gap: 她 [跟] 一 个 医生 结婚 了 。 = She married a doctor. / 给 把
+gap: 我 洗 了 个 [澡] 就 睡觉 了 。 = I took a bath and went to bed. / 洗澡 洗
+gap: 学校 放 三 天 [假] 。 = The school has three days off. / 放假 假期
+gap: 他 二十 岁 就 [离开] 了 家 。 = He left home at twenty. / 离 开离
+bad: 我明天跟他见面。 / 我明天见面他。 / 我明天见他面跟。 = I'm meeting him tomorrow.
+bad: 他们结婚了。 / 他们结了婚婚。 / 他们婚结了。 = They got married.
+## 11 | 才 and 就: late and early | 时间副词 才1；语气副词 才2、才3、就4；范围副词 就3
+ex: 就 says something happens early, fast or easily; 才 says it happens late, slowly or with difficulty: 他八点就来了 he came as early as eight, 他十点才来 he didn't come until ten. With 才, no 了 at the end. 才 + a small number means "only": 才五块钱 only five kuai. 就 + a noun can mean "only, just": 就他一个人.
+pat: time + 就 + verb + 了 · time + 才 + verb · 才 + number
+tip: 他十点才来了 is wrong: no 了 after 才.
+eg: 他 七 点 就 到 学校 了 。 = He got to school as early as seven.
+eg: 我 学 了 三 年 才 学 会 。 = It took me three years to learn it.
+eg: 这 本 书 才 十 块 钱 。 = This book is only ten kuai.
+gap: 电影 八 点 开始 ， 他 九 点 [才] 来 。 = The film started at eight, he didn't come until nine. / 就 再
+gap: 我 看 了 一 遍 [就] 懂 了 。 = I understood after reading it once. / 才 再
+gap: 他 才 [学] 了 一 个 月 汉语 。 = He has only studied Chinese for a month. / 学学 学过
+gap: 教室 里 [就] 我 一 个 人 。 = I am the only one in the classroom. / 才 还
+bad: 他十点才来。 / 他十点才来了。 / 他才十点来了。 = He didn't come until ten.
+bad: 我八点就起床了。 / 我八点就起床。 / 我就八点了起床。 = I got up as early as eight.
+
+## 11 | Only if, as long as: 只有……才……, 只要……就…… | 条件复句 只有……，才……；只要……，就……；连词 只有、只要
+ex: 只要 A 就 B: "as long as A, B" (A is enough). 只有 A 才 B: "only if A, B" (A is the only way). 只要努力，就能学好 as long as you work hard, you'll learn it well; 只有努力，才能学好 only by working hard will you learn it well.
+pat: 只要 A，(subject) 就 B · 只有 A，(subject) 才 B
+eg: 只要 每 天 练习 ， 你 就 能 说 好 汉语 。 = As long as you practise every day, you'll speak Chinese well.
+eg: 只有 认真 复习 ， 才 能 考 好 。 = Only by revising seriously can you do well in the exam.
+eg: 只要 你 愿意 ， 就 可以 来 。 = You can come as long as you want to.
+gap: [只要] 天气 好 ， 我们 就 去 爬 山 。 = As long as the weather is good, we'll go hiking. / 只有 只是
+gap: 只有 多 听 多 说 ， [才] 能 提高 水平 。 = Only by listening and speaking a lot can you improve. / 就 都
+gap: 只要 你 告诉 我 ， 我 [就] 去 。 = As long as you tell me, I'll go. / 才 再
+gap: [只有] 他 能 解决 这 个 问题 。 = Only he can solve this problem. / 只要 只是
+bad: 只要你努力，就能学好。 / 只要你努力，才能学好。 / 就你努力，只要能学好。 = As long as you work hard, you'll learn it well.
+bad: 只有多练习，才能写好。 / 只有多练习，就能写好吗。 / 才多练习，只有能写好。 = Only by practising a lot can you write well.
+
+## 11 | 再说一遍: how many times | 动量词 口、回、遍、声
+ex: 遍 counts times from beginning to end: 再说一遍 say it once more, 看了两遍 read it twice. 回 is like 次 (in speech): 去过一回. 声 counts sounds: 叫了一声 called out once. 口 counts mouthfuls: 吃一口 have a bite.
+pat: Verb + number + 遍 / 回 / 声 / 口
+eg: 请 再 说 一 遍 。 = Please say it once more.
+eg: 这 本 书 我 看 了 三 遍 。 = I have read this book three times.
+eg: 你 尝 一 口 ， 很 好吃 。 = Have a taste, it's delicious.
+gap: 老师 让 我们 把 课文 读 两 [遍] 。 = The teacher asked us to read the text twice. / 本 张
+gap: 他 叫 了 我 一 [声] 。 = He called out to me. / 个 张
+gap: 我 去 过|guo 一 [回] 。 = I've been there once. / 个 张
+gap: 你 再 [听] 一 遍 。 = Listen once more. / 听听 听着
+bad: 请再说一遍。 / 请说再一遍。 / 请一遍再说。 = Please say it again.
+bad: 我看了两遍。 / 我两遍看了。 / 我看两了遍。 = I read it twice.
+
+## 12 | 我们学校新的图书馆: several words before a noun | 定语 · 多项定语
+ex: When several words describe one noun, the order is usually: whose – this / that + number + measure word – adjective – noun: 我们学校那个很大的图书馆 that big library of our school. Each describing part with more than one word takes 的.
+pat: whose + 这 / 那 + number + measure word + adjective (+ 的) + noun
+eg: 这 是 我们 学校 新 的 体育馆 。 = This is our school's new sports hall.
+eg: 我 的 那 本 汉语 词典 很 有用 。 = That Chinese dictionary of mine is very useful.
+eg: 她 是 我们 班 最 聪明 的 学生 。 = She is the cleverest student in our class.
+gap: 我 [的] 那 两 个 朋友 都 是 留学生 。 = Those two friends of mine are both international students. / 地 得
+gap: 这 是 校长 [送] 给 我们 的 礼物 。 = This is a present the headmaster gave us. / 送送 送着
+gap: 我 喜欢 我们 学校 [那] 个 大 图书馆 。 = I like that big library at our school. / 那些 哪
+gap: 他 是 一 个 很 [认真] 的 老师 。 = He is a very conscientious teacher. / 认 真认
+bad: 我的那本词典很有用。 / 那本我的词典很有用。 / 我那的本词典很有用。 = That dictionary of mine is very useful.
+bad: 这是我们学校新的图书馆。 / 这是新的我们学校图书馆。 / 这是我们新的学校的图书馆的。 = This is our school's new library.
+
+## 12 | In, among, for someone: 在……上, 对……来说 | 固定格式 在……上/下/中、对……来说
+ex: 在……上 means "in (the field of)": 在学习上 in studying. 在……中 means "among, in the course of": 在比赛中. 在……下 means "under": 在老师的帮助下 with the teacher's help. 对……来说 means "for (someone)": 对我来说 for me.
+pat: 在 + noun + 上 / 中 / 下 · 对 + person + 来说
+eg: 在 学习 上 ， 他 很 认真 。 = When it comes to studying, he is very conscientious.
+eg: 对 我 来 说 ， 数学 很 难 。 = For me, maths is hard.
+eg: 在 老师 的 帮助 下 ， 我 的 成绩 提高 了 。 = With the teacher's help, my marks have improved.
+gap: [对] 留学生 来 说 ， 汉字 不 容易 。 = For international students, characters are not easy. / 在 给
+gap: 在 这 次 比赛 [中] ， 他 得分 最 多 。 = In this match he scored the most. / 里 上
+gap: 在 生活 [上] ， 他 给 了 我 很 多 帮助 。 = He has helped me a lot in everyday life. / 中间 上面
+gap: 对 我 来 [说] ， 这 个 问题 很 简单 。 = For me this question is simple. / 讲 话
+bad: 对我来说，这很重要。 / 对我说来，这很重要。 / 我对来说，这很重要。 = For me this is important.
+bad: 在学习上他很努力。 / 在上学习他很努力。 / 学习在上他很努力。 = He works hard at his studies.
+
+## 13 | Not only … but also: 不但……而且…… | 递进复句 不但……，而且……；连词 不但、而且
+ex: 不但 A 而且 B means "not only A, but also B". With one subject, 不但 goes after it: 他不但会说汉语，而且会写汉字. 也 or 还 often follows 而且.
+pat: Subject + 不但 A，而且 (还 / 也) B
+eg: 他 不但 会 说 汉语 ， 而且 会 写 汉字 。 = He can not only speak Chinese, he can also write characters.
+eg: 这 个 孩子 不但 聪明 ， 而且 很 努力 。 = This child is not only clever but also hard-working.
+eg: 学 外语 不但 有用 ， 而且 很 有意思 。 = Learning a foreign language is not only useful but also interesting.
+gap: 她 [不但] 喜欢 唱 歌 ， 而且 唱 得 很 好 。 = She not only likes singing, she also sings well. / 不用 不同
+gap: 这儿 不但 安静 ， [而且] 很 干净 。 = It's not only quiet here, it's also clean. / 但是 所以
+gap: 孩子 们 不但 要 学习 好 ， 而且 [要] 身体 好 。 = Children should not only study well but also be healthy. / 想要 要要
+gap: 他 不但 会 打 篮球 ， 而且 [还] 会 踢 足球 。 = He can not only play basketball, he can also play football. / 又 再
+bad: 他不但会说，而且会写。 / 他而且会说，不但会写。 / 不但他会说，他而且会写。 = He can not only speak but also write.
+bad: 这儿不但安静，而且干净。 / 这儿不但安静，但是干净。 / 这儿安静不但，干净而且。 = It's not only quiet here but also clean.
+
+## 13 | If: 如果……就……, ……的话 | 假设复句 如果……，就……；……的话，就……；连词 如果；助词 的话
+ex: 如果 A，就 B means "if A, then B". 的话 at the end of the first part also means "if", and both can be used together: 如果你有时间的话，就来吧.
+pat: 如果 A (的话)，(subject) 就 B · A 的话，就 B
+eg: 如果 明天 下雨 ， 我们 就 不 去 了 。 = If it rains tomorrow, we won't go.
+eg: 你 累 的话 ， 就 休息 一下 吧 。 = If you're tired, have a rest.
+eg: 如果 孩子 不 愿意 ， 你 就 别 让 他 去 。 = If the child doesn't want to, don't make him go.
+gap: [如果] 你 有 问题 ， 就 问 老师 。 = If you have a question, ask the teacher. / 因为 所以
+gap: 你 不 想 去 [的话] ， 就 在 家 吧 。 = If you don't want to go, stay at home. / 的 话的
+gap: 如果 他 来 了 ， 我 [就] 告诉 你 。 = If he comes, I'll tell you. / 才 还
+gap: 如果 你 [需要] 帮助 ， 就 给 我 打 电话 。 = If you need help, call me. / 需 要需
+bad: 如果你累，就休息吧。 / 就你累，如果休息吧。 / 如果你累，才休息吧。 = If you're tired, have a rest.
+bad: 你有时间的话，就来吧。 / 你有时间话的，就来吧。 / 的话你有时间，就来吧。 = If you have time, come.
+
+## 13 | 为了, 为: for and in order to | 介词 为了、为1、为2；目的复句 为了……，……
+ex: 为了 + a goal means "in order to": 为了学好汉语，他每天练习. 为 + person means "for": 妈妈为孩子做饭. 为什么 (why) is made of the same 为.
+pat: 为了 + goal，… · 为 + person + verb
+eg: 为了 学 好 汉语 ， 他 来 中国 留学 。 = He came to China to study in order to learn Chinese well.
+eg: 爸爸 妈妈 为 孩子 做 了 很 多 事情 。 = Parents do a lot for their children.
+eg: 为了 身体 健康 ， 我 每 天 锻炼 。 = I exercise every day to stay healthy.
+gap: [为了] 考 好 ， 他 每 天 都 复习 。 = He revises every day in order to do well in the exam. / 因为 所以
+gap: 妈妈 [为] 我们 做 了 一 个 蛋糕 。 = Mum made a cake for us. / 被 把
+gap: 为了 [不] 迟到 ， 我 早上 六 点 就 起床 了 。 = So as not to be late, I got up at six. / 没 别
+gap: 为了 孩子 ， 他们 [搬] 到 了 学校 附近 。 = For the children's sake they moved near the school. / 搬家 搬搬
+bad: 为了学好汉语，他每天练习。 / 为学好了汉语，他每天练习。 / 他每天练习，学好为了汉语。 = He practises every day in order to learn Chinese well.
+bad: 妈妈为我们做饭。 / 妈妈做饭为我们为。 / 为妈妈我们做饭。 = Mum cooks for us.
+
+## 14 | 刚, 刚才, 马上, 一会儿: just now and right away | 时间副词 刚、刚刚、马上、一会儿
+ex: 刚 / 刚刚 + verb means "have just (done)": 我刚到 I've just arrived. 刚才 is a time word, "a moment ago", and can stand before the subject: 刚才经理来了. 马上 means "right away", 一会儿 "in a moment".
+pat: Subject + 刚 / 刚刚 + verb · 刚才 + … · 马上 / 一会儿 + verb
+tip: 刚 is not used with 了 at the end for "just": 我刚到, not 我刚到了 (刚才 can take 了).
+eg: 我 刚 到 办公室 。 = I've just got to the office.
+eg: 刚才 经理 给 你 打 电话 了 。 = The manager called you a moment ago.
+eg: 你 等 一下 ， 我 马上 就 来 。 = Wait a moment, I'll be right there.
+gap: 会议 [刚] 开始 。 = The meeting has just started. / 刚才 马上
+gap: [刚才] 你 去 哪儿 了 ？ = Where did you go just now? / 刚 刚刚
+gap: 你 别 着急 ， 他 [马上] 就 到 。 = Don't worry, he'll be here right away. / 马 上马
+gap: 我们 [一会儿] 开会 。 = We'll have a meeting in a moment. / 一下 一点儿
+bad: 我刚到。 / 我到刚。 / 刚我到了。 = I've just arrived.
+bad: 刚才经理来了。 / 刚经理才来了。 / 经理来了刚刚才。 = The manager came just now.
+
+## 14 | 学汉语很有意思: a verb as the subject | 主语：动词或动词性短语、形容词或形容词性短语作主语；主谓短语作主语
+ex: A verb phrase, an adjective or a whole little sentence can be the subject: 学汉语很有意思 learning Chinese is interesting, 认真很重要 being conscientious is important, 他不来也没关系 it's fine if he doesn't come.
+pat: (verb phrase / adjective / clause) + 很 + adjective
+eg: 每 天 开会 很 累 。 = Having meetings every day is tiring.
+eg: 认真 工作 很 重要 。 = Working conscientiously is important.
+eg: 你 来 我们 公司 工作 ， 我们 都 很 高兴 。 = We are all happy that you are coming to work at our company.
+gap: [坐] 地铁 上班 很 方便 。 = Going to work by metro is convenient. / 坐坐 坐着
+gap: 早 [起床] 对 身体 好 。 = Getting up early is good for your health. / 起 床起
+gap: 跟 同事 一起 [工作] 很 开心 。 = Working with colleagues is fun. / 工 作工
+gap: [学] 汉语 不 难 。 = Learning Chinese is not hard. / 学学 学生
+bad: 学汉语很有意思。 / 很有意思学汉语。 / 学很有意思汉语。 = Learning Chinese is interesting.
+bad: 坐地铁很方便。 / 很方便坐地铁地铁。 / 地铁坐很方便坐。 = Taking the metro is convenient.
+
+
+## 14 | 下了班就回家: one thing right after another | 紧缩复句 ……了……（就）……
+ex: Verb1 + 了 + … + (就) + verb2 says that the second thing happens right after the first: 我下了班就回家 I go home as soon as I finish work, 吃了饭再走 go after eating.
+pat: Subject + verb1 + 了 + (object) + 就 / 再 + verb2
+eg: 我 下 了 班 就 去 接 孩子 。 = I go and pick up my child right after work.
+eg: 你 吃 了 饭 再 走 吧 。 = Have something to eat before you go.
+eg: 经理 开 完 会 就 回 办公室 了 。 = The manager went back to the office right after the meeting.
+gap: 他 看 [了] 邮件 就 给 我 打 电话 。 = He called me right after reading the email. / 过|guo 着
+gap: 我 做 完 了 作业 [就] 睡觉 。 = I go to bed right after finishing my homework. / 才 还
+gap: 你 到 了 宾馆 [就] 给 我 发 个 邮件 。 = Email me as soon as you get to the hotel. / 才 再
+gap: 我们 开 了 会 [再] 吃 饭 。 = We'll eat after the meeting. / 就是 还
+bad: 我下了班就回家。 / 我下班了就回家了了。 / 我就下了班回家。 = I go home as soon as I finish work.
+bad: 你吃了饭再走吧。 / 你再吃了饭走吧。 / 你吃饭了再再走吧。 = Have something to eat before you go.
+## 15 | 老王, 画家, 运动员: prefixes and suffixes | 前缀 老—；后缀 —家、—子、—员
+ex: 老 + surname is a friendly way to call an older friend or colleague: 老王, 老李. 家 after a field means an expert in it: 画家 painter. 员 means a member or someone doing a job: 运动员 athlete, 服务员 waiter. 子 makes many nouns: 桌子, 本子, 箱子.
+pat: 老 + surname · field + 家 · job + 员 · noun + 子
+eg: 老 王 是 我 的 同事 。 = Old Wang is my colleague.
+eg: 他 爸爸 是 一 个 有名 的 画家 。 = His father is a famous painter.
+eg: 她 想 做 运动员 。 = She wants to become an athlete.
+gap: [老] 李 ， 你 好 ！ = Hello, Old Li! / 小 大
+gap: 他 是 一 名 足球 运动 [员] 。 = He is a football player. / 人 家
+gap: 我 想 做 画 [家] 。 = I want to become a painter. / 员 人
+gap: 我 买 了 一 个 新 [箱子] 。 = I bought a new suitcase. / 箱儿 箱员
+bad: 老王是我的同事。 / 王老是我的同事。 / 老是王我的同事。 = Old Wang is my colleague.
+bad: 他是有名的画家。 / 他是有名的家画。 / 他是画有名的家。 = He is a famous painter.
+
+## 15 | But: 虽然……可是……, 只是 | 转折复句 虽然……，可是……；连词 可1、可是；范围副词 只是
+ex: 可是 means "but", like 但是, and can follow 虽然: 虽然工作很累，可是我很喜欢. 只是 means "only, it's just that": 这个工作很好，只是太远了 the job is good, it's just too far. 可 alone also means "but" in speech.
+pat: 虽然 A，可是 B · A，只是 B
+eg: 虽然 这 个 工作 很 累 ， 可是 我 很 喜欢 。 = Although this job is tiring, I like it.
+eg: 他 很 想 做 医生 ， 只是 他 的 成绩 不 太 好 。 = He really wants to be a doctor, it's just that his marks aren't very good.
+eg: 我 想 去 ， 可 我 没有 时间 。 = I'd like to go, but I don't have time.
+gap: 虽然 他 很 年轻 ， [可是] 经理 很 相信 他 。 = Although he is young, the manager trusts him. / 所以 因为
+gap: 这 家 公司 很 好 ， [只是] 离 我 家 太 远 。 = This company is good, it's just too far from my home. / 只有 只要
+gap: 我 很 想 换 工作 ， [可] 不 知道 做 什么 。 = I'd like to change jobs, but I don't know what to do. / 也 都
+gap: [虽然] 工作 很 忙 ， 可是 他 每 天 都 锻炼 。 = Although work is busy, he exercises every day. / 如果 只要
+bad: 虽然很累，可是我很喜欢。 / 虽然很累，所以我很喜欢。 / 可是很累，虽然我很喜欢。 = Although it's tiring, I like it.
+bad: 这个工作很好，只是太远了。 / 这个工作很好，只有太远了。 / 只是这个工作很好，太远了。 = The job is good, it's just too far.
+
+## 15 | 终于, 其实, 当然: at last, actually, of course | 语气副词 当然、其实、终于
+ex: 终于 means "at last, finally" after waiting or effort. 其实 means "actually, in fact" and corrects what one thinks. 当然 means "of course".
+pat: Subject + 终于 + verb + 了 · 其实 + statement · 当然 + …
+eg: 他 终于 找 到 了 工作 。 = He finally found a job.
+eg: 大家 都 以为 他 是 老师 ， 其实 他 是 医生 。 = Everyone thought he was a teacher, but actually he is a doctor.
+eg: 你 想 做 画家 ？ 当然 可以 ！ = You want to be a painter? Of course you can!
+gap: 等 了 一 年 ， 他 [终于] 来 了 。 = After waiting a year, he finally came. / 最后 后来
+gap: 这 个 工作 看 起来 很 简单 ， [其实] 很 难 。 = This job looks simple, but actually it's hard. / 其他 当然
+gap: 我 [当然] 愿意 帮助 你 。 = Of course I am willing to help you. / 一样 一共
+gap: 我 以为 他 是 经理 ， 其实 他 [是] 司机 。 = I thought he was the manager, but actually he's the driver. / 在 有
+bad: 他终于找到工作了。 / 他找到终于工作了。 / 终于他找到了工作了终于。 = He finally found a job.
+bad: 其实这不难。 / 这其实难不。 / 不难其实这。 = Actually this isn't hard.
+
+## 16 | More and more: 越来越, 越……越…… | 固定短语 越来越；固定格式 越……越……；程度副词 越
+ex: 越来越 + adjective means "more and more": 天气越来越冷 it is getting colder and colder. 越 A 越 B means "the more A, the more B": 雨越下越大 the rain is getting heavier, 越看越喜欢 the more I look, the more I like it.
+pat: Subject + 越来越 + adjective · 越 A 越 B
+tip: 越来越很冷 is wrong: no 很 after 越来越.
+eg: 天气 越 来 越 热 了 。 = The weather is getting hotter and hotter.
+eg: 雨 越 下 越 大 。 = The rain is getting heavier and heavier.
+eg: 大熊猫 越 看 越 可爱 。 = The more you look at the panda, the cuter it is.
+gap: 秋天 来 了 ， 天气 越 来 越 [凉快] 了 。 = Autumn is here, the weather is getting cooler. / 很凉快 太凉快
+gap: 风 越 刮 [越] 大 。 = The wind is getting stronger and stronger. / 也 又
+gap: 小 树 越 [长|zhǎng] 越 高 。 = The little tree keeps growing taller. / 常 张
+gap: 这儿 的 游客 越 来 [越] 多 。 = There are more and more tourists here. / 很 都
+bad: 天气越来越冷。 / 天气越来越很冷。 / 天气越冷越来。 = It's getting colder and colder.
+bad: 雨越下越大。 / 雨越大越下。 / 越雨下越大。 = The rain is getting heavier.
+
+## 16 | Soon, generally, it seems: 不一会儿, 一般来说, 看来 | 固定短语 不一会儿、一般来说、看来、在……看来
+ex: 不一会儿 means "soon after, before long". 一般来说 means "generally speaking". 看来 means "it seems, it looks as if" from what one sees; 在 + person + 看来 means "in someone's opinion".
+pat: 不一会儿，… · 一般来说，… · 看来，… · 在 + person + 看来，…
+eg: 刮 起 了 大 风 ， 不 一会儿 就 下雨 了 。 = A strong wind came up, and soon it began to rain.
+eg: 一般 来 说 ， 南方 的 冬天 不 太 冷 。 = Generally speaking, winter in the south isn't very cold.
+eg: 天 阴 了 ， 看来 要 下雨 了 。 = The sky is cloudy, it looks like rain.
+gap: 一般 [来] 说 ， 春天 风 很 大 。 = Generally speaking, spring is windy. / 去 说
+gap: 太阳 出来 了 ， [看来] 明天 是 晴 天 。 = The sun is out, it looks like tomorrow will be sunny. / 看看 看见
+gap: 在 我 [看来] ， 秋天 最 好 。 = In my opinion, autumn is the best. / 看见 看着
+gap: 他 走 了 ， 不 [一会儿] 又 回来 了 。 = He left, and soon came back again. / 一下 一点儿
+bad: 看来要下雨了。 / 要看来下雨了。 / 下雨看来要了。 = It looks like rain.
+bad: 在我看来，这个办法很好。 / 我在看来，这个办法很好。 / 在看来我，这个办法很好。 = In my opinion this way is good.
+
+## 17 | 到处, and question words for "some": 想去哪儿玩玩 | 范围副词 到处；疑问代词的非疑问用法：不定指用法
+ex: 到处 means "everywhere": 到处都是人. A question word without a question can mean "some, any": 我想去哪儿玩玩 I'd like to go somewhere, 你想吃点儿什么吗？ would you like something to eat? 别的 and 其他 mean "other".
+pat: 到处 + (都) + verb · question word as "somewhere, something" · 别的 / 其他 + noun
+eg: 春天 到 了 ， 公园 里 到处 都 是 花 。 = Spring has come, there are flowers everywhere in the park.
+eg: 周末 我们 去 哪儿 走走|zǒuzou 吧 。 = Let's go somewhere for a walk at the weekend.
+eg: 这儿 很 干净 ， 其他 地方 都 很 脏 。 = It's clean here, other places are all dirty.
+gap: 城市 里 [到处] 都 是 汽车 。 = There are cars everywhere in the city. / 到 处到
+gap: 你 还 想 去 [别的] 地方 吗 ？ = Do you want to go anywhere else? / 别人 别
+gap: 我 想 吃 一点儿 [什么] 。 = I'd like to eat something. / 怎么 哪
+gap: 这个 城市 的 环境 比 [其他] 城市 好 。 = This city's environment is better than other cities'. / 其实 其
+bad: 到处都是人。 / 都到处是人。 / 是到处都人。 = There are people everywhere.
+bad: 我们去哪儿走走吧。 / 我们哪儿去走走吧。 / 去哪儿我们走走吧。 = Let's go somewhere for a walk.
+
+## 17 | 咱们, 别人 and 怎样 | 代词 · 人称代词 别人、咱们；疑问代词 怎样；疑问句 “怎样+动词”的特指问句
+ex: 咱们 means "we" including the person you talk to (我们 may or may not include them). 别人 means "other people". 怎样 + verb asks "how (to do)", like 怎么, and is a little more formal: 怎样让城市更干净？
+pat: 咱们 + verb · 别人 · 怎样 + verb？
+eg: 咱们 一起 去 公园 吧 。 = Let's go to the park together (you and me).
+eg: 别 把 东西 放 在 别人 家 门口 。 = Don't put things at other people's doors.
+eg: 我们 应该 怎样 让 城市 更 干净 ？ = How should we make the city cleaner?
+gap: [咱们] 走 吧 ， 车 来 了 。 = Let's go, the bus is here. / 你们 他们
+gap: 不 要 总是 想 着 自己 ， 也 要 想 想 [别人] 。 = Don't always think of yourself, think of others too. / 别的 别
+gap: 这 个 问题 [怎样] 解决 ？ = How can this problem be solved? / 怎么样 什么样
+gap: 咱们 [一块儿] 去 吧 。 = Let's go together. / 一点儿 一会儿
+bad: 咱们一起去吧。 / 一起咱们去吧咱们。 / 咱们去一起吧。 = Let's go together.
+bad: 这个问题怎样解决？ / 这个问题解决怎样？ / 怎样这个问题解决吗？ = How can this problem be solved?
+
+## 18 | Besides and except: 除了……以外 | 固定格式 除了……（以外），……还/也/都……
+ex: 除了 A (以外) with 还 or 也 means "besides A, also": 除了汉语，他还会说外语 besides Chinese he also speaks foreign languages. With 都 it means "except A": 除了他，大家都来了 everyone came except him.
+pat: 除了 A (以外)，subject + 还 / 也 … · 除了 A (以外)，… 都 …
+eg: 除了 看 书 以外 ， 我 还 喜欢 听 音乐 。 = Besides reading, I also like listening to music.
+eg: 除了 小 王 ， 大家 都 来 了 。 = Everyone came except Xiao Wang.
+eg: 除了 北方 ， 南方 也 下 雪 了 。 = Besides the north, it has snowed in the south too.
+gap: [除了] 汉语 ， 他 还 会 说 两 种 外语 。 = Besides Chinese, he speaks two foreign languages. / 除 了除
+gap: 除了 他 以外 ， 我们 [都] 是 学生 。 = Except for him, we are all students. / 还 也
+gap: 除了 星期 天 [以外] ， 他 每 天 都 工作 。 = He works every day except Sunday. / 以后 以前
+gap: 除了 跑步 ， 我 [还] 喜欢 游泳 。 = Besides running, I also like swimming. / 都 就
+bad: 除了他，大家都来了。 / 除了他，大家还来了都。 / 大家除了他，来都了。 = Everyone came except him.
+bad: 除了汉语以外，他还会说外语。 / 汉语除了以外，他还会说外语。 / 除了以外汉语，他还会说外语。 = Besides Chinese, he also speaks foreign languages.
+
+## 18 | 一点儿也不, 一……也没: not at all | 固定格式 一……也/都+不/没……、一点儿也不；不怎么样
+ex: 一点儿也不 / 一点儿都不 + adjective means "not at all": 一点儿也不冷 not cold at all. 一 + measure word + noun + 也 / 都 + 没 / 不 means "not a single one": 一个人也没来 not a single person came. 不怎么样 means "not very good".
+pat: 一点儿 + 也 / 都 + 不 + adjective · 一 + measure word + noun + 也 / 都 + 没 / 不 + verb
+eg: 这 个 地方 一点儿 也 不 安静 。 = This place is not quiet at all.
+eg: 今天 我 一 个 人 也 没 遇到 。 = I didn't meet a single person today.
+eg: 那 家 饭馆 的 菜 不 怎么样 。 = The food in that restaurant is not very good.
+gap: 这 个 问题 一点儿 [也] 不 难 。 = This question is not hard at all. / 还 就
+gap: 他 一 个 字 也 [没] 写 。 = He didn't write a single character. / 不是 别
+gap: 我 [一] 个 朋友 都 没有 。 = I don't have a single friend. / 两 几
+gap: 这 个 电影 不 [怎么样] 。 = This film isn't up to much. / 怎么 怎样
+bad: 今天一点儿也不冷。 / 今天一点儿也冷不。 / 今天不一点儿也冷。 = It's not cold at all today.
+bad: 他一个字也没写。 / 他一个字没也写。 / 他没一个字也写。 = He didn't write a single character.
+
+
+## 18 | 几乎, 差不多, 大概: almost and about | 情态副词 几乎、差不多、大概、好像
+ex: 几乎 means "almost": 几乎每个人都知道 almost everyone knows. 差不多 means "about the same, almost": 我们差不多高 we are about the same height, 差不多十点了 it's almost ten. 大概 means "probably, about", 好像 "it seems".
+pat: 几乎 + (都 / 没) + verb · 差不多 + adjective / number · 大概 + verb / number
+eg: 这 个 城市 我 几乎 都 去 过|guo 了 。 = I've been almost everywhere in this city.
+eg: 我 和 我 哥哥 差不多 高 。 = My older brother and I are about the same height.
+eg: 他 大概 不 来 了 。 = He probably isn't coming.
+gap: 现在 [几乎] 每 个 人 都 有 手机 。 = Almost everyone has a mobile phone now. / 几 多少
+gap: 我们 两 个 [差不多] 大 。 = The two of us are about the same age. / 差 不多
+gap: 外边 [好像] 有 人 。 = There seems to be someone outside. / 像 好
+gap: 他 [大概] 已经 走 了 。 = He has probably already left. / 大小 大家
+bad: 几乎每个人都知道。 / 每个人几乎知道都。 / 都几乎每个人知道。 = Almost everyone knows.
+bad: 我们差不多高。 / 我们高差不多。 / 差不多我们高高。 = We are about the same height.
+## 18 | 关于, 根据, 向: about, according to, to | 介词 关于、根据、向1
+ex: 关于 means "about, concerning" and goes at the start or before a noun: 关于这件事 about this matter, 一本关于中国的书 a book about China. 根据 means "according to, based on": 根据新闻. 向 + person means "to, from": 向他学习 learn from him, 向老师问好 greet the teacher.
+pat: 关于 + topic · 根据 + source · 向 + person + verb
+eg: 我 看 了 一 本 关于 中国 历史 的 书 。 = I read a book about Chinese history.
+eg: 根据 新闻 ， 明天 会 下 雪 。 = According to the news, it will snow tomorrow.
+eg: 我们 应该 向 他 学习 。 = We should learn from him.
+gap: [关于] 这 件 事 ， 我 也 不 太 清楚 。 = About this matter, I'm not sure either. / 关心 关系
+gap: [根据] 大家 的 要求 ， 我们 换 了 时间 。 = Based on everyone's requests, we changed the time. / 跟 根
+gap: 你 应该 [向] 他 说 对不起 。 = You should apologise to him. / 往 在
+gap: 这 是 一 个 关于 环境 [的] 节目 。 = This is a programme about the environment. / 地 得
+bad: 我看了一本关于中国的书。 / 我看了一本中国关于的书。 / 我关于看了一本中国的书。 = I read a book about China.
+bad: 我们应该向他学习。 / 我们应该学习向他。 / 向我们应该他学习。 = We should learn from him.
+
+## 19 | 或者, 或者……或者……: or in statements | 连词 或、或者；选择复句 或者……，或者……
+ex: 或者 (or 或) means "or" in statements: 周末我看书或者听音乐. 还是 means "or" in questions. 或者 A，或者 B gives two choices: 或者你来，或者我去 either you come or I go.
+pat: A 或者 B (statement) · 或者 A，或者 B
+tip: In a question use 还是: 你喝茶还是咖啡？, not 你喝茶或者咖啡？
+eg: 周末 我 常常 看 电影 或者 听 音乐 。 = At weekends I often watch films or listen to music.
+eg: 或者 你 来 我 家 ， 或者 我 去 你 家 ， 都 行 。 = Either you come to my home or I go to yours, either is fine.
+eg: 你 喜欢 看 表演 还是 听 故事 ？ = Do you prefer watching a show or listening to a story?
+gap: 我们 明天 [或者] 后天 去 看 表演 。 = We'll go to the show tomorrow or the day after. / 还是 还
+gap: 你 想 听 音乐 [还是] 看 电影 ？ = Do you want to listen to music or watch a film? / 或者 或
+gap: [或者] 坐 地铁 ， 或者 打车 ， 都 很 方便 。 = Either the metro or a taxi, both are convenient. / 还是 还有
+gap: 你 可以 发 邮件 [或] 打 电话 。 = You can send an email or call. / 还是 和
+bad: 我晚上看书或者听音乐。 / 我晚上看书还是听音乐。 / 我或者晚上看书听音乐或者。 = In the evening I read or listen to music.
+bad: 你喝茶还是喝咖啡？ / 你喝茶或者喝咖啡吗还是？ / 你或者喝茶还是咖啡？ = Do you drink tea or coffee?
+
+## 19 | From … on, before, after: 从……起, 以前, 以后 | 固定格式 从……起；（在）……以前/以后/前/后
+ex: 从 + time + 起 means "from … on": 从明天起 from tomorrow on. Time or event + 以前 / 前 means "before", + 以后 / 后 means "after": 吃饭以前 before eating, 下课以后 after class. 以前 and 以后 alone mean "in the past" and "in the future".
+pat: 从 + time + 起 · event + 以前 / 以后
+eg: 从 下 个 月 起 ， 我 要 每 天 锻炼 。 = From next month on, I'm going to exercise every day.
+eg: 表演 开始 以前 ， 请 关机 。 = Please switch off your phone before the show starts.
+eg: 我 以前 不 喜欢 音乐 ， 现在 很 喜欢 。 = I didn't use to like music, now I love it.
+gap: 从 今天 [起] ， 我 不 喝 咖啡 了 。 = From today on, I'm not drinking coffee any more. / 来 去
+gap: 看 完 电影 [以后] ， 我们 去 吃 饭 。 = After the film, we'll go and eat. / 以上 以下
+gap: 睡觉 [以前] 别 玩 手机 。 = Don't play on your phone before going to bed. / 前面 以上
+gap: [从] 明天 起 ， 学校 放假 。 = From tomorrow on, the school is on holiday. / 在 往
+bad: 从明天起，我每天跑步。 / 起明天从，我每天跑步。 / 从起明天，我每天跑步。 = From tomorrow on I'll run every day.
+bad: 下课以后，我们去吃饭。 / 以后下课，我们去吃饭。 / 下课，以后我们吃饭去以后。 = After class we'll go and eat.
+
+## 19 | 一张, 一双, 一种: more measure words | 量词 · 专用名量词：把、双、张、种、层、封、页、辆、节、所、班、段、头、句
+ex: 张 for flat things (纸, 桌子, 照片, 票), 双 for pairs (鞋), 种 for kinds, 封 for letters, 页 for pages, 辆 for vehicles, 节 for lessons, 段 for parts of a text or a stretch of time, 句 for sentences, 层 for floors, 把 for things with a handle (伞, 椅子), 头 for big animals (牛), 所 for schools.
+pat: number + measure word + noun
+eg: 我 买 了 两 张 电影 票 。 = I bought two cinema tickets.
+eg: 这 段 音乐 很 好听 。 = This piece of music sounds lovely.
+eg: 他 给 我 写 了 一 封 信 。 = He wrote me a letter.
+gap: 我 想 买 一 [双] 新 鞋 。 = I want to buy a new pair of shoes. / 张 个
+gap: 这 [张] 照片 是 在 哪儿 照 的 ？ = Where was this photo taken? / 双 条
+gap: 今天 上午 我们 有 四 [节] 课 。 = We have four lessons this morning. / 张 双
+gap: 请 看 第 十 [页] 。 = Please look at page ten. / 本 张
+bad: 我买了两张票。 / 我买了两票张。 / 我买了张两票。 = I bought two tickets.
+bad: 他写了一封信。 / 他写了一信封。 / 他写了封一信。 = He wrote a letter.
+
+## 20 | 一个一个地: one by one | 数量重叠：数词+量词+数词+量词
+ex: A number and measure word said twice, often with 地, means "one by one, … at a time": 一个一个地进来 come in one at a time, 一次一次地练习 practise again and again.
+pat: 一 + measure word + 一 + measure word + 地 + verb
+eg: 运动员 一 个 一 个 地 走 进来 了 。 = The athletes came in one by one.
+eg: 他 一 次 一 次 地 练习 ， 终于 得分 了 。 = He practised again and again, and finally scored.
+eg: 请 大家 一 个 一 个 地 说 。 = Please speak one at a time, everyone.
+gap: 学生 们 一 个 [一] 个 地 上 车 。 = The students got on the bus one by one. / 两 几
+gap: 他 一 次 一 [次] 地 跳 ， 跳 得 越 来 越 高 。 = He jumped again and again, higher and higher. / 个 遍
+gap: 请 一 个 一 个 [地] 进来 。 = Please come in one at a time. / 得 的
+gap: 我 一 遍 一 遍 地 [看] 这 个 比赛 。 = I watched this match again and again. / 看看 看着
+bad: 他们一个一个地进来了。 / 他们一个地一个进来了。 / 他们一一个个地进来了。 = They came in one by one.
+bad: 他一次一次地练习。 / 他一次地一次练习。 / 他练习一次地一次。 = He practised again and again.
+
+## 20 | 比赛, 参加 and 受到: words for matches | 结果补语2；动补短语2
+ex: 参加 + event means "take part in": 参加比赛. 得到 / 受到 mean "receive, get": 得到第一 come first, 受到欢迎 be welcomed. 加 means "add, plus": 二加三 two plus three.
+pat: 参加 + event · 得到 / 受到 + thing
+eg: 我 想 参加 这 次 网球 比赛 。 = I want to take part in this tennis match.
+eg: 他 在 比赛 中 得到 了 第 一 。 = He came first in the competition.
+eg: 这 个 运动员 很 受 大家 欢迎 。 = This athlete is very popular with everyone.
+gap: 你 [参加] 过|guo 运动会 吗 ？ = Have you ever taken part in a sports meeting? / 参 加参
+gap: 他们 班 得到 了 很 多 [分] 。 = Their class got a lot of points. / 个 张
+gap: 这 个 节目 受到 了 大家 的 [欢迎] 。 = This programme was popular with everyone. / 欢 迎欢
+gap: 二 [加] 三 是 五 。 = Two plus three is five. / 和 跟
+bad: 我参加了比赛。 / 我比赛了参加。 / 参加我了比赛。 = I took part in the match.
+bad: 他得到了第一。 / 他到得了第一。 / 他第一得到了。 = He came first.
+
+## 21 | 不多不少, 不大不小: just right | 四字格 不A不B
+ex: 不 A 不 B with two opposite adjectives means "neither too A nor too B, just right": 不大不小 just the right size, 不多不少 just the right amount, 不冷不热 neither cold nor hot.
+pat: 不 + adjective A + 不 + adjective B (opposites)
+eg: 这 双 筷子 不 长 不 短 ， 很 合适 。 = These chopsticks are neither too long nor too short, just right.
+eg: 今天 不 冷 不 热 ， 很 舒服 。 = Today is neither cold nor hot, very pleasant.
+eg: 这 碗 饭 不 多 不 少 。 = This bowl of rice is just the right amount.
+gap: 这 个 盘子 不 大 不 [小] 。 = This plate is just the right size. / 大 多
+gap: 这儿 的 天气 [不] 冷 不 热 。 = The weather here is neither cold nor hot. / 没 很
+gap: 菜 不 多 不 [少] ， 正 好 。 = There is just the right amount of food. / 多 好
+gap: 这 件 衣服 不 [长] 不 短 。 = This piece of clothing is neither long nor short. / 短 高
+bad: 这个碗不大不小。 / 这个碗不大小不。 / 这个碗大不小不。 = This bowl is just the right size.
+bad: 今天不冷不热。 / 今天不冷热不。 / 今天冷不热不。 = Today is neither cold nor hot.
+
+## 21 | 急什么啊: why bother? | 固定格式 X什么（啊）
+ex: Verb or adjective + 什么(啊) does not ask "what": it tells the other person there is no need: 急什么啊 what's the hurry, 哭什么 what are you crying for. It can sound impatient.
+pat: Verb / adjective + 什么 (啊)
+eg: 还 早 呢 ， 你 急 什么 啊 ？ = It's still early, what's the hurry?
+eg: 饺子 还 有 很 多 ， 你 怕 什么 ？ = There are plenty of dumplings left, what are you worried about?
+gap: 时间 还 早 ， 你 急 [什么] 啊 ？ = It's still early, what's the rush? / 怎么 吗
+gap: 你 [哭] 什么 ？ 这 是 好 事 啊 ！ = What are you crying for? This is good news! / 哭哭 哭着
+gap: 菜 还 没 好 ， 你 着急 什么 [啊] ？ = The food isn't ready yet, what's the hurry? / 吗 吧
+gap: 他 是 你 的 朋友 ， 你 怕 [什么] ？ = He's your friend, what are you afraid of? / 吗 怎么
+bad: 你急什么啊？ / 你什么急啊？ / 什么你急啊？ = What's the hurry?
+bad: 你哭什么？ / 你什么哭？ / 什么哭你？ = What are you crying for?
+
+## 22 | 该……了: it's time to | 固定格式 该……了；能愿动词 该
+ex: 该 + verb + 了 means "it's time to …": 该过年了 New Year is coming, 该睡觉了 it's time for bed. 该 + person + 了 means "it's someone's turn": 该你了.
+pat: 该 + verb + 了 · 该 + person + 了
+eg: 快 十二 月 了 ， 该 过 新年 了 。 = It's almost December, New Year will soon be here.
+eg: 十一 点 了 ， 该 睡觉 了 。 = It's eleven, time for bed.
+eg: 我 唱 完 了 ， 该 你 了 。 = I've finished singing, it's your turn.
+gap: 太 晚 了 ， [该] 回 家 了 。 = It's late, time to go home. / 应 在
+gap: 该 吃 饺子 [了] ！ = Time for dumplings! / 的 过|guo
+gap: 下 一 个 [该] 谁 了 ？ = Whose turn is it next? / 是 有
+gap: 该 [准备] 过节 的 东西 了 。 = It's time to get things ready for the festival. / 准 备准
+bad: 该睡觉了。 / 了该睡觉。 / 睡觉该了了。 = It's time for bed.
+bad: 该你了。 / 你该。 / 了你该。 = It's your turn.
+
+## 22 | 我们两个: two names for the same thing | 同位短语；名词 节日
+ex: Two nouns side by side can name the same thing: 我们两个 the two of us, 你们三个 the three of you, 新年这一天 the day of New Year. Many festivals end in 节: 春节 the Spring Festival, which is the Chinese New Year.
+pat: Noun A + noun B (the same thing)
+eg: 我们 两 个 都 喜欢 过节 。 = The two of us both love festivals.
+eg: 新年 这 一 天 ， 大家 都 很 开心 。 = On New Year's Day everyone is happy.
+eg: 你们 三 个 一起 去 吧 。 = The three of you, go together.
+gap: 我们 [两] 个 是 好 朋友 。 = The two of us are good friends. / 二 第二
+gap: 新年 [这] 一 天 ， 我们 去 看 爷爷 奶奶 。 = On New Year's Day we visit Grandpa and Grandma. / 那些 这些
+gap: 你们 [几] 个 一起 来 吧 。 = The few of you come together. / 多少 什么
+gap: 过节 的 时候 ， 我 [送] 给 妈妈 一 个 礼物 。 = For the festival I gave Mum a present. / 送送 送着
+bad: 我们两个都是学生。 / 两个我们都是学生。 / 我们都两个是学生。 = The two of us are both students.
+bad: 你们三个一起去吧。 / 三个你们一起去吧。 / 你们一起三个去吧。 = The three of you, go together.

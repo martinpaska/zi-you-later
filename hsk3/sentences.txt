@@ -1,0 +1,210 @@
+# HSK 3 sentences for the Sentences mode, by lesson, written for this app with only the words of the official HSK 1, 2 and 3
+# vocabulary lists (build_grammar.py checks this). The examples of each lesson's grammar points are added to these.
+# Words are separated by spaces; = English (只|zhǐ, 还|huán, 得|děi: a word with several readings, and the one meant)
+
+## 1
+我 的 同事 个子 不 高 ， 有点儿 胖 。 = My colleague is not tall and a little plump.
+他 头发 很 短 ， 眼睛 很 大 。 = He has short hair and big eyes.
+这 个 孩子 又 聪明 又 可爱 。 = This child is clever and cute.
+我 来自 中国 南方 ， 出生 在 一 个 小 城市 。 = I come from the south of China, I was born in a small city.
+她 结婚 了 ， 她 爱人 是 医生 。 = She is married, her husband is a doctor.
+那 位 阿姨 看 起来 很 年轻 。 = That lady looks young.
+我 叔叔 身高 一 米 八 。 = My uncle is 1.8 metres tall.
+你 长|zhǎng 得 真 像 你 爸爸 ！ = You really look like your dad!
+
+## 2
+我 的 护照 丢 了 ， 怎么办 ？ = I've lost my passport, what should I do?
+明天 我 要 请假 去 银行 。 = Tomorrow I have to take time off to go to the bank.
+我 想 办 一 张 银行卡 。 = I'd like to get a bank card.
+这 本 书 我 下 个 星期 还|huán 给 你 。 = I'll give this book back to you next week.
+请 检查 一下 你 的 电话 号码 。 = Please check your phone number.
+别 着急 ， 我们 一起 想 办法 解决 。 = Don't worry, let's find a way to solve it together.
+你 收到 我 的 信 了 吗 ？ = Did you get my letter?
+你 能 帮助 我 吗 ？ 我 需要 换 钱 。 = Can you help me? I need to change money.
+
+## 3
+欢迎 你 来 我 家 做客 ！ = Welcome to my home!
+好久 不 见 ， 你 最近 怎么样 ？ = Long time no see, how have you been?
+谢谢 你 ， 你 真 热情 ！ = Thank you, you're so kind!
+我 决定 明年 去 中国 留学 。 = I've decided to study in China next year.
+你 打算 什么 时候 回 国 ？ = When are you planning to go back to your country?
+我 同意 你 的 办法 。 = I agree with your idea.
+你 放心 吧 ， 我 一定 会 来 的 。 = Don't worry, I'll definitely come.
+他 好像 有点儿 生气 。 = He seems a little angry.
+我 以为 你 不 来 了 。 = I thought you weren't coming.
+
+## 4
+我 饿 了 ， 咱们 去 吃 饭 吧 。 = I'm hungry, let's go and eat.
+服务 员 ， 请 给 我们 菜单 。 = Waiter, the menu please.
+这 个 蛋糕 太 甜 了 。 = This cake is too sweet.
+你 尝 一 尝 ， 这 个 鸡 很 好吃 。 = Have a taste, this chicken is delicious.
+天 太 热 了 ， 我 想 吃 冰激凌 。 = It's too hot, I'd like some ice cream.
+今天 晚上 我们 点 外卖 吧 。 = Let's order takeaway tonight.
+我 不 喝 酒 ， 喝 矿泉水 吧 。 = I don't drink alcohol, I'll have mineral water.
+我 吃 饱 了 ， 谢谢 。 = I'm full, thank you.
+
+## 5
+你 每 天 怎么 去 上班 ？ = How do you get to work every day?
+我 骑 自行车 去 ， 很 方便 。 = I go by bike, it's convenient.
+坐 高铁 去 那儿 要 五 个 小时 。 = It takes five hours to get there by high-speed train.
+飞机 晚点 了 ， 下午 三 点 才 起飞 。 = The plane is delayed, it won't take off until three.
+过 马路 的 时候 要 小心 ， 看 红绿灯 。 = Be careful when crossing the road, watch the traffic lights.
+我们 明天 早上 八 点 出发 。 = We set off at eight tomorrow morning.
+请 把 行李 放 在 箱子 里 。 = Please put your luggage in the suitcase.
+在 下 一 个 路口 向 右 走 。 = Turn right at the next crossing.
+对不起 ， 我 迟到 了 。 = Sorry, I'm late.
+
+## 6
+这 双 鞋 多少 钱 ？ = How much is this pair of shoes?
+一共 一 百 二十 块 五 毛 。 = A hundred and twenty kuai fifty altogether.
+这 件 衬衫 有点儿 大 ， 有 小 一点儿 的 吗 ？ = This shirt is a little big, do you have a smaller one?
+这 条 裙子 的 颜色 我 不 太 喜欢 ， 有 蓝 的 吗 ？ = I don't really like the colour of this skirt, do you have a blue one?
+这 两 件 上衣 有 什么 不同 ？ = What is the difference between these two tops?
+你 穿 这 件 大衣 特别 合适 。 = This coat really suits you.
+我 的 鞋 太 旧 了 ， 想 买 一 双 新 的 。 = My shoes are too old, I want to buy a new pair.
+
+## 7
+我 感冒 了 ， 还 有点儿 发烧 。 = I have a cold and a slight fever.
+医生 说 我 得|děi 住院 。 = The doctor says I have to stay in hospital.
+他 下 个 星期 就 能 出院 了 。 = He'll be able to leave hospital next week.
+多 锻炼 身体 ， 才 能 健康 。 = Only by exercising a lot can you stay healthy.
+你 应该 早 睡 早 起 。 = You should go to bed early and get up early.
+别 害怕 ， 医生 会 帮助 你 的 。 = Don't be afraid, the doctor will help you.
+我 每 天 都 坚持 跑步 。 = I keep on running every day.
+
+## 8
+周末 你 一般 做 什么 ？ = What do you usually do at the weekend?
+我 喜欢 去 公园 拍照 。 = I like taking photos in the park.
+放假 的 时候 我们 去 爬 山 了 。 = During the holidays we went hiking in the mountains.
+我 对 中国 音乐 很 感兴趣 。 = I'm very interested in Chinese music.
+我们 一块儿 去 喝 咖啡 、 聊天儿 吧 。 = Let's go for coffee and a chat together.
+这 是 我 在 花园 里 照 的 照片 。 = This is a photo I took in the garden.
+出去 玩 的 时候 别 忘 了 带 伞 。 = Don't forget to take an umbrella when you go out.
+孩子 们 很 喜欢 玩 这 个 游戏 。 = The children love playing this game.
+
+## 9
+我 上 个 月 搬家 了 。 = I moved house last month.
+我 的 新 房子 在 一 个 很 安静 的 小区 。 = My new flat is in a very quiet residential area.
+我 家 住 在 十 层 ， 有 电梯 。 = I live on the tenth floor, there is a lift.
+附近 有 超市 和 银行 ， 很 方便 。 = There is a supermarket and a bank nearby, it's very convenient.
+屋子 里 有 一 个 大 沙发 。 = There is a big sofa in the room.
+房间 太 脏 了 ， 我们 打扫 一下 吧 。 = The room is too dirty, let's clean it.
+天 太 热 了 ， 把 空调 开 一下 。 = It's too hot, turn on the air conditioner.
+我 的 邻居 很 热情 。 = My neighbours are very friendly.
+
+## 10
+我 每 天 早上 七 点 起床 ， 先 刷 牙 ， 再 洗澡 。 = I get up at seven every morning, brush my teeth first, then take a shower.
+我 平时 很 少 看 电视 。 = I rarely watch TV normally.
+我们 家 是 爸爸 做饭 ， 妈妈 洗 衣服 。 = In our family Dad cooks and Mum does the laundry.
+奶奶 老 了 ， 我们 要 照顾 她 。 = Grandma is old, we need to look after her.
+我 和 姐姐 的 关系 很 好 。 = My older sister and I get on very well.
+这 个 周末 有 客人 来 我们 家 。 = Guests are coming to our home this weekend.
+他 习惯 晚上 十二 点 睡觉 。 = He is used to going to bed at midnight.
+孩子 一直 在 哭 ， 怎么办 ？ = The child keeps crying, what shall we do?
+
+## 11
+请 把 课本 打开 ， 看 第 二十 页 。 = Please open your textbooks at page twenty.
+这 个 句子 是 什么 意思 ？ = What does this sentence mean?
+我 每 天 晚上 都 复习 课文 。 = I revise the text every evening.
+你 可以 查 一下 词典 。 = You can look it up in a dictionary.
+学 汉语 有 什么 好 方法 ？ = Is there a good way to learn Chinese?
+我 的 汉语 水平 提高 了 很 多 。 = My Chinese has improved a lot.
+老师 讲 得 很 清楚 ， 我 都 明白 了 。 = The teacher explained it clearly, I understood everything.
+他 学习 很 认真 ， 也 很 努力 。 = He studies conscientiously and works hard.
+今天 的 作业 很 简单 。 = Today's homework is easy.
+
+## 12
+我们 学校 的 校园 很 漂亮 。 = Our school's campus is very beautiful.
+下午 四 点 放学 以后 ， 我 去 图书馆 看 书 。 = After school finishes at four, I go to the library to read.
+我 是 初中 二 年级 的 学生 。 = I'm a student in the second year of junior high.
+下 个 月 学校 有 运动会 。 = There is a sports meeting at school next month.
+这 个 学期 我 的 成绩 不错 。 = My marks this term are good.
+我 最 喜欢 的 课 是 历史 和 数学 。 = My favourite subjects are history and maths.
+晚会 上 有 很 多 有意思 的 节目 。 = There were lots of interesting acts at the evening party.
+
+## 13
+爸爸 妈妈 对 我 的 要求 很 高 。 = My parents expect a lot of me.
+家 里 的 环境 对 孩子 影响 很 大 。 = The home environment has a big influence on children.
+对 孩子 来 说 ， 身体 健康 最 重要 。 = For children, being healthy is the most important thing.
+如果 孩子 喜欢 画 画 ， 就 让 他 学 吧 。 = If the child likes painting, let him learn it.
+我们 应该 给 孩子 更 多 的 机会 。 = We should give children more chances.
+除了 学习 ， 孩子 也 需要 玩 。 = Besides studying, children also need to play.
+
+## 14
+经理 今天 不 在 办公室 。 = The manager is not in the office today.
+我 刚才 给 你 发 了 一 个 邮件 。 = I sent you an email just now.
+这 个 工作 我 马上 就 能 完成 。 = I can finish this job right away.
+会议 几 点 结束 ？ = What time does the meeting end?
+开会 的 时候 请 关机 。 = Please switch off your phone during the meeting.
+我 跟 同事 们 的 关系 都 很 好 。 = I get on well with all my colleagues.
+
+## 15
+你 是 做 什么 工作 的 ？ = What do you do for a living?
+他 是 一 名 有名 的 运动员 。 = He is a famous athlete.
+我 爸爸 是 司机 ， 妈妈 是 服务 员 。 = My dad is a driver and my mum is a waitress.
+我 以后 想 做 画家 。 = I want to be a painter in the future.
+这 个 工作 很 好 ， 可是 太 累 了 。 = This job is good, but it's too tiring.
+她 终于 找 到 了 一 个 满意 的 工作 。 = She has finally found a job she is happy with.
+你 觉得 什么 工作 最 有意思 ？ = What job do you think is most interesting?
+
+## 16
+你 最 喜欢 哪 个 季节 ？ = Which season do you like best?
+我 最 喜欢 秋天 ， 不 冷 也 不 热 。 = I like autumn best, it's neither cold nor hot.
+北方 的 冬天 很 冷 ， 常常 下 雪 。 = Winter in the north is cold, it often snows.
+春天 到 了 ， 花 都 开 了 。 = Spring has come, the flowers are all out.
+今天 风 很 大 ， 别 出去 了 。 = It's very windy today, don't go out.
+大熊猫 是 中国 有名 的 动物 。 = The giant panda is a famous Chinese animal.
+我 家 养 了 一 只 猫 和 一 只 狗 。 = We keep a cat and a dog at home.
+夏天 我 喜欢 去 海 边 游泳 。 = In summer I like to go swimming at the seaside.
+
+## 17
+这 个 城市 的 环境 越 来 越 好 了 。 = The environment of this city is getting better and better.
+我 家 在 城市 的 东北 。 = My home is in the northeast of the city.
+中国 南方 和 北方 的 天气 很 不 一样 。 = The weather in the south and north of China is very different.
+这 是 世界 上 最 大 的 城市 吗 ？ = Is this the biggest city in the world?
+你 去 过|guo 哪些 国家 ？ = Which countries have you been to?
+这 个 地方 到处 都 很 干净 。 = It's clean everywhere in this place.
+我 是 外地 人 ， 不 太 了解 这儿 。 = I'm not from around here, I don't know this place well.
+
+## 18
+这 几 年 城市 的 变化 很 大 。 = The city has changed a lot in the last few years.
+你 听说 了 吗 ？ 那儿 发生 了 一 件 大 事 。 = Have you heard? Something big has happened there.
+最近 手机 越 来 越 便宜 了 。 = Mobile phones have been getting cheaper and cheaper lately.
+以前 这儿 没有 地铁 ， 现在 有 了 。 = There used to be no metro here, now there is.
+我 每 天 都 看 新闻 。 = I watch the news every day.
+后来 他 变成 了 一 个 很 有名 的 人 。 = Later he became a very famous person.
+这儿 的 生活 跟 以前 差不多 。 = Life here is about the same as before.
+
+## 19
+你 喜欢 听 什么 音乐 ？ = What music do you like?
+今天 晚上 有 一 个 表演 ， 你 去 吗 ？ = There is a show tonight, are you going?
+这 个 故事 很 有意思 ， 你 讲 给 我 听 吧 。 = This story is interesting, tell it to me.
+她 的 声音 很 好听 。 = She has a lovely voice.
+我 喜欢 一边 听 音乐 一边 看 书 。 = I like reading while listening to music.
+你 可以 在 网站 上 看 电子书 。 = You can read e-books on the website.
+我 在 街 上 遇到 了 我 的 老师 。 = I ran into my teacher in the street.
+
+## 20
+你 喜欢 什么 运动 ？ = What sports do you like?
+我 喜欢 打 网球 和 羽毛球 。 = I like playing tennis and badminton.
+明天 有 足球 比赛 ， 你 参加 吗 ？ = There is a football match tomorrow, are you taking part?
+他 在 比赛 中 得|dé 了 十 分 。 = He scored ten points in the match.
+我们 班 在 运动会 上 得到 了 第 一 。 = Our class came first at the sports meeting.
+他 跳 得 比 我 高 。 = He jumps higher than me.
+比如 跑步 、 游泳 ， 都 是 很 好 的 运动 。 = Running and swimming, for example, are both good exercise.
+
+## 21
+中国 人 吃 饭 的 时候 用 筷子 。 = Chinese people eat with chopsticks.
+你 会 用 筷子 吗 ？ = Can you use chopsticks?
+桌子 上 有 很 多 盘子 和 碗 。 = There are lots of plates and bowls on the table.
+北方 人 喜欢 吃 饺子 和 面条儿 。 = People in the north like eating dumplings and noodles.
+今天 我 请客 ， 你们 想 吃 什么 就 点 什么 。 = It's my treat today, order whatever you like.
+这 个 瓶子 里 是 什么 ？ = What's in this bottle?
+
+## 22
+新年 是 中国 很 重要 的 节日 。 = New Year is a very important festival in China.
+过节 的 时候 ， 大家 都 回 家 。 = At festival time everyone goes home.
+新年 的 时候 ， 我们 给 朋友 送 礼物 。 = At New Year we give presents to friends.
+我 对 中国 文化 很 感兴趣 。 = I'm very interested in Chinese culture.
+新年 快乐 ， 身体 健康 ！ = Happy New Year, and good health!
+中国 的 节日 有 很 长 的 历史 。 = Chinese festivals have a long history.
