@@ -1237,13 +1237,14 @@ details.gegd>.geg{padding-bottom:12px}
 .ulht{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.ulht small{color:var(--muted);font-size:.76rem}.ulht b{font-family:var(--f-display);font-size:1rem;line-height:1.2}
 .ulbar{display:block;height:5px;border-radius:9px;background:var(--sunk);overflow:hidden;margin-top:3px}.ulbar i{display:block;height:100%;background:var(--accent);border-radius:inherit}
 .ulmore{flex:none;font-size:.78rem;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:6px 2px;max-width:92px;text-align:right;line-height:1.2}
-.umap{position:relative;border-radius:4px;padding:14px 0 6px;overflow:hidden;background:var(--paper);
+.umap{position:relative;border-radius:4px;padding:30px 0 64px;overflow:clip;background:var(--paper);
   box-shadow:inset 0 0 0 1px rgb(0 0 0/.12),inset 0 0 0 6px var(--paper),inset 0 0 0 7px rgb(0 0 0/.18),0 10px 24px -16px rgb(60 40 30/.5)}
 /* the painting, faint enough for the stamps to stay in front */
-.umap::before{content:"";position:absolute;inset:8px;background:var(--a1) top center/100% auto no-repeat,var(--a2) bottom center/100% auto no-repeat;opacity:.5;pointer-events:none}
-.ia1{--a1:url(../art/ink1.jpg)}.ib1{--a2:url(../art/ink1.jpg)}.ia2{--a1:url(../art/ink2.jpg)}.ib2{--a2:url(../art/ink2.jpg)}.ia3{--a1:url(../art/ink3.jpg)}.ib3{--a2:url(../art/ink3.jpg)}.ia4{--a1:url(../art/ink4.jpg)}.ib4{--a2:url(../art/ink4.jpg)}.ia5{--a1:url(../art/ink5.jpg)}.ib5{--a2:url(../art/ink5.jpg)}
-:root[data-theme="dark"] .umap::before{filter:invert(1) sepia(.15) brightness(.85);mix-blend-mode:screen;opacity:.35}
-.unodes{position:relative}
+/* the painting stays in view while you scroll through a long lesson (sticky), whole: never cut, never stretched */
+.upaint{position:sticky;top:96px;display:block;height:min(var(--h,700px),calc(100svh - 200px));margin:-14px 8px calc(-1 * min(var(--h,700px),calc(100svh - 200px)) + 14px);background:var(--a1) center/contain no-repeat;opacity:.55;pointer-events:none;z-index:0}
+.ia1{--a1:url(../art/ink1.webp)}.ia2{--a1:url(../art/ink2.webp)}.ia3{--a1:url(../art/ink3.webp)}.ia4{--a1:url(../art/ink4.webp)}.ia5{--a1:url(../art/ink5.webp)}.ia6{--a1:url(../art/ink6.webp)}.ia7{--a1:url(../art/ink7.webp)}.ia8{--a1:url(../art/ink8.webp)}.ia9{--a1:url(../art/ink9.webp)}.ia10{--a1:url(../art/ink10.webp)}.ia11{--a1:url(../art/ink11.webp)}.ia12{--a1:url(../art/ink12.webp)}.ia13{--a1:url(../art/ink13.webp)}.ia14{--a1:url(../art/ink14.webp)}.ia15{--a1:url(../art/ink15.webp)}.ia16{--a1:url(../art/ink16.webp)}.ia17{--a1:url(../art/ink17.webp)}.ia18{--a1:url(../art/ink18.webp)}.ia19{--a1:url(../art/ink19.webp)}.ia20{--a1:url(../art/ink20.webp)}.ia21{--a1:url(../art/ink21.webp)}.ia22{--a1:url(../art/ink22.webp)}
+:root[data-theme="dark"] .upaint{filter:invert(1) sepia(.15) brightness(.85);mix-blend-mode:screen;opacity:.35}
+.unodes{position:relative;z-index:1}
 .ulink{position:absolute;left:50%;top:0;overflow:visible;pointer-events:none}
 .ulink path{fill:none;stroke-linecap:round}.ulink .todo{stroke:var(--ink);stroke-width:2.5;stroke-dasharray:1 9;opacity:.4}.ulink .ink{stroke:var(--accent);stroke-width:6}
 .urow{position:relative;height:118px;width:max-content;margin:0 auto;display:flex;flex-direction:column;align-items:center;transform:translateX(var(--x,0))}
